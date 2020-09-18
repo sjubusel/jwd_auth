@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="alert alert-info" role="alert">
+    Сайт находится в стадии разработки. Приносим свои извинения.
+</div>
+<div class="nav container-fluid nav-pills bg-light">
+    <div class="nav-item">
+        <a class="nav-link active" href="/main">Главная</a>
+    </div>
+    <div class="nav-item">
+        <a class="nav-link" href="/main">Для пациентов</a>
+    </div>
+    <div class="nav-item">
+        <a class="nav-link" href="/main">Для персонала</a>
+    </div>
+    <div class="nav-item flex-grow-1">
+        <a class="nav-link" href="/main">Контакты</a>
+    </div>
+    <div class="nav-item">
+        <a class="nav-link" href="#">Войти</a>
+    </div>
+    <div class="nav-item">
+        <a class="nav-link" href="#">Регистрация</a>
+    </div>
+</div>
+
+<br>
+<div class="text-body" style="padding-left: 25px; padding-right: 25px">
+    Уважаемые посетители, Вашему вниманию представляется информация о текущей
+    заполняемости больницы. Напоминаем, что в нашей больнице бесплатно
+    реализуется "Программа инновационного лечения".
+</div>
+<br>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">Наименование</th>
+        <th scope="col">Свободно мест</th>
+        <th scope="col">Всего мест</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">1</th>
+        <td>Mark</td>
+        <td>Otto</td>
+    </tr>
+    <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td>Larry</td>
+        <td>the Bird</td>
+    </tr>
+    </tbody>
+</table>
+
+<h2 style="padding-left: 25px">Форма входа в систему:</h2>
+
+<form action="/login" method="post" style="padding-left: 25px">
+    <div class="form-group">
+        <label for="loginInput">Логин</label>
+        <input type="text" class="form-control" id="loginInput" name="login">
+    </div>
+    <div class="form-group">
+        <label for="passwordInput">Пароль</label>
+        <input type="password" class="form-control" id="passwordInput"
+               name="password">
+    </div>
+    <button type="submit" class="btn btn-primary">Войти</button>
+</form>
+
+<h2 style="padding-left: 25px">Форма регистрации в системе:</h2>
+
+<form action="${pageContext.request.contextPath}/register" method="post"
+      style="padding-left: 25px">
+
+    <div class="form-group">
+        <label for="loginInput">Логин, создаваемый в системе</label>
+        <input type="text" class="form-control" id="loginInput" name="login">
+    </div>
+    <div class="form-group">
+        <label for="passwordInput">Пароль</label>
+        <input type="password" class="form-control" id="passwordInput"
+               name="password">
+    </div>
+    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+
+</form>
+
+<br>
+<div class="container-fluid justify-content-center dropdown-menu d-flex bg-light">
+    <div class="p-2 justify-content-center flex-fill bd-highlight">
+        © УО "Инновационная больница
+        "Шабаны" г.Минска, 2020
+    </div>
+    <div class="p-2 flex-fill bd-highlight">Телефон для записи: +375 (29)
+        600-00-01
+    </div>
+</div>
+
+</body>
+</html>
