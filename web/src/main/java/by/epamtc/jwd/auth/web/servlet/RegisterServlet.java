@@ -21,7 +21,7 @@ public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Object authUser = req.getSession().getAttribute("authUser");
         if (authUser == null) {
-            req.getRequestDispatcher("/register.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(req, resp);
             return;
         }
         resp.sendRedirect("/personal");
@@ -38,7 +38,7 @@ public class RegisterServlet extends HttpServlet {
         } catch (ServiceException e) {
             req.setAttribute("error", "По техническим причинам " +
                     "зарегистрироваться в системе не представляется возможным");
-            req.getRequestDispatcher("/register.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(req, resp);
         }
 
         if (user != null) {
@@ -46,7 +46,7 @@ public class RegisterServlet extends HttpServlet {
             resp.sendRedirect(getServletContext().getContextPath() + "/personal");
         } else {
             req.setAttribute("error", "Введённый логин уже занят");
-            req.getRequestDispatcher("/register.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/jsp/register.jsp").forward(req, resp);
         }
     }
 }
