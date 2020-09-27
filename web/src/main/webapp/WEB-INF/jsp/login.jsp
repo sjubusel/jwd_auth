@@ -7,20 +7,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Учреждение здравоохранения "Инновационная больница "Шабаны"
         г.Минска"</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
 </head>
 <body>
 
-
 <jsp:include page="header.jsp"/>
 
-<h2 style="padding-left: 25px">Форма регистрации в системе:</h2>
+<h2 style="padding-left: 25px">Форма входа в систему:</h2>
 
-<form action="${pageContext.request.contextPath}/register" method="post"
+<form action="${pageContext.request.contextPath}/login" method="post"
       style="padding-left: 25px">
 
     <div class="form-group">
-        <label for="loginInput">Логин, создаваемый в системе</label>
+        <label for="loginInput">Логин</label>
         <input type="text" class="form-control" id="loginInput" name="login">
     </div>
     <div class="form-group">
@@ -28,7 +27,7 @@
         <input type="password" class="form-control" id="passwordInput"
                name="password">
     </div>
-    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+    <button type="submit" class="btn btn-primary">Войти</button>
 
 </form>
 
