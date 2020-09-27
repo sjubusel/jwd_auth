@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         Object authUser = req.getSession().getAttribute("authUser");
         if (authUser == null) {
-            req.getRequestDispatcher("/login.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, resp);
             return;
         }
         resp.sendRedirect("/personal");
@@ -39,12 +39,12 @@ public class LoginServlet extends HttpServlet {
         } catch (ServiceException e) {
             req.setAttribute("error", "по техническим причинам войти" +
                     " в систему не представляется возможным");
-            req.getRequestDispatcher("/login.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, resp);
         }
 
         if (user == null) {
             req.setAttribute("error", "логин или пароль недействительны");
-            req.getRequestDispatcher("/login.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, resp);
             return;
         }
 
