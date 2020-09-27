@@ -13,6 +13,6 @@ public class LogOutCommand implements Command {
             throws ServletException, IOException {
         req.getSession().removeAttribute("authUser");
         req.getSession().invalidate();
-        req.getRequestDispatcher("/login").forward(req, res);
+        req.getRequestDispatcher("/WEB-INF/jsp/main.jsp").forward(req, res);
     }
 }

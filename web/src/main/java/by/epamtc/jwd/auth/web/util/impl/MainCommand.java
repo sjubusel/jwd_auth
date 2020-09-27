@@ -28,6 +28,6 @@ public class MainCommand implements Command {
             req.setAttribute("reportError", "Ресурс недоступен." +
                     "Просьба обратиться позднее.");
         }
-        req.getRequestDispatcher("/main.jsp").forward(req, res);
+        req.getRequestDispatcher("/WEB-INF/jsp/main.jsp").forward(req, res);
     }
 }

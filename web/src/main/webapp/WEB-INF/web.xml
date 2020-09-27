@@ -9,7 +9,7 @@
          version="4.0">
     <display-name>"Auth" webapp</display-name>
     <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>/WEB-INF/jsp/index.jsp</welcome-file>
     </welcome-file-list>
 
     <servlet>
