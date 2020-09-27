@@ -13,6 +13,10 @@
 
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
 
+<jsp:include page="languageButtonBar.jsp"/>
+
+<br/>
+
 <div class="alert alert-info" role="alert">
     <fmt:message bundle="${jspMessages}" key="header.alertInfo"/>
 </div>
