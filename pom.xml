@@ -61,18 +61,21 @@
                 <groupId>jstl</groupId>
                 <artifactId>jstl</artifactId>
                 <version>${jstl.version}</version>
+                <scope>provided</scope>
             </dependency>
             <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql-connector-java.version}</version>
+                <scope>provided</scope>
             </dependency>
             <!-- https://mvnrepository.com/artifact/com.mchange/c3p0 -->
             <dependency>
                 <groupId>com.mchange</groupId>
                 <artifactId>c3p0</artifactId>
                 <version>${c3p0.version}</version>
+                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
