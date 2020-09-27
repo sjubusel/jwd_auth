@@ -19,7 +19,8 @@
     <title>
         <fmt:message bundle="${jspMessages}" key="all.htmlTitle"/>
     </title>
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="${pageContext.request.contextPath}/css/bootstrap.min.css">
 </head>
 
 <body>

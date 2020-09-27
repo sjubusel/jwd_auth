@@ -1,5 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"
-         pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -12,7 +11,7 @@
     </c:otherwise>
 </c:choose>
 
-<fmt:setBundle basename="jspResourses" var="jspMessages"/>
+<fmt:setBundle basename="jspResources" var="jspMessages"/>
 
 <div class="text-body" style="padding-left: 25px; padding-right: 25px">
     <fmt:message bundle="${jspMessages}" key="mainContents.mainMessage"/>
