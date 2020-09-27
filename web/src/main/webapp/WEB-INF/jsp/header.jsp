@@ -12,27 +12,34 @@
     </c:otherwise>
 </c:choose>
 
-<fmt:setBundle basename="jspResourses" var="jspMessages"/>
+<fmt:setBundle basename="jspResources" var="jspMessages"/>
 
 <div class="alert alert-info" role="alert">
-    Сайт находится в стадии разработки. Приносим свои извинения.
+    <fmt:message bundle="${jspMessages}" key="header.alertInfo"/>
 </div>
 
 <div class="nav container-fluid nav-pills bg-light">
     <div class="nav-item">
-        <a class="nav-link active"
-           href="${pageContext.request.contextPath}/main">Главная</a>
+        <a
+                class="nav-link active"
+                href="${pageContext.request.contextPath}/main">
+            <fmt:message bundle="${jspMessages}" key="header.menu.main"/>
+        </a>
     </div>
     <div class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/main">Для
-            пациентов</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/main">
+            <fmt:message bundle="${jspMessages}" key="header.menu.patients"/>
+        </a>
     </div>
     <div class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/main">Для
-            персонала</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/main">
+            <fmt:message bundle="${jspMessages}" key="header.menu.medStaff"/>
+        </a>
     </div>
     <div class="nav-item flex-grow-1">
-        <a class="nav-link" href="${pageContext.request.contextPath}/main">Контакты</a>
+        <a class="nav-link" href="${pageContext.request.contextPath}/main">
+            <fmt:message bundle="${jspMessages}" key="header.menu.contacts"/>
+        </a>
     </div>
 
     <c:choose>
@@ -40,26 +47,34 @@
             <div class="nav-item">
                 <a class="nav-link"
                    href="${pageContext.request.contextPath}/login">
-                    Войти</a>
+                    <fmt:message bundle="${jspMessages}"
+                                 key="header.menu.singIn"/>
+                </a>
             </div>
             <div class="nav-item">
                 <a class="nav-link"
                    href="${pageContext.request.contextPath}/register">
-                    Регистрация</a>
+                    <fmt:message bundle="${jspMessages}"
+                                 key="header.menu.signUp"/>
+                </a>
             </div>
         </c:when>
         <c:otherwise>
             <div class="nav-item">
                 <a class="nav-link"
                    href="${pageContext.request.contextPath}/personal">
-                    Пользователь, <c:out
-                        value="${sessionScope.authUser.login}"/>
+                    <fmt:message bundle="${jspMessages}"
+                                 key="header.menu.helloMessage"/>
+                    <c:out value=", "/>
+                    <c:out value="${sessionScope.authUser.login}"/>
                 </a>
             </div>
             <div class="nav-item">
                 <a class="nav-link"
                    href="${pageContext.request.contextPath}/main?command=logout">
-                    выйти</a>
+                    <fmt:message bundle="${jspMessages}"
+                                 key="header.menu.logOut"/>
+                </a>
             </div>
         </c:otherwise>
     </c:choose>

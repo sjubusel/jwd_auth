@@ -12,35 +12,45 @@
     </c:otherwise>
 </c:choose>
 
-<fmt:setBundle basename="jspResourses" var="jspMessages"/>
+<fmt:setBundle basename="jspResources" var="jspMessages"/>
 
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Учреждение здравоохранения "Инновационная больница "Шабаны"
-        г.Минска"</title>
+    <title>
+        <fmt:message bundle="${jspMessages}" key="all.htmlTitle"/>
+    </title>
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
 </head>
 <body>
 
-
 <jsp:include page="header.jsp"/>
 
-<h2 style="padding-left: 25px">Форма регистрации в системе:</h2>
+<h2 style="padding-left: 25px">
+    <fmt:message bundle="${jspMessages}" key="register.heading"/>
+</h2>
 
 <form action="${pageContext.request.contextPath}/register" method="post"
       style="padding-left: 25px">
 
     <div class="form-group">
-        <label for="loginInput">Логин, создаваемый в системе</label>
+        <label for="loginInput">
+            <fmt:message bundle="${jspMessages}"
+                         key="register.loginInputLabel"/>
+        </label>
         <input type="text" class="form-control" id="loginInput" name="login">
     </div>
     <div class="form-group">
-        <label for="passwordInput">Пароль</label>
+        <label for="passwordInput">
+            <fmt:message bundle="${jspMessages}"
+                         key="register.passwordInputLabel"/>
+        </label>
         <input type="password" class="form-control" id="passwordInput"
                name="password">
     </div>
-    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+    <button type="submit" class="btn btn-primary">
+        <fmt:message bundle="${jspMessages}" key="register.submitButton"/>
+    </button>
 
 </form>
 

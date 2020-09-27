@@ -12,13 +12,14 @@
     </c:otherwise>
 </c:choose>
 
-<fmt:setBundle basename="jspResourses" var="jspMessages"/>
+<fmt:setBundle basename="jspResources" var="jspMessages"/>
 
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Учреждение здравоохранения "Инновационная больница "Шабаны"
-        г.Минска"</title>
+    <title>
+        <fmt:message bundle="${jspMessages}" key="all.htmlTitle"/>
+    </title>
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
 </head>
 

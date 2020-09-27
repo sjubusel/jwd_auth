@@ -12,16 +12,15 @@
     </c:otherwise>
 </c:choose>
 
-<fmt:setBundle basename="jspResourses" var="jspMessages"/>
+<fmt:setBundle basename="jspResources" var="jspMessages"/>
 
 <br>
 
 <div class="container-fluid justify-content-center dropdown-menu d-flex bg-light">
     <div class="p-2 justify-content-center flex-fill bd-highlight">
-        © УО "Инновационная больница
-        "Шабаны" г.Минска, 2020
+        <fmt:message bundle="${jspMessages}" key="footer.copyrightRecord"/>
     </div>
-    <div class="p-2 flex-fill bd-highlight">Телефон для записи: +375 (29)
-        600-00-01
+    <div class="p-2 flex-fill bd-highlight">
+        <fmt:message bundle="${jspMessages}" key="footer.contactNumber"/>
     </div>
 </div>
