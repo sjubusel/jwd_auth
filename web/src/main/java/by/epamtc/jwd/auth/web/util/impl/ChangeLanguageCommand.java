@@ -17,7 +17,6 @@ public class ChangeLanguageCommand implements Command {
         String languageCode = languageProvider.provideLanguageCode(language);
 
         req.getSession().setAttribute("language", languageCode);
-//        res.sendRedirect(req.getContextPath() + "/main");
 
         String previousUrl = req.getHeader("Referer");
         res.sendRedirect(previousUrl);
