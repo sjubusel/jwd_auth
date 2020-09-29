@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -12,21 +13,28 @@
 
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
 
-<div style="float: right">
-    <div>
+<div class="btn-group" style="float: right">
+    <div class="btn">
         <fmt:message bundle="${jspMessages}"
                      key="languageButtonBar.currentLang"/>
     </div>
-    <form id="form" action="${pageContext.request.contextPath}/main">
-        <input type="hidden" name="command" value="change-language"/>
-        <button class="btn-primary" type="submit" form="form" formmethod="get"
-                name="language"
-                value="russian">
-            рус
-        </button>
-        <button type="submit" form="form" formmethod="get" name="language"
-                value="english">
-            eng
-        </button>
-    </form>
+    <div>
+        <form id="form" action="${pageContext.request.contextPath}/main">
+            <input type="hidden" name="command" value="change-language"/>
+            <button class="btn-info" type="submit" form="form"
+                    formmethod="get"
+                    formaction="${pageContext.request.contextPath}/main"
+                    name="language"
+                    value="russian">
+                рус
+            </button>
+            <button class="btn-info" type="submit" form="form"
+                    formmethod="get"
+                    formaction="${pageContext.request.contextPath}/main"
+                    name="language"
+                    value="english">
+                eng
+            </button>
+        </form>
+    </div>
 </div>

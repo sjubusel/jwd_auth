@@ -5,7 +5,6 @@ import by.epamtc.jwd.auth.web.util.LanguageProvider;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class ChangeLanguageCommand implements Command {
@@ -14,11 +13,10 @@ public class ChangeLanguageCommand implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws IOException {
-        HttpSession session = req.getSession();
-        String language = (String) session.getAttribute("language");
+        String language = req.getParameter("language");
         String languageCode = languageProvider.provideLanguageCode(language);
 
-        session.setAttribute("language", languageCode);
+        req.getSession().setAttribute("language", languageCode);
         res.sendRedirect(req.getContextPath() + "/main");
     }
 }

@@ -10,7 +10,7 @@ public class LanguageProvider {
     private final HashMap<String, String> repository = new HashMap<>();
 
     private LanguageProvider() {
-        repository.put("русский", "ru_RU");
+        repository.put("russian", "ru_RU");
         repository.put("english", "en_US");
     }
 
@@ -29,6 +29,6 @@ public class LanguageProvider {
 
     public String provideLanguageCode(String language) {
         String languageCode = repository.get(language);
-        return languageCode != null ? languageCode : repository.get("русский");
+        return languageCode != null ? languageCode : repository.get("russian");
     }
 }
