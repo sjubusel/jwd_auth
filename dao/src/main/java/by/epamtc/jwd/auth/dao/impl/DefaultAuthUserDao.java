@@ -63,7 +63,7 @@ public class DefaultAuthUserDao implements AuthUserDao {
             PreparedStatement statement = connection.prepareStatement
                     ("SELECT login FROM hospital.stub_auth_user " +
                             "WHERE login = ?");
-            statement.setString(1, "login");
+            statement.setString(1, login);
             return statement.executeQuery().next();
         } catch (SQLException e) {
             throw new DaoException("An error while fetching login from " +
