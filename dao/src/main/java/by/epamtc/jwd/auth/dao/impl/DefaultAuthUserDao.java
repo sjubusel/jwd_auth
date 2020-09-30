@@ -15,29 +15,14 @@ public class DefaultAuthUserDao implements AuthUserDao {
     private SourceConnector sourceConnector = DataBaseSourceConnector.getInstance();
 
     @Override
-    public AuthUser getByLogin(String login) throws DaoException {
+    public AuthUser receiveAuthUserIfCorrect(String login, String password)
+            throws DaoException {
         try (Connection connection = sourceConnector.getConnection()) {
-            PreparedStatement statement = connection
-                    .prepareStatement("SELECT id, login, password, role," +
-                            " staff_id, person_id " +
-                            "FROM hospital.stub_auth_user " +
-                            "WHERE login = ?");
-            statement.setString(1, login);
-            ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String loginDB = resultSet.getString("login");
-                String password = resultSet.getString("password");
-                Role role = Role.valueOf(resultSet.getString("role"));
-                int staffId = resultSet.getInt("staff_id");
-                int userId = resultSet.getInt("person_id");
-                return new AuthUser(id, loginDB, password, role, staffId, userId);
-            }
+            return receiveAuthUserIfCorrectFromDb(connection, login, password);
         } catch (SQLException e) {
             throw new DaoException("An error while fetching data from DB " +
                     "(auth_user)", e);
         }
-        return null;
     }
 
     @Override
@@ -69,5 +54,36 @@ public class DefaultAuthUserDao implements AuthUserDao {
             throw new DaoException("An error while fetching login from " +
                     "DB(auth_user", e);
         }
+    }
+
+    private AuthUser receiveAuthUserIfCorrectFromDb(Connection connection,
+            String login, String password) throws SQLException {
+        PreparedStatement statement = connection
+                .prepareStatement("SELECT id, login, password, role," +
+                        " staff_id, person_id " +
+                        "FROM hospital.stub_auth_user " +
+                        "WHERE login = ?");
+        statement.setString(1, login);
+
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            return compileAuthUserIfPasswordIsCorrect(password, resultSet);
+        }
+
+        return null;
+    }
+
+    private AuthUser compileAuthUserIfPasswordIsCorrect(String password,
+            ResultSet resultSet) throws SQLException {
+        int id = resultSet.getInt("id");
+        String loginDb = resultSet.getString("login");
+        String passwordDb = resultSet.getString("password");
+        if (!password.equals(passwordDb)) {
+            return null;
+        }
+        Role role = Role.valueOf(resultSet.getString("role"));
+        int staffId = resultSet.getInt("staff_id");
+        int userId = resultSet.getInt("person_id");
+        return new AuthUser(id, loginDb, passwordDb, role, staffId, userId);
     }
 }

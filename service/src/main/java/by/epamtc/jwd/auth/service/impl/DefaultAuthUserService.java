@@ -18,15 +18,11 @@ public class DefaultAuthUserService implements AuthUserService {
     public AuthUser login(String login, String password) throws ServiceException {
         AuthUser user;
         try {
-            user = authUserDao.getByLogin(login);
+            user = authUserDao.receiveAuthUserIfCorrect(login, password);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
-
-        if (user != null && user.getPassword().equals(password)) {
-            return user;
-        }
-        return null;
+        return user;
     }
 
     @Override
@@ -36,7 +32,7 @@ public class DefaultAuthUserService implements AuthUserService {
                 if (!authUserDao.containsLogin(login)) {
                     authUserDao.saveAuthUser(new AuthUser(login, password,
                             Role.USER));
-                    return authUserDao.getByLogin(login);
+                    return authUserDao.receiveAuthUserIfCorrect(login, password);
                 }
             } catch (DaoException e) {
                 throw new ServiceException(e);
