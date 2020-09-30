@@ -57,7 +57,18 @@
 
 <c:if test="${requestScope.error ne null}">
     <div class="alert alert-danger" role="alert">
-        <c:out value="${requestScope.error}"/>
+        <c:choose>
+            <c:when test="${requestScope.error eq 'simple'}">
+                <fmt:message bundle="${jspMessages}" key="login.simpleError"/>
+            </c:when>
+            <c:when test="${requestScope.error eq 'tech'}">
+                <fmt:message bundle="${jspMessages}" key="login.techError"/>
+            </c:when>
+            <c:otherwise>
+                <c:out value="${requestScope.error}"/>
+            </c:otherwise>
+        </c:choose>
+
     </div>
 </c:if>
 

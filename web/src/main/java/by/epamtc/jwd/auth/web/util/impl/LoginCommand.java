@@ -6,7 +6,6 @@ import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -16,7 +15,8 @@ public class LoginCommand implements Command {
     private AuthUserService authUserService = serviceFactory.getAuthUserService();
 
     @Override
-    public void execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    public void execute(HttpServletRequest req, HttpServletResponse res)
+            throws IOException {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
@@ -24,14 +24,16 @@ public class LoginCommand implements Command {
         try {
             user = authUserService.login(login, password);
         } catch (ServiceException e) {
-            req.setAttribute("error", "по техническим причинам войти" +
-                    " в систему не представляется возможным");
-            req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, res);
+//            req.setAttribute("error", "по техническим причинам войти" +
+//                    " в систему не представляется возможным");
+//            req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, res);
+            res.sendRedirect(req.getContextPath() + "/main?command=go-to-login&error=tech");
         }
 
         if (user == null) {
-            req.setAttribute("error", "логин или пароль недействительны");
-            req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, res);
+//            req.setAttribute("error", "логин или пароль недействительны");
+//            req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, res);
+            res.sendRedirect(req.getContextPath() + "/main?command=go-to-login&error=simple");
             return;
         }
 

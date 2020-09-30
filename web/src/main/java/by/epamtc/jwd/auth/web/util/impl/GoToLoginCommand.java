@@ -10,6 +10,11 @@ import java.io.IOException;
 public class GoToLoginCommand implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        String error = req.getParameter("error");
+        if (error != null) {
+            req.setAttribute("error", error);
+        }
+
         Object authUser = req.getSession().getAttribute("authUser");
         if (authUser == null) {
             req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, res);
