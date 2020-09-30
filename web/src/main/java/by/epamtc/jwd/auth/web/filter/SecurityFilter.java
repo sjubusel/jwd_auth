@@ -17,7 +17,8 @@ public class SecurityFilter implements Filter {
         if ((session != null) && (session.getAttribute("authUser") != null)) {
             filterChain.doFilter(request, response);
         } else {
-            response.sendRedirect("/main?command=go-to-login");
+            response.sendRedirect(request.getContextPath()
+                    + "/main?command=go-to-login");
         }
     }
 }

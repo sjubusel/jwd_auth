@@ -24,11 +24,13 @@ public class LoginCommand implements Command {
         try {
             user = authUserService.login(login, password);
         } catch (ServiceException e) {
-            res.sendRedirect(req.getContextPath() + "/main?command=go-to-login&error=tech");
+            res.sendRedirect(req.getContextPath()
+                    + "/main?command=go-to-login&error=tech");
         }
 
         if (user == null) {
-            res.sendRedirect(req.getContextPath() + "/main?command=go-to-login&error=simple");
+            res.sendRedirect(req.getContextPath()
+                    + "/main?command=go-to-login&error=simple");
             return;
         }
 
