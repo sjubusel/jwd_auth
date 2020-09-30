@@ -66,7 +66,7 @@
         <c:otherwise>
             <div class="nav-item">
                 <a class="nav-link"
-                   href="${pageContext.request.contextPath}/main?command=go-to-profile">
+                   href="${pageContext.request.contextPath}/profile?command=go-to-profile">
                     <fmt:message bundle="${jspMessages}"
                                  key="header.menu.helloMessage"/>
                     <c:out value=", "/>
@@ -75,7 +75,7 @@
             </div>
             <div class="nav-item">
                 <a class="nav-link"
-                   href="${pageContext.request.contextPath}/main?command=logout">
+                   href="${pageContext.request.contextPath}/profile?command=logout">
                     <fmt:message bundle="${jspMessages}"
                                  key="header.menu.logOut"/>
                 </a>

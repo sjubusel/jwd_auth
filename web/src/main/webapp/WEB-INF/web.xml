@@ -21,39 +21,7 @@
     <servlet-mapping>
         <servlet-name>MainServlet</servlet-name>
         <url-pattern>/main</url-pattern>
-    </servlet-mapping>
-
-<!--    <servlet>-->
-<!--        <servlet-name>LoginServlet</servlet-name>-->
-<!--        <servlet-class>by.epamtc.jwd.auth.web.servlet.LoginServlet-->
-<!--        </servlet-class>-->
-<!--    </servlet>-->
-
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>LoginServlet</servlet-name>-->
-<!--        <url-pattern>/login</url-pattern>-->
-<!--    </servlet-mapping>-->
-
-    <servlet>
-        <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>by.epamtc.jwd.auth.web.servlet.RegisterServlet
-        </servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/register</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>PersonalServlet</servlet-name>
-        <servlet-class>by.epamtc.jwd.auth.web.servlet.PersonalServlet
-        </servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>PersonalServlet</servlet-name>
-        <url-pattern>/personal</url-pattern>
+        <url-pattern>/profile</url-pattern>
     </servlet-mapping>
 
     <filter>
@@ -64,7 +32,10 @@
 
     <filter-mapping>
         <filter-name>SecurityFilter</filter-name>
-        <servlet-name>PersonalServlet</servlet-name>
+        <!--        It works-->
+        <url-pattern>/profile</url-pattern>
+        <!--        It doesn't work and I have no idea why ... -->
+        <url-pattern>/main?command=go-to-profile</url-pattern>
     </filter-mapping>
 
     <filter>

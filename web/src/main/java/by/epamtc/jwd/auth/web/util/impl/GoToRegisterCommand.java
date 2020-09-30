@@ -22,6 +22,6 @@ public class GoToRegisterCommand implements Command {
                     .forward(req, res);
             return;
         }
-        res.sendRedirect(req.getContextPath() + "/main?command=go-to-profile");
+        res.sendRedirect(req.getContextPath() + "/profile?command=go-to-profile");
     }
 }
