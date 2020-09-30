@@ -30,9 +30,9 @@
     <fmt:message bundle="${jspMessages}" key="register.heading"/>
 </h2>
 
-<form action="${pageContext.request.contextPath}/register" method="post"
+<form action="${pageContext.request.contextPath}/main" method="post"
       style="padding-left: 25px">
-
+    <input type="hidden" name="command" value="register"/>
     <div class="form-group">
         <label for="loginInput">
             <fmt:message bundle="${jspMessages}"

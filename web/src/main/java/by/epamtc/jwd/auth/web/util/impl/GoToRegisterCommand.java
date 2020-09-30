@@ -7,17 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class GoToLoginCommand implements Command {
+public class GoToRegisterCommand implements Command {
     @Override
-    public void execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        String error = req.getParameter("error");
-        if (error != null) {
-            req.setAttribute("error", error);
-        }
-
+    public void execute(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
         Object authUser = req.getSession().getAttribute("authUser");
         if (authUser == null) {
-            req.getRequestDispatcher("/WEB-INF/jsp/login.jsp")
+            req.getRequestDispatcher("/WEB-INF/jsp/register.jsp")
                     .forward(req, res);
             return;
         }

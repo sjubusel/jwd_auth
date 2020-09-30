@@ -57,7 +57,7 @@
             </div>
             <div class="nav-item">
                 <a class="nav-link"
-                   href="${pageContext.request.contextPath}/register">
+                   href="${pageContext.request.contextPath}/main?command=go-to-register">
                     <fmt:message bundle="${jspMessages}"
                                  key="header.menu.signUp"/>
                 </a>
