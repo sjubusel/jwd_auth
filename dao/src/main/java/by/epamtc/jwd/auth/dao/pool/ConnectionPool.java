@@ -121,7 +121,7 @@ public class ConnectionPool {
     }
 
     public Connection takeConnection() throws ConnectionPoolException {
-        Connection connection = null;
+        Connection connection;
         try {
             connection = freeConnections.take();
             givenConnections.add(connection);
@@ -134,34 +134,28 @@ public class ConnectionPool {
 
     public void closeConnection(Connection con, Statement st, ResultSet rs) {
         try {
-            rs.close();
+            if (rs != null) {
+                rs.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace(); // logger-stub "Error closing the result set.", e);
         }
-
-        try {
-            st.close();
-        } catch (SQLException e) {
-            e.printStackTrace(); // logger-stub "Error closing the statement.", e);
-        }
-
-        try {
-            con.close();
-        } catch (SQLException e) {
-            e.printStackTrace(); // logger-stub "Error closing the connection.", e);
-        }
-
+        closeConnection(con, st);
     }
 
     public void closeConnection(Connection con, Statement st) {
         try {
-            st.close();
+            if (st != null) {
+                st.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace(); // logger-stub "Error closing the statement.", e);
         }
 
         try {
-            con.close();
+            if (con != null) {
+                con.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace(); // logger-stub "Error closing the connection.", e);
         }

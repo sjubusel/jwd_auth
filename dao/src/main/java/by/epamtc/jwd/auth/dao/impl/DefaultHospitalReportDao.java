@@ -1,8 +1,9 @@
 package by.epamtc.jwd.auth.dao.impl;
 
 import by.epamtc.jwd.auth.dao.HospitalReportDao;
-import by.epamtc.jwd.auth.dao.SourceConnector;
 import by.epamtc.jwd.auth.dao.exception.DaoException;
+import by.epamtc.jwd.auth.dao.pool.ConnectionPool;
+import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
 import by.epamtc.jwd.auth.model.report.HospitalDepartmentReport;
 import by.epamtc.jwd.auth.model.report.HospitalReport;
 
@@ -12,29 +13,39 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DefaultHospitalReportDao implements HospitalReportDao {
-
-    private SourceConnector sourceConnector = DataBaseSourceConnector.getInstance();
+    private ConnectionPool pool = ConnectionPool.getInstance();
 
     @Override
     public HospitalReport receiveHospitalFillability() throws DaoException {
-        try (Connection connection = sourceConnector.getConnection()) {
-            return receiveHospitalReportFromDB(connection);
+        Connection conn = null;
+        Statement stat = null;
+        ResultSet rSet = null;
+
+        try {
+            conn = pool.takeConnection();
+            return receiveHospitalReportFromDB(conn, stat, rSet);
         } catch (SQLException e) {
             throw new DaoException("An error of a connection to a datasource " +
                     "occurred", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection from " +
+                    "the connection pool", e);
+        } finally {
+            pool.closeConnection(conn, stat, rSet);
         }
     }
 
-    private HospitalReport receiveHospitalReportFromDB(Connection connection)
+    private HospitalReport receiveHospitalReportFromDB(Connection connection,
+            Statement statement, ResultSet resultSet)
             throws SQLException {
-        Statement statement = connection.createStatement();
-        ResultSet resSet = extractSourceDataFromDB(statement);
+        statement = connection.createStatement();
+        resultSet = extractSourceDataFromDB(statement);
 
-        if (resSet == null) {
+        if (resultSet == null) {
             return new HospitalReport();
         }
 
-        return formReportFromSourceDataIfPossible(resSet);
+        return formReportFromSourceDataIfPossible(resultSet);
     }
 
     private ResultSet extractSourceDataFromDB(Statement statement)
