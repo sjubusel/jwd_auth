@@ -24,15 +24,10 @@ public class LoginCommand implements Command {
         try {
             user = authUserService.login(login, password);
         } catch (ServiceException e) {
-//            req.setAttribute("error", "по техническим причинам войти" +
-//                    " в систему не представляется возможным");
-//            req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, res);
             res.sendRedirect(req.getContextPath() + "/main?command=go-to-login&error=tech");
         }
 
         if (user == null) {
-//            req.setAttribute("error", "логин или пароль недействительны");
-//            req.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(req, res);
             res.sendRedirect(req.getContextPath() + "/main?command=go-to-login&error=simple");
             return;
         }
