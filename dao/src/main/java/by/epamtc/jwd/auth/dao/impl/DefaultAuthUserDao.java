@@ -6,16 +6,18 @@ import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.model.auth_user.AuthUser;
 import by.epamtc.jwd.auth.model.auth_user.Role;
 
+import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Arrays;
 
 public class DefaultAuthUserDao implements AuthUserDao {
     private SourceConnector sourceConnector = DataBaseSourceConnector.getInstance();
 
     @Override
-    public AuthUser receiveAuthUserIfCorrect(String login, String password)
+    public AuthUser receiveAuthUserIfCorrect(String login, byte[] password)
             throws DaoException {
         try (Connection connection = sourceConnector.getConnection()) {
             return receiveAuthUserIfCorrectFromDb(connection, login, password);
@@ -57,7 +59,7 @@ public class DefaultAuthUserDao implements AuthUserDao {
     }
 
     private AuthUser receiveAuthUserIfCorrectFromDb(Connection connection,
-            String login, String password) throws SQLException {
+            String login, byte[] password) throws SQLException {
         PreparedStatement statement = connection
                 .prepareStatement("SELECT id, login, password, role," +
                         " staff_id, person_id " +
@@ -73,12 +75,12 @@ public class DefaultAuthUserDao implements AuthUserDao {
         return null;
     }
 
-    private AuthUser compileAuthUserIfPasswordIsCorrect(String password,
+    private AuthUser compileAuthUserIfPasswordIsCorrect(byte[] password,
             ResultSet resultSet) throws SQLException {
         int id = resultSet.getInt("id");
         String loginDb = resultSet.getString("login");
         String passwordDb = resultSet.getString("password");
-        if (!password.equals(passwordDb)) {
+        if (!Arrays.equals(password, passwordDb.getBytes(StandardCharsets.UTF_8))) {
             return null;
         }
         Role role = Role.valueOf(resultSet.getString("role"));

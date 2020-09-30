@@ -4,7 +4,7 @@ import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.model.auth_user.AuthUser;
 
 public interface AuthUserDao {
-    AuthUser receiveAuthUserIfCorrect(String login, String password)
+    AuthUser receiveAuthUserIfCorrect(String login, byte[] password)
             throws DaoException;
 
     int saveAuthUser(AuthUser user) throws DaoException;

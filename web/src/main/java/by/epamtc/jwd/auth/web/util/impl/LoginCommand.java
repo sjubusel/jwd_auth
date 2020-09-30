@@ -9,6 +9,7 @@ import by.epamtc.jwd.auth.web.util.Command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class LoginCommand implements Command {
     private ServiceFactory serviceFactory = ServiceFactory.getInstance();
@@ -19,10 +20,11 @@ public class LoginCommand implements Command {
             throws IOException {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
+        byte[] passwordBytes = password.getBytes(StandardCharsets.UTF_8);
 
         AuthUser user = null;
         try {
-            user = authUserService.login(login, password);
+            user = authUserService.login(login, passwordBytes);
         } catch (ServiceException e) {
             res.sendRedirect(req.getContextPath()
                     + "/main?command=go-to-login&error=tech");

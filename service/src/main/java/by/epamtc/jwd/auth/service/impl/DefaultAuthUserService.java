@@ -9,13 +9,15 @@ import by.epamtc.jwd.auth.service.AuthUserService;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.service.validation.AuthDataValidator;
 
+import java.nio.charset.StandardCharsets;
+
 public class DefaultAuthUserService implements AuthUserService {
     private DaoFactory daoFactory = DaoFactory.getInstance();
     private AuthUserDao authUserDao = daoFactory.getAuthUserDao();
     private AuthDataValidator authDataValidator = new AuthDataValidator();
 
     @Override
-    public AuthUser login(String login, String password) throws ServiceException {
+    public AuthUser login(String login, byte[] password) throws ServiceException {
         AuthUser user;
         try {
             user = authUserDao.receiveAuthUserIfCorrect(login, password);
@@ -32,7 +34,8 @@ public class DefaultAuthUserService implements AuthUserService {
                 if (!authUserDao.containsLogin(login)) {
                     authUserDao.saveAuthUser(new AuthUser(login, password,
                             Role.USER));
-                    return authUserDao.receiveAuthUserIfCorrect(login, password);
+                    return authUserDao.receiveAuthUserIfCorrect(login,
+                            password.getBytes(StandardCharsets.UTF_8));
                 }
             } catch (DaoException e) {
                 throw new ServiceException(e);
