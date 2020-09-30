@@ -58,7 +58,26 @@
 
 <c:if test="${requestScope.error ne null}">
     <div class="alert alert-danger" role="alert">
-        <c:out value="${requestScope.error}"/>
+        <c:choose>
+            <c:when test="${requestScope.error eq 'auth-data'}">
+                <fmt:message bundle="${jspMessages}"
+                             key="register.authDataError"/>
+            </c:when>
+            <c:when test="${requestScope.error eq 'login'}">
+                <fmt:message bundle="${jspMessages}" key="register.loginError"/>
+            </c:when>
+            <c:when test="${requestScope.error eq 'pass'}">
+                <fmt:message bundle="${jspMessages}"
+                             key="register.passwordError"/>
+            </c:when>
+            <c:when test="${requestScope.error eq 'duplicate'}">
+                <fmt:message bundle="${jspMessages}"
+                             key="register.duplicateError"/>
+            </c:when>
+            <c:otherwise>
+                <fmt:message bundle="${jspMessages}" key="register.techError"/>
+            </c:otherwise>
+        </c:choose>
     </div>
 </c:if>
 
