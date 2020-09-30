@@ -21,6 +21,6 @@ public class GoToLoginCommand implements Command {
                     .forward(req, res);
             return;
         }
-        res.sendRedirect("/personal");
+        res.sendRedirect(req.getContextPath() + "/main?command=go-to-profile");
     }
 }

@@ -22,6 +22,7 @@ public class CommandProvider {
         repository.put("GO-TO-REGISTER", new GoToRegisterCommand());
         repository.put("REGISTER", new RegisterCommand());
         repository.put("CHANGE-LANGUAGE", new ChangeLanguageCommand());
+        repository.put("GO-TO-PROFILE", new GoToProfileCommand());
         repository.put("ERROR", new ErrorCommand());
     }
 

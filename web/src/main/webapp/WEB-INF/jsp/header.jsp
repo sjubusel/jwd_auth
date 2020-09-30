@@ -66,7 +66,7 @@
         <c:otherwise>
             <div class="nav-item">
                 <a class="nav-link"
-                   href="${pageContext.request.contextPath}/personal">
+                   href="${pageContext.request.contextPath}/main?command=go-to-profile">
                     <fmt:message bundle="${jspMessages}"
                                  key="header.menu.helloMessage"/>
                     <c:out value=", "/>

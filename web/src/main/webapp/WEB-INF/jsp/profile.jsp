@@ -27,10 +27,10 @@
 <jsp:include page="header.jsp"/>
 
 <h1 style="padding-left: 25px">
-    <fmt:message bundle="${jspMessages}" key="personal.heading"/>
+    <fmt:message bundle="${jspMessages}" key="profile.heading"/>
 </h1>
 <h6 style="padding-left: 25px">
-    <fmt:message bundle="${jspMessages}" key="personal.message"/>
+    <fmt:message bundle="${jspMessages}" key="profile.message"/>
 </h6>
 
 <jsp:include page="footer.jsp"/>

@@ -42,7 +42,7 @@ public class RegisterCommand implements Command {
 
         if (user != null) {
             req.getSession().setAttribute("authUser", user);
-            res.sendRedirect(req.getContextPath() + "/personal");
+            res.sendRedirect(req.getContextPath() + "/main?command=go-to-profile");
         } else {
             res.sendRedirect(req.getContextPath() + "/main?command=go-to-register&error=duplicate");
         }

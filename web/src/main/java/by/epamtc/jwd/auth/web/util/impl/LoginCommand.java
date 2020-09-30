@@ -35,6 +35,6 @@ public class LoginCommand implements Command {
         }
 
         req.getSession().setAttribute("authUser", user);
-        res.sendRedirect("/personal");
+        res.sendRedirect(req.getContextPath() + "/main?command=go-to-profile");
     }
 }

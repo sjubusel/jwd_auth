@@ -29,6 +29,7 @@ public class LanguageProvider {
 
     public String provideLanguageCode(String language) {
         String languageCode = repository.get(language);
-        return languageCode != null ? languageCode : repository.get("russian");
+        return (languageCode != null)
+               ? languageCode : repository.get("russian");
     }
 }
