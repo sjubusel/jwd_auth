@@ -16,7 +16,7 @@ public class AuthDataValidator {
                 && password.matches("[A-Za-zА-ЯаяЁё0-9!?@#$%^&*()\\-_+:;,.\"']+");
     }
 
-    public boolean isAuthDataValid(String login, String password)
+    public boolean isAuthDataValidOtherwiseThrow(String login, String password)
             throws ValidationServiceException {
         if (!isLoginValid(login)) {
             if (!isPasswordValid(password)) {

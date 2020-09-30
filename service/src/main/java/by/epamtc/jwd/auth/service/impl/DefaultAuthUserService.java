@@ -31,10 +31,11 @@ public class DefaultAuthUserService implements AuthUserService {
 
     @Override
     public AuthUser register(String login, String password) throws ServiceException {
-        if (authDataValidator.isAuthDataValid(login, password)) {
+        if (authDataValidator.isAuthDataValidOtherwiseThrow(login, password)) {
             try {
                 if (!authUserDao.containsLogin(login)) {
-                    authUserDao.saveAuthUser(new AuthUser(login, password, Role.USER));
+                    authUserDao.saveAuthUser(new AuthUser(login, password,
+                            Role.USER));
                     return authUserDao.getByLogin(login);
                 }
             } catch (DaoException e) {
