@@ -50,7 +50,7 @@
         <c:when test="${sessionScope.authUser eq null}">
             <div class="nav-item">
                 <a class="nav-link"
-                   href="${pageContext.request.contextPath}/login">
+                   href="${pageContext.request.contextPath}/main?command=go-to-login">
                     <fmt:message bundle="${jspMessages}"
                                  key="header.menu.singIn"/>
                 </a>

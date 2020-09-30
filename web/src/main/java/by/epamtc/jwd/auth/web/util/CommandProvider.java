@@ -16,6 +16,8 @@ public class CommandProvider {
 
     private CommandProvider() {
         repository.put("MAIN", new MainCommand());
+        repository.put("GO-TO-LOGIN", new GoToLoginCommand());
+        repository.put("LOGIN", new LoginCommand());
         repository.put("LOGOUT", new LogOutCommand());
         repository.put("CHANGE-LANGUAGE", new ChangeLanguageCommand());
         repository.put("ERROR", new ErrorCommand());
