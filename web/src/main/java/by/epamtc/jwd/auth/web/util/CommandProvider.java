@@ -1,6 +1,7 @@
 package by.epamtc.jwd.auth.web.util;
 
 import by.epamtc.jwd.auth.service.ServiceFactory;
+import by.epamtc.jwd.auth.web.util.constant.CommandName;
 import by.epamtc.jwd.auth.web.util.impl.*;
 
 import javax.servlet.ServletException;
@@ -15,15 +16,15 @@ public class CommandProvider {
     private final HashMap<String, Command> repository = new HashMap<>();
 
     private CommandProvider() {
-        repository.put("MAIN", new MainCommand());
-        repository.put("GO-TO-LOGIN", new GoToLoginCommand());
-        repository.put("LOGIN", new LoginCommand());
-        repository.put("LOGOUT", new LogOutCommand());
-        repository.put("GO-TO-REGISTER", new GoToRegisterCommand());
-        repository.put("REGISTER", new RegisterCommand());
-        repository.put("CHANGE-LANGUAGE", new ChangeLanguageCommand());
-        repository.put("GO-TO-PROFILE", new GoToProfileCommand());
-        repository.put("ERROR", new ErrorCommand());
+        repository.put(CommandName.MAIN, new MainCommand());
+        repository.put(CommandName.GO_TO_LOGIN, new GoToLoginCommand());
+        repository.put(CommandName.LOGIN, new LoginCommand());
+        repository.put(CommandName.LOGOUT, new LogOutCommand());
+        repository.put(CommandName.GO_TO_REGISTER, new GoToRegisterCommand());
+        repository.put(CommandName.REGISTER, new RegisterCommand());
+        repository.put(CommandName.CHANGE_LANGUAGE, new ChangeLanguageCommand());
+        repository.put(CommandName.GO_TO_PROFILE, new GoToProfileCommand());
+        repository.put(CommandName.ERROR, new ErrorCommand());
     }
 
     public static CommandProvider getInstance() {
@@ -43,7 +44,7 @@ public class CommandProvider {
             HttpServletResponse res) throws ServletException, IOException {
         Command command = repository.get(commandName);
         if (command == null) {
-            command = repository.get("ERROR");
+            command = repository.get(CommandName.ERROR);
         }
         command.execute(req, res);
     }
