@@ -5,6 +5,7 @@ import by.epamtc.jwd.auth.service.HospitalReportService;
 import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
+import by.epamtc.jwd.auth.web.util.constant.CommandPaths;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +29,6 @@ public class MainCommand implements Command {
             req.setAttribute("reportError", "Ресурс недоступен." +
                     "Просьба обратиться позднее.");
         }
-        req.getRequestDispatcher("/WEB-INF/jsp/main.jsp").forward(req, res);
+        req.getRequestDispatcher(CommandPaths.MAIN_JSP).forward(req, res);
     }
 }

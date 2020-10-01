@@ -8,6 +8,7 @@ import by.epamtc.jwd.auth.service.exception.LoginValidationServiceException;
 import by.epamtc.jwd.auth.service.exception.PasswordValidationServiceException;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
+import by.epamtc.jwd.auth.web.util.constant.CommandPaths;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,24 +28,30 @@ public class RegisterCommand implements Command {
         try {
             user = authUserService.register(login, password);
         } catch (AuthDataValidationServiceException e) {
-            res.sendRedirect(req.getContextPath() + "/main?command=go-to-register&error=auth-data");
+            res.sendRedirect(req.getContextPath()
+                    + CommandPaths.REGISTER_AUTH_ERROR);
             return;
         } catch (LoginValidationServiceException e) {
-            res.sendRedirect(req.getContextPath() + "/main?command=go-to-register&error=login");
+            res.sendRedirect(req.getContextPath()
+                    + CommandPaths.REGISTER_LOGIN_ERROR);
             return;
         } catch (PasswordValidationServiceException e) {
-            res.sendRedirect(req.getContextPath() + "/main?command=go-to-register&error=pass");
+            res.sendRedirect(req.getContextPath()
+                    + CommandPaths.REGISTER_PASSWORD_ERROR);
             return;
         } catch (ServiceException e) {
-            res.sendRedirect(req.getContextPath() + "/main?command=go-to-register&error=tech");
+            res.sendRedirect(req.getContextPath()
+                    + CommandPaths.REGISTER_TECH_ERROR);
             return;
         }
 
         if (user != null) {
             req.getSession().setAttribute("authUser", user);
-            res.sendRedirect(req.getContextPath() + "/profile?command=go-to-profile");
+            res.sendRedirect(req.getContextPath()
+                    + CommandPaths.PROFILE_GET);
         } else {
-            res.sendRedirect(req.getContextPath() + "/main?command=go-to-register&error=duplicate");
+            res.sendRedirect(req.getContextPath()
+                    + CommandPaths.REGISTER_DUPLICATE_ERROR);
         }
     }
 }

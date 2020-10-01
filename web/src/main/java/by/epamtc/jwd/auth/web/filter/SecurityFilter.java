@@ -1,5 +1,7 @@
 package by.epamtc.jwd.auth.web.filter;
 
+import by.epamtc.jwd.auth.web.util.constant.CommandPaths;
+
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,7 +20,7 @@ public class SecurityFilter implements Filter {
             filterChain.doFilter(request, response);
         } else {
             response.sendRedirect(request.getContextPath()
-                    + "/main?command=go-to-login");
+                    + CommandPaths.LOGIN_GET);
         }
     }
 }

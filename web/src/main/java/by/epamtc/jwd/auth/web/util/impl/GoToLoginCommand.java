@@ -1,6 +1,7 @@
 package by.epamtc.jwd.auth.web.util.impl;
 
 import by.epamtc.jwd.auth.web.util.Command;
+import by.epamtc.jwd.auth.web.util.constant.CommandPaths;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,10 +18,9 @@ public class GoToLoginCommand implements Command {
 
         Object authUser = req.getSession().getAttribute("authUser");
         if (authUser == null) {
-            req.getRequestDispatcher("/WEB-INF/jsp/login.jsp")
-                    .forward(req, res);
+            req.getRequestDispatcher(CommandPaths.LOGIN_JSP).forward(req, res);
             return;
         }
-        res.sendRedirect(req.getContextPath() + "/profile?command=go-to-profile");
+        res.sendRedirect(req.getContextPath() + CommandPaths.PROFILE_GET);
     }
 }

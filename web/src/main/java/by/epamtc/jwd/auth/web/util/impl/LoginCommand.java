@@ -5,6 +5,7 @@ import by.epamtc.jwd.auth.service.AuthUserService;
 import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
+import by.epamtc.jwd.auth.web.util.constant.CommandPaths;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,22 +23,22 @@ public class LoginCommand implements Command {
         String password = req.getParameter("password");
         byte[] passwordBytes = password.getBytes(StandardCharsets.UTF_8);
 
-        AuthUser user = null;
+        AuthUser user;
         try {
             user = authUserService.login(login, passwordBytes);
         } catch (ServiceException e) {
             res.sendRedirect(req.getContextPath()
-                    + "/main?command=go-to-login&error=tech");
+                    + CommandPaths.LOGIN_TECH_ERROR);
             return;
         }
 
         if (user == null) {
             res.sendRedirect(req.getContextPath()
-                    + "/main?command=go-to-login&error=simple");
+                    + CommandPaths.LOGIN_SIMPLE_ERROR);
             return;
         }
 
         req.getSession().setAttribute("authUser", user);
-        res.sendRedirect(req.getContextPath() + "/profile?command=go-to-profile");
+        res.sendRedirect(req.getContextPath() + CommandPaths.PROFILE_GET);
     }
 }
