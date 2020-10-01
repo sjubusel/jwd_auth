@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
+import static by.epamtc.jwd.auth.web.util.constant.AppAttributes.*;
+
 public class SecurityFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest,
@@ -16,7 +18,8 @@ public class SecurityFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession();
-        if ((session != null) && (session.getAttribute("authUser") != null)) {
+        if ((session != null)
+                && (session.getAttribute(SESSION_AUTH_DATA) != null)) {
             filterChain.doFilter(request, response);
         } else {
             response.sendRedirect(request.getContextPath()

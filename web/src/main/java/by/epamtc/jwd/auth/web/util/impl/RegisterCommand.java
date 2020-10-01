@@ -8,6 +8,7 @@ import by.epamtc.jwd.auth.service.exception.LoginValidationServiceException;
 import by.epamtc.jwd.auth.service.exception.PasswordValidationServiceException;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
+import by.epamtc.jwd.auth.web.util.constant.AppAttributes;
 import by.epamtc.jwd.auth.web.util.constant.CommandPaths;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,7 +47,7 @@ public class RegisterCommand implements Command {
         }
 
         if (user != null) {
-            req.getSession().setAttribute("authUser", user);
+            req.getSession().setAttribute(AppAttributes.SESSION_AUTH_DATA, user);
             res.sendRedirect(req.getContextPath()
                     + CommandPaths.PROFILE_GET);
         } else {

@@ -1,6 +1,7 @@
 package by.epamtc.jwd.auth.web.util.impl;
 
 import by.epamtc.jwd.auth.web.util.Command;
+import by.epamtc.jwd.auth.web.util.constant.AppAttributes;
 import by.epamtc.jwd.auth.web.util.constant.CommandPaths;
 
 import javax.servlet.ServletException;
@@ -17,7 +18,8 @@ public class GoToRegisterCommand implements Command {
             req.setAttribute("error", error);
         }
 
-        Object authUser = req.getSession().getAttribute("authUser");
+        Object authUser = req.getSession()
+                .getAttribute(AppAttributes.SESSION_AUTH_DATA);
         if (authUser == null) {
             req.getRequestDispatcher(CommandPaths.REGISTER_JSP)
                     .forward(req, res);

@@ -2,6 +2,7 @@ package by.epamtc.jwd.auth.web.util.impl;
 
 import by.epamtc.jwd.auth.web.util.Command;
 import by.epamtc.jwd.auth.web.util.LanguageProvider;
+import by.epamtc.jwd.auth.web.util.constant.AppAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +17,8 @@ public class ChangeLanguageCommand implements Command {
         String language = req.getParameter("language");
         String languageCode = languageProvider.provideLanguageCode(language);
 
-        req.getSession().setAttribute("language", languageCode);
+        req.getSession().setAttribute(AppAttributes.SESSION_LANGUAGE,
+                languageCode);
 
         String previousUrl = req.getHeader("Referer");
         res.sendRedirect(previousUrl);
