@@ -19,7 +19,16 @@ public class AuthUser {
         this.staffId = staffId;
         this.userId = userId;
     }
-    public AuthUser( String login, String password, Role role) {
+
+    public AuthUser(int id, String login, Role role, int staffId, int userId) {
+        this.id = id;
+        this.login = login;
+        this.role = role;
+        this.staffId = staffId;
+        this.userId = userId;
+    }
+
+    public AuthUser(String login, String password, Role role) {
         this.login = login;
         this.password = password;
         this.role = role;

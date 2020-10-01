@@ -115,6 +115,6 @@ public class DefaultAuthUserDao implements AuthUserDao {
         Role role = Role.valueOf(resultSet.getString("role"));
         int staffId = resultSet.getInt("staff_id");
         int userId = resultSet.getInt("person_id");
-        return new AuthUser(id, loginDb, passwordDb, role, staffId, userId);
+        return new AuthUser(id, loginDb, role, staffId, userId);
     }
 }
