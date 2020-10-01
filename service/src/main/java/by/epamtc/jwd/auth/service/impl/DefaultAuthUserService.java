@@ -23,25 +23,36 @@ public class DefaultAuthUserService implements AuthUserService {
             user = authUserDao.receiveAuthUserIfCorrect(login, password);
         } catch (DaoException e) {
             throw new ServiceException(e);
+        } finally {
+            cleanOutPassword(password);
         }
         return user;
     }
 
     @Override
     public AuthUser register(String login, String password) throws ServiceException {
+        byte[] passwordBytes = password.getBytes(StandardCharsets.UTF_8);
         if (authDataValidator.isAuthDataValidOtherwiseThrow(login, password)) {
             try {
                 if (!authUserDao.containsLogin(login)) {
                     authUserDao.saveAuthUser(new AuthUser(login, password,
                             Role.USER));
                     return authUserDao.receiveAuthUserIfCorrect(login,
-                            password.getBytes(StandardCharsets.UTF_8));
+                            passwordBytes);
                 }
             } catch (DaoException e) {
                 throw new ServiceException(e);
+            } finally {
+                cleanOutPassword(passwordBytes);
             }
         }
 
         return null;
+    }
+
+    private void cleanOutPassword(byte[] passwordBytes) {
+        for (int i = 0; i < passwordBytes.length; i++) {
+            passwordBytes[i] = 0;
+        }
     }
 }

@@ -28,6 +28,7 @@ public class LoginCommand implements Command {
         } catch (ServiceException e) {
             res.sendRedirect(req.getContextPath()
                     + "/main?command=go-to-login&error=tech");
+            return;
         }
 
         if (user == null) {
