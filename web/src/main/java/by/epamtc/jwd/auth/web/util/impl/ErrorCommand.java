@@ -13,8 +13,7 @@ public class ErrorCommand implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        req.setAttribute(AppAttributes.REQUEST_MAIN_PAGE_ERROR,
-                "Ресурс недоступен. Просьба обратиться позднее.");
+        req.setAttribute(AppAttributes.REQUEST_MAIN_PAGE_ERROR, null);
         req.getRequestDispatcher(CommandPaths.MAIN_JSP).forward(req, res);
     }
 }

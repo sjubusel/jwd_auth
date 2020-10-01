@@ -28,8 +28,7 @@ public class MainCommand implements Command {
             req.setAttribute(AppAttributes.REQUEST_MAIN_PAGE_REPORT,
                     currentHospitalReport);
         } catch (ServiceException e) {
-            req.setAttribute(AppAttributes.REQUEST_MAIN_PAGE_ERROR,
-                    "Ресурс недоступен. Просьба обратиться позднее.");
+            req.setAttribute(AppAttributes.REQUEST_MAIN_PAGE_ERROR, null);
         }
         req.getRequestDispatcher(CommandPaths.MAIN_JSP).forward(req, res);
     }
