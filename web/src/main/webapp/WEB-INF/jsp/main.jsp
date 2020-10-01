@@ -31,9 +31,19 @@
     <c:when test="${requestScope.hospitalReport ne null}">
         <jsp:include page="mainContents.jsp"/>
     </c:when>
+    <c:when test="${requestScope.reportError ne null}">
+        <div class="alert alert-danger" role="alert">
+            <fmt:message bundle="${jspMessages}" key="main.reportError"/>
+        </div>
+    </c:when>
+    <c:when test="${requestScope.invalidCommand ne null}">
+        <div class="alert alert-danger" role="alert">
+            <fmt:message bundle="${jspMessages}" key="main.invalidCommand"/>
+        </div>
+    </c:when>
     <c:otherwise>
         <div class="alert alert-danger" role="alert">
-            <c:out value="${requestScope.reportError}"/>
+            <fmt:message bundle="${jspMessages}" key="main.unknownCondition"/>
         </div>
     </c:otherwise>
 </c:choose>
