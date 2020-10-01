@@ -1,8 +1,8 @@
 package by.epamtc.jwd.auth.web.servlet;
 
 import by.epamtc.jwd.auth.web.util.CommandProvider;
-import by.epamtc.jwd.auth.web.util.constant.AppParameters;
-import by.epamtc.jwd.auth.web.util.constant.CommandName;
+import by.epamtc.jwd.auth.model.constant.AppParameters;
+import by.epamtc.jwd.auth.model.constant.CommandName;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

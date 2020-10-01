@@ -1,7 +1,7 @@
 package by.epamtc.jwd.auth.web.util;
 
 import by.epamtc.jwd.auth.service.ServiceFactory;
-import by.epamtc.jwd.auth.web.util.constant.CommandName;
+import by.epamtc.jwd.auth.model.constant.CommandName;
 import by.epamtc.jwd.auth.web.util.impl.*;
 
 import javax.servlet.ServletException;

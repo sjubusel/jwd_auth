@@ -1,4 +1,4 @@
-package by.epamtc.jwd.auth.web.util.constant;
+package by.epamtc.jwd.auth.model.constant;
 
 public final class CommandName {
     public static final String MAIN = "MAIN";

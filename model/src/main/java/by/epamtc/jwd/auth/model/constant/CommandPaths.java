@@ -1,4 +1,4 @@
-package by.epamtc.jwd.auth.web.util.constant;
+package by.epamtc.jwd.auth.model.constant;
 
 public final class CommandPaths {
     public static final String LOGIN_GET = "/main?command=go-to-login";

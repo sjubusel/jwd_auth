@@ -1,6 +1,6 @@
 package by.epamtc.jwd.auth.web.filter;
 
-import by.epamtc.jwd.auth.web.util.constant.CommandPaths;
+import by.epamtc.jwd.auth.model.constant.CommandPaths;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-import static by.epamtc.jwd.auth.web.util.constant.AppAttributes.*;
+import static by.epamtc.jwd.auth.model.constant.AppAttributes.*;
 
 public class SecurityFilter implements Filter {
     @Override

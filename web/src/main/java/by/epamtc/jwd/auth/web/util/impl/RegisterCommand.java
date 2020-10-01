@@ -8,9 +8,9 @@ import by.epamtc.jwd.auth.service.exception.LoginValidationServiceException;
 import by.epamtc.jwd.auth.service.exception.PasswordValidationServiceException;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
-import by.epamtc.jwd.auth.web.util.constant.AppAttributes;
-import by.epamtc.jwd.auth.web.util.constant.AppParameters;
-import by.epamtc.jwd.auth.web.util.constant.CommandPaths;
+import by.epamtc.jwd.auth.model.constant.AppAttributes;
+import by.epamtc.jwd.auth.model.constant.AppParameters;
+import by.epamtc.jwd.auth.model.constant.CommandPaths;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

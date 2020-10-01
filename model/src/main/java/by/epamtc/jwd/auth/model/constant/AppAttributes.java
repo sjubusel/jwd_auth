@@ -1,4 +1,4 @@
-package by.epamtc.jwd.auth.web.util.constant;
+package by.epamtc.jwd.auth.model.constant;
 
 public final class AppAttributes {
     public static final String SESSION_AUTH_DATA = "authUser";
