@@ -1,7 +1,8 @@
 package by.epamtc.jwd.auth.model.constant;
 
 public enum AppLanguage {
-    RUSSIAN("russian", "ru_RU"), ENGLISH("english", "en_US");
+    RUSSIAN("russian", "ru_RU"),
+    ENGLISH("english", "en_US");
 
     private String languageName;
     private String languageCode;
