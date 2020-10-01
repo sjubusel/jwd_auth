@@ -3,6 +3,7 @@ package by.epamtc.jwd.auth.web.util.impl;
 import by.epamtc.jwd.auth.web.util.Command;
 import by.epamtc.jwd.auth.web.util.LanguageProvider;
 import by.epamtc.jwd.auth.web.util.constant.AppAttributes;
+import by.epamtc.jwd.auth.web.util.constant.AppParameters;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,13 +15,13 @@ public class ChangeLanguageCommand implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws IOException {
-        String language = req.getParameter("language");
+        String language = req.getParameter(AppParameters.NEW_LANGUAGE);
         String languageCode = languageProvider.provideLanguageCode(language);
 
         req.getSession().setAttribute(AppAttributes.SESSION_LANGUAGE,
                 languageCode);
 
-        String previousUrl = req.getHeader("Referer");
+        String previousUrl = req.getHeader(AppParameters.REFERER);
         res.sendRedirect(previousUrl);
     }
 }

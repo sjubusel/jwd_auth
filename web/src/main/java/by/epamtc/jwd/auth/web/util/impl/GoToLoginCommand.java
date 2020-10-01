@@ -2,6 +2,7 @@ package by.epamtc.jwd.auth.web.util.impl;
 
 import by.epamtc.jwd.auth.web.util.Command;
 import by.epamtc.jwd.auth.web.util.constant.AppAttributes;
+import by.epamtc.jwd.auth.web.util.constant.AppParameters;
 import by.epamtc.jwd.auth.web.util.constant.CommandPaths;
 
 import javax.servlet.ServletException;
@@ -12,9 +13,9 @@ import java.io.IOException;
 public class GoToLoginCommand implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        String error = req.getParameter("error");
+        String error = req.getParameter(AppParameters.ERROR);
         if (error != null) {
-            req.setAttribute("error", error);
+            req.setAttribute(AppAttributes.REQUEST_LOGIN_REGISTER_ERROR, error);
         }
 
         Object authUser = req.getSession()
