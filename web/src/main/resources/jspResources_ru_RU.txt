@@ -1,0 +1,41 @@
+all.htmlTitle=Учреждение здравоохранения "Инновационная больница "Шабаны" г.Минска"
+
+footer.copyrightRecord=© УО "Инновационная больница "Шабаны" г.Минска, 2020
+footer.contactNumber=Телефон для записи: +375 (29) 600-00-01
+
+header.alertInfo=Сайт находится в стадии разработки. Приносим свои извинения.
+header.menu.main=Главная
+header.menu.patients=Для пациентов
+header.menu.medStaff=Для персонала
+header.menu.contacts=Контакты
+header.menu.singIn=Войти
+header.menu.signUp=Регистрация
+header.menu.helloMessage=Пользователь
+header.menu.logOut=выйти
+
+login.heading=Форма входа в систему:
+login.loginInputLabel=Логин
+login.passwordInputLabel=Пароль
+login.submitButton=Войти
+login.simpleError=Логин или пароль недействительны
+login.techError=По техническим причинам войти в систему не представляется возможным
+
+mainContents.mainMessage=Уважаемые посетители, Вашему вниманию представляется информация о текущей заполняемости больницы. Напоминаем, что в нашей больнице бесплатно реализуется "Программа инновационного лечения".
+mainContents.tableHeadDescription=Наименование
+mainContents.tableHeadVacantQuantity=Свободно мест
+mainContents.tableHeadTotalQuantity=Всего мест
+
+profile.heading=Секретная страница
+profile.message=В настоящий момент это единственный секрет.
+
+register.heading=Форма регистрации в системе
+register.loginInputLabel=Логин, создаваемый в системе
+register.passwordInputLabel=Пароль
+register.submitButton=Зарегистрироваться
+register.authDataError=Логин и пароль не поддерживаются
+register.loginError=Логин не поддерживается
+register.passwordError=Пароль не поддерживается
+register.techError=По техническим причинам зарегистрироваться в системе не представляется возможным
+register.duplicateError=Введённый логин занят
+
+languageButtonBar.currentLang=Русский

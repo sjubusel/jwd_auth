@@ -1,0 +1,41 @@
+all.htmlTitle=Healthcare Organization "Innovative Hospital "Shabany" Minsk city"
+
+footer.copyrightRecord=© "Innovative Hospital "Shabany" Minsk city", 2020
+footer.contactNumber=Registry phone number: +375 (29) 600-00-01
+
+header.alertInfo=This site is in a development stage. Please, make my excuses.
+header.menu.main=Main
+header.menu.patients=For patients
+header.menu.medStaff=For staff
+header.menu.contacts=Contacts
+header.menu.singIn=Sign in
+header.menu.signUp=Sign up
+header.menu.helloMessage=User
+header.menu.logOut=log out
+
+login.heading=Sign in form
+login.loginInputLabel=Login
+login.passwordInputLabel=Password
+login.submitButton=sing in
+login.simpleError=Invalid login and password
+login.techError=Because of a technical factor there is no possibility to sign in
+
+mainContents.mainMessage=Dear visitors, You are presented with information about current fillability of your hospital. Please, pay your attention that "Programm of innovative treatment" is realized in your hospital.
+mainContents.tableHeadDescription=Department name
+mainContents.tableHeadVacantQuantity=Vacant places
+mainContents.tableHeadTotalQuantity=Total
+
+profile.heading=Secret page
+profile.message=At the present it is the only secret.
+
+register.heading=Sign up form
+register.loginInputLabel=Login to be created in a system
+register.passwordInputLabel=Password
+register.submitButton=Sign up
+register.authDataError=Login and password are incompatible
+register.loginError=Login is incompatible
+register.passwordError=Password is incompatible
+register.techError=Because of a technical factor there is no possibility to sign up in the system
+register.duplicateError=Login is occupied
+
+languageButtonBar.currentLang=English
