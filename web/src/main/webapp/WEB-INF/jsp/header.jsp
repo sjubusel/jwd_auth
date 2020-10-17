@@ -30,16 +30,25 @@
             <fmt:message bundle="${jspMessages}" key="header.menu.main"/>
         </a>
     </div>
-    <div class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/main">
-            <fmt:message bundle="${jspMessages}" key="header.menu.patients"/>
-        </a>
-    </div>
-    <div class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/main">
-            <fmt:message bundle="${jspMessages}" key="header.menu.medStaff"/>
-        </a>
-    </div>
+
+    <c:if test="${sessionScope.authUser ne null}">
+        <div class="nav-item">
+            <a class="nav-link" href="${pageContext.request.contextPath}/main">
+                <fmt:message bundle="${jspMessages}"
+                             key="header.menu.patients"/>
+            </a>
+        </div>
+    </c:if>
+
+    <c:if test="${sessionScope.authUser ne null}">
+        <div class="nav-item">
+            <a class="nav-link" href="${pageContext.request.contextPath}/main">
+                <fmt:message bundle="${jspMessages}"
+                             key="header.menu.medStaff"/>
+            </a>
+        </div>
+    </c:if>
+
     <div class="nav-item flex-grow-1">
         <a class="nav-link" href="${pageContext.request.contextPath}/main">
             <fmt:message bundle="${jspMessages}" key="header.menu.contacts"/>
