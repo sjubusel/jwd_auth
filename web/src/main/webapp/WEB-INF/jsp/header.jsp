@@ -49,6 +49,18 @@
         </div>
     </c:if>
 
+    <div class="nav-item">
+        <a class="nav-link" href="${pageContext.request.contextPath}/main">
+            <fmt:message bundle="${jspMessages}"
+                         key="header.menu.news"/>
+        </a>
+    </div>
+    <div class="nav-item">
+        <a class="nav-link" href="${pageContext.request.contextPath}/main">
+            <fmt:message bundle="${jspMessages}"
+                         key="header.menu.aboutUs"/>
+        </a>
+    </div>
     <div class="nav-item flex-grow-1">
         <a class="nav-link" href="${pageContext.request.contextPath}/main">
             <fmt:message bundle="${jspMessages}" key="header.menu.contacts"/>
