@@ -12,6 +12,9 @@ header.menu.singIn=Войти
 header.menu.signUp=Регистрация
 header.menu.helloMessage=Пользователь
 header.menu.logOut=выйти
+header.menu.news=Новости
+header.menu.aboutUs=О нас
+
 
 login.heading=Форма входа в систему:
 login.loginInputLabel=Логин
