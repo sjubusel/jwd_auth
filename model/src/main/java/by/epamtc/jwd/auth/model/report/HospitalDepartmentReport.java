@@ -1,6 +1,8 @@
 package by.epamtc.jwd.auth.model.report;
 
-public class HospitalDepartmentReport {
+public class HospitalDepartmentReport implements java.io.Serializable {
+    private static final long serialVersionUID = -7103158474212983959L;
+
     private String deptName;
     private int vacantPlacesNumber;
     private int totalPlacesNumber;

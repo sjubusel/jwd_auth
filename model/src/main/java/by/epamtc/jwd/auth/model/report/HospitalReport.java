@@ -3,7 +3,9 @@ package by.epamtc.jwd.auth.model.report;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HospitalReport {
+public class HospitalReport implements java.io.Serializable {
+    private static final long serialVersionUID = -5568312638891061321L;
+
     private List<HospitalDepartmentReport> contents = new ArrayList<>();
 
     public HospitalReport() {
