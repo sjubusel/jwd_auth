@@ -15,7 +15,7 @@ header.menu.logOut=выйти
 header.menu.news=Новости
 header.menu.aboutUs=О нас
 
-
+login.htmlTitle=Вход в систему
 login.heading=Форма входа в систему:
 login.loginInputLabel=Логин
 login.passwordInputLabel=Пароль
@@ -32,9 +32,11 @@ mainContents.tableHeadDescription=Наименование
 mainContents.tableHeadVacantQuantity=Свободно мест
 mainContents.tableHeadTotalQuantity=Всего мест
 
+profile.htmlTitle=Профиль
 profile.heading=Секретная страница
 profile.message=В настоящий момент это единственный секрет.
 
+register.htmlTitle=Регистрация в системе
 register.heading=Форма регистрации в системе
 register.loginInputLabel=Логин, создаваемый в системе
 register.passwordInputLabel=Пароль

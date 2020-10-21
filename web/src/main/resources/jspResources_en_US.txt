@@ -15,6 +15,7 @@ header.menu.logOut=log out
 header.menu.news=News
 header.menu.aboutUs=About us
 
+login.htmlTitle=Sign in
 login.heading=Sign in form
 login.loginInputLabel=Login
 login.passwordInputLabel=Password
@@ -31,9 +32,11 @@ mainContents.tableHeadDescription=Department name
 mainContents.tableHeadVacantQuantity=Vacant places
 mainContents.tableHeadTotalQuantity=Total
 
+profile.htmlTitle=Profile
 profile.heading=Secret page
 profile.message=At the present it is the only secret.
 
+register.htmlTitle=Sign up
 register.heading=Sign up form
 register.loginInputLabel=Login to be created in a system
 register.passwordInputLabel=Password
