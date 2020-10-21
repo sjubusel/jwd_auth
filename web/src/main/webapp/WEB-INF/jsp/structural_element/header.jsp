@@ -42,7 +42,7 @@
 
     <c:if test="${sessionScope.authUser ne null}">
         <div class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/main">
+            <a class="nav-link" href="${pageContext.request.contextPath}/main?command=go-to-staff">
                 <fmt:message bundle="${jspMessages}"
                              key="header.menu.medStaff"/>
             </a>

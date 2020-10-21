@@ -14,6 +14,7 @@ public final class CommandName {
     public static final String GO_TO_CONTACTS = "GO-TO-CONTACTS";
     public static final String GO_TO_NEWS = "GO-TO-NEWS";
     public static final String GO_TO_PATIENTS = "GO-TO-PATIENTS";
+    public static final String GO_TO_STAFF = "GO-TO-STAFF";
 
     private CommandName() {
     }

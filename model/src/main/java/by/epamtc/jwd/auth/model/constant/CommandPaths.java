@@ -19,6 +19,7 @@ public final class CommandPaths {
     public static final String CONTACTS_JSP = "/WEB-INF/jsp/contacts.jsp";
     public static final String NEWS_JSP = "/WEB-INF/jsp/news.jsp";
     public static final String PATIENTS_JSP = "/WEB-INF/jsp/patients.jsp";
+    public static final String STAFF_JSP = "/WEB-INF/jsp/staff.jsp";
 
     private CommandPaths() {
     }
