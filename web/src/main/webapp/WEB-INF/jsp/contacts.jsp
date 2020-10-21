@@ -16,6 +16,8 @@
 <html>
 <head>
     <title>
+        <fmt:message bundle="${jspMessages}" key="contacts.htmlTitle"/>
+        <c:out value=" | "/>
         <fmt:message bundle="${jspMessages}" key="all.htmlTitle"/>
     </title>
     <jsp:include page="structural_element/metahead.jsp"/>

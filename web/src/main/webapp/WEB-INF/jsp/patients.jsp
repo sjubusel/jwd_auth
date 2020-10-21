@@ -16,19 +16,21 @@
 <html>
 <head>
     <title>
+        <fmt:message bundle="${jspMessages}" key="patients.htmlTitle"/>
+        <c:out value=" | "/>
         <fmt:message bundle="${jspMessages}" key="all.htmlTitle"/>
     </title>
     <jsp:include page="structural_element/metahead.jsp"/>
 </head>
 <body>
 
-    <jsp:include page="structural_element/header.jsp"/>
+<jsp:include page="structural_element/header.jsp"/>
 
-    <h2 style="padding-left: 25px">
-        PATIENT STUB MESSAGE WITHOUT I18N
-    </h2>
+<h2 style="padding-left: 25px">
+    PATIENT STUB MESSAGE WITHOUT I18N
+</h2>
 
-    <jsp:include page="structural_element/footer.jsp"/>
+<jsp:include page="structural_element/footer.jsp"/>
 
 </body>
 </html>
