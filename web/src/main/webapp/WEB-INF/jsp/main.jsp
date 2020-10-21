@@ -25,7 +25,7 @@
 
 <body>
 
-<jsp:include page="header.jsp"/>
+<jsp:include page="structural_element/header.jsp"/>
 
 <c:choose>
     <c:when test="${requestScope.hospitalReport ne null}">
@@ -48,7 +48,7 @@
     </c:otherwise>
 </c:choose>
 
-<jsp:include page="footer.jsp"/>
+<jsp:include page="structural_element/footer.jsp"/>
 
 </body>
 </html>

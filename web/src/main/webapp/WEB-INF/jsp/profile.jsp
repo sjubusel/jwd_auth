@@ -24,7 +24,7 @@
 </head>
 <body>
 
-<jsp:include page="header.jsp"/>
+<jsp:include page="structural_element/header.jsp"/>
 
 <h1 style="padding-left: 25px">
     <fmt:message bundle="${jspMessages}" key="profile.heading"/>
@@ -33,7 +33,7 @@
     <fmt:message bundle="${jspMessages}" key="profile.message"/>
 </h6>
 
-<jsp:include page="footer.jsp"/>
+<jsp:include page="structural_element/footer.jsp"/>
 
 </body>
 </html>

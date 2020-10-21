@@ -24,7 +24,7 @@
 </head>
 <body>
 
-<jsp:include page="header.jsp"/>
+<jsp:include page="structural_element/header.jsp"/>
 
 <h2 style="padding-left: 25px">
     <fmt:message bundle="${jspMessages}" key="login.heading"/>
@@ -72,7 +72,7 @@
     </div>
 </c:if>
 
-<jsp:include page="footer.jsp"/>
+<jsp:include page="structural_element/footer.jsp"/>
 
 </body>
 </html>
