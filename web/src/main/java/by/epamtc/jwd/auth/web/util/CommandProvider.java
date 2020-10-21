@@ -2,7 +2,20 @@ package by.epamtc.jwd.auth.web.util;
 
 import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.model.constant.CommandName;
-import by.epamtc.jwd.auth.web.util.impl.*;
+import by.epamtc.jwd.auth.web.util.impl.ChangeLanguageCommand;
+import by.epamtc.jwd.auth.web.util.impl.ErrorCommand;
+import by.epamtc.jwd.auth.web.util.impl.LogOutCommand;
+import by.epamtc.jwd.auth.web.util.impl.LoginCommand;
+import by.epamtc.jwd.auth.web.util.impl.MainCommand;
+import by.epamtc.jwd.auth.web.util.impl.RegisterCommand;
+import by.epamtc.jwd.auth.web.util.impl.go_to.GoToAboutUsCommand;
+import by.epamtc.jwd.auth.web.util.impl.go_to.GoToContactsCommand;
+import by.epamtc.jwd.auth.web.util.impl.go_to.GoToLoginCommand;
+import by.epamtc.jwd.auth.web.util.impl.go_to.GoToNewsCommand;
+import by.epamtc.jwd.auth.web.util.impl.go_to.GoToPatientsCommand;
+import by.epamtc.jwd.auth.web.util.impl.go_to.GoToProfileCommand;
+import by.epamtc.jwd.auth.web.util.impl.go_to.GoToRegisterCommand;
+import by.epamtc.jwd.auth.web.util.impl.go_to.GoToStaffCommand;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

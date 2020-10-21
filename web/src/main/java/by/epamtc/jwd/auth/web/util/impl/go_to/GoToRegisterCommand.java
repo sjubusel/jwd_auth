@@ -1,4 +1,4 @@
-package by.epamtc.jwd.auth.web.util.impl;
+package by.epamtc.jwd.auth.web.util.impl.go_to;
 
 import by.epamtc.jwd.auth.web.util.Command;
 import by.epamtc.jwd.auth.model.constant.AppAttributes;

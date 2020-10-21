@@ -1,4 +1,4 @@
-package by.epamtc.jwd.auth.web.util.impl;
+package by.epamtc.jwd.auth.web.util.impl.go_to;
 
 import by.epamtc.jwd.auth.model.constant.CommandPaths;
 import by.epamtc.jwd.auth.web.util.Command;
@@ -10,7 +10,8 @@ import java.io.IOException;
 
 public class GoToContactsCommand implements Command {
     @Override
-    public void execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    public void execute(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
         req.getRequestDispatcher(CommandPaths.CONTACTS_JSP).forward(req, res);
     }
 }
