@@ -15,12 +15,10 @@
 
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>
         <fmt:message bundle="${jspMessages}" key="all.htmlTitle"/>
     </title>
-    <link rel="stylesheet"
-          href="${pageContext.request.contextPath}/css/bootstrap.min.css">
+    <jsp:include page="structural_element/metahead.jsp"/>
 </head>
 
 <body>
