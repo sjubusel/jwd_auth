@@ -12,6 +12,7 @@ public final class CommandName {
     public static final String ERROR = "ERROR";
     public static final String GO_TO_ABOUT_US = "GO-TO-ABOUT-US";
     public static final String GO_TO_CONTACTS = "GO-TO-CONTACTS";
+    public static final String GO_TO_NEWS = "GO-TO-NEWS";
 
     private CommandName() {
     }
