@@ -48,3 +48,13 @@ register.techError=По техническим причинам зарегист
 register.duplicateError=Введённый логин занят
 
 languageButtonBar.currentLang=Русский
+
+aboutUs.htmlTitle=О нас
+
+contacts.htmlTitle=Контакты
+
+news.htmlTitle=Новости
+
+patients.htmlTitle=Для пациентов
+
+staff.htmlTitle=Для персонала
