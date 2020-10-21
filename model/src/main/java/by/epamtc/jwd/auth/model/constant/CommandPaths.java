@@ -15,6 +15,7 @@ public final class CommandPaths {
     public static final String PROFILE_JSP = "/WEB-INF/jsp/profile.jsp";
     public static final String REGISTER_JSP = "/WEB-INF/jsp/register.jsp";
     public static final String MAIN_JSP = "/WEB-INF/jsp/main.jsp";
+    public static final String ABOUT_US_JSP = "/WEB-INF/jsp/aboutUs.jsp";
 
     private CommandPaths() {
     }

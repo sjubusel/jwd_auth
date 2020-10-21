@@ -56,7 +56,7 @@
         </a>
     </div>
     <div class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/main">
+        <a class="nav-link" href="${pageContext.request.contextPath}/main?command=go-to-about-us">
             <fmt:message bundle="${jspMessages}"
                          key="header.menu.aboutUs"/>
         </a>

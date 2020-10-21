@@ -10,6 +10,7 @@ public final class CommandName {
     public static final String CHANGE_LANGUAGE = "CHANGE-LANGUAGE";
     public static final String GO_TO_PROFILE = "GO-TO-PROFILE";
     public static final String ERROR = "ERROR";
+    public static final String GO_TO_ABOUT_US = "GO-TO-ABOUT-US";
 
     private CommandName() {
     }
