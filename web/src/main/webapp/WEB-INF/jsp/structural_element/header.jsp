@@ -62,7 +62,7 @@
         </a>
     </div>
     <div class="nav-item flex-grow-1">
-        <a class="nav-link" href="${pageContext.request.contextPath}/main">
+        <a class="nav-link" href="${pageContext.request.contextPath}/main?command=go-to-contacts">
             <fmt:message bundle="${jspMessages}" key="header.menu.contacts"/>
         </a>
     </div>
