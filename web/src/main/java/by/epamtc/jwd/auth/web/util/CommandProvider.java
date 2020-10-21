@@ -27,6 +27,7 @@ public class CommandProvider {
         repository.put(CommandName.GO_TO_ABOUT_US, new GoToAboutUsCommand());
         repository.put(CommandName.GO_TO_CONTACTS, new GoToContactsCommand());
         repository.put(CommandName.GO_TO_NEWS, new GoToNewsCommand());
+        repository.put(CommandName.GO_TO_PATIENTS, new GoToPatientsCommand());
         repository.put(CommandName.ERROR, new ErrorCommand());
     }
 
