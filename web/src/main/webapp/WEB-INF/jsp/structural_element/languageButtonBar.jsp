@@ -13,28 +13,40 @@
 
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
 
-<div class="btn-group" style="float: right">
-    <div class="btn">
-        <fmt:message bundle="${jspMessages}"
-                     key="languageButtonBar.currentLang"/>
-    </div>
-    <div>
-        <form id="form" action="${pageContext.request.contextPath}/main">
-            <input type="hidden" name="command" value="change-language"/>
-            <button class="btn-info" type="submit" form="form"
-                    formmethod="get"
-                    formaction="${pageContext.request.contextPath}/main"
-                    name="language"
-                    value="russian">
-                рус
-            </button>
-            <button class="btn-info" type="submit" form="form"
-                    formmethod="get"
-                    formaction="${pageContext.request.contextPath}/main"
-                    name="language"
-                    value="english">
-                eng
-            </button>
-        </form>
-    </div>
+<div class="lang-btn-group">
+    <form id="form" action="${pageContext.request.contextPath}/main">
+        <input type="hidden" name="command" value="change-language"/>
+        <button
+                <c:choose>
+                    <c:when test="${sessionScope.language == 'ru_RU'}">
+                        class="lang-btn active"
+                    </c:when>
+                    <c:otherwise>
+                        class="lang-btn"
+                    </c:otherwise>
+                </c:choose>
+                type="submit" form="form"
+                formmethod="get"
+                formaction="${pageContext.request.contextPath}/main"
+                name="language"
+                value="russian">
+            рус
+        </button>
+        <button
+                <c:choose>
+                    <c:when test="${sessionScope.language == 'en_US'}">
+                        class="lang-btn active"
+                    </c:when>
+                    <c:otherwise>
+                        class="lang-btn"
+                    </c:otherwise>
+                </c:choose>
+                type="submit" form="form"
+                formmethod="get"
+                formaction="${pageContext.request.contextPath}/main"
+                name="language"
+                value="english">
+            eng
+        </button>
+    </form>
 </div>
