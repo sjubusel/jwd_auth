@@ -1,0 +1,9 @@
+#menu {
+    display: flex;
+    align-items: center;
+}
+
+#logotype {
+    width: 150px;
+    height: 150px;
+}
