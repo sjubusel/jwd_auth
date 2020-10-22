@@ -5,6 +5,7 @@
 <c:choose>
     <c:when test="${sessionScope.language eq null}">
         <fmt:setLocale value="ru_RU"/>
+        <c:set var="language" value="ru_RU" scope="session"/>
     </c:when>
     <c:otherwise>
         <fmt:setLocale value="${sessionScope.language}"/>
