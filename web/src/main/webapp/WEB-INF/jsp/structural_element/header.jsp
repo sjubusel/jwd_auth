@@ -13,96 +13,105 @@
 
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
 
-<jsp:include page="languageButtonBar.jsp"/>
-
-<br/>
-<br/>
-
 <div class="alert alert-info" role="alert">
     <fmt:message bundle="${jspMessages}" key="header.alertInfo"/>
 </div>
 
-<div class="nav container-fluid nav-pills bg-light">
-    <div class="nav-item">
-        <a
-                class="nav-link active"
-                href="${pageContext.request.contextPath}/main">
-            <fmt:message bundle="${jspMessages}" key="header.menu.main"/>
+<div id="menu">
+    <div>
+        <a href="${pageContext.request.contextPath}/">
+            <img id="logotype" src="img/logo.png" alt="logotype"/>
         </a>
     </div>
-
-    <c:if test="${sessionScope.authUser ne null}">
+    <div class="nav container-fluid nav-pills bg-light left-menu-part">
         <div class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/main?command=go-to-patients">
-                <fmt:message bundle="${jspMessages}"
-                             key="header.menu.patients"/>
+            <a class="nav-link active"
+               href="${pageContext.request.contextPath}/main">
+                <fmt:message bundle="${jspMessages}" key="header.menu.main"/>
             </a>
         </div>
-    </c:if>
 
-    <c:if test="${sessionScope.authUser ne null}">
+        <c:if test="${sessionScope.authUser ne null}">
+            <div class="nav-item">
+                <a class="nav-link"
+                   href="${pageContext.request.contextPath}/main?command=go-to-patients">
+                    <fmt:message bundle="${jspMessages}"
+                                 key="header.menu.patients"/>
+                </a>
+            </div>
+        </c:if>
+
+        <c:if test="${sessionScope.authUser ne null}">
+            <div class="nav-item">
+                <a class="nav-link"
+                   href="${pageContext.request.contextPath}/main?command=go-to-staff">
+                    <fmt:message bundle="${jspMessages}"
+                                 key="header.menu.medStaff"/>
+                </a>
+            </div>
+        </c:if>
+
         <div class="nav-item">
-            <a class="nav-link" href="${pageContext.request.contextPath}/main?command=go-to-staff">
+            <a class="nav-link"
+               href="${pageContext.request.contextPath}/main?command=go-to-news">
                 <fmt:message bundle="${jspMessages}"
-                             key="header.menu.medStaff"/>
+                             key="header.menu.news"/>
             </a>
         </div>
-    </c:if>
+        <div class="nav-item">
+            <a class="nav-link"
+               href="${pageContext.request.contextPath}/main?command=go-to-about-us">
+                <fmt:message bundle="${jspMessages}"
+                             key="header.menu.aboutUs"/>
+            </a>
+        </div>
+        <div class="nav-item flex-grow-1">
+            <a class="nav-link"
+               href="${pageContext.request.contextPath}/main?command=go-to-contacts">
+                <fmt:message bundle="${jspMessages}"
+                             key="header.menu.contacts"/>
+            </a>
+        </div>
 
-    <div class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/main?command=go-to-news">
-            <fmt:message bundle="${jspMessages}"
-                         key="header.menu.news"/>
-        </a>
-    </div>
-    <div class="nav-item">
-        <a class="nav-link" href="${pageContext.request.contextPath}/main?command=go-to-about-us">
-            <fmt:message bundle="${jspMessages}"
-                         key="header.menu.aboutUs"/>
-        </a>
-    </div>
-    <div class="nav-item flex-grow-1">
-        <a class="nav-link" href="${pageContext.request.contextPath}/main?command=go-to-contacts">
-            <fmt:message bundle="${jspMessages}" key="header.menu.contacts"/>
-        </a>
-    </div>
+        <jsp:include page="languageButtonBar.jsp"/>
 
-    <c:choose>
-        <c:when test="${sessionScope.authUser eq null}">
-            <div class="nav-item">
-                <a class="nav-link"
-                   href="${pageContext.request.contextPath}/main?command=go-to-login">
-                    <fmt:message bundle="${jspMessages}"
-                                 key="header.menu.singIn"/>
-                </a>
-            </div>
-            <div class="nav-item">
-                <a class="nav-link"
-                   href="${pageContext.request.contextPath}/main?command=go-to-register">
-                    <fmt:message bundle="${jspMessages}"
-                                 key="header.menu.signUp"/>
-                </a>
-            </div>
-        </c:when>
-        <c:otherwise>
-            <div class="nav-item">
-                <a class="nav-link"
-                   href="${pageContext.request.contextPath}/profile?command=go-to-profile">
-                    <fmt:message bundle="${jspMessages}"
-                                 key="header.menu.helloMessage"/>
-                    <c:out value=", "/>
-                    <c:out value="${sessionScope.authUser.login}"/>
-                </a>
-            </div>
-            <div class="nav-item">
-                <a class="nav-link"
-                   href="${pageContext.request.contextPath}/profile?command=logout">
-                    <fmt:message bundle="${jspMessages}"
-                                 key="header.menu.logOut"/>
-                </a>
-            </div>
-        </c:otherwise>
-    </c:choose>
+        <c:choose>
+            <c:when test="${sessionScope.authUser eq null}">
+                <div class="nav-item">
+                    <a class="nav-link"
+                       href="${pageContext.request.contextPath}/main?command=go-to-login">
+                        <fmt:message bundle="${jspMessages}"
+                                     key="header.menu.singIn"/>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link"
+                       href="${pageContext.request.contextPath}/main?command=go-to-register">
+                        <fmt:message bundle="${jspMessages}"
+                                     key="header.menu.signUp"/>
+                    </a>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <div class="nav-item">
+                    <a class="nav-link"
+                       href="${pageContext.request.contextPath}/profile?command=go-to-profile">
+                        <fmt:message bundle="${jspMessages}"
+                                     key="header.menu.helloMessage"/>
+                        <c:out value=", "/>
+                        <c:out value="${sessionScope.authUser.login}"/>
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link"
+                       href="${pageContext.request.contextPath}/profile?command=logout">
+                        <fmt:message bundle="${jspMessages}"
+                                     key="header.menu.logOut"/>
+                    </a>
+                </div>
+            </c:otherwise>
+        </c:choose>
+    </div>
 </div>
 
 <br>

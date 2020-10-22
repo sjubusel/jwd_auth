@@ -3,9 +3,13 @@
     align-items: center;
 }
 
+.left-menu-part {
+    height: 40px !important;
+}
+
 #logotype {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
 }
 
 .lang-btn-group {
