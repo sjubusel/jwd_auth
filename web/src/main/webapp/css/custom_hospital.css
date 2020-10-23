@@ -42,3 +42,7 @@
 .main-content {
     min-height: 100% !important;
 }
+
+.custom-form-label {
+    justify-content: left !important;
+}
