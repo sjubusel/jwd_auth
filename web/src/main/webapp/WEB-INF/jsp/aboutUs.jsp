@@ -13,6 +13,8 @@
 
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
 
+<c:set var="activeMenuTab" value="aboutUs" scope="page"/>
+
 <html>
 <head>
     <title>
@@ -26,10 +28,10 @@
 
     <jsp:include page="structural_element/header.jsp"/>
 
-    <h2 style="padding-left: 25px">
-        ABOUT-US STUB MESSAGE WITHOUT I18N
-    </h2>
+<h2 style="padding-left: 25px">
+    ABOUT-US STUB MESSAGE WITHOUT I18N
+</h2>
 
-    <jsp:include page="structural_element/footer.jsp"/>
+<jsp:include page="structural_element/footer.jsp"/>
 </body>
 </html>

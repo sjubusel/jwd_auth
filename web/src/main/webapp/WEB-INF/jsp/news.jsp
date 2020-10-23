@@ -11,6 +11,8 @@
     </c:otherwise>
 </c:choose>
 
+<c:set var="activeMenuTab" value="news" scope="page"/>
+
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
 
 <html>
@@ -24,13 +26,13 @@
 </head>
 <body>
 
-    <jsp:include page="structural_element/header.jsp"/>
+<jsp:include page="structural_element/header.jsp"/>
 
-    <h2 style="padding-left: 25px">
-        NEWS STUB MESSAGE WITHOUT I18N
-    </h2>
+<h2 style="padding-left: 25px">
+    NEWS STUB MESSAGE WITHOUT I18N
+</h2>
 
-    <jsp:include page="structural_element/footer.jsp"/>
+<jsp:include page="structural_element/footer.jsp"/>
 
 </body>
 </html>

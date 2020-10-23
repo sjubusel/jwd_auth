@@ -11,6 +11,8 @@
     </c:otherwise>
 </c:choose>
 
+<c:set var="activeMenuTab" value="staff" scope="page"/>
+
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
 
 <html>
