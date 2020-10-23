@@ -26,14 +26,16 @@
 </head>
 <body>
 
-<%@ include file="structural_element/header.jsp" %>
+<div class="main-content">
+    <%@ include file="structural_element/header.jsp" %>
 
-<h1 style="padding-left: 25px">
-    <fmt:message bundle="${jspMessages}" key="profile.heading"/>
-</h1>
-<h6 style="padding-left: 25px">
-    <fmt:message bundle="${jspMessages}" key="profile.message"/>
-</h6>
+    <h1 style="padding-left: 25px">
+        <fmt:message bundle="${jspMessages}" key="profile.heading"/>
+    </h1>
+    <h6 style="padding-left: 25px">
+        <fmt:message bundle="${jspMessages}" key="profile.message"/>
+    </h6>
+</div>
 
 <jsp:include page="structural_element/footer.jsp"/>
 

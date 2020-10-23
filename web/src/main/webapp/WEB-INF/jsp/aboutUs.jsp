@@ -26,12 +26,15 @@
 </head>
 <body>
 
-<%@ include file="structural_element/header.jsp" %>
+<div class="main-content">
+    <%@ include file="structural_element/header.jsp" %>
 
-<h2 style="padding-left: 25px">
-    ABOUT-US STUB MESSAGE WITHOUT I18N
-</h2>
+    <h2 style="padding-left: 25px">
+        ABOUT-US STUB MESSAGE WITHOUT I18N
+    </h2>
+</div>
 
 <jsp:include page="structural_element/footer.jsp"/>
+
 </body>
 </html>

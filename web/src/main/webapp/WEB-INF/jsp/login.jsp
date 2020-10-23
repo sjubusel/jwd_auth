@@ -26,53 +26,57 @@
 </head>
 <body>
 
-<%@ include file="structural_element/header.jsp" %>
+<div class="main-content">
+    <%@ include file="structural_element/header.jsp" %>
 
-<h2 style="padding-left: 25px">
-    <fmt:message bundle="${jspMessages}" key="login.heading"/>
-</h2>
+    <h2 style="padding-left: 25px">
+        <fmt:message bundle="${jspMessages}" key="login.heading"/>
+    </h2>
 
-<form action="${pageContext.request.contextPath}/main" method="post"
-      style="padding-left: 25px">
-    <input type="hidden" name="command" value="login"/>
-    <div class="form-group">
-        <label for="loginInput">
-            <fmt:message bundle="${jspMessages}" key="login.loginInputLabel"/>
-        </label>
-        <input type="text" class="form-control" id="loginInput" name="login">
-    </div>
-    <div class="form-group">
-        <label for="passwordInput">
-            <fmt:message bundle="${jspMessages}"
-                         key="login.passwordInputLabel"/>
-        </label>
-        <input type="password" class="form-control" id="passwordInput"
-               name="password">
-    </div>
-    <button type="submit" class="btn btn-primary">
-        <fmt:message bundle="${jspMessages}" key="login.submitButton"/>
-    </button>
+    <form action="${pageContext.request.contextPath}/main" method="post"
+          style="padding-left: 25px">
+        <input type="hidden" name="command" value="login"/>
+        <div class="form-group">
+            <label for="loginInput">
+                <fmt:message bundle="${jspMessages}"
+                             key="login.loginInputLabel"/>
+            </label>
+            <input type="text" class="form-control" id="loginInput"
+                   name="login">
+        </div>
+        <div class="form-group">
+            <label for="passwordInput">
+                <fmt:message bundle="${jspMessages}"
+                             key="login.passwordInputLabel"/>
+            </label>
+            <input type="password" class="form-control" id="passwordInput"
+                   name="password">
+        </div>
+        <button type="submit" class="btn btn-primary">
+            <fmt:message bundle="${jspMessages}" key="login.submitButton"/>
+        </button>
 
-</form>
+    </form>
 
-<br>
+    <br>
 
-<c:if test="${requestScope.error ne null}">
-    <div class="alert alert-danger" role="alert">
-        <c:choose>
-            <c:when test="${requestScope.error eq 'simple'}">
-                <fmt:message bundle="${jspMessages}" key="login.simpleError"/>
-            </c:when>
-            <c:when test="${requestScope.error eq 'tech'}">
-                <fmt:message bundle="${jspMessages}" key="login.techError"/>
-            </c:when>
-            <c:otherwise>
-                <c:out value="${requestScope.error}"/>
-            </c:otherwise>
-        </c:choose>
-
-    </div>
-</c:if>
+    <c:if test="${requestScope.error ne null}">
+        <div class="alert alert-danger" role="alert">
+            <c:choose>
+                <c:when test="${requestScope.error eq 'simple'}">
+                    <fmt:message bundle="${jspMessages}"
+                                 key="login.simpleError"/>
+                </c:when>
+                <c:when test="${requestScope.error eq 'tech'}">
+                    <fmt:message bundle="${jspMessages}" key="login.techError"/>
+                </c:when>
+                <c:otherwise>
+                    <c:out value="${requestScope.error}"/>
+                </c:otherwise>
+            </c:choose>
+        </div>
+    </c:if>
+</div>
 
 <jsp:include page="structural_element/footer.jsp"/>
 
