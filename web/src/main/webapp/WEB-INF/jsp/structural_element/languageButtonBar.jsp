@@ -31,7 +31,8 @@
                 formaction="${pageContext.request.contextPath}/main"
                 name="language"
                 value="russian">
-            рус
+            <fmt:message bundle="${jspMessages}"
+                         key="languageButtonBar.firstLanguageNaming"/>
         </button>
         <button
                 <c:choose>
@@ -47,7 +48,8 @@
                 formaction="${pageContext.request.contextPath}/main"
                 name="language"
                 value="english">
-            eng
+            <fmt:message bundle="${jspMessages}"
+                         key="languageButtonBar.secondLanguageNaming"/>
         </button>
     </form>
 </div>
