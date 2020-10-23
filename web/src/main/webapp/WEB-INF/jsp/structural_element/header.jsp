@@ -25,16 +25,30 @@
     </div>
     <div class="nav container-fluid nav-pills bg-light left-menu-part">
         <div class="nav-item">
-            <a class="nav-link active"
-               href="${pageContext.request.contextPath}/main">
+            <a <c:choose>
+                <c:when test="${pageScope.activeMenuTab eq null}">
+                    class="nav-link active"
+                </c:when>
+                <c:otherwise>
+                    class="nav-link"
+                </c:otherwise>
+            </c:choose>
+                    href="${pageContext.request.contextPath}/main">
                 <fmt:message bundle="${jspMessages}" key="header.menu.main"/>
             </a>
         </div>
 
         <c:if test="${sessionScope.authUser ne null}">
             <div class="nav-item">
-                <a class="nav-link"
-                   href="${pageContext.request.contextPath}/main?command=go-to-patients">
+                <a <c:choose>
+                    <c:when test="${pageScope.activeMenuTab == 'patients'}">
+                        class="nav-link active"
+                    </c:when>
+                    <c:otherwise>
+                        class="nav-link"
+                    </c:otherwise>
+                </c:choose>
+                        href="${pageContext.request.contextPath}/main?command=go-to-patients">
                     <fmt:message bundle="${jspMessages}"
                                  key="header.menu.patients"/>
                 </a>
@@ -43,8 +57,15 @@
 
         <c:if test="${sessionScope.authUser ne null}">
             <div class="nav-item">
-                <a class="nav-link"
-                   href="${pageContext.request.contextPath}/main?command=go-to-staff">
+                <a <c:choose>
+                    <c:when test="${pageScope.activeMenuTab == 'staff'}">
+                        class="nav-link active"
+                    </c:when>
+                    <c:otherwise>
+                        class="nav-link"
+                    </c:otherwise>
+                </c:choose>
+                        href="${pageContext.request.contextPath}/main?command=go-to-staff">
                     <fmt:message bundle="${jspMessages}"
                                  key="header.menu.medStaff"/>
                 </a>
@@ -52,41 +73,80 @@
         </c:if>
 
         <div class="nav-item">
-            <a class="nav-link"
-               href="${pageContext.request.contextPath}/main?command=go-to-news">
+            <a <c:choose>
+                <c:when test="${pageScope.activeMenuTab == 'news'}">
+                    class="nav-link active"
+                </c:when>
+                <c:otherwise>
+                    class="nav-link"
+                </c:otherwise>
+            </c:choose>
+                    href="${pageContext.request.contextPath}/main?command=go-to-news">
                 <fmt:message bundle="${jspMessages}"
                              key="header.menu.news"/>
             </a>
         </div>
         <div class="nav-item">
-            <a class="nav-link"
-               href="${pageContext.request.contextPath}/main?command=go-to-about-us">
+            <a <c:choose>
+                <c:when test="${pageScope.activeMenuTab == 'aboutUs'}">
+                    class="nav-link active"
+                </c:when>
+                <c:otherwise>
+                    class="nav-link"
+                </c:otherwise>
+            </c:choose>
+                    href="${pageContext.request.contextPath}/main?command=go-to-about-us">
                 <fmt:message bundle="${jspMessages}"
                              key="header.menu.aboutUs"/>
             </a>
         </div>
-        <div class="nav-item flex-grow-1">
-            <a class="nav-link"
-               href="${pageContext.request.contextPath}/main?command=go-to-contacts">
+        <div class="nav-item">
+            <a <c:choose>
+                <c:when test="${pageScope.activeMenuTab == 'contacts'}">
+                    class="nav-link active"
+                </c:when>
+                <c:otherwise>
+                    class="nav-link"
+                </c:otherwise>
+            </c:choose>
+                    href="${pageContext.request.contextPath}/main?command=go-to-contacts">
                 <fmt:message bundle="${jspMessages}"
                              key="header.menu.contacts"/>
             </a>
         </div>
+        <div class="nav-item flex-grow-1">
+            <%--it is a stub-div in order to run away from bootstrap percularities --%>
+        </div>
 
-        <%@ include file="/WEB-INF/jsp/structural_element/languageButtonBar.jsp" %>
+        <%@ include
+                file="/WEB-INF/jsp/structural_element/languageButtonBar.jsp" %>
 
         <c:choose>
             <c:when test="${sessionScope.authUser eq null}">
                 <div class="nav-item">
-                    <a class="nav-link"
-                       href="${pageContext.request.contextPath}/main?command=go-to-login">
+                    <a <c:choose>
+                        <c:when test="${pageScope.activeMenuTab == 'signIn'}">
+                            class="nav-link active"
+                        </c:when>
+                        <c:otherwise>
+                            class="nav-link"
+                        </c:otherwise>
+                    </c:choose>
+                            href="${pageContext.request.contextPath}/main?command=go-to-login">
                         <fmt:message bundle="${jspMessages}"
                                      key="header.menu.singIn"/>
                     </a>
                 </div>
                 <div class="nav-item">
-                    <a class="nav-link"
-                       href="${pageContext.request.contextPath}/main?command=go-to-register">
+                    <a <c:choose>
+                        <c:when test="${pageScope.activeMenuTab == 'signUp'}">
+                            class="nav-link active"
+                        </c:when>
+                        <c:otherwise>
+                            class="nav-link"
+                        </c:otherwise>
+                    </c:choose>
+                            href="${pageContext.request.contextPath}/main?command=go-to-register">
                         <fmt:message bundle="${jspMessages}"
                                      key="header.menu.signUp"/>
                     </a>
@@ -94,8 +154,15 @@
             </c:when>
             <c:otherwise>
                 <div class="nav-item">
-                    <a class="nav-link"
-                       href="${pageContext.request.contextPath}/profile?command=go-to-profile">
+                    <a <c:choose>
+                        <c:when test="${pageScope.activeMenuTab == 'profile'}">
+                            class="nav-link active"
+                        </c:when>
+                        <c:otherwise>
+                            class="nav-link"
+                        </c:otherwise>
+                    </c:choose>
+                            href="${pageContext.request.contextPath}/profile?command=go-to-profile">
                         <fmt:message bundle="${jspMessages}"
                                      key="header.menu.helloMessage"/>
                         <c:out value=", "/>
