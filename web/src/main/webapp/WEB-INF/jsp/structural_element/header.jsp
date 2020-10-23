@@ -114,12 +114,17 @@
                              key="header.menu.contacts"/>
             </a>
         </div>
+
         <div class="nav-item flex-grow-1">
             <%--it is a stub-div in order to run away from bootstrap percularities --%>
         </div>
 
         <%@ include
                 file="/WEB-INF/jsp/structural_element/languageButtonBar.jsp" %>
+
+        <div class="nav-item flex-grow-1">
+            <%--it is a stub-div in order to run away from bootstrap percularities --%>
+        </div>
 
         <c:choose>
             <c:when test="${sessionScope.authUser eq null}">
