@@ -92,7 +92,7 @@
             <label class="col-4 custom-form-label">
                 <c:out value="Пол"/>
             </label>
-            <div class="form-control col-5 form-check form-check-inline justify-content-start">
+            <div class="form-control col-5 form-check form-check-inline">
                 <input type="radio" class="form-check-input" id="maleRadioInput"
                        name="gender" value="male">
                 <label for="maleRadioInput" class="form-check-label"
