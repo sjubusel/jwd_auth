@@ -48,6 +48,8 @@ register.techError=По техническим причинам зарегист
 register.duplicateError=Введённый логин занят
 
 languageButtonBar.currentLang=Русский
+languageButtonBar.firstLanguageNaming=рус
+languageButtonBar.secondLanguageNaming=eng
 
 aboutUs.htmlTitle=О нас
 

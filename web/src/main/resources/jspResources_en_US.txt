@@ -48,7 +48,8 @@ register.techError=Because of a technical factor there is no possibility to sign
 register.duplicateError=Login is occupied
 
 languageButtonBar.currentLang=English
-
+languageButtonBar.firstLanguageNaming=рус
+languageButtonBar.secondLanguageNaming=eng
 
 aboutUs.htmlTitle=About us
 
