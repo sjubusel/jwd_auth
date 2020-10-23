@@ -26,7 +26,7 @@
 </head>
 <body>
 
-<jsp:include page="structural_element/header.jsp"/>
+<%@ include file="structural_element/header.jsp" %>
 
 <h1 style="padding-left: 25px">
     <fmt:message bundle="${jspMessages}" key="profile.heading"/>

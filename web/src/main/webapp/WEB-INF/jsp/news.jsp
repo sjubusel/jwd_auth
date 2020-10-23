@@ -26,7 +26,7 @@
 </head>
 <body>
 
-<jsp:include page="structural_element/header.jsp"/>
+<%@ include file="structural_element/header.jsp" %>
 
 <h2 style="padding-left: 25px">
     NEWS STUB MESSAGE WITHOUT I18N

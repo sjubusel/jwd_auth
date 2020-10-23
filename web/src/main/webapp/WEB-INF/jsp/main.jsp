@@ -23,7 +23,7 @@
 
 <body>
 
-<jsp:include page="structural_element/header.jsp"/>
+<%@ include file="structural_element/header.jsp" %>
 
 <c:choose>
     <c:when test="${requestScope.hospitalReport ne null}">

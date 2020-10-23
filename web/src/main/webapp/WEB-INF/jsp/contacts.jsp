@@ -25,7 +25,8 @@
     <jsp:include page="structural_element/metahead.jsp"/>
 </head>
 <body>
-<jsp:include page="structural_element/header.jsp"/>
+
+<%@ include file="structural_element/header.jsp" %>
 
 <h2 style="padding-left: 25px">
     CONTACTS STUB MESSAGE WITHOUT I18N
