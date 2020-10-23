@@ -73,7 +73,7 @@
             </a>
         </div>
 
-        <jsp:include page="languageButtonBar.jsp"/>
+        <%@ include file="/WEB-INF/jsp/structural_element/languageButtonBar.jsp" %>
 
         <c:choose>
             <c:when test="${sessionScope.authUser eq null}">
