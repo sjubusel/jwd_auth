@@ -15,7 +15,7 @@
 
 <br>
 
-<div class="container-fluid justify-content-center dropdown-menu d-flex bg-light">
+<div class="container-fluid justify-content-center d-flex bg-light">
     <div class="p-2 justify-content-center flex-fill bd-highlight">
         <fmt:message bundle="${jspMessages}" key="footer.copyrightRecord"/>
     </div>
