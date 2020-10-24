@@ -4,8 +4,8 @@ import by.epamtc.jwd.auth.dao.AuthUserDao;
 import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.dao.pool.ConnectionPool;
 import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
-import by.epamtc.jwd.auth.model.auth_user.AuthUser;
-import by.epamtc.jwd.auth.model.auth_user.Role;
+import by.epamtc.jwd.auth.model.auth_info.AuthUser;
+import by.epamtc.jwd.auth.model.auth_info.Role;
 
 import java.nio.charset.StandardCharsets;
 import java.sql.Connection;

@@ -1,4 +1,4 @@
-package by.epamtc.jwd.auth.model.auth_user;
+package by.epamtc.jwd.auth.model.auth_info;
 
 public class AuthUser implements java.io.Serializable {
     private static final long serialVersionUID = -7235820454571742403L;

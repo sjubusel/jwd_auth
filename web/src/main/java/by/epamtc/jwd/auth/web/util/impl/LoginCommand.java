@@ -1,6 +1,6 @@
 package by.epamtc.jwd.auth.web.util.impl;
 
-import by.epamtc.jwd.auth.model.auth_user.AuthUser;
+import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.service.AuthUserService;
 import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
