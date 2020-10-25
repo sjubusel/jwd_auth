@@ -22,10 +22,18 @@
         <c:out value=" | "/>
         <fmt:message bundle="${jspMessages}" key="all.htmlTitle"/>
     </title>
-    <jsp:include page="structural_element/metahead.jsp"/>
-    <script src="../../js/jquery-3.5.1.js" type="text/javascript"></script>
-    <script src="../../js/jquery.maskedinput.js"
-            type="text/javascript"></script>
+    <%@include file="structural_element/metahead.jsp" %>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/js/jquery-3.5.1.js">
+    </script>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/js/jquery.maskedinput.js">
+    </script>
+    <script>
+        jQuery(document).ready(function () {
+            $("#phoneNumberInput").mask("+375 (99) 999-99-99");
+        })
+    </script>
 </head>
 <body>
 
@@ -74,7 +82,7 @@
             </label>
             <input type="tel" class="form-control col-5"
                    id="phoneNumberInput" name="phoneNumber"
-                   placeholder="375 (XX) XXX-XX-XX">
+                   placeholder="+375 (XX) XXX-XX-XX">
         </div>
         <div class="form-group form-inline col-9">
             <label for="firstNameInput" class="col-4 custom-form-label">
