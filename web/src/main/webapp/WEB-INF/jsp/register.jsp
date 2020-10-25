@@ -96,14 +96,14 @@
                              key="register.phoneNumberInputLabel"/>
             </label>
             <div class="row col-5 flex-end">
-                <input type="tel" class="form-control col col-2"
-                       id="phoneNumberCountryCodeInput" name="phoneNumber"
+                <input type="text" class="form-control col col-2"
+                       id="phoneNumberCountryCodeInput" name="phoneNumberCountryCode"
                        placeholder="+XXX">
-                <input type="tel" class="form-control col col-2"
-                       id="phoneNumberInnerCodeInput" name="phoneNumber"
+                <input type="text" class="form-control col col-2"
+                       id="phoneNumberInnerCodeInput" name="phoneNumberInnerCode"
                        placeholder="(XX)">
-                <input type="tel" class="form-control col col-8"
-                       id="phoneNumberInnerNumberInput" name="phoneNumber"
+                <input type="text" class="form-control col col-8"
+                       id="phoneNumberInnerNumberInput" name="phoneNumberInnerNumber"
                        placeholder="XXX-XX-XX">
             </div>
         </div>
