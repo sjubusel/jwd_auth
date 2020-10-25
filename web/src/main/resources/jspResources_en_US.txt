@@ -46,6 +46,9 @@ register.loginError=Login is incompatible
 register.passwordError=Password is incompatible
 register.techError=Because of a technical factor there is no possibility to sign up in the system
 register.duplicateError=Login is occupied
+register.gender.male=male
+register.gender.female=female
+register.gender.other=other
 
 languageButtonBar.currentLang=English
 languageButtonBar.firstLanguageNaming=рус

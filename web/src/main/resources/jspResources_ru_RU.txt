@@ -46,6 +46,9 @@ register.loginError=Логин не поддерживается
 register.passwordError=Пароль не поддерживается
 register.techError=По техническим причинам зарегистрироваться в системе не представляется возможным
 register.duplicateError=Введённый логин занят
+register.gender.male=мужской
+register.gender.female=женский
+register.gender.other=другой
 
 languageButtonBar.currentLang=Русский
 languageButtonBar.firstLanguageNaming=рус

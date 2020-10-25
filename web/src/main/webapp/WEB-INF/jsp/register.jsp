@@ -107,27 +107,24 @@
                        name="gender" value="male">
                 <label for="maleRadioInput" class="form-check-label"
                        style="margin-right: 10px">
-                    <c:out value="мужской"/>
-                    <%--                <fmt:message bundle="${jspMessages}"--%>
-                    <%--                             key="register.gender.male"/>--%>
+                    <fmt:message bundle="${jspMessages}"
+                                 key="register.gender.male"/>
                 </label>
                 <input type="radio" class="form-check-input"
                        id="femaleRadioInput"
                        name="gender" value="female">
                 <label for="femaleRadioInput" class="form-check-label"
                        style="margin-right: 10px">
-                    <c:out value="женский"/>
-                    <%--                <fmt:message bundle="${jspMessages}"--%>
-                    <%--                             key="register.gender.remale"/>--%>
+                    <fmt:message bundle="${jspMessages}"
+                                 key="register.gender.female"/>
                 </label>
                 <input type="radio" class="form-check-input"
                        id="otherRadioInput"
                        name="gender" value="other">
                 <label for="otherRadioInput" class="form-check-label"
                        style="margin-right: 10px">
-                    <c:out value="другой"/>
-                    <%--                <fmt:message bundle="${jspMessages}"--%>
-                    <%--                             key="register.gender.other"/>--%>
+                    <fmt:message bundle="${jspMessages}"
+                                 key="register.gender.other"/>
                 </label>
             </div>
         </div>
