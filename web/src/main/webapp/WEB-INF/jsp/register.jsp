@@ -45,8 +45,7 @@
                              key="register.loginInputLabel"/>
             </label>
             <input type="text" class="form-control col-5" id="loginInput"
-                   name="login"
-                   placeholder="">
+                   name="login" placeholder="Введите желаемый логин">
         </div>
         <div class="form-group form-inline col-9">
             <label for="passwordInput" class="col-4 custom-form-label">
@@ -54,49 +53,50 @@
                              key="register.passwordInputLabel"/>
             </label>
             <input type="password" class="form-control col-5" id="passwordInput"
-                   name="password">
+                   name="password" placeholder="Введите желаемый пароль">
         </div>
         <div class="form-group form-inline col-9">
             <label for="emailInput" class="col-4 custom-form-label">
                 <c:out value="Адрес электронной почты"/>
             </label>
             <input type="email" class="form-control col-5" id="emailInput"
-                   name="email">
+                   name="email" placeholder="xxxxx@xxxxx.xxx">
         </div>
         <div class="form-group form-inline col-9">
             <label for="phoneNumberInput" class="col-4 custom-form-label">
                 <c:out value="Телефон"/>
             </label>
             <input type="tel" class="form-control col-5" id="phoneNumberInput"
-                   name="phoneNumber" placeholder="375(XX) XXX-XX-XX">
+                   name="phoneNumber" placeholder="375 (XX) XXX-XX-XX">
         </div>
         <div class="form-group form-inline col-9">
             <label for="firstNameInput" class="col-4 custom-form-label">
                 <c:out value="Имя"/>
             </label>
             <input type="text" class="form-control col-5" id="firstNameInput"
-                   name="firstName">
+                   name="firstName" placeholder="Введите Ваше имя">
         </div>
         <div class="form-group form-inline col-9">
             <label for="middleNameInput" class="col-4 custom-form-label">
                 <c:out value="Отчество"/>
             </label>
             <input type="text" class="form-control col-5" id="middleNameInput"
-                   name="middleName">
+                   name="middleName" placeholder="Введите Ваше отчество">
         </div>
         <div class="form-group form-inline col-9">
             <label for="lastNameInput" class="col-4 custom-form-label">
                 <c:out value="Фамилия"/>
             </label>
             <input type="text" class="form-control col-5" id="lastNameInput"
-                   name="lastName">
+                   name="lastName" placeholder="Введите Вашу фамилию">
         </div>
         <div class="form-group form-inline col-9">
             <label for="birthdayInput" class="col-4 custom-form-label">
                 <c:out value="День рождения"/>
             </label>
             <input type="date" class="form-control col-5" id="birthdayInput"
-                   name="birthday">
+                   name="birthday" placeholder="Введите Вашу дату рождения"
+                   alt="Введите Вашу дату рождения">
         </div>
         <div class="form-group form-inline col-9">
             <label class="col-4 custom-form-label">
