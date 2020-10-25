@@ -1,10 +1,13 @@
 package by.epamtc.jwd.auth.model.auth_info;
 
+// TODO private static final long serialVersionUID after class completion
+// TODO refactor bean
 public class AuthUser implements java.io.Serializable {
-    private static final long serialVersionUID = -7235820454571742403L;
-
     private int id;
+    // TODO add first name, middle name, last name
+    // TODO delete login
     private String login;
+    // TODO delete password
     private String password;
     private Role role;
     private int staffId;
