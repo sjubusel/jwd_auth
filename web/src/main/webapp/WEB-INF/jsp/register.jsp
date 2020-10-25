@@ -64,6 +64,13 @@
                    name="email">
         </div>
         <div class="form-group form-inline col-9">
+            <label for="phoneNumberInput" class="col-4 custom-form-label">
+                <c:out value="Телефон"/>
+            </label>
+            <input type="tel" class="form-control col-5" id="phoneNumberInput"
+                   name="phoneNumber" placeholder="375(XX) XXX-XX-XX">
+        </div>
+        <div class="form-group form-inline col-9">
             <label for="firstNameInput" class="col-4 custom-form-label">
                 <c:out value="Имя"/>
             </label>
