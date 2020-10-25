@@ -62,6 +62,8 @@ register.lastNameInput.placeholder=Введите Вашу фамилию
 register.birthdayInputLabel=День рождения
 register.birthdayInput.placeholder=Введите Вашу дату рождения
 register.GenderInputLabel=Пол
+register.loginDescription=Буквы латинского алфавита, цифры, "_", ".", "-"
+register.passwordDescription=Буквы латинского алфавита, кириллица, цифры, "!?:;,."'@#$%^&*()-_+"-символы
 
 languageButtonBar.currentLang=Русский
 languageButtonBar.firstLanguageNaming=рус

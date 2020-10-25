@@ -56,6 +56,11 @@
                    name="login"
                    placeholder="<fmt:message bundle="${jspMessages}"
                    key="register.loginInput.placeholder"/>">
+            <div id="loginIndent" class="col-4"></div>
+            <small id="loginDescription" class="form-text text-muted col-5">
+                <fmt:message bundle="${jspMessages}"
+                             key="register.loginDescription"/>
+            </small>
         </div>
         <div class="form-group form-inline col-9">
             <label for="passwordInput" class="col-4 custom-form-label">
@@ -66,6 +71,11 @@
                    id="passwordInput" name="password"
                    placeholder="<fmt:message bundle="${jspMessages}"
                    key="register.passwordInput.placeholder"/>">
+            <div id="passwordIndent" class="col-4"></div>
+            <small id="passwordDescription" class="form-text text-muted col-5">
+                <fmt:message bundle="${jspMessages}"
+                             key="register.passwordDescription"/>
+            </small>
         </div>
         <div class="form-group form-inline col-9">
             <label for="emailInput" class="col-4 custom-form-label">
