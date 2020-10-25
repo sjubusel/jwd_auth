@@ -8,7 +8,7 @@ import by.epamtc.jwd.auth.service.exception.ValidationServiceException;
 public class AuthDataValidator {
     public boolean isLoginValid(String login) {
         return (login.length() >= 3) && (login.length() <= 20)
-                && login.matches("[A-Za-z.-_0-9]+");
+                && login.matches("[A-Za-z.\\-_0-9]+");
     }
 
     public boolean isPasswordValid(String password) {

@@ -20,7 +20,9 @@
 <div id="menu">
     <div>
         <a href="${pageContext.request.contextPath}/">
-            <img id="logotype" src="img/logo.png" alt="logotype"/>
+            <img id="logotype"
+                 src="${pageContext.request.contextPath}/img/logo.png"
+                 alt="logotype"/>
         </a>
     </div>
     <div class="nav container-fluid nav-pills bg-light left-menu-part">
