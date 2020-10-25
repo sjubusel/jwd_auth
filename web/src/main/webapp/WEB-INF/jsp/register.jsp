@@ -31,8 +31,10 @@
     </script>
     <script>
         jQuery(document).ready(function () {
-            $("#phoneNumberInput").mask("+375 (99) 999-99-99");
-        })
+            $("#phoneNumberCountryCodeInput").mask("+9?99");
+            $("#phoneNumberInnerCodeInput").mask("9?99");
+            $("#phoneNumberInnerNumberInput").mask("999-99-99");
+        });
     </script>
 </head>
 <body>
@@ -86,13 +88,24 @@
                    name="email" placeholder="xxxxx@xxxxx.xxx">
         </div>
         <div class="form-group form-inline col-9">
-            <label for="phoneNumberInput" class="col-4 custom-form-label">
+            <label for="phoneNumberCountryCodeInput"
+                   for="phoneNumberInnerCodeInput"
+                   for="phoneNumberInnerNumberInput"
+                   class="col-4 custom-form-label">
                 <fmt:message bundle="${jspMessages}"
                              key="register.phoneNumberInputLabel"/>
             </label>
-            <input type="tel" class="form-control col-5"
-                   id="phoneNumberInput" name="phoneNumber"
-                   placeholder="+375 (XX) XXX-XX-XX">
+            <div class="row col-5 flex-end">
+                <input type="tel" class="form-control col col-2"
+                       id="phoneNumberCountryCodeInput" name="phoneNumber"
+                       placeholder="+XXX">
+                <input type="tel" class="form-control col col-2"
+                       id="phoneNumberInnerCodeInput" name="phoneNumber"
+                       placeholder="(XX)">
+                <input type="tel" class="form-control col col-8"
+                       id="phoneNumberInnerNumberInput" name="phoneNumber"
+                       placeholder="XXX-XX-XX">
+            </div>
         </div>
         <div class="form-group form-inline col-9">
             <label for="firstNameInput" class="col-4 custom-form-label">
