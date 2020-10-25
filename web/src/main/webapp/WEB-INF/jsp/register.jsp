@@ -45,65 +45,86 @@
                              key="register.loginInputLabel"/>
             </label>
             <input type="text" class="form-control col-5" id="loginInput"
-                   name="login" placeholder="Введите желаемый логин">
+                   name="login"
+                   placeholder="<fmt:message bundle="${jspMessages}"
+                   key="register.loginInput.placeholder"/>">
         </div>
         <div class="form-group form-inline col-9">
             <label for="passwordInput" class="col-4 custom-form-label">
                 <fmt:message bundle="${jspMessages}"
                              key="register.passwordInputLabel"/>
             </label>
-            <input type="password" class="form-control col-5" id="passwordInput"
-                   name="password" placeholder="Введите желаемый пароль">
+            <input type="password" class="form-control col-5"
+                   id="passwordInput" name="password"
+                   placeholder="<fmt:message bundle="${jspMessages}"
+                   key="register.passwordInput.placeholder"/>">
         </div>
         <div class="form-group form-inline col-9">
             <label for="emailInput" class="col-4 custom-form-label">
-                <c:out value="Адрес электронной почты"/>
+                <fmt:message bundle="${jspMessages}"
+                             key="register.emailInputLabel"/>
             </label>
             <input type="email" class="form-control col-5" id="emailInput"
                    name="email" placeholder="xxxxx@xxxxx.xxx">
         </div>
         <div class="form-group form-inline col-9">
             <label for="phoneNumberInput" class="col-4 custom-form-label">
-                <c:out value="Телефон"/>
+                <fmt:message bundle="${jspMessages}"
+                             key="register.phoneNumberInputLabel"/>
             </label>
-            <input type="tel" class="form-control col-5" id="phoneNumberInput"
-                   name="phoneNumber" placeholder="375 (XX) XXX-XX-XX">
+            <input type="tel" class="form-control col-5"
+                   id="phoneNumberInput" name="phoneNumber"
+                   placeholder="375 (XX) XXX-XX-XX">
         </div>
         <div class="form-group form-inline col-9">
             <label for="firstNameInput" class="col-4 custom-form-label">
-                <c:out value="Имя"/>
+                <fmt:message bundle="${jspMessages}"
+                             key="register.firstNameInputLabel"/>
             </label>
-            <input type="text" class="form-control col-5" id="firstNameInput"
-                   name="firstName" placeholder="Введите Ваше имя">
+            <input type="text" class="form-control col-5"
+                   id="firstNameInput" name="firstName"
+                   placeholder="<fmt:message bundle="${jspMessages}"
+                   key="register.firstNameInput.placeholder"/>">
         </div>
         <div class="form-group form-inline col-9">
             <label for="middleNameInput" class="col-4 custom-form-label">
-                <c:out value="Отчество"/>
+                <fmt:message bundle="${jspMessages}"
+                             key="register.middleNameInputLabel"/>
             </label>
-            <input type="text" class="form-control col-5" id="middleNameInput"
-                   name="middleName" placeholder="Введите Ваше отчество">
+            <input type="text" class="form-control col-5"
+                   id="middleNameInput" name="middleName"
+                   placeholder="<fmt:message bundle="${jspMessages}"
+                   key="register.middleNameInput.placeholder"/>">
         </div>
         <div class="form-group form-inline col-9">
             <label for="lastNameInput" class="col-4 custom-form-label">
-                <c:out value="Фамилия"/>
+                <fmt:message bundle="${jspMessages}"
+                             key="register.lastNameInputLabel"/>
             </label>
             <input type="text" class="form-control col-5" id="lastNameInput"
-                   name="lastName" placeholder="Введите Вашу фамилию">
+                   name="lastName"
+                   placeholder="<fmt:message bundle="${jspMessages}"
+                   key="register.lastNameInput.placeholder"/>">
         </div>
         <div class="form-group form-inline col-9">
             <label for="birthdayInput" class="col-4 custom-form-label">
-                <c:out value="День рождения"/>
+                <fmt:message bundle="${jspMessages}"
+                             key="register.birthdayInputLabel"/>
             </label>
             <input type="date" class="form-control col-5" id="birthdayInput"
-                   name="birthday" placeholder="Введите Вашу дату рождения"
+                   name="birthday"
+                   placeholder="<fmt:message bundle="${jspMessages}"
+                   key="register.birthdayInput.placeholder"/>"
                    alt="Введите Вашу дату рождения">
         </div>
         <div class="form-group form-inline col-9">
             <label class="col-4 custom-form-label">
-                <c:out value="Пол"/>
+                <fmt:message bundle="${jspMessages}"
+                             key="register.GenderInputLabel"/>
             </label>
             <div class="form-control col-5 form-check form-check-inline">
-                <input type="radio" class="form-check-input" id="maleRadioInput"
+                <input type="radio" class="form-check-input"
+                       id="maleRadioInput"
                        name="gender" value="male">
                 <label for="maleRadioInput" class="form-check-label"
                        style="margin-right: 10px">
