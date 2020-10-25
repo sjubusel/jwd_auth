@@ -23,6 +23,9 @@
         <fmt:message bundle="${jspMessages}" key="all.htmlTitle"/>
     </title>
     <jsp:include page="structural_element/metahead.jsp"/>
+    <script src="../../js/jquery-3.5.1.js" type="text/javascript"></script>
+    <script src="../../js/jquery.maskedinput.js"
+            type="text/javascript"></script>
 </head>
 <body>
 
