@@ -55,7 +55,7 @@
                              key="register.loginInputLabel"/>
             </label>
             <input type="text" class="form-control col-5" id="loginInput"
-                   name="login"
+                   name="login" required
                    placeholder="<fmt:message bundle="${jspMessages}"
                    key="register.loginInput.placeholder"/>">
             <div id="loginIndent" class="col-4"></div>
@@ -70,7 +70,7 @@
                              key="register.passwordInputLabel"/>
             </label>
             <input type="password" class="form-control col-5"
-                   id="passwordInput" name="password"
+                   id="passwordInput" name="password" required
                    placeholder="<fmt:message bundle="${jspMessages}"
                    key="register.passwordInput.placeholder"/>">
             <div id="passwordIndent" class="col-4"></div>
@@ -85,7 +85,7 @@
                              key="register.emailInputLabel"/>
             </label>
             <input type="email" class="form-control col-5" id="emailInput"
-                   name="email" placeholder="xxxxx@xxxxx.xxx">
+                   name="email" required placeholder="xxxxx@xxxxx.xxx">
         </div>
         <div class="form-group form-inline col-9">
             <label for="phoneNumberCountryCodeInput"
@@ -97,13 +97,16 @@
             </label>
             <div class="row col-5 flex-end">
                 <input type="text" class="form-control col col-2"
-                       id="phoneNumberCountryCodeInput" name="phoneNumberCountryCode"
+                       id="phoneNumberCountryCodeInput"
+                       name="phoneNumberCountryCode"
                        placeholder="+XXX">
                 <input type="text" class="form-control col col-2"
-                       id="phoneNumberInnerCodeInput" name="phoneNumberInnerCode"
+                       id="phoneNumberInnerCodeInput"
+                       name="phoneNumberInnerCode"
                        placeholder="(XX)">
                 <input type="text" class="form-control col col-8"
-                       id="phoneNumberInnerNumberInput" name="phoneNumberInnerNumber"
+                       id="phoneNumberInnerNumberInput"
+                       name="phoneNumberInnerNumber"
                        placeholder="XXX-XX-XX">
             </div>
         </div>
@@ -113,7 +116,7 @@
                              key="register.firstNameInputLabel"/>
             </label>
             <input type="text" class="form-control col-5"
-                   id="firstNameInput" name="firstName"
+                   id="firstNameInput" name="firstName" required
                    placeholder="<fmt:message bundle="${jspMessages}"
                    key="register.firstNameInput.placeholder"/>">
         </div>
@@ -133,7 +136,7 @@
                              key="register.lastNameInputLabel"/>
             </label>
             <input type="text" class="form-control col-5" id="lastNameInput"
-                   name="lastName"
+                   name="lastName" required
                    placeholder="<fmt:message bundle="${jspMessages}"
                    key="register.lastNameInput.placeholder"/>">
         </div>
@@ -143,7 +146,7 @@
                              key="register.birthdayInputLabel"/>
             </label>
             <input type="date" class="form-control col-5" id="birthdayInput"
-                   name="birthday"
+                   name="birthday" required
                    placeholder="<fmt:message bundle="${jspMessages}"
                    key="register.birthdayInput.placeholder"/>"
                    alt="Введите Вашу дату рождения">
@@ -156,7 +159,7 @@
             <div class="form-control col-5 form-check form-check-inline">
                 <input type="radio" class="form-check-input"
                        id="maleRadioInput"
-                       name="gender" value="male">
+                       name="gender" value="male" checked>
                 <label for="maleRadioInput" class="form-check-label"
                        style="margin-right: 10px">
                     <fmt:message bundle="${jspMessages}"
