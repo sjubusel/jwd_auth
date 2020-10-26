@@ -1,6 +1,6 @@
 package by.epamtc.jwd.auth.web.util.impl.go_to;
 
-import by.epamtc.jwd.auth.model.constant.CommandPaths;
+import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.web.util.Command;
 
 import javax.servlet.ServletException;
@@ -12,6 +12,6 @@ public class GoToAboutUsCommand implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        req.getRequestDispatcher(CommandPaths.ABOUT_US_JSP).forward(req, res);
+        req.getRequestDispatcher(CommandPath.ABOUT_US_JSP).forward(req, res);
     }
 }

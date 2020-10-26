@@ -3,7 +3,7 @@ package by.epamtc.jwd.auth.web.util.impl.go_to;
 import by.epamtc.jwd.auth.web.util.Command;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
 import by.epamtc.jwd.auth.model.constant.AppParameter;
-import by.epamtc.jwd.auth.model.constant.CommandPaths;
+import by.epamtc.jwd.auth.model.constant.CommandPath;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,9 +22,9 @@ public class GoToLoginCommand implements Command {
         Object authUser = req.getSession()
                 .getAttribute(AppAttribute.SESSION_AUTH_DATA);
         if (authUser == null) {
-            req.getRequestDispatcher(CommandPaths.LOGIN_JSP).forward(req, res);
+            req.getRequestDispatcher(CommandPath.LOGIN_JSP).forward(req, res);
             return;
         }
-        res.sendRedirect(req.getContextPath() + CommandPaths.PROFILE_GET);
+        res.sendRedirect(req.getContextPath() + CommandPath.PROFILE_GET);
     }
 }

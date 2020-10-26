@@ -7,7 +7,7 @@ import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
 import by.epamtc.jwd.auth.model.constant.AppParameter;
-import by.epamtc.jwd.auth.model.constant.CommandPaths;
+import by.epamtc.jwd.auth.model.constant.CommandPath;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,17 +30,17 @@ public class LoginCommand implements Command {
             user = authUserService.login(login, passwordBytes);
         } catch (ServiceException e) {
             res.sendRedirect(req.getContextPath()
-                    + CommandPaths.LOGIN_TECH_ERROR);
+                    + CommandPath.LOGIN_TECH_ERROR);
             return;
         }
 
         if (user == null) {
             res.sendRedirect(req.getContextPath()
-                    + CommandPaths.LOGIN_SIMPLE_ERROR);
+                    + CommandPath.LOGIN_SIMPLE_ERROR);
             return;
         }
 
         req.getSession().setAttribute(AppAttribute.SESSION_AUTH_DATA, user);
-        res.sendRedirect(req.getContextPath() + CommandPaths.PROFILE_GET);
+        res.sendRedirect(req.getContextPath() + CommandPath.PROFILE_GET);
     }
 }

@@ -6,7 +6,7 @@ import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
-import by.epamtc.jwd.auth.model.constant.CommandPaths;
+import by.epamtc.jwd.auth.model.constant.CommandPath;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +30,6 @@ public class MainCommand implements Command {
         } catch (ServiceException e) {
             req.setAttribute(AppAttribute.REQUEST_MAIN_PAGE_ERROR, null);
         }
-        req.getRequestDispatcher(CommandPaths.MAIN_JSP).forward(req, res);
+        req.getRequestDispatcher(CommandPath.MAIN_JSP).forward(req, res);
     }
 }

@@ -11,7 +11,7 @@ import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
 import by.epamtc.jwd.auth.model.constant.AppParameter;
-import by.epamtc.jwd.auth.model.constant.CommandPaths;
+import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.web.util.RegistrationInfoCompiler;
 
 import javax.servlet.http.HttpServletRequest;
@@ -52,28 +52,28 @@ public class RegisterCommand implements Command {
             user = authUserService.register(login, password);
         } catch (AuthDataValidationServiceException e) {
             res.sendRedirect(req.getContextPath()
-                    + CommandPaths.REGISTER_AUTH_ERROR);
+                    + CommandPath.REGISTER_AUTH_ERROR);
             return;
         } catch (LoginValidationServiceException e) {
             res.sendRedirect(req.getContextPath()
-                    + CommandPaths.REGISTER_LOGIN_ERROR);
+                    + CommandPath.REGISTER_LOGIN_ERROR);
             return;
         } catch (PasswordValidationServiceException e) {
             res.sendRedirect(req.getContextPath()
-                    + CommandPaths.REGISTER_PASSWORD_ERROR);
+                    + CommandPath.REGISTER_PASSWORD_ERROR);
             return;
         } catch (ServiceException e) {
             res.sendRedirect(req.getContextPath()
-                    + CommandPaths.REGISTER_TECH_ERROR);
+                    + CommandPath.REGISTER_TECH_ERROR);
             return;
         }
 
         if (user != null) {
             req.getSession().setAttribute(AppAttribute.SESSION_AUTH_DATA, user);
-            res.sendRedirect(req.getContextPath() + CommandPaths.PROFILE_GET);
+            res.sendRedirect(req.getContextPath() + CommandPath.PROFILE_GET);
         } else {
             res.sendRedirect(req.getContextPath()
-                    + CommandPaths.REGISTER_DUPLICATE_ERROR);
+                    + CommandPath.REGISTER_DUPLICATE_ERROR);
         }
     }
 }

@@ -1,6 +1,6 @@
 package by.epamtc.jwd.auth.model.constant;
 
-public final class CommandPaths {
+public final class CommandPath {
     public static final String LOGIN_GET = "/main?command=go-to-login";
     public static final String PROFILE_GET = "/profile?command=go-to-profile";
     public static final String LOGIN_TECH_ERROR = "/main?command=go-to-login&error=tech";
@@ -21,6 +21,6 @@ public final class CommandPaths {
     public static final String PATIENTS_JSP = "/WEB-INF/jsp/patients.jsp";
     public static final String STAFF_JSP = "/WEB-INF/jsp/staff.jsp";
 
-    private CommandPaths() {
+    private CommandPath() {
     }
 }

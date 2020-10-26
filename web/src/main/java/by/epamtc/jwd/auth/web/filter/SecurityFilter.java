@@ -1,6 +1,6 @@
 package by.epamtc.jwd.auth.web.filter;
 
-import by.epamtc.jwd.auth.model.constant.CommandPaths;
+import by.epamtc.jwd.auth.model.constant.CommandPath;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +23,7 @@ public class SecurityFilter implements Filter {
             filterChain.doFilter(request, response);
         } else {
             response.sendRedirect(request.getContextPath()
-                    + CommandPaths.LOGIN_GET);
+                    + CommandPath.LOGIN_GET);
         }
     }
 }
