@@ -14,6 +14,7 @@
 <c:set var="activeMenuTab" value="signUp" scope="page"/>
 
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
+<fmt:setBundle basename="registrationRegExp" var="regEx"/>
 
 <html>
 <head>
@@ -57,7 +58,8 @@
             <input type="text" class="form-control col-5" id="loginInput"
                    name="login" required
                    placeholder="<fmt:message bundle="${jspMessages}"
-                   key="register.loginInput.placeholder"/>">
+                   key="register.loginInput.placeholder"/>"
+                   pattern="<fmt:message bundle="${regEx}" key="login"/>">
             <div id="loginIndent" class="col-4"></div>
             <small id="loginDescription" class="form-text text-muted col-5">
                 <fmt:message bundle="${jspMessages}"
@@ -72,7 +74,8 @@
             <input type="password" class="form-control col-5"
                    id="passwordInput" name="password" required
                    placeholder="<fmt:message bundle="${jspMessages}"
-                   key="register.passwordInput.placeholder"/>">
+                   key="register.passwordInput.placeholder"/>"
+                   pattern="<fmt:message bundle="${regEx}" key="password"/>">
             <div id="passwordIndent" class="col-4"></div>
             <small id="passwordDescription" class="form-text text-muted col-5">
                 <fmt:message bundle="${jspMessages}"
@@ -85,7 +88,8 @@
                              key="register.emailInputLabel"/>
             </label>
             <input type="email" class="form-control col-5" id="emailInput"
-                   name="email" required placeholder="xxxxx@xxxxx.xxx">
+                   name="email" required placeholder="xxxxx@xxxxx.xxx"
+                   pattern="<fmt:message bundle="${regEx}" key="email"/>">
         </div>
         <div class="form-group form-inline col-9">
             <label for="phoneNumberCountryCodeInput"
@@ -119,7 +123,8 @@
             <input type="text" class="form-control col-5"
                    id="firstNameInput" name="firstName" required
                    placeholder="<fmt:message bundle="${jspMessages}"
-                   key="register.firstNameInput.placeholder"/>">
+                   key="register.firstNameInput.placeholder"/>"
+                   pattern="<fmt:message bundle="${regEx}" key="anyName"/>">
         </div>
         <div class="form-group form-inline col-9">
             <label for="middleNameInput" class="col-4 custom-form-label">
@@ -129,7 +134,8 @@
             <input type="text" class="form-control col-5"
                    id="middleNameInput" name="middleName"
                    placeholder="<fmt:message bundle="${jspMessages}"
-                   key="register.middleNameInput.placeholder"/>">
+                   key="register.middleNameInput.placeholder"/>"
+                   pattern="<fmt:message bundle="${regEx}" key="anyName"/>">
         </div>
         <div class="form-group form-inline col-9">
             <label for="lastNameInput" class="col-4 custom-form-label">
@@ -139,7 +145,8 @@
             <input type="text" class="form-control col-5" id="lastNameInput"
                    name="lastName" required
                    placeholder="<fmt:message bundle="${jspMessages}"
-                   key="register.lastNameInput.placeholder"/>">
+                   key="register.lastNameInput.placeholder"/>"
+                   pattern="<fmt:message bundle="${regEx}" key="anyName"/>">
         </div>
         <div class="form-group form-inline col-9">
             <label for="birthdayInput" class="col-4 custom-form-label">
