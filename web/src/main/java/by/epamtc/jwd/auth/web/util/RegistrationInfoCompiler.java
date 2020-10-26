@@ -60,6 +60,12 @@ public class RegistrationInfoCompiler {
     }
 
     private Gender compileGenderEnum(String gender) {
+        Gender[] availableGenders = Gender.values();
+        for (Gender genderEnum : availableGenders) {
+            if (gender.equals(genderEnum.getGenderName())) {
+                return genderEnum;
+            }
+        }
         return null;
     }
 }
