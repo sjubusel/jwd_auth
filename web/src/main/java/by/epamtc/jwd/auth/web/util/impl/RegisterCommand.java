@@ -10,7 +10,7 @@ import by.epamtc.jwd.auth.service.exception.PasswordValidationServiceException;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
 import by.epamtc.jwd.auth.model.constant.AppAttributes;
-import by.epamtc.jwd.auth.model.constant.AppParameters;
+import by.epamtc.jwd.auth.model.constant.AppParameter;
 import by.epamtc.jwd.auth.model.constant.CommandPaths;
 import by.epamtc.jwd.auth.web.util.RegistrationInfoCompiler;
 
@@ -27,20 +27,20 @@ public class RegisterCommand implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws IOException {
-        String login = req.getParameter(AppParameters.LOGIN);
-        String password = req.getParameter(AppParameters.PASSWORD);
-        String email = req.getParameter(AppParameters.EMAIL);
-        String phoneNumberCountryCode = req.getParameter(AppParameters
+        String login = req.getParameter(AppParameter.LOGIN);
+        String password = req.getParameter(AppParameter.PASSWORD);
+        String email = req.getParameter(AppParameter.EMAIL);
+        String phoneNumberCountryCode = req.getParameter(AppParameter
                 .NUMBER_COUNTRY_CODE);
-        String phoneNumberInnerCode = req.getParameter(AppParameters
+        String phoneNumberInnerCode = req.getParameter(AppParameter
                 .NUMBER_INNER_CODE);
-        String phoneNumberInnerNumber = req.getParameter(AppParameters
+        String phoneNumberInnerNumber = req.getParameter(AppParameter
                 .INNER_NUMBER);
-        String firstName = req.getParameter(AppParameters.FIRST_NAME);
-        String middleName = req.getParameter(AppParameters.MIDDLE_NAME);
-        String lastName = req.getParameter(AppParameters.LAST_NAME);
-        String birthday = req.getParameter(AppParameters.BIRTHDAY);
-        String gender = req.getParameter(AppParameters.GENDER);
+        String firstName = req.getParameter(AppParameter.FIRST_NAME);
+        String middleName = req.getParameter(AppParameter.MIDDLE_NAME);
+        String lastName = req.getParameter(AppParameter.LAST_NAME);
+        String birthday = req.getParameter(AppParameter.BIRTHDAY);
+        String gender = req.getParameter(AppParameter.GENDER);
 
         AuthUser user;
         RegistrationInfo regInfo = regInfCompiler.compileRegInfo(login, password,

@@ -6,7 +6,7 @@ import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
 import by.epamtc.jwd.auth.model.constant.AppAttributes;
-import by.epamtc.jwd.auth.model.constant.AppParameters;
+import by.epamtc.jwd.auth.model.constant.AppParameter;
 import by.epamtc.jwd.auth.model.constant.CommandPaths;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,8 +21,8 @@ public class LoginCommand implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws IOException {
-        String login = req.getParameter(AppParameters.LOGIN);
-        String password = req.getParameter(AppParameters.PASSWORD);
+        String login = req.getParameter(AppParameter.LOGIN);
+        String password = req.getParameter(AppParameter.PASSWORD);
         byte[] passwordBytes = password.getBytes(StandardCharsets.UTF_8);
 
         AuthUser user;

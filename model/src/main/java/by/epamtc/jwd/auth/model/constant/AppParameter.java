@@ -1,7 +1,6 @@
 package by.epamtc.jwd.auth.model.constant;
 
-//TODO replace with singular
-public final class AppParameters {
+public final class AppParameter {
     public static final String COMMAND = "command";
     public static final String NEW_LANGUAGE = "language";
     public static final String REFERER = "Referer";
@@ -19,6 +18,6 @@ public final class AppParameters {
     public static final String BIRTHDAY = "birthday";
     public static final String GENDER = "gender";
 
-    private AppParameters() {
+    private AppParameter() {
     }
 }

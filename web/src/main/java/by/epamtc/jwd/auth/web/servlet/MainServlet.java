@@ -1,7 +1,7 @@
 package by.epamtc.jwd.auth.web.servlet;
 
 import by.epamtc.jwd.auth.web.util.CommandProvider;
-import by.epamtc.jwd.auth.model.constant.AppParameters;
+import by.epamtc.jwd.auth.model.constant.AppParameter;
 import by.epamtc.jwd.auth.model.constant.CommandName;
 
 import javax.servlet.ServletException;
@@ -30,7 +30,7 @@ public class MainServlet extends HttpServlet {
 
     private void process(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String command = req.getParameter(AppParameters.COMMAND);
+        String command = req.getParameter(AppParameter.COMMAND);
         if (command == null) {
             command = CommandName.MAIN;
         }
