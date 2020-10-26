@@ -2,8 +2,10 @@ package by.epamtc.jwd.auth.web.util;
 
 import by.epamtc.jwd.auth.model.auth_info.Gender;
 import by.epamtc.jwd.auth.model.auth_info.RegistrationInfo;
+import by.epamtc.jwd.auth.model.constant.AppParameter;
 import by.epamtc.jwd.auth.model.constant.UtilConstant;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -25,6 +27,27 @@ public class RegistrationInfoCompiler {
             }
         }
         return localInstance;
+    }
+
+    public RegistrationInfo compileRegInfo(HttpServletRequest req) {
+        String login = req.getParameter(AppParameter.LOGIN);
+        String password = req.getParameter(AppParameter.PASSWORD);
+        String email = req.getParameter(AppParameter.EMAIL);
+        String phoneNumberCountryCode = req.getParameter(AppParameter
+                .NUMBER_COUNTRY_CODE);
+        String phoneNumberInnerCode = req.getParameter(AppParameter
+                .NUMBER_INNER_CODE);
+        String phoneNumberInnerNumber = req.getParameter(AppParameter
+                .INNER_NUMBER);
+        String firstName = req.getParameter(AppParameter.FIRST_NAME);
+        String middleName = req.getParameter(AppParameter.MIDDLE_NAME);
+        String lastName = req.getParameter(AppParameter.LAST_NAME);
+        String birthday = req.getParameter(AppParameter.BIRTHDAY);
+        String gender = req.getParameter(AppParameter.GENDER);
+
+        return compileRegInfo(login, password, email, phoneNumberCountryCode,
+                phoneNumberInnerCode, phoneNumberInnerNumber, firstName,
+                middleName, lastName, birthday, gender);
     }
 
     public RegistrationInfo compileRegInfo(String login, String pass,

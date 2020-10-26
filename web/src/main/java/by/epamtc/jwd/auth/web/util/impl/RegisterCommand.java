@@ -10,7 +10,6 @@ import by.epamtc.jwd.auth.service.exception.PasswordValidationServiceException;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
-import by.epamtc.jwd.auth.model.constant.AppParameter;
 import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.web.util.RegistrationInfoCompiler;
 
@@ -27,26 +26,9 @@ public class RegisterCommand implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws IOException {
-        String login = req.getParameter(AppParameter.LOGIN);
-        String password = req.getParameter(AppParameter.PASSWORD);
-        String email = req.getParameter(AppParameter.EMAIL);
-        String phoneNumberCountryCode = req.getParameter(AppParameter
-                .NUMBER_COUNTRY_CODE);
-        String phoneNumberInnerCode = req.getParameter(AppParameter
-                .NUMBER_INNER_CODE);
-        String phoneNumberInnerNumber = req.getParameter(AppParameter
-                .INNER_NUMBER);
-        String firstName = req.getParameter(AppParameter.FIRST_NAME);
-        String middleName = req.getParameter(AppParameter.MIDDLE_NAME);
-        String lastName = req.getParameter(AppParameter.LAST_NAME);
-        String birthday = req.getParameter(AppParameter.BIRTHDAY);
-        String gender = req.getParameter(AppParameter.GENDER);
-
+        RegistrationInfo regInfo = regInfCompiler.compileRegInfo(req);
         AuthUser user;
-        RegistrationInfo regInfo = regInfCompiler.compileRegInfo(login, password,
-                email, phoneNumberCountryCode, phoneNumberInnerCode,
-                phoneNumberInnerNumber, firstName, middleName, lastName,
-                birthday, gender);
+
         // TODO Change register parameters
         try {
             user = authUserService.register(login, password);
