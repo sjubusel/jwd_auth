@@ -5,7 +5,7 @@ import by.epamtc.jwd.auth.service.HospitalReportService;
 import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
-import by.epamtc.jwd.auth.model.constant.AppAttributes;
+import by.epamtc.jwd.auth.model.constant.AppAttribute;
 import by.epamtc.jwd.auth.model.constant.CommandPaths;
 
 import javax.servlet.ServletException;
@@ -25,10 +25,10 @@ public class MainCommand implements Command {
         try {
             HospitalReport currentHospitalReport = hospitalReportService
                     .receiveHospitalFillability();
-            req.setAttribute(AppAttributes.REQUEST_MAIN_PAGE_REPORT,
+            req.setAttribute(AppAttribute.REQUEST_MAIN_PAGE_REPORT,
                     currentHospitalReport);
         } catch (ServiceException e) {
-            req.setAttribute(AppAttributes.REQUEST_MAIN_PAGE_ERROR, null);
+            req.setAttribute(AppAttribute.REQUEST_MAIN_PAGE_ERROR, null);
         }
         req.getRequestDispatcher(CommandPaths.MAIN_JSP).forward(req, res);
     }

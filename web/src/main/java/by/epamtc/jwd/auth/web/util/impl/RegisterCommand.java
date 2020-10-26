@@ -9,7 +9,7 @@ import by.epamtc.jwd.auth.service.exception.LoginValidationServiceException;
 import by.epamtc.jwd.auth.service.exception.PasswordValidationServiceException;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
-import by.epamtc.jwd.auth.model.constant.AppAttributes;
+import by.epamtc.jwd.auth.model.constant.AppAttribute;
 import by.epamtc.jwd.auth.model.constant.AppParameter;
 import by.epamtc.jwd.auth.model.constant.CommandPaths;
 import by.epamtc.jwd.auth.web.util.RegistrationInfoCompiler;
@@ -69,9 +69,8 @@ public class RegisterCommand implements Command {
         }
 
         if (user != null) {
-            req.getSession().setAttribute(AppAttributes.SESSION_AUTH_DATA, user);
-            res.sendRedirect(req.getContextPath()
-                    + CommandPaths.PROFILE_GET);
+            req.getSession().setAttribute(AppAttribute.SESSION_AUTH_DATA, user);
+            res.sendRedirect(req.getContextPath() + CommandPaths.PROFILE_GET);
         } else {
             res.sendRedirect(req.getContextPath()
                     + CommandPaths.REGISTER_DUPLICATE_ERROR);
