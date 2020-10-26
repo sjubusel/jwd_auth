@@ -1,5 +1,6 @@
 package by.epamtc.jwd.auth.service.exception;
 
+// TODO ??? delete
 public class AuthDataValidationServiceException extends ValidationServiceException {
 
     private static final long serialVersionUID = 6696806372677070381L;
