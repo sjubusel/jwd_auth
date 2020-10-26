@@ -19,7 +19,6 @@
             <groupId>by.epamtc.jwd.auth</groupId>
             <artifactId>service</artifactId>
             <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
