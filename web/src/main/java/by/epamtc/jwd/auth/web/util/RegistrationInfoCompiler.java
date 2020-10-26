@@ -53,7 +53,9 @@ public class RegistrationInfoCompiler {
     }
 
     private LocalDate compileBirthdayDate(String birthday) {
-
+        if (birthday.matches(String.valueOf(DateTimeFormatter.ISO_DATE))) {
+            return LocalDate.parse(birthday, DateTimeFormatter.ISO_DATE);
+        }
         return null;
     }
 
