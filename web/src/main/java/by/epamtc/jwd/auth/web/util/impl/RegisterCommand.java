@@ -29,22 +29,25 @@ public class RegisterCommand implements Command {
             throws IOException {
         String login = req.getParameter(AppParameters.LOGIN);
         String password = req.getParameter(AppParameters.PASSWORD);
-        String email = req.getParameter("email");
-        String phoneNumberCountryCode = req.getParameter("phoneNumberCountryCode");
-        String phoneNumberInnerCode = req.getParameter("phoneNumberInnerCode");
-        String phoneNumberInnerNumber = req.getParameter("phoneNumberInnerNumber");
-        String firstName = req.getParameter("firstName");
-        String middleName = req.getParameter("middleName");
-        String lastName = req.getParameter("lastName");
-        String birthday = req.getParameter("birthday");
-        String gender = req.getParameter("gender");
+        String email = req.getParameter(AppParameters.EMAIL);
+        String phoneNumberCountryCode = req.getParameter(AppParameters
+                .NUMBER_COUNTRY_CODE);
+        String phoneNumberInnerCode = req.getParameter(AppParameters
+                .NUMBER_INNER_CODE);
+        String phoneNumberInnerNumber = req.getParameter(AppParameters
+                .INNER_NUMBER);
+        String firstName = req.getParameter(AppParameters.FIRST_NAME);
+        String middleName = req.getParameter(AppParameters.MIDDLE_NAME);
+        String lastName = req.getParameter(AppParameters.LAST_NAME);
+        String birthday = req.getParameter(AppParameters.BIRTHDAY);
+        String gender = req.getParameter(AppParameters.GENDER);
 
         AuthUser user;
         RegistrationInfo regInfo = regInfCompiler.compileRegInfo(login, password,
                 email, phoneNumberCountryCode, phoneNumberInnerCode,
                 phoneNumberInnerNumber, firstName, middleName, lastName,
                 birthday, gender);
-
+        // TODO Change register parameters
         try {
             user = authUserService.register(login, password);
         } catch (AuthDataValidationServiceException e) {
