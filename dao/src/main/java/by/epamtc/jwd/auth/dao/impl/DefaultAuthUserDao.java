@@ -88,6 +88,12 @@ public class DefaultAuthUserDao implements AuthUserDao {
         }
     }
 
+    @Override
+    public boolean containsEmail(String email) {
+        // TODO realize stub
+        return false;
+    }
+
     private AuthUser receiveAuthUserIfCorrectFromDb(String login, byte[] pass,
             Connection conn, PreparedStatement stat, ResultSet rSet)
             throws SQLException {

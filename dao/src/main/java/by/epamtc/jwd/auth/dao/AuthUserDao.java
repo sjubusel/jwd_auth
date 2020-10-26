@@ -10,4 +10,6 @@ public interface AuthUserDao {
     int saveAuthUser(AuthUser user) throws DaoException;
 
     boolean containsLogin(String login) throws DaoException;
+
+    boolean containsEmail(String email);
 }
