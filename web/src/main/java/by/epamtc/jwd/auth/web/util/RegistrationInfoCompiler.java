@@ -2,6 +2,7 @@ package by.epamtc.jwd.auth.web.util;
 
 import by.epamtc.jwd.auth.model.auth_info.Gender;
 import by.epamtc.jwd.auth.model.auth_info.RegistrationInfo;
+import by.epamtc.jwd.auth.model.constant.UtilConstant;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -34,13 +35,21 @@ public class RegistrationInfoCompiler {
                 phoneInnerNumber);
         LocalDate birthdayDate = compileBirthdayDate(birthday);
         Gender genderEnum = compileGenderEnum(gender);
-        return new RegistrationInfo();
+        return new RegistrationInfo(login, pass, email, phoneNumber, firstName,
+                middleName, lastName, birthdayDate, genderEnum);
     }
 
-    public String compilePhoneNumber(String phoneCountryCode,
+    private String compilePhoneNumber(String phoneCountryCode,
             String phoneInnerCode, String phoneInnerNumber) {
-
-        return null;
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(phoneCountryCode)
+                .append(UtilConstant.ONE_WHITESPACE)
+                .append(UtilConstant.OPENING_PARENTHESIS)
+                .append(phoneInnerCode)
+                .append(UtilConstant.CLOSING_PARENTHESIS)
+                .append(UtilConstant.ONE_WHITESPACE)
+                .append(phoneInnerNumber);
+        return new String(stringBuilder);
     }
 
     private LocalDate compileBirthdayDate(String birthday) {
