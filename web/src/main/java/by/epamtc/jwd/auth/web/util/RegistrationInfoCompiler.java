@@ -76,10 +76,14 @@ public class RegistrationInfoCompiler {
     }
 
     private LocalDate compileBirthdayDate(String birthday) {
-        if (birthday.matches(String.valueOf(DateTimeFormatter.ISO_DATE))) {
-            return LocalDate.parse(birthday, DateTimeFormatter.ISO_DATE);
+        LocalDate birthdayDate = null;
+        try {
+            birthdayDate = LocalDate.parse(birthday, DateTimeFormatter.ISO_DATE);
+        } catch (Exception e) {
+            // TODO add log4j announcement, because this situation is available only when someone wants to hack the system
+            e.printStackTrace();
         }
-        return null;
+        return birthdayDate;
     }
 
     private Gender compileGenderEnum(String gender) {
