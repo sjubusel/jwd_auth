@@ -29,9 +29,8 @@ public class RegisterCommand implements Command {
         RegistrationInfo regInfo = regInfCompiler.compileRegInfo(req);
         AuthUser user;
 
-        // TODO Change register parameters
         try {
-            user = authUserService.register(login, password);
+            user = authUserService.register(regInfo);
         } catch (AuthDataValidationServiceException e) {
             res.sendRedirect(req.getContextPath()
                     + CommandPath.REGISTER_AUTH_ERROR);
