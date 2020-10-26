@@ -52,8 +52,8 @@ public class RegistrationInfoValidator {
         if (password == null) {
             return false;
         }
-        return (password.length() >= 6) && password
-                .matches(RegistrationInfoPattern.PASSWORD);
+        return (password.length() >= 6) && (password.length() <= 255) &&
+                password.matches(RegistrationInfoPattern.PASSWORD);
     }
 
     // TODO add a description in a property file
