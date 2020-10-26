@@ -99,19 +99,18 @@
                 <fmt:message bundle="${jspMessages}"
                              key="register.phoneNumberInputLabel"/>
             </label>
-            <%-- TODO consider if required is necessary  --%>
             <div class="row col-5 flex-end">
                 <input type="text" class="form-control col col-2"
                        id="phoneNumberCountryCodeInput"
-                       name="phoneNumberCountryCode"
+                       name="phoneNumberCountryCode" required
                        placeholder="+XXX">
                 <input type="text" class="form-control col col-2"
                        id="phoneNumberInnerCodeInput"
-                       name="phoneNumberInnerCode"
+                       name="phoneNumberInnerCode" required
                        placeholder="(XX)">
                 <input type="text" class="form-control col col-8"
                        id="phoneNumberInnerNumberInput"
-                       name="phoneNumberInnerNumber"
+                       name="phoneNumberInnerNumber" required
                        placeholder="XXX-XX-XX">
             </div>
         </div>
