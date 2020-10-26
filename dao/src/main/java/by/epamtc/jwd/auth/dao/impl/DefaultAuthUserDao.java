@@ -5,6 +5,7 @@ import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.dao.pool.ConnectionPool;
 import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
+import by.epamtc.jwd.auth.model.auth_info.RegistrationInfo;
 import by.epamtc.jwd.auth.model.auth_info.Role;
 
 import java.nio.charset.StandardCharsets;
@@ -40,29 +41,30 @@ public class DefaultAuthUserDao implements AuthUserDao {
     }
 
     @Override
-    public int saveAuthUser(AuthUser user) throws DaoException {
-        Connection conn = null;
-        PreparedStatement stat = null;
-
-        try {
-            conn = pool.takeConnection();
-            PreparedStatement statement = conn.prepareStatement("INSERT " +
-                    "INTO hospital.stub_auth_user " +
-                    "(login, password, role)" +
-                    "VALUES (?,?,?)");
-            statement.setString(1, user.getLogin());
-            statement.setString(2, user.getPassword());
-            statement.setString(3, user.getRole().toString());
-            return statement.executeUpdate();
-        } catch (SQLException e) {
-            throw new DaoException("An error while inserting data into DB " +
-                    "(auth_user)", e);
-        } catch (ConnectionPoolException e) {
-            throw new DaoException("An error while taking a connection from " +
-                    "the connection pool during registration", e);
-        } finally {
-            pool.closeConnection(conn, stat);
-        }
+    public AuthUser saveAuthUser(RegistrationInfo registrationInfo) throws DaoException {
+//        Connection conn = null;
+//        PreparedStatement stat = null;
+//
+//        try {
+//            conn = pool.takeConnection();
+//            PreparedStatement statement = conn.prepareStatement("INSERT " +
+//                    "INTO hospital.stub_auth_user " +
+//                    "(login, password, role)" +
+//                    "VALUES (?,?,?)");
+//            statement.setString(1, user.getLogin());
+//            statement.setString(2, user.getPassword());
+//            statement.setString(3, user.getRole().toString());
+//            return statement.executeUpdate();
+//        } catch (SQLException e) {
+//            throw new DaoException("An error while inserting data into DB " +
+//                    "(auth_user)", e);
+//        } catch (ConnectionPoolException e) {
+//            throw new DaoException("An error while taking a connection from " +
+//                    "the connection pool during registration", e);
+//        } finally {
+//            pool.closeConnection(conn, stat);
+//        }
+        return null;
     }
 
     @Override
