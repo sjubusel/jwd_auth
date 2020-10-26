@@ -221,7 +221,6 @@
                                  key="register.duplicateError"/>
                 </c:when>
                 <c:otherwise>
-                    <%-- TODO ошибка в properties in English "sign IN"--%>
                     <fmt:message bundle="${jspMessages}"
                                  key="register.techError"/>
                 </c:otherwise>
