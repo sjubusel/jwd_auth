@@ -63,7 +63,7 @@ register.birthdayInputLabel=Birthday
 register.birthdayInput.placeholder=Insert your birthday
 register.GenderInputLabel=Gender
 register.loginDescription=Latin characters, digits, "_", ".", "-"
-register.passwordDescription=Latin/Cyrillic characters, digits, "!?:;,."'@#$%^&*()-_+"-characters
+register.passwordDescription=Latin/Cyrillic characters, digits, "!?:;,.@#$%^&*()-_+"-characters
 
 languageButtonBar.currentLang=English
 languageButtonBar.firstLanguageNaming=рус

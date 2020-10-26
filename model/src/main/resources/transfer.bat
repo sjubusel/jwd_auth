@@ -1,1 +1,0 @@
-native2ascii -encoding utf-8 registrationRegExp.txt registrationRegExp.properties
