@@ -6,9 +6,6 @@ import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
 
 import java.time.LocalDate;
 
-/* TODO consider creation of ConstClass Singleton which will get values from
-    "properties", that are also used in JSP-file "register.jsp"
-*/
 public class RegistrationInfoValidator {
     public boolean isRegistrationInfoValid(RegistrationInfo regInfo) {
         if (!isLoginValid(regInfo.getLogin())) {
