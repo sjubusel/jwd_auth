@@ -71,12 +71,10 @@ public class DefaultAuthUserDao implements AuthUserDao {
     public boolean containsLogin(String login) throws DaoException {
         Connection conn = null;
         PreparedStatement stat = null;
-
         try {
             conn = pool.takeConnection();
-            stat = conn.prepareStatement("SELECT login " +
-                    "FROM hospital.stub_auth_user " +
-                    "WHERE login = ?");
+            stat = conn.prepareStatement("SELECT login FROM " +
+                    "hospital.auth_user WHERE login = ?");
             stat.setString(1, login);
             return stat.executeQuery().next();
         } catch (SQLException e) {
@@ -91,9 +89,24 @@ public class DefaultAuthUserDao implements AuthUserDao {
     }
 
     @Override
-    public boolean containsEmail(String email) {
-        // TODO realize stub
-        return false;
+    public boolean containsEmail(String email) throws DaoException {
+        Connection conn = null;
+        PreparedStatement stat = null;
+        try {
+            conn = pool.takeConnection();
+            stat = conn.prepareStatement("SELECT login FROM " +
+                    "hospital.auth_user WHERE email = ?");
+            stat.setString(1, email);
+            return stat.executeQuery().next();
+        } catch (SQLException e) {
+            throw new DaoException("An error while fetching email from " +
+                    "DB(auth_user", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection from " +
+                    "the connection pool during email verification", e);
+        } finally {
+            pool.closeConnection(conn, stat);
+        }
     }
 
     private AuthUser receiveAuthUserIfCorrectFromDb(String login, byte[] pass,
