@@ -1,42 +1,27 @@
 package by.epamtc.jwd.auth.model.auth_info;
 
-// TODO private static final long serialVersionUID after class completion
-// TODO refactor bean
 public class AuthUser implements java.io.Serializable {
+    private static final long serialVersionUID = 5835991888957557124L;
     private int id;
-    // TODO add first name, middle name, last name
-    // TODO delete login
-    private String login;
-    // TODO delete password
-    private String password;
+    private String firstName;
+    private String middleName;
+    private String lastName;
     private Role role;
-    private int staffId;
     private int userId;
+    private int staffId;
 
     public AuthUser() {
     }
 
-    public AuthUser(int id, String login, String password, Role role, int staffId, int userId) {
+    public AuthUser(int id, String firstName, String middleName,
+            String lastName, Role role, int userId, int staffId) {
         this.id = id;
-        this.login = login;
-        this.password = password;
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
         this.role = role;
-        this.staffId = staffId;
         this.userId = userId;
-    }
-
-    public AuthUser(int id, String login, Role role, int staffId, int userId) {
-        this.id = id;
-        this.login = login;
-        this.role = role;
         this.staffId = staffId;
-        this.userId = userId;
-    }
-
-    public AuthUser(String login, String password, Role role) {
-        this.login = login;
-        this.password = password;
-        this.role = role;
     }
 
     public int getId() {
@@ -47,20 +32,28 @@ public class AuthUser implements java.io.Serializable {
         this.id = id;
     }
 
-    public String getLogin() {
-        return login;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getMiddleName() {
+        return middleName;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public Role getRole() {
@@ -71,14 +64,6 @@ public class AuthUser implements java.io.Serializable {
         this.role = role;
     }
 
-    public int getStaffId() {
-        return staffId;
-    }
-
-    public void setStaffId(int staffId) {
-        this.staffId = staffId;
-    }
-
     public int getUserId() {
         return userId;
     }
@@ -87,12 +72,20 @@ public class AuthUser implements java.io.Serializable {
         this.userId = userId;
     }
 
+    public int getStaffId() {
+        return staffId;
+    }
+
+    public void setStaffId(int staffId) {
+        this.staffId = staffId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
         }
-        if (o == null || getClass() != o.getClass()) {
+        if ((o == null) || (getClass() != o.getClass())) {
             return false;
         }
 
@@ -101,29 +94,37 @@ public class AuthUser implements java.io.Serializable {
         if (id != authUser.id) {
             return false;
         }
-        if (staffId != authUser.staffId) {
+        if (((firstName == null) && (authUser.firstName != null))
+                || ((firstName != null) && !firstName.equals(authUser.firstName))) {
+            return false;
+        }
+        if (((middleName == null) && (authUser.middleName != null))
+                || ((middleName != null) && !middleName.equals(authUser.middleName)))
+            return false;
+        if (((lastName == null) && (authUser.lastName != null))
+                || ((lastName != null) && !lastName.equals(authUser.lastName))) {
+            return false;
+        }
+        if ((role == null && authUser.role != null)
+                || (role != null && role != authUser.role)) {
             return false;
         }
         if (userId != authUser.userId) {
             return false;
         }
-        if (!login.equals(authUser.login)) {
-            return false;
-        }
-        if (!password.equals(authUser.password)) {
-            return false;
-        }
-        return role == authUser.role;
+        return staffId == authUser.staffId;
     }
 
     @Override
     public int hashCode() {
         int hash = 17;
-        hash = 31 * hash + (login != null ? login.hashCode() : 0);
-        hash = 31 * hash + (password != null ? password.hashCode() : 0);
-        hash = 31 * hash + (role != null ? role.hashCode() : 0);
-        hash = 31 * hash + staffId;
+        hash = 31 * hash + id;
+        hash = 31 * hash + ((firstName == null) ? 0 : firstName.hashCode());
+        hash = 31 * hash + ((middleName == null) ? 0 : middleName.hashCode());
+        hash = 31 * hash + ((lastName == null) ? 0 : lastName.hashCode());
+        hash = 31 * hash + ((role == null) ? 0 : role.hashCode());
         hash = 31 * hash + userId;
+        hash = 31 * hash + staffId;
         return hash;
     }
 
@@ -131,11 +132,12 @@ public class AuthUser implements java.io.Serializable {
     public String toString() {
         return "AuthUser{" +
                 "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", role=" + role +
-                ", staffId=" + staffId +
                 ", userId=" + userId +
+                ", staffId=" + staffId +
                 '}';
     }
 }
