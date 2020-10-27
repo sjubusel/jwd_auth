@@ -1,6 +1,6 @@
 package by.epamtc.jwd.auth.model.constant;
 
-public final class UtilConstant {
+public final class AppConstant {
     public static final String ONE_WHITESPACE = " ";
     public static final String OPENING_PARENTHESIS = "(";
     public static final String CLOSING_PARENTHESIS = ")";
@@ -13,6 +13,6 @@ public final class UtilConstant {
     public static final int OLDEST_PERSON_BIRTH_DAY = 2;
 
 
-    private UtilConstant() {
+    private AppConstant() {
     }
 }

@@ -3,7 +3,7 @@ package by.epamtc.jwd.auth.web.util;
 import by.epamtc.jwd.auth.model.auth_info.Gender;
 import by.epamtc.jwd.auth.model.auth_info.RegistrationInfo;
 import by.epamtc.jwd.auth.model.constant.AppParameter;
-import by.epamtc.jwd.auth.model.constant.UtilConstant;
+import by.epamtc.jwd.auth.model.constant.AppConstant;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
@@ -66,11 +66,11 @@ public class RegistrationInfoCompiler {
             String phoneInnerCode, String phoneInnerNumber) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(phoneCountryCode)
-                .append(UtilConstant.ONE_WHITESPACE)
-                .append(UtilConstant.OPENING_PARENTHESIS)
+                .append(AppConstant.ONE_WHITESPACE)
+                .append(AppConstant.OPENING_PARENTHESIS)
                 .append(phoneInnerCode)
-                .append(UtilConstant.CLOSING_PARENTHESIS)
-                .append(UtilConstant.ONE_WHITESPACE)
+                .append(AppConstant.CLOSING_PARENTHESIS)
+                .append(AppConstant.ONE_WHITESPACE)
                 .append(phoneInnerNumber);
         return new String(stringBuilder);
     }

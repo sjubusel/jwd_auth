@@ -3,7 +3,7 @@ package by.epamtc.jwd.auth.service.validation;
 import by.epamtc.jwd.auth.model.auth_info.Gender;
 import by.epamtc.jwd.auth.model.auth_info.RegistrationInfo;
 import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
-import by.epamtc.jwd.auth.model.constant.UtilConstant;
+import by.epamtc.jwd.auth.model.constant.AppConstant;
 
 import java.time.LocalDate;
 
@@ -40,8 +40,8 @@ public class RegistrationInfoValidator {
         if (login == null) {
             return false;
         }
-        return (login.length() >= UtilConstant.LOGIN_MIN_LENGTH)
-                && (login.length() <= UtilConstant.LOGIN_MAX_LENGTH)
+        return (login.length() >= AppConstant.LOGIN_MIN_LENGTH)
+                && (login.length() <= AppConstant.LOGIN_MAX_LENGTH)
                 && login.matches(RegistrationInfoPattern.LOGIN);
     }
 
@@ -49,8 +49,8 @@ public class RegistrationInfoValidator {
         if (password == null) {
             return false;
         }
-        return (password.length() >= UtilConstant.PASSWORD_MIN_LENGTH)
-                && (password.length() <= UtilConstant.PASSWORD_MAX_LENGTH)
+        return (password.length() >= AppConstant.PASSWORD_MIN_LENGTH)
+                && (password.length() <= AppConstant.PASSWORD_MAX_LENGTH)
                 && password.matches(RegistrationInfoPattern.PASSWORD);
     }
 
@@ -93,10 +93,10 @@ public class RegistrationInfoValidator {
         if (birthday == null) {
             return false;
         }
-        LocalDate birthdayOfOlderPersonAlive = LocalDate.of(UtilConstant
+        LocalDate birthdayOfOlderPersonAlive = LocalDate.of(AppConstant
                         .OLDEST_PERSON_BIRTH_YEAR,
-                UtilConstant.OLDEST_PERSON_BIRTH_MONTH,
-                UtilConstant.OLDEST_PERSON_BIRTH_DAY);
+                AppConstant.OLDEST_PERSON_BIRTH_MONTH,
+                AppConstant.OLDEST_PERSON_BIRTH_DAY);
         return (birthday.compareTo(birthdayOfOlderPersonAlive) >= 0)
                 && (birthday.compareTo(LocalDate.now()) <= 0);
     }
