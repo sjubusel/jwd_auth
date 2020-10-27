@@ -39,6 +39,7 @@ public class RegistrationInfoValidator {
         if (login == null) {
             return false;
         }
+        // TODO change magic values with consts
         return (login.length() >= 3) && (login.length() <= 20)
                 && login.matches(RegistrationInfoPattern.LOGIN);
     }
@@ -47,6 +48,7 @@ public class RegistrationInfoValidator {
         if (password == null) {
             return false;
         }
+        // TODO change magic values with consts
         return (password.length() >= 6) && (password.length() <= 255) &&
                 password.matches(RegistrationInfoPattern.PASSWORD);
     }
