@@ -44,7 +44,6 @@ public class RegistrationInfoValidator {
     }
 
     public boolean isPasswordValid(String password) {
-        // TODO add about length in properties PASS_INPUT_DESCRIPTION
         if (password == null) {
             return false;
         }

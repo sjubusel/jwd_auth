@@ -63,7 +63,7 @@ register.birthdayInputLabel=Birthday
 register.birthdayInput.placeholder=Insert your birthday
 register.GenderInputLabel=Gender
 register.loginDescription=Latin characters, digits, "_", ".", "-" (Length should be at least 3 and not more than 20 (including) characters)
-register.passwordDescription=Latin/Cyrillic characters, digits, "!?:;,.@#$%^&*()-_+"-characters
+register.passwordDescription=Latin/Cyrillic characters, digits, "!?:;,.@#$%^&*()-_+"-characters (Length should be at least 6 and not more than 255 (including) characters)
 
 languageButtonBar.currentLang=English
 languageButtonBar.firstLanguageNaming=рус
