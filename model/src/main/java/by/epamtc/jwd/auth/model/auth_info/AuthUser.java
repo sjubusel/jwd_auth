@@ -25,6 +25,20 @@ public class AuthUser implements java.io.Serializable {
         this.staffId = staffId;
     }
 
+    /**
+     * a special constructor which is used in order to show that authUser
+     * with such login or/and email exists
+     *
+     * @param id     if id has a value of "-1" this will mean that
+     *               an authUser with a login exists
+     * @param userId if userId has a value of "-1" this will mean that
+     *               an authUser with an email exists
+     */
+    public AuthUser(int id, int userId) {
+        this.id = id;
+        this.userId = userId;
+    }
+
     public int getId() {
         return id;
     }

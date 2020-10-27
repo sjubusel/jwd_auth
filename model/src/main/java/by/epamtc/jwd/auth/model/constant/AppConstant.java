@@ -11,6 +11,9 @@ public final class AppConstant {
     public static final int OLDEST_PERSON_BIRTH_YEAR = 1903;
     public static final int OLDEST_PERSON_BIRTH_MONTH = 1;
     public static final int OLDEST_PERSON_BIRTH_DAY = 2;
+    public static final int DUPLICATE_AUTH_USER_LOGIN_ID = -1;
+    public static final int DUPLICATE_AUTH_USER_EMAIL_ID = -1;
+    public static final int AUTH_USER_STANDARD_INT_VALUE = 0;
 
 
     private AppConstant() {
