@@ -4,36 +4,46 @@ import by.epamtc.jwd.auth.model.auth_info.Gender;
 import by.epamtc.jwd.auth.model.auth_info.RegistrationInfo;
 import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
+import by.epamtc.jwd.auth.service.exception.ValidationServiceException;
 
 import java.time.LocalDate;
 
+/**
+ * ValidationServiceExceptions are thrown because it is an exceptional case
+ * and by default the same validation is performed on the client-side
+ * (input pattern activity)
+ */
 public class RegistrationInfoValidator {
-    public boolean isRegistrationInfoValid(RegistrationInfo regInfo) {
+    public boolean isRegistrationInfoValid(RegistrationInfo regInfo)
+            throws ValidationServiceException {
         if (!isLoginValid(regInfo.getLogin())) {
-            return false;
+            throw new ValidationServiceException("INVALID LOGIN FORMAT");
         }
         if (!isPasswordValid(regInfo.getPassword())) {
-            return false;
+            throw new ValidationServiceException("INVALID PASSWORD FORMAT");
         }
         if (!isEmailValid(regInfo.getEmail())) {
-            return false;
+            throw new ValidationServiceException("INVALID EMAIL FORMAT");
         }
         if (!isPhoneValid(regInfo.getPhoneNumber())) {
-            return false;
+            throw new ValidationServiceException("INVALID PHONE FORMAT");
         }
         if (!isFirstNameValid(regInfo.getFirstName())) {
-            return false;
+            throw new ValidationServiceException("INVALID FIRST NAME FORMAT");
         }
         if (!isMiddleNameValid(regInfo.getMiddleName())) {
-            return false;
+            throw new ValidationServiceException("INVALID MIDDLE NAME FORMAT");
         }
         if (!isLastNameValid(regInfo.getLastName())) {
-            return false;
+            throw new ValidationServiceException("INVALID LAST NAME FORMAT");
         }
         if (!isBirthdayDateValid(regInfo.getBirthday())) {
-            return false;
+            throw new ValidationServiceException("INVALID BIRTHDAY FORMAT");
         }
-        return isGenderValid(regInfo.getGender());
+        if (!isGenderValid(regInfo.getGender())) {
+            throw new ValidationServiceException("INVALID GENDER FORMAT");
+        }
+        return true;
     }
 
     public boolean isLoginValid(String login) {
