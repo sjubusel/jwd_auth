@@ -129,6 +129,11 @@
                    placeholder="<fmt:message bundle="${jspMessages}"
                    key="register.firstNameInput.placeholder"/>"
                    pattern="<fmt:message bundle="${regEx}" key="anyName"/>">
+            <div id="firstNameIndent" class="col-4"></div>
+            <small id="firstNameDescription" class="form-text text-muted col-5">
+                <fmt:message bundle="${jspMessages}"
+                             key="register.anyNameDescription"/>
+            </small>
         </div>
         <div class="form-group form-inline col-9">
             <label for="middleNameInput" class="col-4 custom-form-label">
@@ -140,6 +145,12 @@
                    placeholder="<fmt:message bundle="${jspMessages}"
                    key="register.middleNameInput.placeholder"/>"
                    pattern="<fmt:message bundle="${regEx}" key="anyName"/>">
+            <div id="middleNameIndent" class="col-4"></div>
+            <small id="middleNameDescription"
+                   class="form-text text-muted col-5">
+                <fmt:message bundle="${jspMessages}"
+                             key="register.anyNameDescription"/>
+            </small>
         </div>
         <div class="form-group form-inline col-9">
             <label for="lastNameInput" class="col-4 custom-form-label">
@@ -151,6 +162,11 @@
                    placeholder="<fmt:message bundle="${jspMessages}"
                    key="register.lastNameInput.placeholder"/>"
                    pattern="<fmt:message bundle="${regEx}" key="anyName"/>">
+            <div id="lastNameIndent" class="col-4"></div>
+            <small id="lastNameDescription" class="form-text text-muted col-5">
+                <fmt:message bundle="${jspMessages}"
+                             key="register.anyNameDescription"/>
+            </small>
         </div>
         <div class="form-group form-inline col-9">
             <label for="birthdayInput" class="col-4 custom-form-label">

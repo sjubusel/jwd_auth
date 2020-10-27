@@ -67,7 +67,6 @@ public class RegistrationInfoValidator {
         return phoneNumber.matches(RegistrationInfoPattern.PHONE_NUMBER);
     }
 
-    // TODO add a description in a property file
     private boolean isFirstNameValid(String firstName) {
         if (firstName == null) {
             return false;
