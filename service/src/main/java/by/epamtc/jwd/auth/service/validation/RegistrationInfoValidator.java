@@ -8,42 +8,34 @@ import by.epamtc.jwd.auth.service.exception.ValidationServiceException;
 
 import java.time.LocalDate;
 
-/**
- * ValidationServiceExceptions are thrown because it is an exceptional case
- * and by default the same validation is performed on the client-side
- * (input pattern activity)
- */
 public class RegistrationInfoValidator {
     public boolean isRegistrationInfoValid(RegistrationInfo regInfo)
             throws ValidationServiceException {
         if (!isLoginValid(regInfo.getLogin())) {
-            throw new ValidationServiceException("INVALID LOGIN FORMAT");
+            return false;
         }
         if (!isPasswordValid(regInfo.getPassword())) {
-            throw new ValidationServiceException("INVALID PASSWORD FORMAT");
+            return false;
         }
         if (!isEmailValid(regInfo.getEmail())) {
-            throw new ValidationServiceException("INVALID EMAIL FORMAT");
+            return false;
         }
         if (!isPhoneValid(regInfo.getPhoneNumber())) {
-            throw new ValidationServiceException("INVALID PHONE FORMAT");
+            return false;
         }
         if (!isFirstNameValid(regInfo.getFirstName())) {
-            throw new ValidationServiceException("INVALID FIRST NAME FORMAT");
+            return false;
         }
         if (!isMiddleNameValid(regInfo.getMiddleName())) {
-            throw new ValidationServiceException("INVALID MIDDLE NAME FORMAT");
+            return false;
         }
         if (!isLastNameValid(regInfo.getLastName())) {
-            throw new ValidationServiceException("INVALID LAST NAME FORMAT");
+            return false;
         }
         if (!isBirthdayDateValid(regInfo.getBirthday())) {
-            throw new ValidationServiceException("INVALID BIRTHDAY FORMAT");
+            return false;
         }
-        if (!isGenderValid(regInfo.getGender())) {
-            throw new ValidationServiceException("INVALID GENDER FORMAT");
-        }
-        return true;
+        return isGenderValid(regInfo.getGender());
     }
 
     public boolean isLoginValid(String login) {
