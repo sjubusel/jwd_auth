@@ -2,6 +2,7 @@ package by.epamtc.jwd.auth.model.auth_info;
 
 public class AuthUser implements java.io.Serializable {
     private static final long serialVersionUID = 5835991888957557124L;
+
     private int id;
     private String firstName;
     private String middleName;
@@ -22,6 +23,20 @@ public class AuthUser implements java.io.Serializable {
         this.role = role;
         this.userId = userId;
         this.staffId = staffId;
+    }
+
+    /**
+     * a special constructor which is used in order to show that authUser
+     * with such login or/and email exists
+     *
+     * @param id     if id has a value of "-1" this will mean that
+     *               an authUser with a login exists
+     * @param userId if userId has a value of "-1" this will mean that
+     *               an authUser with an email exists
+     */
+    public AuthUser(int id, int userId) {
+        this.id = id;
+        this.userId = userId;
     }
 
     public int getId() {
