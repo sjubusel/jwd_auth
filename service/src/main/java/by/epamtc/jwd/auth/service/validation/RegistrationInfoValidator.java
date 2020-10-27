@@ -3,6 +3,7 @@ package by.epamtc.jwd.auth.service.validation;
 import by.epamtc.jwd.auth.model.auth_info.Gender;
 import by.epamtc.jwd.auth.model.auth_info.RegistrationInfo;
 import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
+import by.epamtc.jwd.auth.model.constant.UtilConstant;
 
 import java.time.LocalDate;
 
@@ -39,8 +40,8 @@ public class RegistrationInfoValidator {
         if (login == null) {
             return false;
         }
-        // TODO change magic values with consts
-        return (login.length() >= 3) && (login.length() <= 20)
+        return (login.length() >= UtilConstant.LOGIN_MIN_LENGTH)
+                && (login.length() <= UtilConstant.LOGIN_MAX_LENGTH)
                 && login.matches(RegistrationInfoPattern.LOGIN);
     }
 
@@ -48,9 +49,9 @@ public class RegistrationInfoValidator {
         if (password == null) {
             return false;
         }
-        // TODO change magic values with consts
-        return (password.length() >= 6) && (password.length() <= 255) &&
-                password.matches(RegistrationInfoPattern.PASSWORD);
+        return (password.length() >= UtilConstant.PASSWORD_MIN_LENGTH)
+                && (password.length() <= UtilConstant.PASSWORD_MAX_LENGTH)
+                && password.matches(RegistrationInfoPattern.PASSWORD);
     }
 
     private boolean isEmailValid(String email) {
