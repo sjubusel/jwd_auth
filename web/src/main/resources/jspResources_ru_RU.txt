@@ -64,6 +64,7 @@ register.birthdayInput.placeholder=Введите Вашу дату рожден
 register.GenderInputLabel=Пол
 register.loginDescription=Буквы латинского алфавита, цифры, "_", ".", "-" (Длина должна быть не менее 3 и не более 20 (включая) символов)
 register.passwordDescription=Буквы латинского алфавита, кириллица, цифры, "!?:;,.@#$%^&*()-_+"-символы (Длина должна быть не менее 6 и не более 255 (включая) символов)
+register.emailDescription=Буквы латинского алфавита, цифры, ".", "_" символы
 
 languageButtonBar.currentLang=Русский
 languageButtonBar.firstLanguageNaming=рус

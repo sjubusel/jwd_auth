@@ -90,6 +90,11 @@
             <input type="email" class="form-control col-5" id="emailInput"
                    name="email" required placeholder="xxxxx@xxxxx.xxx"
                    pattern="<fmt:message bundle="${regEx}" key="email"/>">
+            <div id="emailIndent" class="col-4"></div>
+            <small id="emailDescription" class="form-text text-muted col-5">
+                <fmt:message bundle="${jspMessages}"
+                             key="register.emailDescription"/>
+            </small>
         </div>
         <div class="form-group form-inline col-9">
             <label for="phoneNumberCountryCodeInput"

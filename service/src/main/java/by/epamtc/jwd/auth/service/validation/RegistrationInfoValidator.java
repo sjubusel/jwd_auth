@@ -53,7 +53,6 @@ public class RegistrationInfoValidator {
                 password.matches(RegistrationInfoPattern.PASSWORD);
     }
 
-    // TODO add a description in a property file
     private boolean isEmailValid(String email) {
         if (email == null) {
             return false;
