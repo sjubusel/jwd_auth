@@ -39,7 +39,6 @@ public class RegistrationInfoValidator {
         if (login == null) {
             return false;
         }
-        // TODO add about length in properties LOGIN_INPUT_DESCRIPTION
         return (login.length() >= 3) && (login.length() <= 20)
                 && login.matches(RegistrationInfoPattern.LOGIN);
     }
