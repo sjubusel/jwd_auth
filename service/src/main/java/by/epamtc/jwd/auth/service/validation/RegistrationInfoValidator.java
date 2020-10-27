@@ -93,8 +93,10 @@ public class RegistrationInfoValidator {
         if (birthday == null) {
             return false;
         }
-        // TODO make Const against a magic value
-        LocalDate birthdayOfOlderPersonAlive = LocalDate.of(1903, 1, 2);
+        LocalDate birthdayOfOlderPersonAlive = LocalDate.of(UtilConstant
+                        .OLDEST_PERSON_BIRTH_YEAR,
+                UtilConstant.OLDEST_PERSON_BIRTH_MONTH,
+                UtilConstant.OLDEST_PERSON_BIRTH_DAY);
         return (birthday.compareTo(birthdayOfOlderPersonAlive) >= 0)
                 && (birthday.compareTo(LocalDate.now()) <= 0);
     }
