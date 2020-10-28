@@ -35,8 +35,8 @@ public class LoginCommand implements Command {
         }
 
         if (user == null) {
-            res.sendRedirect(req.getContextPath()
-                    + CommandPath.LOGIN_SIMPLE_ERROR);
+            res.sendRedirect(req.getContextPath() + CommandPath
+                    .LOGIN_SIMPLE_ERROR);
             return;
         }
 
