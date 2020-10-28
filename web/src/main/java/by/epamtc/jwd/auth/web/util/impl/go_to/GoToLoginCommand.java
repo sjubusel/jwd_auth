@@ -19,8 +19,8 @@ public class GoToLoginCommand implements Command {
             req.setAttribute(AppAttribute.REQUEST_LOGIN_REGISTER_ERROR, error);
         }
 
-        Object authUser = req.getSession()
-                .getAttribute(AppAttribute.SESSION_AUTH_DATA);
+        Object authUser = req.getSession().getAttribute(AppAttribute
+                .SESSION_AUTH_DATA);
         if (authUser == null) {
             req.getRequestDispatcher(CommandPath.LOGIN_JSP).forward(req, res);
             return;
