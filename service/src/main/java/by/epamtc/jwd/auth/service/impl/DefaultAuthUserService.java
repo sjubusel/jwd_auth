@@ -42,7 +42,7 @@ public class DefaultAuthUserService implements AuthUserService {
             try {
                 boolean doesLoginExist = authUserDao.containsLogin(regInfo
                         .getLogin());
-                boolean doesEmailExist = authUserDao.containsLogin(regInfo
+                boolean doesEmailExist = authUserDao.containsEmail(regInfo
                         .getEmail());
                 if (doesLoginExist | doesEmailExist) {
                     return duplicateAuthUserProvider
