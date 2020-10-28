@@ -42,27 +42,5 @@ public class LoginCommand implements Command {
 
         req.getSession().setAttribute(AppAttribute.SESSION_AUTH_USER, user);
         res.sendRedirect(req.getContextPath() + CommandPath.PROFILE_GET);
-
-//        String login = req.getParameter(AppParameter.LOGIN);
-//        String password = req.getParameter(AppParameter.PASSWORD);
-//        byte[] passwordBytes = password.getBytes(StandardCharsets.UTF_8);
-//
-//        AuthUser user;
-//        try {
-//            user = authUserService.login(login, passwordBytes);
-//        } catch (ServiceException e) {
-//            res.sendRedirect(req.getContextPath()
-//                    + CommandPath.LOGIN_TECH_ERROR);
-//            return;
-//        }
-//
-//        if (user == null) {
-//            res.sendRedirect(req.getContextPath()
-//                    + CommandPath.LOGIN_SIMPLE_ERROR);
-//            return;
-//        }
-//
-//        req.getSession().setAttribute(AppAttribute.SESSION_AUTH_USER, user);
-//        res.sendRedirect(req.getContextPath() + CommandPath.PROFILE_GET);
     }
 }
