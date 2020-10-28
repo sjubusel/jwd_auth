@@ -14,6 +14,7 @@
 <c:set var="activeMenuTab" value="signIn" scope="page"/>
 
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
+<fmt:setBundle basename="registrationRegExp" var="regEx"/>
 
 <html>
 <head>
@@ -42,7 +43,10 @@
                              key="login.loginInputLabel"/>
             </label>
             <input type="text" class="form-control" id="loginInput"
-                   name="login">
+                   name="login" required
+                   placeholder="<fmt:message bundle="${jspMessages}"
+                   key="login.loginInput.placeholder"/>"
+                   pattern="<fmt:message bundle="${regEx}" key="login"/>">
         </div>
         <div class="form-group">
             <label for="passwordInput">
@@ -50,7 +54,10 @@
                              key="login.passwordInputLabel"/>
             </label>
             <input type="password" class="form-control" id="passwordInput"
-                   name="password">
+                   name="password" required
+                   placeholder="<fmt:message bundle="${jspMessages}"
+                   key="login.passwordInput.placeholder"/>"
+                   pattern="<fmt:message bundle="${regEx}" key="password"/>">
         </div>
         <button type="submit" class="btn btn-primary">
             <fmt:message bundle="${jspMessages}" key="login.submitButton"/>

@@ -22,6 +22,8 @@ login.passwordInputLabel=Пароль
 login.submitButton=Войти
 login.simpleError=Логин или пароль недействительны
 login.techError=По техническим причинам войти в систему не представляется возможным
+login.loginInput.placeholder=Введите Ваш логин
+login.passwordInput.placeholder=Введите Ваш пароль
 
 main.reportError=Ресурс недоступен. Просьба обратиться позднее.
 main.invalidCommand=Настоящий ресурс недоступен
