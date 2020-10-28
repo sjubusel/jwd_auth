@@ -173,7 +173,7 @@
                         <fmt:message bundle="${jspMessages}"
                                      key="header.menu.helloMessage"/>
                         <c:out value=", "/>
-                        <c:out value="${sessionScope.authUser.login}"/>
+                        <c:out value="${sessionScope.authUser.lastName}"/>
                     </a>
                 </div>
                 <div class="nav-item">
