@@ -1,5 +1,6 @@
 package by.epamtc.jwd.auth.service.validation;
 
+import by.epamtc.jwd.auth.model.auth_info.AuthenticationInfo;
 import by.epamtc.jwd.auth.model.auth_info.Gender;
 import by.epamtc.jwd.auth.model.auth_info.RegistrationInfo;
 import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
@@ -34,6 +35,13 @@ public class RegistrationInfoValidator {
             return false;
         }
         return isGenderValid(regInfo.getGender());
+    }
+
+    public boolean isAuthenticationInfoValid(AuthenticationInfo authenticationInfo) {
+        if (!isLoginValid(authenticationInfo.getLogin())) {
+            return false;
+        }
+        return isPasswordValid(authenticationInfo.getPassword());
     }
 
     public boolean isLoginValid(String login) {
