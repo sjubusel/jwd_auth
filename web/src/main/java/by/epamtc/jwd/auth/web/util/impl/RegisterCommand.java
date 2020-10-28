@@ -81,6 +81,6 @@ public class RegisterCommand implements Command {
     }
 
     private boolean doesUserWithOnlyThisLoginExist(AuthUser user) {
-        return user.getUserId() == AppConstant.DUPLICATE_AUTH_USER_LOGIN_ID;
+        return user.getId() == AppConstant.DUPLICATE_AUTH_USER_LOGIN_ID;
     }
 }
