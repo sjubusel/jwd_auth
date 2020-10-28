@@ -80,7 +80,7 @@ public class RegistrationInfoCompiler {
         try {
             birthdayDate = LocalDate.parse(birthday, DateTimeFormatter.ISO_DATE);
         } catch (Exception e) {
-            // TODO add log4j announcement, because this situation is available only when someone wants to hack the system
+            // TODO add log4j, because this situation is available only when someone wants to hack the system
             e.printStackTrace();
         }
         return birthdayDate;

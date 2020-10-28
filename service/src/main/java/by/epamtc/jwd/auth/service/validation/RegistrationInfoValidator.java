@@ -4,13 +4,11 @@ import by.epamtc.jwd.auth.model.auth_info.Gender;
 import by.epamtc.jwd.auth.model.auth_info.RegistrationInfo;
 import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
-import by.epamtc.jwd.auth.service.exception.ValidationServiceException;
 
 import java.time.LocalDate;
 
 public class RegistrationInfoValidator {
-    public boolean isRegistrationInfoValid(RegistrationInfo regInfo)
-            throws ValidationServiceException {
+    public boolean isRegistrationInfoValid(RegistrationInfo regInfo) {
         if (!isLoginValid(regInfo.getLogin())) {
             return false;
         }
