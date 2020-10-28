@@ -5,9 +5,11 @@ import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.dao.pool.ConnectionPool;
 import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
+import by.epamtc.jwd.auth.model.auth_info.AuthenticationInfo;
 import by.epamtc.jwd.auth.model.auth_info.RegistrationInfo;
 import by.epamtc.jwd.auth.model.auth_info.Role;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
+import org.mindrot.jbcrypt.BCrypt;
 
 
 import java.sql.Connection;
@@ -22,26 +24,37 @@ public class DefaultAuthUserDao implements AuthUserDao {
     private ConnectionPool pool = ConnectionPool.getInstance();
 
     @Override
-    public AuthUser receiveAuthUserIfCorrect(String login, byte[] password)
+    public AuthUser receiveAuthUserIfCorrect(AuthenticationInfo authInfo)
             throws DaoException {
-        // TODO rewrite a realiazation
-//        Connection conn = null;
-//        PreparedStatement stat = null;
-//        ResultSet rSet = null;
-//
-//        try {
-//            conn = pool.takeConnection();
-//            return receiveAuthUserIfCorrectFromDb(login, password,
-//                    conn, stat, rSet);
-//        } catch (SQLException e) {
-//            throw new DaoException("An error while fetching data from DB " +
-//                    "(auth_user)", e);
-//        } catch (ConnectionPoolException e) {
-//            throw new DaoException("An error while taking a connection from " +
-//                    "the connection pool during logination", e);
-//        } finally {
-//            pool.closeConnection(conn, stat, rSet);
-//        }
+        // TODO rewrite a realization
+        Connection conn = null;
+        PreparedStatement selectAuthUserFromDataBaseQuery = null;
+        ResultSet rSet = null;
+
+        try {
+            conn = pool.takeConnection();
+            selectAuthUserFromDataBaseQuery = conn.prepareStatement("SELECT au.id, p.first_name, p.middle_name, p.last_name, aur.auth_user_role_name, au.person_id, au.staff_id, au.password " +
+                    "FROM hospital.auth_user au " +
+                    "         JOIN hospital.persons p ON au.person_id = p.person_id " +
+                    "         JOIN hospital.auth_user_roles aur ON au.role_id = aur.auth_user_role_id " +
+                    "WHERE au.login = ?");
+            selectAuthUserFromDataBaseQuery.setString(1, authInfo.getLogin());
+            rSet = selectAuthUserFromDataBaseQuery.executeQuery();
+            if (rSet.next()) {
+                String dbPassword = rSet.getString(8);
+                if (isPasswordCorrect(authInfo.getPassword(), dbPassword)) {
+                    return compileAuthUser(rSet);
+                }
+            }
+        } catch (SQLException e) {
+            throw new DaoException("An error while fetching data from DB " +
+                    "(auth_user)", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection from " +
+                    "the connection pool during logination", e);
+        } finally {
+            pool.closeConnection(conn, selectAuthUserFromDataBaseQuery, rSet);
+        }
         return null;
     }
 
@@ -192,34 +205,19 @@ public class DefaultAuthUserDao implements AuthUserDao {
         }
     }
 
-    private AuthUser receiveAuthUserIfCorrectFromDb(String login, byte[] pass,
-            Connection conn, PreparedStatement stat, ResultSet rSet)
-            throws SQLException {
-//        stat = conn.prepareStatement("SELECT id, login, password, role," +
-//                " staff_id, person_id FROM hospital.stub_auth_user " +
-//                "WHERE login = ?");
-//        stat.setString(1, login);
-//
-//        rSet = stat.executeQuery();
-//        if (rSet.next()) {
-//            return compileAuthUserIfPasswordIsCorrect(pass, rSet);
-//        }
-
-        return null;
+    private boolean isPasswordCorrect(String plainPassword, String dbPassword) {
+        return BCrypt.checkpw(plainPassword, dbPassword);
     }
 
-    private AuthUser compileAuthUserIfPasswordIsCorrect(byte[] password,
-            ResultSet resultSet) throws SQLException {
-//        int id = resultSet.getInt("id");
-//        String loginDb = resultSet.getString("login");
-//        String passwordDb = resultSet.getString("password");
-//        if (!Arrays.equals(password, passwordDb.getBytes(StandardCharsets.UTF_8))) {
-//            return null;
-//        }
-//        Role role = Role.valueOf(resultSet.getString("role"));
-//        int staffId = resultSet.getInt("staff_id");
-//        int userId = resultSet.getInt("person_id");
-//        return new AuthUser(id, loginDb, role, staffId, userId);
-        return null;
+    private AuthUser compileAuthUser(ResultSet resultSet) throws SQLException {
+        int authId = resultSet.getInt(1);
+        String firstName = resultSet.getString(2);
+        String middleName = resultSet.getString(3);
+        String lastName = resultSet.getString(4);
+        Role role = Role.valueOf(resultSet.getString(5));
+        int userId = resultSet.getInt(6);
+        int staffId = resultSet.getInt(7);
+        return new AuthUser(authId, firstName, middleName, lastName,
+                role, userId, staffId);
     }
 }
