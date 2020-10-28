@@ -33,6 +33,7 @@ public class DefaultAuthUserDao implements AuthUserDao {
 
         try {
             conn = pool.takeConnection();
+            // TODO replace queries with constants
             selectAuthUserFromDataBaseQuery = conn.prepareStatement("SELECT au.id, p.first_name, p.middle_name, p.last_name, aur.auth_user_role_name, au.person_id, au.staff_id, au.password " +
                     "FROM hospital.auth_user au " +
                     "         JOIN hospital.persons p ON au.person_id = p.person_id " +
