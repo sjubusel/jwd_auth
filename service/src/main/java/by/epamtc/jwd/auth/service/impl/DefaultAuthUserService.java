@@ -4,6 +4,7 @@ import by.epamtc.jwd.auth.dao.AuthUserDao;
 import by.epamtc.jwd.auth.dao.DaoFactory;
 import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
+import by.epamtc.jwd.auth.model.auth_info.AuthenticationInfo;
 import by.epamtc.jwd.auth.model.auth_info.RegistrationInfo;
 import by.epamtc.jwd.auth.service.AuthUserService;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
@@ -20,19 +21,18 @@ public class DefaultAuthUserService implements AuthUserService {
             = DuplicateAuthUserProvider.getInstance();
 
     @Override
-    public AuthUser login(String login, byte[] password)
+    public AuthUser login(AuthenticationInfo authenticationInfo)
             throws ServiceException {
-        AuthUser user;
-        try {
-            user = authUserDao.receiveAuthUserIfCorrect(login, password);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        } finally {
-            // TODO rewrite
-            System.out.println("Finally");
-//            cleanOutPassword(password);
+        if (regInfValidator.isAuthenticationInfoValid(authenticationInfo)) {
+            try {
+                return authUserDao.receiveAuthUserIfCorrect(authenticationInfo);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            } finally {
+                cleanOutPassword(authenticationInfo);
+            }
         }
-        return user;
+        return null;
     }
 
     @Override
@@ -71,11 +71,8 @@ public class DefaultAuthUserService implements AuthUserService {
         registrationInfo.setPassword(null);
     }
 
-//    private void cleanOutPassword(byte[] passwordBytes) {
-//        // ??? delete ???
-//        for (int i = 0; i < passwordBytes.length; i++) {
-//            passwordBytes[i] = 0;
-//        }
-//    }
+    private void cleanOutPassword(AuthenticationInfo authenticationInfo) {
+        authenticationInfo.setPassword(null);
+    }
 
 }
