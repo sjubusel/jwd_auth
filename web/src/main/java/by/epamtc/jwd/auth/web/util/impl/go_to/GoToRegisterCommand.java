@@ -20,7 +20,7 @@ public class GoToRegisterCommand implements Command {
         }
 
         Object authUser = req.getSession()
-                .getAttribute(AppAttribute.SESSION_AUTH_DATA);
+                .getAttribute(AppAttribute.SESSION_AUTH_USER);
         if (authUser == null) {
             req.getRequestDispatcher(CommandPath.REGISTER_JSP)
                     .forward(req, res);

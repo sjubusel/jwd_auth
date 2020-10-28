@@ -40,7 +40,7 @@ public class LoginCommand implements Command {
             return;
         }
 
-        req.getSession().setAttribute(AppAttribute.SESSION_AUTH_DATA, user);
+        req.getSession().setAttribute(AppAttribute.SESSION_AUTH_USER, user);
         res.sendRedirect(req.getContextPath() + CommandPath.PROFILE_GET);
     }
 }

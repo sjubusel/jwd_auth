@@ -20,7 +20,7 @@ public class GoToLoginCommand implements Command {
         }
 
         Object authUser = req.getSession().getAttribute(AppAttribute
-                .SESSION_AUTH_DATA);
+                .SESSION_AUTH_USER);
         if (authUser == null) {
             req.getRequestDispatcher(CommandPath.LOGIN_JSP).forward(req, res);
             return;

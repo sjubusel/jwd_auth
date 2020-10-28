@@ -11,7 +11,7 @@ public class LogOutCommand implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws IOException {
-        req.getSession().removeAttribute(AppAttribute.SESSION_AUTH_DATA);
+        req.getSession().removeAttribute(AppAttribute.SESSION_AUTH_USER);
         req.getSession().invalidate();
         res.sendRedirect(req.getContextPath());
     }

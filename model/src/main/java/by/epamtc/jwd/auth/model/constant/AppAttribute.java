@@ -1,7 +1,7 @@
 package by.epamtc.jwd.auth.model.constant;
 
 public final class AppAttribute {
-    public static final String SESSION_AUTH_DATA = "authUser";
+    public static final String SESSION_AUTH_USER = "authUser";
     public static final String SESSION_LANGUAGE = "language";
     public static final String REQUEST_MAIN_PAGE_ERROR = "reportError";
     public static final String REQUEST_MAIN_PAGE_REPORT = "hospitalReport";
