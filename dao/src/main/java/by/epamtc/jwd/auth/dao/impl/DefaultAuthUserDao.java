@@ -55,7 +55,7 @@ public class DefaultAuthUserDao implements AuthUserDao {
         try {
             conn = pool.takeConnection();
             conn.setAutoCommit(false);
-
+            // TODO replace queries with constants
             PreparedStatement personCreationStat = conn.prepareStatement(
                     "INSERT INTO hospital.persons (email, phone_number, first_name, middle_name, last_name, birth_date, gender) VALUES (?, ?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             personCreationStat.setString(1, registrationInfo.getEmail());
@@ -73,7 +73,7 @@ public class DefaultAuthUserDao implements AuthUserDao {
             while (personsGeneratedKeys.next()) {
                 personId = personsGeneratedKeys.getInt(1);
             }
-
+            // TODO replace queries with constants
             PreparedStatement authUserCreationStat = conn.prepareStatement(
                     "INSERT INTO hospital.auth_user (login, password, role_id, person_id) VALUES (?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
             authUserCreationStat.setString(1, registrationInfo.getLogin());
@@ -90,7 +90,7 @@ public class DefaultAuthUserDao implements AuthUserDao {
             }
 
             conn.commit();
-
+            // TODO replace queries with constants
             PreparedStatement selectAuthUserFromDataBase = conn.prepareStatement("SELECT au.id, p.first_name, p.middle_name, p.last_name, aur.auth_user_role_name, au.person_id, au.staff_id " +
                     "FROM hospital.auth_user au " +
                     "         JOIN hospital.persons p ON au.person_id = p.person_id " +
@@ -146,6 +146,7 @@ public class DefaultAuthUserDao implements AuthUserDao {
                 }
             }
         }
+        // TODO ??? throw DaoException
         return null;
     }
 
