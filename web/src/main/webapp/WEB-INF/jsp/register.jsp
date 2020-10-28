@@ -50,21 +50,114 @@
     <c:if test="${requestScope.error ne null}">
         <div class="alert alert-danger" role="alert">
             <c:choose>
-                <c:when test="${requestScope.error eq 'auth-data'}">
-                    <fmt:message bundle="${jspMessages}"
-                                 key="register.authDataError"/>
-                </c:when>
-                <c:when test="${requestScope.error eq 'login'}">
-                    <fmt:message bundle="${jspMessages}"
-                                 key="register.loginError"/>
-                </c:when>
-                <c:when test="${requestScope.error eq 'pass'}">
-                    <fmt:message bundle="${jspMessages}"
-                                 key="register.passwordError"/>
-                </c:when>
                 <c:when test="${requestScope.error eq 'duplicate'}">
                     <fmt:message bundle="${jspMessages}"
                                  key="register.duplicateError"/>
+                </c:when>
+                <c:when test="${requestScope.error eq 'duplicateLogin'}">
+                    <fmt:message bundle="${jspMessages}"
+                                 key="register.duplicateLoginError"/>
+                </c:when>
+                <c:when test="${requestScope.error eq 'duplicateEmail'}">
+                    <fmt:message bundle="${jspMessages}"
+                                 key="register.duplicateEmailError"/>
+                </c:when>
+                <c:when test="${requestScope.error eq 'val'}">
+                    <div>
+                        <fmt:message bundle="${jspMessages}"
+                                     key="register.requirementsIfValidationError"/>
+                    </div>
+                    <div>
+                        <small>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="register.loginInputLabel"/>
+                        </small>
+                        <small>
+                            <c:out value="→"/>
+                        </small>
+                        <small>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="register.loginDescription"/>
+                        </small>
+                    </div>
+                    <div>
+                        <small>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="register.passwordInputLabel"/>
+                        </small>
+                        <small>
+                            <c:out value="→"/>
+                        </small>
+                        <small>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="register.passwordDescription"/>
+                        </small>
+                    </div>
+                    <div>
+                        <small>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="register.emailInputLabel"/>
+                        </small>
+                        <small>
+                            <c:out value="→"/>
+                        </small>
+                        <small>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="register.emailDescription"/>
+                        </small>
+                    </div>
+                    <div>
+                        <small>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="register.firstNameInputLabel"/>
+                        </small>
+                        <small>
+                            <c:out value="→"/>
+                        </small>
+                        <small>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="register.anyNameDescription"/>
+                        </small>
+                    </div>
+                    <div>
+                        <small>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="register.middleNameInputLabel"/>
+                        </small>
+                        <small>
+                            <c:out value="→"/>
+                        </small>
+                        <small>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="register.anyNameDescription"/>
+                        </small>
+                    </div>
+                    <div>
+                        <small>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="register.lastNameInputLabel"/>
+                        </small>
+                        <small>
+                            <c:out value="→"/>
+                        </small>
+                        <small>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="register.anyNameDescription"/>
+                        </small>
+                    </div>
+                    <div>
+                        <small>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="register.birthdayInputLabel"/>
+                        </small>
+                        <small>
+                            <c:out value="→"/>
+                        </small>
+                        <small>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="register.birthdayDescription"/>
+                        </small>
+                    </div>
                 </c:when>
                 <c:otherwise>
                     <fmt:message bundle="${jspMessages}"
