@@ -65,6 +65,8 @@ register.loginDescription=Буквы латинского алфавита, ци
 register.passwordDescription=Буквы латинского алфавита, кириллица, цифры, "!?:;,.@#$%^&*()-_+"-символы (Длина должна быть не менее 6 и не более 255 (включая) символов)
 register.emailDescription=Буквы латинского алфавита, цифры, ".", "_" символы
 register.anyNameDescription=Буквы латинского алфавита, кириллица, цифры, " ", "-" символы
+register.requirementsIfValidationError=Требования к регистрационной информации
+register.birthdayDescription=День рождения должен быть не позднее сегодняшнего дня и не ранее дня рождения старейшего живого человека в мире (02 января 1903)
 
 languageButtonBar.currentLang=Русский
 languageButtonBar.firstLanguageNaming=рус
