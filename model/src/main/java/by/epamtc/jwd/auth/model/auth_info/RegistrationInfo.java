@@ -2,9 +2,9 @@ package by.epamtc.jwd.auth.model.auth_info;
 
 import java.time.LocalDate;
 
-// TODO private static final long serialVersionUID after class completion
-// TODO refactor bean
 public class RegistrationInfo implements java.io.Serializable {
+    private static final long serialVersionUID = 3685458726802407565L;
+
     private String login;
     private String password;
     private String email;
