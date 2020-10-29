@@ -41,19 +41,6 @@ public class ConnectionPool {
     private BlockingQueue<Connection> givenConnections;
 
 
-    public static ConnectionPool getInstance() {
-        ConnectionPool localInstance = instance;
-        if (localInstance == null) {
-            synchronized (ConnectionPool.class) {
-                localInstance = instance;
-                if (localInstance == null) {
-                    instance = localInstance = new ConnectionPool();
-                }
-            }
-        }
-        return localInstance;
-    }
-
     private ConnectionPool() {
         DbResourceManager resManager = DbResourceManager.getInstance();
         this.driverName = resManager.getValue(DbParameter.DB_DRIVER);
@@ -70,7 +57,100 @@ public class ConnectionPool {
         try {
             initPoolData();
         } catch (ConnectionPoolException e) {
+            // TODO log4j
             e.printStackTrace(); // logger-stub
+        }
+    }
+
+    public static ConnectionPool getInstance() {
+        ConnectionPool localInstance = instance;
+        if (localInstance == null) {
+            synchronized (ConnectionPool.class) {
+                localInstance = instance;
+                if (localInstance == null) {
+                    instance = localInstance = new ConnectionPool();
+                }
+            }
+        }
+        return localInstance;
+    }
+
+    public Connection takeConnection() throws ConnectionPoolException {
+        Connection connection;
+        try {
+            connection = freeConnections.take();
+            givenConnections.add(connection);
+        } catch (InterruptedException e) {
+            throw new ConnectionPoolException("Error connecting to the " +
+                    "source of data", e);
+        }
+        return connection;
+    }
+
+    public void dispose() {
+        clearConnectionQueue();
+    }
+
+    public void closeResultSet(ResultSet resultSet) {
+        try {
+            if (resultSet != null) {
+                resultSet.close();
+            }
+        } catch (SQLException e) {
+            // TODO log4j
+            e.printStackTrace(); // logger-stub "Error closing the result set.", e);
+        }
+    }
+
+    public void closeStatement(Statement statement) {
+        try {
+            if (statement != null) {
+                statement.close();
+            }
+        } catch (SQLException e) {
+            // TODO log4j
+            e.printStackTrace(); // logger-stub "Error closing the statement.", e);
+        }
+
+    }
+
+    public void closeConnection(Connection connection) {
+        try {
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            // TODO log4j
+            e.printStackTrace();
+        }
+    }
+
+    public void closeConnection(Connection connection, Statement statement,
+            ResultSet resultSet) {
+        closeResultSet(resultSet);
+        closeConnection(connection, statement);
+    }
+
+    public void closeConnection(Connection connection, Statement statement) {
+        closeStatement(statement);
+        closeConnection(connection);
+    }
+
+    public void closeConnection(Connection connection, Statement[] statements,
+            ResultSet resultSet) {
+        closeResultSet(resultSet);
+        for (Statement statement : statements) {
+            closeStatement(statement);
+        }
+        closeConnection(connection);
+    }
+
+    public void rollBackTransaction(Connection conn) {
+        try {
+            conn.rollback();
+        } catch (SQLException ex) {
+            //TODO log4j
+            ex.printStackTrace();
         }
     }
 
@@ -96,10 +176,6 @@ public class ConnectionPool {
         }
     }
 
-    public void dispose() {
-        clearConnectionQueue();
-    }
-
     private void clearConnectionQueue() {
         try {
             closeConnectionsQueue(freeConnections);
@@ -117,47 +193,6 @@ public class ConnectionPool {
                 connection.commit();
             }
             ((PooledConnection) connection).reallyClose();
-        }
-    }
-
-    public Connection takeConnection() throws ConnectionPoolException {
-        Connection connection;
-        try {
-            connection = freeConnections.take();
-            givenConnections.add(connection);
-        } catch (InterruptedException e) {
-            throw new ConnectionPoolException("Error connecting to the " +
-                    "source of data", e);
-        }
-        return connection;
-    }
-
-    public void closeConnection(Connection con, Statement st, ResultSet rs) {
-        try {
-            if (rs != null) {
-                rs.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace(); // logger-stub "Error closing the result set.", e);
-        }
-        closeConnection(con, st);
-    }
-
-    public void closeConnection(Connection con, Statement st) {
-        try {
-            if (st != null) {
-                st.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace(); // logger-stub "Error closing the statement.", e);
-        }
-
-        try {
-            if (con != null) {
-                con.close();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace(); // logger-stub "Error closing the connection.", e);
         }
     }
 
