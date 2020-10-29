@@ -9,6 +9,7 @@ import by.epamtc.jwd.auth.model.auth_info.AuthenticationInfo;
 import by.epamtc.jwd.auth.model.auth_info.RegistrationInfo;
 import by.epamtc.jwd.auth.model.auth_info.Role;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
+import by.epamtc.jwd.auth.model.constant.SqlStatement;
 import org.mindrot.jbcrypt.BCrypt;
 
 
@@ -26,19 +27,14 @@ public class DefaultAuthUserDao implements AuthUserDao {
     @Override
     public AuthUser receiveAuthUserIfCorrect(AuthenticationInfo authInfo)
             throws DaoException {
-        // TODO rewrite a realization
         Connection conn = null;
         PreparedStatement selectAuthUserFromDataBaseQuery = null;
         ResultSet rSet = null;
 
         try {
             conn = pool.takeConnection();
-            // TODO replace queries with constants
-            selectAuthUserFromDataBaseQuery = conn.prepareStatement("SELECT au.id, p.first_name, p.middle_name, p.last_name, aur.auth_user_role_name, au.person_id, au.staff_id, au.password " +
-                    "FROM hospital.auth_user au " +
-                    "         JOIN hospital.persons p ON au.person_id = p.person_id " +
-                    "         JOIN hospital.auth_user_roles aur ON au.role_id = aur.auth_user_role_id " +
-                    "WHERE au.login = ?");
+            selectAuthUserFromDataBaseQuery = conn
+                    .prepareStatement(SqlStatement.SELECT_AUTH_USER);
             selectAuthUserFromDataBaseQuery.setString(1, authInfo.getLogin());
             rSet = selectAuthUserFromDataBaseQuery.executeQuery();
             if (rSet.next()) {
@@ -56,6 +52,7 @@ public class DefaultAuthUserDao implements AuthUserDao {
         } finally {
             pool.closeConnection(conn, selectAuthUserFromDataBaseQuery, rSet);
         }
+
         return null;
     }
 
