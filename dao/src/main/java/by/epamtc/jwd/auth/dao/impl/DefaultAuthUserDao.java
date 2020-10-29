@@ -87,7 +87,6 @@ public class DefaultAuthUserDao implements AuthUserDao {
             pool.rollBackTransaction(conn);
             throw new DaoException("An error while saving AuthUser", e);
         } catch (ConnectionPoolException e) {
-            pool.rollBackTransaction(conn);
             throw new DaoException("An error while taking a connection from " +
                     "connection pool during saving AuthUser", e);
         } finally {
