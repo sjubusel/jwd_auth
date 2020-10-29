@@ -82,8 +82,8 @@
             <dependency>
                 <groupId>org.mindrot</groupId>
                 <artifactId>jbcrypt</artifactId>
-                <!-- TODO make it PROVIDED-->
                 <version>${jbcrypt.version}</version>
+                <scope>provided</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
