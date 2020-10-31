@@ -21,7 +21,8 @@
     >
         <fmt:message bundle="${jspMessages}" key="profileSubMenu.patientInfo"/>
     </a>
-    <button type="button"
+    <a type="button"
+       href="${pageContext.request.contextPath}/profile?command=go-to-profile-change-patient-info"
             <c:choose>
                 <c:when test="${pageScope.activeSubMenuProfileTab == 'changePatientInfo'}">
                     class="list-group-item list-group-item-action active"
