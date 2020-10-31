@@ -8,7 +8,7 @@ import by.epamtc.jwd.auth.web.util.impl.LogOutCommand;
 import by.epamtc.jwd.auth.web.util.impl.LoginCommand;
 import by.epamtc.jwd.auth.web.util.impl.MainCommand;
 import by.epamtc.jwd.auth.web.util.impl.RegisterCommand;
-import by.epamtc.jwd.auth.web.util.impl.go_to.GoToAboutUsCommand;
+import by.epamtc.jwd.auth.web.util.impl.GoToAboutUsCommand;
 import by.epamtc.jwd.auth.web.util.impl.go_to.GoToContactsCommand;
 import by.epamtc.jwd.auth.web.util.impl.go_to.GoToLoginCommand;
 import by.epamtc.jwd.auth.web.util.impl.go_to.GoToNewsCommand;
