@@ -12,6 +12,7 @@
 </c:choose>
 
 <c:set var="activeMenuTab" value="profile" scope="page"/>
+<c:set var="activeSubMenuProfileTab" value="viewProfileInfo" scope="page"/>
 
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
 
@@ -29,14 +30,6 @@
 <div class="main-content">
     <%@ include file="structural_element/header.jsp" %>
 
-    <h1 class="ml-2 mr-2">
-        <fmt:message bundle="${jspMessages}" key="profile.heading"/>
-    </h1>
-    <h6 class="ml-2 mr-2">
-        <fmt:message bundle="${jspMessages}" key="profile.message"/>
-    </h6>
-
-
     <div class="row mt-2 mr-2 ml-2">
         <div class="list-group d-inline-block col-3">
             <button type="button"
@@ -47,59 +40,39 @@
                     class="list-group-item list-group-item-action">
                 <c:out value="Изменение информации о пользователе"/>
             </button>
+            <button type="button"
+                    class="list-group-item list-group-item-action">
+                <c:out value="Изменение пароля"/>
+            </button>
+            <button type="button"
+                    class="list-group-item list-group-item-action">
+                <c:out value="Изменение электронной почты"/>
+            </button>
+            <button type="button"
+                    class="list-group-item list-group-item-action mb-4">
+                <c:out value="Изменение фотографии пользователя"/>
+            </button>
+
+            <button type="button"
+                    class="list-group-item list-group-item-action border-top">
+                <c:out value="Информация о медицинком работнике"/>
+            </button>
+            <button type="button"
+                    class="list-group-item list-group-item-action">
+                <c:out value="История информации о медицинком работнике"/>
+            </button>
+            <button type="button"
+                    class="list-group-item list-group-item-action">
+                <c:out value="Изменение информации о медицинком работнике"/>
+            </button>
+            <button type="button"
+                    class="list-group-item list-group-item-action">
+                <c:out value="Изменение фотографии медицинкого работника"/>
+            </button>
         </div>
+
         <div class="bg-light d-inline-block col">
             <div class="">SUCCESS-BLOCK</div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
         </div>
     </div>
 </div>
