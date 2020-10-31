@@ -88,7 +88,7 @@ profileSubMenu.patientInfo=User information
 profileSubMenu.changePatientInfo=Change user information
 profileSubMenu.changePassword=Change a password
 profileSubMenu.changeEmail=Change an email
-profileSubMenu.photoToBeChanged=Change a user photo
+profileSubMenu.changePhoto=Change a user photo
 
 profileSubMenu.staffInfo=Medical staff member information
 profileSubMenu.staffInfoToBeChanged=Change medical staff member information
