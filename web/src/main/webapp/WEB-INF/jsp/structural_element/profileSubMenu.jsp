@@ -22,7 +22,7 @@
     </button>
     <button type="button"
             <c:choose>
-                <c:when test="${pageScope.activeSubMenuProfileTab == ''}">
+                <c:when test="${pageScope.activeSubMenuProfileTab == 'patientInfoToBeChanged'}">
                     class="list-group-item list-group-item-action active"
                 </c:when>
                 <c:otherwise>
@@ -35,7 +35,7 @@
     </button>
     <button type="button"
             <c:choose>
-                <c:when test="${pageScope.activeSubMenuProfileTab == ''}">
+                <c:when test="${pageScope.activeSubMenuProfileTab == 'passwordToBeChanged'}">
                     class="list-group-item list-group-item-action active"
                 </c:when>
                 <c:otherwise>
@@ -48,7 +48,7 @@
     </button>
     <button type="button"
             <c:choose>
-                <c:when test="${pageScope.activeSubMenuProfileTab == ''}">
+                <c:when test="${pageScope.activeSubMenuProfileTab == 'emailToBeChanged'}">
                     class="list-group-item list-group-item-action active"
                 </c:when>
                 <c:otherwise>
@@ -61,7 +61,7 @@
     </button>
     <button type="button"
             <c:choose>
-                <c:when test="${pageScope.activeSubMenuProfileTab == ''}">
+                <c:when test="${pageScope.activeSubMenuProfileTab == 'photoToBeChanged'}">
                     class="list-group-item list-group-item-action active"
                 </c:when>
                 <c:otherwise>
@@ -74,7 +74,7 @@
     </button>
     <button type="button"
             <c:choose>
-                <c:when test="${pageScope.activeSubMenuProfileTab == ''}">
+                <c:when test="${pageScope.activeSubMenuProfileTab == 'allergicReactions'}">
                     class="list-group-item list-group-item-action active"
                 </c:when>
                 <c:otherwise>
@@ -87,7 +87,7 @@
     </button>
     <button type="button"
             <c:choose>
-                <c:when test="${pageScope.activeSubMenuProfileTab == ''}">
+                <c:when test="${pageScope.activeSubMenuProfileTab == 'extremelyHazardousDiseases'}">
                     class="list-group-item list-group-item-action mb-4 active"
                 </c:when>
                 <c:otherwise>
@@ -102,7 +102,7 @@
 
     <button type="button"
             <c:choose>
-                <c:when test="${pageScope.activeSubMenuProfileTab == ''}">
+                <c:when test="${pageScope.activeSubMenuProfileTab == 'staffInfo'}">
                     class="list-group-item list-group-item-action border-top active"
                 </c:when>
                 <c:otherwise>
@@ -114,7 +114,7 @@
     </button>
     <button type="button"
             <c:choose>
-                <c:when test="${pageScope.activeSubMenuProfileTab == ''}">
+                <c:when test="${pageScope.activeSubMenuProfileTab == 'staffInfoToBeChanged'}">
                     class="list-group-item list-group-item-action active"
                 </c:when>
                 <c:otherwise>
@@ -127,7 +127,7 @@
     </button>
     <button type="button"
             <c:choose>
-                <c:when test="${pageScope.activeSubMenuProfileTab == ''}">
+                <c:when test="${pageScope.activeSubMenuProfileTab == 'staffHistory'}">
                     class="list-group-item list-group-item-action active"
                 </c:when>
                 <c:otherwise>
@@ -139,7 +139,7 @@
     </button>
     <button type="button"
             <c:choose>
-                <c:when test="${pageScope.activeSubMenuProfileTab == ''}">
+                <c:when test="${pageScope.activeSubMenuProfileTab == 'staffPhotoToBeChanged'}">
                     class="list-group-item list-group-item-action active"
                 </c:when>
                 <c:otherwise>
