@@ -4,7 +4,8 @@
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
 
 <div class="list-group d-inline-block col-3">
-    <button type="button"
+    <a type="button"
+       href="${pageContext.request.contextPath}/profile?command=go-to-profile"
     <%--                <c:choose>--%>
     <%--                    <c:when test="${pageScope.activeSubMenuProfileTab == ''}"></c:when>--%>
     <%--                    <c:otherwise></c:otherwise>--%>
@@ -19,7 +20,7 @@
             </c:choose>
     >
         <fmt:message bundle="${jspMessages}" key="profileSubMenu.patientInfo"/>
-    </button>
+    </a>
     <button type="button"
             <c:choose>
                 <c:when test="${pageScope.activeSubMenuProfileTab == 'changePatientInfo'}">
