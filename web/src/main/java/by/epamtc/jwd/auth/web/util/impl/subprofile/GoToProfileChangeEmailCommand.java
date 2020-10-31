@@ -11,6 +11,6 @@ public class GoToProfileChangeEmailCommand implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-
+        req.getRequestDispatcher("/WEB-INF/jsp/subprofile/changeEmail.jsp").forward(req, res);
     }
 }
