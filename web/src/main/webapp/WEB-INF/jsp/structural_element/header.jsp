@@ -17,7 +17,7 @@
     <fmt:message bundle="${jspMessages}" key="header.alertInfo"/>
 </div>
 
-<div id="menu">
+<div id="menu" class="sticky-top bg-light">
     <div>
         <a href="${pageContext.request.contextPath}/">
             <img id="logotype"
