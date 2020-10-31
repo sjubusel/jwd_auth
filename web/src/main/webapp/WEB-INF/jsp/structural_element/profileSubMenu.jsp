@@ -120,7 +120,8 @@
     >
         <fmt:message bundle="${jspMessages}" key="profileSubMenu.staffInfo"/>
     </a>
-    <button type="button"
+    <a type="button"
+       href="${pageContext.request.contextPath}/profile?command=go-to-profile-change-staff-info"
             <c:choose>
                 <c:when test="${pageScope.activeSubMenuProfileTab == 'changeStaffInfo'}">
                     class="list-group-item list-group-item-action active"
@@ -132,7 +133,7 @@
     >
         <fmt:message bundle="${jspMessages}"
                      key="profileSubMenu.changeStaffInfo"/>
-    </button>
+    </a>
     <button type="button"
             <c:choose>
                 <c:when test="${pageScope.activeSubMenuProfileTab == 'staffHistory'}">
