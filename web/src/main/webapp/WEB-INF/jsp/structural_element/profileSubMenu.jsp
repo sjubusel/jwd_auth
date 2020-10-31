@@ -31,7 +31,7 @@
             </c:choose>
     >
         <fmt:message bundle="${jspMessages}"
-                     key="profileSubMenu.patientIntoToBeChanged"/>
+                     key="profileSubMenu.patientInfoToBeChanged"/>
     </button>
     <button type="button"
             <c:choose>
