@@ -93,6 +93,6 @@ profileSubMenu.changePhoto=Изменение фотографии пользо�
 profileSubMenu.staffInfo=Информация о медицинком работнике
 profileSubMenu.changeStaffInfo=Изменение информации о медицинком работнике
 profileSubMenu.staffHistory=История информации о медицинком работнике
-profileSubMenu.staffPhotoToBeChanged=Изменение фотографии медицинкого работника
+profileSubMenu.changeStaffPhoto=Изменение фотографии медицинкого работника
 profileSubMenu.allergicReactions=Аллергия
 profileSubMenu.extremelyHazardousDiseases=Особо опасные заболевания
