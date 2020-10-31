@@ -85,7 +85,7 @@ patients.htmlTitle=Для пациентов
 staff.htmlTitle=Для персонала
 
 profileSubMenu.patientInfo=Информация о пользователе
-profileSubMenu.patientIntoToBeChanged=Изменение информации о пользователе
+profileSubMenu.patientInfoToBeChanged=Изменение информации о пользователе
 profileSubMenu.passwordToBeChanged=Изменение пароля
 profileSubMenu.emailToBeChanged=Изменение электронной почты
 profileSubMenu.photoToBeChanged=Изменение фотографии пользователя
