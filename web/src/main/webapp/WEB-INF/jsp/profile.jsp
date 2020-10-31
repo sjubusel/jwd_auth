@@ -12,7 +12,7 @@
 </c:choose>
 
 <c:set var="activeMenuTab" value="profile" scope="page"/>
-<c:set var="activeSubMenuProfileTab" value="viewProfileInfo" scope="page"/>
+<%--<c:set var="activeSubMenuProfileTab" value="viewProfileInfo" scope="page"/>--%>
 
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
 
