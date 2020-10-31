@@ -15,7 +15,7 @@ import by.epamtc.jwd.auth.web.util.impl.GoToNewsCommand;
 import by.epamtc.jwd.auth.web.util.impl.GoToPatientsCommand;
 import by.epamtc.jwd.auth.web.util.impl.GoToProfileCommand;
 import by.epamtc.jwd.auth.web.util.impl.GoToRegisterCommand;
-import by.epamtc.jwd.auth.web.util.impl.go_to.GoToStaffCommand;
+import by.epamtc.jwd.auth.web.util.impl.GoToStaffCommand;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
