@@ -10,7 +10,7 @@ import by.epamtc.jwd.auth.web.util.impl.MainCommand;
 import by.epamtc.jwd.auth.web.util.impl.RegisterCommand;
 import by.epamtc.jwd.auth.web.util.impl.GoToAboutUsCommand;
 import by.epamtc.jwd.auth.web.util.impl.GoToContactsCommand;
-import by.epamtc.jwd.auth.web.util.impl.go_to.GoToLoginCommand;
+import by.epamtc.jwd.auth.web.util.impl.GoToLoginCommand;
 import by.epamtc.jwd.auth.web.util.impl.go_to.GoToNewsCommand;
 import by.epamtc.jwd.auth.web.util.impl.go_to.GoToPatientsCommand;
 import by.epamtc.jwd.auth.web.util.impl.go_to.GoToProfileCommand;
