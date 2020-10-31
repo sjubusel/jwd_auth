@@ -20,7 +20,7 @@
 <head>
     <title>
         <fmt:message bundle="${jspMessages}"
-                     key="subprofile.emailToBeChanged.htmlTitle"/>
+                     key="profileSubMenu.emailToBeChanged"/>
         <c:out value=" | "/>
         <fmt:message bundle="${jspMessages}" key="profile.htmlTitle"/>
         <c:out value=" | "/>

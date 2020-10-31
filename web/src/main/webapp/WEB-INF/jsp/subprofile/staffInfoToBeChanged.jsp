@@ -21,7 +21,7 @@
 <head>
     <title>
         <fmt:message bundle="${jspMessages}"
-                     key="subprofile.staffInfoToBeChanged.htmlTitle"/>
+                     key="profileSubMenu.staffInfoToBeChanged"/>
         <c:out value=" | "/>
         <fmt:message bundle="${jspMessages}" key="profile.htmlTitle"/>
         <c:out value=" | "/>
