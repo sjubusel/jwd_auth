@@ -48,7 +48,7 @@
     </button>
     <button type="button"
             <c:choose>
-                <c:when test="${pageScope.activeSubMenuProfileTab == 'emailToBeChanged'}">
+                <c:when test="${pageScope.activeSubMenuProfileTab == 'changeEmail'}">
                     class="list-group-item list-group-item-action active"
                 </c:when>
                 <c:otherwise>
@@ -57,7 +57,7 @@
             </c:choose>
     >
         <fmt:message bundle="${jspMessages}"
-                     key="profileSubMenu.emailToBeChanged"/>
+                     key="profileSubMenu.changeEmail"/>
     </button>
     <button type="button"
             <c:choose>

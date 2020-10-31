@@ -87,7 +87,7 @@ staff.htmlTitle=For staff
 profileSubMenu.patientInfo=User information
 profileSubMenu.patientInfoToBeChanged=Change user information
 profileSubMenu.passwordToBeChanged=Change a password
-profileSubMenu.emailToBeChanged=Change an email
+profileSubMenu.changeEmail=Change an email
 profileSubMenu.photoToBeChanged=Change a user photo
 
 profileSubMenu.staffInfo=Medical staff member information

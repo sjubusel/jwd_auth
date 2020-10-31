@@ -12,7 +12,7 @@
 </c:choose>
 
 <c:set var="activeMenuTab" value="profile" scope="page"/>
-<c:set var="activeSubMenuProfileTab" value="emailToBeChanged" scope="page"/>
+<c:set var="activeSubMenuProfileTab" value="changeEmail" scope="page"/>
 
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
 
@@ -20,7 +20,7 @@
 <head>
     <title>
         <fmt:message bundle="${jspMessages}"
-                     key="profileSubMenu.emailToBeChanged"/>
+                     key="profileSubMenu.changeEmail"/>
         <c:out value=" | "/>
         <fmt:message bundle="${jspMessages}" key="profile.htmlTitle"/>
         <c:out value=" | "/>
