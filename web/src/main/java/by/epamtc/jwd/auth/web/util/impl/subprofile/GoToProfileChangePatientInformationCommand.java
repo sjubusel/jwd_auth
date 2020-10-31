@@ -11,6 +11,6 @@ public class GoToProfileChangePatientInformationCommand implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-
+        req.getRequestDispatcher("/WEB-INF/jsp/subprofile/changePatientInfo.jsp").forward(req, res);
     }
 }
