@@ -24,10 +24,21 @@
                      key="profileSubMenu.emailToBeChanged"/>
     </button>
     <button type="button"
-            class="list-group-item list-group-item-action mb-4">
+            class="list-group-item list-group-item-action">
         <fmt:message bundle="${jspMessages}"
                      key="profileSubMenu.photoToBeChanged"/>
     </button>
+    <button type="button"
+            class="list-group-item list-group-item-action">
+        <fmt:message bundle="${jspMessages}"
+                     key="profileSubMenu.allergicReactions"/>
+    </button>
+    <button type="button"
+            class="list-group-item list-group-item-action mb-4">
+        <fmt:message bundle="${jspMessages}"
+                     key="profileSubMenu.extremelyHazardousDiseases"/>
+    </button>
+
 
     <button type="button"
             class="list-group-item list-group-item-action border-top">

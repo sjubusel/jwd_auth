@@ -94,3 +94,5 @@ profileSubMenu.staffInfo=Medical staff member information
 profileSubMenu.staffInfoToBeChanged=Change medical staff member information
 profileSubMenu.staffHistory=History of medical staff member information
 profileSubMenu.staffPhotoToBeChanged=Change a medical staff member photo
+profileSubMenu.allergicReactions=Allergy
+profileSubMenu.extremelyHazardousDiseases=Extremely hazardous diseases
