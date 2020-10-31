@@ -48,8 +48,9 @@
     >
         <fmt:message bundle="${jspMessages}"
                      key="profileSubMenu.changePassword"/>
-    </button>
-    <button type="button"
+    </a>
+    <a type="button"
+       href="${pageContext.request.contextPath}/profile?command=go-to-profile-email-change"
             <c:choose>
                 <c:when test="${pageScope.activeSubMenuProfileTab == 'changeEmail'}">
                     class="list-group-item list-group-item-action active"
