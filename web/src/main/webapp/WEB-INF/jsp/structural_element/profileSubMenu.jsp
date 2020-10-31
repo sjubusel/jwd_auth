@@ -91,7 +91,8 @@
         <fmt:message bundle="${jspMessages}"
                      key="profileSubMenu.allergicReactions"/>
     </a>
-    <button type="button"
+    <a type="button"
+       href="${pageContext.request.contextPath}/profile?command=go-to-profile-extremely-hazardous-diseases"
             <c:choose>
                 <c:when test="${pageScope.activeSubMenuProfileTab == 'extremelyHazardousDiseases'}">
                     class="list-group-item list-group-item-action mb-4 active"
