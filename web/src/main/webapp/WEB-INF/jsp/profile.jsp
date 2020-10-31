@@ -19,6 +19,9 @@
 <html>
 <head>
     <title>
+        <fmt:message bundle="${jspMessages}"
+                     key="profileSubMenu.patientInfo"/>
+        <c:out value=" | "/>
         <fmt:message bundle="${jspMessages}" key="profile.htmlTitle"/>
         <c:out value=" | "/>
         <fmt:message bundle="${jspMessages}" key="all.htmlTitle"/>
