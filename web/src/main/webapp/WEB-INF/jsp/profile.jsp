@@ -35,6 +35,73 @@
     <h6 style="padding-left: 25px">
         <fmt:message bundle="${jspMessages}" key="profile.message"/>
     </h6>
+
+
+    <div class="row mt-2 mr-2 ml-2">
+        <div class="list-group d-inline-block col-3">
+            <button type="button"
+                    class="list-group-item list-group-item-action">
+                <c:out value="Информация о пользователе"/>
+            </button>
+            <button type="button"
+                    class="list-group-item list-group-item-action active">
+                <c:out value="Изменение информации о пользователе"/>
+            </button>
+        </div>
+        <div class="bg-light d-inline-block col">
+            <div class="">SUCCESS-BLOCK</div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+    </div>
 </div>
 
 <jsp:include page="structural_element/footer.jsp"/>
