@@ -11,6 +11,6 @@ public class GoToProfileStaffHistoryCommand implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-
+        req.getRequestDispatcher("/WEB-INF/jsp/subprofile/staffHistory.jsp").forward(req, res);
     }
 }
