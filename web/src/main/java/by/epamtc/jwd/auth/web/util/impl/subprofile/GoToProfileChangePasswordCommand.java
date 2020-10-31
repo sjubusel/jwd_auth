@@ -10,6 +10,6 @@ import java.io.IOException;
 public class GoToProfileChangePasswordCommand implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
+        req.getRequestDispatcher("/WEB-INF/jsp/subprofile/changePassword.jsp").forward(req, res);
     }
 }
