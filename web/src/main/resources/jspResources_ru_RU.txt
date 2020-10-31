@@ -91,7 +91,7 @@ profileSubMenu.changeEmail=Изменение электронной почты
 profileSubMenu.changePhoto=Изменение фотографии пользователя
 
 profileSubMenu.staffInfo=Информация о медицинком работнике
-profileSubMenu.staffInfoToBeChanged=Изменение информации о медицинком работнике
+profileSubMenu.changeStaffInfo=Изменение информации о медицинком работнике
 profileSubMenu.staffHistory=История информации о медицинком работнике
 profileSubMenu.staffPhotoToBeChanged=Изменение фотографии медицинкого работника
 profileSubMenu.allergicReactions=Аллергия

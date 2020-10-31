@@ -114,7 +114,7 @@
     </button>
     <button type="button"
             <c:choose>
-                <c:when test="${pageScope.activeSubMenuProfileTab == 'staffInfoToBeChanged'}">
+                <c:when test="${pageScope.activeSubMenuProfileTab == 'changeStaffInfo'}">
                     class="list-group-item list-group-item-action active"
                 </c:when>
                 <c:otherwise>
@@ -123,7 +123,7 @@
             </c:choose>
     >
         <fmt:message bundle="${jspMessages}"
-                     key="profileSubMenu.staffInfoToBeChanged"/>
+                     key="profileSubMenu.changeStaffInfo"/>
     </button>
     <button type="button"
             <c:choose>
