@@ -89,6 +89,7 @@ profileSubMenu.patientIntoToBeChanged=Изменение информации о
 profileSubMenu.passwordToBeChanged=Изменение пароля
 profileSubMenu.emailToBeChanged=Изменение электронной почты
 profileSubMenu.photoToBeChanged=Изменение фотографии пользователя
+
 profileSubMenu.staffInfo=Информация о медицинком работнике
 profileSubMenu.staffInfoToBeChanged=Изменение информации о медицинком работнике
 profileSubMenu.staffHistory=История информации о медицинком работнике
