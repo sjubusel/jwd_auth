@@ -11,6 +11,6 @@ public class GoToProfileAllergicReactionsCommand implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-
+        req.getRequestDispatcher("/WEB-INF/jsp/subprofile/allergicReactions.jsp").forward(req, res);
     }
 }
