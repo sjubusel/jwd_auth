@@ -83,3 +83,14 @@ news.htmlTitle=News
 patients.htmlTitle=For patients
 
 staff.htmlTitle=For staff
+
+profileSubMenu.patientInfo=User information
+profileSubMenu.patientIntoToBeChanged=Change user information
+profileSubMenu.passwordToBeChanged=Change a password
+profileSubMenu.emailToBeChanged=Change an email
+profileSubMenu.photoToBeChanged=Change a user photo
+
+profileSubMenu.staffInfo=Medical staff member information
+profileSubMenu.staffInfoToBeChanged=Change medical staff member information
+profileSubMenu.staffHistory=History of medical staff member information
+profileSubMenu.staffPhotoToBeChanged=Change a medical staff member photo

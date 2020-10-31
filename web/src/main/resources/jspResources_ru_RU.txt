@@ -83,3 +83,13 @@ news.htmlTitle=Новости
 patients.htmlTitle=Для пациентов
 
 staff.htmlTitle=Для персонала
+
+profileSubMenu.patientInfo=Информация о пользователе
+profileSubMenu.patientIntoToBeChanged=Изменение информации о пользователе
+profileSubMenu.passwordToBeChanged=Изменение пароля
+profileSubMenu.emailToBeChanged=Изменение электронной почты
+profileSubMenu.photoToBeChanged=Изменение фотографии пользователя
+profileSubMenu.staffInfo=Информация о медицинком работнике
+profileSubMenu.staffInfoToBeChanged=Изменение информации о медицинком работнике
+profileSubMenu.staffHistory=История информации о медицинком работнике
+profileSubMenu.staffPhotoToBeChanged=Изменение фотографии медицинкого работника
