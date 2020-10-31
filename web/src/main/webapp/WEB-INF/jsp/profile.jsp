@@ -29,10 +29,10 @@
 <div class="main-content">
     <%@ include file="structural_element/header.jsp" %>
 
-    <h1 style="padding-left: 25px">
+    <h1 class="ml-2 mr-2">
         <fmt:message bundle="${jspMessages}" key="profile.heading"/>
     </h1>
-    <h6 style="padding-left: 25px">
+    <h6 class="ml-2 mr-2">
         <fmt:message bundle="${jspMessages}" key="profile.message"/>
     </h6>
 
@@ -40,11 +40,11 @@
     <div class="row mt-2 mr-2 ml-2">
         <div class="list-group d-inline-block col-3">
             <button type="button"
-                    class="list-group-item list-group-item-action">
+                    class="list-group-item list-group-item-action active">
                 <c:out value="Информация о пользователе"/>
             </button>
             <button type="button"
-                    class="list-group-item list-group-item-action active">
+                    class="list-group-item list-group-item-action">
                 <c:out value="Изменение информации о пользователе"/>
             </button>
         </div>
