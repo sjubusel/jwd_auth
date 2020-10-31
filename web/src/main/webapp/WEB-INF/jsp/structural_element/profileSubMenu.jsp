@@ -62,8 +62,9 @@
     >
         <fmt:message bundle="${jspMessages}"
                      key="profileSubMenu.changeEmail"/>
-    </button>
-    <button type="button"
+    </a>
+    <a type="button"
+       href="${pageContext.request.contextPath}/profile?command=go-to-profile-change-photo"
             <c:choose>
                 <c:when test="${pageScope.activeSubMenuProfileTab == 'changePhoto'}">
                     class="list-group-item list-group-item-action active"
@@ -75,7 +76,7 @@
     >
         <fmt:message bundle="${jspMessages}"
                      key="profileSubMenu.changePhoto"/>
-    </button>
+    </a>
     <button type="button"
             <c:choose>
                 <c:when test="${pageScope.activeSubMenuProfileTab == 'allergicReactions'}">
