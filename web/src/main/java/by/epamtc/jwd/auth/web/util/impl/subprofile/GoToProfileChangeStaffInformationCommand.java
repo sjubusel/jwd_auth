@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class GoToProfileChangeStaffPhoto implements Command {
+public class GoToProfileChangeStaffInformationCommand implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
