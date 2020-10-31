@@ -1,5 +1,6 @@
 package by.epamtc.jwd.auth.web.util.impl.subprofile;
 
+import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.web.util.Command;
 
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ public class GoToProfileExtremelyHazardousDiseasesCommand implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/jsp/subprofile/extremelyHazardousDiseases.jsp").forward(req, res);
+        req.getRequestDispatcher(CommandPath
+                .SUBPROFILE_EXTREMELY_HAZARDOUS_DISEASES_JSP).forward(req, res);
     }
 }
