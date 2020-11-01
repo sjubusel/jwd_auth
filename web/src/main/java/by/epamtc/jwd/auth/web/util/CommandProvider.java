@@ -53,25 +53,25 @@ public class CommandProvider {
         repository.put(CommandName.GO_TO_PATIENTS, new GoToPatientsCommand());
         repository.put(CommandName.GO_TO_STAFF, new GoToStaffCommand());
 
-        repository.put("GO-TO-PROFILE-ALLERGIC-REACTIONS",
+        repository.put(CommandName.SUBPROFILE_GO_TO_ALLERGIC_REACTIONS,
                 new GoToProfileAllergicReactionsCommand());
-        repository.put("GO-TO-PROFILE-EMAIL-CHANGE",
+        repository.put(CommandName.SUBPROFILE_GO_TO_EMAIL_CHANGE,
                 new GoToProfileChangeEmailCommand());
-        repository.put("GO-TO-PROFILE-CHANGE-PASSWORD",
+        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_PASSWORD,
                 new GoToProfileChangePasswordCommand());
-        repository.put("GO-TO-PROFILE-CHANGE-PATIENT-INFO",
+        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO,
                 new GoToProfileChangePatientInformationCommand());
-        repository.put("GO-TO-PROFILE-CHANGE-PHOTO",
+        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_PHOTO,
                 new GoToProfileChangePhotoCommand());
-        repository.put("GO-TO-PROFILE-CHANGE-STAFF-INFO",
+        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_STAFF_INFO,
                 new GoToProfileChangeStaffInformationCommand());
-        repository.put("GO-TO-PROFILE-CHANGE-STAFF-PHOTO",
+        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_STAFF_PHOTO,
                 new GoToProfileChangeStaffPhotoCommand());
-        repository.put("GO-TO-PROFILE-EXTREMELY-HAZARDOUS-DISEASES",
+        repository.put(CommandName.SUBPROFILE_GO_TO_EXTREMELY_HAZARDOUS_DISEASES,
                 new GoToProfileExtremelyHazardousDiseasesCommand());
-        repository.put("GO-TO-PROFILE-STAFF-HISTORY",
+        repository.put(CommandName.SUBPROFILE_GO_TO_STAFF_HISTORY,
                 new GoToProfileStaffHistoryCommand());
-        repository.put("GO-TO-PROFILE-STAFF-INFO",
+        repository.put(CommandName.SUBPROFILE_GO_TO_STAFF_INFO,
                 new GoToProfileStaffInformationCommand());
 
         repository.put(CommandName.ERROR, new ErrorCommand());
