@@ -36,27 +36,27 @@
     <div class="row mt-2 mr-2 ml-2">
         <%@ include file="structural_element/profileSubMenu.jsp" %>
         <div class="bg-light d-inline-block col">
-<%--            <div class="">--%>
-<%--                SUCCESS-BLOCK <br> БЛОК УСПЕХА--%>
-<%--            </div>--%>
 
             <table class="table">
                 <tbody>
                 <%--1--%>
                 <tr class="row">
                     <td class="col-3 d-flex align-items-center">
-                        Фотография
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profile.photo"/>
                     </td>
                     <td class="col d-flex align-items-center">
                         <img src="${pageContext.request.contextPath}/img/user.png"
                              class="rounded " style="height: 200px; width:auto"
-                             alt="Фотография пользователя">
+                             alt="<fmt:message bundle="${jspMessages}"
+                             key="profile.photo"/>">
                     </td>
                 </tr>
                 <%--2--%>
                 <tr class="row">
                     <td class="col-3 d-flex align-items-center">
-                        Имя
+                        <fmt:message bundle="${jspMessages}"
+                                     key="register.firstNameInputLabel"/>
                     </td>
                     <td class="col d-flex align-items-center">
                         Value
@@ -65,7 +65,8 @@
                 <%--3--%>
                 <tr class="row">
                     <td class="col-3 d-flex align-items-center">
-                        Отчество
+                        <fmt:message bundle="${jspMessages}"
+                                     key="register.middleNameInputLabel"/>
                     </td>
                     <td class="col d-flex align-items-center">
                         Value
@@ -74,7 +75,8 @@
                 <%--4--%>
                 <tr class="row">
                     <td class="col-3 d-flex align-items-center">
-                        Фамилия
+                        <fmt:message bundle="${jspMessages}"
+                                     key="register.lastNameInputLabel"/>
                     </td>
                     <td class="col d-flex align-items-center">
                         Value
@@ -83,7 +85,8 @@
                 <%--5--%>
                 <tr class="row">
                     <td class="col-3 d-flex align-items-center">
-                        Дата рождения
+                        <fmt:message bundle="${jspMessages}"
+                                     key="register.birthdayInputLabel"/>
                     </td>
                     <td class="col d-flex align-items-center">
                         Value
@@ -92,7 +95,8 @@
                 <%--6--%>
                 <tr class="row">
                     <td class="col-3 d-flex align-items-center">
-                        Пол
+                        <fmt:message bundle="${jspMessages}"
+                                     key="register.GenderInputLabel"/>
                     </td>
                     <td class="col d-flex align-items-center">
                         Value
@@ -101,7 +105,8 @@
                 <%--7--%>
                 <tr class="row">
                     <td class="col-3 d-flex align-items-center">
-                        Адрес электронной почты
+                        <fmt:message bundle="${jspMessages}"
+                                     key="register.emailInputLabel"/>
                     </td>
                     <td class="col d-flex align-items-center">
                         Value
@@ -110,7 +115,8 @@
                 <%--8--%>
                 <tr class="row">
                     <td class="col-3 d-flex align-items-center">
-                        Номер телефона
+                        <fmt:message bundle="${jspMessages}"
+                                     key="register.phoneNumberInputLabel"/>
                     </td>
                     <td class="col d-flex align-items-center">
                         Value
@@ -119,7 +125,8 @@
                 <%--9--%>
                 <tr class="row">
                     <td class="col-3 d-flex align-items-center">
-                        Семейный статус
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profile.maritalStatus"/>
                     </td>
                     <td class="col d-flex align-items-center">
                         Value
@@ -128,7 +135,8 @@
                 <%--10--%>
                 <tr class="row">
                     <td class="col-3 d-flex align-items-center">
-                        Удостоверяющий личность документ
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profile.identityDocument"/>
                     </td>
                     <td class="col d-flex align-items-center">
                         Value
@@ -137,7 +145,8 @@
                 <%--11--%>
                 <tr class="row">
                     <td class="col-3 d-flex align-items-center">
-                        Домашний телефон
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profile.homeAddress"/>
                     </td>
                     <td class="col d-flex align-items-center">
                         Value
@@ -146,7 +155,8 @@
                 <%--12--%>
                 <tr class="row">
                     <td class="col-3 d-flex align-items-center">
-                        Контактное лицо в случае крайней необходимости
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profile.inCaseOfEmergencyContactPerson"/>
                     </td>
                     <td class="col d-flex align-items-center">
                         Value
@@ -155,8 +165,8 @@
                 <%--13--%>
                 <tr class="row">
                     <td class="col-3 d-flex align-items-center">
-                        Номер телефона контактного лица в случае крайней
-                        необходимости
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profile.inCaseOfEmergencyPhoneOfContactPerson"/>
                     </td>
                     <td class="col d-flex align-items-center">
                         Value
@@ -165,7 +175,8 @@
                 <%--14--%>
                 <tr class="row">
                     <td class="col-3 d-flex align-items-center">
-                        Группа крови
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profile.bloodType"/>
                     </td>
                     <td class="col d-flex align-items-center">
                         Value
@@ -174,7 +185,8 @@
                 <%--15--%>
                 <tr class="row">
                     <td class="col-3 d-flex align-items-center">
-                        Резус-фактор (Rh)
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profile.bloodRh"/>
                     </td>
                     <td class="col d-flex align-items-center">
                         Value
@@ -183,7 +195,8 @@
                 <%--16--%>
                 <tr class="row">
                     <td class="col-3 d-flex align-items-center">
-                        Группа инвалидности
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profile.disabilityDegree"/>
                     </td>
                     <td class="col d-flex align-items-center">
                         Value
@@ -192,7 +205,8 @@
                 <%--17--%>
                 <tr class="row">
                     <td class="col-3 d-flex align-items-center">
-                        Статус транспортировки
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profile.transportationStatus"/>
                     </td>
                     <td class="col d-flex align-items-center">
                         Value
@@ -201,7 +215,8 @@
                 <%--18--%>
                 <tr class="row">
                     <td class="col-3 d-flex align-items-center">
-                        Наличие аллергических реакций
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profile.allergicReactionsPresence"/>
                     </td>
                     <td class="col d-flex align-items-center">
                         Value
@@ -210,7 +225,8 @@
                 <%--19--%>
                 <tr class="row">
                     <td class="col-3 d-flex align-items-center">
-                        Наличие особо опасных болезней
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profile.extremelyHazardousDiseasesPresence"/>
                     </td>
                     <td class="col d-flex align-items-center">
                         Value
