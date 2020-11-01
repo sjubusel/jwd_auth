@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 // TODO add serialVersionUID
 public class IdentityDocument implements java.io.Serializable {
+    private static final long serialVersionUID = 5045678592716134465L;
+
     private int id;
     private String identificationDocumentType;
     private String series;

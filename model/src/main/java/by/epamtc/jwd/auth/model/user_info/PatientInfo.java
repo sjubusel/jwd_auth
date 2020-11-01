@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 // TODO add serialVersionUID
 public class PatientInfo implements java.io.Serializable {
+    private static final long serialVersionUID = -669272966787219927L;
+
     private String photoPath;
     private String firstName;
     private String middleName;

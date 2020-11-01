@@ -2,6 +2,8 @@ package by.epamtc.jwd.auth.model.user_info;
 
 // TODO add serialVersionUID
 public class Address implements java.io.Serializable {
+    private static final long serialVersionUID = -5393531158921800562L;
+
     private int id;
     private String zipCode;
     private String country;
