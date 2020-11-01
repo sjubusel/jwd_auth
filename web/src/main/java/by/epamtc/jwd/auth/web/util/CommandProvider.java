@@ -16,6 +16,16 @@ import by.epamtc.jwd.auth.web.util.impl.GoToPatientsCommand;
 import by.epamtc.jwd.auth.web.util.impl.GoToProfileCommand;
 import by.epamtc.jwd.auth.web.util.impl.GoToRegisterCommand;
 import by.epamtc.jwd.auth.web.util.impl.GoToStaffCommand;
+import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileAllergicReactionsCommand;
+import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangeEmailCommand;
+import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangePasswordCommand;
+import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangePatientInformationCommand;
+import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangePhotoCommand;
+import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangeStaffInformationCommand;
+import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangeStaffPhotoCommand;
+import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileExtremelyHazardousDiseasesCommand;
+import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileStaffHistoryCommand;
+import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileStaffInformationCommand;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -42,6 +52,28 @@ public class CommandProvider {
         repository.put(CommandName.GO_TO_NEWS, new GoToNewsCommand());
         repository.put(CommandName.GO_TO_PATIENTS, new GoToPatientsCommand());
         repository.put(CommandName.GO_TO_STAFF, new GoToStaffCommand());
+
+        repository.put("GO-TO-PROFILE-ALLERGIC-REACTIONS",
+                new GoToProfileAllergicReactionsCommand());
+        repository.put("GO-TO-PROFILE-EMAIL-CHANGE",
+                new GoToProfileChangeEmailCommand());
+        repository.put("GO-TO-PROFILE-CHANGE-PASSWORD",
+                new GoToProfileChangePasswordCommand());
+        repository.put("GO-TO-PROFILE-CHANGE-PATIENT-INFO",
+                new GoToProfileChangePatientInformationCommand());
+        repository.put("GO-TO-PROFILE-CHANGE-PHOTO",
+                new GoToProfileChangePhotoCommand());
+        repository.put("GO-TO-PROFILE-CHANGE-STAFF-INFO",
+                new GoToProfileChangeStaffInformationCommand());
+        repository.put("GO-TO-PROFILE-CHANGE-STAFF-PHOTO",
+                new GoToProfileChangeStaffPhotoCommand());
+        repository.put("GO-TO-PROFILE-EXTREMELY-HAZARDOUS-DISEASES",
+                new GoToProfileExtremelyHazardousDiseasesCommand());
+        repository.put("GO-TO-PROFILE-STAFF-HISTORY",
+                new GoToProfileStaffHistoryCommand());
+        repository.put("GO-TO-PROFILE-STAFF-INFO",
+                new GoToProfileStaffInformationCommand());
+
         repository.put(CommandName.ERROR, new ErrorCommand());
     }
 
