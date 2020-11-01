@@ -1,7 +1,7 @@
 package by.epamtc.jwd.auth.service.validation;
 
 import by.epamtc.jwd.auth.model.auth_info.AuthenticationInfo;
-import by.epamtc.jwd.auth.model.auth_info.Gender;
+import by.epamtc.jwd.auth.model.user_info.Gender;
 import by.epamtc.jwd.auth.model.auth_info.RegistrationInfo;
 import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
 import by.epamtc.jwd.auth.model.constant.AppConstant;

@@ -1,7 +1,5 @@
 package by.epamtc.jwd.auth.model.user_info;
 
-import by.epamtc.jwd.auth.model.auth_info.Gender;
-
 import java.time.LocalDate;
 
 // TODO add serialVersionUID

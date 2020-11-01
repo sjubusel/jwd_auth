@@ -1,5 +1,7 @@
 package by.epamtc.jwd.auth.model.auth_info;
 
+import by.epamtc.jwd.auth.model.user_info.Gender;
+
 import java.time.LocalDate;
 
 public class RegistrationInfo implements java.io.Serializable {

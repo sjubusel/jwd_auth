@@ -1,6 +1,6 @@
 package by.epamtc.jwd.auth.web.util;
 
-import by.epamtc.jwd.auth.model.auth_info.Gender;
+import by.epamtc.jwd.auth.model.user_info.Gender;
 import by.epamtc.jwd.auth.model.auth_info.RegistrationInfo;
 import by.epamtc.jwd.auth.model.constant.AppParameter;
 import by.epamtc.jwd.auth.model.constant.AppConstant;

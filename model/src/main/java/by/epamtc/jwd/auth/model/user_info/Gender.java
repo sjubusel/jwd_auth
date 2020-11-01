@@ -1,4 +1,4 @@
-package by.epamtc.jwd.auth.model.auth_info;
+package by.epamtc.jwd.auth.model.user_info;
 
 public enum Gender {
     MALE("male"), FEMALE("female"), OTHER("other");
