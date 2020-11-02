@@ -7,7 +7,7 @@ public class IdentityDocument implements java.io.Serializable {
     private static final long serialVersionUID = 5045678592716134465L;
 
     private int id;
-    private String identificationDocumentType;
+    private IdentificationDocumentType identificationDocumentType;
     private String series;
     private int documentNumber;
     private String latinHolderName;
@@ -24,7 +24,7 @@ public class IdentityDocument implements java.io.Serializable {
     public IdentityDocument() {
     }
 
-    public IdentityDocument(int id, String identificationDocumentType,
+    public IdentityDocument(int id, IdentificationDocumentType identificationDocumentType,
             String series, int documentNumber, String latinHolderName,
             String latinHolderSurName, String citizenShip, LocalDate birthday,
             String personalNumber, Gender gender, String placeOfOrigin,
@@ -53,11 +53,11 @@ public class IdentityDocument implements java.io.Serializable {
         this.id = id;
     }
 
-    public String getIdentificationDocumentType() {
+    public IdentificationDocumentType getIdentificationDocumentType() {
         return identificationDocumentType;
     }
 
-    public void setIdentificationDocumentType(String identificationDocumentType) {
+    public void setIdentificationDocumentType(IdentificationDocumentType identificationDocumentType) {
         this.identificationDocumentType = identificationDocumentType;
     }
 
