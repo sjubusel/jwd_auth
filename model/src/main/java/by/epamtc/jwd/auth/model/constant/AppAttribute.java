@@ -7,6 +7,7 @@ public final class AppAttribute {
     public static final String REQUEST_MAIN_PAGE_REPORT = "hospitalReport";
     public static final String REQUEST_LOGIN_REGISTER_ERROR = "error";
     public static final String REQUEST_INVALID_COMMAND_ERROR = "invalidCommand";
+    public static final String REQUEST_PATIENT_INFO = "patientInfo";
 
     private AppAttribute() {
     }
