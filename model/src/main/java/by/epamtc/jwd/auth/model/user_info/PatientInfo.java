@@ -14,14 +14,18 @@ public class PatientInfo implements java.io.Serializable {
     private Gender gender;
     private String email;
     private String phoneNumber;
-    private String maritalStatus;
+    private MaritalStatus maritalStatus;
     private IdentityDocument identityDocument;
     private Address homeAddress;
     private String inCaseOfEmergencyContactPersonInfo;
     private String inCaseOfEmergencyContactPersonPhone;
+    // TODO ENUM
     private String bloodType;
+    // TODO ENUM
     private String rhBloodGroup;
+    // TODO ENUM
     private String disabilityDegree;
+    // TODO ENUM
     private String transportationStatus;
     private boolean hasAllergicReactions;
     private boolean hasExtremelyHazardousDiseases;
@@ -31,7 +35,7 @@ public class PatientInfo implements java.io.Serializable {
 
     public PatientInfo(String photoPath, String firstName, String middleName,
             String lastName, LocalDate birthday, Gender gender, String email,
-            String phoneNumber, String maritalStatus, IdentityDocument identityDocument,
+            String phoneNumber, MaritalStatus maritalStatus, IdentityDocument identityDocument,
             Address homeAddress, String inCaseOfEmergencyContactPersonInfo,
             String inCaseOfEmergencyContactPersonPhone, String bloodType,
             String rhBloodGroup, String disabilityDegree,
@@ -122,11 +126,11 @@ public class PatientInfo implements java.io.Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getMaritalStatus() {
+    public MaritalStatus getMaritalStatus() {
         return maritalStatus;
     }
 
-    public void setMaritalStatus(String maritalStatus) {
+    public void setMaritalStatus(MaritalStatus maritalStatus) {
         this.maritalStatus = maritalStatus;
     }
 
