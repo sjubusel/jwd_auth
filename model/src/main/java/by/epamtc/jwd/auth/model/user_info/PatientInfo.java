@@ -21,8 +21,7 @@ public class PatientInfo implements java.io.Serializable {
     private String inCaseOfEmergencyContactPersonPhone;
     private BloodType bloodType;
     private RhBloodGroup rhBloodGroup;
-    // TODO ENUM
-    private String disabilityDegree;
+    private DisabilityDegree disabilityDegree;
     private TransportationStatus transportationStatus;
     private boolean hasAllergicReactions;
     private boolean hasExtremelyHazardousDiseases;
@@ -35,7 +34,7 @@ public class PatientInfo implements java.io.Serializable {
             String phoneNumber, MaritalStatus maritalStatus, IdentityDocument identityDocument,
             Address homeAddress, String inCaseOfEmergencyContactPersonInfo,
             String inCaseOfEmergencyContactPersonPhone, BloodType bloodType,
-            RhBloodGroup rhBloodGroup, String disabilityDegree,
+            RhBloodGroup rhBloodGroup, DisabilityDegree disabilityDegree,
             TransportationStatus transportationStatus, boolean hasAllergicReactions,
             boolean hasExtremelyHazardousDiseases) {
         this.photoPath = photoPath;
@@ -179,11 +178,11 @@ public class PatientInfo implements java.io.Serializable {
         this.rhBloodGroup = rhBloodGroup;
     }
 
-    public String getDisabilityDegree() {
+    public DisabilityDegree getDisabilityDegree() {
         return disabilityDegree;
     }
 
-    public void setDisabilityDegree(String disabilityDegree) {
+    public void setDisabilityDegree(DisabilityDegree disabilityDegree) {
         this.disabilityDegree = disabilityDegree;
     }
 
