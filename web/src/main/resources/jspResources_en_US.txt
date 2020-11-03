@@ -49,6 +49,7 @@ profile.disabilityDegree=Disability degree
 profile.transportationStatus=Transportation status
 profile.allergicReactionsPresence=Presence of allergic reactions
 profile.extremelyHazardousDiseasesPresence=Presence of extremely hazardous diseases
+profile.techError=Because of a technical factor there is no possibility to get information about a patient
 
 register.htmlTitle=Sign up
 register.heading=Sign up form
