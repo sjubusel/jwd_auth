@@ -50,6 +50,7 @@ profile.transportationStatus=Статус транспортировки
 profile.allergicReactionsPresence=Наличие аллергических реакций
 profile.extremelyHazardousDiseasesPresence=Наличие особо опасных болезней
 profile.techError=По техническим причинам получить информацию о пользователе не представляется возможным
+profile.valError=Получить информацию о пользователе не представляется возможность в связи с некорректным типом пользователя
 
 register.htmlTitle=Регистрация в системе
 register.heading=Форма регистрации в системе
