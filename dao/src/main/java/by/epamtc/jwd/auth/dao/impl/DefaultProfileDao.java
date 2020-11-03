@@ -28,9 +28,9 @@ public class DefaultProfileDao implements ProfileDao {
 
     @Override
     public PatientInfo fetchPatientInfo(AuthUser authUser) throws DaoException {
-        Connection conn;
-        PreparedStatement statement;
-        ResultSet rSet;
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet rSet = null;
 
         try {
             conn = pool.takeConnection();
@@ -45,6 +45,8 @@ public class DefaultProfileDao implements ProfileDao {
         } catch (ConnectionPoolException e) {
             throw new DaoException("An error while taking a connection from " +
                     "the connection pool during fetching of patient info", e);
+        } finally {
+            pool.closeConnection(conn, statement, rSet);
         }
         return null;
     }
