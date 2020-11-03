@@ -5,6 +5,7 @@ import by.epamtc.jwd.auth.model.constant.AppAttribute;
 import by.epamtc.jwd.auth.model.user_info.PatientInfo;
 import by.epamtc.jwd.auth.service.ProfileService;
 import by.epamtc.jwd.auth.service.ServiceFactory;
+import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
 import by.epamtc.jwd.auth.model.constant.CommandPath;
 
@@ -22,7 +23,22 @@ public class GoToProfileCommand implements Command {
             throws ServletException, IOException {
         AuthUser currentUser = (AuthUser) req.getSession()
                 .getAttribute(AppAttribute.SESSION_AUTH_USER);
-        PatientInfo patientInfo = profileService.fetchPatientInfo(currentUser);
+        PatientInfo patientInfo;
+
+        try {
+            patientInfo = profileService.fetchPatientInfo(currentUser);
+        } catch (ServiceException e) {
+            // TODO log4j in catch of ServiceException
+            res.sendRedirect(req.getContextPath() + CommandPath
+                    .PROFILE_TECH_ERROR);
+            return;
+        }
+
+        if (patientInfo == null) {
+            res.sendRedirect(req.getContextPath() + CommandPath
+                    .PROFILE_AUTH_USER_VALIDATION_ERROR);
+            return;
+        }
 
         req.setAttribute(AppAttribute.REQUEST_PATIENT_INFO, patientInfo);
         req.getRequestDispatcher(CommandPath.PROFILE_JSP).forward(req, res);

@@ -11,6 +11,9 @@ public final class CommandPath {
     public static final String REGISTER_DUPLICATE_ERROR_BY_LOGIN = "/main?command=go-to-register&error=duplicateLogin";
     public static final String REGISTER_DUPLICATE_ERROR_BY_EMAIL = "/main?command=go-to-register&error=duplicateEmail";
 
+    public static final String PROFILE_TECH_ERROR = "/profile?command=go-to-profile&error=tech";
+    public static final String PROFILE_AUTH_USER_VALIDATION_ERROR = "/profile?command=go-to-profile&error=val";
+
     public static final String LOGIN_JSP = "/WEB-INF/jsp/login.jsp";
     public static final String PROFILE_JSP = "/WEB-INF/jsp/profile.jsp";
     public static final String REGISTER_JSP = "/WEB-INF/jsp/register.jsp";
