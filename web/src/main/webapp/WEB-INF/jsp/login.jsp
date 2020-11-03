@@ -46,7 +46,8 @@
                    name="login" required
                    placeholder="<fmt:message bundle="${jspMessages}"
                    key="login.loginInput.placeholder"/>"
-                   pattern="<fmt:message bundle="${regEx}" key="login"/>">
+                   pattern="<fmt:message bundle="${regEx}" key="login"/>"
+                   autofocus>
         </div>
         <div class="form-group">
             <label for="passwordInput">

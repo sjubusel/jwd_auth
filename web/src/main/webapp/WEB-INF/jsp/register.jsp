@@ -181,7 +181,8 @@
                    name="login" required
                    placeholder="<fmt:message bundle="${jspMessages}"
                    key="register.loginInput.placeholder"/>"
-                   pattern="<fmt:message bundle="${regEx}" key="login"/>">
+                   pattern="<fmt:message bundle="${regEx}" key="login"/>"
+                   autofocus>
             <div id="loginIndent" class="col-4"></div>
             <small id="loginDescription" class="form-text text-muted col-5">
                 <fmt:message bundle="${jspMessages}"
