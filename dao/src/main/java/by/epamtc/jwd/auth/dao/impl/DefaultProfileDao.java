@@ -5,6 +5,7 @@ import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.dao.pool.ConnectionPool;
 import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
+import by.epamtc.jwd.auth.model.constant.AppConstant;
 import by.epamtc.jwd.auth.model.constant.SqlStatement;
 import by.epamtc.jwd.auth.model.user_info.Address;
 import by.epamtc.jwd.auth.model.user_info.BloodType;
@@ -36,6 +37,7 @@ public class DefaultProfileDao implements ProfileDao {
         try {
             conn = pool.takeConnection();
             statement = conn.prepareStatement(SqlStatement.SELECT_PATIENT_INFO);
+            statement.setInt(1, authUser.getUserId());
             rSet = statement.executeQuery();
             if (rSet.next()) {
                 patientInfo = compilePatientInfo(rSet);
@@ -64,7 +66,7 @@ public class DefaultProfileDao implements ProfileDao {
         String firstName = rSet.getString(2);
         String middleName = rSet.getString(3);
         String lastName = rSet.getString(4);
-        LocalDate birthday = (LocalDate) rSet.getObject(5);
+        LocalDate birthday = rSet.getDate(5).toLocalDate();
         Gender gender = Gender.valueOf(rSet.getString(6));
         String email = rSet.getString(7);
         String phoneNumber = rSet.getString(8);
@@ -114,12 +116,12 @@ public class DefaultProfileDao implements ProfileDao {
             String latinHolderName = rSet.getString(15);
             String latinHolderSurname = rSet.getString(16);
             String idDocCountryName = rSet.getString(17);
-            LocalDate idDocBirthday = (LocalDate) rSet.getObject(18);
+            LocalDate idDocBirthday = rSet.getDate(18).toLocalDate();
             String personalNumber = rSet.getString(19);
             Gender idDocGender = Gender.valueOf(rSet.getString(20));
             String placeOfOrigin = rSet.getString(21);
-            LocalDate dateOfIssue = (LocalDate) rSet.getObject(22);
-            LocalDate dateOfExpiry = (LocalDate) rSet.getObject(23);
+            LocalDate dateOfIssue = rSet.getDate(22).toLocalDate();
+            LocalDate dateOfExpiry = rSet.getDate(23).toLocalDate();
             String issueAuthority = rSet.getString(24);
             return new IdentityDocument(identityDocId, identityDocType, series,
                     serialNumberOfDocument, latinHolderName, latinHolderSurname,
@@ -136,12 +138,16 @@ public class DefaultProfileDao implements ProfileDao {
             String zipCode = rSet.getString(26);
             String shortCountryName = rSet.getString(27);
             String regionName = rSet.getString(28)
+                    + AppConstant.ONE_WHITESPACE
                     + rSet.getString(29);
             String areaName = rSet.getString(30)
+                    + AppConstant.ONE_WHITESPACE
                     + rSet.getString(31);
             String settleName = rSet.getString(32)
+                    + AppConstant.ONE_WHITESPACE
                     + rSet.getString(33);
             String roadName = rSet.getString(34)
+                    + AppConstant.ONE_WHITESPACE
                     + rSet.getString(35);
             String house = rSet.getString(36);
             String building = rSet.getString(37);
