@@ -33,209 +33,224 @@
 <div class="main-content">
     <%@ include file="structural_element/header.jsp" %>
 
-    <div class="row mt-2 mr-2 ml-2">
-        <%@ include file="structural_element/profileSubMenu.jsp" %>
-        <div class="bg-light d-inline-block col">
+    <c:choose>
+        <c:when test="${requestScope.error ne null}">
+            <c:if test="${requestScope.error eq 'tech'}">
+                <fmt:message bundle="${jspMessages}" key="profile.techError"/>
+            </c:if>
+            <c:if test="${requestScope.error eq 'val'}">
+                <fmt:message bundle="${jspMessages}" key="profile.valError"/>
+            </c:if>
+        </c:when>
+        <c:otherwise>
+            <div class="row mt-2 mr-2 ml-2">
+                <%@ include file="structural_element/profileSubMenu.jsp" %>
+                <div class="bg-light d-inline-block col">
 
-            <table class="table">
-                <tbody>
-                <%--1--%>
-                <tr class="row">
-                    <td class="col-3 d-flex align-items-center">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="profile.photo"/>
-                    </td>
-                    <td class="col d-flex align-items-center">
-                        <img src="${pageContext.request.contextPath}/img/user.png"
-                             class="rounded " style="height: 200px; width:auto"
-                             alt="<fmt:message bundle="${jspMessages}"
+                    <table class="table">
+                        <tbody>
+                            <%--1--%>
+                        <tr class="row">
+                            <td class="col-3 d-flex align-items-center">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profile.photo"/>
+                            </td>
+                            <td class="col d-flex align-items-center">
+                                <img src="${pageContext.request.contextPath}/img/user.png"
+                                     class="rounded "
+                                     style="height: 200px; width:auto"
+                                     alt="<fmt:message bundle="${jspMessages}"
                              key="profile.photo"/>">
-                    </td>
-                </tr>
-                <%--2--%>
-                <tr class="row">
-                    <td class="col-3 d-flex align-items-center">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="register.firstNameInputLabel"/>
-                    </td>
-                    <td class="col d-flex align-items-center">
-                        Value
-                    </td>
-                </tr>
-                <%--3--%>
-                <tr class="row">
-                    <td class="col-3 d-flex align-items-center">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="register.middleNameInputLabel"/>
-                    </td>
-                    <td class="col d-flex align-items-center">
-                        Value
-                    </td>
-                </tr>
-                <%--4--%>
-                <tr class="row">
-                    <td class="col-3 d-flex align-items-center">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="register.lastNameInputLabel"/>
-                    </td>
-                    <td class="col d-flex align-items-center">
-                        Value
-                    </td>
-                </tr>
-                <%--5--%>
-                <tr class="row">
-                    <td class="col-3 d-flex align-items-center">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="register.birthdayInputLabel"/>
-                    </td>
-                    <td class="col d-flex align-items-center">
-                        Value
-                    </td>
-                </tr>
-                <%--6--%>
-                <tr class="row">
-                    <td class="col-3 d-flex align-items-center">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="register.GenderInputLabel"/>
-                    </td>
-                    <td class="col d-flex align-items-center">
-                        Value
-                    </td>
-                </tr>
-                <%--7--%>
-                <tr class="row">
-                    <td class="col-3 d-flex align-items-center">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="register.emailInputLabel"/>
-                    </td>
-                    <td class="col d-flex align-items-center">
-                        Value
-                    </td>
-                </tr>
-                <%--8--%>
-                <tr class="row">
-                    <td class="col-3 d-flex align-items-center">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="register.phoneNumberInputLabel"/>
-                    </td>
-                    <td class="col d-flex align-items-center">
-                        Value
-                    </td>
-                </tr>
-                <%--9--%>
-                <tr class="row">
-                    <td class="col-3 d-flex align-items-center">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="profile.maritalStatus"/>
-                    </td>
-                    <td class="col d-flex align-items-center">
-                        Value
-                    </td>
-                </tr>
-                <%--10--%>
-                <tr class="row">
-                    <td class="col-3 d-flex align-items-center">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="profile.identityDocument"/>
-                    </td>
-                    <td class="col d-flex align-items-center">
-                        Value
-                    </td>
-                </tr>
-                <%--11--%>
-                <tr class="row">
-                    <td class="col-3 d-flex align-items-center">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="profile.homeAddress"/>
-                    </td>
-                    <td class="col d-flex align-items-center">
-                        Value
-                    </td>
-                </tr>
-                <%--12--%>
-                <tr class="row">
-                    <td class="col-3 d-flex align-items-center">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="profile.inCaseOfEmergencyContactPerson"/>
-                    </td>
-                    <td class="col d-flex align-items-center">
-                        Value
-                    </td>
-                </tr>
-                <%--13--%>
-                <tr class="row">
-                    <td class="col-3 d-flex align-items-center">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="profile.inCaseOfEmergencyPhoneOfContactPerson"/>
-                    </td>
-                    <td class="col d-flex align-items-center">
-                        Value
-                    </td>
-                </tr>
-                <%--14--%>
-                <tr class="row">
-                    <td class="col-3 d-flex align-items-center">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="profile.bloodType"/>
-                    </td>
-                    <td class="col d-flex align-items-center">
-                        Value
-                    </td>
-                </tr>
-                <%--15--%>
-                <tr class="row">
-                    <td class="col-3 d-flex align-items-center">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="profile.bloodRh"/>
-                    </td>
-                    <td class="col d-flex align-items-center">
-                        Value
-                    </td>
-                </tr>
-                <%--16--%>
-                <tr class="row">
-                    <td class="col-3 d-flex align-items-center">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="profile.disabilityDegree"/>
-                    </td>
-                    <td class="col d-flex align-items-center">
-                        Value
-                    </td>
-                </tr>
-                <%--17--%>
-                <tr class="row">
-                    <td class="col-3 d-flex align-items-center">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="profile.transportationStatus"/>
-                    </td>
-                    <td class="col d-flex align-items-center">
-                        Value
-                    </td>
-                </tr>
-                <%--18--%>
-                <tr class="row">
-                    <td class="col-3 d-flex align-items-center">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="profile.allergicReactionsPresence"/>
-                    </td>
-                    <td class="col d-flex align-items-center">
-                        Value
-                    </td>
-                </tr>
-                <%--19--%>
-                <tr class="row">
-                    <td class="col-3 d-flex align-items-center">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="profile.extremelyHazardousDiseasesPresence"/>
-                    </td>
-                    <td class="col d-flex align-items-center">
-                        Value
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+                            </td>
+                        </tr>
+                            <%--2--%>
+                        <tr class="row">
+                            <td class="col-3 d-flex align-items-center">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="register.firstNameInputLabel"/>
+                            </td>
+                            <td class="col d-flex align-items-center">
+                                Value
+                            </td>
+                        </tr>
+                            <%--3--%>
+                        <tr class="row">
+                            <td class="col-3 d-flex align-items-center">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="register.middleNameInputLabel"/>
+                            </td>
+                            <td class="col d-flex align-items-center">
+                                Value
+                            </td>
+                        </tr>
+                            <%--4--%>
+                        <tr class="row">
+                            <td class="col-3 d-flex align-items-center">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="register.lastNameInputLabel"/>
+                            </td>
+                            <td class="col d-flex align-items-center">
+                                Value
+                            </td>
+                        </tr>
+                            <%--5--%>
+                        <tr class="row">
+                            <td class="col-3 d-flex align-items-center">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="register.birthdayInputLabel"/>
+                            </td>
+                            <td class="col d-flex align-items-center">
+                                Value
+                            </td>
+                        </tr>
+                            <%--6--%>
+                        <tr class="row">
+                            <td class="col-3 d-flex align-items-center">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="register.GenderInputLabel"/>
+                            </td>
+                            <td class="col d-flex align-items-center">
+                                Value
+                            </td>
+                        </tr>
+                            <%--7--%>
+                        <tr class="row">
+                            <td class="col-3 d-flex align-items-center">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="register.emailInputLabel"/>
+                            </td>
+                            <td class="col d-flex align-items-center">
+                                Value
+                            </td>
+                        </tr>
+                            <%--8--%>
+                        <tr class="row">
+                            <td class="col-3 d-flex align-items-center">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="register.phoneNumberInputLabel"/>
+                            </td>
+                            <td class="col d-flex align-items-center">
+                                Value
+                            </td>
+                        </tr>
+                            <%--9--%>
+                        <tr class="row">
+                            <td class="col-3 d-flex align-items-center">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profile.maritalStatus"/>
+                            </td>
+                            <td class="col d-flex align-items-center">
+                                Value
+                            </td>
+                        </tr>
+                            <%--10--%>
+                        <tr class="row">
+                            <td class="col-3 d-flex align-items-center">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profile.identityDocument"/>
+                            </td>
+                            <td class="col d-flex align-items-center">
+                                Value
+                            </td>
+                        </tr>
+                            <%--11--%>
+                        <tr class="row">
+                            <td class="col-3 d-flex align-items-center">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profile.homeAddress"/>
+                            </td>
+                            <td class="col d-flex align-items-center">
+                                Value
+                            </td>
+                        </tr>
+                            <%--12--%>
+                        <tr class="row">
+                            <td class="col-3 d-flex align-items-center">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profile.inCaseOfEmergencyContactPerson"/>
+                            </td>
+                            <td class="col d-flex align-items-center">
+                                Value
+                            </td>
+                        </tr>
+                            <%--13--%>
+                        <tr class="row">
+                            <td class="col-3 d-flex align-items-center">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profile.inCaseOfEmergencyPhoneOfContactPerson"/>
+                            </td>
+                            <td class="col d-flex align-items-center">
+                                Value
+                            </td>
+                        </tr>
+                            <%--14--%>
+                        <tr class="row">
+                            <td class="col-3 d-flex align-items-center">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profile.bloodType"/>
+                            </td>
+                            <td class="col d-flex align-items-center">
+                                Value
+                            </td>
+                        </tr>
+                            <%--15--%>
+                        <tr class="row">
+                            <td class="col-3 d-flex align-items-center">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profile.bloodRh"/>
+                            </td>
+                            <td class="col d-flex align-items-center">
+                                Value
+                            </td>
+                        </tr>
+                            <%--16--%>
+                        <tr class="row">
+                            <td class="col-3 d-flex align-items-center">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profile.disabilityDegree"/>
+                            </td>
+                            <td class="col d-flex align-items-center">
+                                Value
+                            </td>
+                        </tr>
+                            <%--17--%>
+                        <tr class="row">
+                            <td class="col-3 d-flex align-items-center">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profile.transportationStatus"/>
+                            </td>
+                            <td class="col d-flex align-items-center">
+                                Value
+                            </td>
+                        </tr>
+                            <%--18--%>
+                        <tr class="row">
+                            <td class="col-3 d-flex align-items-center">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profile.allergicReactionsPresence"/>
+                            </td>
+                            <td class="col d-flex align-items-center">
+                                Value
+                            </td>
+                        </tr>
+                            <%--19--%>
+                        <tr class="row">
+                            <td class="col-3 d-flex align-items-center">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profile.extremelyHazardousDiseasesPresence"/>
+                            </td>
+                            <td class="col d-flex align-items-center">
+                                Value
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </c:otherwise>
+    </c:choose>
+
+
 </div>
 
 <jsp:include page="structural_element/footer.jsp"/>
