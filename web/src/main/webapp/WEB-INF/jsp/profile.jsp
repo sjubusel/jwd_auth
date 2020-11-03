@@ -130,6 +130,7 @@
                                              key="register.birthdayInputLabel"/>
                             </td>
                             <td class="col d-flex align-items-center">
+                                    <%--  TODO make personal tag                              --%>
                                 <c:choose>
                                     <c:when test="${requestScope.patientInfo.birthday ne null}">
                                         <c:out value="${requestScope.patientInfo.birthday}"/>
@@ -164,6 +165,7 @@
                                              key="register.emailInputLabel"/>
                             </td>
                             <td class="col d-flex align-items-center">
+                                    <%--TODO hide with ***--%>
                                 <c:choose>
                                     <c:when test="${requestScope.patientInfo.email ne null}">
                                         <c:out value="${requestScope.patientInfo.email}"/>
