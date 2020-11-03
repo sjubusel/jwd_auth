@@ -56,11 +56,19 @@
                                              key="profile.photo"/>
                             </td>
                             <td class="col d-flex align-items-center">
-                                <img src="${pageContext.request.contextPath}/img/user.png"
-                                     class="rounded "
-                                     style="height: 200px; width:auto"
-                                     alt="<fmt:message bundle="${jspMessages}"
-                             key="profile.photo"/>">
+                                <img
+                                <c:choose>
+                                <c:when test="${requestScope.patientInfo.photoPath ne null}">
+                                        src="${pageContext.request.contextPath}${requestScope.patientInfo.photoPath}"
+                                </c:when>
+                                <c:otherwise>
+                                        src="${pageContext.request.contextPath}/img/user.png"
+                                </c:otherwise>
+                                </c:choose>
+                                        class="rounded "
+                                        style="height: 200px; width:auto"
+                                        alt="<fmt:message bundle="${jspMessages}"
+                                        key="profile.photo"/>">
                             </td>
                         </tr>
                             <%--2--%>
@@ -70,7 +78,15 @@
                                              key="register.firstNameInputLabel"/>
                             </td>
                             <td class="col d-flex align-items-center">
-                                Value
+                                    <%--<c:out value="${requestScope.patientInfo.}"/>--%>
+                                <c:choose>
+                                    <c:when test="${requestScope.patientInfo.firstName ne null}">
+                                        <c:out value="${requestScope.patientInfo.firstName}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value=""/>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                             <%--3--%>
@@ -80,7 +96,14 @@
                                              key="register.middleNameInputLabel"/>
                             </td>
                             <td class="col d-flex align-items-center">
-                                Value
+                                <c:choose>
+                                    <c:when test="${requestScope.patientInfo.middleName ne null}">
+                                        <c:out value="${requestScope.patientInfo.middleName}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value=""/>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                             <%--4--%>
@@ -90,7 +113,14 @@
                                              key="register.lastNameInputLabel"/>
                             </td>
                             <td class="col d-flex align-items-center">
-                                Value
+                                <c:choose>
+                                    <c:when test="${requestScope.patientInfo.lastName ne null}">
+                                        <c:out value="${requestScope.patientInfo.lastName}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value=""/>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                             <%--5--%>
@@ -100,7 +130,14 @@
                                              key="register.birthdayInputLabel"/>
                             </td>
                             <td class="col d-flex align-items-center">
-                                Value
+                                <c:choose>
+                                    <c:when test="${requestScope.patientInfo.birthday ne null}">
+                                        <c:out value="${requestScope.patientInfo.birthday}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value=""/>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                             <%--6--%>
@@ -110,7 +147,14 @@
                                              key="register.GenderInputLabel"/>
                             </td>
                             <td class="col d-flex align-items-center">
-                                Value
+                                <c:choose>
+                                    <c:when test="${requestScope.patientInfo.gender ne null}">
+                                        <c:out value="${requestScope.patientInfo.gender.genderValue}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value=""/>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                             <%--7--%>
@@ -120,7 +164,14 @@
                                              key="register.emailInputLabel"/>
                             </td>
                             <td class="col d-flex align-items-center">
-                                Value
+                                <c:choose>
+                                    <c:when test="${requestScope.patientInfo.email ne null}">
+                                        <c:out value="${requestScope.patientInfo.email}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value=""/>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                             <%--8--%>
@@ -130,7 +181,14 @@
                                              key="register.phoneNumberInputLabel"/>
                             </td>
                             <td class="col d-flex align-items-center">
-                                Value
+                                <c:choose>
+                                    <c:when test="${requestScope.patientInfo.phoneNumber ne null}">
+                                        <c:out value="${requestScope.patientInfo.phoneNumber}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value=""/>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                             <%--9--%>
@@ -140,7 +198,14 @@
                                              key="profile.maritalStatus"/>
                             </td>
                             <td class="col d-flex align-items-center">
-                                Value
+                                <c:choose>
+                                    <c:when test="${requestScope.patientInfo.maritalStatus ne null}">
+                                        <c:out value="${requestScope.patientInfo.maritalStatus.description}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value=""/>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                             <%--10--%>
@@ -150,7 +215,15 @@
                                              key="profile.identityDocument"/>
                             </td>
                             <td class="col d-flex align-items-center">
-                                Value
+                                <c:choose>
+                                    <c:when test="${requestScope.patientInfo.identityDocument ne null}">
+                                        <%-- TODO make your own tag in order to view identity document --%>
+                                        <c:out value="${requestScope.patientInfo.identityDocument.toString()}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value=""/>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                             <%--11--%>
@@ -160,7 +233,15 @@
                                              key="profile.homeAddress"/>
                             </td>
                             <td class="col d-flex align-items-center">
-                                Value
+                                <c:choose>
+                                    <c:when test="${requestScope.patientInfo.homeAddress ne null}">
+                                        <%-- TODO make your own tag in order to view identity document --%>
+                                        <c:out value="${requestScope.patientInfo.homeAddress.toString()}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value=""/>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                             <%--12--%>
@@ -170,7 +251,14 @@
                                              key="profile.inCaseOfEmergencyContactPerson"/>
                             </td>
                             <td class="col d-flex align-items-center">
-                                Value
+                                <c:choose>
+                                    <c:when test="${requestScope.patientInfo.inCaseOfEmergencyContactPersonInfo ne null}">
+                                        <c:out value="${requestScope.patientInfo.inCaseOfEmergencyContactPersonInfo}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value=""/>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                             <%--13--%>
@@ -180,7 +268,14 @@
                                              key="profile.inCaseOfEmergencyPhoneOfContactPerson"/>
                             </td>
                             <td class="col d-flex align-items-center">
-                                Value
+                                <c:choose>
+                                    <c:when test="${requestScope.patientInfo.inCaseOfEmergencyContactPersonPhone ne null}">
+                                        <c:out value="${requestScope.patientInfo.inCaseOfEmergencyContactPersonPhone}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value=""/>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                             <%--14--%>
@@ -190,7 +285,14 @@
                                              key="profile.bloodType"/>
                             </td>
                             <td class="col d-flex align-items-center">
-                                Value
+                                <c:choose>
+                                    <c:when test="${requestScope.patientInfo.bloodType ne null}">
+                                        <c:out value="${requestScope.patientInfo.bloodType.value}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value=""/>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                             <%--15--%>
@@ -200,7 +302,14 @@
                                              key="profile.bloodRh"/>
                             </td>
                             <td class="col d-flex align-items-center">
-                                Value
+                                <c:choose>
+                                    <c:when test="${requestScope.patientInfo.rhBloodGroup ne null}">
+                                        <c:out value="${requestScope.patientInfo.rhBloodGroup.description}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value=""/>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                             <%--16--%>
@@ -210,7 +319,14 @@
                                              key="profile.disabilityDegree"/>
                             </td>
                             <td class="col d-flex align-items-center">
-                                Value
+                                <c:choose>
+                                    <c:when test="${requestScope.patientInfo.disabilityDegree ne null}">
+                                        <c:out value="${requestScope.patientInfo.disabilityDegree.description}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value=""/>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                             <%--17--%>
@@ -220,7 +336,14 @@
                                              key="profile.transportationStatus"/>
                             </td>
                             <td class="col d-flex align-items-center">
-                                Value
+                                <c:choose>
+                                    <c:when test="${requestScope.patientInfo.transportationStatus ne null}">
+                                        <c:out value="${requestScope.patientInfo.transportationStatus.description}"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:out value=""/>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                             <%--18--%>
@@ -230,7 +353,16 @@
                                              key="profile.allergicReactionsPresence"/>
                             </td>
                             <td class="col d-flex align-items-center">
-                                Value
+                                <c:choose>
+                                    <c:when test="${requestScope.patientInfo.hasAllergicReactions == false}">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profile.absence"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profile.presence"/>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                             <%--19--%>
@@ -240,7 +372,16 @@
                                              key="profile.extremelyHazardousDiseasesPresence"/>
                             </td>
                             <td class="col d-flex align-items-center">
-                                Value
+                                <c:choose>
+                                    <c:when test="${requestScope.patientInfo.hasExtremelyHazardousDiseases == false}">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profile.absence"/>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profile.presence"/>
+                                    </c:otherwise>
+                                </c:choose>
                             </td>
                         </tr>
                         </tbody>
