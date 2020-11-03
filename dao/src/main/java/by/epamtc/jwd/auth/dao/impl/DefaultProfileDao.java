@@ -31,13 +31,14 @@ public class DefaultProfileDao implements ProfileDao {
         Connection conn = null;
         PreparedStatement statement = null;
         ResultSet rSet = null;
+        PatientInfo patientInfo = null;
 
         try {
             conn = pool.takeConnection();
             statement = conn.prepareStatement(SqlStatement.SELECT_PATIENT_INFO);
             rSet = statement.executeQuery();
             if (rSet.next()) {
-                return compilePatientInfo(rSet);
+                patientInfo = compilePatientInfo(rSet);
             }
         } catch (SQLException e) {
             throw new DaoException("An error while fetching data from DB " +
@@ -48,7 +49,14 @@ public class DefaultProfileDao implements ProfileDao {
         } finally {
             pool.closeConnection(conn, statement, rSet);
         }
-        return null;
+
+        if (patientInfo == null) {
+            throw new DaoException(String.format("Fetching of patient " +
+                    "information met an impossible execution outcome: auth " +
+                    "user information: \"%s\"", authUser));
+        }
+
+        return patientInfo;
     }
 
     private PatientInfo compilePatientInfo(ResultSet rSet) throws SQLException {
