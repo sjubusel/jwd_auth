@@ -51,6 +51,8 @@ profile.allergicReactionsPresence=Наличие аллергических ре
 profile.extremelyHazardousDiseasesPresence=Наличие особо опасных болезней
 profile.techError=По техническим причинам получить информацию о пользователе не представляется возможным
 profile.valError=Получить информацию о пользователе не представляется возможность в связи с некорректным типом пользователя
+profile.presence=присутствуют
+profile.absence=отсутствуют
 
 register.htmlTitle=Регистрация в системе
 register.heading=Форма регистрации в системе
