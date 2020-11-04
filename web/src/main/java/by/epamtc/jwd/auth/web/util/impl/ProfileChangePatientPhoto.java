@@ -2,7 +2,10 @@ package by.epamtc.jwd.auth.web.util.impl;
 
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
+import by.epamtc.jwd.auth.model.constant.CommandPath;
+import by.epamtc.jwd.auth.web.exception.ControllerException;
 import by.epamtc.jwd.auth.web.util.Command;
+import by.epamtc.jwd.auth.web.util.FileAccessAssistant;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +21,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ProfileChangePatientPhoto implements Command {
+    private FileAccessAssistant fileAssistant = FileAccessAssistant
+            .getInstance();
+
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
@@ -60,6 +66,9 @@ public class ProfileChangePatientPhoto implements Command {
                 iFileStream.close();
             }
         }
+
+        req.getRequestDispatcher(CommandPath.SUBPROFILE_CHANGE_PATIENT_INFO_JSP)
+                .forward(req, res);
     }
 
     private String getFileName(final Part part, AuthUser user) {
@@ -68,7 +77,7 @@ public class ProfileChangePatientPhoto implements Command {
             if (content.trim().startsWith("filename")) {
                 String srcFileName = content.substring(content.indexOf('=') + 1)
                         .trim().replace("\"", "");
-                String[] srcFileNamePart = srcFileName.split(".");
+                String[] srcFileNamePart = srcFileName.split("\\.");
                 String srcFileNaming = srcFileNamePart[0];
                 String srcFileExtension = srcFileNamePart[1];
                 LocalDateTime now = LocalDateTime.now();
