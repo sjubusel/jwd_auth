@@ -59,7 +59,7 @@
                                 <img
                                 <c:choose>
                                 <c:when test="${requestScope.patientInfo.photoPath ne null}">
-                                        src="${pageContext.request.contextPath}${requestScope.patientInfo.photoPath}"
+                                        src="http://${pageContext.request.serverName}:${pageContext.request.serverPort}/upload/user_photo/${requestScope.patientInfo.photoPath}"
                                 </c:when>
                                 <c:otherwise>
                                         src="${pageContext.request.contextPath}/img/user.png"
@@ -68,7 +68,7 @@
                                         class="rounded "
                                         style="height: 200px; width:auto"
                                         alt="<fmt:message bundle="${jspMessages}"
-                                        key="profile.photo"/>">
+                                                  key="profile.photo"/>">
                             </td>
                         </tr>
                             <%--2--%>
