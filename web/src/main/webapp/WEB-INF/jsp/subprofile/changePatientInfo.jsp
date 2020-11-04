@@ -53,6 +53,7 @@
                     <form action="${pageContext.request.contextPath}/profile"
                           method="post"
                           enctype="multipart/form-data">
+                            <%-- TODO make an alert-success alert-fail--%>
                         <input type="hidden" name="command"
                                value="profile-change-patient-photo"/>
                         <div class="form-group d-flex justify-content-center">
@@ -61,7 +62,6 @@
                                 <%--                        <fmt:message bundle="${jspMessages}"--%>
                                 <%--                                     key="profile.photo"/>--%>
                                 <%--                    </label>--%>
-
                             <img
                             <c:choose>
                             <c:when test="${requestScope.patientInfo.photoPath ne null}">
@@ -78,7 +78,9 @@
 
                             <input type="file"
                                    class="form-control-file align-self-center col-5"
-                                   id="photo" name="photoUploadInput" dir="ltr">
+                                   id="photo" name="photoUploadInput"
+                                   accept="image/*"
+                                   required>
 
                             <button type="submit"
                                     class="btn align-self-center btn-primary">
@@ -494,7 +496,7 @@
 
                         <%--            <fmt:message bundle="${jspMessages}"--%>
                         <%--                         key="profile.photo"/>--%>
-<%--                    <fmt:message bundle="${jspMessages}"--%>
+                        <%--                    <fmt:message bundle="${jspMessages}"--%>
                         <%--                                 key="register.firstNameInputLabel"/>--%>
                         <%--                    <fmt:message bundle="${jspMessages}"--%>
                         <%--                                 key="register.middleNameInputLabel"/>--%>
