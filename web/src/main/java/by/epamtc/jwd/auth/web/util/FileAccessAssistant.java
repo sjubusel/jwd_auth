@@ -1,11 +1,16 @@
 package by.epamtc.jwd.auth.web.util;
 
+import by.epamtc.jwd.auth.model.constant.AppConstant;
+import by.epamtc.jwd.auth.model.constant.AppParameter;
 import by.epamtc.jwd.auth.web.exception.ControllerException;
 
+import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Enumeration;
 
 public class FileAccessAssistant {
@@ -48,6 +53,31 @@ public class FileAccessAssistant {
             throw new ControllerException("Uploading file is absent");
         }
         return sourceFilesPath + File.separator + textName;
+    }
+
+    public String formFileName(final Part part) {
+        final String partHeader = part.getHeader(AppParameter
+                .HEADER_CONTENT_DISPOSITION);
+        for (String content : partHeader.split(AppConstant.SEMICOLON)) {
+            if (content.trim().startsWith(AppParameter
+                    .HEADER_CONTENT_DISPOSITION_FILENAME)) {
+                int startValueIndex = content.indexOf(AppConstant
+                        .KEY_VALUE_PAIR_DELIMITER) + 1;
+                String srcFileName = content.substring(startValueIndex).trim()
+                        .replace(AppConstant.QUOTE_MARK, AppConstant.EMPTY);
+
+                String[] srcFileNamePart = srcFileName.split(AppConstant.REGEX_DOT);
+                String srcFileNaming = srcFileNamePart[0];
+                String srcFileExtension = srcFileNamePart[1];
+                LocalDateTime now = LocalDateTime.now();
+                DateTimeFormatter formatter = DateTimeFormatter
+                        .ofPattern(AppConstant.SIMPLE_LOCAL_DATE_TIME_FORMAT);
+                return srcFileNaming + AppConstant.UNDERSCORE
+                        + now.format(formatter) + AppConstant.DOT
+                        + srcFileExtension;
+            }
+        }
+        return null;
     }
 
     private void initializeSourceFilesPath() throws ControllerException {

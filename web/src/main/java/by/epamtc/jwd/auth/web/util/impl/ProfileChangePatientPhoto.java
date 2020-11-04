@@ -2,7 +2,6 @@ package by.epamtc.jwd.auth.web.util.impl;
 
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
-import by.epamtc.jwd.auth.model.constant.AppConstant;
 import by.epamtc.jwd.auth.model.constant.AppParameter;
 import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.web.exception.ControllerException;
@@ -19,8 +18,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class ProfileChangePatientPhoto implements Command {
     private FileAccessAssistant fileAssistant = FileAccessAssistant
@@ -32,7 +29,7 @@ public class ProfileChangePatientPhoto implements Command {
         AuthUser user = (AuthUser) req.getSession().getAttribute(AppAttribute
                 .SESSION_AUTH_USER);
         final Part filePart = req.getPart(AppParameter.PHOTO_UPLOAD);
-        final String targetFileName = getFileName(filePart);
+        final String targetFileName = fileAssistant.formFileName(filePart);
 
         OutputStream oFileStream = null;
         InputStream iFileStream = null;
@@ -61,31 +58,6 @@ public class ProfileChangePatientPhoto implements Command {
 
         req.getRequestDispatcher(CommandPath.SUBPROFILE_CHANGE_PATIENT_INFO_JSP)
                 .forward(req, res);
-    }
-
-    private String getFileName(final Part part) {
-        final String partHeader = part.getHeader(AppParameter
-                .HEADER_CONTENT_DISPOSITION);
-        for (String content : partHeader.split(AppConstant.SEMICOLON)) {
-            if (content.trim().startsWith(AppParameter
-                    .HEADER_CONTENT_DISPOSITION_FILENAME)) {
-                int startValueIndex = content.indexOf(AppConstant
-                        .KEY_VALUE_PAIR_DELIMITER) + 1;
-                String srcFileName = content.substring(startValueIndex).trim()
-                        .replace(AppConstant.QUOTE_MARK, AppConstant.EMPTY);
-
-                String[] srcFileNamePart = srcFileName.split(AppConstant.REGEX_DOT);
-                String srcFileNaming = srcFileNamePart[0];
-                String srcFileExtension = srcFileNamePart[1];
-                LocalDateTime now = LocalDateTime.now();
-                DateTimeFormatter formatter = DateTimeFormatter
-                        .ofPattern(AppConstant.SIMPLE_LOCAL_DATE_TIME_FORMAT);
-                return srcFileNaming + AppConstant.UNDERSCORE
-                        + now.format(formatter) + AppConstant.DOT
-                        + srcFileExtension;
-            }
-        }
-        return null;
     }
 
     private void closeInOutUploadStreams(OutputStream oFileStream,
