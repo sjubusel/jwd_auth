@@ -8,7 +8,10 @@ public class UpdateRelatedValidator {
 
     public boolean isInitDataValidToUpdate(String targetFileName,
             InputStream iFileStreamFromClient, AuthUser user) {
-        if (user == null || user.getUserId() > 0) {
+        if (user == null) {
+            return false;
+        }
+        if (user.getUserId() <= 0) {
             return false;
         }
         return (targetFileName != null) && (iFileStreamFromClient != null);
