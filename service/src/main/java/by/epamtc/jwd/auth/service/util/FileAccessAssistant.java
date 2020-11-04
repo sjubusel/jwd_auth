@@ -1,16 +1,11 @@
-package by.epamtc.jwd.auth.web.util;
+package by.epamtc.jwd.auth.service.util;
 
-import by.epamtc.jwd.auth.model.constant.AppConstant;
-import by.epamtc.jwd.auth.model.constant.AppParameter;
-import by.epamtc.jwd.auth.web.exception.ControllerException;
+import by.epamtc.jwd.auth.service.exception.ServiceException;
 
-import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Enumeration;
 
 public class FileAccessAssistant {
@@ -22,7 +17,7 @@ public class FileAccessAssistant {
 
     private String sourceFilesPath;
 
-    private FileAccessAssistant() throws ControllerException {
+    private FileAccessAssistant() throws ServiceException {
         initializeSourceFilesPath();
     }
 
@@ -34,9 +29,10 @@ public class FileAccessAssistant {
                 if (localInstance == null) {
                     try {
                         instance = localInstance = new FileAccessAssistant();
-                    } catch (ControllerException e) {
+                    } catch (ServiceException e) {
                         //TODO add log4j ("ERROR CAUGHT WHILE FINDING A SOURCES FILES" +
                         //                    "PATH")
+                        // TODO log4j "You either did not specify a file to upload or are trying to upload a file to a protected or nonexistent location."
                         e.printStackTrace();
                     }
                 }
@@ -45,42 +41,18 @@ public class FileAccessAssistant {
         return localInstance;
     }
 
-    public String formTextFilePath(String textName) throws ControllerException {
+    public String formTextFilePath(String textName) throws ServiceException {
         if (sourceFilesPath == null) {
             initializeSourceFilesPath();
         }
         if (textName == null) {
-            throw new ControllerException("Uploading file is absent");
+            // передан null вместо файла
+            throw new ServiceException("Uploading file is absent");
         }
         return sourceFilesPath + File.separator + textName;
     }
 
-    public String formFileName(final Part part) {
-        final String partHeader = part.getHeader(AppParameter
-                .HEADER_CONTENT_DISPOSITION);
-        for (String content : partHeader.split(AppConstant.SEMICOLON)) {
-            if (content.trim().startsWith(AppParameter
-                    .HEADER_CONTENT_DISPOSITION_FILENAME)) {
-                int startValueIndex = content.indexOf(AppConstant
-                        .KEY_VALUE_PAIR_DELIMITER) + 1;
-                String srcFileName = content.substring(startValueIndex).trim()
-                        .replace(AppConstant.QUOTE_MARK, AppConstant.EMPTY);
-
-                String[] srcFileNamePart = srcFileName.split(AppConstant.REGEX_DOT);
-                String srcFileNaming = srcFileNamePart[0];
-                String srcFileExtension = srcFileNamePart[1];
-                LocalDateTime now = LocalDateTime.now();
-                DateTimeFormatter formatter = DateTimeFormatter
-                        .ofPattern(AppConstant.SIMPLE_LOCAL_DATE_TIME_FORMAT);
-                return srcFileNaming + AppConstant.UNDERSCORE
-                        + now.format(formatter) + AppConstant.DOT
-                        + srcFileExtension;
-            }
-        }
-        return null;
-    }
-
-    private void initializeSourceFilesPath() throws ControllerException {
+    private void initializeSourceFilesPath() throws ServiceException {
         try {
             Enumeration<URL> resources = Thread.currentThread()
                     .getContextClassLoader().getResources(".");
@@ -94,8 +66,9 @@ public class FileAccessAssistant {
                     + File.separator + UPLOAD_WEB_APP_FOLDER_ON_SERVER
                     + File.separator + UPLOAD_USER_PHOTO_FOLDER_ON_SERVER;
         } catch (IOException | URISyntaxException e) {
-            throw new ControllerException("ERROR CAUGHT WHILE FINDING A SOURCES" +
-                    " FILES PATH", e);
+            // не получилось сформировать пути к серверу
+            throw new ServiceException("Error caught while finding a sources" +
+                    " files path", e);
         }
     }
 }
