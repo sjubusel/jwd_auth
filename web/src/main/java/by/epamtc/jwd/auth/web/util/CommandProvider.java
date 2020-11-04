@@ -4,10 +4,6 @@ import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.model.constant.CommandName;
 import by.epamtc.jwd.auth.web.util.impl.ChangeLanguageCommand;
 import by.epamtc.jwd.auth.web.util.impl.ErrorCommand;
-import by.epamtc.jwd.auth.web.util.impl.LogOutCommand;
-import by.epamtc.jwd.auth.web.util.impl.LoginCommand;
-import by.epamtc.jwd.auth.web.util.impl.MainCommand;
-import by.epamtc.jwd.auth.web.util.impl.RegisterCommand;
 import by.epamtc.jwd.auth.web.util.impl.GoToAboutUsCommand;
 import by.epamtc.jwd.auth.web.util.impl.GoToContactsCommand;
 import by.epamtc.jwd.auth.web.util.impl.GoToLoginCommand;
@@ -16,6 +12,11 @@ import by.epamtc.jwd.auth.web.util.impl.GoToPatientsCommand;
 import by.epamtc.jwd.auth.web.util.impl.GoToProfileCommand;
 import by.epamtc.jwd.auth.web.util.impl.GoToRegisterCommand;
 import by.epamtc.jwd.auth.web.util.impl.GoToStaffCommand;
+import by.epamtc.jwd.auth.web.util.impl.LogOutCommand;
+import by.epamtc.jwd.auth.web.util.impl.LoginCommand;
+import by.epamtc.jwd.auth.web.util.impl.MainCommand;
+import by.epamtc.jwd.auth.web.util.impl.ProfileChangePatientPhoto;
+import by.epamtc.jwd.auth.web.util.impl.RegisterCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileAllergicReactionsCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangeEmailCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangePasswordCommand;
@@ -61,6 +62,8 @@ public class CommandProvider {
 //                new GoToProfileChangePasswordCommand());
         repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO,
                 new GoToProfileChangePatientInformationCommand());
+        repository.put("PROFILE-CHANGE-PATIENT-PHOTO",
+                new ProfileChangePatientPhoto());
 //        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_PHOTO,
 //                new GoToProfileChangePhotoCommand());
 //        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_STAFF_INFO,
