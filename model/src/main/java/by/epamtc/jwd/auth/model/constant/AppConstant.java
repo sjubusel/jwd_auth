@@ -4,6 +4,15 @@ public final class AppConstant {
     public static final String ONE_WHITESPACE = " ";
     public static final String OPENING_PARENTHESIS = "(";
     public static final String CLOSING_PARENTHESIS = ")";
+    public static final String SEMICOLON = ";";
+    public static final String KEY_VALUE_PAIR_DELIMITER = "=";
+    public static final String QUOTE_MARK = "\"";
+    public static final String EMPTY = "";
+    public static final String DOT = "\\.";
+    public static final String UNDERSCORE = "_";
+
+    public static final String SIMPLE_LOCAL_DATE_TIME_FORMAT = "yyyyMMddHHmmss";
+
     public static final int LOGIN_MIN_LENGTH = 3;
     public static final int LOGIN_MAX_LENGTH = 20;
     public static final int PASSWORD_MIN_LENGTH = 6;
