@@ -45,6 +45,9 @@ public final class SqlStatement {
             "         LEFT OUTER JOIN hospital.region_types ret ON re.region_type_id = ret.region_type_id\n" +
             "         LEFT OUTER JOIN hospital.countries c2 ON re.country_id = c2.country_id\n" +
             "WHERE p.person_id = ?;";
+    public static final String UPDATE_PHOTO_PATH = "UPDATE hospital.persons p\n" +
+            "SET p.photo_path = ?\n" +
+            "WHERE p.person_id = ?;";
 
     private SqlStatement() {
     }
