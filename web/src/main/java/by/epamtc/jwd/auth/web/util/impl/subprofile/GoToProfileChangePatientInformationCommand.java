@@ -38,6 +38,7 @@ public class GoToProfileChangePatientInformationCommand implements Command {
                     .REQUEST_ERROR_VALUE_VAL);
         }
 
+        req.setAttribute(AppAttribute.REQUEST_PATIENT_INFO, patientInfo);
         req.getRequestDispatcher(CommandPath.SUBPROFILE_CHANGE_PATIENT_INFO_JSP)
                 .forward(req, res);
     }
