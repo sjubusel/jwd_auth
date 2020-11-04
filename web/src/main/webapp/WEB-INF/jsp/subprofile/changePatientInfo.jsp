@@ -48,11 +48,11 @@
                        value="profile-change-patient-photo"/>
                 <div class="form-group d-flex justify-content-center">
                     <%-- TODO Maybe delete this label--%>
-                    <label for="photo"
-                           class="align-self-center col-4 custom-form-label">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="profile.photo"/>
-                    </label>
+<%--                    <label for="photo"--%>
+<%--                           class="align-self-center col-4 custom-form-label">--%>
+<%--                        <fmt:message bundle="${jspMessages}"--%>
+<%--                                     key="profile.photo"/>--%>
+<%--                    </label>--%>
 
                     <img
                     <c:choose>
