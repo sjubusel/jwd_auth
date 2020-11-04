@@ -112,3 +112,5 @@ profileSubMenu.staffHistory=История информации о медици�
 profileSubMenu.changeStaffPhoto=Изменение фотографии медицинкого работника
 profileSubMenu.allergicReactions=Аллергия
 profileSubMenu.extremelyHazardousDiseases=Особо опасные заболевания
+
+profileSubMenu.changePatientInfo.changePhoto=заменить
