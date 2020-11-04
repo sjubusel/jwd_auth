@@ -2,6 +2,8 @@ package by.epamtc.jwd.auth.web.util.impl;
 
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
+import by.epamtc.jwd.auth.model.constant.AppConstant;
+import by.epamtc.jwd.auth.model.constant.AppParameter;
 import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.web.exception.ControllerException;
 import by.epamtc.jwd.auth.web.util.Command;
@@ -29,65 +31,71 @@ public class ProfileChangePatientPhoto implements Command {
             throws ServletException, IOException {
         AuthUser user = (AuthUser) req.getSession().getAttribute(AppAttribute
                 .SESSION_AUTH_USER);
-        final String path = "D:\\25\\wokspace\\EPAM\\jwd_auth\\web\\src\\main\\webapp\\webcontent\\user_photo";
-        final Part filePart = req.getPart("photoUploadInput");
-        final String targetFileName = getFileName(filePart, user);
+        final Part filePart = req.getPart(AppParameter.PHOTO_UPLOAD);
+        final String targetFileName = getFileName(filePart);
 
         OutputStream oFileStream = null;
         InputStream iFileStream = null;
-        File targetFile = new File(path + File.separator + targetFileName);
+        File targetFile;
 
         try {
+            targetFile = new File(fileAssistant.formTextFilePath(targetFileName));
             oFileStream = new FileOutputStream(targetFile);
             iFileStream = filePart.getInputStream();
 
-            int read = 0;
+            int read;
             final byte[] bytes = new byte[1024];
 
             while ((read = iFileStream.read(bytes)) != -1) {
                 oFileStream.write(bytes, 0, read);
             }
-//            writer.println("New file " + fileName + " created at " + path);
-//            LOGGER.log(Level.INFO, "File{0}being uploaded to {1}",
-//                    new Object[]{fileName, path});
         } catch (FileNotFoundException fne) {
-//            writer.println("You either did not specify a file to upload or are "
-//                    + "trying to upload a file to a protected or nonexistent "
-//                    + "location.");
-//            writer.println("<br/> ERROR: " + fne.getMessage());
-
-//            LOGGER.log(Level.SEVERE, "Problems during file upload. Error: {0}",
-//                    new Object[]{fne.getMessage()});
+            // TODO log4j "You either did not specify a file to upload or are trying to upload a file to a protected or nonexistent location."
+            // TODO add redirect
+        } catch (ControllerException e) {
+            // TODO log4j "You either did not specify a file to upload or are trying to upload a file to a protected or nonexistent location."
+            // TODO add redirect
         } finally {
-            if (oFileStream != null) {
-                oFileStream.close();
-            }
-            if (iFileStream != null) {
-                iFileStream.close();
-            }
+            closeInOutUploadStreams(oFileStream, iFileStream);
         }
 
         req.getRequestDispatcher(CommandPath.SUBPROFILE_CHANGE_PATIENT_INFO_JSP)
                 .forward(req, res);
     }
 
-    private String getFileName(final Part part, AuthUser user) {
-        final String partHeader = part.getHeader("content-disposition");
-        for (String content : part.getHeader("content-disposition").split(";")) {
-            if (content.trim().startsWith("filename")) {
-                String srcFileName = content.substring(content.indexOf('=') + 1)
-                        .trim().replace("\"", "");
-                String[] srcFileNamePart = srcFileName.split("\\.");
+    private String getFileName(final Part part) {
+        final String partHeader = part.getHeader(AppParameter
+                .HEADER_CONTENT_DISPOSITION);
+        for (String content : partHeader.split(AppConstant.SEMICOLON)) {
+            if (content.trim().startsWith(AppParameter
+                    .HEADER_CONTENT_DISPOSITION_FILENAME)) {
+                int startValueIndex = content.indexOf(AppConstant
+                        .KEY_VALUE_PAIR_DELIMITER) + 1;
+                String srcFileName = content.substring(startValueIndex).trim()
+                        .replace(AppConstant.QUOTE_MARK, AppConstant.EMPTY);
+
+                String[] srcFileNamePart = srcFileName.split(AppConstant.REGEX_DOT);
                 String srcFileNaming = srcFileNamePart[0];
                 String srcFileExtension = srcFileNamePart[1];
                 LocalDateTime now = LocalDateTime.now();
                 DateTimeFormatter formatter = DateTimeFormatter
-                        .ofPattern("yyyyMMddHHmmss");
-                return srcFileNaming + "_" + now.format(formatter) + "."
+                        .ofPattern(AppConstant.SIMPLE_LOCAL_DATE_TIME_FORMAT);
+                return srcFileNaming + AppConstant.UNDERSCORE
+                        + now.format(formatter) + AppConstant.DOT
                         + srcFileExtension;
             }
         }
         return null;
+    }
+
+    private void closeInOutUploadStreams(OutputStream oFileStream,
+            InputStream iFileStream) throws IOException {
+        if (oFileStream != null) {
+            oFileStream.close();
+        }
+        if (iFileStream != null) {
+            iFileStream.close();
+        }
     }
 
 }
