@@ -53,26 +53,26 @@ public class CommandProvider {
         repository.put(CommandName.GO_TO_PATIENTS, new GoToPatientsCommand());
         repository.put(CommandName.GO_TO_STAFF, new GoToStaffCommand());
 
-        repository.put(CommandName.SUBPROFILE_GO_TO_ALLERGIC_REACTIONS,
-                new GoToProfileAllergicReactionsCommand());
-        repository.put(CommandName.SUBPROFILE_GO_TO_EMAIL_CHANGE,
-                new GoToProfileChangeEmailCommand());
-        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_PASSWORD,
-                new GoToProfileChangePasswordCommand());
+//        repository.put(CommandName.SUBPROFILE_GO_TO_ALLERGIC_REACTIONS,
+//                new GoToProfileAllergicReactionsCommand());
+//        repository.put(CommandName.SUBPROFILE_GO_TO_EMAIL_CHANGE,
+//                new GoToProfileChangeEmailCommand());
+//        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_PASSWORD,
+//                new GoToProfileChangePasswordCommand());
         repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO,
                 new GoToProfileChangePatientInformationCommand());
-        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_PHOTO,
-                new GoToProfileChangePhotoCommand());
-        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_STAFF_INFO,
-                new GoToProfileChangeStaffInformationCommand());
-        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_STAFF_PHOTO,
-                new GoToProfileChangeStaffPhotoCommand());
-        repository.put(CommandName.SUBPROFILE_GO_TO_EXTREMELY_HAZARDOUS_DISEASES,
-                new GoToProfileExtremelyHazardousDiseasesCommand());
-        repository.put(CommandName.SUBPROFILE_GO_TO_STAFF_HISTORY,
-                new GoToProfileStaffHistoryCommand());
-        repository.put(CommandName.SUBPROFILE_GO_TO_STAFF_INFO,
-                new GoToProfileStaffInformationCommand());
+//        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_PHOTO,
+//                new GoToProfileChangePhotoCommand());
+//        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_STAFF_INFO,
+//                new GoToProfileChangeStaffInformationCommand());
+//        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_STAFF_PHOTO,
+//                new GoToProfileChangeStaffPhotoCommand());
+//        repository.put(CommandName.SUBPROFILE_GO_TO_EXTREMELY_HAZARDOUS_DISEASES,
+//                new GoToProfileExtremelyHazardousDiseasesCommand());
+//        repository.put(CommandName.SUBPROFILE_GO_TO_STAFF_HISTORY,
+//                new GoToProfileStaffHistoryCommand());
+//        repository.put(CommandName.SUBPROFILE_GO_TO_STAFF_INFO,
+//                new GoToProfileStaffInformationCommand());
 
         repository.put(CommandName.ERROR, new ErrorCommand());
     }
