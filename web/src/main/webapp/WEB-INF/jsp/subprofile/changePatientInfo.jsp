@@ -74,7 +74,6 @@
 
                     <button type="submit"
                             class="btn align-self-center btn-primary">
-                        change
                         <fmt:message bundle="${jspMessages}"
                                      key="profileSubMenu.changePatientInfo.changePhoto"/>
                     </button>
