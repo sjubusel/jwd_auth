@@ -44,6 +44,9 @@ public class FileAccessAssistant {
         if (sourceFilesPath == null) {
             initializeSourceFilesPath();
         }
+        if (textName == null) {
+            throw new ControllerException("Uploading file is absent");
+        }
         return sourceFilesPath + File.separator + textName;
     }
 
