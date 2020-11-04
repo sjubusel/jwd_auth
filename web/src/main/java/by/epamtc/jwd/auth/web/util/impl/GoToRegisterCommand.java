@@ -16,7 +16,7 @@ public class GoToRegisterCommand implements Command {
             throws ServletException, IOException {
         String error = req.getParameter(AppParameter.ERROR);
         if (error != null) {
-            req.setAttribute(AppAttribute.REQUEST_LOGIN_REGISTER_ERROR, error);
+            req.setAttribute(AppAttribute.REQUEST_ERROR, error);
         }
 
         Object authUser = req.getSession()
