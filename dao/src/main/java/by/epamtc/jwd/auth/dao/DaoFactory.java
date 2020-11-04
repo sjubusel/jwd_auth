@@ -3,7 +3,7 @@ package by.epamtc.jwd.auth.dao;
 import by.epamtc.jwd.auth.dao.impl.DefaultAuthUserDao;
 import by.epamtc.jwd.auth.dao.impl.DefaultHospitalReportDao;
 import by.epamtc.jwd.auth.dao.impl.DefaultProfileDao;
-import by.epamtc.jwd.auth.dao.impl.DefaultUpdateDao;
+import by.epamtc.jwd.auth.dao.impl.DefaultUploadDao;
 
 public class DaoFactory {
     private static volatile DaoFactory instance;
@@ -11,7 +11,7 @@ public class DaoFactory {
             = new DefaultHospitalReportDao();
     private final AuthUserDao authUserDao = new DefaultAuthUserDao();
     private final ProfileDao profileDao = new DefaultProfileDao();
-    private final UpdateDao updateDao = new DefaultUpdateDao();
+    private final UploadDao uploadDao = new DefaultUploadDao();
 
     private DaoFactory() {
     }
@@ -41,7 +41,7 @@ public class DaoFactory {
         return profileDao;
     }
 
-    public UpdateDao getUpdateDao() {
-        return updateDao;
+    public UploadDao getUploadDao() {
+        return uploadDao;
     }
 }

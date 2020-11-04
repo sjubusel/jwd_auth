@@ -1,6 +1,6 @@
 package by.epamtc.jwd.auth.dao.impl;
 
-import by.epamtc.jwd.auth.dao.UpdateDao;
+import by.epamtc.jwd.auth.dao.UploadDao;
 import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.dao.pool.ConnectionPool;
 import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
@@ -13,7 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class DefaultUpdateDao implements UpdateDao {
+public class DefaultUploadDao implements UploadDao {
     private ConnectionPool pool = ConnectionPool.getInstance();
 
     @Override

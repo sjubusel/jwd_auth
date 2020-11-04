@@ -1,7 +1,7 @@
 package by.epamtc.jwd.auth.service.impl;
 
 import by.epamtc.jwd.auth.dao.DaoFactory;
-import by.epamtc.jwd.auth.dao.UpdateDao;
+import by.epamtc.jwd.auth.dao.UploadDao;
 import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.service.UploadService;
@@ -18,7 +18,7 @@ import java.io.OutputStream;
 
 public class DefaultUploadService implements UploadService {
     private DaoFactory daoFactory = DaoFactory.getInstance();
-    private UpdateDao updateDao = daoFactory.getUpdateDao();
+    private UploadDao uploadDao = daoFactory.getUploadDao();
     private UpdateRelatedValidator updateValidator = new UpdateRelatedValidator();
     private FileAccessAssistant fileAssistant = FileAccessAssistant
             .getInstance();
@@ -35,7 +35,7 @@ public class DefaultUploadService implements UploadService {
         try {
             uploadPatientPhotoToServer(targetFileName, iFileStreamFromClient,
                     oFileStream);
-            updateDao.updatePatientPhoto(targetFileName, user);
+            uploadDao.updatePatientPhoto(targetFileName, user);
         } catch (IOException e) {
             // "You either did not specify a file to upload or are trying to upload a file to a protected or nonexistent location."
             // when the output file is not created
