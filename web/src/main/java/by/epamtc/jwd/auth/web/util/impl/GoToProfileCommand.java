@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+// TODO think whether there will be more wise to forward to JSPs instead of sending redirects
 public class GoToProfileCommand implements Command {
     private ServiceFactory factory = ServiceFactory.getInstance();
     private ProfileService profileService = factory.getProfileService();
