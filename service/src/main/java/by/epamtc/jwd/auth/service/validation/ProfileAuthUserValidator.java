@@ -1,4 +1,4 @@
-package by.epamtc.jwd.auth.service.util;
+package by.epamtc.jwd.auth.service.validation;
 
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 
