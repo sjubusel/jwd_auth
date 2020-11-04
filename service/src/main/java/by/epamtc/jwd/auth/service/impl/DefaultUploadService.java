@@ -6,6 +6,7 @@ import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.service.UploadService;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.service.util.FileAccessAssistant;
+import by.epamtc.jwd.auth.service.validation.UpdateRelatedValidator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,14 +18,18 @@ import java.io.OutputStream;
 public class DefaultUploadService implements UploadService {
     private DaoFactory daoFactory = DaoFactory.getInstance();
     private UpdateDao updateDao = daoFactory.getUpdateDao();
+    private UpdateRelatedValidator updateValidator = new UpdateRelatedValidator();
     private FileAccessAssistant fileAssistant = FileAccessAssistant
             .getInstance();
 
     @Override
     public boolean updatePatientPhoto(String targetFileName,
             InputStream iFileStreamFromClient, AuthUser user) throws ServiceException {
-        // TODO validator if target filename exists and has Correct naming
-        // TODO validator if user contains all necessary info in upload
+        if (!updateValidator.isInitDataValidToUpdate(targetFileName,
+                iFileStreamFromClient, user)) {
+            return false;
+        }
+
         OutputStream oFileStream = null;
         try {
             uploadPatientPhotoToServer(targetFileName, iFileStreamFromClient,
@@ -70,7 +75,6 @@ public class DefaultUploadService implements UploadService {
             if (oFileStream != null) {
                 oFileStream.close();
             }
-
             if (iFileStream != null) {
                 iFileStream.close();
             }
