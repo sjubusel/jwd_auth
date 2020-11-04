@@ -39,6 +39,7 @@ public class ProfileChangePatientPhoto implements Command {
         String targetFileName = null;
 
 
+        // TODO replace FileUploading on service-layer ???
         try {
             targetFileName = uploadPatientPhotoAndReturnItsName(filePart,
                     iFileStream, oFileStream);
