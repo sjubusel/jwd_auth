@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-// TODO think whether there will be more wise to forward to JSPs instead of sending redirects
 public class GoToProfileCommand implements Command {
     private ServiceFactory factory = ServiceFactory.getInstance();
     private ProfileService profileService = factory.getProfileService();
@@ -22,24 +21,22 @@ public class GoToProfileCommand implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        // TODO create: if error, then forward on jsp
         AuthUser currentUser = (AuthUser) req.getSession()
                 .getAttribute(AppAttribute.SESSION_AUTH_USER);
-        PatientInfo patientInfo;
+        PatientInfo patientInfo = null;
 
         try {
             patientInfo = profileService.fetchPatientInfo(currentUser);
         } catch (ServiceException e) {
-            // TODO log4j in catch of ServiceException
-            res.sendRedirect(req.getContextPath() + CommandPath
-                    .PROFILE_TECH_ERROR);
-            return;
+            // TODO log4j
+            e.printStackTrace();
+            req.setAttribute(AppAttribute.REQUEST_ERROR, AppAttribute
+                    .REQUEST_ERROR_VALUE_TECH);
         }
 
         if (patientInfo == null) {
-            res.sendRedirect(req.getContextPath() + CommandPath
-                    .PROFILE_AUTH_USER_VALIDATION_ERROR);
-            return;
+            req.setAttribute(AppAttribute.REQUEST_ERROR, AppAttribute
+                    .REQUEST_ERROR_VALUE_VAL);
         }
 
         req.setAttribute(AppAttribute.REQUEST_PATIENT_INFO, patientInfo);
