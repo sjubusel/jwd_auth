@@ -21,6 +21,7 @@ public class GoToProfileCommand implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
+        // TODO create: if error, then forward on jsp
         AuthUser currentUser = (AuthUser) req.getSession()
                 .getAttribute(AppAttribute.SESSION_AUTH_USER);
         PatientInfo patientInfo;
