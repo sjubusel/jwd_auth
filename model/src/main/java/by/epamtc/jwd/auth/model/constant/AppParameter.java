@@ -18,6 +18,9 @@ public final class AppParameter {
     public static final String BIRTHDAY = "birthday";
     public static final String GENDER = "gender";
 
+    public static final String HEADER_CONTENT_DISPOSITION = "content-disposition";
+    public static final String HEADER_CONTENT_DISPOSITION_FILENAME = "filename";
+
     private AppParameter() {
     }
 }
