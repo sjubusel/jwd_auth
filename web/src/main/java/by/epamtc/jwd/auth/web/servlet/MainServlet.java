@@ -5,11 +5,13 @@ import by.epamtc.jwd.auth.model.constant.AppParameter;
 import by.epamtc.jwd.auth.model.constant.CommandName;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@MultipartConfig
 public class MainServlet extends HttpServlet {
     private static final long serialVersionUID = 14924641025210861L;
 
