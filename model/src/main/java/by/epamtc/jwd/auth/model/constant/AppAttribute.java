@@ -9,6 +9,9 @@ public final class AppAttribute {
     public static final String REQUEST_INVALID_COMMAND_ERROR = "invalidCommand";
     public static final String REQUEST_PATIENT_INFO = "patientInfo";
 
+    public static final String REQUEST_ERROR_VALUE_TECH = "tech";
+    public static final String REQUEST_ERROR_VALUE_VAL = "val";
+
     private AppAttribute() {
     }
 }
