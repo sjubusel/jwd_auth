@@ -2,14 +2,15 @@ package by.epamtc.jwd.auth.service.impl;
 
 import by.epamtc.jwd.auth.dao.DaoFactory;
 import by.epamtc.jwd.auth.dao.UpdateDao;
+import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.service.UploadService;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
+import by.epamtc.jwd.auth.service.exception.UploadServiceException;
 import by.epamtc.jwd.auth.service.util.FileAccessAssistant;
 import by.epamtc.jwd.auth.service.validation.UpdateRelatedValidator;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -34,24 +35,20 @@ public class DefaultUploadService implements UploadService {
         try {
             uploadPatientPhotoToServer(targetFileName, iFileStreamFromClient,
                     oFileStream);
-        } catch (FileNotFoundException e) {
+            updateDao.updatePatientPhoto(targetFileName, user);
+        } catch (IOException e) {
             // "You either did not specify a file to upload or are trying to upload a file to a protected or nonexistent location."
             // when the output file is not created
             // не получилось создать файл для передачи в outputstream uploadPatientPhotoToServer
-            throw new ServiceException(e);
-        } catch (IOException e) {
-            // "You either did not specify a file to upload or are trying to upload a file to a protected or nonexistent location."
             // не получилось произвести запись через outputstream
             throw new ServiceException(e);
+        } catch (DaoException e) {
+            // Пошло не так с обновлением информации в базе
+            throw new UploadServiceException(e);
         } finally {
             closeInOutUploadStreams(iFileStreamFromClient, oFileStream);
         }
-//        catch (ServiceException e) {
-//            // TODO log4j "You either did not specify a file to upload or are trying to upload a file to a protected or nonexistent location."
-//            // TODO add redirect
-//            // передан null вместо файла
-//            // не получилось сформировать пути к серверу
-//        }
+
         return true;
     }
 

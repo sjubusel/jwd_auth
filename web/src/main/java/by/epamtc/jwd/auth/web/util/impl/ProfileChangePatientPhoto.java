@@ -8,6 +8,7 @@ import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.UploadService;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
+import by.epamtc.jwd.auth.service.exception.UploadServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
 
 import javax.servlet.ServletException;
@@ -42,6 +43,9 @@ public class ProfileChangePatientPhoto implements Command {
         try {
             isUploaded = uploadService.updatePatientPhoto(targetFileName,
                     iFileStreamFromClient, user);
+        } catch (UploadServiceException e) {
+            // TODO log4j that FILE is uploaded, but info is not.
+            // TODO add redirect to TECH ERROR
         } catch (ServiceException e) {
             // TODO log4j
             // TODO add redirect to TECH ERROR
@@ -54,7 +58,9 @@ public class ProfileChangePatientPhoto implements Command {
 
         if (!isUploaded) {
             // TODO send redirect with parameter with warningMessage (VALIDATION)
+            return;
         }
+
         // TODO send redirect with parameter with successMessage
         req.getRequestDispatcher(CommandPath.SUBPROFILE_CHANGE_PATIENT_INFO_JSP)
                 .forward(req, res);
