@@ -90,15 +90,14 @@
                 <input type="hidden" name="command"
                        value="profile-change-patient-info"/>
 
-                <table class="table">
-                    <tbody>
+                <div class="container-fluid pl-0 pr-0">
                     <%--2--%>
-                    <tr class="row">
-                        <td class="col-3 d-flex align-items-center">
+                    <div class="row mb-3">
+                        <div class="col-4 d-flex align-items-center">
                             <fmt:message bundle="${jspMessages}"
                                          key="register.firstNameInputLabel"/>
-                        </td>
-                        <td class="col d-flex align-items-center">
+                        </div>
+                        <div class="col d-flex align-items-center">
                             <%--<c:out value="${requestScope.patientInfo.}"/>--%>
                             <c:choose>
                                 <c:when test="${requestScope.patientInfo.firstName ne null}">
@@ -108,8 +107,8 @@
                                     <c:out value=""/>
                                 </c:otherwise>
                             </c:choose>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
 
                     <div class="form-group form-inline">
                         <label for="firstNameInputLabel"
@@ -132,12 +131,12 @@
                     </div>
 
                     <%--3--%>
-                    <tr class="row">
-                        <td class="col-3 d-flex align-items-center">
+                    <div class="row mb-3">
+                        <div class="col-4 d-flex align-items-center">
                             <fmt:message bundle="${jspMessages}"
                                          key="register.middleNameInputLabel"/>
-                        </td>
-                        <td class="col d-flex align-items-center">
+                        </div>
+                        <div class="col d-flex align-items-center">
                             <c:choose>
                                 <c:when test="${requestScope.patientInfo.middleName ne null}">
                                     <c:out value="${requestScope.patientInfo.middleName}"/>
@@ -146,15 +145,15 @@
                                     <c:out value=""/>
                                 </c:otherwise>
                             </c:choose>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                     <%--4--%>
-                    <tr class="row">
-                        <td class="col-3 d-flex align-items-center">
+                    <div class="row mb-3">
+                        <div class="col-4 d-flex align-items-center">
                             <fmt:message bundle="${jspMessages}"
                                          key="register.lastNameInputLabel"/>
-                        </td>
-                        <td class="col d-flex align-items-center">
+                        </div>
+                        <div class="col d-flex align-items-center">
                             <c:choose>
                                 <c:when test="${requestScope.patientInfo.lastName ne null}">
                                     <c:out value="${requestScope.patientInfo.lastName}"/>
@@ -163,15 +162,15 @@
                                     <c:out value=""/>
                                 </c:otherwise>
                             </c:choose>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                     <%--5--%>
-                    <tr class="row">
-                        <td class="col-3 d-flex align-items-center">
+                    <div class="row mb-3">
+                        <div class="col-4 d-flex align-items-center">
                             <fmt:message bundle="${jspMessages}"
                                          key="register.birthdayInputLabel"/>
-                        </td>
-                        <td class="col d-flex align-items-center">
+                        </div>
+                        <div class="col d-flex align-items-center">
                             <%--  TODO make personal tag                              --%>
                             <c:choose>
                                 <c:when test="${requestScope.patientInfo.birthday ne null}">
@@ -181,15 +180,15 @@
                                     <c:out value=""/>
                                 </c:otherwise>
                             </c:choose>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                     <%--6--%>
-                    <tr class="row">
-                        <td class="col-3 d-flex align-items-center">
+                    <div class="row mb-3">
+                        <div class="col-4 d-flex align-items-center">
                             <fmt:message bundle="${jspMessages}"
                                          key="register.GenderInputLabel"/>
-                        </td>
-                        <td class="col d-flex align-items-center">
+                        </div>
+                        <div class="col d-flex align-items-center">
                             <c:choose>
                                 <c:when test="${requestScope.patientInfo.gender ne null}">
                                     <c:out value="${requestScope.patientInfo.gender.genderValue}"/>
@@ -198,15 +197,15 @@
                                     <c:out value=""/>
                                 </c:otherwise>
                             </c:choose>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                     <%--7--%>
-                    <tr class="row">
-                        <td class="col-3 d-flex align-items-center">
+                    <div class="row mb-3">
+                        <div class="col-4 d-flex align-items-center">
                             <fmt:message bundle="${jspMessages}"
                                          key="register.emailInputLabel"/>
-                        </td>
-                        <td class="col d-flex align-items-center">
+                        </div>
+                        <div class="col d-flex align-items-center">
                             <%--TODO hide with ***--%>
                             <c:choose>
                                 <c:when test="${requestScope.patientInfo.email ne null}">
@@ -216,15 +215,15 @@
                                     <c:out value=""/>
                                 </c:otherwise>
                             </c:choose>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                     <%--8--%>
-                    <tr class="row">
-                        <td class="col-3 d-flex align-items-center">
+                    <div class="row mb-3">
+                        <div class="col-4 d-flex align-items-center">
                             <fmt:message bundle="${jspMessages}"
                                          key="register.phoneNumberInputLabel"/>
-                        </td>
-                        <td class="col d-flex align-items-center">
+                        </div>
+                        <div class="col d-flex align-items-center">
                             <c:choose>
                                 <c:when test="${requestScope.patientInfo.phoneNumber ne null}">
                                     <c:out value="${requestScope.patientInfo.phoneNumber}"/>
@@ -233,15 +232,15 @@
                                     <c:out value=""/>
                                 </c:otherwise>
                             </c:choose>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                     <%--9--%>
-                    <tr class="row">
-                        <td class="col-3 d-flex align-items-center">
+                    <div class="row mb-3">
+                        <div class="col-4 d-flex align-items-center">
                             <fmt:message bundle="${jspMessages}"
                                          key="profile.maritalStatus"/>
-                        </td>
-                        <td class="col d-flex align-items-center">
+                        </div>
+                        <div class="col d-flex align-items-center">
                             <c:choose>
                                 <c:when test="${requestScope.patientInfo.maritalStatus ne null}">
                                     <c:out value="${requestScope.patientInfo.maritalStatus.description}"/>
@@ -250,15 +249,15 @@
                                     <c:out value=""/>
                                 </c:otherwise>
                             </c:choose>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                     <%--10--%>
-                    <tr class="row">
-                        <td class="col-3 d-flex align-items-center">
+                    <div class="row mb-3">
+                        <div class="col-4 d-flex align-items-center">
                             <fmt:message bundle="${jspMessages}"
                                          key="profile.identityDocument"/>
-                        </td>
-                        <td class="col d-flex align-items-center">
+                        </div>
+                        <div class="col d-flex align-items-center">
                             <c:choose>
                                 <c:when test="${requestScope.patientInfo.identityDocument ne null}">
                                     <%-- TODO make your own tag in order to view identity document --%>
@@ -268,15 +267,15 @@
                                     <c:out value=""/>
                                 </c:otherwise>
                             </c:choose>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                     <%--11--%>
-                    <tr class="row">
-                        <td class="col-3 d-flex align-items-center">
+                    <div class="row mb-3">
+                        <div class="col-4 d-flex align-items-center">
                             <fmt:message bundle="${jspMessages}"
                                          key="profile.homeAddress"/>
-                        </td>
-                        <td class="col d-flex align-items-center">
+                        </div>
+                        <div class="col d-flex align-items-center">
                             <c:choose>
                                 <c:when test="${requestScope.patientInfo.homeAddress ne null}">
                                     <%-- TODO make your own tag in order to view identity document --%>
@@ -286,15 +285,15 @@
                                     <c:out value=""/>
                                 </c:otherwise>
                             </c:choose>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                     <%--12--%>
-                    <tr class="row">
-                        <td class="col-3 d-flex align-items-center">
+                    <div class="row mb-3">
+                        <div class="col-4 d-flex align-items-center">
                             <fmt:message bundle="${jspMessages}"
                                          key="profile.inCaseOfEmergencyContactPerson"/>
-                        </td>
-                        <td class="col d-flex align-items-center">
+                        </div>
+                        <div class="col d-flex align-items-center">
                             <c:choose>
                                 <c:when test="${requestScope.patientInfo.inCaseOfEmergencyContactPersonInfo ne null}">
                                     <c:out value="${requestScope.patientInfo.inCaseOfEmergencyContactPersonInfo}"/>
@@ -303,15 +302,15 @@
                                     <c:out value=""/>
                                 </c:otherwise>
                             </c:choose>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                     <%--13--%>
-                    <tr class="row">
-                        <td class="col-3 d-flex align-items-center">
+                    <div class="row mb-3">
+                        <div class="col-4 d-flex align-items-center">
                             <fmt:message bundle="${jspMessages}"
                                          key="profile.inCaseOfEmergencyPhoneOfContactPerson"/>
-                        </td>
-                        <td class="col d-flex align-items-center">
+                        </div>
+                        <div class="col d-flex align-items-center">
                             <c:choose>
                                 <c:when test="${requestScope.patientInfo.inCaseOfEmergencyContactPersonPhone ne null}">
                                     <c:out value="${requestScope.patientInfo.inCaseOfEmergencyContactPersonPhone}"/>
@@ -320,15 +319,15 @@
                                     <c:out value=""/>
                                 </c:otherwise>
                             </c:choose>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                     <%--14--%>
-                    <tr class="row">
-                        <td class="col-3 d-flex align-items-center">
+                    <div class="row mb-3">
+                        <div class="col-4 d-flex align-items-center">
                             <fmt:message bundle="${jspMessages}"
                                          key="profile.bloodType"/>
-                        </td>
-                        <td class="col d-flex align-items-center">
+                        </div>
+                        <div class="col d-flex align-items-center">
                             <c:choose>
                                 <c:when test="${requestScope.patientInfo.bloodType ne null}">
                                     <c:out value="${requestScope.patientInfo.bloodType.value}"/>
@@ -337,15 +336,15 @@
                                     <c:out value=""/>
                                 </c:otherwise>
                             </c:choose>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                     <%--15--%>
-                    <tr class="row">
-                        <td class="col-3 d-flex align-items-center">
+                    <div class="row mb-3">
+                        <div class="col-4 d-flex align-items-center">
                             <fmt:message bundle="${jspMessages}"
                                          key="profile.bloodRh"/>
-                        </td>
-                        <td class="col d-flex align-items-center">
+                        </div>
+                        <div class="col d-flex align-items-center">
                             <c:choose>
                                 <c:when test="${requestScope.patientInfo.rhBloodGroup ne null}">
                                     <c:out value="${requestScope.patientInfo.rhBloodGroup.description}"/>
@@ -354,15 +353,15 @@
                                     <c:out value=""/>
                                 </c:otherwise>
                             </c:choose>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                     <%--16--%>
-                    <tr class="row">
-                        <td class="col-3 d-flex align-items-center">
+                    <div class="row mb-3">
+                        <div class="col-4 d-flex align-items-center">
                             <fmt:message bundle="${jspMessages}"
                                          key="profile.disabilityDegree"/>
-                        </td>
-                        <td class="col d-flex align-items-center">
+                        </div>
+                        <div class="col d-flex align-items-center">
                             <c:choose>
                                 <c:when test="${requestScope.patientInfo.disabilityDegree ne null}">
                                     <c:out value="${requestScope.patientInfo.disabilityDegree.description}"/>
@@ -371,15 +370,15 @@
                                     <c:out value=""/>
                                 </c:otherwise>
                             </c:choose>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                     <%--17--%>
-                    <tr class="row">
-                        <td class="col-3 d-flex align-items-center">
+                    <div class="row mb-3">
+                        <div class="col-4 d-flex align-items-center">
                             <fmt:message bundle="${jspMessages}"
                                          key="profile.transportationStatus"/>
-                        </td>
-                        <td class="col d-flex align-items-center">
+                        </div>
+                        <div class="col d-flex align-items-center">
                             <c:choose>
                                 <c:when test="${requestScope.patientInfo.transportationStatus ne null}">
                                     <c:out value="${requestScope.patientInfo.transportationStatus.description}"/>
@@ -388,15 +387,15 @@
                                     <c:out value=""/>
                                 </c:otherwise>
                             </c:choose>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                     <%--18--%>
-                    <tr class="row">
-                        <td class="col-3 d-flex align-items-center">
+                    <div class="row mb-3">
+                        <div class="col-4 d-flex align-items-center">
                             <fmt:message bundle="${jspMessages}"
                                          key="profile.allergicReactionsPresence"/>
-                        </td>
-                        <td class="col d-flex align-items-center">
+                        </div>
+                        <div class="col d-flex align-items-center">
                             <c:choose>
                                 <c:when test="${requestScope.patientInfo.hasAllergicReactions == false}">
                                     <fmt:message bundle="${jspMessages}"
@@ -407,15 +406,15 @@
                                                  key="profile.presence"/>
                                 </c:otherwise>
                             </c:choose>
-                        </td>
-                    </tr>
+                        </div>
+                    </div>
                     <%--19--%>
-                    <tr class="row">
-                        <td class="col-3 d-flex align-items-center">
+                    <div class="row mb-3">
+                        <div class="col-4 d-flex align-items-center">
                             <fmt:message bundle="${jspMessages}"
                                          key="profile.extremelyHazardousDiseasesPresence"/>
-                        </td>
-                        <td class="col d-flex align-items-center">
+                        </div>
+                        <div class="col d-flex align-items-center">
                             <c:choose>
                                 <c:when test="${requestScope.patientInfo.hasExtremelyHazardousDiseases == false}">
                                     <fmt:message bundle="${jspMessages}"
@@ -426,10 +425,10 @@
                                                  key="profile.presence"/>
                                 </c:otherwise>
                             </c:choose>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                        </div>
+                    </div>
+
+                </div>
 
                 <%--                <div class="form-group form-inline">--%>
                 <%--                    <label for="firstNameInputLabel"--%>
