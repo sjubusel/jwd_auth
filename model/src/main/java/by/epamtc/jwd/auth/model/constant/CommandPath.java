@@ -14,10 +14,10 @@ public final class CommandPath {
     public static final String PROFILE_TECH_ERROR = "/profile?command=go-to-profile&error=tech";
     public static final String PROFILE_AUTH_USER_VALIDATION_ERROR = "/profile?command=go-to-profile&error=val";
 
-    public static final String SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO_TECH_ERROR
-            = "/profile?command=go-to-profile-change-patient-info&error=tech";
-    public static final String SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO_VALIDATION_ERROR
-            = "/profile?command=go-to-profile-change-patient-info&error=val";
+//    public static final String SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO_TECH_ERROR
+//            = "/profile?command=go-to-profile-change-patient-info&error=tech";
+//    public static final String SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO_VALIDATION_ERROR
+//            = "/profile?command=go-to-profile-change-patient-info&error=val";
 
     public static final String LOGIN_JSP = "/WEB-INF/jsp/login.jsp";
     public static final String PROFILE_JSP = "/WEB-INF/jsp/profile.jsp";
