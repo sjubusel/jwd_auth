@@ -47,6 +47,7 @@
                 <input type="hidden" name="command"
                        value="profile-change-patient-photo"/>
                 <div class="form-group d-flex justify-content-center">
+                    <%-- TODO Maybe delete this label--%>
                     <label for="photo"
                            class="align-self-center col-4 custom-form-label">
                         <fmt:message bundle="${jspMessages}"
@@ -74,8 +75,8 @@
                     <button type="submit"
                             class="btn align-self-center btn-primary">
                         change
-                        <%--                        <fmt:message bundle="${jspMessages}"--%>
-                        <%--                                     key="profileSubMenu.changePatientInfo.changePhoto"/>--%>
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profileSubMenu.changePatientInfo.changePhoto"/>
                     </button>
                 </div>
             </form>
@@ -109,7 +110,7 @@
                             </c:choose>
                         </div>
                     </div>
-
+                    <hr>
                     <div class="form-group form-inline">
                         <label for="firstNameInputLabel"
                                class="col-4 custom-form-label pl-0 pr-0">
@@ -129,7 +130,7 @@
                         </c:choose>
                                disabled>
                     </div>
-
+                    <hr>
                     <%--3--%>
                     <div class="row mb-3">
                         <div class="col-4 d-flex align-items-center">
@@ -147,6 +148,7 @@
                             </c:choose>
                         </div>
                     </div>
+                    <hr>
                     <%--4--%>
                     <div class="row mb-3">
                         <div class="col-4 d-flex align-items-center">
@@ -164,6 +166,7 @@
                             </c:choose>
                         </div>
                     </div>
+                    <hr>
                     <%--5--%>
                     <div class="row mb-3">
                         <div class="col-4 d-flex align-items-center">
@@ -182,6 +185,7 @@
                             </c:choose>
                         </div>
                     </div>
+                    <hr>
                     <%--6--%>
                     <div class="row mb-3">
                         <div class="col-4 d-flex align-items-center">
@@ -199,6 +203,7 @@
                             </c:choose>
                         </div>
                     </div>
+                    <hr>
                     <%--7--%>
                     <div class="row mb-3">
                         <div class="col-4 d-flex align-items-center">
@@ -217,6 +222,7 @@
                             </c:choose>
                         </div>
                     </div>
+                    <hr>
                     <%--8--%>
                     <div class="row mb-3">
                         <div class="col-4 d-flex align-items-center">
@@ -234,6 +240,7 @@
                             </c:choose>
                         </div>
                     </div>
+                    <hr>
                     <%--9--%>
                     <div class="row mb-3">
                         <div class="col-4 d-flex align-items-center">
@@ -251,6 +258,7 @@
                             </c:choose>
                         </div>
                     </div>
+                    <hr>
                     <%--10--%>
                     <div class="row mb-3">
                         <div class="col-4 d-flex align-items-center">
@@ -269,6 +277,7 @@
                             </c:choose>
                         </div>
                     </div>
+                    <hr>
                     <%--11--%>
                     <div class="row mb-3">
                         <div class="col-4 d-flex align-items-center">
@@ -287,6 +296,7 @@
                             </c:choose>
                         </div>
                     </div>
+                    <hr>
                     <%--12--%>
                     <div class="row mb-3">
                         <div class="col-4 d-flex align-items-center">
@@ -304,6 +314,7 @@
                             </c:choose>
                         </div>
                     </div>
+                    <hr>
                     <%--13--%>
                     <div class="row mb-3">
                         <div class="col-4 d-flex align-items-center">
@@ -321,6 +332,7 @@
                             </c:choose>
                         </div>
                     </div>
+                    <hr>
                     <%--14--%>
                     <div class="row mb-3">
                         <div class="col-4 d-flex align-items-center">
@@ -338,6 +350,7 @@
                             </c:choose>
                         </div>
                     </div>
+                    <hr>
                     <%--15--%>
                     <div class="row mb-3">
                         <div class="col-4 d-flex align-items-center">
@@ -355,6 +368,7 @@
                             </c:choose>
                         </div>
                     </div>
+                    <hr>
                     <%--16--%>
                     <div class="row mb-3">
                         <div class="col-4 d-flex align-items-center">
@@ -372,6 +386,7 @@
                             </c:choose>
                         </div>
                     </div>
+                    <hr>
                     <%--17--%>
                     <div class="row mb-3">
                         <div class="col-4 d-flex align-items-center">
@@ -389,6 +404,7 @@
                             </c:choose>
                         </div>
                     </div>
+                    <hr>
                     <%--18--%>
                     <div class="row mb-3">
                         <div class="col-4 d-flex align-items-center">
@@ -408,6 +424,7 @@
                             </c:choose>
                         </div>
                     </div>
+                    <hr>
                     <%--19--%>
                     <div class="row mb-3">
                         <div class="col-4 d-flex align-items-center">
