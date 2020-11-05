@@ -4,7 +4,6 @@ import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
 import by.epamtc.jwd.auth.model.constant.AppParameter;
-import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.UploadService;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
@@ -46,6 +45,8 @@ public class ProfileChangePatientPhoto implements Command {
         } catch (UploadServiceException e) {
             // TODO log4j that FILE is uploaded, but info is not.
             // TODO add redirect to TECH ERROR
+            res.sendRedirect(req.getContextPath() + "/profile?command=go-to-profile-change-patient-info&photoUpload=techError");
+            return;
         } catch (ServiceException e) {
             // TODO log4j
             // TODO add redirect to TECH ERROR
@@ -53,17 +54,18 @@ public class ProfileChangePatientPhoto implements Command {
             // передан null вместо файла → FileAccessAssistant инициализация
             // не получилось создать файл для передачи в outputstream uploadPatientPhotoToServer
             // не получилось произвести запись через outputstream
+            res.sendRedirect(req.getContextPath() + "/profile?command=go-to-profile-change-patient-info&photoUpload=techError");
             return;
         }
 
         if (!isUploaded) {
             // TODO send redirect with parameter with warningMessage (VALIDATION)
+            res.sendRedirect(req.getContextPath() + "/profile?command=go-to-profile-change-patient-info&photoUpload=validationError");
             return;
         }
 
         // TODO send redirect with parameter with successMessage
-        req.getRequestDispatcher(CommandPath.SUBPROFILE_CHANGE_PATIENT_INFO_JSP)
-                .forward(req, res);
+        res.sendRedirect(req.getContextPath() + "/profile?command=go-to-profile-change-patient-info&photoUpload=success");
     }
 
     public String formFileName(final Part part) {

@@ -53,7 +53,39 @@
                     <form action="${pageContext.request.contextPath}/profile"
                           method="post"
                           enctype="multipart/form-data">
-                            <%-- TODO make an alert-success alert-fail--%>
+                            <%-- TODO add i18n everywhere--%>
+                        <c:if test="${requestScope.photoUpload ne null}">
+                            <c:choose>
+                                <c:when test="${requestScope.photoUpload eq 'success'}">
+                                    <div class="alert alert-success"
+                                         role="alert">
+                                        This is a success alert—check it out!
+                                    </div>
+                                </c:when>
+                                <c:when test="${requestScope.photoUpload eq 'techError'}">
+                                    <div class="alert alert-danger"
+                                         role="alert">
+                                        This is a danger alert—check it out!
+                                        TECHERROR
+                                    </div>
+                                </c:when>
+                                <c:when test="${requestScope.photoUpload eq 'validationError'}">
+                                    <div class="alert alert-danger"
+                                         role="alert">
+                                        This is a danger alert—check it out!
+                                        VALIDERROR
+                                    </div>
+                                </c:when>
+                                <c:otherwise>
+                                    <div class="alert alert-danger"
+                                         role="alert">
+                                        This is a danger alert—check it out! OTHER
+                                        <%-- TODO Возникло неизвестное состояние системы. Просьба перейти на главную страницу.--%>
+                                    </div>
+
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
                         <input type="hidden" name="command"
                                value="profile-change-patient-photo"/>
                         <div class="form-group d-flex justify-content-center">
@@ -65,7 +97,7 @@
                             <img
                             <c:choose>
                             <c:when test="${requestScope.patientInfo.photoPath ne null}">
-                                    src="${pageContext.request.contextPath}${requestScope.patientInfo.photoPath}"
+                                    src="http://${pageContext.request.serverName}:${pageContext.request.serverPort}/upload/user_photo/${requestScope.patientInfo.photoPath}"
                             </c:when>
                             <c:otherwise>
                                     src="${pageContext.request.contextPath}/img/user.png"
