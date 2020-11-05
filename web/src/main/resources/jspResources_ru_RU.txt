@@ -124,3 +124,7 @@ profileSubMenu.changePatientInfo.newPhoneNumberInputLabel=Новый телеф�
 profileSubMenu.changePatientInfo.changePhoneNumber=Изменить номер телефона
 profileSubMenu.changePatientInfo.cancelChangePhoneNumber=Отменить смену номера
 profileSubMenu.changePatientInfo.changeEmailLink=Изменить адрес электронной почты
+profileSubMenu.changePatientInfo.unmarried=холост / незамужем
+profileSubMenu.changePatientInfo.married=женат / замужем
+profileSubMenu.changePatientInfo.divorced=разведён / разведена
+profileSubMenu.changePatientInfo.widower=вдовец / вдова
