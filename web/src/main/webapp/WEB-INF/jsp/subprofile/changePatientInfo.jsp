@@ -510,14 +510,59 @@
                                                  key="profile.bloodType"/>
                                 </div>
                                 <div class="col d-flex align-items-center">
-                                    <c:choose>
-                                        <c:when test="${requestScope.patientInfo.bloodType ne null}">
-                                            <c:out value="${requestScope.patientInfo.bloodType.value}"/>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <c:out value=""/>
-                                        </c:otherwise>
-                                    </c:choose>
+                                    <div class="form-control col form-check form-check-inline">
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="blood1"
+                                               name="bloodTypeInput"
+                                               value="I">
+                                        <label for="blood1"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            I
+                                        </label>
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="blood2"
+                                               name="bloodTypeInput"
+                                               value="II">
+                                        <label for="blood2"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            II
+                                        </label>
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="blood3"
+                                               name="bloodTypeInput"
+                                               value="III">
+                                        <label for="blood3"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            III
+                                        </label>
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="blood4"
+                                               name="bloodTypeInput"
+                                               value="IV">
+                                        <label for="blood4"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            IV
+                                        </label>
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="bloodOther"
+                                               name="bloodTypeInput"
+                                               value="unknown">
+                                        <label for="bloodOther"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="profileSubMenu.changePatientInfo.bloodOther"/>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                             <hr>
