@@ -140,3 +140,6 @@ profileSubMenu.changePatientInfo.disabilityDegree1=1 (первая)
 profileSubMenu.changePatientInfo.disabilityDegree2=2 (вторая)
 profileSubMenu.changePatientInfo.disabilityDegree3=3 (третья)
 profileSubMenu.changePatientInfo.disabilityDegree0=инвалидность отсутствует
+profileSubMenu.changePatientInfo.transportationStatusWalking=передвигается самостоятельно
+profileSubMenu.changePatientInfo.transportationStatusWheelchair=на инвалидной-коляске
+profileSubMenu.changePatientInfo.transportationStatusStretcher=на носилках

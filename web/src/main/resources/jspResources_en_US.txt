@@ -140,3 +140,6 @@ profileSubMenu.changePatientInfo.disabilityDegree1=1 (first)
 profileSubMenu.changePatientInfo.disabilityDegree2=2 (second)
 profileSubMenu.changePatientInfo.disabilityDegree3=3 (third)
 profileSubMenu.changePatientInfo.disabilityDegree0=disability is absent
+profileSubMenu.changePatientInfo.transportationStatusWalking=walking
+profileSubMenu.changePatientInfo.transportationStatusWheelchair=wheelchair
+profileSubMenu.changePatientInfo.transportationStatusStretcher=stretcher
