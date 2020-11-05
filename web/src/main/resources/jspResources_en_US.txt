@@ -123,3 +123,4 @@ profileSubMenu.changePatientInfo.validationError=Because of an incorrect user ty
 profileSubMenu.changePatientInfo.newPhoneNumberInputLabel=New phone number
 profileSubMenu.changePatientInfo.changePhoneNumber=Change a phone number
 profileSubMenu.changePatientInfo.cancelChangePhoneNumber=Cancel phone number change
+profileSubMenu.changePatientInfo.changeEmailLink=Change email

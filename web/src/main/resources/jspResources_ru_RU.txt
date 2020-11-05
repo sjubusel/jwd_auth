@@ -123,3 +123,4 @@ profileSubMenu.changePatientInfo.validationError=По причине некор�
 profileSubMenu.changePatientInfo.newPhoneNumberInputLabel=Новый телефон
 profileSubMenu.changePatientInfo.changePhoneNumber=Изменить номер телефона
 profileSubMenu.changePatientInfo.cancelChangePhoneNumber=Отменить смену номера
+profileSubMenu.changePatientInfo.changeEmailLink=Изменить адрес электронной почты
