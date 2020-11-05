@@ -120,3 +120,4 @@ profileSubMenu.changePatientInfo.successfulPhotoUpload=Фотография по
 profileSubMenu.changePatientInfo.techError=По техническим причинам изменить фотографию не представилось возможным
 profileSubMenu.changePatientInfo.incorrectFileName=Из-за неверного имени файла изменить фотографию не представилось возможным
 profileSubMenu.changePatientInfo.validationError=По причине некорректного типа пользователя изменить фотографию не представилось возможным
+profileSubMenu.changePatientInfo.newPhoneNumberInputLabel=Новый телефон
