@@ -11,7 +11,9 @@ public final class CommandPath {
     public static final String REGISTER_DUPLICATE_ERROR_BY_LOGIN = "/main?command=go-to-register&error=duplicateLogin";
     public static final String REGISTER_DUPLICATE_ERROR_BY_EMAIL = "/main?command=go-to-register&error=duplicateEmail";
 
+    // TODO delete???
     public static final String PROFILE_TECH_ERROR = "/profile?command=go-to-profile&error=tech";
+    // TODO delete???
     public static final String PROFILE_AUTH_USER_VALIDATION_ERROR = "/profile?command=go-to-profile&error=val";
 
     public static final String SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO_TECH_ERROR
