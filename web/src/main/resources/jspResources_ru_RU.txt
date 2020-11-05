@@ -114,3 +114,4 @@ profileSubMenu.allergicReactions=Аллергия
 profileSubMenu.extremelyHazardousDiseases=Особо опасные заболевания
 
 profileSubMenu.changePatientInfo.changePhoto=заменить
+profileSubMenu.changePatientInfo.headingChangeAvatar=Замена фотографии пользователя
