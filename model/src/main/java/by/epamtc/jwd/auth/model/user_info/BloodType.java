@@ -1,14 +1,20 @@
 package by.epamtc.jwd.auth.model.user_info;
 
 public enum BloodType {
-    FIRST("I"), SECOND("II"), THIRD("III"), FORTH("IV");
+    FIRST(1, "I"), SECOND(2, "II"), THIRD(3, "III"), FORTH(4, "IV");
 
+    private int number;
     private String value;
 
-    BloodType(String value) {
+    BloodType(int number, String value) {
+        this.number = number;
         this.value = value;
     }
 
+
+    public int getNumber() {
+        return number;
+    }
 
     public String getValue() {
         return value;
