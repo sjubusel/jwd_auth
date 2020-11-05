@@ -23,7 +23,7 @@ public final class CommandPath {
     public static final String SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO_INCORRECT_FILE_NAME
             = "/profile?command=go-to-profile-change-patient-info&photoUpload=incorrectFileName";
     public static final String SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO_SUCCESS_UPLOAD
-            = "/profile?command=go-to-profile-change-patient-info&photoUpload=photoUpload=success";
+            = "/profile?command=go-to-profile-change-patient-info&photoUpload=success";
 
     public static final String LOGIN_JSP = "/WEB-INF/jsp/login.jsp";
     public static final String PROFILE_JSP = "/WEB-INF/jsp/profile.jsp";
