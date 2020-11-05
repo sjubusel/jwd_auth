@@ -24,6 +24,16 @@
         <url-pattern>/profile</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>AjaxServlet</servlet-name>
+        <servlet-class>by.epamtc.jwd.auth.web.servlet.AjaxServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AjaxServlet</servlet-name>
+        <url-pattern>/ajax</url-pattern>
+    </servlet-mapping>
+
     <filter>
         <filter-name>SecurityFilter</filter-name>
         <filter-class>by.epamtc.jwd.auth.web.filter.SecurityFilter
