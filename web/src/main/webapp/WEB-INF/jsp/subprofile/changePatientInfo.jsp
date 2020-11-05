@@ -715,16 +715,6 @@
                                     </div>
 
                                 </div>
-                                <div class="col d-flex align-items-center">
-                                    <c:choose>
-                                        <c:when test="${requestScope.patientInfo.transportationStatus ne null}">
-                                            <c:out value="${requestScope.patientInfo.transportationStatus.description}"/>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <c:out value=""/>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </div>
                             </div>
                             <hr>
                                 <%--18--%>
