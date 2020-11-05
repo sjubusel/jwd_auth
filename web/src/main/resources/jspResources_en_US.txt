@@ -129,3 +129,4 @@ profileSubMenu.changePatientInfo.married=married
 profileSubMenu.changePatientInfo.divorced=divorced
 profileSubMenu.changePatientInfo.widower=widow / widower
 profileSubMenu.changePatientInfo.universalChangeLink=Make amendments
+profileSubMenu.changePatientInfo.bloodOther=Unknown
