@@ -4,6 +4,7 @@ import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
 import by.epamtc.jwd.auth.model.constant.AppParameter;
+import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.UploadService;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
@@ -34,39 +35,59 @@ public class ProfileChangePatientPhoto implements Command {
         InputStream iFileStreamFromClient = filePart.getInputStream();
 
         if (targetFileName == null) {
-            // TODO файл не загружен НЕКОРРЕКТНОЕ ИМЯ ФАЙЛА → → → редирект с ошибкой на страницу редактирования
-            res.sendRedirect(req.getContextPath() + "/profile?command=go-to-profile-change-patient-info&photoUpload=incorrectFileName");
+            sendRedirectWithIncorrectFileNameMessage(req, res);
             return;
         }
 
-        boolean isUploaded = false;
+        boolean isUploaded;
         try {
             isUploaded = uploadService.updatePatientPhoto(targetFileName,
                     iFileStreamFromClient, user);
         } catch (UploadServiceException e) {
             // TODO log4j that FILE is uploaded, but info is not.
-            // TODO add redirect to TECH ERROR
-            res.sendRedirect(req.getContextPath() + "/profile?command=go-to-profile-change-patient-info&photoUpload=techError");
+            sendRedirectWithTechError(req, res);
             return;
         } catch (ServiceException e) {
             // TODO log4j
-            // TODO add redirect to TECH ERROR
             // не получилось сформировать пути к серверу IOException | URISyntaxException → FileAccessAssistant
             // передан null вместо файла → FileAccessAssistant инициализация
             // не получилось создать файл для передачи в outputstream uploadPatientPhotoToServer
             // не получилось произвести запись через outputstream
-            res.sendRedirect(req.getContextPath() + "/profile?command=go-to-profile-change-patient-info&photoUpload=techError");
+            e.printStackTrace();
+            sendRedirectWithTechError(req, res);
             return;
         }
 
         if (!isUploaded) {
-            // TODO send redirect with parameter with warningMessage (VALIDATION)
-            res.sendRedirect(req.getContextPath() + "/profile?command=go-to-profile-change-patient-info&photoUpload=validationError");
+            sendRedirectWithValidationError(req, res);
             return;
         }
 
-        // TODO send redirect with parameter with successMessage
-        res.sendRedirect(req.getContextPath() + "/profile?command=go-to-profile-change-patient-info&photoUpload=success");
+        sendRedirectWithSuccessMessage(req, res);
+    }
+
+    private void sendRedirectWithTechError(HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO_TECH_ERROR);
+    }
+
+    private void sendRedirectWithValidationError(HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO_VALIDATION_ERROR);
+    }
+
+    private void sendRedirectWithIncorrectFileNameMessage(HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO_INCORRECT_FILE_NAME);
+    }
+
+    private void sendRedirectWithSuccessMessage(HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO_SUCCESS_UPLOAD);
     }
 
     public String formFileName(final Part part) {
