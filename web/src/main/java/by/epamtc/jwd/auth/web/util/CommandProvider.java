@@ -56,8 +56,8 @@ public class CommandProvider {
 
 //        repository.put(CommandName.SUBPROFILE_GO_TO_ALLERGIC_REACTIONS,
 //                new GoToProfileAllergicReactionsCommand());
-//        repository.put(CommandName.SUBPROFILE_GO_TO_EMAIL_CHANGE,
-//                new GoToProfileChangeEmailCommand());
+        repository.put(CommandName.SUBPROFILE_GO_TO_EMAIL_CHANGE,
+                new GoToProfileChangeEmailCommand());
 //        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_PASSWORD,
 //                new GoToProfileChangePasswordCommand());
         repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO,
