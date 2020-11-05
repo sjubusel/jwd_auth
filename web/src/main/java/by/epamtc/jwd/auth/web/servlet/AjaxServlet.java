@@ -18,6 +18,8 @@ public class AjaxServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+        String maritalStatusInput = req.getParameter("maritalStatusInput");
+
         String command = req.getParameter(AppParameter.COMMAND);
         Map<String, Object> map = new HashMap<>();
         boolean isValid = false;

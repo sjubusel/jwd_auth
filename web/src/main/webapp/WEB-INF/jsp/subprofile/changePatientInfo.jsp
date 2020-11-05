@@ -283,6 +283,12 @@
                                         </c:otherwise>
                                     </c:choose>
                                 </div>
+                                <div>
+                                    <a href="${pageContext.request.contextPath}/profile?command=go-to-profile-email-change">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.changeEmailLink"/>
+                                    </a>
+                                </div>
                             </div>
                             <hr>
                                 <%--8--%>
@@ -374,14 +380,52 @@
                                                  key="profile.maritalStatus"/>
                                 </div>
                                 <div class="col d-flex align-items-center">
-                                    <c:choose>
-                                        <c:when test="${requestScope.patientInfo.maritalStatus ne null}">
-                                            <c:out value="${requestScope.patientInfo.maritalStatus.description}"/>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <c:out value=""/>
-                                        </c:otherwise>
-                                    </c:choose>
+                                    <div class="form-control col form-check form-check-inline">
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="unmarried"
+                                               name="maritalStatusInput"
+                                               value="unmarried">
+                                        <label for="unmarried"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="profileSubMenu.changePatientInfo.unmarried"/>
+                                        </label>
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="married"
+                                               name="maritalStatusInput"
+                                               value="married">
+                                        <label for="married"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="profileSubMenu.changePatientInfo.married"/>
+                                        </label>
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="divorced"
+                                               name="maritalStatusInput"
+                                               value="divorced">
+                                        <label for="divorced"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="profileSubMenu.changePatientInfo.divorced"/>
+                                        </label>
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="widower"
+                                               name="maritalStatusInput"
+                                               value="widower">
+                                        <label for="widower"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="profileSubMenu.changePatientInfo.widower"/>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                             <hr>
@@ -549,6 +593,12 @@
                                         </c:otherwise>
                                     </c:choose>
                                 </div>
+                                <div>
+                                    <a href="${pageContext.request.contextPath}/profile?command=go-to-profile-allergic-reactions">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.universalChangeLink"/>
+                                    </a>
+                                </div>
                             </div>
                             <hr>
                                 <%--19--%>
@@ -568,6 +618,12 @@
                                                          key="profile.presence"/>
                                         </c:otherwise>
                                     </c:choose>
+                                </div>
+                                <div>
+                                    <a href="${pageContext.request.contextPath}/profile?command=go-to-profile-extremely-hazardous-diseases">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.universalChangeLink"/>
+                                    </a>
                                 </div>
                             </div>
 
