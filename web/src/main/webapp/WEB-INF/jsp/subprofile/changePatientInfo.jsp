@@ -27,6 +27,19 @@
         <fmt:message bundle="${jspMessages}" key="all.htmlTitle"/>
     </title>
     <jsp:include page="../structural_element/metahead.jsp"/>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/js/jquery-3.5.1.js">
+    </script>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/js/jquery.maskedinput.js">
+    </script>
+    <script>
+        jQuery(document).ready(function () {
+            $("#phoneNumberCountryCodeInput").mask("+9?99");
+            $("#phoneNumberInnerCodeInput").mask("9?99");
+            $("#phoneNumberInnerNumberInput").mask("999-99-99");
+        });
+    </script>
 </head>
 <body>
 
@@ -160,26 +173,26 @@
                                 </div>
                             </div>
                             <hr>
-<%--                            <div class="form-group form-inline">--%>
-<%--                                <label for="firstNameInputLabel"--%>
-<%--                                       class="col-4 custom-form-label pl-0 pr-0">--%>
-<%--                                    <fmt:message bundle="${jspMessages}"--%>
-<%--                                                 key="register.firstNameInputLabel"/>--%>
-<%--                                </label>--%>
-<%--                                <input type="text" class="form-control col"--%>
-<%--                                       id="firstNameInputLabel"--%>
-<%--                                       name="firstNameInput"--%>
-<%--                                <c:choose>--%>
-<%--                                <c:when test="${requestScope.patientInfo.firstName ne null}">--%>
-<%--                                       value="${requestScope.patientInfo.firstName}"--%>
-<%--                                </c:when>--%>
-<%--                                <c:otherwise>--%>
-<%--                                       value=""--%>
-<%--                                </c:otherwise>--%>
-<%--                                </c:choose>--%>
-<%--                                       disabled>--%>
-<%--                            </div>--%>
-<%--                            <hr>--%>
+                                <%--                            <div class="form-group form-inline">--%>
+                                <%--                                <label for="firstNameInputLabel"--%>
+                                <%--                                       class="col-4 custom-form-label pl-0 pr-0">--%>
+                                <%--                                    <fmt:message bundle="${jspMessages}"--%>
+                                <%--                                                 key="register.firstNameInputLabel"/>--%>
+                                <%--                                </label>--%>
+                                <%--                                <input type="text" class="form-control col"--%>
+                                <%--                                       id="firstNameInputLabel"--%>
+                                <%--                                       name="firstNameInput"--%>
+                                <%--                                <c:choose>--%>
+                                <%--                                <c:when test="${requestScope.patientInfo.firstName ne null}">--%>
+                                <%--                                       value="${requestScope.patientInfo.firstName}"--%>
+                                <%--                                </c:when>--%>
+                                <%--                                <c:otherwise>--%>
+                                <%--                                       value=""--%>
+                                <%--                                </c:otherwise>--%>
+                                <%--                                </c:choose>--%>
+                                <%--                                       disabled>--%>
+                                <%--                            </div>--%>
+                                <%--                            <hr>--%>
                                 <%--3--%>
                             <div class="row mb-3">
                                 <div class="col-4 d-flex align-items-center">
@@ -288,7 +301,71 @@
                                         </c:otherwise>
                                     </c:choose>
                                 </div>
+                                <div id="changeBtn"
+                                     class="btn btn-secondary"
+                                     onclick="changePhone()">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.changePatientInfo.changePhoneNumber"/>
+                                </div>
                             </div>
+
+                            <div id="phoneInputs" style="display: none">
+                                <div class="form-group form-inline row">
+                                    <label for="phoneNumberCountryCodeInput"
+                                           for="phoneNumberInnerCodeInput"
+                                           for="phoneNumberInnerNumberInput"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.newPhoneNumberInputLabel"/>
+                                    </label>
+                                    <div class="row col-5 flex-end">
+                                        <input type="hidden" id="isNewPhone"
+                                               name="isNewPhone" value="false">
+                                        <input type="text"
+                                               class="form-control col col-2"
+                                               id="phoneNumberCountryCodeInput"
+                                               name="phoneNumberCountryCode"
+                                               placeholder="+XXX">
+                                        <input type="text"
+                                               class="form-control col col-2"
+                                               id="phoneNumberInnerCodeInput"
+                                               name="phoneNumberInnerCode"
+                                               placeholder="(XX)">
+                                        <input type="text"
+                                               class="form-control col col-8"
+                                               id="phoneNumberInnerNumberInput"
+                                               name="phoneNumberInnerNumber"
+                                               placeholder="XXX-XX-XX">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <script>
+                                function changePhone() {
+                                    let phoneInputsVar = document.getElementById("phoneInputs");
+                                    let changeBrnVar = document.getElementById("changeBtn");
+                                    let isNewPhone = document.getElementById("isNewPhone");
+                                    let countryCode = document.getElementById("phoneNumberCountryCodeInput");
+                                    let innerCode = document.getElementById("phoneNumberInnerCodeInput");
+                                    let innerNumber = document.getElementById("phoneNumberInnerNumberInput");
+                                    if (phoneInputsVar.style.display === "none") {
+                                        phoneInputsVar.style.display = "block";
+                                        changeBrnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.cancelChangePhoneNumber"/>";
+                                        countryCode.required = true;
+                                        innerCode.required = true;
+                                        innerNumber.required = true;
+                                        isNewPhone.value = "true";
+                                    } else {
+                                        phoneInputsVar.style.display = "none";
+                                        changeBrnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.changePhoneNumber"/>";
+                                        countryCode.required = false;
+                                        innerCode.required = false;
+                                        innerNumber.required = false;
+                                        isNewPhone.value = "false";
+                                    }
+                                }
+                            </script>
+
                             <hr>
                                 <%--9--%>
                             <div class="row mb-3">
