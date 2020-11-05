@@ -160,26 +160,26 @@
                                 </div>
                             </div>
                             <hr>
-                            <div class="form-group form-inline">
-                                <label for="firstNameInputLabel"
-                                       class="col-4 custom-form-label pl-0 pr-0">
-                                    <fmt:message bundle="${jspMessages}"
-                                                 key="register.firstNameInputLabel"/>
-                                </label>
-                                <input type="text" class="form-control col"
-                                       id="firstNameInputLabel"
-                                       name="firstNameInput"
-                                <c:choose>
-                                <c:when test="${requestScope.patientInfo.firstName ne null}">
-                                       value="${requestScope.patientInfo.firstName}"
-                                </c:when>
-                                <c:otherwise>
-                                       value=""
-                                </c:otherwise>
-                                </c:choose>
-                                       disabled>
-                            </div>
-                            <hr>
+<%--                            <div class="form-group form-inline">--%>
+<%--                                <label for="firstNameInputLabel"--%>
+<%--                                       class="col-4 custom-form-label pl-0 pr-0">--%>
+<%--                                    <fmt:message bundle="${jspMessages}"--%>
+<%--                                                 key="register.firstNameInputLabel"/>--%>
+<%--                                </label>--%>
+<%--                                <input type="text" class="form-control col"--%>
+<%--                                       id="firstNameInputLabel"--%>
+<%--                                       name="firstNameInput"--%>
+<%--                                <c:choose>--%>
+<%--                                <c:when test="${requestScope.patientInfo.firstName ne null}">--%>
+<%--                                       value="${requestScope.patientInfo.firstName}"--%>
+<%--                                </c:when>--%>
+<%--                                <c:otherwise>--%>
+<%--                                       value=""--%>
+<%--                                </c:otherwise>--%>
+<%--                                </c:choose>--%>
+<%--                                       disabled>--%>
+<%--                            </div>--%>
+<%--                            <hr>--%>
                                 <%--3--%>
                             <div class="row mb-3">
                                 <div class="col-4 d-flex align-items-center">
