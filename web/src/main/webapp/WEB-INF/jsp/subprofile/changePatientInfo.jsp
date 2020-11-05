@@ -622,14 +622,52 @@
                                                  key="profile.disabilityDegree"/>
                                 </div>
                                 <div class="col d-flex align-items-center">
-                                    <c:choose>
-                                        <c:when test="${requestScope.patientInfo.disabilityDegree ne null}">
-                                            <c:out value="${requestScope.patientInfo.disabilityDegree.description}"/>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <c:out value=""/>
-                                        </c:otherwise>
-                                    </c:choose>
+                                    <div class="form-control col form-check form-check-inline">
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="disabilityDegree1"
+                                               name="disabilityDegreeInput"
+                                               value="1">
+                                        <label for="disabilityDegree1"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="profileSubMenu.changePatientInfo.disabilityDegree1"/>
+                                        </label>
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="disabilityDegree2"
+                                               name="disabilityDegreeInput"
+                                               value="2">
+                                        <label for="disabilityDegree2"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="profileSubMenu.changePatientInfo.disabilityDegree2"/>
+                                        </label>
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="disabilityDegree3"
+                                               name="disabilityDegreeInput"
+                                               value="3">
+                                        <label for="disabilityDegree3"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="profileSubMenu.changePatientInfo.disabilityDegree3"/>
+                                        </label>
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="disabilityDegree0"
+                                               name="disabilityDegreeInput"
+                                               value="0">
+                                        <label for="disabilityDegree0"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="profileSubMenu.changePatientInfo.disabilityDegree0"/>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                             <hr>
