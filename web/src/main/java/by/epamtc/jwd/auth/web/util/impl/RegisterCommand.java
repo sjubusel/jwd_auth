@@ -31,8 +31,7 @@ public class RegisterCommand implements Command {
             user = authUserService.register(regInfo);
         } catch (ServiceException e) {
             // TODO log4j in catch of ServiceException
-            res.sendRedirect(req.getContextPath() + CommandPath
-                    .REGISTER_TECH_ERROR);
+            sendRedirectWithTechError(req, res);
             return;
         }
 
@@ -48,6 +47,12 @@ public class RegisterCommand implements Command {
 
         req.getSession().setAttribute(AppAttribute.SESSION_AUTH_USER, user);
         res.sendRedirect(req.getContextPath() + CommandPath.PROFILE_GET);
+    }
+
+    private void sendRedirectWithTechError(HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .REGISTER_TECH_ERROR);
     }
 
     private void sendRedirectWithValidationError(HttpServletRequest req,
