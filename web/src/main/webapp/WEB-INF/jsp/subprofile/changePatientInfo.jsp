@@ -133,7 +133,8 @@
                     <br>
 
                     <h1 class="text-left">
-                        Редактирование доступных данных пользователя
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profileSubMenu.changePatientInfo.headingChangeAvailablePatientData"/>
                     </h1>
                     <form action="${pageContext.request.contextPath}/profile"
                           method="post">

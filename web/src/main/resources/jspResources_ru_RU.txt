@@ -115,3 +115,4 @@ profileSubMenu.extremelyHazardousDiseases=Особо опасные заболе
 
 profileSubMenu.changePatientInfo.changePhoto=заменить
 profileSubMenu.changePatientInfo.headingChangeAvatar=Замена фотографии пользователя
+profileSubMenu.changePatientInfo.headingChangeAvailablePatientData=Редактирование доступных данных пользователя

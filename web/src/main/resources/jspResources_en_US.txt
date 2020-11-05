@@ -115,3 +115,4 @@ profileSubMenu.extremelyHazardousDiseases=Extremely hazardous diseases
 
 profileSubMenu.changePatientInfo.changePhoto=change
 profileSubMenu.changePatientInfo.headingChangeAvatar=User's photo change
+profileSubMenu.changePatientInfo.headingChangeAvailablePatientData=Available user data edition
