@@ -519,7 +519,8 @@
                                         <label for="blood1"
                                                class="form-check-label"
                                                style="margin-right: 10px">
-                                            I
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="profileSubMenu.changePatientInfo.blood1"/>
                                         </label>
                                         <input type="radio"
                                                class="form-check-input"
@@ -529,7 +530,8 @@
                                         <label for="blood2"
                                                class="form-check-label"
                                                style="margin-right: 10px">
-                                            II
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="profileSubMenu.changePatientInfo.blood2"/>
                                         </label>
                                         <input type="radio"
                                                class="form-check-input"
@@ -539,7 +541,8 @@
                                         <label for="blood3"
                                                class="form-check-label"
                                                style="margin-right: 10px">
-                                            III
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="profileSubMenu.changePatientInfo.blood3"/>
                                         </label>
                                         <input type="radio"
                                                class="form-check-input"
@@ -549,7 +552,8 @@
                                         <label for="blood4"
                                                class="form-check-label"
                                                style="margin-right: 10px">
-                                            IV
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="profileSubMenu.changePatientInfo.blood4"/>
                                         </label>
                                         <input type="radio"
                                                class="form-check-input"
@@ -573,14 +577,41 @@
                                                  key="profile.bloodRh"/>
                                 </div>
                                 <div class="col d-flex align-items-center">
-                                    <c:choose>
-                                        <c:when test="${requestScope.patientInfo.rhBloodGroup ne null}">
-                                            <c:out value="${requestScope.patientInfo.rhBloodGroup.description}"/>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <c:out value=""/>
-                                        </c:otherwise>
-                                    </c:choose>
+                                    <div class="form-control col form-check form-check-inline">
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="rhBloodGroupPlus"
+                                               name="rhBloodGroupInput"
+                                               value="+">
+                                        <label for="rhBloodGroupPlus"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="profileSubMenu.changePatientInfo.rhBloodGroupPositive"/>
+                                        </label>
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="rhBloodGroupMinus"
+                                               name="rhBloodGroupInput"
+                                               value="-">
+                                        <label for="rhBloodGroupMinus"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="profileSubMenu.changePatientInfo.rhBloodGroupNegative"/>
+                                        </label>
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="rhBloodGroupUnknown"
+                                               name="rhBloodGroupInput"
+                                               value="unknown">
+                                        <label for="rhBloodGroupUnknown"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="profileSubMenu.changePatientInfo.bloodOther"/>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
                             <hr>
