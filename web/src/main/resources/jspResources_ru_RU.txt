@@ -128,3 +128,4 @@ profileSubMenu.changePatientInfo.unmarried=холост / незамужем
 profileSubMenu.changePatientInfo.married=женат / замужем
 profileSubMenu.changePatientInfo.divorced=разведён / разведена
 profileSubMenu.changePatientInfo.widower=вдовец / вдова
+profileSubMenu.changePatientInfo.universalChangeLink=Внести изменения
