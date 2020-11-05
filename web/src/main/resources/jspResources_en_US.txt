@@ -116,3 +116,7 @@ profileSubMenu.extremelyHazardousDiseases=Extremely hazardous diseases
 profileSubMenu.changePatientInfo.changePhoto=change
 profileSubMenu.changePatientInfo.headingChangeAvatar=User's photo change
 profileSubMenu.changePatientInfo.headingChangeAvailablePatientData=Available user data edition
+profileSubMenu.changePatientInfo.successfulPhotoUpload=User's photo is successfully changed
+profileSubMenu.changePatientInfo.techError=Because of a technical factor there is no possibility to change a photo
+profileSubMenu.changePatientInfo.incorrectFileName=Because of an incorrect file name there is no possibility to change a photo
+profileSubMenu.changePatientInfo.validationError=Because of an incorrect user type there is no possibility to change a photo

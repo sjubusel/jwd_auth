@@ -116,3 +116,7 @@ profileSubMenu.extremelyHazardousDiseases=Особо опасные заболе
 profileSubMenu.changePatientInfo.changePhoto=заменить
 profileSubMenu.changePatientInfo.headingChangeAvatar=Замена фотографии пользователя
 profileSubMenu.changePatientInfo.headingChangeAvailablePatientData=Редактирование доступных данных пользователя
+profileSubMenu.changePatientInfo.successfulPhotoUpload=Фотография пользователя успешно изменена
+profileSubMenu.changePatientInfo.techError=По техническим причинам изменить фотографию не представилось возможным
+profileSubMenu.changePatientInfo.incorrectFileName=Из-за неверного имени файла изменить фотографию не представилось возможным
+profileSubMenu.changePatientInfo.validationError=По причине некорректного типа пользователя изменить фотографию не представилось возможным
