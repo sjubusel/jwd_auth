@@ -2,6 +2,7 @@ package by.epamtc.jwd.auth.web.util.impl.subprofile;
 
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
+import by.epamtc.jwd.auth.model.constant.AppParameter;
 import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.model.user_info.PatientInfo;
 import by.epamtc.jwd.auth.service.ProfileService;
@@ -38,8 +39,9 @@ public class GoToProfileChangePatientInformationCommand implements Command {
                     .REQUEST_ERROR_VALUE_VAL);
         }
 
-        if (req.getParameter("photoUpload") != null) {
-            req.setAttribute("photoUpload", req.getParameter("photoUpload"));
+        if (req.getParameter(AppParameter.PHOTO_UPLOAD_MESSAGE) != null) {
+            req.setAttribute(AppAttribute.REQUEST_PHOTO_UPLOAD,
+                    req.getParameter(AppParameter.PHOTO_UPLOAD_MESSAGE));
         }
         req.setAttribute(AppAttribute.REQUEST_PATIENT_INFO, patientInfo);
         req.getRequestDispatcher(CommandPath.SUBPROFILE_CHANGE_PATIENT_INFO_JSP)
