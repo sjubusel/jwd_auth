@@ -35,6 +35,7 @@ public class ProfileChangePatientPhoto implements Command {
 
         if (targetFileName == null) {
             // TODO файл не загружен НЕКОРРЕКТНОЕ ИМЯ ФАЙЛА → → → редирект с ошибкой на страницу редактирования
+            res.sendRedirect(req.getContextPath() + "/profile?command=go-to-profile-change-patient-info&photoUpload=incorrectFileName");
             return;
         }
 

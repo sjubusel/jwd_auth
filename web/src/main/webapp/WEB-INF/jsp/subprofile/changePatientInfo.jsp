@@ -69,6 +69,13 @@
                                         TECHERROR
                                     </div>
                                 </c:when>
+                                <c:when test="${requestScope.photoUpload eq 'incorrectFileName'}">
+                                    <div class="alert alert-danger"
+                                         role="alert">
+                                        This is a danger alert—check it out!
+                                        TECHERROR
+                                    </div>
+                                </c:when>
                                 <c:when test="${requestScope.photoUpload eq 'validationError'}">
                                     <div class="alert alert-danger"
                                          role="alert">
@@ -79,8 +86,9 @@
                                 <c:otherwise>
                                     <div class="alert alert-danger"
                                          role="alert">
-                                        This is a danger alert—check it out! OTHER
-                                        <%-- TODO Возникло неизвестное состояние системы. Просьба перейти на главную страницу.--%>
+                                        This is a danger alert—check it out!
+                                        OTHER
+                                            <%-- TODO Возникло неизвестное состояние системы. Просьба перейти на главную страницу.--%>
                                     </div>
 
                                 </c:otherwise>
