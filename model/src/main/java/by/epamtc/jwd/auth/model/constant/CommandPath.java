@@ -20,6 +20,8 @@ public final class CommandPath {
             = "/profile?command=go-to-profile-change-patient-info&photoUpload=techError";
     public static final String SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO_VALIDATION_ERROR
             = "/profile?command=go-to-profile-change-patient-info&photoUpload=validationError";
+    public static final String SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO_INCORRECT_FILE_NAME
+            = "/profile?command=go-to-profile-change-patient-info&photoUpload=incorrectFileName";
     public static final String SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO_SUCCESS_UPLOAD
             = "/profile?command=go-to-profile-change-patient-info&photoUpload=photoUpload=success";
 
