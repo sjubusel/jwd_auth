@@ -130,3 +130,7 @@ profileSubMenu.changePatientInfo.divorced=разведён / разведена
 profileSubMenu.changePatientInfo.widower=вдовец / вдова
 profileSubMenu.changePatientInfo.universalChangeLink=Внести изменения
 profileSubMenu.changePatientInfo.bloodOther=Неизвестно
+profileSubMenu.changePatientInfo.blood1=O (I)
+profileSubMenu.changePatientInfo.blood2=A (II)
+profileSubMenu.changePatientInfo.blood3=B (III)
+profileSubMenu.changePatientInfo.blood4=AB (IV)

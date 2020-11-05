@@ -130,3 +130,7 @@ profileSubMenu.changePatientInfo.divorced=divorced
 profileSubMenu.changePatientInfo.widower=widow / widower
 profileSubMenu.changePatientInfo.universalChangeLink=Make amendments
 profileSubMenu.changePatientInfo.bloodOther=Unknown
+profileSubMenu.changePatientInfo.blood1=O (I)
+profileSubMenu.changePatientInfo.blood2=A (II)
+profileSubMenu.changePatientInfo.blood3=B (III)
+profileSubMenu.changePatientInfo.blood4=AB (IV)
