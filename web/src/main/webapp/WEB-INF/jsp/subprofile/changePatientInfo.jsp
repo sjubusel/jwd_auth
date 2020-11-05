@@ -12,8 +12,7 @@
 </c:choose>
 
 <c:set var="activeMenuTab" value="profile" scope="page"/>
-<c:set var="activeSubMenuProfileTab" value="changePatientInfo"
-       scope="page"/>
+<c:set var="activeSubMenuProfileTab" value="changePatientInfo" scope="page"/>
 
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
 
@@ -47,7 +46,8 @@
                 <%@ include file="../structural_element/profileSubMenu.jsp" %>
                 <div class="bg-light d-inline-block col">
                     <h1 class="text-left">
-                        Замена аватора пользователя
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profileSubMenu.changePatientInfo.headingChangeAvatar"/>
                     </h1>
                         <%--Photo-change            --%>
                     <form action="${pageContext.request.contextPath}/profile"
@@ -73,7 +73,7 @@
                                     <div class="alert alert-danger"
                                          role="alert">
                                         This is a danger alert—check it out!
-                                        TECHERROR
+                                        Incorrect File Name
                                     </div>
                                 </c:when>
                                 <c:when test="${requestScope.photoUpload eq 'validationError'}">
