@@ -678,6 +678,44 @@
                                                  key="profile.transportationStatus"/>
                                 </div>
                                 <div class="col d-flex align-items-center">
+                                    <div class="form-control col form-check form-check-inline">
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="transportationStatusWalking"
+                                               name="transportationStatusInput"
+                                               value="WALKING">
+                                        <label for="transportationStatusWalking"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="profileSubMenu.changePatientInfo.transportationStatusWalking"/>
+                                        </label>
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="transportationStatusWheelchair"
+                                               name="transportationStatusInput"
+                                               value="WHEELCHAIR">
+                                        <label for="transportationStatusWheelchair"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="profileSubMenu.changePatientInfo.transportationStatusWheelchair"/>
+                                        </label>
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="transportationStatusStretcher"
+                                               name="transportationStatusInput"
+                                               value="STRETCHER">
+                                        <label for="transportationStatusStretcher"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="profileSubMenu.changePatientInfo.transportationStatusStretcher"/>
+                                        </label>
+                                    </div>
+
+                                </div>
+                                <div class="col d-flex align-items-center">
                                     <c:choose>
                                         <c:when test="${requestScope.patientInfo.transportationStatus ne null}">
                                             <c:out value="${requestScope.patientInfo.transportationStatus.description}"/>
