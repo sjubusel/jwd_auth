@@ -22,6 +22,7 @@ public final class AppParameter {
 
     public static final String HEADER_CONTENT_DISPOSITION = "content-disposition";
     public static final String HEADER_CONTENT_DISPOSITION_FILENAME = "filename";
+    public static final String PHOTO_UPLOAD_MESSAGE = "photoUpload";
 
     private AppParameter() {
     }
