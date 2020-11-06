@@ -14,7 +14,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class AjaxServlet extends HttpServlet {
@@ -54,7 +56,7 @@ public class AjaxServlet extends HttpServlet {
     private void fetch(HttpServletRequest req, HttpServletResponse resp) {
         Connection connection = null;
         PreparedStatement statement = null;
-        Map<String, Object> msg = new HashMap<>(2);
+        List<String> countries = new ArrayList<>();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager
@@ -64,11 +66,9 @@ public class AjaxServlet extends HttpServlet {
             String countryInput = req.getParameter("countryTemp");
             statement.setString(1, countryInput);
             ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                msg.put("isValid", true);
-                msg.put("firstCountry", resultSet.getString(1));
-            } else {
-                msg.put("firstCountry", "NOTHING");
+            while (resultSet.next()) {
+//                msg.put("isValid", true);
+                countries.add(resultSet.getString(1));
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -87,7 +87,7 @@ public class AjaxServlet extends HttpServlet {
         resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
         try {
-            resp.getWriter().write(new Gson().toJson(msg));
+            resp.getWriter().write(new Gson().toJson(countries));
         } catch (IOException e) {
             e.printStackTrace();
         }

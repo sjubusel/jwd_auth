@@ -210,7 +210,13 @@
                     data: $("#countryTemp").serialize(),
                     dataType: "json",
                     success: function (data) {
-                        $("#result").html(data.firstCountry);
+                        let message = "";
+                        for (let i = 0; i < data.length; i++) {
+                            message = message.concat(data[i]);
+                            message = message.concat("<br>")
+                        }
+                        $("#result").html(message);
+                        // $("#result").html(data.firstCountry);
                     }
                 });
             }
