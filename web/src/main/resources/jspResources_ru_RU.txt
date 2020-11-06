@@ -156,3 +156,5 @@ profileSubMenu.changePatientInfo.address.settlement=Населённый пун�
 profileSubMenu.changePatientInfo.address.settlementPlaceholder=Введите название населённого пункта
 profileSubMenu.changePatientInfo.address.road=Дорога
 profileSubMenu.changePatientInfo.address.roadPlaceholder=Введите название улицы, проспекта, переулка и т.д.
+profileSubMenu.changePatientInfo.address.house=Здание
+profileSubMenu.changePatientInfo.address.housePlaceholder=Введите идентификационные сведения здания
