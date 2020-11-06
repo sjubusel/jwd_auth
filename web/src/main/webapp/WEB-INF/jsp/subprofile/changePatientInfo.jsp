@@ -489,6 +489,20 @@
                                 />
                             </div>
                             <hr>
+                            <script>
+                                const inCaseOfEmergencyContactPersonInit
+                                    = (" " + document.getElementById("inCaseOfEmergencyContactPersonInfoLabel").value).slice(1);
+
+                                // TODO use it on submit
+                                function verifyOnSubmitIfChanged() {
+                                    let currentValueOfContactPerson = document
+                                        .getElementById("inCaseOfEmergencyContactPersonInfoLabel").value;
+                                    if (inCaseOfEmergencyContactPersonInit.localeCompare(currentValueOfContactPerson) === 0) {
+                                        // TODO maybe replace with currentValueOfContactPerson.value = null;
+                                        currentValueOfContactPerson.value = "";
+                                    }
+                                }
+                            </script>
                                 <%--13--%>
                             <div class="row mb-3">
                                 <div class="col-4 d-flex align-items-center">
