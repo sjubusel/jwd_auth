@@ -214,7 +214,7 @@
             }
             let text = $(this).val();
             if (text === "") {
-                $("#countryResult").html("NOTHING");
+                $("#countryResult").html("");
             } else {
                 $("#countryResult").html("");
                 searchRequestCountry = $.ajax({
@@ -225,6 +225,7 @@
                     success: function (data) {
                         if (data === null) {
                             $("#countryResult").html("VALID");
+                            return;
                         }
                         if (data.length === 0) {
                             $("#countryResult").html("NOTHING");
@@ -233,13 +234,19 @@
                         let parent = document.getElementById("countryResult");
                         for (let i = 0; i < data.length; i++) {
                             let childRow = document.createElement("div");
-                            childRow.onclick = myFunc();
+                            // childRow.onclick = myFunc();
                             childRow.className += "row border list-group-item-action d-flex align-items-start";
                             parent.appendChild(childRow);
-                            let childCol = document.createElement("div");
-                            childCol.className += "col border d-flex justify-content-center";
-                            childRow.appendChild(childCol);
-                            childCol.innerHTML = data[i].countryName;
+                            let childColId = document.createElement("div");
+                            childColId.className += "col border d-none justify-content-center";
+                            // childColId.style.display = "none";
+                            childRow.appendChild(childColId);
+                            childColId.innerHTML = data[i].countryId;
+
+                            let childColName = document.createElement("div");
+                            childColName.className += "col border d-flex justify-content-center";
+                            childRow.appendChild(childColName);
+                            childColName.innerHTML = data[i].countryName;
                         }
                     }
                 });
