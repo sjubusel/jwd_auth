@@ -23,4 +23,8 @@ public class AjaxDaoFactory {
         }
         return localInstance;
     }
+
+    public AjaxFetchDao getAjaxFetchDao() {
+        return ajaxFetchDao;
+    }
 }
