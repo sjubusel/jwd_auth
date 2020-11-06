@@ -472,7 +472,31 @@
                                         </c:otherwise>
                                     </c:choose>
                                 </div>
+                                <div id="changeAddressBtn"
+                                     class="btn btn-secondary"
+                                     onclick="changeAddress()">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.changePatientInfo.changePhoneNumber"/>
+                                </div>
                             </div>
+
+                            <div id="addressInputs" style="display: none">
+                                <div class="form-group form-inline row">
+                                        <%--                                    <label for="addressInputsId">TEST</label>--%>
+                                        <%--                                    <input id="addressInputsId" type="text"--%>
+                                        <%--                                           value="textValue"/>--%>
+                                </div>
+                            </div>
+
+                            <script>
+                                function changeAddress() {
+                                    // function clearInputValue(elementById) {
+                                    //     elementById.value = "";
+                                    // }
+                                    //
+                                    // clearInputValue(document.getElementById("addressInputsId"));
+                                }
+                            </script>
                             <hr>
                                 <%--12--%>
                             <div class="form-group form-inline">
@@ -534,7 +558,8 @@
                                 </div>
                             </div>
 
-                            <div id="emergencyPhoneInputs" style="display: none">
+                            <div id="emergencyPhoneInputs"
+                                 style="display: none">
                                 <div class="form-group form-inline row">
                                     <label for="emergencyPhoneNumberCountryCodeInput"
                                            for="emergencyPhoneNumberInnerCodeInput"
@@ -544,8 +569,10 @@
                                                      key="profileSubMenu.changePatientInfo.newPhoneNumberInputLabel"/>
                                     </label>
                                     <div class="row col-5 flex-end">
-                                        <input type="hidden" id="isNewEmergencyPhone"
-                                               name="isNewEmergencyPhone" value="false">
+                                        <input type="hidden"
+                                               id="isNewEmergencyPhone"
+                                               name="isNewEmergencyPhone"
+                                               value="false">
                                         <input type="text"
                                                class="form-control col col-2"
                                                id="emergencyPhoneNumberCountryCodeInput"
