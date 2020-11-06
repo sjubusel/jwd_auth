@@ -223,18 +223,23 @@
                     data: $("#country").serialize(),
                     dataType: "json",
                     success: function (data) {
+                        if (data === null) {
+                            $("#countryResult").html("VALID");
+                        }
                         if (data.length === 0) {
-                            $("#result").html("NOTHING");
+                            $("#countryResult").html("NOTHING");
                             return;
                         }
+                        let parent = document.getElementById("countryResult");
                         for (let i = 0; i < data.length; i++) {
                             let childRow = document.createElement("div");
+                            childRow.onclick = myFunc();
                             childRow.className += "row border list-group-item-action d-flex align-items-start";
-                            $("#countryResult").appendChild(childRow);
+                            parent.appendChild(childRow);
                             let childCol = document.createElement("div");
                             childCol.className += "col border d-flex justify-content-center";
                             childRow.appendChild(childCol);
-                            childCol.innerHTML = data[i];
+                            childCol.innerHTML = data[i].countryName;
                         }
                     }
                 });
