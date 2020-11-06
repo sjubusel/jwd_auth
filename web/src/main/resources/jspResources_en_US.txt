@@ -157,4 +157,6 @@ profileSubMenu.changePatientInfo.address.settlementPlaceholder=Insert a name of 
 profileSubMenu.changePatientInfo.address.road=Road
 profileSubMenu.changePatientInfo.address.roadPlaceholder=Insert a name of a street, avenue, Введите название улицы, проспекта, lane and etc
 profileSubMenu.changePatientInfo.address.house=House
-profileSubMenu.changePatientInfo.address.housePlaceholder=Insert identification data of a house
+profileSubMenu.changePatientInfo.address.housePlaceholder=Insert identification naming of a house
+profileSubMenu.changePatientInfo.address.building=Building
+profileSubMenu.changePatientInfo.address.buildingPlaceholder=Insert identification naming of a building

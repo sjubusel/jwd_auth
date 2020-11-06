@@ -158,3 +158,5 @@ profileSubMenu.changePatientInfo.address.road=Дорога
 profileSubMenu.changePatientInfo.address.roadPlaceholder=Введите название улицы, проспекта, переулка и т.д.
 profileSubMenu.changePatientInfo.address.house=Здание
 profileSubMenu.changePatientInfo.address.housePlaceholder=Введите идентификационные сведения здания
+profileSubMenu.changePatientInfo.address.building=Корпус
+profileSubMenu.changePatientInfo.address.buildingPlaceholder=Введите идентификационные сведения о корпусе
