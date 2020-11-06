@@ -1,6 +1,5 @@
 package by.epamtc.jwd.auth.web.util;
 
-import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.model.constant.CommandName;
 import by.epamtc.jwd.auth.web.util.impl.ChangeLanguageCommand;
 import by.epamtc.jwd.auth.web.util.impl.ErrorCommand;
@@ -19,14 +18,8 @@ import by.epamtc.jwd.auth.web.util.impl.ProfileChangePatientPhoto;
 import by.epamtc.jwd.auth.web.util.impl.RegisterCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileAllergicReactionsCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangeEmailCommand;
-import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangePasswordCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangePatientInformationCommand;
-import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangePhotoCommand;
-import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangeStaffInformationCommand;
-import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangeStaffPhotoCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileExtremelyHazardousDiseasesCommand;
-import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileStaffHistoryCommand;
-import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileStaffInformationCommand;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
