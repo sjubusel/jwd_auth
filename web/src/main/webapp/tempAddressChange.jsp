@@ -192,13 +192,19 @@
 
     // $(function () {
     $(document).ready(function () {
+        let searchRequest = null;
+
         $("#countryTemp").keyup(function () {
+            if (searchRequest != null) {
+                searchRequest.abort();
+            }
+
             var text = $(this).val();
             if (text === "") {
-
+                $("#result").html("NOTHING");
             } else {
                 $("#result").html("");
-                $.ajax({
+                searchRequest = $.ajax({
                     url: "ajax?command=tempFetch",
                     method: "post",
                     data: {countryInput: text},
