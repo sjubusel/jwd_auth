@@ -473,7 +473,7 @@
                                     </c:choose>
                                 </div>
                                 <div id="changeAddressBtn"
-                                     class="btn btn-secondary"
+                                     class="btn btn-secondary d-flex align-items-center"
                                      onclick="changeAddress()">
                                     <fmt:message bundle="${jspMessages}"
                                                  key="profileSubMenu.changePatientInfo.changeButton"/>
@@ -482,9 +482,19 @@
 
                             <div id="addressInputs" style="display: none">
                                 <div class="form-group form-inline row">
-                                        <%--                                    <label for="addressInputsId">TEST</label>--%>
-                                        <%--                                    <input id="addressInputsId" type="text"--%>
-                                        <%--                                           value="textValue"/>--%>
+                                    <label for="some"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.address."/>
+                                    </label>
+                                    <input type="text"
+                                           class="form-control col-5"
+                                           id="some"
+                                           name="" required
+                                           placeholder="<fmt:message bundle="${jspMessages}"
+                                       key="profileSubMenu.changePatientInfo.address"/>"
+                                           pattern="<fmt:message bundle="${regEx}" key="address."/>"
+                                    />
                                 </div>
                             </div>
 
