@@ -162,3 +162,13 @@ profileSubMenu.changePatientInfo.address.building=Корпус
 profileSubMenu.changePatientInfo.address.buildingPlaceholder=Введите идентификационные сведения о корпусе
 profileSubMenu.changePatientInfo.address.room=Помещение
 profileSubMenu.changePatientInfo.address.roomPlaceholder=Введите идентификационные сведения о помещении
+
+profileSubMenu.changePatientInfo.address.zipCodePattern=[0-9A-Za-z \\-]{1,255}
+profileSubMenu.changePatientInfo.address.countryPattern=[А-Яа-яЁё \\-]{1,255}
+profileSubMenu.changePatientInfo.address.regionPattern=[А-Яа-яЁё \\-]{1,255}
+profileSubMenu.changePatientInfo.address.areaPattern=[А-Яа-яЁё \\-]{1,255}
+profileSubMenu.changePatientInfo.address.settlementPattern=[0-9А-Яа-яЁё \\-]{1,255}
+profileSubMenu.changePatientInfo.address.roadPattern=[0-9А-Яа-яЁё \\-]{1,255}
+profileSubMenu.changePatientInfo.address.housePattern=[0-9А-Яа-яЁё \\-]{1,255}
+profileSubMenu.changePatientInfo.address.buildingPattern=[0-9А-Яа-яЁё \\-]{1,255}
+profileSubMenu.changePatientInfo.address.roomPattern=[0-9А-Яа-яЁё \\-]{1,255}
