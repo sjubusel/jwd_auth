@@ -152,3 +152,5 @@ profileSubMenu.changePatientInfo.address.region=First-level administrative divis
 profileSubMenu.changePatientInfo.address.regionPlaceholder=Insert a region, province, state and etc
 profileSubMenu.changePatientInfo.address.area=Second-level administrative division
 profileSubMenu.changePatientInfo.address.areaPlaceholder=Insert an area, district, county и т.д.
+profileSubMenu.changePatientInfo.address.settlement=Settlement
+profileSubMenu.changePatientInfo.address.settlementPlaceholder=Insert a name of a settlement

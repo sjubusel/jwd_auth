@@ -152,3 +152,5 @@ profileSubMenu.changePatientInfo.address.region=Административно-�
 profileSubMenu.changePatientInfo.address.regionPlaceholder=Введите область, провинцию, штат и т.д.
 profileSubMenu.changePatientInfo.address.area=Административно-территориальная единица второго уровня
 profileSubMenu.changePatientInfo.address.areaPlaceholder=Введите район, округ, графство, уезд и т.д.
+profileSubMenu.changePatientInfo.address.settlement=Населённый пункт
+profileSubMenu.changePatientInfo.address.settlementPlaceholder=Введите название населённого пункта
