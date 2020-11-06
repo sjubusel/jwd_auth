@@ -1,7 +1,9 @@
 package by.epamtc.jwd.auth.web.ajax.impl;
 
+import by.epamtc.jwd.auth.model.ajax.AjaxCountry;
 import by.epamtc.jwd.auth.service.ajax.AjaxFetchService;
 import by.epamtc.jwd.auth.service.ajax.AjaxServiceFactory;
+import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.ajax.AjaxCommand;
 import com.google.gson.Gson;
 
@@ -21,13 +23,18 @@ public class FetchCountryInChangePatientInfoJspAjaxCommand implements AjaxComman
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
         String countryPart = req.getParameter("countryInput");
-        List<String> countries = ajaxFetchService.fetchCountries(countryPart);
+        List<AjaxCountry> countries = null;
+        try {
+            countries = ajaxFetchService.fetchCountries(countryPart);
+        } catch (ServiceException e) {
+            // TODO log4j
+        }
         write(countries, res);
 
     }
 
     //TODO create new class-singleton, which is to write
-    private void write(List<String> countries, HttpServletResponse res)
+    private void write(Object countries, HttpServletResponse res)
             throws IOException {
         res.setContentType("application/json");
         res.setCharacterEncoding("UTF-8");
