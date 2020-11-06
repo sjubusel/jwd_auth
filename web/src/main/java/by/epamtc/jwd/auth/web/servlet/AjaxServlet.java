@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -31,6 +36,8 @@ public class AjaxServlet extends HttpServlet {
             }
             map.put("isValid", isValid);
             write(resp, map);
+        } else if (command.equals("tempFetch")) {
+            fetch(req, resp);
         } else {
             throw new IllegalArgumentException();
         }
@@ -42,5 +49,33 @@ public class AjaxServlet extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         PrintWriter writer = resp.getWriter();
         writer.write(new Gson().toJson(map));
+    }
+
+    private void fetch(HttpServletRequest req, HttpServletResponse resp) {
+        Connection connection;
+        PreparedStatement statement;
+        Map<String, Object> msg = new HashMap<>(2);
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager
+                    .getConnection("jdbc:mysql://localhost:3306/hospital",
+                            "root", "rootroot");
+            statement = connection.prepareStatement("SELECT h.letter_code_alpha_2 FROM hospital.countries h WHERE h.short_country_name LIKE CONCAT('%', ?, '%')");
+            statement.setString(1, req.getParameter("countryInput"));
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                msg.put("isValid", true);
+                msg.put("mes", resultSet.getString(1));
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+
+        resp.setContentType("application/json");
+        try {
+            resp.getWriter().write(new Gson().toJson(msg));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
