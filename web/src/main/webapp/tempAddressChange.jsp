@@ -170,7 +170,28 @@
 </div>
 
 <script>
-    function myFunc() {
+    // function myFunc() {
+    //     $("#countryTemp").keyup(function () {
+    //         var text = $(this).val();
+    //         if (text === "") {
+    //
+    //         } else {
+    //             $("#result").html("");
+    //             $.ajax({
+    //                 url: "ajax?command=tempFetch",
+    //                 method: "post",
+    //                 data: {countryInput: text},
+    //                 dataType: "json",
+    //                 success: function (data) {
+    //                     $("#result").html(data.firstCountry);
+    //                 }
+    //             });
+    //         }
+    //     });
+    // };
+
+    // $(function () {
+    $(document).ready(function () {
         $("#countryTemp").keyup(function () {
             var text = $(this).val();
             if (text === "") {
@@ -188,17 +209,14 @@
                 });
             }
         });
-    };
-    // $(function () {
-    // $(document).ready(function () {
-
-    // });
+    });
     // });
 </script>
 
 <div>
-    <label for="countryTemp">SEARCH</label><input type="text" id="countryTemp" name="countryTemp"
-                                            placeholder="Insert country" onkeyup="myFunc()"/>
+    <label for="countryTemp">SEARCH</label><input type="text" id="countryTemp"
+                                                  name="countryTemp"
+                                                  placeholder="Insert country"/>
 </div>
 
 <div id="result">#####################################################</div>
