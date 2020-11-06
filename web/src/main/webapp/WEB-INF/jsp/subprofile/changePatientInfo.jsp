@@ -468,21 +468,25 @@
                             </div>
                             <hr>
                                 <%--12--%>
-                            <div class="row mb-3">
-                                <div class="col-4 d-flex align-items-center">
+                            <div class="form-group form-inline">
+                                <label for="inCaseOfEmergencyContactPersonInfoLabel"
+                                       class="col-4 custom-form-label pl-0 pr-0">
                                     <fmt:message bundle="${jspMessages}"
                                                  key="profile.inCaseOfEmergencyContactPerson"/>
-                                </div>
-                                <div class="col d-flex align-items-center">
-                                    <c:choose>
-                                        <c:when test="${requestScope.patientInfo.inCaseOfEmergencyContactPersonInfo ne null}">
-                                            <c:out value="${requestScope.patientInfo.inCaseOfEmergencyContactPersonInfo}"/>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <c:out value=""/>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </div>
+                                </label>
+                                <input type="text"
+                                       class="form-control col"
+                                       id="inCaseOfEmergencyContactPersonInfoLabel"
+                                       name="inCaseOfEmergencyContactPersonInfoInput"
+                                        <c:choose>
+                                            <c:when test="${requestScope.patientInfo.inCaseOfEmergencyContactPersonInfo ne null}">
+                                                value="${requestScope.patientInfo.inCaseOfEmergencyContactPersonInfo}"
+                                            </c:when>
+                                            <c:otherwise>
+                                                value=""
+                                            </c:otherwise>
+                                        </c:choose>
+                                />
                             </div>
                             <hr>
                                 <%--13--%>
