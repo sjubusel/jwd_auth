@@ -170,41 +170,18 @@
 </div>
 
 <script>
-    // function myFunc() {
-    //     $("#countryTemp").keyup(function () {
-    //         var text = $(this).val();
-    //         if (text === "") {
-    //
-    //         } else {
-    //             $("#result").html("");
-    //             $.ajax({
-    //                 url: "ajax?command=tempFetch",
-    //                 method: "post",
-    //                 data: {countryInput: text},
-    //                 dataType: "json",
-    //                 success: function (data) {
-    //                     $("#result").html(data.firstCountry);
-    //                 }
-    //             });
-    //         }
-    //     });
-    // };
-
-    // $(function () {
     $(document).ready(function () {
-        let searchRequest = null;
-
+        let searchRequestCountryTemp = null;
         $("#countryTemp").keyup(function () {
-            if (searchRequest != null) {
-                searchRequest.abort();
+            if (searchRequestCountryTemp != null) {
+                searchRequestCountryTemp.abort();
             }
-
             let text = $(this).val();
             if (text === "") {
                 $("#result").html("NOTHING");
             } else {
                 $("#result").html("");
-                searchRequest = $.ajax({
+                searchRequestCountryTemp = $.ajax({
                     url: "ajax?command=tempFetch",
                     method: "post",
                     data: $("#countryTemp").serialize(),
@@ -222,16 +199,15 @@
             }
         });
     });
-    // });
 </script>
 
-<div>
-    <label for="countryTemp">SEARCH</label><input type="text" id="countryTemp"
-                                                  name="countryTemp"
-                                                  placeholder="Insert country"/>
-</div>
+<%--<div>--%>
+<%--    <label for="countryTemp">SEARCH</label><input type="text" id="countryTemp"--%>
+<%--                                                  name="countryTemp"--%>
+<%--                                                  placeholder="Insert country"/>--%>
+<%--</div>--%>
 
-<div id="result">#####################################################</div>
+<%--<div id="result">#####################################################</div>--%>
 
 </body>
 </html>
