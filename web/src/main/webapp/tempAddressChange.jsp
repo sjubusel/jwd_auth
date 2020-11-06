@@ -64,6 +64,12 @@
            pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.countryPattern"/>"
     />
 </div>
+
+<div id="countryResult" class="overflow-auto"
+     style="max-height: 100px">
+
+</div>
+
 <div class="form-group form-inline row">
     <label for="region"
            class="col-4 custom-form-label">
@@ -170,36 +176,84 @@
 </div>
 
 <script>
+    // $(document).ready(function () {
+    //     let searchRequestCountryTemp = null;
+    //     $("#countryTemp").keyup(function () {
+    //         if (searchRequestCountryTemp != null) {
+    //             searchRequestCountryTemp.abort();
+    //         }
+    //         let text = $(this).val();
+    //         if (text === "") {
+    //             $("#result").html("NOTHING");
+    //         } else {
+    //             $("#result").html("");
+    //             searchRequestCountryTemp = $.ajax({
+    //                 url: "ajax?command=tempFetch",
+    //                 method: "post",
+    //                 data: $("#countryTemp").serialize(),
+    //                 dataType: "json",
+    //                 success: function (data) {
+    //                     let message = "";
+    //                     for (let i = 0; i < data.length; i++) {
+    //                         message = message.concat(data[i]);
+    //                         message = message.concat("<br>")
+    //                     }
+    //                     $("#result").html(message);
+    //                     // $("#result").html(data.firstCountry);
+    //                 }
+    //             });
+    //         }
+    //     });
+    // });
+
     $(document).ready(function () {
-        let searchRequestCountryTemp = null;
-        $("#countryTemp").keyup(function () {
-            if (searchRequestCountryTemp != null) {
-                searchRequestCountryTemp.abort();
+        let searchRequestCountry = null;
+        $("#country").keyup(function () {
+            if (searchRequestCountry != null) {
+                searchRequestCountry.abort();
             }
             let text = $(this).val();
             if (text === "") {
-                $("#result").html("NOTHING");
+                $("#countryResult").html("NOTHING");
             } else {
-                $("#result").html("");
-                searchRequestCountryTemp = $.ajax({
-                    url: "ajax?command=tempFetch",
+                $("#countryResult").html("");
+                searchRequestCountry = $.ajax({
+                    url: "ajax?command=fetch-country-in-change-patient-info-jsp",
                     method: "post",
-                    data: $("#countryTemp").serialize(),
+                    data: $("#country").serialize(),
                     dataType: "json",
                     success: function (data) {
-                        let message = "";
-                        for (let i = 0; i < data.length; i++) {
-                            message = message.concat(data[i]);
-                            message = message.concat("<br>")
+                        if (data.length === 0) {
+                            $("#result").html("NOTHING");
+                            return;
                         }
-                        $("#result").html(message);
-                        // $("#result").html(data.firstCountry);
+                        for (let i = 0; i < data.length; i++) {
+                            let childRow = document.createElement("div");
+                            childRow.className += "row border list-group-item-action d-flex align-items-start";
+                            $("#countryResult").appendChild(childRow);
+                            let childCol = document.createElement("div");
+                            childCol.className += "col border d-flex justify-content-center";
+                            childRow.appendChild(childCol);
+                            childCol.innerHTML = data[i];
+                        }
                     }
                 });
             }
         });
     });
 </script>
+
+</body>
+</html>
+
+<%--<div class="row border border-success list-group-item-action d-flex align-items-start">--%>
+<%--    <div class="col border border-secondary d-flex justify-content-center">--%>
+<%--        НОМЕР--%>
+<%--    </div>--%>
+<%--    <div class="col border border-secondary d-flex justify-content-center">--%>
+<%--        СОДЕРЖАНИЕ--%>
+<%--    </div>--%>
+<%--</div>--%>
 
 <%--<div>--%>
 <%--    <label for="countryTemp">SEARCH</label><input type="text" id="countryTemp"--%>
@@ -209,5 +263,71 @@
 
 <%--<div id="result">#####################################################</div>--%>
 
-</body>
-</html>
+<%--<div id="countryResult" class="overflow-auto"--%>
+<%--     style="max-height: 100px">--%>
+<%--    <div class="row border list-group-item-action d-flex align-items-start">--%>
+<%--        <div class="col border d-flex justify-content-center">--%>
+<%--            НОМЕР--%>
+<%--        </div>--%>
+<%--        <div class="col border d-flex justify-content-center">--%>
+<%--            СОДЕРЖАНИЕ--%>
+<%--        </div>--%>
+<%--    </div>--%>
+
+<%--    <div class="row border list-group-item-action d-flex align-items-start">--%>
+<%--        <div class="col border d-flex justify-content-center">--%>
+<%--            НОМЕР--%>
+<%--        </div>--%>
+<%--        <div class="col border d-flex justify-content-center">--%>
+<%--            СОДЕРЖАНИЕ--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--    <div class="row border list-group-item-action d-flex align-items-start">--%>
+<%--        <div class="col border d-flex justify-content-center">--%>
+<%--            НОМЕР--%>
+<%--        </div>--%>
+<%--        <div class="col border d-flex justify-content-center">--%>
+<%--            СОДЕРЖАНИЕ--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--    <div class="row border list-group-item-action d-flex align-items-start">--%>
+<%--        <div class="col border d-flex justify-content-center">--%>
+<%--            НОМЕР--%>
+<%--        </div>--%>
+<%--        <div class="col border d-flex justify-content-center">--%>
+<%--            СОДЕРЖАНИЕ--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--    <div class="row border list-group-item-action d-flex align-items-start">--%>
+<%--        <div class="col border d-flex justify-content-center">--%>
+<%--            НОМЕР--%>
+<%--        </div>--%>
+<%--        <div class="col border d-flex justify-content-center">--%>
+<%--            СОДЕРЖАНИЕ--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--    <div class="row border list-group-item-action d-flex align-items-start">--%>
+<%--        <div class="col border d-flex justify-content-center">--%>
+<%--            НОМЕР--%>
+<%--        </div>--%>
+<%--        <div class="col border d-flex justify-content-center">--%>
+<%--            СОДЕРЖАНИЕ--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--    <div class="row border list-group-item-action d-flex align-items-start">--%>
+<%--        <div class="col border d-flex justify-content-center">--%>
+<%--            НОМЕР--%>
+<%--        </div>--%>
+<%--        <div class="col border d-flex justify-content-center">--%>
+<%--            СОДЕРЖАНИЕ--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--    <div class="row border list-group-item-action d-flex align-items-start">--%>
+<%--        <div class="col border d-flex justify-content-center">--%>
+<%--            НОМЕР--%>
+<%--        </div>--%>
+<%--        <div class="col border d-flex justify-content-center">--%>
+<%--            СОДЕРЖАНИЕ--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
