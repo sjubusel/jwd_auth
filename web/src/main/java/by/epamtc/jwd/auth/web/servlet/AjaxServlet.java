@@ -52,26 +52,40 @@ public class AjaxServlet extends HttpServlet {
     }
 
     private void fetch(HttpServletRequest req, HttpServletResponse resp) {
-        Connection connection;
-        PreparedStatement statement;
+        Connection connection = null;
+        PreparedStatement statement = null;
         Map<String, Object> msg = new HashMap<>(2);
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager
                     .getConnection("jdbc:mysql://localhost:3306/hospital",
                             "root", "rootroot");
-            statement = connection.prepareStatement("SELECT h.letter_code_alpha_2 FROM hospital.countries h WHERE h.short_country_name LIKE CONCAT('%', ?, '%')");
-            statement.setString(1, req.getParameter("countryInput"));
+            statement = connection.prepareStatement("SELECT h.short_country_name FROM hospital.countries h WHERE h.short_country_name LIKE CONCAT('%', ?, '%')");
+            String countryInput = req.getParameter("countryInput");
+            statement.setString(1, countryInput);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 msg.put("isValid", true);
-                msg.put("mes", resultSet.getString(1));
+                msg.put("firstCountry", resultSet.getString(1));
+            } else {
+                msg.put("firstCountry", "NOTHING");
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
 
+        try {
+            if (connection != null) {
+                connection.close();
+            }
+            if (statement != null) {
+                statement.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         resp.setContentType("application/json");
+        resp.setCharacterEncoding("UTF-8");
         try {
             resp.getWriter().write(new Gson().toJson(msg));
         } catch (IOException e) {

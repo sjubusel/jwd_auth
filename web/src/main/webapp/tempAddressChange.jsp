@@ -46,7 +46,7 @@
            name="zipCodeInput" required
            placeholder="<fmt:message bundle="${jspMessages}"
                                        key="profileSubMenu.changePatientInfo.address.zipCodePlaceholder"/>"
-           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.address.zipCodePattern"/>"
+           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.zipCodePattern"/>"
     />
 </div>
 <div class="form-group form-inline row">
@@ -61,7 +61,7 @@
            name="countryInput" required
            placeholder="<fmt:message bundle="${jspMessages}"
                                        key="profileSubMenu.changePatientInfo.address.countryPlaceholder"/>"
-           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.address.countryPattern"/>"
+           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.countryPattern"/>"
     />
 </div>
 <div class="form-group form-inline row">
@@ -76,7 +76,7 @@
            name="regionInput" required
            placeholder="<fmt:message bundle="${jspMessages}"
                                        key="profileSubMenu.changePatientInfo.address.regionPlaceholder"/>"
-           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.address.regionPattern"/>"
+           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.regionPattern"/>"
     />
 </div>
 <div class="form-group form-inline row">
@@ -91,7 +91,7 @@
            name="areaInput" required
            placeholder="<fmt:message bundle="${jspMessages}"
                                        key="profileSubMenu.changePatientInfo.address.areaPlaceholder"/>"
-           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.address.areaPattern"/>"
+           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.areaPattern"/>"
     />
 </div>
 <div class="form-group form-inline row">
@@ -107,7 +107,7 @@
            name="settlementInput" required
            placeholder="<fmt:message bundle="${jspMessages}"
                                        key="profileSubMenu.changePatientInfo.address.settlementPlaceholder"/>"
-           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.address.settlementPattern"/>"
+           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.settlementPattern"/>"
     />
 </div>
 <div class="form-group form-inline row">
@@ -122,7 +122,7 @@
            name="roadInput" required
            placeholder="<fmt:message bundle="${jspMessages}"
                                        key="profileSubMenu.changePatientInfo.address.roadPlaceholder"/>"
-           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.address.roadPattern"/>"
+           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.roadPattern"/>"
     />
 </div>
 
@@ -137,7 +137,7 @@
            name="houseInput" required
            placeholder="<fmt:message bundle="${jspMessages}"
                                        key="profileSubMenu.changePatientInfo.address.housePlaceholder"/>"
-           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.address.housePattern"/>"
+           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.housePattern"/>"
     />
 </div>
 <div class="form-group form-inline row">
@@ -151,7 +151,7 @@
            name="buildingInput" required
            placeholder="<fmt:message bundle="${jspMessages}"
                                        key="profileSubMenu.changePatientInfo.address.buildingPlaceholder"/>"
-           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.address.buildingPattern"/>"
+           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.buildingPattern"/>"
     />
 </div>
 <div class="form-group form-inline row">
@@ -165,8 +165,43 @@
            name="roomInput" required
            placeholder="<fmt:message bundle="${jspMessages}"
                                        key="profileSubMenu.changePatientInfo.address.roomPlaceholder"/>"
-           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.address.roomPattern"/>"
+           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.roomPattern"/>"
     />
 </div>
+
+<script>
+    function myFunc() {
+        $("#countryTemp").keyup(function () {
+            var text = $(this).val();
+            if (text === "") {
+
+            } else {
+                $("#result").html("");
+                $.ajax({
+                    url: "ajax?command=tempFetch",
+                    method: "post",
+                    data: {countryInput: text},
+                    dataType: "json",
+                    success: function (data) {
+                        $("#result").html(data.firstCountry);
+                    }
+                });
+            }
+        });
+    };
+    // $(function () {
+    // $(document).ready(function () {
+
+    // });
+    // });
+</script>
+
+<div>
+    <label for="countryTemp">SEARCH</label><input type="text" id="countryTemp" name="countryTemp"
+                                            placeholder="Insert country" onkeyup="myFunc()"/>
+</div>
+
+<div id="result">#####################################################</div>
+
 </body>
 </html>
