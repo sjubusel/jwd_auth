@@ -15,7 +15,9 @@ public class DefaultAjaxFetchService implements AjaxFetchService {
 
     @Override
     public List<String> fetchCountries(String countryElement) {
-
+        if (ajaxValidator.isFetchInputValid(countryElement)) {
+            return ajaxFetchDao.fetchCountries(countryElement);
+        }
         return null;
     }
 }
