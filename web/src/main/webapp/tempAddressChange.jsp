@@ -199,7 +199,7 @@
                 searchRequest.abort();
             }
 
-            var text = $(this).val();
+            let text = $(this).val();
             if (text === "") {
                 $("#result").html("NOTHING");
             } else {
@@ -207,7 +207,7 @@
                 searchRequest = $.ajax({
                     url: "ajax?command=tempFetch",
                     method: "post",
-                    data: {countryInput: text},
+                    data: $("#countryTemp").serialize(),
                     dataType: "json",
                     success: function (data) {
                         $("#result").html(data.firstCountry);

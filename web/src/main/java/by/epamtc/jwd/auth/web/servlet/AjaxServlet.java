@@ -61,7 +61,7 @@ public class AjaxServlet extends HttpServlet {
                     .getConnection("jdbc:mysql://localhost:3306/hospital",
                             "root", "rootroot");
             statement = connection.prepareStatement("SELECT h.short_country_name FROM hospital.countries h WHERE h.short_country_name LIKE CONCAT('%', ?, '%')");
-            String countryInput = req.getParameter("countryInput");
+            String countryInput = req.getParameter("countryTemp");
             statement.setString(1, countryInput);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
