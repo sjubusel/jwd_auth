@@ -143,3 +143,6 @@ profileSubMenu.changePatientInfo.disabilityDegree0=инвалидность от
 profileSubMenu.changePatientInfo.transportationStatusWalking=передвигается самостоятельно
 profileSubMenu.changePatientInfo.transportationStatusWheelchair=на инвалидной-коляске
 profileSubMenu.changePatientInfo.transportationStatusStretcher=на носилках
+
+profileSubMenu.changePatientInfo.address.zipCode=Почтовый индекс
+profileSubMenu.changePatientInfo.address.zipCodePlaceholder=Введите почтовый индекс

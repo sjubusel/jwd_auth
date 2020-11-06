@@ -143,3 +143,6 @@ profileSubMenu.changePatientInfo.disabilityDegree0=disability is absent
 profileSubMenu.changePatientInfo.transportationStatusWalking=walking
 profileSubMenu.changePatientInfo.transportationStatusWheelchair=wheelchair
 profileSubMenu.changePatientInfo.transportationStatusStretcher=stretcher
+
+profileSubMenu.changePatientInfo.address.zipCode=Postal Code
+profileSubMenu.changePatientInfo.address.zipCodePlaceholder=Insert a postal code
