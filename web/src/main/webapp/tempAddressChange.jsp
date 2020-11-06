@@ -206,6 +206,15 @@
     //     });
     // });
 
+    function changeHiddenInput(hiddenInputName, shownInputName, childRow, parent) {
+        let hiddenInput = document.getElementById(hiddenInputName);
+        let shownInput = document.getElementById(shownInputName);
+        hiddenInput.value = childRow.firstChild.innerHTML;
+        shownInput.value = childRow.lastChild.innerHTML;
+        parent.innerHTML = "Выбрано " + shownInput.value;
+        // alert("HiddenInput is " + hiddenInput.value);
+    }
+
     $(document).ready(function () {
         let searchRequestCountry = null;
         $("#country").keyup(function () {
@@ -234,14 +243,13 @@
                         let parent = document.getElementById("countryResult");
                         for (let i = 0; i < data.length; i++) {
                             let childRow = document.createElement("div");
-                            // childRow.onclick = myFunc();
                             childRow.className += "row border list-group-item-action d-flex align-items-start";
                             parent.appendChild(childRow);
                             let childColId = document.createElement("div");
                             childColId.className += "col border d-none justify-content-center";
-                            // childColId.style.display = "none";
                             childRow.appendChild(childColId);
                             childColId.innerHTML = data[i].countryId;
+                            childRow.setAttribute("onclick", "changeHiddenInput(\"hiddenCountry\", \"country\", this, this.parentElement);");
 
                             let childColName = document.createElement("div");
                             childColName.className += "col border d-flex justify-content-center";
