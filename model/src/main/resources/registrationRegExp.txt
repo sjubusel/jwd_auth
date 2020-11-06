@@ -6,3 +6,4 @@ anyName=[A-Za-zА-Яа-яЁё]([A-Za-z]*|[А-Яа-яЁё]*)([\\- ]([A-Za-z]+|[А
 profileSubMenu.changePatientInfo.address.zipCodePattern=[0-9A-Za-z \\-]{1,255}
 profileSubMenu.changePatientInfo.address.countryPattern=[А-Яа-яЁё \\-]{1,255}
 profileSubMenu.changePatientInfo.address.regionPattern=[А-Яа-яЁё \\-]{1,255}
+profileSubMenu.changePatientInfo.address.areaPattern=[А-Яа-яЁё \\-]{1,255}

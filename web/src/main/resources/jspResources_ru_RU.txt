@@ -149,4 +149,6 @@ profileSubMenu.changePatientInfo.address.zipCodePlaceholder=Введите по�
 profileSubMenu.changePatientInfo.address.country=Страна
 profileSubMenu.changePatientInfo.address.countryPlaceholder=Введите краткое название страны
 profileSubMenu.changePatientInfo.address.region=Административно-территориальная единица первого уровня
-profileSubMenu.changePatientInfo.address.regionPlaceholder=Введите область, провинцию, штат или т.д.
+profileSubMenu.changePatientInfo.address.regionPlaceholder=Введите область, провинцию, штат и т.д.
+profileSubMenu.changePatientInfo.address.area=Административно-территориальная единица второго уровня
+profileSubMenu.changePatientInfo.address.areaPlaceholder=Введите район, округ, графство, уезд и т.д.
