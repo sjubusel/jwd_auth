@@ -146,3 +146,5 @@ profileSubMenu.changePatientInfo.transportationStatusStretcher=на носилк
 
 profileSubMenu.changePatientInfo.address.zipCode=Почтовый индекс
 profileSubMenu.changePatientInfo.address.zipCodePlaceholder=Введите почтовый индекс
+profileSubMenu.changePatientInfo.address.country=Страна
+profileSubMenu.changePatientInfo.address.countryPlaceholder=Введите краткое название страны
