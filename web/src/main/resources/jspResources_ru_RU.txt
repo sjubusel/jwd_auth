@@ -154,3 +154,5 @@ profileSubMenu.changePatientInfo.address.area=Административно-т�
 profileSubMenu.changePatientInfo.address.areaPlaceholder=Введите район, округ, графство, уезд и т.д.
 profileSubMenu.changePatientInfo.address.settlement=Населённый пункт
 profileSubMenu.changePatientInfo.address.settlementPlaceholder=Введите название населённого пункта
+profileSubMenu.changePatientInfo.address.road=Дорога
+profileSubMenu.changePatientInfo.address.roadPlaceholder=Введите название улицы, проспекта, переулка и т.д.

@@ -8,3 +8,4 @@ profileSubMenu.changePatientInfo.address.countryPattern=[А-Яа-яЁё \\-]{1,2
 profileSubMenu.changePatientInfo.address.regionPattern=[А-Яа-яЁё \\-]{1,255}
 profileSubMenu.changePatientInfo.address.areaPattern=[А-Яа-яЁё \\-]{1,255}
 profileSubMenu.changePatientInfo.address.settlementPattern=[0-9А-Яа-яЁё \\-]{1,255}
+profileSubMenu.changePatientInfo.address.roadPattern=[0-9А-Яа-яЁё \\-]{1,255}
