@@ -38,6 +38,10 @@
             $("#phoneNumberCountryCodeInput").mask("+9?99");
             $("#phoneNumberInnerCodeInput").mask("9?99");
             $("#phoneNumberInnerNumberInput").mask("999-99-99");
+
+            $("#emergencyPhoneNumberCountryCodeInput").mask("+9?99");
+            $("#emergencyPhoneNumberInnerCodeInput").mask("9?99");
+            $("#emergencyPhoneNumberInnerNumberInput").mask("999-99-99");
         });
     </script>
 </head>
@@ -367,6 +371,9 @@
                                         countryCode.required = false;
                                         innerCode.required = false;
                                         innerNumber.required = false;
+                                        countryCode.value = "";
+                                        innerCode.value = "";
+                                        innerNumber.value = "";
                                         isNewPhone.value = "false";
                                     }
                                 }
@@ -519,7 +526,74 @@
                                         </c:otherwise>
                                     </c:choose>
                                 </div>
+                                <div id="emergencyPhoneChangeBtn"
+                                     class="btn btn-secondary d-flex align-items-center"
+                                     onclick="changeEmergencyPhone()">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.changePatientInfo.changePhoneNumber"/>
+                                </div>
                             </div>
+
+                            <div id="emergencyPhoneInputs" style="display: none">
+                                <div class="form-group form-inline row">
+                                    <label for="emergencyPhoneNumberCountryCodeInput"
+                                           for="emergencyPhoneNumberInnerCodeInput"
+                                           for="emergencyPhoneNumberInnerNumberInput"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.newPhoneNumberInputLabel"/>
+                                    </label>
+                                    <div class="row col-5 flex-end">
+                                        <input type="hidden" id="isNewEmergencyPhone"
+                                               name="isNewEmergencyPhone" value="false">
+                                        <input type="text"
+                                               class="form-control col col-2"
+                                               id="emergencyPhoneNumberCountryCodeInput"
+                                               name="emergencyPhoneNumberCountryCode"
+                                               placeholder="+XXX">
+                                        <input type="text"
+                                               class="form-control col col-2"
+                                               id="emergencyPhoneNumberInnerCodeInput"
+                                               name="emergencyPhoneNumberInnerCode"
+                                               placeholder="(XX)">
+                                        <input type="text"
+                                               class="form-control col col-8"
+                                               id="emergencyPhoneNumberInnerNumberInput"
+                                               name="emergencyPhoneNumberInnerNumber"
+                                               placeholder="XXX-XX-XX">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <script>
+                                function changeEmergencyPhone() {
+                                    let phoneInputsVar = document.getElementById("emergencyPhoneInputs");
+                                    let changeBrnVar = document.getElementById("emergencyPhoneChangeBtn");
+                                    let isNewPhone = document.getElementById("isNewEmergencyPhone");
+                                    let countryCode = document.getElementById("emergencyPhoneNumberCountryCodeInput");
+                                    let innerCode = document.getElementById("emergencyPhoneNumberInnerCodeInput");
+                                    let innerNumber = document.getElementById("emergencyPhoneNumberInnerNumberInput");
+                                    if (phoneInputsVar.style.display === "none") {
+                                        phoneInputsVar.style.display = "block";
+                                        changeBrnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.cancelChangePhoneNumber"/>";
+                                        countryCode.required = true;
+                                        innerCode.required = true;
+                                        innerNumber.required = true;
+                                        isNewPhone.value = "true";
+                                    } else {
+                                        phoneInputsVar.style.display = "none";
+                                        changeBrnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.changePhoneNumber"/>";
+                                        countryCode.required = false;
+                                        innerCode.required = false;
+                                        innerNumber.required = false;
+                                        countryCode.value = "";
+                                        innerCode.value = "";
+                                        innerNumber.value = "";
+                                        isNewPhone.value = "false";
+                                    }
+                                }
+                            </script>
+
                             <hr>
                                 <%--14--%>
                             <div class="row mb-3">
