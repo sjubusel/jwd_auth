@@ -83,7 +83,7 @@ public class CommandProvider {
     public static CommandProvider getInstance() {
         CommandProvider localInstance = instance;
         if (localInstance == null) {
-            synchronized (ServiceFactory.class) {
+            synchronized (CommandProvider.class) {
                 localInstance = instance;
                 if (localInstance == null) {
                     instance = localInstance = new CommandProvider();
