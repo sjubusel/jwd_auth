@@ -315,7 +315,7 @@
                                      class="btn btn-secondary"
                                      onclick="changePhone()">
                                     <fmt:message bundle="${jspMessages}"
-                                                 key="profileSubMenu.changePatientInfo.changePhoneNumber"/>
+                                                 key="profileSubMenu.changePatientInfo.changeButton"/>
                                 </div>
                             </div>
 
@@ -360,14 +360,14 @@
                                     let innerNumber = document.getElementById("phoneNumberInnerNumberInput");
                                     if (phoneInputsVar.style.display === "none") {
                                         phoneInputsVar.style.display = "block";
-                                        changeBrnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.cancelChangePhoneNumber"/>";
+                                        changeBrnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.cancelChangeButton"/>";
                                         countryCode.required = true;
                                         innerCode.required = true;
                                         innerNumber.required = true;
                                         isNewPhone.value = "true";
                                     } else {
                                         phoneInputsVar.style.display = "none";
-                                        changeBrnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.changePhoneNumber"/>";
+                                        changeBrnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.changeButton"/>";
                                         countryCode.required = false;
                                         innerCode.required = false;
                                         innerNumber.required = false;
@@ -476,7 +476,7 @@
                                      class="btn btn-secondary"
                                      onclick="changeAddress()">
                                     <fmt:message bundle="${jspMessages}"
-                                                 key="profileSubMenu.changePatientInfo.changePhoneNumber"/>
+                                                 key="profileSubMenu.changePatientInfo.changeButton"/>
                                 </div>
                             </div>
 
@@ -554,7 +554,7 @@
                                      class="btn btn-secondary d-flex align-items-center"
                                      onclick="changeEmergencyPhone()">
                                     <fmt:message bundle="${jspMessages}"
-                                                 key="profileSubMenu.changePatientInfo.changePhoneNumber"/>
+                                                 key="profileSubMenu.changePatientInfo.changeButton"/>
                                 </div>
                             </div>
 
@@ -602,14 +602,14 @@
                                     let innerNumber = document.getElementById("emergencyPhoneNumberInnerNumberInput");
                                     if (phoneInputsVar.style.display === "none") {
                                         phoneInputsVar.style.display = "block";
-                                        changeBrnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.cancelChangePhoneNumber"/>";
+                                        changeBrnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.cancelChangeButton"/>";
                                         countryCode.required = true;
                                         innerCode.required = true;
                                         innerNumber.required = true;
                                         isNewPhone.value = "true";
                                     } else {
                                         phoneInputsVar.style.display = "none";
-                                        changeBrnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.changePhoneNumber"/>";
+                                        changeBrnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.changeButton"/>";
                                         countryCode.required = false;
                                         innerCode.required = false;
                                         innerNumber.required = false;
