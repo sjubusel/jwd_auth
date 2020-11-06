@@ -1,7 +1,6 @@
 package by.epamtc.jwd.auth.web.ajax;
 
 import by.epamtc.jwd.auth.model.ajax.AjaxCommandName;
-import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchCountryInChangePatientInfoJspAjaxCommand;
 
 import javax.servlet.ServletException;
@@ -23,7 +22,7 @@ public class AjaxCommandProvider {
     public static AjaxCommandProvider getInstance() {
         AjaxCommandProvider localInstance = instance;
         if (localInstance == null) {
-            synchronized (ServiceFactory.class) {
+            synchronized (AjaxCommandProvider.class) {
                 localInstance = instance;
                 if (localInstance == null) {
                     instance = localInstance = new AjaxCommandProvider();
