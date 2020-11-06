@@ -11,3 +11,4 @@ profileSubMenu.changePatientInfo.address.settlementPattern=[0-9А-Яа-яЁё \\
 profileSubMenu.changePatientInfo.address.roadPattern=[0-9А-Яа-яЁё \\-]{1,255}
 profileSubMenu.changePatientInfo.address.housePattern=[0-9А-Яа-яЁё \\-]{1,255}
 profileSubMenu.changePatientInfo.address.buildingPattern=[0-9А-Яа-яЁё \\-]{1,255}
+profileSubMenu.changePatientInfo.address.roomPattern=[0-9А-Яа-яЁё \\-]{1,255}

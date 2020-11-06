@@ -160,3 +160,5 @@ profileSubMenu.changePatientInfo.address.house=Здание
 profileSubMenu.changePatientInfo.address.housePlaceholder=Введите идентификационные сведения здания
 profileSubMenu.changePatientInfo.address.building=Корпус
 profileSubMenu.changePatientInfo.address.buildingPlaceholder=Введите идентификационные сведения о корпусе
+profileSubMenu.changePatientInfo.address.room=Помещение
+profileSubMenu.changePatientInfo.address.roomPlaceholder=Введите идентификационные сведения о помещении
