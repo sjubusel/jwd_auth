@@ -3,6 +3,7 @@ package by.epamtc.jwd.auth.service.ajax.impl;
 import by.epamtc.jwd.auth.dao.ajax.AjaxDaoFactory;
 import by.epamtc.jwd.auth.dao.ajax.AjaxFetchDao;
 import by.epamtc.jwd.auth.dao.exception.DaoException;
+import by.epamtc.jwd.auth.model.ajax.AjaxArea;
 import by.epamtc.jwd.auth.model.ajax.AjaxCountry;
 import by.epamtc.jwd.auth.model.ajax.AjaxRegion;
 import by.epamtc.jwd.auth.service.ajax.AjaxFetchService;
@@ -45,7 +46,7 @@ public class DefaultAjaxFetchService implements AjaxFetchService {
     }
 
     @Override
-    public List<AjaxRegion> fetchAreas(String regionId, String areaInput)
+    public List<AjaxArea> fetchAreas(String regionId, String areaInput)
             throws ServiceException {
         if (ajaxValidator.isInputValidForDependentFetch(regionId, areaInput)) {
             int regionNumber = Integer.parseInt(regionId);

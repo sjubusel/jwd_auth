@@ -1,5 +1,6 @@
 package by.epamtc.jwd.auth.service.ajax;
 
+import by.epamtc.jwd.auth.model.ajax.AjaxArea;
 import by.epamtc.jwd.auth.model.ajax.AjaxCountry;
 import by.epamtc.jwd.auth.model.ajax.AjaxRegion;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
@@ -13,6 +14,6 @@ public interface AjaxFetchService {
     List<AjaxRegion> fetchRegions(String countryId, String regionInput)
             throws ServiceException;
 
-    List<AjaxRegion> fetchAreas(String regionId, String areaInput)
+    List<AjaxArea> fetchAreas(String regionId, String areaInput)
             throws ServiceException;
 }

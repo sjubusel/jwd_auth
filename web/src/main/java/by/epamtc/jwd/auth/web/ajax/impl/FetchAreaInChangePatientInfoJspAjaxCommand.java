@@ -1,6 +1,6 @@
 package by.epamtc.jwd.auth.web.ajax.impl;
 
-import by.epamtc.jwd.auth.model.ajax.AjaxRegion;
+import by.epamtc.jwd.auth.model.ajax.AjaxArea;
 import by.epamtc.jwd.auth.service.ajax.AjaxFetchService;
 import by.epamtc.jwd.auth.service.ajax.AjaxServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
@@ -25,7 +25,7 @@ public class FetchAreaInChangePatientInfoJspAjaxCommand implements AjaxCommand {
         String regionId = req.getParameter("hiddenRegionId");
         String areaInput = req.getParameter("areaInput");
 
-        List<AjaxRegion> areas = null;
+        List<AjaxArea> areas = null;
         try {
             areas = ajaxFetchService.fetchAreas(regionId, areaInput);
         } catch (ServiceException e) {
