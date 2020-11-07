@@ -1,6 +1,7 @@
 package by.epamtc.jwd.auth.web.ajax.impl;
 
 import by.epamtc.jwd.auth.model.ajax.AjaxArea;
+import by.epamtc.jwd.auth.model.ajax.AjaxParameter;
 import by.epamtc.jwd.auth.service.ajax.AjaxFetchService;
 import by.epamtc.jwd.auth.service.ajax.AjaxServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
@@ -22,8 +23,8 @@ public class FetchAreaInChangePatientInfoJspAjaxCommand implements AjaxCommand {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        String regionId = req.getParameter("hiddenRegionId");
-        String areaInput = req.getParameter("areaInput");
+        String regionId = req.getParameter(AjaxParameter.REGION_ID);
+        String areaInput = req.getParameter(AjaxParameter.AREA);
 
         List<AjaxArea> areas = null;
         try {
@@ -31,15 +32,8 @@ public class FetchAreaInChangePatientInfoJspAjaxCommand implements AjaxCommand {
         } catch (ServiceException e) {
             // TODO log4j
         }
-
-        write(areas, res);
-    }
-
-    //TODO create new class-singleton, which is to write
-    private void write(Object areas, HttpServletResponse res)
-            throws IOException {
-        res.setContentType("application/json");
-        res.setCharacterEncoding("UTF-8");
+        res.setContentType(AjaxParameter.AJAX_CONTENT_TYPE);
+        res.setCharacterEncoding(AjaxParameter.AJAX_CHARACTER_ENCODING);
         PrintWriter writer = res.getWriter();
         writer.write(new Gson().toJson(areas));
     }
