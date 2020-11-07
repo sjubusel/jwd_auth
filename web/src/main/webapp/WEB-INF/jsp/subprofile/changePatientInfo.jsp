@@ -106,7 +106,7 @@
                 if (text === "") {
                     $("#regionResult").html("");
                 } else {
-                    $("#regionResult").html("");
+                    document.getElementById("regionResult").innerHTML = "";
                     let hiddenCountry = document.getElementById("hiddenCountry");
                     if (hiddenCountry.value === "") {
                         // alert("YES");
@@ -166,7 +166,7 @@
                 if (text === "") {
                     $("#areaResult").html("");
                 } else {
-                    $("#areaResult").html("");
+                    document.getElementById("areaResult").innerHTML = "";
                     let hiddenRegion = document.getElementById("hiddenRegion");
                     if (hiddenRegion.value === "") {
                         $("#areaResult").html("Выберите сначала регион");
@@ -225,7 +225,7 @@
                 if (text === "") {
                     $("#settlementResult").html("");
                 } else {
-                    $("#settlementResult").html("");
+                    document.getElementById("settlementResult").innerHTML = "";
                     let hiddenArea = document.getElementById("hiddenArea");
                     if (hiddenArea.value === "") {
                         $("#settlementResult").html("Выберите сначала район");
@@ -284,7 +284,7 @@
                 if (text === "") {
                     $("#roadResult").html("");
                 } else {
-                    $("#roadResult").html("");
+                    document.getElementById("roadResult").innerHTML = "";
                     let hiddenSettlement = document.getElementById("hiddenSettlement");
                     if (hiddenSettlement.value === "") {
                         $("#roadResult").html("Выберите сначала населённый пункт");
