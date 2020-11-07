@@ -174,6 +174,41 @@ public class DefaultAjaxFetchDao implements AjaxFetchDao {
 
     @Override
     public List<AjaxRoad> fetchRoads(int settlementNumber, String roadInput) throws DaoException {
-        return null;
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet rSet = null;
+        List<AjaxRoad> roads = new ArrayList<>();
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(
+                    "SELECT r.road_id, r.road_name, rt.road_type_name, s.settlement_name\n" +
+                            "FROM hospital.roads r\n" +
+                            "         JOIN hospital.road_types rt ON r.road_type_id = rt.road_type_id\n" +
+                            "         JOIN hospital.settlements s ON r.settlement_id = s.settlement_id\n" +
+                            "WHERE r.road_id = ?\n" +
+                            "  AND r.road_name LIKE CONCAT('%', ?, '%');"
+            );
+            statement.setInt(1, settlementNumber);
+            statement.setString(2, roadInput);
+            rSet = statement.executeQuery();
+            while (rSet.next()) {
+                int roadId = rSet.getInt(1);
+                String roadName = rSet.getString(2) + AppConstant
+                        .ONE_WHITESPACE + rSet.getString(3);
+                String settlementName = rSet.getString(4);
+                roads.add(new AjaxRoad(roadId, roadName, settlementName));
+            }
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection from" +
+                    "the connection pool during ajax fetching of roads", e);
+        } catch (SQLException e) {
+            throw new DaoException("An error while ajax fetching roads " +
+                    "from DBs", e);
+        } finally {
+            pool.closeConnection(conn, statement, rSet);
+        }
+
+        return roads;
     }
 }
