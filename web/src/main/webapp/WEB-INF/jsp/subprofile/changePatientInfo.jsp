@@ -39,8 +39,9 @@
             let shownInput = document.getElementById(shownInputName);
             hiddenInput.value = childRow.firstChild.innerHTML;
             shownInput.value = childRow.lastChild.innerHTML;
-            parent.innerHTML = "Выбрано " + shownInput.value;
-            // alert("HiddenInput is " + hiddenInput.value);
+            parent.innerHTML = "<small><em>" + "<fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.changePatientInfo.ajax.chosen"/>: "
+                + shownInput.value + "</em></small>";
         }
 
         jQuery(document).ready(function () {
@@ -69,11 +70,13 @@
                         dataType: "json",
                         success: function (data) {
                             if (data === null) {
-                                $("#countryResult").html("<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.ajax.validation"/>");
+                                $("#countryResult").html("<fmt:message bundle="${jspMessages}"
+                                           key="profileSubMenu.changePatientInfo.ajax.validation"/>");
                                 return;
                             }
                             if (data.length === 0) {
-                                $("#countryResult").html("<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.ajax.zeroResult"/>");
+                                $("#countryResult").html("<fmt:message bundle="${jspMessages}"
+                                           key="profileSubMenu.changePatientInfo.ajax.zeroResult"/>");
                                 return;
                             }
                             let parent = document.getElementById("countryResult");
@@ -124,11 +127,13 @@
                         dataType: "json",
                         success: function (data) {
                             if (data === null) {
-                                $("#regionResult").html("<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.ajax.validation"/>");
+                                $("#regionResult").html("<fmt:message bundle="${jspMessages}"
+                                          key="profileSubMenu.changePatientInfo.ajax.validation"/>");
                                 return;
                             }
                             if (data.length === 0) {
-                                $("#regionResult").html("<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.ajax.zeroResult"/>");
+                                $("#regionResult").html("<fmt:message bundle="${jspMessages}"
+                                          key="profileSubMenu.changePatientInfo.ajax.zeroResult"/>");
                                 return;
                             }
                             let parent = document.getElementById("regionResult");
@@ -183,11 +188,13 @@
                         dataType: "json",
                         success: function (data) {
                             if (data === null) {
-                                $("#areaResult").html("<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.ajax.validation"/>");
+                                $("#areaResult").html("<fmt:message bundle="${jspMessages}"
+                                        key="profileSubMenu.changePatientInfo.ajax.validation"/>");
                                 return;
                             }
                             if (data.length === 0) {
-                                $("#areaResult").html("<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.ajax.zeroResult"/>");
+                                $("#areaResult").html("<fmt:message bundle="${jspMessages}"
+                                        key="profileSubMenu.changePatientInfo.ajax.zeroResult"/>");
                                 return;
                             }
                             let parent = document.getElementById("areaResult");
@@ -242,11 +249,13 @@
                         dataType: "json",
                         success: function (data) {
                             if (data === null) {
-                                $("#settlementResult").html("<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.ajax.validation"/>");
+                                $("#settlementResult").html("<fmt:message bundle="${jspMessages}"
+                                              key="profileSubMenu.changePatientInfo.ajax.validation"/>");
                                 return;
                             }
                             if (data.length === 0) {
-                                $("#settlementResult").html("<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.ajax.zeroResult"/>");
+                                $("#settlementResult").html("<fmt:message bundle="${jspMessages}"
+                                              key="profileSubMenu.changePatientInfo.ajax.zeroResult"/>");
                                 return;
                             }
                             let parent = document.getElementById("settlementResult");
@@ -301,11 +310,13 @@
                         dataType: "json",
                         success: function (data) {
                             if (data === null) {
-                                $("#roadResult").html("<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.ajax.validation"/>");
+                                $("#roadResult").html("<fmt:message bundle="${jspMessages}"
+                                        key="profileSubMenu.changePatientInfo.ajax.validation"/>");
                                 return;
                             }
                             if (data.length === 0) {
-                                $("#roadResult").html("<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.ajax.zeroResult"/>");
+                                $("#roadResult").html("<fmt:message bundle="${jspMessages}"
+                                        key="profileSubMenu.changePatientInfo.ajax.zeroResult"/>");
                                 return;
                             }
                             let parent = document.getElementById("roadResult");
