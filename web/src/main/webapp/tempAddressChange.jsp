@@ -85,6 +85,12 @@
            pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.regionPattern"/>"
     />
 </div>
+
+<div id="regionResult" class="overflow-auto"
+     style="max-height: 100px">
+
+</div>
+
 <div class="form-group form-inline row">
     <label for="area"
            class="col-4 custom-form-label">
@@ -255,6 +261,66 @@
                             childColName.className += "col border d-flex justify-content-center";
                             childRow.appendChild(childColName);
                             childColName.innerHTML = data[i].countryName;
+                        }
+                    }
+                });
+            }
+        });
+
+        let searchRequestRegion = null;
+        $("#region").keyup(function () {
+            if (searchRequestRegion != null) {
+                searchRequestRegion.abort();
+            }
+            let text = $(this).val();
+            if (text === "") {
+                $("#regionResult").html("");
+            } else {
+                $("#regionResult").html("");
+                let hiddenCountry = document.getElementById("hiddenCountry");
+                if (hiddenCountry.value === "") {
+                    // alert("YES");
+                    $("#regionResult").html("Выберите сначала страну");
+                    return;
+                }
+
+                searchRequestRegion = $.ajax({
+                    url: "ajax?command=fetch-region-in-change-patient-info-jsp",
+                    method: "post",
+                    data: {
+                        regionInput: text,
+                        hiddenCountryId: hiddenCountry.value,
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data === null) {
+                            $("#regionResult").html("VALID");
+                            return;
+                        }
+                        if (data.length === 0) {
+                            $("#regionResult").html("NOTHING");
+                            return;
+                        }
+                        let parent = document.getElementById("regionResult");
+                        for (let i = 0; i < data.length; i++) {
+                            let childRow = document.createElement("div");
+                            childRow.className += "row border list-group-item-action d-flex align-items-start";
+                            parent.appendChild(childRow);
+                            let childColId = document.createElement("div");
+                            childColId.className += "col border d-none justify-content-center";
+                            childRow.appendChild(childColId);
+                            childColId.innerHTML = data[i].regionId;
+                            childRow.setAttribute("onclick", "changeHiddenInput(\"hiddenRegion\", \"region\", this, this.parentElement);");
+
+                            let childColName = document.createElement("div");
+                            childColName.className += "col border d-flex justify-content-center";
+                            childRow.appendChild(childColName);
+                            childColName.innerHTML = data[i].countryName;
+
+                            let childColName2 = document.createElement("div");
+                            childColName2.className += "col border d-flex justify-content-center";
+                            childRow.appendChild(childColName2);
+                            childColName2.innerHTML = data[i].regionName;
                         }
                     }
                 });
