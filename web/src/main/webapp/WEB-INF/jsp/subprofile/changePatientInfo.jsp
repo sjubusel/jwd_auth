@@ -1015,8 +1015,13 @@
                                         road.value = "";
                                         hiddenRoad.value = "";
 
-
                                         isNewAddress.value = "false";
+
+                                        document.getElementById("countryResult").innerHTML = "";
+                                        document.getElementById("regionResult").innerHTML = "";
+                                        document.getElementById("areaResult").innerHTML = "";
+                                        document.getElementById("settlementResult").innerHTML = "";
+                                        document.getElementById("roadResult").innerHTML = "";
                                     }
                                 }
                             </script>
