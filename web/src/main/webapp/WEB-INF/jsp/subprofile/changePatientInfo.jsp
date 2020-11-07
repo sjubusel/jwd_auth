@@ -73,7 +73,7 @@
                                 return;
                             }
                             if (data.length === 0) {
-                                $("#countryResult").html("NOTHING");
+                                $("#countryResult").html("<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.ajax.zeroResult"/>");
                                 return;
                             }
                             let parent = document.getElementById("countryResult");
@@ -128,7 +128,7 @@
                                 return;
                             }
                             if (data.length === 0) {
-                                $("#regionResult").html("NOTHING");
+                                $("#regionResult").html("<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.ajax.zeroResult"/>");
                                 return;
                             }
                             let parent = document.getElementById("regionResult");
@@ -187,7 +187,7 @@
                                 return;
                             }
                             if (data.length === 0) {
-                                $("#areaResult").html("NOTHING");
+                                $("#areaResult").html("<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.ajax.zeroResult"/>");
                                 return;
                             }
                             let parent = document.getElementById("areaResult");
@@ -246,7 +246,7 @@
                                 return;
                             }
                             if (data.length === 0) {
-                                $("#settlementResult").html("NOTHING");
+                                $("#settlementResult").html("<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.ajax.zeroResult"/>");
                                 return;
                             }
                             let parent = document.getElementById("settlementResult");
@@ -305,7 +305,7 @@
                                 return;
                             }
                             if (data.length === 0) {
-                                $("#roadResult").html("NOTHING");
+                                $("#roadResult").html("<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.ajax.zeroResult"/>");
                                 return;
                             }
                             let parent = document.getElementById("roadResult");
