@@ -6,6 +6,7 @@ import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.model.ajax.AjaxArea;
 import by.epamtc.jwd.auth.model.ajax.AjaxCountry;
 import by.epamtc.jwd.auth.model.ajax.AjaxRegion;
+import by.epamtc.jwd.auth.model.ajax.AjaxSettlement;
 import by.epamtc.jwd.auth.service.ajax.AjaxFetchService;
 import by.epamtc.jwd.auth.service.ajax.validation.AjaxValidator;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
@@ -52,6 +53,20 @@ public class DefaultAjaxFetchService implements AjaxFetchService {
             int regionNumber = Integer.parseInt(regionId);
             try {
                 return ajaxFetchDao.fetchAreas(regionNumber, areaInput);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<AjaxSettlement> fetchSettlements(String areaId,
+            String settlementInput) throws ServiceException {
+        if (ajaxValidator.isInputValidForDependentFetch(areaId, settlementInput)) {
+            int regionNumber = Integer.parseInt(areaId);
+            try {
+                return ajaxFetchDao.fetchSettlements(regionNumber, settlementInput);
             } catch (DaoException e) {
                 throw new ServiceException(e);
             }
