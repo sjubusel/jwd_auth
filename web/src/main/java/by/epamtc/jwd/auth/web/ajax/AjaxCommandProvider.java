@@ -4,6 +4,7 @@ import by.epamtc.jwd.auth.model.ajax.AjaxCommandName;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchAreaInChangePatientInfoJspAjaxCommand;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchCountryInChangePatientInfoJspAjaxCommand;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchRegionInChangePatientInfoJspAjaxCommand;
+import by.epamtc.jwd.auth.web.ajax.impl.FetchRoadInChangePatientInfoJspAjaxCommand;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchSettlementInChangePatientInfoJspAjaxCommand;
 
 import javax.servlet.ServletException;
@@ -26,6 +27,8 @@ public class AjaxCommandProvider {
                 new FetchAreaInChangePatientInfoJspAjaxCommand());
         repository.put(AjaxCommandName.FETCH_SETTLEMENT_IN_CHANGE_PATIENT_INFO_JSP,
                 new FetchSettlementInChangePatientInfoJspAjaxCommand());
+        repository.put(AjaxCommandName.FETCH_ROAD_IN_CHANGE_PATIENT_INFO_JSP,
+                new FetchRoadInChangePatientInfoJspAjaxCommand());
     }
 
     public static AjaxCommandProvider getInstance() {
