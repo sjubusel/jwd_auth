@@ -113,7 +113,8 @@
                     let hiddenCountry = document.getElementById("hiddenCountry");
                     if (hiddenCountry.value === "") {
                         // alert("YES");
-                        $("#regionResult").html("Выберите сначала страну");
+                        $("#regionResult").html("<div class=\"mb-3\"><small><em><fmt:message bundle="${jspMessages}"
+                                           key="profileSubMenu.changePatientInfo.ajax.pleaseCountry"/></em></small></div>");
                         return;
                     }
 
@@ -174,7 +175,8 @@
                     document.getElementById("areaResult").innerHTML = "";
                     let hiddenRegion = document.getElementById("hiddenRegion");
                     if (hiddenRegion.value === "") {
-                        $("#areaResult").html("Выберите сначала регион");
+                        $("#areaResult").html("<div class=\"mb-3\"><small><em><fmt:message bundle="${jspMessages}"
+                                           key="profileSubMenu.changePatientInfo.ajax.pleaseRegion"/></em></small></div>");
                         return;
                     }
 
@@ -235,7 +237,8 @@
                     document.getElementById("settlementResult").innerHTML = "";
                     let hiddenArea = document.getElementById("hiddenArea");
                     if (hiddenArea.value === "") {
-                        $("#settlementResult").html("Выберите сначала район");
+                        $("#settlementResult").html("<div class=\"mb-3\"><small><em><fmt:message bundle="${jspMessages}"
+                                           key="profileSubMenu.changePatientInfo.ajax.pleaseArea"/></em></small></div>");
                         return;
                     }
 
@@ -296,7 +299,8 @@
                     document.getElementById("roadResult").innerHTML = "";
                     let hiddenSettlement = document.getElementById("hiddenSettlement");
                     if (hiddenSettlement.value === "") {
-                        $("#roadResult").html("Выберите сначала населённый пункт");
+                        $("#roadResult").html("<div class=\"mb-3\"><small><em><fmt:message bundle="${jspMessages}"
+                                           key="profileSubMenu.changePatientInfo.ajax.pleaseSettlement"/></em></small></div>");
                         return;
                     }
 

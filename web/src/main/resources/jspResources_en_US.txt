@@ -176,3 +176,7 @@ profileSubMenu.changePatientInfo.address.roomPattern=[0-9А-Яа-яЁё \\-]{1,2
 profileSubMenu.changePatientInfo.ajax.validation=Invalid input
 profileSubMenu.changePatientInfo.ajax.zeroResult=Nothing is found
 profileSubMenu.changePatientInfo.ajax.chosen=You have chosen
+profileSubMenu.changePatientInfo.ajax.pleaseCountry=Insert a country, please
+profileSubMenu.changePatientInfo.ajax.pleaseRegion=Insert a region, please
+profileSubMenu.changePatientInfo.ajax.pleaseArea=Insert an area, please
+profileSubMenu.changePatientInfo.ajax.pleaseSettlement=Insert a settlement, please
