@@ -10,5 +10,9 @@ public interface AjaxFetchService {
     List<AjaxCountry> fetchCountries(String countryElement)
             throws ServiceException;
 
-    List<AjaxRegion> fetchRegions(String countryId, String regionInput) throws ServiceException;
+    List<AjaxRegion> fetchRegions(String countryId, String regionInput)
+            throws ServiceException;
+
+    List<AjaxRegion> fetchAreas(String regionId, String areaInput)
+            throws ServiceException;
 }
