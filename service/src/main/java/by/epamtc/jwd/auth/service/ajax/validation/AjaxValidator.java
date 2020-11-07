@@ -7,7 +7,7 @@ public class AjaxValidator {
         return fetchInput.matches("[А-Яа-яЁё \\-]{1,255}");
     }
 
-    public boolean isInputValidForRegionFetch(String countryId,
+    public boolean isInputValidForDependentFetch(String countryId,
             String regionInput) throws ServiceException {
         try {
             Integer.parseInt(countryId);
