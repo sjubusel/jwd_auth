@@ -128,6 +128,12 @@
            pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.settlementPattern"/>"
     />
 </div>
+
+<div id="settlementResult" class="overflow-auto"
+     style="max-height: 100px">
+
+</div>
+
 <div class="form-group form-inline row">
     <label for="road"
            class="col-4 custom-form-label">
