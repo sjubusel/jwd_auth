@@ -4,6 +4,7 @@ import by.epamtc.jwd.auth.dao.ajax.AjaxFetchDao;
 import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.dao.pool.ConnectionPool;
 import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
+import by.epamtc.jwd.auth.model.ajax.AjaxArea;
 import by.epamtc.jwd.auth.model.ajax.AjaxCountry;
 import by.epamtc.jwd.auth.model.ajax.AjaxRegion;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
@@ -56,7 +57,6 @@ public class DefaultAjaxFetchDao implements AjaxFetchDao {
 
         try {
             conn = pool.takeConnection();
-//        statement = conn.prepareStatement("SELECT h.country_id, h.short_country_name FROM hospital.countries h WHERE h.short_country_name LIKE CONCAT('%', ?, '%')");
             statement = conn.prepareStatement(
                     "SELECT r.region_id, r.region_name, rt.region_type_name, c.short_country_name\n" +
                             "FROM hospital.regions r\n" +
@@ -85,5 +85,46 @@ public class DefaultAjaxFetchDao implements AjaxFetchDao {
         }
 
         return regions;
+    }
+
+    @Override
+    public List<AjaxArea> fetchAreas(int regionNumber, String areaInput)
+            throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet rSet = null;
+        List<AjaxArea> areas = new ArrayList<>();
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(
+                    "SELECT a.area_id, a.area_name, at.area_type_name, r.region_name\n" +
+                            "FROM hospital.areas a\n" +
+                            "         JOIN hospital.area_types at ON a.area_type_id = at.area_type_id\n" +
+                            "         JOIN hospital.regions r ON a.region_id = r.region_id\n" +
+                            "WHERE a.region_id = ?\n" +
+                            "  AND a.area_name LIKE CONCAT('%', ?, '%');"
+            );
+            statement.setInt(1, regionNumber);
+            statement.setString(2, areaInput);
+            rSet = statement.executeQuery();
+            while (rSet.next()) {
+                int areaId = rSet.getInt(1);
+                String areaName = rSet.getString(2) + AppConstant
+                        .ONE_WHITESPACE + rSet.getString(3);
+                String regionName = rSet.getString(4);
+                areas.add(new AjaxArea(areaId, areaName, regionName));
+            }
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection from" +
+                    "the connection pool during ajax fetching of areas", e);
+        } catch (SQLException e) {
+            throw new DaoException("An error while ajax fetching areas " +
+                    "from DBs", e);
+        } finally {
+            pool.closeConnection(conn, statement, rSet);
+        }
+
+        return areas;
     }
 }
