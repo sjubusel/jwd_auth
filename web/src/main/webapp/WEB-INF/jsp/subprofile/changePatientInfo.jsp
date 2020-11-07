@@ -349,6 +349,55 @@
                 }
             });
 
+            let searchRequestCitizenship = null;
+            $("#citizenship").keyup(function () {
+                if (searchRequestCitizenship != null) {
+                    searchRequestCitizenship.abort();
+                }
+                let text = $(this).val();
+                if (text === "") {
+                    $("#citizenshipResult").html("");
+                } else {
+                    $("#citizenshipResult").html("");
+                    searchRequestCitizenship = $.ajax({
+                        url: "ajax?command=fetch-country-in-change-patient-info-jsp",
+                        method: "post",
+                        data: {
+                            countryInput: text,
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            if (data === null) {
+                                $("#citizenshipResult").html("<div class=\"mb-3\"><small><em><fmt:message bundle="${jspMessages}"
+                                           key="profileSubMenu.changePatientInfo.ajax.validation"/></em></small></div>");
+                                return;
+                            }
+                            if (data.length === 0) {
+                                $("#citizenshipResult").html("<div class=\"mb-3\"><small><em><fmt:message bundle="${jspMessages}"
+                                           key="profileSubMenu.changePatientInfo.ajax.zeroResult"/></em></small></div>");
+                                return;
+                            }
+                            let parent = document.getElementById("citizenshipResult");
+                            for (let i = 0; i < data.length; i++) {
+                                let childRow = document.createElement("div");
+                                childRow.className += "row border list-group-item-action d-flex align-items-start";
+                                parent.appendChild(childRow);
+                                let childColId = document.createElement("div");
+                                childColId.className += "col border d-none justify-content-center";
+                                childRow.appendChild(childColId);
+                                childColId.innerHTML = data[i].countryId;
+                                childRow.setAttribute("onclick", "changeHiddenInput(\"hiddenCitizenship\", \"citizenship\", this, this.parentElement);");
+
+                                let childColName = document.createElement("div");
+                                childColName.className += "col border d-flex justify-content-center";
+                                childRow.appendChild(childColName);
+                                childColName.innerHTML = data[i].countryName;
+                            }
+                        }
+                    });
+                }
+            });
+
         });
     </script>
 </head>
@@ -858,6 +907,30 @@
                                            pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.latinHolderNamePattern"/>"
                                     />
                                 </div>
+
+                                <div class="form-group form-inline row">
+                                    <label for="citizenship"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.idDocCitizenship"/>
+                                    </label>
+                                    <input type="hidden" id="hiddenCitizenship"
+                                           name="hiddenCitizenshipInput"
+                                           value=""/>
+                                    <input type="text"
+                                           class="form-control col-5"
+                                           id="citizenship"
+                                           name="citizenshipInput"
+                                           placeholder="<fmt:message bundle="${jspMessages}"
+                                       key="profileSubMenu.changePatientInfo.address.countryPlaceholder"/>"
+                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.countryPattern"/>"
+                                    />
+                                </div>
+                                <div id="citizenshipResult"
+                                     class="overflow-auto"
+                                     style="max-height: 100px">
+                                </div>
+
                             </div>
 
                             <hr>
