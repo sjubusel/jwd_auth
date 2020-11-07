@@ -484,26 +484,6 @@
                                 </div>
                             </div>
                             <hr>
-                                <%--                            <div class="form-group form-inline">--%>
-                                <%--                                <label for="firstNameInputLabel"--%>
-                                <%--                                       class="col-4 custom-form-label pl-0 pr-0">--%>
-                                <%--                                    <fmt:message bundle="${jspMessages}"--%>
-                                <%--                                                 key="register.firstNameInputLabel"/>--%>
-                                <%--                                </label>--%>
-                                <%--                                <input type="text" class="form-control col"--%>
-                                <%--                                       id="firstNameInputLabel"--%>
-                                <%--                                       name="firstNameInput"--%>
-                                <%--                                <c:choose>--%>
-                                <%--                                <c:when test="${requestScope.patientInfo.firstName ne null}">--%>
-                                <%--                                       value="${requestScope.patientInfo.firstName}"--%>
-                                <%--                                </c:when>--%>
-                                <%--                                <c:otherwise>--%>
-                                <%--                                       value=""--%>
-                                <%--                                </c:otherwise>--%>
-                                <%--                                </c:choose>--%>
-                                <%--                                       disabled>--%>
-                                <%--                            </div>--%>
-                                <%--                            <hr>--%>
                                 <%--3--%>
                             <div class="row mb-3">
                                 <div class="col-4 d-flex align-items-center">
@@ -1433,82 +1413,8 @@
 
                         </div>
 
-                            <%--                <div class="form-group form-inline">--%>
-                            <%--                    <label for="firstNameInputLabel"--%>
-                            <%--                           class="col-4 custom-form-label">--%>
-                            <%--                        <fmt:message bundle="${jspMessages}"--%>
-                            <%--                                     key="register.firstNameInputLabel"/>--%>
-                            <%--                    </label>--%>
-                            <%--                    <input type="text" class="form-control col"--%>
-                            <%--                           id="firstNameInputLabel"--%>
-                            <%--                           name="firstNameInput"--%>
-                            <%--                    <c:choose>--%>
-                            <%--                    <c:when test="${requestScope.patientInfo.firstName ne null}">--%>
-                            <%--                           value="${requestScope.patientInfo.firstName}"--%>
-                            <%--                    </c:when>--%>
-                            <%--                    <c:otherwise>--%>
-                            <%--                           value=""--%>
-                            <%--                    </c:otherwise>--%>
-                            <%--                    </c:choose>--%>
-                            <%--                           disabled>--%>
-                            <%--                </div>--%>
-                            <%--                <div class="form-group form-inline">--%>
-                            <%--                    <label for="" class="col-4 custom-form-label">--%>
-
-                            <%--                    </label>--%>
-                            <%--                    <input type="text" class="form-control col"--%>
-                            <%--                           id=""--%>
-                            <%--                           name=""--%>
-                            <%--                    <c:choose>--%>
-                            <%--                    <c:when test="${requestScope.patientInfo. ne null}">--%>
-                            <%--                           value="${requestScope.patientInfo.}"--%>
-                            <%--                    </c:when>--%>
-                            <%--                    <c:otherwise>--%>
-                            <%--                           value=""--%>
-                            <%--                    </c:otherwise>--%>
-                            <%--                    </c:choose>--%>
-                            <%--                           disabled>--%>
-                            <%--                </div>--%>
                     </form>
 
-                        <%--            <fmt:message bundle="${jspMessages}"--%>
-                        <%--                         key="profile.photo"/>--%>
-                        <%--                    <fmt:message bundle="${jspMessages}"--%>
-                        <%--                                 key="register.firstNameInputLabel"/>--%>
-                        <%--                    <fmt:message bundle="${jspMessages}"--%>
-                        <%--                                 key="register.middleNameInputLabel"/>--%>
-                        <%--                    <fmt:message bundle="${jspMessages}"--%>
-                        <%--                                 key="register.lastNameInputLabel"/>--%>
-                        <%--                    <fmt:message bundle="${jspMessages}"--%>
-                        <%--                                 key="register.birthdayInputLabel"/>--%>
-                        <%--                    <fmt:message bundle="${jspMessages}"--%>
-                        <%--                                 key="register.GenderInputLabel"/>--%>
-                        <%--                    <fmt:message bundle="${jspMessages}"--%>
-                        <%--                                 key="register.emailInputLabel"/>--%>
-                        <%--                    <fmt:message bundle="${jspMessages}"--%>
-                        <%--                                 key="register.phoneNumberInputLabel"/>--%>
-                        <%--                    <fmt:message bundle="${jspMessages}"--%>
-                        <%--                                 key="profile.maritalStatus"/>--%>
-                        <%--                    <fmt:message bundle="${jspMessages}"--%>
-                        <%--                                 key="profile.identityDocument"/>--%>
-                        <%--                    <fmt:message bundle="${jspMessages}"--%>
-                        <%--                                 key="profile.homeAddress"/>--%>
-                        <%--                    <fmt:message bundle="${jspMessages}"--%>
-                        <%--                                 key="profile.inCaseOfEmergencyContactPerson"/>--%>
-                        <%--                    <fmt:message bundle="${jspMessages}"--%>
-                        <%--                                 key="profile.inCaseOfEmergencyPhoneOfContactPerson"/>--%>
-                        <%--                    <fmt:message bundle="${jspMessages}"--%>
-                        <%--                                 key="profile.bloodType"/>--%>
-                        <%--                    <fmt:message bundle="${jspMessages}"--%>
-                        <%--                                 key="profile.bloodRh"/>--%>
-                        <%--                    <fmt:message bundle="${jspMessages}"--%>
-                        <%--                                 key="profile.disabilityDegree"/>--%>
-                        <%--                    <fmt:message bundle="${jspMessages}"--%>
-                        <%--                                 key="profile.transportationStatus"/>--%>
-                        <%--                    <fmt:message bundle="${jspMessages}"--%>
-                        <%--                                 key="profile.allergicReactionsPresence"/>--%>
-                        <%--                    <fmt:message bundle="${jspMessages}"--%>
-                        <%--                                 key="profile.extremelyHazardousDiseasesPresence"/>--%>
                 </div>
             </div>
         </c:otherwise>
