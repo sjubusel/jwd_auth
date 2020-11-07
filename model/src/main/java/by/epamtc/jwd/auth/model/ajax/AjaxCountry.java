@@ -1,6 +1,10 @@
 package by.epamtc.jwd.auth.model.ajax;
 
-public class AjaxCountry {
+import java.io.Serializable;
+
+public class AjaxCountry implements Serializable {
+    private static final long serialVersionUID = -8479407349609248048L;
+
     private int countryId;
     private String countryName;
 
