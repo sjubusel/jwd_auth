@@ -17,6 +17,6 @@ public interface AjaxFetchDao {
     List<AjaxArea> fetchAreas(int regionNumber, String areaInput)
             throws DaoException;
 
-    List<AjaxSettlement> fetchSettlements(int regionNumber,
+    List<AjaxSettlement> fetchSettlements(int areaNumber,
             String settlementInput) throws DaoException;
 }

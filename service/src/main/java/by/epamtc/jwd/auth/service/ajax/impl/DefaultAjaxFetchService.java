@@ -64,9 +64,9 @@ public class DefaultAjaxFetchService implements AjaxFetchService {
     public List<AjaxSettlement> fetchSettlements(String areaId,
             String settlementInput) throws ServiceException {
         if (ajaxValidator.isInputValidForDependentFetch(areaId, settlementInput)) {
-            int regionNumber = Integer.parseInt(areaId);
+            int areaNumber = Integer.parseInt(areaId);
             try {
-                return ajaxFetchDao.fetchSettlements(regionNumber, settlementInput);
+                return ajaxFetchDao.fetchSettlements(areaNumber, settlementInput);
             } catch (DaoException e) {
                 throw new ServiceException(e);
             }
