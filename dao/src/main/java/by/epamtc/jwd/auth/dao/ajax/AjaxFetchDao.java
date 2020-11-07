@@ -12,6 +12,6 @@ public interface AjaxFetchDao {
     List<AjaxRegion> fetchRegions(int countryNumber, String regionInput)
             throws DaoException;
 
-    List<AjaxRegion> fetchAreas(int regionNumber, String areaInput)
+    List<AjaxArea> fetchAreas(int regionNumber, String areaInput)
             throws DaoException;
 }
