@@ -1,5 +1,6 @@
 package by.epamtc.jwd.auth.web.ajax.impl;
 
+import by.epamtc.jwd.auth.model.ajax.AjaxParameter;
 import by.epamtc.jwd.auth.model.ajax.AjaxRegion;
 import by.epamtc.jwd.auth.service.ajax.AjaxFetchService;
 import by.epamtc.jwd.auth.service.ajax.AjaxServiceFactory;
@@ -22,8 +23,8 @@ public class FetchRegionInChangePatientInfoJspAjaxCommand implements AjaxCommand
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        String countryId = req.getParameter("hiddenCountryId");
-        String regionInput = req.getParameter("regionInput");
+        String countryId = req.getParameter(AjaxParameter.COUNTRY_ID);
+        String regionInput = req.getParameter(AjaxParameter.REGION);
 
         List<AjaxRegion> regions = null;
         try {
@@ -32,14 +33,8 @@ public class FetchRegionInChangePatientInfoJspAjaxCommand implements AjaxCommand
             // TODO log4j
         }
 
-        write(regions, res);
-    }
-
-    //TODO create new class-singleton, which is to write
-    private void write(Object regions, HttpServletResponse res)
-            throws IOException {
-        res.setContentType("application/json");
-        res.setCharacterEncoding("UTF-8");
+        res.setContentType(AjaxParameter.AJAX_CONTENT_TYPE);
+        res.setCharacterEncoding(AjaxParameter.AJAX_CHARACTER_ENCODING);
         PrintWriter writer = res.getWriter();
         writer.write(new Gson().toJson(regions));
     }
