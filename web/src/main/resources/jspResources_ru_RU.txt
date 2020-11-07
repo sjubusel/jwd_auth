@@ -172,3 +172,5 @@ profileSubMenu.changePatientInfo.address.roadPattern=[0-9А-Яа-яЁё \\-]{1,2
 profileSubMenu.changePatientInfo.address.housePattern=[0-9А-Яа-яЁё \\-]{1,255}
 profileSubMenu.changePatientInfo.address.buildingPattern=[0-9А-Яа-яЁё \\-]{1,255}
 profileSubMenu.changePatientInfo.address.roomPattern=[0-9А-Яа-яЁё \\-]{1,255}
+
+profileSubMenu.changePatientInfo.ajax.validation=Неверный ввод
