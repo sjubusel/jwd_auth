@@ -69,7 +69,7 @@
                         dataType: "json",
                         success: function (data) {
                             if (data === null) {
-                                $("#countryResult").html("VALID");
+                                $("#countryResult").html("<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.ajax.validation"/>");
                                 return;
                             }
                             if (data.length === 0) {
@@ -124,7 +124,7 @@
                         dataType: "json",
                         success: function (data) {
                             if (data === null) {
-                                $("#regionResult").html("VALID");
+                                $("#regionResult").html("<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.ajax.validation"/>");
                                 return;
                             }
                             if (data.length === 0) {
@@ -183,7 +183,7 @@
                         dataType: "json",
                         success: function (data) {
                             if (data === null) {
-                                $("#areaResult").html("VALID");
+                                $("#areaResult").html("<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.ajax.validation"/>");
                                 return;
                             }
                             if (data.length === 0) {
@@ -242,7 +242,7 @@
                         dataType: "json",
                         success: function (data) {
                             if (data === null) {
-                                $("#settlementResult").html("VALID");
+                                $("#settlementResult").html("<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.ajax.validation"/>");
                                 return;
                             }
                             if (data.length === 0) {
@@ -301,7 +301,7 @@
                         dataType: "json",
                         success: function (data) {
                             if (data === null) {
-                                $("#roadResult").html("VALID");
+                                $("#roadResult").html("<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.ajax.validation"/>");
                                 return;
                             }
                             if (data.length === 0) {
