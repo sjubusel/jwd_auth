@@ -10,6 +10,8 @@ public final class AjaxCommandName {
             = "FETCH-AREA-IN-CHANGE-PATIENT-INFO-JSP";
     public static final String FETCH_SETTLEMENT_IN_CHANGE_PATIENT_INFO_JSP
             = "FETCH-SETTLEMENT-IN-CHANGE-PATIENT-INFO-JSP";
+    public static final String FETCH_ROAD_IN_CHANGE_PATIENT_INFO_JSP
+            = "FETCH-ROAD-IN-CHANGE-PATIENT-INFO-JSP";
 
     private AjaxCommandName() {
     }
