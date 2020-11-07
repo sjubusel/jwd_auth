@@ -7,6 +7,7 @@ import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
 import by.epamtc.jwd.auth.model.ajax.AjaxArea;
 import by.epamtc.jwd.auth.model.ajax.AjaxCountry;
 import by.epamtc.jwd.auth.model.ajax.AjaxRegion;
+import by.epamtc.jwd.auth.model.ajax.AjaxSettlement;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
 
 import java.sql.Connection;
@@ -126,5 +127,47 @@ public class DefaultAjaxFetchDao implements AjaxFetchDao {
         }
 
         return areas;
+    }
+
+    @Override
+    public List<AjaxSettlement> fetchSettlements(int areaNumber,
+            String settlementInput) throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet rSet = null;
+        List<AjaxSettlement> settlements = new ArrayList<>();
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(
+                    "SELECT s.settlement_id, s.settlement_name, st.settlement_type_name, a.area_name\n" +
+                            "FROM hospital.settlements s\n" +
+                            "         JOIN hospital.settlement_types st ON s.settlement_type_id = st.settlement_type_id\n" +
+                            "         JOIN hospital.areas a ON s.area_id = a.area_id\n" +
+                            "WHERE s.area_id = ?\n" +
+                            "  AND s.settlement_name LIKE CONCAT('%', ?, '%');"
+            );
+            statement.setInt(1, areaNumber);
+            statement.setString(2, settlementInput);
+            rSet = statement.executeQuery();
+            while (rSet.next()) {
+                int settlementId = rSet.getInt(1);
+                String settlementName = rSet.getString(2) + AppConstant
+                        .ONE_WHITESPACE + rSet.getString(3);
+                String areaName = rSet.getString(4);
+                settlements.add(new AjaxSettlement(settlementId, settlementName,
+                        areaName));
+            }
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection from" +
+                    "the connection pool during ajax fetching of settlements", e);
+        } catch (SQLException e) {
+            throw new DaoException("An error while ajax fetching settlements " +
+                    "from DBs", e);
+        } finally {
+            pool.closeConnection(conn, statement, rSet);
+        }
+
+        return settlements;
     }
 }
