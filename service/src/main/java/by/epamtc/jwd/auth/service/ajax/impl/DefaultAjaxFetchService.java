@@ -74,7 +74,15 @@ public class DefaultAjaxFetchService implements AjaxFetchService {
     @Override
     public List<AjaxRoad> fetchRoads(String settlementId, String roadInput)
             throws ServiceException {
-
+        if (ajaxValidator.isInputValidForDependentFetch(settlementId,
+                roadInput)) {
+            int settlementNumber = Integer.parseInt(settlementId);
+            try {
+                return ajaxFetchDao.fetchRoads(settlementNumber, roadInput);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
         return null;
     }
 }
