@@ -180,3 +180,11 @@ profileSubMenu.changePatientInfo.ajax.pleaseCountry=Insert a country, please
 profileSubMenu.changePatientInfo.ajax.pleaseRegion=Insert a region, please
 profileSubMenu.changePatientInfo.ajax.pleaseArea=Insert an area, please
 profileSubMenu.changePatientInfo.ajax.pleaseSettlement=Insert a settlement, please
+
+profileSubMenu.changePatientInfo.idDocType=Type of an identity document
+profileSubMenu.changePatientInfo.idDocPassport=passport
+profileSubMenu.changePatientInfo.idDocBelarusResidenceVisa=Belarus residence visa
+profileSubMenu.changePatientInfo.idDocRefugeeIdentityCard=refugee identity card
+profileSubMenu.changePatientInfo.idDocSeries=Series of a document
+profileSubMenu.changePatientInfo.seriesPlaceholder=Insert a series (digits and latin characters)
+profileSubMenu.changePatientInfo.seriesPattern=[0-9A-Za-z]{1,255}

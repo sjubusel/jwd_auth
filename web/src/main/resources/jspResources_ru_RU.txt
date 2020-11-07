@@ -180,3 +180,11 @@ profileSubMenu.changePatientInfo.ajax.pleaseCountry=Пожалуйста, вве
 profileSubMenu.changePatientInfo.ajax.pleaseRegion=Пожалуйста, введите регион
 profileSubMenu.changePatientInfo.ajax.pleaseArea=Пожалуйста, введите район
 profileSubMenu.changePatientInfo.ajax.pleaseSettlement=Пожалуйста, введите населённый пункт
+
+profileSubMenu.changePatientInfo.idDocType=Тип документа, удостоверяющего личность
+profileSubMenu.changePatientInfo.idDocPassport=паспорт
+profileSubMenu.changePatientInfo.idDocBelarusResidenceVisa=вид на жительство в Республике Беларусь
+profileSubMenu.changePatientInfo.idDocRefugeeIdentityCard=удостоверение беженца
+profileSubMenu.changePatientInfo.idDocSeries=Серия документа
+profileSubMenu.changePatientInfo.seriesPlaceholder=Введите серию документа (цифры и латинские буквы)
+profileSubMenu.changePatientInfo.seriesPattern=[0-9A-Za-z]{1,255}
