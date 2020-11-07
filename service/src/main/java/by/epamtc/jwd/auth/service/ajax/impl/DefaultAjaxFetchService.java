@@ -35,7 +35,11 @@ public class DefaultAjaxFetchService implements AjaxFetchService {
             throws ServiceException {
         if (ajaxValidator.isInputValidForRegionFetch(countryId, regionInput)) {
             int countryNumber = Integer.parseInt(countryId);
-            return ajaxFetchDao.fetchRegions(countryNumber, regionInput);
+            try {
+                return ajaxFetchDao.fetchRegions(countryNumber, regionInput);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
         }
         return null;
     }
