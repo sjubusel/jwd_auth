@@ -740,7 +740,126 @@
                                         </c:otherwise>
                                     </c:choose>
                                 </div>
+                                <div id="changeIdDocumentBtn"
+                                     class="btn btn-secondary d-flex align-items-center"
+                                     onclick="changeIdDocument()">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.changePatientInfo.changeButton"/>
+                                </div>
                             </div>
+
+                            <div id="idDocumentInputs" style="display: none">
+                                <h6>Новый удостоверяющий личность документ</h6>
+                                <input type="hidden" id="isNewIdDocument"
+                                       name="isNewIdDocument" value="false"/>
+                                <div class="row mb-3">
+                                    <div class="col-4 d-flex align-items-center">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.idDocType"/>
+                                    </div>
+                                    <div class="col d-flex align-items-center">
+                                        <div class="form-control col form-check form-check-inline">
+                                            <input type="radio"
+                                                   class="form-check-input"
+                                                   id="passport"
+                                                   name="idDocumentInput"
+                                                   value="PASSPORT">
+                                            <label for="passport"
+                                                   class="form-check-label"
+                                                   style="margin-right: 10px">
+                                                <fmt:message
+                                                        bundle="${jspMessages}"
+                                                        key="profileSubMenu.changePatientInfo.idDocPassport"/>
+                                            </label>
+                                            <input type="radio"
+                                                   class="form-check-input"
+                                                   id="belarusResidenceVisa"
+                                                   name="idDocumentInput"
+                                                   value="BELARUS_RESIDENCE_VISA">
+                                            <label for="belarusResidenceVisa"
+                                                   class="form-check-label"
+                                                   style="margin-right: 10px">
+                                                <fmt:message
+                                                        bundle="${jspMessages}"
+                                                        key="profileSubMenu.changePatientInfo.idDocBelarusResidenceVisa"/>
+                                            </label>
+                                            <input type="radio"
+                                                   class="form-check-input"
+                                                   id="refugeeIdentityCard"
+                                                   name="idDocumentInput"
+                                                   value="REFUGEE_IDENTITY_CARD">
+                                            <label for="refugeeIdentityCard"
+                                                   class="form-check-label"
+                                                   style="margin-right: 10px">
+                                                <fmt:message
+                                                        bundle="${jspMessages}"
+                                                        key="profileSubMenu.changePatientInfo.idDocRefugeeIdentityCard"/>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group form-inline row">
+                                    <label for="series"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.idDocSeries"/>
+                                    </label>
+                                    <input type="text"
+                                           class="form-control col-5"
+                                           id="series"
+                                           name="seriesInput"
+                                           placeholder="<fmt:message bundle="${jspMessages}"
+                                                                           key="profileSubMenu.changePatientInfo.seriesPlaceholder"/>"
+                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.seriesPattern"/>"
+                                    />
+                                </div>
+                                <div class="form-group form-inline row">
+                                    <label for="idDocumentNumber"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.idDocIdDocumentNumber"/>
+                                    </label>
+                                    <input type="text"
+                                           class="form-control col-5"
+                                           id="idDocumentNumber"
+                                           name="idDocumentNumberInput"
+                                           placeholder="<fmt:message bundle="${jspMessages}"
+                                                                           key="profileSubMenu.changePatientInfo.idDocumentNumberPlaceholder"/>"
+                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.idDocumentNumberPattern"/>"
+                                    />
+                                </div>
+                                <div class="form-group form-inline row">
+                                    <label for="latinHolderName"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.idDocLatinHolderName"/>
+                                    </label>
+                                    <input type="text"
+                                           class="form-control col-5"
+                                           id="latinHolderName"
+                                           name="latinHolderNameInput"
+                                           placeholder="<fmt:message bundle="${jspMessages}"
+                                                                           key="profileSubMenu.changePatientInfo.latinHolderNamePlaceholder"/>"
+                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.latinHolderNamePattern"/>"
+                                    />
+                                </div>
+                                <div class="form-group form-inline row">
+                                    <label for="latinHolderSurname"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.idDocLatinHolderSurname"/>
+                                    </label>
+                                    <input type="text"
+                                           class="form-control col-5"
+                                           id="latinHolderSurname"
+                                           name="latinHolderSurnameInput"
+                                           placeholder="<fmt:message bundle="${jspMessages}"
+                                                                           key="profileSubMenu.changePatientInfo.latinHolderSurnamePlaceholder"/>"
+                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.latinHolderNamePattern"/>"
+                                    />
+                                </div>
+                            </div>
+
                             <hr>
                                 <%--11--%>
                             <div class="row mb-3">
