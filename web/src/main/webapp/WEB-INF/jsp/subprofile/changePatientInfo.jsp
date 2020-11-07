@@ -481,30 +481,251 @@
                             </div>
 
                             <div id="addressInputs" style="display: none">
+                                <h6>Новый адрес</h6>
+                                <input type="hidden"
+                                       id="isNewAddress"
+                                       name="isNewAddress"
+                                       value="false">
                                 <div class="form-group form-inline row">
-                                    <label for="some"
+                                    <label for="zipCode"
                                            class="col-4 custom-form-label">
                                         <fmt:message bundle="${jspMessages}"
-                                                     key="profileSubMenu.changePatientInfo.address."/>
+                                                     key="profileSubMenu.changePatientInfo.address.zipCode"/>
                                     </label>
                                     <input type="text"
                                            class="form-control col-5"
-                                           id="some"
-                                           name="" required
+                                           id="zipCode"
+                                           name="zipCodeInput"
                                            placeholder="<fmt:message bundle="${jspMessages}"
-                                       key="profileSubMenu.changePatientInfo.address"/>"
-                                           pattern="<fmt:message bundle="${regEx}" key="address."/>"
+                                       key="profileSubMenu.changePatientInfo.address.zipCodePlaceholder"/>"
+                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.zipCodePattern"/>"
+                                    />
+                                </div>
+                                <div class="form-group form-inline row">
+                                    <label for="country"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.address.country"/>
+                                    </label>
+                                    <input type="hidden" id="hiddenCountry"
+                                           name="hiddenCountryInput" value=""/>
+                                    <input type="text"
+                                           class="form-control col-5"
+                                           id="country"
+                                           name="countryInput"
+                                           placeholder="<fmt:message bundle="${jspMessages}"
+                                       key="profileSubMenu.changePatientInfo.address.countryPlaceholder"/>"
+                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.countryPattern"/>"
+                                    />
+                                </div>
+                                <div id="countryResult" class="overflow-auto"
+                                     style="max-height: 100px">
+                                </div>
+                                <div class="form-group form-inline row">
+                                    <label for="region"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.address.region"/>
+                                    </label>
+                                    <input type="hidden" id="hiddenRegion"
+                                           name="hiddenRegionInput" value=""/>
+                                    <input type="text"
+                                           class="form-control col-5"
+                                           id="region"
+                                           name="regionInput"
+                                           placeholder="<fmt:message bundle="${jspMessages}"
+                                       key="profileSubMenu.changePatientInfo.address.regionPlaceholder"/>"
+                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.regionPattern"/>"
+                                    />
+                                </div>
+                                <div id="regionResult" class="overflow-auto"
+                                     style="max-height: 100px">
+                                </div>
+                                <div class="form-group form-inline row">
+                                    <label for="area"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.address.area"/>
+                                    </label>
+                                    <input type="hidden" id="hiddenArea"
+                                           name="hiddenAreaInput" value=""/>
+                                    <input type="text"
+                                           class="form-control col-5"
+                                           id="area"
+                                           name="areaInput"
+                                           placeholder="<fmt:message bundle="${jspMessages}"
+                                       key="profileSubMenu.changePatientInfo.address.areaPlaceholder"/>"
+                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.areaPattern"/>"
+                                    />
+                                </div>
+                                <div id="areaResult" class="overflow-auto"
+                                     style="max-height: 100px">
+                                </div>
+                                <div class="form-group form-inline row">
+                                    <label for="settlement"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.address.settlement"/>
+                                    </label>
+                                    <input type="hidden" id="hiddenSettlement"
+                                           name="hiddenSettlementInput"
+                                           value=""/>
+                                    <input type="text"
+                                           class="form-control col-5"
+                                           id="settlement"
+                                           name="settlementInput"
+                                           placeholder="<fmt:message bundle="${jspMessages}"
+                                       key="profileSubMenu.changePatientInfo.address.settlementPlaceholder"/>"
+                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.settlementPattern"/>"
+                                    />
+                                </div>
+                                <div id="settlementResult" class="overflow-auto"
+                                     style="max-height: 100px">
+                                </div>
+                                <div class="form-group form-inline row">
+                                    <label for="road"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.address.road"/>
+                                    </label>
+                                    <input type="hidden" id="hiddenRoad"
+                                           name="hiddenRoadInput" value=""/>
+                                    <input type="text"
+                                           class="form-control col-5"
+                                           id="road"
+                                           name="roadInput"
+                                           placeholder="<fmt:message bundle="${jspMessages}"
+                                       key="profileSubMenu.changePatientInfo.address.roadPlaceholder"/>"
+                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.roadPattern"/>"
+                                    />
+                                </div>
+                                <div id="roadResult" class="overflow-auto"
+                                     style="max-height: 100px">
+                                </div>
+                                <div class="form-group form-inline row">
+                                    <label for="house"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.address.house"/>
+                                    </label>
+                                    <input type="text"
+                                           class="form-control col-5"
+                                           id="house"
+                                           name="houseInput"
+                                           placeholder="<fmt:message bundle="${jspMessages}"
+                                       key="profileSubMenu.changePatientInfo.address.housePlaceholder"/>"
+                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.housePattern"/>"
+                                    />
+                                </div>
+                                <div class="form-group form-inline row">
+                                    <label for="building"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.address.building"/>
+                                    </label>
+                                    <input type="text"
+                                           class="form-control col-5"
+                                           id="building"
+                                           name="buildingInput"
+                                           placeholder="<fmt:message bundle="${jspMessages}"
+                                       key="profileSubMenu.changePatientInfo.address.buildingPlaceholder"/>"
+                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.buildingPattern"/>"
+                                    />
+                                </div>
+                                <div class="form-group form-inline row">
+                                    <label for="room"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.address.room"/>
+                                    </label>
+                                    <input type="text"
+                                           class="form-control col-5"
+                                           id="room"
+                                           name="roomInput"
+                                           placeholder="<fmt:message bundle="${jspMessages}"
+                                       key="profileSubMenu.changePatientInfo.address.roomPlaceholder"/>"
+                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.roomPattern"/>"
                                     />
                                 </div>
                             </div>
 
                             <script>
                                 function changeAddress() {
-                                    // function clearInputValue(elementById) {
-                                    //     elementById.value = "";
-                                    // }
-                                    //
-                                    // clearInputValue(document.getElementById("addressInputsId"));
+                                    let addressInputsVar = document.getElementById("addressInputs");
+                                    let changeAddressBtnVar = document.getElementById("changeAddressBtn");
+                                    let isNewAddress = document.getElementById("isNewAddress");
+
+                                    let zipCode = document.getElementById("zipCode");
+                                    let house = document.getElementById("house");
+                                    let building = document.getElementById("building");
+                                    let room = document.getElementById("room");
+
+                                    let country = document.getElementById("country");
+                                    let hiddenCountry = document.getElementById("hiddenCountry");
+                                    let region = document.getElementById("region");
+                                    let hiddenRegion = document.getElementById("hiddenRegion");
+                                    let area = document.getElementById("area");
+                                    let hiddenArea = document.getElementById("hiddenArea");
+                                    let settlement = document.getElementById("settlement");
+                                    let hiddenSettlement = document.getElementById("hiddenSettlement");
+                                    let road = document.getElementById("road");
+                                    let hiddenRoad = document.getElementById("hiddenRoad");
+                                    if (addressInputsVar.style.display === "none") {
+                                        addressInputsVar.style.display = "block";
+                                        changeAddressBtnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.cancelChangeButton"/>";
+
+                                        zipCode.required = true;
+                                        house.required = true;
+
+                                        country.required = true;
+                                        hiddenCountry.required = true;
+                                        region.required = true;
+                                        hiddenRegion.required = true;
+                                        area.required = true;
+                                        hiddenArea.required = true;
+                                        settlement.required = true;
+                                        hiddenSettlement.required = true;
+                                        road.required = true;
+                                        hiddenRoad.required = true;
+
+                                        isNewAddress.value = "true";
+                                    } else {
+                                        addressInputsVar.style.display = "none";
+                                        changeAddressBtnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.changeButton"/>";
+
+                                        zipCode.required = false;
+                                        house.required = false;
+
+                                        country.required = false;
+                                        hiddenCountry.required = false;
+                                        region.required = false;
+                                        hiddenRegion.required = false;
+                                        area.required = false;
+                                        hiddenArea.required = false;
+                                        settlement.required = false;
+                                        hiddenSettlement.required = false;
+                                        road.required = false;
+                                        hiddenRoad.required = false;
+
+                                        zipCode.value = "";
+                                        house.value = "";
+                                        building.value = "";
+                                        room.value = "";
+
+                                        country.value = "";
+                                        hiddenCountry.value = "";
+                                        region.value = "";
+                                        hiddenRegion.value = "";
+                                        area.value = "";
+                                        hiddenArea.value = "";
+                                        settlement.value = "";
+                                        hiddenSettlement.value = "";
+                                        road.value = "";
+                                        hiddenRoad.value = "";
+
+
+                                        isNewAddress.value = "false";
+                                    }
                                 }
                             </script>
                             <hr>
