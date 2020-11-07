@@ -34,6 +34,15 @@
             src="${pageContext.request.contextPath}/js/jquery.maskedinput.js">
     </script>
     <script>
+        function changeHiddenInput(hiddenInputName, shownInputName, childRow, parent) {
+            let hiddenInput = document.getElementById(hiddenInputName);
+            let shownInput = document.getElementById(shownInputName);
+            hiddenInput.value = childRow.firstChild.innerHTML;
+            shownInput.value = childRow.lastChild.innerHTML;
+            parent.innerHTML = "Выбрано " + shownInput.value;
+            // alert("HiddenInput is " + hiddenInput.value);
+        }
+
         jQuery(document).ready(function () {
             $("#phoneNumberCountryCodeInput").mask("+9?99");
             $("#phoneNumberInnerCodeInput").mask("9?99");
@@ -42,6 +51,289 @@
             $("#emergencyPhoneNumberCountryCodeInput").mask("+9?99");
             $("#emergencyPhoneNumberInnerCodeInput").mask("9?99");
             $("#emergencyPhoneNumberInnerNumberInput").mask("999-99-99");
+
+            let searchRequestCountry = null;
+            $("#country").keyup(function () {
+                if (searchRequestCountry != null) {
+                    searchRequestCountry.abort();
+                }
+                let text = $(this).val();
+                if (text === "") {
+                    $("#countryResult").html("");
+                } else {
+                    $("#countryResult").html("");
+                    searchRequestCountry = $.ajax({
+                        url: "ajax?command=fetch-country-in-change-patient-info-jsp",
+                        method: "post",
+                        data: $("#country").serialize(),
+                        dataType: "json",
+                        success: function (data) {
+                            if (data === null) {
+                                $("#countryResult").html("VALID");
+                                return;
+                            }
+                            if (data.length === 0) {
+                                $("#countryResult").html("NOTHING");
+                                return;
+                            }
+                            let parent = document.getElementById("countryResult");
+                            for (let i = 0; i < data.length; i++) {
+                                let childRow = document.createElement("div");
+                                childRow.className += "row border list-group-item-action d-flex align-items-start";
+                                parent.appendChild(childRow);
+                                let childColId = document.createElement("div");
+                                childColId.className += "col border d-none justify-content-center";
+                                childRow.appendChild(childColId);
+                                childColId.innerHTML = data[i].countryId;
+                                childRow.setAttribute("onclick", "changeHiddenInput(\"hiddenCountry\", \"country\", this, this.parentElement);");
+
+                                let childColName = document.createElement("div");
+                                childColName.className += "col border d-flex justify-content-center";
+                                childRow.appendChild(childColName);
+                                childColName.innerHTML = data[i].countryName;
+                            }
+                        }
+                    });
+                }
+            });
+
+            let searchRequestRegion = null;
+            $("#region").keyup(function () {
+                if (searchRequestRegion != null) {
+                    searchRequestRegion.abort();
+                }
+                let text = $(this).val();
+                if (text === "") {
+                    $("#regionResult").html("");
+                } else {
+                    $("#regionResult").html("");
+                    let hiddenCountry = document.getElementById("hiddenCountry");
+                    if (hiddenCountry.value === "") {
+                        // alert("YES");
+                        $("#regionResult").html("Выберите сначала страну");
+                        return;
+                    }
+
+                    searchRequestRegion = $.ajax({
+                        url: "ajax?command=fetch-region-in-change-patient-info-jsp",
+                        method: "post",
+                        data: {
+                            regionInput: text,
+                            hiddenCountryId: hiddenCountry.value,
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            if (data === null) {
+                                $("#regionResult").html("VALID");
+                                return;
+                            }
+                            if (data.length === 0) {
+                                $("#regionResult").html("NOTHING");
+                                return;
+                            }
+                            let parent = document.getElementById("regionResult");
+                            for (let i = 0; i < data.length; i++) {
+                                let childRow = document.createElement("div");
+                                childRow.className += "row border list-group-item-action d-flex align-items-start";
+                                parent.appendChild(childRow);
+                                let childColId = document.createElement("div");
+                                childColId.className += "col border d-none justify-content-center";
+                                childRow.appendChild(childColId);
+                                childColId.innerHTML = data[i].regionId;
+                                childRow.setAttribute("onclick", "changeHiddenInput(\"hiddenRegion\", \"region\", this, this.parentElement);");
+
+                                let childColName = document.createElement("div");
+                                childColName.className += "col border d-flex justify-content-center";
+                                childRow.appendChild(childColName);
+                                childColName.innerHTML = data[i].countryName;
+
+                                let childColName2 = document.createElement("div");
+                                childColName2.className += "col border d-flex justify-content-center";
+                                childRow.appendChild(childColName2);
+                                childColName2.innerHTML = data[i].regionName;
+                            }
+                        }
+                    });
+                }
+            });
+
+            let searchRequestArea = null;
+            $("#area").keyup(function () {
+                if (searchRequestArea != null) {
+                    searchRequestArea.abort();
+                }
+                let text = $(this).val();
+                if (text === "") {
+                    $("#areaResult").html("");
+                } else {
+                    $("#areaResult").html("");
+                    let hiddenRegion = document.getElementById("hiddenRegion");
+                    if (hiddenRegion.value === "") {
+                        $("#areaResult").html("Выберите сначала регион");
+                        return;
+                    }
+
+                    searchRequestArea = $.ajax({
+                        url: "ajax?command=fetch-area-in-change-patient-info-jsp",
+                        method: "post",
+                        data: {
+                            areaInput: text,
+                            hiddenRegionId: hiddenRegion.value,
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            if (data === null) {
+                                $("#areaResult").html("VALID");
+                                return;
+                            }
+                            if (data.length === 0) {
+                                $("#areaResult").html("NOTHING");
+                                return;
+                            }
+                            let parent = document.getElementById("areaResult");
+                            for (let i = 0; i < data.length; i++) {
+                                let childRow = document.createElement("div");
+                                childRow.className += "row border list-group-item-action d-flex align-items-start";
+                                parent.appendChild(childRow);
+                                let childColId = document.createElement("div");
+                                childColId.className += "col border d-none justify-content-center";
+                                childRow.appendChild(childColId);
+                                childColId.innerHTML = data[i].areaId;
+                                childRow.setAttribute("onclick", "changeHiddenInput(\"hiddenArea\", \"area\", this, this.parentElement);");
+
+                                let childColName = document.createElement("div");
+                                childColName.className += "col border d-flex justify-content-center";
+                                childRow.appendChild(childColName);
+                                childColName.innerHTML = data[i].regionName;
+
+                                let childColName2 = document.createElement("div");
+                                childColName2.className += "col border d-flex justify-content-center";
+                                childRow.appendChild(childColName2);
+                                childColName2.innerHTML = data[i].areaName;
+                            }
+                        }
+                    });
+                }
+            });
+
+            let searchRequestSettlement = null;
+            $("#settlement").keyup(function () {
+                if (searchRequestSettlement != null) {
+                    searchRequestSettlement.abort();
+                }
+                let text = $(this).val();
+                if (text === "") {
+                    $("#settlementResult").html("");
+                } else {
+                    $("#settlementResult").html("");
+                    let hiddenArea = document.getElementById("hiddenArea");
+                    if (hiddenArea.value === "") {
+                        $("#settlementResult").html("Выберите сначала район");
+                        return;
+                    }
+
+                    searchRequestSettlement = $.ajax({
+                        url: "ajax?command=fetch-settlement-in-change-patient-info-jsp",
+                        method: "post",
+                        data: {
+                            settlementInput: text,
+                            hiddenAreaId: hiddenArea.value,
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            if (data === null) {
+                                $("#settlementResult").html("VALID");
+                                return;
+                            }
+                            if (data.length === 0) {
+                                $("#settlementResult").html("NOTHING");
+                                return;
+                            }
+                            let parent = document.getElementById("settlementResult");
+                            for (let i = 0; i < data.length; i++) {
+                                let childRow = document.createElement("div");
+                                childRow.className += "row border list-group-item-action d-flex align-items-start";
+                                parent.appendChild(childRow);
+                                let childColId = document.createElement("div");
+                                childColId.className += "col border d-none justify-content-center";
+                                childRow.appendChild(childColId);
+                                childColId.innerHTML = data[i].settlementId;
+                                childRow.setAttribute("onclick", "changeHiddenInput(\"hiddenSettlement\", \"settlement\", this, this.parentElement);");
+
+                                let childColName = document.createElement("div");
+                                childColName.className += "col border d-flex justify-content-center";
+                                childRow.appendChild(childColName);
+                                childColName.innerHTML = data[i].areaName;
+
+                                let childColName2 = document.createElement("div");
+                                childColName2.className += "col border d-flex justify-content-center";
+                                childRow.appendChild(childColName2);
+                                childColName2.innerHTML = data[i].settlementName;
+                            }
+                        }
+                    });
+                }
+            });
+
+            let searchRequestRoad = null;
+            $("#road").keyup(function () {
+                if (searchRequestRoad != null) {
+                    searchRequestRoad.abort();
+                }
+                let text = $(this).val();
+                if (text === "") {
+                    $("#roadResult").html("");
+                } else {
+                    $("#roadResult").html("");
+                    let hiddenSettlement = document.getElementById("hiddenSettlement");
+                    if (hiddenSettlement.value === "") {
+                        $("#roadResult").html("Выберите сначала населённый пункт");
+                        return;
+                    }
+
+                    searchRequestRoad = $.ajax({
+                        url: "ajax?command=fetch-road-in-change-patient-info-jsp",
+                        method: "post",
+                        data: {
+                            roadInput: text,
+                            hiddenSettlementId: hiddenSettlement.value,
+                        },
+                        dataType: "json",
+                        success: function (data) {
+                            if (data === null) {
+                                $("#roadResult").html("VALID");
+                                return;
+                            }
+                            if (data.length === 0) {
+                                $("#roadResult").html("NOTHING");
+                                return;
+                            }
+                            let parent = document.getElementById("roadResult");
+                            for (let i = 0; i < data.length; i++) {
+                                let childRow = document.createElement("div");
+                                childRow.className += "row border list-group-item-action d-flex align-items-start";
+                                parent.appendChild(childRow);
+                                let childColId = document.createElement("div");
+                                childColId.className += "col border d-none justify-content-center";
+                                childRow.appendChild(childColId);
+                                childColId.innerHTML = data[i].roadId;
+                                childRow.setAttribute("onclick", "changeHiddenInput(\"hiddenRoad\", \"road\", this, this.parentElement);");
+
+                                let childColName = document.createElement("div");
+                                childColName.className += "col border d-flex justify-content-center";
+                                childRow.appendChild(childColName);
+                                childColName.innerHTML = data[i].settlementName;
+
+                                let childColName2 = document.createElement("div");
+                                childColName2.className += "col border d-flex justify-content-center";
+                                childRow.appendChild(childColName2);
+                                childColName2.innerHTML = data[i].roadName;
+                            }
+                        }
+                    });
+                }
+            });
+
         });
     </script>
 </head>
