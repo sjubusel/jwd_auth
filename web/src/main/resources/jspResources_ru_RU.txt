@@ -194,3 +194,5 @@ profileSubMenu.changePatientInfo.idDocumentNumberPattern=[0-9]{1,255}
 profileSubMenu.changePatientInfo.idDocLatinHolderName=Имя латинскими буквами
 profileSubMenu.changePatientInfo.latinHolderNamePlaceholder=Введите имя латинскими буквами
 profileSubMenu.changePatientInfo.latinHolderNamePattern=[A-Za-z -]{1,255}
+profileSubMenu.changePatientInfo.idDocLatinHolderSurname=Фамилия латинскими буквами
+profileSubMenu.changePatientInfo.latinHolderSurnamePlaceholder=Введите фамилию латинскими буквами
