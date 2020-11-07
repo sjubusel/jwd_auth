@@ -186,7 +186,7 @@ public class DefaultAjaxFetchDao implements AjaxFetchDao {
                             "FROM hospital.roads r\n" +
                             "         JOIN hospital.road_types rt ON r.road_type_id = rt.road_type_id\n" +
                             "         JOIN hospital.settlements s ON r.settlement_id = s.settlement_id\n" +
-                            "WHERE r.road_id = ?\n" +
+                            "WHERE r.settlement_id = ?\n" +
                             "  AND r.road_name LIKE CONCAT('%', ?, '%');"
             );
             statement.setInt(1, settlementNumber);
