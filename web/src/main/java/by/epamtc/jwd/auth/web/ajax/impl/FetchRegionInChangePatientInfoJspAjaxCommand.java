@@ -36,11 +36,11 @@ public class FetchRegionInChangePatientInfoJspAjaxCommand implements AjaxCommand
     }
 
     //TODO create new class-singleton, which is to write
-    private void write(Object countries, HttpServletResponse res)
+    private void write(Object regions, HttpServletResponse res)
             throws IOException {
         res.setContentType("application/json");
         res.setCharacterEncoding("UTF-8");
         PrintWriter writer = res.getWriter();
-        writer.write(new Gson().toJson(countries));
+        writer.write(new Gson().toJson(regions));
     }
 }
