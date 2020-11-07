@@ -1,5 +1,6 @@
 package by.epamtc.jwd.auth.web.ajax.impl;
 
+import by.epamtc.jwd.auth.model.ajax.AjaxParameter;
 import by.epamtc.jwd.auth.model.ajax.AjaxRoad;
 import by.epamtc.jwd.auth.service.ajax.AjaxFetchService;
 import by.epamtc.jwd.auth.service.ajax.AjaxServiceFactory;
@@ -22,8 +23,8 @@ public class FetchRoadInChangePatientInfoJspAjaxCommand implements AjaxCommand {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        String settlementId = req.getParameter("hiddenSettlementId");
-        String roadInput = req.getParameter("roadInput");
+        String settlementId = req.getParameter(AjaxParameter.SETTLEMENT_ID);
+        String roadInput = req.getParameter(AjaxParameter.ROAD);
 
         List<AjaxRoad> roads = null;
         try {
@@ -32,8 +33,8 @@ public class FetchRoadInChangePatientInfoJspAjaxCommand implements AjaxCommand {
             // TODO log4j
         }
 
-        res.setContentType("application/json");
-        res.setCharacterEncoding("UTF-8");
+        res.setContentType(AjaxParameter.AJAX_CONTENT_TYPE);
+        res.setCharacterEncoding(AjaxParameter.AJAX_CHARACTER_ENCODING);
         PrintWriter writer = res.getWriter();
         writer.write(new Gson().toJson(roads));
     }
