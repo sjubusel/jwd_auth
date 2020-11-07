@@ -7,6 +7,7 @@ import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
 import by.epamtc.jwd.auth.model.ajax.AjaxArea;
 import by.epamtc.jwd.auth.model.ajax.AjaxCountry;
 import by.epamtc.jwd.auth.model.ajax.AjaxRegion;
+import by.epamtc.jwd.auth.model.ajax.AjaxRoad;
 import by.epamtc.jwd.auth.model.ajax.AjaxSettlement;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
 
@@ -169,5 +170,10 @@ public class DefaultAjaxFetchDao implements AjaxFetchDao {
         }
 
         return settlements;
+    }
+
+    @Override
+    public List<AjaxRoad> fetchRoads(int settlementNumber, String roadInput) throws DaoException {
+        return null;
     }
 }

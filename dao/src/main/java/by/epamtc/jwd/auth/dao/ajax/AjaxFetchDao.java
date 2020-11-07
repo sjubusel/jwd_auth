@@ -4,6 +4,7 @@ import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.model.ajax.AjaxArea;
 import by.epamtc.jwd.auth.model.ajax.AjaxCountry;
 import by.epamtc.jwd.auth.model.ajax.AjaxRegion;
+import by.epamtc.jwd.auth.model.ajax.AjaxRoad;
 import by.epamtc.jwd.auth.model.ajax.AjaxSettlement;
 
 import java.util.List;
@@ -19,4 +20,7 @@ public interface AjaxFetchDao {
 
     List<AjaxSettlement> fetchSettlements(int areaNumber,
             String settlementInput) throws DaoException;
+
+    List<AjaxRoad> fetchRoads(int settlementNumber, String roadInput)
+            throws DaoException;
 }
