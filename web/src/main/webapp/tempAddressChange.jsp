@@ -398,6 +398,65 @@
             }
         });
 
+        let searchRequestSettlement = null;
+        $("#settlement").keyup(function () {
+            if (searchRequestSettlement != null) {
+                searchRequestSettlement.abort();
+            }
+            let text = $(this).val();
+            if (text === "") {
+                $("#settlementResult").html("");
+            } else {
+                $("#settlementResult").html("");
+                let hiddenArea = document.getElementById("hiddenArea");
+                if (hiddenArea.value === "") {
+                    $("#settlementResult").html("Выберите сначала район");
+                    return;
+                }
+
+                searchRequestSettlement = $.ajax({
+                    url: "ajax?command=fetch-settlement-in-change-patient-info-jsp",
+                    method: "post",
+                    data: {
+                        settlementInput: text,
+                        hiddenAreaId: hiddenArea.value,
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        if (data === null) {
+                            $("#settlementResult").html("VALID");
+                            return;
+                        }
+                        if (data.length === 0) {
+                            $("#settlementResult").html("NOTHING");
+                            return;
+                        }
+                        let parent = document.getElementById("settlementResult");
+                        for (let i = 0; i < data.length; i++) {
+                            let childRow = document.createElement("div");
+                            childRow.className += "row border list-group-item-action d-flex align-items-start";
+                            parent.appendChild(childRow);
+                            let childColId = document.createElement("div");
+                            childColId.className += "col border d-none justify-content-center";
+                            childRow.appendChild(childColId);
+                            childColId.innerHTML = data[i].settlementId;
+                            childRow.setAttribute("onclick", "changeHiddenInput(\"hiddenSettlement\", \"settlement\", this, this.parentElement);");
+
+                            let childColName = document.createElement("div");
+                            childColName.className += "col border d-flex justify-content-center";
+                            childRow.appendChild(childColName);
+                            childColName.innerHTML = data[i].areaName;
+
+                            let childColName2 = document.createElement("div");
+                            childColName2.className += "col border d-flex justify-content-center";
+                            childRow.appendChild(childColName2);
+                            childColName2.innerHTML = data[i].settlementName;
+                        }
+                    }
+                });
+            }
+        });
+
     });
 </script>
 
