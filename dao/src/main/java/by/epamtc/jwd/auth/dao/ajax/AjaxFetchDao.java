@@ -1,6 +1,7 @@
 package by.epamtc.jwd.auth.dao.ajax;
 
 import by.epamtc.jwd.auth.dao.exception.DaoException;
+import by.epamtc.jwd.auth.model.ajax.AjaxArea;
 import by.epamtc.jwd.auth.model.ajax.AjaxCountry;
 import by.epamtc.jwd.auth.model.ajax.AjaxRegion;
 
