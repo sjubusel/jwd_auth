@@ -33,10 +33,24 @@ public class DefaultAjaxFetchService implements AjaxFetchService {
     @Override
     public List<AjaxRegion> fetchRegions(String countryId, String regionInput)
             throws ServiceException {
-        if (ajaxValidator.isInputValidForRegionFetch(countryId, regionInput)) {
+        if (ajaxValidator.isInputValidForDependentFetch(countryId, regionInput)) {
             int countryNumber = Integer.parseInt(countryId);
             try {
                 return ajaxFetchDao.fetchRegions(countryNumber, regionInput);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<AjaxRegion> fetchAreas(String regionId, String areaInput)
+            throws ServiceException {
+        if (ajaxValidator.isInputValidForDependentFetch(regionId, areaInput)) {
+            int regionNumber = Integer.parseInt(regionId);
+            try {
+                return ajaxFetchDao.fetchAreas(regionNumber, areaInput);
             } catch (DaoException e) {
                 throw new ServiceException(e);
             }
