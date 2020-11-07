@@ -1,5 +1,6 @@
 package by.epamtc.jwd.auth.web.ajax.impl;
 
+import by.epamtc.jwd.auth.model.ajax.AjaxRoad;
 import by.epamtc.jwd.auth.service.ajax.AjaxFetchService;
 import by.epamtc.jwd.auth.service.ajax.AjaxServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
