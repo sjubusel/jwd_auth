@@ -3,10 +3,7 @@ package by.epamtc.jwd.auth.service.ajax.impl;
 import by.epamtc.jwd.auth.dao.ajax.AjaxDaoFactory;
 import by.epamtc.jwd.auth.dao.ajax.AjaxFetchDao;
 import by.epamtc.jwd.auth.dao.exception.DaoException;
-import by.epamtc.jwd.auth.model.ajax.AjaxArea;
-import by.epamtc.jwd.auth.model.ajax.AjaxCountry;
-import by.epamtc.jwd.auth.model.ajax.AjaxRegion;
-import by.epamtc.jwd.auth.model.ajax.AjaxSettlement;
+import by.epamtc.jwd.auth.model.ajax.*;
 import by.epamtc.jwd.auth.service.ajax.AjaxFetchService;
 import by.epamtc.jwd.auth.service.ajax.validation.AjaxValidator;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
@@ -71,6 +68,13 @@ public class DefaultAjaxFetchService implements AjaxFetchService {
                 throw new ServiceException(e);
             }
         }
+        return null;
+    }
+
+    @Override
+    public List<AjaxRoad> fetchRoads(String settlementId, String roadInput)
+            throws ServiceException {
+
         return null;
     }
 }
