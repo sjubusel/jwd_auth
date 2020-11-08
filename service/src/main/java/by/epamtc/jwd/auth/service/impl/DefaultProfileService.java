@@ -34,7 +34,7 @@ public class DefaultProfileService implements ProfileService {
             AuthUser user) throws ServiceException {
         if (validator.isAuthUserValidToFetchPatientInfo(user)
                 && validator.isChangingPatientInfoValid(changingPatientInfo)) {
-//            return
+            return true;
         }
         return false;
     }
