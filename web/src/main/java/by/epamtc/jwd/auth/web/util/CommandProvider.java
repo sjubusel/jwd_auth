@@ -15,7 +15,7 @@ import by.epamtc.jwd.auth.web.util.impl.LogOutCommand;
 import by.epamtc.jwd.auth.web.util.impl.LoginCommand;
 import by.epamtc.jwd.auth.web.util.impl.MainCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileChangePatientInfoCommand;
-import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileChangePatientPhoto;
+import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileChangePatientPhotoCommand;
 import by.epamtc.jwd.auth.web.util.impl.RegisterCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileAllergicReactionsCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangeEmailCommand;
@@ -57,7 +57,7 @@ public class CommandProvider {
         repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO,
                 new GoToProfileChangePatientInformationCommand());
         repository.put("PROFILE-CHANGE-PATIENT-PHOTO",
-                new ProfileChangePatientPhoto());
+                new ProfileChangePatientPhotoCommand());
         repository.put("PROFILE-CHANGE-PATIENT-INFO",
                 new ProfileChangePatientInfoCommand());
 //        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_PHOTO,

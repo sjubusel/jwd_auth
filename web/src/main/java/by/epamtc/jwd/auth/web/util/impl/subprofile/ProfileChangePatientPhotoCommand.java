@@ -20,7 +20,7 @@ import java.io.InputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class ProfileChangePatientPhoto implements Command {
+public class ProfileChangePatientPhotoCommand implements Command {
     private ServiceFactory serviceFactory = ServiceFactory.getInstance();
     private UploadService uploadService = serviceFactory.getUploadService();
 
