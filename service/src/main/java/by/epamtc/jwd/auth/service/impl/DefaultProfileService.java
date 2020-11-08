@@ -33,7 +33,11 @@ public class DefaultProfileService implements ProfileService {
             AuthUser user) throws ServiceException {
         if (validator.isAuthUserValidToFetchPatientInfo(user)
                 && validator.isChangingPatientInfoValid(changingPatientInfo)) {
-            return true;
+            try {
+                return profileDao.changePatientInfo(changingPatientInfo, user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
         }
         return false;
     }
