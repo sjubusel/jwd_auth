@@ -1,7 +1,8 @@
 package by.epamtc.jwd.auth.model.user_info;
 
 public enum BloodType {
-    FIRST("I"), SECOND("II"), THIRD("III"), FORTH("IV");
+    FIRST("I"), SECOND("II"), THIRD("III"), FORTH("IV"),
+    UNKNOWN("unknown");
 
     private String value;
 

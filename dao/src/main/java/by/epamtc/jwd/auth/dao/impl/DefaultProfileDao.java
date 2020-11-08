@@ -416,7 +416,9 @@ public class DefaultProfileDao implements ProfileDao {
                 "WHERE p.person_id = ?;");
         statements.add(updatePatientWithBloodType);
 
-        updatePatientWithBloodType.setString(1, bloodType.name());
+        updatePatientWithBloodType.setString(1, bloodType != BloodType.UNKNOWN
+                                                ? bloodType.name()
+                                                : null);
         updatePatientWithBloodType.setInt(2, patientId);
 
         updatePatientWithBloodType.executeUpdate();
