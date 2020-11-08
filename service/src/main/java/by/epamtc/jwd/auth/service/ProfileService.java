@@ -6,4 +6,7 @@ import by.epamtc.jwd.auth.service.exception.ServiceException;
 
 public interface ProfileService {
     PatientInfo fetchPatientInfo(AuthUser authUser) throws ServiceException;
+
+    boolean changePatientInfo(PatientInfo changingPatientInfo, AuthUser user)
+            throws ServiceException;
 }

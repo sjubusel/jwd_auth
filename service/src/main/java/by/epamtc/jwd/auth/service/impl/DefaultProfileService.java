@@ -28,4 +28,14 @@ public class DefaultProfileService implements ProfileService {
         }
         return null;
     }
+
+    @Override
+    public boolean changePatientInfo(PatientInfo changingPatientInfo,
+            AuthUser user) throws ServiceException {
+        if (validator.isAuthUserValidToFetchPatientInfo(user)
+                && validator.isChangingPatientInfoValid(changingPatientInfo)) {
+//            return
+        }
+        return false;
+    }
 }
