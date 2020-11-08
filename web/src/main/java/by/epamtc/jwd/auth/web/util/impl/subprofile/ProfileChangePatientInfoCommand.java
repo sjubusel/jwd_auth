@@ -2,6 +2,7 @@ package by.epamtc.jwd.auth.web.util.impl.subprofile;
 
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
+import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.model.user_info.PatientInfo;
 import by.epamtc.jwd.auth.service.ProfileService;
 import by.epamtc.jwd.auth.service.ServiceFactory;
@@ -33,15 +34,33 @@ public class ProfileChangePatientInfoCommand implements Command {
             isChanged = profileService.changePatientInfo(changingPatientInfo, user);
         } catch (ServiceException e) {
             // TODO log4j
-//            sendRedirectWithTechError(req, res);
+            sendRedirectWithTechError(req, res);
             return;
         }
 
         if (!isChanged) {
-//            sendRedirectWithValidationError(req, res);
+            sendRedirectWithValidationError(req, res);
             return;
         }
 
-//        sendRedirectWithSuccessMessage(req, res);
+        sendRedirectWithSuccessMessage(req, res);
+    }
+
+    private void sendRedirectWithTechError(HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO_CHANGE_RESULT_TECH_ERROR);
+    }
+
+    private void sendRedirectWithValidationError(HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO_CHANGE_RESULT_VALID_ERROR);
+    }
+
+    private void sendRedirectWithSuccessMessage(HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO_CHANGE_RESULT_SUCCESS);
     }
 }
