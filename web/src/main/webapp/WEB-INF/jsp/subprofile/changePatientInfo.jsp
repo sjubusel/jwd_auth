@@ -517,14 +517,14 @@
                                     <div class="alert alert-success"
                                          role="alert">
                                         <fmt:message bundle="${jspMessages}"
-                                                     key="profileSubMenu.changePatientInfo.successfulChangeResult"/>
+                                                     key="profileSubMenu.changePatientInfo.changeResultSuccessful"/>
                                     </div>
                                 </c:when>
                                 <c:when test="${requestScope.changeResult eq 'techError'}">
                                     <div class="alert alert-danger"
                                          role="alert">
                                         <fmt:message bundle="${jspMessages}"
-                                                     key="profileSubMenu.changePatientInfo.changeResulttechError"/>
+                                                     key="profileSubMenu.changePatientInfo.changeResultTechError"/>
                                     </div>
                                 </c:when>
                                 <c:when test="${requestScope.changeResult eq 'validationError'}">

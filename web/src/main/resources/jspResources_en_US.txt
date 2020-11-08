@@ -194,3 +194,7 @@ profileSubMenu.changePatientInfo.idDocDateOfExpiry=Date of expiry
 profileSubMenu.changePatientInfo.idDocDateOfExpiryPlaceholder=Insert a date of expiry
 profileSubMenu.changePatientInfo.idDocIssueAuthority=Issuing authority
 profileSubMenu.changePatientInfo.idDocIssueAuthorityPlaceholder=Insert an authority, which issued a document
+
+profileSubMenu.changePatientInfo.changeResultSuccessful=Inputted data is successfully changed
+profileSubMenu.changePatientInfo.changeResultTechError=Because of a technical factor there is no possibility to change inputted data
+profileSubMenu.changePatientInfo.changeResultValidationError=Because of inputted incorrect data there is no possibility to change required information

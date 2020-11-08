@@ -194,3 +194,7 @@ profileSubMenu.changePatientInfo.idDocDateOfExpiry=Срок действия
 profileSubMenu.changePatientInfo.idDocDateOfExpiryPlaceholder=Введи срок действия
 profileSubMenu.changePatientInfo.idDocIssueAuthority=Орган, выдавший документ
 profileSubMenu.changePatientInfo.idDocIssueAuthorityPlaceholder=Введите орган, выдавший документ
+
+profileSubMenu.changePatientInfo.changeResultSuccessful=Введённые данные успешно изменены
+profileSubMenu.changePatientInfo.changeResultTechError=По техническим причинам изменить информацию не представилось возможным
+profileSubMenu.changePatientInfo.changeResultValidationError=По причине введённых некорректных данных изменить информацию не представилось возможным
