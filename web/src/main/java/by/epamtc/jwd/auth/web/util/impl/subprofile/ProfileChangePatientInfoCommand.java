@@ -33,15 +33,15 @@ public class ProfileChangePatientInfoCommand implements Command {
             isChanged = profileService.changePatientInfo(changingPatientInfo, user);
         } catch (ServiceException e) {
             // TODO log4j
-            sendRedirectWithTechError(req, res);
+//            sendRedirectWithTechError(req, res);
             return;
         }
 
         if (!isChanged) {
-            sendRedirectWithValidationError(req, res);
+//            sendRedirectWithValidationError(req, res);
             return;
         }
 
-        sendRedirectWithSuccessMessage(req, res);
+//        sendRedirectWithSuccessMessage(req, res);
     }
 }
