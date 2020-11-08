@@ -39,10 +39,16 @@ public class GoToProfileChangePatientInformationCommand implements Command {
                     .REQUEST_ERROR_VALUE_VAL);
         }
 
-        if (req.getParameter(AppParameter.PHOTO_UPLOAD_MESSAGE) != null) {
-            req.setAttribute(AppAttribute.REQUEST_PHOTO_UPLOAD,
-                    req.getParameter(AppParameter.PHOTO_UPLOAD_MESSAGE));
+        String photoUploadResult = req.getParameter(AppParameter.PHOTO_UPLOAD_MESSAGE);
+        if (photoUploadResult != null) {
+            req.setAttribute(AppAttribute.REQUEST_PHOTO_UPLOAD, photoUploadResult);
         }
+
+        String patientInfoChangeResult = req.getParameter(AppParameter.CHANGE_RESULT);
+        if (patientInfoChangeResult != null) {
+            req.setAttribute(AppParameter.CHANGE_RESULT, patientInfoChangeResult);
+        }
+
         req.setAttribute(AppAttribute.REQUEST_PATIENT_INFO, patientInfo);
         req.getRequestDispatcher(CommandPath.SUBPROFILE_CHANGE_PATIENT_INFO_JSP)
                 .forward(req, res);
