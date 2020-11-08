@@ -56,9 +56,9 @@ public class CommandProvider {
 //                new GoToProfileChangePasswordCommand());
         repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO,
                 new GoToProfileChangePatientInformationCommand());
-        repository.put("PROFILE-CHANGE-PATIENT-PHOTO",
+        repository.put(CommandName.SUBPROFILE_CHANGE_PATIENT_PHOTO,
                 new ProfileChangePatientPhotoCommand());
-        repository.put("PROFILE-CHANGE-PATIENT-INFO",
+        repository.put(CommandName.SUBPROFILE_CHANGE_PATIENT_INFO,
                 new ProfileChangePatientInfoCommand());
 //        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_PHOTO,
 //                new GoToProfileChangePhotoCommand());
