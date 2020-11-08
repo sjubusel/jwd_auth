@@ -6,4 +6,7 @@ import by.epamtc.jwd.auth.model.user_info.PatientInfo;
 
 public interface ProfileDao {
     PatientInfo fetchPatientInfo(AuthUser authUser) throws DaoException;
+
+    boolean changePatientInfo(PatientInfo changingPatientInfo, AuthUser user)
+            throws DaoException;
 }
