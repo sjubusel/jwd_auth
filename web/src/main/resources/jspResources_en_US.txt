@@ -200,3 +200,6 @@ profileSubMenu.changePatientInfo.idDocCitizenship=Citizenship
 profileSubMenu.changePatientInfo.idDocPersonalNumber=Personal number
 profileSubMenu.changePatientInfo.idDocPersonalNumberPlaceholder=Insert a personal number (digits, latin characters are allowed)
 profileSubMenu.changePatientInfo.idDocPersonalNumberPattern=[0-9A-Za-z]{1,255}
+profileSubMenu.changePatientInfo.idDocPlaceOfOrigin=Place of origin
+profileSubMenu.changePatientInfo.idDocPlaceOfOriginPlaceholder=Insert a country and other administrative divisions, where you born
+profileSubMenu.changePatientInfo.idDocPlaceOfOriginPattern=[0-9A-Za-zА-Яа-яЁё -]{1,255}

@@ -200,3 +200,6 @@ profileSubMenu.changePatientInfo.idDocCitizenship=Гражданство
 profileSubMenu.changePatientInfo.idDocPersonalNumber=Личный номер
 profileSubMenu.changePatientInfo.idDocPersonalNumberPlaceholder=Введите личный номер (допускаются цифры, латинские буквы)
 profileSubMenu.changePatientInfo.idDocPersonalNumberPattern=[0-9A-Za-z]{1,255}
+profileSubMenu.changePatientInfo.idDocPlaceOfOrigin=Место происхождения
+profileSubMenu.changePatientInfo.idDocPlaceOfOriginPlaceholder=Введите страну и иные административно-территориальную единицы, где Вы родились
+profileSubMenu.changePatientInfo.idDocPlaceOfOriginPattern=[0-9A-Za-zА-Яа-яЁё -]{1,255}
