@@ -1073,90 +1073,90 @@
                                 </div>
                             </div>
 
-<%--                            <script>--%>
-<%--                                function changeIdDocument() {--%>
-<%--                                    let addressInputsVar = document.getElementById("addressInputs");--%>
-<%--                                    let changeAddressBtnVar = document.getElementById("changeAddressBtn");--%>
-<%--                                    let isNewAddress = document.getElementById("isNewAddress");--%>
+                                    <script>
+                                        function changeIdDocument() {
+                                            let addressInputsVar = document.getElementById("addressInputs");
+                                            let changeAddressBtnVar = document.getElementById("changeAddressBtn");
+                                            let isNewAddress = document.getElementById("isNewAddress");
 
-<%--                                    let zipCode = document.getElementById("zipCode");--%>
-<%--                                    let house = document.getElementById("house");--%>
-<%--                                    let building = document.getElementById("building");--%>
-<%--                                    let room = document.getElementById("room");--%>
+                                            let zipCode = document.getElementById("zipCode");
+                                            let house = document.getElementById("house");
+                                            let building = document.getElementById("building");
+                                            let room = document.getElementById("room");
 
-<%--                                    let country = document.getElementById("country");--%>
-<%--                                    let hiddenCountry = document.getElementById("hiddenCountry");--%>
-<%--                                    let region = document.getElementById("region");--%>
-<%--                                    let hiddenRegion = document.getElementById("hiddenRegion");--%>
-<%--                                    let area = document.getElementById("area");--%>
-<%--                                    let hiddenArea = document.getElementById("hiddenArea");--%>
-<%--                                    let settlement = document.getElementById("settlement");--%>
-<%--                                    let hiddenSettlement = document.getElementById("hiddenSettlement");--%>
-<%--                                    let road = document.getElementById("road");--%>
-<%--                                    let hiddenRoad = document.getElementById("hiddenRoad");--%>
-<%--                                    if (addressInputsVar.style.display === "none") {--%>
-<%--                                        addressInputsVar.style.display = "block";--%>
-<%--                                        changeAddressBtnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.cancelChangeButton"/>";--%>
+                                            let country = document.getElementById("country");
+                                            let hiddenCountry = document.getElementById("hiddenCountry");
+                                            let region = document.getElementById("region");
+                                            let hiddenRegion = document.getElementById("hiddenRegion");
+                                            let area = document.getElementById("area");
+                                            let hiddenArea = document.getElementById("hiddenArea");
+                                            let settlement = document.getElementById("settlement");
+                                            let hiddenSettlement = document.getElementById("hiddenSettlement");
+                                            let road = document.getElementById("road");
+                                            let hiddenRoad = document.getElementById("hiddenRoad");
+                                            if (addressInputsVar.style.display === "none") {
+                                                addressInputsVar.style.display = "block";
+                                                changeAddressBtnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.cancelChangeButton"/>";
 
-<%--                                        zipCode.required = true;--%>
-<%--                                        house.required = true;--%>
+                                                zipCode.required = true;
+                                                house.required = true;
 
-<%--                                        country.required = true;--%>
-<%--                                        hiddenCountry.required = true;--%>
-<%--                                        region.required = true;--%>
-<%--                                        hiddenRegion.required = true;--%>
-<%--                                        area.required = true;--%>
-<%--                                        hiddenArea.required = true;--%>
-<%--                                        settlement.required = true;--%>
-<%--                                        hiddenSettlement.required = true;--%>
-<%--                                        road.required = true;--%>
-<%--                                        hiddenRoad.required = true;--%>
+                                                country.required = true;
+                                                hiddenCountry.required = true;
+                                                region.required = true;
+                                                hiddenRegion.required = true;
+                                                area.required = true;
+                                                hiddenArea.required = true;
+                                                settlement.required = true;
+                                                hiddenSettlement.required = true;
+                                                road.required = true;
+                                                hiddenRoad.required = true;
 
-<%--                                        isNewAddress.value = "true";--%>
-<%--                                    } else {--%>
-<%--                                        addressInputsVar.style.display = "none";--%>
-<%--                                        changeAddressBtnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.changeButton"/>";--%>
+                                                isNewAddress.value = "true";
+                                            } else {
+                                                addressInputsVar.style.display = "none";
+                                                changeAddressBtnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.changeButton"/>";
 
-<%--                                        zipCode.required = false;--%>
-<%--                                        house.required = false;--%>
+                                                zipCode.required = false;
+                                                house.required = false;
 
-<%--                                        country.required = false;--%>
-<%--                                        hiddenCountry.required = false;--%>
-<%--                                        region.required = false;--%>
-<%--                                        hiddenRegion.required = false;--%>
-<%--                                        area.required = false;--%>
-<%--                                        hiddenArea.required = false;--%>
-<%--                                        settlement.required = false;--%>
-<%--                                        hiddenSettlement.required = false;--%>
-<%--                                        road.required = false;--%>
-<%--                                        hiddenRoad.required = false;--%>
+                                                country.required = false;
+                                                hiddenCountry.required = false;
+                                                region.required = false;
+                                                hiddenRegion.required = false;
+                                                area.required = false;
+                                                hiddenArea.required = false;
+                                                settlement.required = false;
+                                                hiddenSettlement.required = false;
+                                                road.required = false;
+                                                hiddenRoad.required = false;
 
-<%--                                        zipCode.value = "";--%>
-<%--                                        house.value = "";--%>
-<%--                                        building.value = "";--%>
-<%--                                        room.value = "";--%>
+                                                zipCode.value = "";
+                                                house.value = "";
+                                                building.value = "";
+                                                room.value = "";
 
-<%--                                        country.value = "";--%>
-<%--                                        hiddenCountry.value = "";--%>
-<%--                                        region.value = "";--%>
-<%--                                        hiddenRegion.value = "";--%>
-<%--                                        area.value = "";--%>
-<%--                                        hiddenArea.value = "";--%>
-<%--                                        settlement.value = "";--%>
-<%--                                        hiddenSettlement.value = "";--%>
-<%--                                        road.value = "";--%>
-<%--                                        hiddenRoad.value = "";--%>
+                                                country.value = "";
+                                                hiddenCountry.value = "";
+                                                region.value = "";
+                                                hiddenRegion.value = "";
+                                                area.value = "";
+                                                hiddenArea.value = "";
+                                                settlement.value = "";
+                                                hiddenSettlement.value = "";
+                                                road.value = "";
+                                                hiddenRoad.value = "";
 
-<%--                                        isNewAddress.value = "false";--%>
+                                                isNewAddress.value = "false";
 
-<%--                                        document.getElementById("countryResult").innerHTML = "";--%>
-<%--                                        document.getElementById("regionResult").innerHTML = "";--%>
-<%--                                        document.getElementById("areaResult").innerHTML = "";--%>
-<%--                                        document.getElementById("settlementResult").innerHTML = "";--%>
-<%--                                        document.getElementById("roadResult").innerHTML = "";--%>
-<%--                                    }--%>
-<%--                                }--%>
-<%--                            </script>--%>
+                                                document.getElementById("countryResult").innerHTML = "";
+                                                document.getElementById("regionResult").innerHTML = "";
+                                                document.getElementById("areaResult").innerHTML = "";
+                                                document.getElementById("settlementResult").innerHTML = "";
+                                                document.getElementById("roadResult").innerHTML = "";
+                                            }
+                                        }
+                                    </script>
 
                             <hr>
                                 <%--11--%>
