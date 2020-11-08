@@ -511,6 +511,39 @@
                     </h1>
                     <form action="${pageContext.request.contextPath}/profile"
                           method="post" onsubmit="verifyOnSubmitIfChanged()">
+                        <c:if test="${requestScope.changeResult ne null}">
+                            <c:choose>
+                                <c:when test="${requestScope.changeResult eq 'success'}">
+                                    <div class="alert alert-success"
+                                         role="alert">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.successfulChangeResult"/>
+                                    </div>
+                                </c:when>
+                                <c:when test="${requestScope.changeResult eq 'techError'}">
+                                    <div class="alert alert-danger"
+                                         role="alert">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.changeResulttechError"/>
+                                    </div>
+                                </c:when>
+                                <c:when test="${requestScope.changeResult eq 'validationError'}">
+                                    <div class="alert alert-danger"
+                                         role="alert">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.changeResultValidationError"/>
+                                    </div>
+                                </c:when>
+                                <c:otherwise>
+                                    <div class="alert alert-danger"
+                                         role="alert">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="main.unknownCondition"/>
+                                    </div>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:if>
+
                         <input type="hidden" name="command"
                                value="profile-change-patient-info"/>
 
