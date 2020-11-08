@@ -1075,7 +1075,7 @@
 
                                     <script>
                                         function changeIdDocument() {
-                                            let addressInputsVar = document.getElementById("addressInputs");
+                                            let idDocumentInputsVar = document.getElementById("idDocumentInputs");
                                             let changeAddressBtnVar = document.getElementById("changeAddressBtn");
                                             let isNewAddress = document.getElementById("isNewAddress");
 
@@ -1094,8 +1094,8 @@
                                             let hiddenSettlement = document.getElementById("hiddenSettlement");
                                             let road = document.getElementById("road");
                                             let hiddenRoad = document.getElementById("hiddenRoad");
-                                            if (addressInputsVar.style.display === "none") {
-                                                addressInputsVar.style.display = "block";
+                                            if (idDocumentInputsVar.style.display === "none") {
+                                                idDocumentInputsVar.style.display = "block";
                                                 changeAddressBtnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.cancelChangeButton"/>";
 
                                                 zipCode.required = true;
@@ -1114,7 +1114,7 @@
 
                                                 isNewAddress.value = "true";
                                             } else {
-                                                addressInputsVar.style.display = "none";
+                                                idDocumentInputsVar.style.display = "none";
                                                 changeAddressBtnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.changeButton"/>";
 
                                                 zipCode.required = false;
