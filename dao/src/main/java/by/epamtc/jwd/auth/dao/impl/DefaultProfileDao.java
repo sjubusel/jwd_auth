@@ -155,22 +155,51 @@ public class DefaultProfileDao implements ProfileDao {
         String middleName = rSet.getString(3);
         String lastName = rSet.getString(4);
         LocalDate birthday = rSet.getDate(5).toLocalDate();
-        Gender gender = Gender.valueOf(rSet.getString(6));
+        Gender gender = null;
+        String genderString = rSet.getString(6);
+        if (genderString != null) {
+            gender = Gender.valueOf(genderString);
+        }
+
         String email = rSet.getString(7);
         String phoneNumber = rSet.getString(8);
-        MaritalStatus maritalStatus = MaritalStatus.valueOf(rSet.getString(9));
+
+        MaritalStatus maritalStatus = null;
+        String maritalStatusString = rSet.getString(9);
+        if (maritalStatusString != null) {
+            maritalStatus = MaritalStatus.valueOf(maritalStatusString);
+        }
 
         IdentityDocument identityDocument = compileIdentityDocument(rSet);
         Address address = compileAddress(rSet);
 
         String inCaseOfEmergencyPerson = rSet.getString(39);
         String inCaseOfEmergencyPhone = rSet.getString(40);
-        BloodType bloodType = BloodType.valueOf(rSet.getString(41));
-        RhBloodGroup rhBlood = RhBloodGroup.valueOf(rSet.getString(42));
-        DisabilityDegree disabilityDegree = DisabilityDegree.valueOf
-                (rSet.getString(43));
-        TransportationStatus transStatus = TransportationStatus.valueOf
-                (rSet.getString(44));
+
+        BloodType bloodType = null;
+        String bloodTypeString = rSet.getString(41);
+        if (bloodTypeString != null) {
+            bloodType = BloodType.valueOf(bloodTypeString);
+        }
+
+        RhBloodGroup rhBlood = null;
+        String rhBloodString = rSet.getString(42);
+        if (rhBloodString != null) {
+            rhBlood = RhBloodGroup.valueOf(rhBloodString);
+        }
+
+        DisabilityDegree disabilityDegree = null;
+        String disabilityDegreeString = rSet.getString(43);
+        if (disabilityDegreeString != null) {
+            disabilityDegree = DisabilityDegree.valueOf(disabilityDegreeString);
+        }
+
+        TransportationStatus transStatus = null;
+        String transStatusString = rSet.getString(44);
+        if (transStatusString != null) {
+            transStatus = TransportationStatus.valueOf(transStatusString);
+        }
+
         boolean hasAllergyToFood = rSet.getBoolean(45);
         boolean hasAllergyToMedicine = rSet.getBoolean(46);
         boolean hasExtremelyHazardousDiseases = rSet.getBoolean(47);
