@@ -176,6 +176,8 @@ public class ChangingInfoCompiler {
             String issueAuthorityInput = req.getParameter("issueAuthorityInput");
             issueAuthorityInput = compileNullReferenceIfEmpty(issueAuthorityInput);
             identityDocument.setIssueAuthority(issueAuthorityInput);
+
+            return identityDocument;
         }
         return null;
     }
@@ -221,6 +223,7 @@ public class ChangingInfoCompiler {
             roomInput = compileNullReferenceIfEmpty(roomInput);
             address.setRoom(roomInput);
 
+            return address;
         }
         return null;
     }
