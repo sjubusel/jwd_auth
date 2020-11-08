@@ -23,6 +23,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class DefaultProfileDao implements ProfileDao {
     private ConnectionPool pool = ConnectionPool.getInstance();
@@ -59,6 +60,92 @@ public class DefaultProfileDao implements ProfileDao {
         }
 
         return patientInfo;
+    }
+
+    @Override
+    public boolean changePatientInfo(PatientInfo changingInfo,
+            AuthUser user) throws DaoException {
+        Connection conn = null;
+        ArrayList<PreparedStatement> statements = new ArrayList<>(12);
+
+        try {
+            conn = pool.takeConnection();
+            conn.setAutoCommit(false);
+
+            int patientId = user.getUserId();
+            String phoneNumber = changingInfo.getPhoneNumber();
+            if (phoneNumber != null) {
+                changePatientPhoneNumber(phoneNumber, patientId, conn,
+                        statements);
+            }
+
+            MaritalStatus maritalStatus = changingInfo.getMaritalStatus();
+            if (maritalStatus != null) {
+                changeMaritalStatus(maritalStatus, patientId, conn, statements);
+            }
+
+            IdentityDocument idDocument = changingInfo.getIdentityDocument();
+            if (idDocument != null) {
+                changeIdentityDocument(idDocument, patientId, conn, statements);
+            }
+
+            Address address = changingInfo.getHomeAddress();
+            if (address != null) {
+                changeAddress(address, patientId, conn, statements);
+            }
+
+            String emergencyContactPersonInfo = changingInfo
+                    .getInCaseOfEmergencyContactPersonInfo();
+            if (emergencyContactPersonInfo != null) {
+                changeEmergencyCaseContactPersonInfo(emergencyContactPersonInfo,
+                        patientId, conn, statements);
+            }
+
+            String emergencyContactPersonPhone = changingInfo
+                    .getInCaseOfEmergencyContactPersonPhone();
+            if (emergencyContactPersonPhone != null) {
+                changeEmergencyContactPersonPhone(emergencyContactPersonPhone,
+                        patientId, conn, statements);
+            }
+
+            BloodType bloodType = changingInfo.getBloodType();
+            if (bloodType != null) {
+                changeBloodType(bloodType, patientId, conn, statements);
+            }
+
+            RhBloodGroup rhBloodGroup = changingInfo.getRhBloodGroup();
+            if (rhBloodGroup != null) {
+                changeRhBloodGroup(rhBloodGroup, patientId, conn, statements);
+            }
+
+            DisabilityDegree disabilityDegree = changingInfo.getDisabilityDegree();
+            if (disabilityDegree != null) {
+                changeDisabilityDegree(disabilityDegree, patientId, conn,
+                        statements);
+            }
+
+            TransportationStatus transportationStatus = changingInfo
+                    .getTransportationStatus();
+            if (transportationStatus != null) {
+                changeTransportationStatus(transportationStatus, patientId,
+                        conn, statements);
+            }
+
+            conn.commit();
+
+        } catch (ConnectionPoolException e) {
+            pool.rollBackTransaction(conn);
+            throw new DaoException("An error while taking a connection from " +
+                    "the connection pool during changing of patient info", e);
+        } catch (SQLException e) {
+            pool.rollBackTransaction(conn);
+            throw new DaoException("An error while changing data from DB " +
+                    "(patient info)", e);
+        } finally {
+            pool.closeConnection(conn, statements);
+        }
+
+        return true;
     }
 
     private PatientInfo compilePatientInfo(ResultSet rSet) throws SQLException {
@@ -156,5 +243,190 @@ public class DefaultProfileDao implements ProfileDao {
                     areaName, settleName, roadName, house, building, room);
         }
         return null;
+    }
+
+    private void changePatientPhoneNumber(String phoneNumber, int patientId,
+            Connection conn, ArrayList<PreparedStatement> statements)
+            throws SQLException {
+        PreparedStatement phoneNumberInsertStatement = conn.prepareStatement("UPDATE hospital.persons p\n" +
+                "SET p.phone_number = ?\n" +
+                "WHERE p.person_id = ?");
+        statements.add(phoneNumberInsertStatement);
+
+        phoneNumberInsertStatement.setString(1, phoneNumber);
+        phoneNumberInsertStatement.setInt(2, patientId);
+
+        phoneNumberInsertStatement.executeUpdate();
+    }
+
+    private void changeMaritalStatus(MaritalStatus maritalStatus, int patientId,
+            Connection conn, ArrayList<PreparedStatement> statements)
+            throws SQLException {
+        PreparedStatement mStatusUpdateStatement = conn.prepareStatement("UPDATE hospital.persons p\n" +
+                "SET p.marital_status = ?\n" +
+                "WHERE p.person_id = ?;");
+        statements.add(mStatusUpdateStatement);
+
+        mStatusUpdateStatement.setString(1, maritalStatus.name());
+        mStatusUpdateStatement.setInt(2, patientId);
+
+        mStatusUpdateStatement.executeUpdate();
+    }
+
+    private void changeIdentityDocument(IdentityDocument idDocument, int patientId,
+            Connection conn, ArrayList<PreparedStatement> statements)
+            throws SQLException {
+        PreparedStatement idDocInsertStatement = conn
+                .prepareStatement("INSERT INTO hospital.identification_documents (person_id, identification_document_type_id, series,\n" +
+                        "                                               serial_number_of_document, latin_holder_name, latin_holder_surname,\n" +
+                        "                                               citizenship_id, birth_date, personal_number, gender, place_of_origin,\n" +
+                        "                                               date_of_issue, date_of_expiry, issue_authority)\n" +
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+        statements.add(idDocInsertStatement);
+
+        idDocInsertStatement.setInt(1, patientId);
+        IdentificationDocumentType idType = idDocument.getIdentificationDocumentType();
+        idDocInsertStatement.setInt(2, idType.getTypeId());
+        idDocInsertStatement.setString(3, idDocument.getSeries());
+        idDocInsertStatement.setInt(4, idDocument.getDocumentNumber());
+        idDocInsertStatement.setString(5, idDocument.getLatinHolderName());
+        idDocInsertStatement.setString(6, idDocument.getLatinHolderSurName());
+        int citizenshipId = Integer.parseInt(idDocument.getCitizenShip());
+        idDocInsertStatement.setInt(7, citizenshipId);
+        idDocInsertStatement.setObject(8, idDocument.getBirthday());
+        idDocInsertStatement.setString(9, idDocument.getPersonalNumber());
+        Gender gender = idDocument.getGender();
+        idDocInsertStatement.setString(10, gender.name());
+        idDocInsertStatement.setString(11, idDocument.getPlaceOfOrigin());
+        idDocInsertStatement.setObject(12, idDocument.getDateOfIssue());
+        idDocInsertStatement.setObject(13, idDocument.getDateOfExpiry());
+        idDocInsertStatement.setString(14, idDocument.getIssueAuthority());
+
+        int idOfIdentityDocument = idDocInsertStatement.executeUpdate();
+
+        PreparedStatement updatePatientWithIdDoc = conn.prepareStatement("UPDATE hospital.persons p\n" +
+                "SET p.identification_document_id = ?\n" +
+                "WHERE p.person_id = ?;");
+        statements.add(updatePatientWithIdDoc);
+
+        updatePatientWithIdDoc.setInt(1, idOfIdentityDocument);
+        updatePatientWithIdDoc.setInt(2, patientId);
+
+        updatePatientWithIdDoc.executeUpdate();
+    }
+
+    private void changeAddress(Address address, int patientId, Connection conn,
+            ArrayList<PreparedStatement> statements) throws SQLException {
+        PreparedStatement addressInsertStatement = conn.prepareStatement("INSERT INTO hospital.addresses (zip_code, road_id, house, building, room)\n" +
+                "VALUES (?, ?, ?, ?, ?);");
+        statements.add(addressInsertStatement);
+
+        addressInsertStatement.setString(1, address.getZipCode());
+        int road_id = Integer.parseInt(address.getRoad());
+        addressInsertStatement.setInt(2, road_id);
+        addressInsertStatement.setString(3, address.getHouse());
+        addressInsertStatement.setString(4, address.getBuilding());
+        addressInsertStatement.setString(5, address.getRoom());
+
+        int addressId = addressInsertStatement.executeUpdate();
+
+        PreparedStatement updatePatientWithNewAddress = conn.prepareStatement("UPDATE hospital.persons p \n" +
+                "SET p.permanent_home_address_id = ?\n" +
+                "WHERE p.person_id = ?;");
+        statements.add(updatePatientWithNewAddress);
+
+        updatePatientWithNewAddress.setInt(1, addressId);
+        updatePatientWithNewAddress.setInt(2, patientId);
+
+        updatePatientWithNewAddress.executeUpdate();
+    }
+
+    private void changeEmergencyCaseContactPersonInfo(String emergencyContactPersonInfo,
+            int patientId, Connection conn, ArrayList<PreparedStatement> statements)
+            throws SQLException {
+        PreparedStatement updatePatientWithEmergencyPersonInfo = conn
+                .prepareStatement("UPDATE hospital.persons p\n" +
+                        "SET p.in_case_of_emergency_person_id = ?\n" +
+                        "WHERE p.person_id = ?;");
+        statements.add(updatePatientWithEmergencyPersonInfo);
+
+        updatePatientWithEmergencyPersonInfo.setString(1,
+                emergencyContactPersonInfo);
+        updatePatientWithEmergencyPersonInfo.setInt(2, patientId);
+
+        updatePatientWithEmergencyPersonInfo.executeUpdate();
+    }
+
+    private void changeEmergencyContactPersonPhone(String emergencyContactPhone,
+            int patientId, Connection conn, ArrayList<PreparedStatement> statements)
+            throws SQLException {
+        PreparedStatement updatePatientWithEmergencyPersonPhone = conn
+                .prepareStatement("UPDATE hospital.persons p\n" +
+                        "SET p.in_case_of_emergency_phone_number = ?\n" +
+                        "WHERE p.person_id = ?;");
+        statements.add(updatePatientWithEmergencyPersonPhone);
+
+        updatePatientWithEmergencyPersonPhone.setString(1,
+                emergencyContactPhone);
+        updatePatientWithEmergencyPersonPhone.setInt(2, patientId);
+
+        updatePatientWithEmergencyPersonPhone.executeUpdate();
+    }
+
+    private void changeBloodType(BloodType bloodType, int patientId,
+            Connection conn, ArrayList<PreparedStatement> statements)
+            throws SQLException {
+        PreparedStatement updatePatientWithBloodType = conn.prepareStatement("UPDATE hospital.persons p \n" +
+                "SET p.blood_type = ?\n" +
+                "WHERE p.person_id = ?;");
+        statements.add(updatePatientWithBloodType);
+
+        updatePatientWithBloodType.setString(1, bloodType.name());
+        updatePatientWithBloodType.setInt(2, patientId);
+
+        updatePatientWithBloodType.executeUpdate();
+    }
+
+    private void changeRhBloodGroup(RhBloodGroup rhBloodGroup, int patientId,
+            Connection conn, ArrayList<PreparedStatement> statements)
+            throws SQLException {
+        PreparedStatement updatePatientWithRhGroup = conn.prepareStatement("UPDATE hospital.persons p\n" +
+                "SET p.rhesus_factor = ?\n" +
+                "WHERE p.person_id = ?;");
+        statements.add(updatePatientWithRhGroup);
+
+        updatePatientWithRhGroup.setString(1, rhBloodGroup.name());
+        updatePatientWithRhGroup.setInt(2, patientId);
+
+        updatePatientWithRhGroup.executeUpdate();
+    }
+
+    private void changeDisabilityDegree(DisabilityDegree disabilityDegree,
+            int patientId, Connection conn, ArrayList<PreparedStatement> statements)
+            throws SQLException {
+        PreparedStatement updatePatientWithDisability = conn.prepareStatement("UPDATE hospital.persons p\n" +
+                "SET p.disability_degree = ?\n" +
+                "WHERE p.person_id = ?;");
+        statements.add(updatePatientWithDisability);
+
+        updatePatientWithDisability.setString(1, disabilityDegree
+                .name());
+        updatePatientWithDisability.setInt(2, patientId);
+
+        updatePatientWithDisability.executeUpdate();
+    }
+
+    private void changeTransportationStatus(TransportationStatus status,
+            int patientId, Connection conn, ArrayList<PreparedStatement> statements)
+            throws SQLException {
+        PreparedStatement updateTransportationStatus = conn.prepareStatement("UPDATE hospital.persons p\n" +
+                "SET p.transportation_status = ?\n" +
+                "WHERE p.person_id = ?;");
+        statements.add(updateTransportationStatus);
+
+        updateTransportationStatus.setString(1, status.name());
+        updateTransportationStatus.setInt(2, patientId);
+
+        updateTransportationStatus.executeUpdate();
     }
 }
