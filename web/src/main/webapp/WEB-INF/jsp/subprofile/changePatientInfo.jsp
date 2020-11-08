@@ -1076,8 +1076,8 @@
                                     <script>
                                         function changeIdDocument() {
                                             let idDocumentInputsVar = document.getElementById("idDocumentInputs");
-                                            let changeAddressBtnVar = document.getElementById("changeAddressBtn");
-                                            let isNewAddress = document.getElementById("isNewAddress");
+                                            let changeIdDocumentBtnVar = document.getElementById("changeIdDocumentBtn");
+                                            let isNewIdDocument = document.getElementById("isNewIdDocument");
 
                                             let zipCode = document.getElementById("zipCode");
                                             let house = document.getElementById("house");
@@ -1096,7 +1096,7 @@
                                             let hiddenRoad = document.getElementById("hiddenRoad");
                                             if (idDocumentInputsVar.style.display === "none") {
                                                 idDocumentInputsVar.style.display = "block";
-                                                changeAddressBtnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.cancelChangeButton"/>";
+                                                changeIdDocumentBtnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.cancelChangeButton"/>";
 
                                                 zipCode.required = true;
                                                 house.required = true;
@@ -1112,10 +1112,10 @@
                                                 road.required = true;
                                                 hiddenRoad.required = true;
 
-                                                isNewAddress.value = "true";
+                                                isNewIdDocument.value = "true";
                                             } else {
                                                 idDocumentInputsVar.style.display = "none";
-                                                changeAddressBtnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.changeButton"/>";
+                                                changeIdDocumentBtnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.changeButton"/>";
 
                                                 zipCode.required = false;
                                                 house.required = false;
@@ -1147,7 +1147,7 @@
                                                 road.value = "";
                                                 hiddenRoad.value = "";
 
-                                                isNewAddress.value = "false";
+                                                isNewIdDocument.value = "false";
 
                                                 document.getElementById("countryResult").innerHTML = "";
                                                 document.getElementById("regionResult").innerHTML = "";
