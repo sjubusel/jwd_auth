@@ -62,7 +62,7 @@ public class RegistrationInfoCompiler {
                 middleName, lastName, birthdayDate, genderEnum);
     }
 
-    private String compilePhoneNumber(String phoneCountryCode,
+    public String compilePhoneNumber(String phoneCountryCode,
             String phoneInnerCode, String phoneInnerNumber) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(phoneCountryCode)
@@ -75,7 +75,7 @@ public class RegistrationInfoCompiler {
         return new String(stringBuilder);
     }
 
-    private LocalDate compileBirthdayDate(String birthday) {
+    public LocalDate compileBirthdayDate(String birthday) {
         LocalDate birthdayDate = null;
         try {
             birthdayDate = LocalDate.parse(birthday, DateTimeFormatter.ISO_DATE);
@@ -86,7 +86,7 @@ public class RegistrationInfoCompiler {
         return birthdayDate;
     }
 
-    private Gender compileGenderEnum(String gender) {
+    public Gender compileGenderEnum(String gender) {
         Gender[] availableGenders = Gender.values();
         for (Gender genderEnum : availableGenders) {
             if (gender.equals(genderEnum.getGenderName())) {
