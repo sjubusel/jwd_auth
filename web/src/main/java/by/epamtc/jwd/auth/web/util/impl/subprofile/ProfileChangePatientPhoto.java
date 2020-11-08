@@ -1,4 +1,4 @@
-package by.epamtc.jwd.auth.web.util.impl;
+package by.epamtc.jwd.auth.web.util.impl.subprofile;
 
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;

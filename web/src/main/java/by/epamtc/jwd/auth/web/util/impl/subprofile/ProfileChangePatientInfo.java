@@ -1,4 +1,4 @@
-package by.epamtc.jwd.auth.web.util.impl;
+package by.epamtc.jwd.auth.web.util.impl.subprofile;
 
 import by.epamtc.jwd.auth.web.util.Command;
 
