@@ -797,7 +797,7 @@
                                 </div>
                             </div>
 
-                            <div id="idDocumentInputs" style="display: block">
+                            <div id="idDocumentInputs" style="display: none">
                                 <h6>Новый удостоверяющий личность документ</h6>
                                 <input type="hidden" id="isNewIdDocument"
                                        name="isNewIdDocument" value="false"/>
@@ -940,7 +940,7 @@
                                     <input type="date"
                                            class="form-control col"
                                            id="birthday"
-                                           name="birthdayInput" required
+                                           name="birthdayInput"
                                            placeholder="<fmt:message bundle="${jspMessages}"
                    key="register.birthdayInput.placeholder"/>"
                                            alt="<fmt:message bundle="${jspMessages}"
@@ -951,7 +951,7 @@
                                        class="form-text text-muted col">
                                     <fmt:message bundle="${jspMessages}"
                                                  key="register.birthdayDescription"/>
-                                </small
+                                </small>
 
                                 <div class="form-group form-inline row">
                                     <label for="personalNumber"
@@ -1073,90 +1073,101 @@
                                 </div>
                             </div>
 
-                                    <script>
-                                        function changeIdDocument() {
-                                            let idDocumentInputsVar = document.getElementById("idDocumentInputs");
-                                            let changeIdDocumentBtnVar = document.getElementById("changeIdDocumentBtn");
-                                            let isNewIdDocument = document.getElementById("isNewIdDocument");
+                            <script>
+                                function changeIdDocument() {
+                                    let idDocumentInputsVar = document.getElementById("idDocumentInputs");
+                                    let changeIdDocumentBtnVar = document.getElementById("changeIdDocumentBtn");
+                                    let isNewIdDocument = document.getElementById("isNewIdDocument");
 
-                                            let zipCode = document.getElementById("zipCode");
-                                            let house = document.getElementById("house");
-                                            let building = document.getElementById("building");
-                                            let room = document.getElementById("room");
+                                    let passport = document.getElementById("passport");
+                                    let belarusResidenceVisa = document.getElementById("belarusResidenceVisa");
+                                    let refugeeIdentityCard = document.getElementById("refugeeIdentityCard");
+                                    let series = document.getElementById("series");
+                                    let idDocumentNumber = document.getElementById("idDocumentNumber");
+                                    let latinHolderName = document.getElementById("latinHolderName");
+                                    let latinHolderSurname = document.getElementById("latinHolderSurname");
+                                    let hiddenCitizenship = document.getElementById("hiddenCitizenship");
+                                    let citizenship = document.getElementById("citizenship");
+                                    let birthday = document.getElementById("birthday");
+                                    let personalNumber = document.getElementById("personalNumber");
+                                    let maleRadioInput = document.getElementById("maleRadioInput");
+                                    let femaleRadioInput = document.getElementById("femaleRadioInput");
+                                    let otherRadioInput = document.getElementById("otherRadioInput");
+                                    let placeOfOrigin = document.getElementById("placeOfOrigin");
+                                    let dateOfIssue = document.getElementById("dateOfIssue");
+                                    let dateOfExpiry = document.getElementById("dateOfExpiry");
+                                    let issueAuthority = document.getElementById("issueAuthority");
 
-                                            let country = document.getElementById("country");
-                                            let hiddenCountry = document.getElementById("hiddenCountry");
-                                            let region = document.getElementById("region");
-                                            let hiddenRegion = document.getElementById("hiddenRegion");
-                                            let area = document.getElementById("area");
-                                            let hiddenArea = document.getElementById("hiddenArea");
-                                            let settlement = document.getElementById("settlement");
-                                            let hiddenSettlement = document.getElementById("hiddenSettlement");
-                                            let road = document.getElementById("road");
-                                            let hiddenRoad = document.getElementById("hiddenRoad");
-                                            if (idDocumentInputsVar.style.display === "none") {
-                                                idDocumentInputsVar.style.display = "block";
-                                                changeIdDocumentBtnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.cancelChangeButton"/>";
+                                    if (idDocumentInputsVar.style.display === "none") {
+                                        idDocumentInputsVar.style.display = "block";
+                                        changeIdDocumentBtnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.cancelChangeButton"/>";
 
-                                                zipCode.required = true;
-                                                house.required = true;
+                                        passport.checked = true;
+                                        belarusResidenceVisa.checked = false;
+                                        refugeeIdentityCard.checked = false;
 
-                                                country.required = true;
-                                                hiddenCountry.required = true;
-                                                region.required = true;
-                                                hiddenRegion.required = true;
-                                                area.required = true;
-                                                hiddenArea.required = true;
-                                                settlement.required = true;
-                                                hiddenSettlement.required = true;
-                                                road.required = true;
-                                                hiddenRoad.required = true;
+                                        series.required = false;
+                                        idDocumentNumber.required = true;
+                                        latinHolderName.required = true;
+                                        latinHolderSurname.required = true;
+                                        hiddenCitizenship.required = true;
+                                        citizenship.required = true;
+                                        birthday.required = true;
+                                        personalNumber.required = true;
 
-                                                isNewIdDocument.value = "true";
-                                            } else {
-                                                idDocumentInputsVar.style.display = "none";
-                                                changeIdDocumentBtnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.changeButton"/>";
+                                        maleRadioInput.checked = true;
+                                        femaleRadioInput.checked = false;
+                                        otherRadioInput.checked = false;
 
-                                                zipCode.required = false;
-                                                house.required = false;
+                                        placeOfOrigin.required = true;
+                                        dateOfIssue.required = true;
+                                        dateOfExpiry.required = true;
+                                        issueAuthority.required = true;
 
-                                                country.required = false;
-                                                hiddenCountry.required = false;
-                                                region.required = false;
-                                                hiddenRegion.required = false;
-                                                area.required = false;
-                                                hiddenArea.required = false;
-                                                settlement.required = false;
-                                                hiddenSettlement.required = false;
-                                                road.required = false;
-                                                hiddenRoad.required = false;
+                                        isNewIdDocument.value = "true";
+                                    } else {
+                                        idDocumentInputsVar.style.display = "none";
+                                        changeIdDocumentBtnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.changeButton"/>";
 
-                                                zipCode.value = "";
-                                                house.value = "";
-                                                building.value = "";
-                                                room.value = "";
+                                        passport.checked = false;
+                                        belarusResidenceVisa.checked = false;
+                                        refugeeIdentityCard.checked = false;
 
-                                                country.value = "";
-                                                hiddenCountry.value = "";
-                                                region.value = "";
-                                                hiddenRegion.value = "";
-                                                area.value = "";
-                                                hiddenArea.value = "";
-                                                settlement.value = "";
-                                                hiddenSettlement.value = "";
-                                                road.value = "";
-                                                hiddenRoad.value = "";
+                                        series.required = false;
+                                        idDocumentNumber.required = false;
+                                        latinHolderName.required = false;
+                                        latinHolderSurname.required = false;
+                                        hiddenCitizenship.required = false;
+                                        citizenship.required = false;
+                                        birthday.required = false;
+                                        personalNumber.required = false;
 
-                                                isNewIdDocument.value = "false";
+                                        maleRadioInput.checked = false;
+                                        femaleRadioInput.checked = false;
+                                        otherRadioInput.checked = false;
 
-                                                document.getElementById("countryResult").innerHTML = "";
-                                                document.getElementById("regionResult").innerHTML = "";
-                                                document.getElementById("areaResult").innerHTML = "";
-                                                document.getElementById("settlementResult").innerHTML = "";
-                                                document.getElementById("roadResult").innerHTML = "";
-                                            }
-                                        }
-                                    </script>
+                                        placeOfOrigin.required = false;
+                                        dateOfIssue.required = false;
+                                        dateOfExpiry.required = false;
+                                        issueAuthority.required = false;
+
+                                        series.value = null;
+                                        idDocumentNumber.value = null;
+                                        latinHolderName.value = null;
+                                        latinHolderSurname.value = null;
+                                        hiddenCitizenship.value = null;
+                                        citizenship.value = null;
+                                        birthday.value = null;
+                                        personalNumber.value = null;
+                                        placeOfOrigin.value = null;
+                                        dateOfIssue.value = null;
+                                        dateOfExpiry.value = null;
+                                        issueAuthority.value = null;
+
+                                        isNewIdDocument.value = "false";
+                                    }
+                                }
+                            </script>
 
                             <hr>
                                 <%--11--%>
@@ -1829,6 +1840,12 @@
                             </div>
 
                         </div>
+
+                        <button type="submit"
+                                class="btn align-self-center btn-primary">
+                            <fmt:message bundle="${jspMessages}"
+                                         key="profileSubMenu.changePatientInfo.changePhoto"/>
+                        </button>
 
                     </form>
 
