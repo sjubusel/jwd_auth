@@ -797,7 +797,7 @@
                                 </div>
                             </div>
 
-                            <div id="idDocumentInputs" style="display: none">
+                            <div id="idDocumentInputs" style="display: block">
                                 <h6>Новый удостоверяющий личность документ</h6>
                                 <input type="hidden" id="isNewIdDocument"
                                        name="isNewIdDocument" value="false"/>
@@ -806,7 +806,7 @@
                                         <fmt:message bundle="${jspMessages}"
                                                      key="profileSubMenu.changePatientInfo.idDocType"/>
                                     </div>
-                                    <div class="col d-flex align-items-center">
+                                    <div class="col pl-0 d-flex align-items-center">
                                         <div class="form-control col form-check form-check-inline">
                                             <input type="radio"
                                                    class="form-check-input"
@@ -931,7 +931,232 @@
                                      style="max-height: 100px">
                                 </div>
 
+                                <div class="form-group form-inline row">
+                                    <label for="birthday"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="register.birthdayInputLabel"/>
+                                    </label>
+                                    <input type="date"
+                                           class="form-control col"
+                                           id="birthday"
+                                           name="birthdayInput" required
+                                           placeholder="<fmt:message bundle="${jspMessages}"
+                   key="register.birthdayInput.placeholder"/>"
+                                           alt="<fmt:message bundle="${jspMessages}"
+                   key="register.birthdayInput.placeholder"/>"/>
+                                </div>
+                                <div id="birthdayIndent" class="col-4"></div>
+                                <small id="birthdayDescription"
+                                       class="form-text text-muted col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="register.birthdayDescription"/>
+                                </small
+
+                                <div class="form-group form-inline row">
+                                    <label for="personalNumber"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.idDocPersonalNumber"/>
+                                    </label>
+                                    <input type="text"
+                                           class="form-control col"
+                                           id="personalNumber"
+                                           name="personalNumberInput"
+                                           placeholder="<fmt:message bundle="${jspMessages}"
+                                                                           key="profileSubMenu.changePatientInfo.idDocPersonalNumberPlaceholder"/>"
+                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.idDocPersonalNumberPattern"/>"
+                                    />
+                                </div>
+
+                                <div class="form-group form-inline row">
+                                    <label class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="register.GenderInputLabel"/>
+                                    </label>
+                                    <div class="form-control col-5 form-check form-check-inline">
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="maleRadioInput"
+                                               name="gender" value="male">
+                                        <label for="maleRadioInput"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="register.gender.male"/>
+                                        </label>
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="femaleRadioInput"
+                                               name="gender" value="female">
+                                        <label for="femaleRadioInput"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="register.gender.female"/>
+                                        </label>
+                                        <input type="radio"
+                                               class="form-check-input"
+                                               id="otherRadioInput"
+                                               name="gender" value="other">
+                                        <label for="otherRadioInput"
+                                               class="form-check-label"
+                                               style="margin-right: 10px">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="register.gender.other"/>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group form-inline row">
+                                    <label for="placeOfOrigin"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.idDocPlaceOfOrigin"/>
+                                    </label>
+                                    <input type="text"
+                                           class="form-control col"
+                                           id="placeOfOrigin"
+                                           name="placeOfOriginInput"
+                                           placeholder="<fmt:message bundle="${jspMessages}"
+                                                                           key="profileSubMenu.changePatientInfo.idDocPlaceOfOriginPlaceholder"/>"
+                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.idDocPlaceOfOriginPattern"/>"
+                                    />
+                                </div>
+
+                                <div class="form-group form-inline row">
+                                    <label for="dateOfIssue"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.idDocDateOfIssue"/>
+                                    </label>
+                                    <input type="date"
+                                           class="form-control col"
+                                           id="dateOfIssue"
+                                           name="dateOfIssueInput"
+                                           placeholder="<fmt:message bundle="${jspMessages}"
+                   key="profileSubMenu.changePatientInfo.idDocDateOfIssuePlaceholder"/>"
+                                           alt="<fmt:message bundle="${jspMessages}"
+                   key="profileSubMenu.changePatientInfo.idDocDateOfIssuePlaceholder"/>"/>
+                                </div>
+
+                                <div class="form-group form-inline row">
+                                    <label for="dateOfExpiry"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.idDocDateOfExpiry"/>
+                                    </label>
+                                    <input type="date"
+                                           class="form-control col"
+                                           id="dateOfExpiry"
+                                           name="dateOfExpiryInput"
+                                           placeholder="<fmt:message bundle="${jspMessages}"
+                   key="profileSubMenu.changePatientInfo.idDocDateOfExpiryPlaceholder"/>"
+                                           alt="<fmt:message bundle="${jspMessages}"
+                   key="profileSubMenu.changePatientInfo.idDocDateOfExpiryPlaceholder"/>"/>
+                                </div>
+
+                                <div class="form-group form-inline row">
+                                    <label for="issueAuthority"
+                                           class="col-4 custom-form-label">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.changePatientInfo.idDocIssueAuthority"/>
+                                    </label>
+                                    <input type="text"
+                                           class="form-control col"
+                                           id="issueAuthority"
+                                           name="issueAuthorityInput"
+                                           placeholder="<fmt:message bundle="${jspMessages}"
+                                                                           key="profileSubMenu.changePatientInfo.idDocIssueAuthorityPlaceholder"/>"
+                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.idDocIssueAuthorityPattern"/>"
+                                    />
+                                </div>
                             </div>
+
+<%--                            <script>--%>
+<%--                                function changeIdDocument() {--%>
+<%--                                    let addressInputsVar = document.getElementById("addressInputs");--%>
+<%--                                    let changeAddressBtnVar = document.getElementById("changeAddressBtn");--%>
+<%--                                    let isNewAddress = document.getElementById("isNewAddress");--%>
+
+<%--                                    let zipCode = document.getElementById("zipCode");--%>
+<%--                                    let house = document.getElementById("house");--%>
+<%--                                    let building = document.getElementById("building");--%>
+<%--                                    let room = document.getElementById("room");--%>
+
+<%--                                    let country = document.getElementById("country");--%>
+<%--                                    let hiddenCountry = document.getElementById("hiddenCountry");--%>
+<%--                                    let region = document.getElementById("region");--%>
+<%--                                    let hiddenRegion = document.getElementById("hiddenRegion");--%>
+<%--                                    let area = document.getElementById("area");--%>
+<%--                                    let hiddenArea = document.getElementById("hiddenArea");--%>
+<%--                                    let settlement = document.getElementById("settlement");--%>
+<%--                                    let hiddenSettlement = document.getElementById("hiddenSettlement");--%>
+<%--                                    let road = document.getElementById("road");--%>
+<%--                                    let hiddenRoad = document.getElementById("hiddenRoad");--%>
+<%--                                    if (addressInputsVar.style.display === "none") {--%>
+<%--                                        addressInputsVar.style.display = "block";--%>
+<%--                                        changeAddressBtnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.cancelChangeButton"/>";--%>
+
+<%--                                        zipCode.required = true;--%>
+<%--                                        house.required = true;--%>
+
+<%--                                        country.required = true;--%>
+<%--                                        hiddenCountry.required = true;--%>
+<%--                                        region.required = true;--%>
+<%--                                        hiddenRegion.required = true;--%>
+<%--                                        area.required = true;--%>
+<%--                                        hiddenArea.required = true;--%>
+<%--                                        settlement.required = true;--%>
+<%--                                        hiddenSettlement.required = true;--%>
+<%--                                        road.required = true;--%>
+<%--                                        hiddenRoad.required = true;--%>
+
+<%--                                        isNewAddress.value = "true";--%>
+<%--                                    } else {--%>
+<%--                                        addressInputsVar.style.display = "none";--%>
+<%--                                        changeAddressBtnVar.innerText = "<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.changeButton"/>";--%>
+
+<%--                                        zipCode.required = false;--%>
+<%--                                        house.required = false;--%>
+
+<%--                                        country.required = false;--%>
+<%--                                        hiddenCountry.required = false;--%>
+<%--                                        region.required = false;--%>
+<%--                                        hiddenRegion.required = false;--%>
+<%--                                        area.required = false;--%>
+<%--                                        hiddenArea.required = false;--%>
+<%--                                        settlement.required = false;--%>
+<%--                                        hiddenSettlement.required = false;--%>
+<%--                                        road.required = false;--%>
+<%--                                        hiddenRoad.required = false;--%>
+
+<%--                                        zipCode.value = "";--%>
+<%--                                        house.value = "";--%>
+<%--                                        building.value = "";--%>
+<%--                                        room.value = "";--%>
+
+<%--                                        country.value = "";--%>
+<%--                                        hiddenCountry.value = "";--%>
+<%--                                        region.value = "";--%>
+<%--                                        hiddenRegion.value = "";--%>
+<%--                                        area.value = "";--%>
+<%--                                        hiddenArea.value = "";--%>
+<%--                                        settlement.value = "";--%>
+<%--                                        hiddenSettlement.value = "";--%>
+<%--                                        road.value = "";--%>
+<%--                                        hiddenRoad.value = "";--%>
+
+<%--                                        isNewAddress.value = "false";--%>
+
+<%--                                        document.getElementById("countryResult").innerHTML = "";--%>
+<%--                                        document.getElementById("regionResult").innerHTML = "";--%>
+<%--                                        document.getElementById("areaResult").innerHTML = "";--%>
+<%--                                        document.getElementById("settlementResult").innerHTML = "";--%>
+<%--                                        document.getElementById("roadResult").innerHTML = "";--%>
+<%--                                    }--%>
+<%--                                }--%>
+<%--                            </script>--%>
 
                             <hr>
                                 <%--11--%>
