@@ -40,23 +40,84 @@ public class ChangingInfoCompiler {
     public PatientInfo compileChangingPatientInfo(HttpServletRequest req) {
         PatientInfo patientInfo = new PatientInfo();
 
+        String newPhoneNumber = compileNewPhone(req);
+        patientInfo.setPhoneNumber(newPhoneNumber);
+
+        String maritalStatusInput = req.getParameter("maritalStatusInput");
+        MaritalStatus maritalStatus = compileMaritalStatus(maritalStatusInput);
+        patientInfo.setMaritalStatus(maritalStatus);
+
+        IdentityDocument identityDocument = compileIdentityDocument(req);
+        patientInfo.setIdentityDocument(identityDocument);
+
+        Address address = compileAddress(req);
+        patientInfo.setHomeAddress(address);
+
+        String contactPersonInput = req.getParameter("inCaseOfEmergencyContactPersonInfoInput");
+        contactPersonInput = compileNullReferenceIfEmpty(contactPersonInput);
+        patientInfo.setInCaseOfEmergencyContactPersonInfo(contactPersonInput);
+
+        String emergencyNumber = compileEmergencyNumber(req);
+        patientInfo.setInCaseOfEmergencyContactPersonPhone(emergencyNumber);
+
+        String bloodTypeInput = req.getParameter("bloodTypeInput");
+        BloodType bloodTypeEnum = compileBloodTypeEnum(bloodTypeInput);
+        patientInfo.setBloodType(bloodTypeEnum);
+
+        String rhBloodGroupInput = req.getParameter("rhBloodGroupInput");
+        RhBloodGroup rhBloodGroupEnum = compileRhBloodGroupEnum(rhBloodGroupInput);
+        patientInfo.setRhBloodGroup(rhBloodGroupEnum);
+
+        String disabilityDegreeInput = req.getParameter("disabilityDegreeInput");
+        DisabilityDegree disabilityDegreeEnum = compileDisabilityDegree(disabilityDegreeInput);
+        patientInfo.setDisabilityDegree(disabilityDegreeEnum);
+
+        String transportationStatusInput = req.getParameter("transportationStatusInput");
+        TransportationStatus transportationStatus = compileTransStatusEnum(transportationStatusInput);
+        patientInfo.setTransportationStatus(transportationStatus);
+
+        return patientInfo;
+    }
+
+    private String compileNewPhone(HttpServletRequest req) {
         boolean isNewPhone = Boolean.parseBoolean(req.getParameter("isNewPhone"));
         if (isNewPhone) {
             String phoneNumberCountryCode = req.getParameter("phoneNumberCountryCode");
             String phoneNumberInnerCode = req.getParameter("phoneNumberInnerCode");
             String phoneNumberInnerNumber = req.getParameter("phoneNumberInnerNumber");
-            String newPhoneNumber = regInfCompiler.compilePhoneNumber(phoneNumberCountryCode,
+            return regInfCompiler.compilePhoneNumber(phoneNumberCountryCode,
                     phoneNumberInnerCode, phoneNumberInnerNumber);
-            patientInfo.setPhoneNumber(newPhoneNumber);
         }
+        return null;
+    }
 
-//      compileMaritalStatus(maritalStatusInput)
-        String maritalStatusInput = req.getParameter("maritalStatusInput");
+    private DisabilityDegree compileDisabilityDegree(String disabilityDegreeInput) {
+        if (disabilityDegreeInput != null) {
+            DisabilityDegree[] disabilityDegrees = DisabilityDegree.values();
+            for (DisabilityDegree disabilityDegree : disabilityDegrees) {
+                if (Integer.parseInt(disabilityDegreeInput) == disabilityDegree.getValue()) {
+                    return disabilityDegree;
+                }
+            }
+        }
+        return null;
+    }
+
+    private String compileNullReferenceIfEmpty(String input) {
+        if (input.equals("") || input.matches("[\\s]+")) {
+            input = null;
+        }
+        return input;
+    }
+
+    private MaritalStatus compileMaritalStatus(String maritalStatusInput) {
         if (maritalStatusInput != null) {
-            MaritalStatus maritalStatus = MaritalStatus.valueOf(maritalStatusInput);
-            patientInfo.setMaritalStatus(maritalStatus);
+            return MaritalStatus.valueOf(maritalStatusInput);
         }
+        return null;
+    }
 
+    private IdentityDocument compileIdentityDocument(HttpServletRequest req) {
         boolean isNewIdDocument = Boolean.parseBoolean(req.getParameter("isNewIdDocument"));
         if (isNewIdDocument) {
             IdentityDocument identityDocument = new IdentityDocument();
@@ -115,10 +176,11 @@ public class ChangingInfoCompiler {
             String issueAuthorityInput = req.getParameter("issueAuthorityInput");
             issueAuthorityInput = compileNullReferenceIfEmpty(issueAuthorityInput);
             identityDocument.setIssueAuthority(issueAuthorityInput);
-
-            patientInfo.setIdentityDocument(identityDocument);
         }
+        return null;
+    }
 
+    private Address compileAddress(HttpServletRequest req) {
         boolean isNewAddress = Boolean.parseBoolean(req.getParameter("isNewAddress"));
         if (isNewAddress) {
             Address address = new Address();
@@ -159,73 +221,49 @@ public class ChangingInfoCompiler {
             roomInput = compileNullReferenceIfEmpty(roomInput);
             address.setRoom(roomInput);
 
-            patientInfo.setHomeAddress(address);
         }
+        return null;
+    }
 
-        String contactPersonInput = req.getParameter("inCaseOfEmergencyContactPersonInfoInput");
-        contactPersonInput = compileNullReferenceIfEmpty(contactPersonInput);
-        patientInfo.setInCaseOfEmergencyContactPersonInfo(contactPersonInput);
-
+    private String compileEmergencyNumber(HttpServletRequest req) {
         boolean isNewEmergencyPhone = Boolean.parseBoolean(req.getParameter("isNewEmergencyPhone"));
         if (isNewEmergencyPhone) {
             String emergencyCountryCode = req.getParameter("emergencyPhoneNumberCountryCode");
             String emergencyInnerCode = req.getParameter("emergencyPhoneNumberInnerCode");
             String emergencyInnerNumber = req.getParameter("emergencyPhoneNumberInnerNumber");
-            String emergencyNumber = regInfCompiler.compilePhoneNumber(emergencyCountryCode, emergencyInnerCode, emergencyInnerNumber);
-            patientInfo.setInCaseOfEmergencyContactPersonPhone(emergencyNumber);
+            return regInfCompiler.compilePhoneNumber(emergencyCountryCode, emergencyInnerCode, emergencyInnerNumber);
         }
+        return null;
+    }
 
-        String bloodTypeInput = req.getParameter("bloodTypeInput");
+    private BloodType compileBloodTypeEnum(String bloodTypeInput) {
         if (bloodTypeInput != null) {
-            BloodType bloodTypeEnum = null;
             BloodType[] bloodTypes = BloodType.values();
             for (BloodType bloodType : bloodTypes) {
                 if (bloodTypeInput.equals(bloodType.getValue())) {
-                    bloodTypeEnum = bloodType;
+                    return bloodType;
                 }
             }
-            patientInfo.setBloodType(bloodTypeEnum);
         }
+        return null;
+    }
 
-        String rhBloodGroupInput = req.getParameter("rhBloodGroupInput");
+    private RhBloodGroup compileRhBloodGroupEnum(String rhBloodGroupInput) {
         if (rhBloodGroupInput != null) {
-            RhBloodGroup rhBloodGroupEnum = null;
             RhBloodGroup[] rhBloodGroups = RhBloodGroup.values();
             for (RhBloodGroup rhBloodGroup : rhBloodGroups) {
                 if (rhBloodGroupInput.equals(rhBloodGroup.getValue())) {
-                    rhBloodGroupEnum = rhBloodGroup;
+                    return rhBloodGroup;
                 }
             }
-            patientInfo.setRhBloodGroup(rhBloodGroupEnum);
         }
-
-        String disabilityDegreeInput = req.getParameter("disabilityDegreeInput");
-        if (disabilityDegreeInput != null) {
-            DisabilityDegree disabilityDegreeEnum = null;
-            DisabilityDegree[] disabilityDegrees = DisabilityDegree.values();
-            for (DisabilityDegree disabilityDegree : disabilityDegrees) {
-                if (Integer.parseInt(disabilityDegreeInput) == disabilityDegree.getValue()) {
-                    disabilityDegreeEnum = disabilityDegree;
-                }
-            }
-            patientInfo.setDisabilityDegree(disabilityDegreeEnum);
-        }
-
-
-        String transportationStatusInput = req.getParameter("transportationStatusInput");
-        if (transportationStatusInput != null) {
-            TransportationStatus transportationStatus = TransportationStatus
-                    .valueOf(transportationStatusInput);
-            patientInfo.setTransportationStatus(transportationStatus);
-        }
-
-        return patientInfo;
+        return null;
     }
 
-    private String compileNullReferenceIfEmpty(String input) {
-        if (input.equals("") || input.matches("[\\s]+")) {
-            input = null;
+    private TransportationStatus compileTransStatusEnum(String transportationStatusInput) {
+        if (transportationStatusInput != null) {
+            return TransportationStatus.valueOf(transportationStatusInput);
         }
-        return input;
+        return null;
     }
 }
