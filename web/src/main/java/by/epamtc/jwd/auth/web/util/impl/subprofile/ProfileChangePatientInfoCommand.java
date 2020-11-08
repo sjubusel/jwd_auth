@@ -5,6 +5,7 @@ import by.epamtc.jwd.auth.model.constant.AppAttribute;
 import by.epamtc.jwd.auth.model.user_info.PatientInfo;
 import by.epamtc.jwd.auth.service.ProfileService;
 import by.epamtc.jwd.auth.service.ServiceFactory;
+import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.ChangingInfoCompiler;
 import by.epamtc.jwd.auth.web.util.Command;
 
@@ -27,5 +28,20 @@ public class ProfileChangePatientInfoCommand implements Command {
         PatientInfo changingPatientInfo = changingInfoCompiler
                 .compileChangingPatientInfo(req);
 
+        boolean isChanged;
+        try {
+            isChanged = profileService.changePatientInfo(changingPatientInfo, user);
+        } catch (ServiceException e) {
+            // TODO log4j
+            sendRedirectWithTechError(req, res);
+            return;
+        }
+
+        if (!isChanged) {
+            sendRedirectWithValidationError(req, res);
+            return;
+        }
+
+        sendRedirectWithSuccessMessage(req, res);
     }
 }
