@@ -7,14 +7,13 @@ import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.user_info.PatientInfo;
 import by.epamtc.jwd.auth.service.ProfileService;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
-import by.epamtc.jwd.auth.service.validation.ProfileAuthUserValidator;
+import by.epamtc.jwd.auth.service.validation.ProfileDataValidator;
 
 
 public class DefaultProfileService implements ProfileService {
     private DaoFactory daoFactory = DaoFactory.getInstance();
     private ProfileDao profileDao = daoFactory.getProfileDao();
-    private ProfileAuthUserValidator validator
-            = new ProfileAuthUserValidator();
+    private ProfileDataValidator validator = new ProfileDataValidator();
 
     @Override
     public PatientInfo fetchPatientInfo(AuthUser authUser)
