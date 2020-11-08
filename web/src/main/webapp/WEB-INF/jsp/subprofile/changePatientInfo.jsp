@@ -860,7 +860,7 @@
                                            name="seriesInput"
                                            placeholder="<fmt:message bundle="${jspMessages}"
                                                                            key="profileSubMenu.changePatientInfo.seriesPlaceholder"/>"
-                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.seriesPattern"/>"
+                                           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.seriesPattern"/>"
                                     />
                                 </div>
                                 <div class="form-group form-inline row">
@@ -875,7 +875,7 @@
                                            name="idDocumentNumberInput"
                                            placeholder="<fmt:message bundle="${jspMessages}"
                                                                            key="profileSubMenu.changePatientInfo.idDocumentNumberPlaceholder"/>"
-                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.idDocumentNumberPattern"/>"
+                                           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.idDocumentNumberPattern"/>"
                                     />
                                 </div>
                                 <div class="form-group form-inline row">
@@ -890,7 +890,7 @@
                                            name="latinHolderNameInput"
                                            placeholder="<fmt:message bundle="${jspMessages}"
                                                                            key="profileSubMenu.changePatientInfo.latinHolderNamePlaceholder"/>"
-                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.latinHolderNamePattern"/>"
+                                           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.latinHolderNamePattern"/>"
                                     />
                                 </div>
                                 <div class="form-group form-inline row">
@@ -905,7 +905,7 @@
                                            name="latinHolderSurnameInput"
                                            placeholder="<fmt:message bundle="${jspMessages}"
                                                                            key="profileSubMenu.changePatientInfo.latinHolderSurnamePlaceholder"/>"
-                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.latinHolderNamePattern"/>"
+                                           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.latinHolderNamePattern"/>"
                                     />
                                 </div>
 
@@ -924,7 +924,7 @@
                                            name="citizenshipInput"
                                            placeholder="<fmt:message bundle="${jspMessages}"
                                        key="profileSubMenu.changePatientInfo.address.countryPlaceholder"/>"
-                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.countryPattern"/>"
+                                           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.address.countryPattern"/>"
                                     />
                                 </div>
                                 <div id="citizenshipResult"
@@ -966,7 +966,7 @@
                                            name="personalNumberInput"
                                            placeholder="<fmt:message bundle="${jspMessages}"
                                                                            key="profileSubMenu.changePatientInfo.idDocPersonalNumberPlaceholder"/>"
-                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.idDocPersonalNumberPattern"/>"
+                                           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.idDocPersonalNumberPattern"/>"
                                     />
                                 </div>
 
@@ -1021,7 +1021,7 @@
                                            name="placeOfOriginInput"
                                            placeholder="<fmt:message bundle="${jspMessages}"
                                                                            key="profileSubMenu.changePatientInfo.idDocPlaceOfOriginPlaceholder"/>"
-                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.idDocPlaceOfOriginPattern"/>"
+                                           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.idDocPlaceOfOriginPattern"/>"
                                     />
                                 </div>
 
@@ -1069,7 +1069,7 @@
                                            name="issueAuthorityInput"
                                            placeholder="<fmt:message bundle="${jspMessages}"
                                                                            key="profileSubMenu.changePatientInfo.idDocIssueAuthorityPlaceholder"/>"
-                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.idDocIssueAuthorityPattern"/>"
+                                           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.idDocIssueAuthorityPattern"/>"
                                     />
                                 </div>
                             </div>
@@ -1214,7 +1214,7 @@
                                            name="zipCodeInput"
                                            placeholder="<fmt:message bundle="${jspMessages}"
                                        key="profileSubMenu.changePatientInfo.address.zipCodePlaceholder"/>"
-                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.zipCodePattern"/>"
+                                           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.address.zipCodePattern"/>"
                                     />
                                 </div>
                                 <div class="form-group form-inline row">
@@ -1231,7 +1231,7 @@
                                            name="countryInput"
                                            placeholder="<fmt:message bundle="${jspMessages}"
                                        key="profileSubMenu.changePatientInfo.address.countryPlaceholder"/>"
-                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.countryPattern"/>"
+                                           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.address.countryPattern"/>"
                                     />
                                 </div>
                                 <div id="countryResult" class="overflow-auto"
@@ -1251,7 +1251,7 @@
                                            name="regionInput"
                                            placeholder="<fmt:message bundle="${jspMessages}"
                                        key="profileSubMenu.changePatientInfo.address.regionPlaceholder"/>"
-                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.regionPattern"/>"
+                                           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.address.regionPattern"/>"
                                     />
                                 </div>
                                 <div id="regionResult" class="overflow-auto"
@@ -1271,7 +1271,7 @@
                                            name="areaInput"
                                            placeholder="<fmt:message bundle="${jspMessages}"
                                        key="profileSubMenu.changePatientInfo.address.areaPlaceholder"/>"
-                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.areaPattern"/>"
+                                           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.address.areaPattern"/>"
                                     />
                                 </div>
                                 <div id="areaResult" class="overflow-auto"
@@ -1292,7 +1292,7 @@
                                            name="settlementInput"
                                            placeholder="<fmt:message bundle="${jspMessages}"
                                        key="profileSubMenu.changePatientInfo.address.settlementPlaceholder"/>"
-                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.settlementPattern"/>"
+                                           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.address.settlementPattern"/>"
                                     />
                                 </div>
                                 <div id="settlementResult" class="overflow-auto"
@@ -1312,7 +1312,7 @@
                                            name="roadInput"
                                            placeholder="<fmt:message bundle="${jspMessages}"
                                        key="profileSubMenu.changePatientInfo.address.roadPlaceholder"/>"
-                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.roadPattern"/>"
+                                           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.address.roadPattern"/>"
                                     />
                                 </div>
                                 <div id="roadResult" class="overflow-auto"
@@ -1330,7 +1330,7 @@
                                            name="houseInput"
                                            placeholder="<fmt:message bundle="${jspMessages}"
                                        key="profileSubMenu.changePatientInfo.address.housePlaceholder"/>"
-                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.housePattern"/>"
+                                           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.address.housePattern"/>"
                                     />
                                 </div>
                                 <div class="form-group form-inline row">
@@ -1345,7 +1345,7 @@
                                            name="buildingInput"
                                            placeholder="<fmt:message bundle="${jspMessages}"
                                        key="profileSubMenu.changePatientInfo.address.buildingPlaceholder"/>"
-                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.buildingPattern"/>"
+                                           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.address.buildingPattern"/>"
                                     />
                                 </div>
                                 <div class="form-group form-inline row">
@@ -1360,7 +1360,7 @@
                                            name="roomInput"
                                            placeholder="<fmt:message bundle="${jspMessages}"
                                        key="profileSubMenu.changePatientInfo.address.roomPlaceholder"/>"
-                                           pattern="<fmt:message bundle="${jspMessages}" key="profileSubMenu.changePatientInfo.address.roomPattern"/>"
+                                           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.address.roomPattern"/>"
                                     />
                                 </div>
                             </div>
