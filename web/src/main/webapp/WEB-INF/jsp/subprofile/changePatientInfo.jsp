@@ -1842,7 +1842,7 @@
                         </div>
 
                         <button type="submit"
-                                class="btn align-self-center btn-primary">
+                                class="btn align-self-center btn-primary" onsubmit="verifyOnSubmitIfChanged()">
                             <fmt:message bundle="${jspMessages}"
                                          key="profileSubMenu.changePatientInfo.changePhoto"/>
                         </button>
