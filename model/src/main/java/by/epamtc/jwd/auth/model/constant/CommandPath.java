@@ -25,6 +25,13 @@ public final class CommandPath {
     public static final String SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO_SUCCESS_UPLOAD
             = "/profile?command=go-to-profile-change-patient-info&photoUpload=success";
 
+    public static final String SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO_CHANGE_RESULT_TECH_ERROR
+            = "/profile?command=go-to-profile-change-patient-info&changeResult=techError";
+    public static final String SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO_CHANGE_RESULT_VALID_ERROR
+            = "/profile?command=go-to-profile-change-patient-info&changeResult=validationError";
+    public static final String SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO_CHANGE_RESULT_SUCCESS
+            = "/profile?command=go-to-profile-change-patient-info&changeResult=success";
+
     public static final String LOGIN_JSP = "/WEB-INF/jsp/login.jsp";
     public static final String PROFILE_JSP = "/WEB-INF/jsp/profile.jsp";
     public static final String REGISTER_JSP = "/WEB-INF/jsp/register.jsp";
@@ -45,6 +52,7 @@ public final class CommandPath {
     public static final String SUBPROFILE_EXTREMELY_HAZARDOUS_DISEASES_JSP = "/WEB-INF/jsp/subprofile/extremelyHazardousDiseases.jsp";
     public static final String SUBPROFILE_STAFF_HISTORY_JSP = "/WEB-INF/jsp/subprofile/staffHistory.jsp";
     public static final String SUBPROFILE_STAFF_INFO_JSP = "/WEB-INF/jsp/subprofile/staffInfo.jsp";
+
 
     private CommandPath() {
     }
