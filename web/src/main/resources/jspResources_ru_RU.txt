@@ -203,3 +203,5 @@ profileSubMenu.changePatientInfo.idDocPersonalNumberPattern=[0-9A-Za-z]{1,255}
 profileSubMenu.changePatientInfo.idDocPlaceOfOrigin=Место происхождения
 profileSubMenu.changePatientInfo.idDocPlaceOfOriginPlaceholder=Введите страну и иные административно-территориальную единицы, где Вы родились
 profileSubMenu.changePatientInfo.idDocPlaceOfOriginPattern=[0-9A-Za-zА-Яа-яЁё -]{1,255}
+profileSubMenu.changePatientInfo.idDocDateOfIssue=Дата выдачи
+profileSubMenu.changePatientInfo.idDocDateOfIssuePlaceholder=Введите дату выдачи
