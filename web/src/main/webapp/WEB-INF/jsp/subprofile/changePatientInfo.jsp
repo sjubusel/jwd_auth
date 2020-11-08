@@ -15,6 +15,7 @@
 <c:set var="activeSubMenuProfileTab" value="changePatientInfo" scope="page"/>
 
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
+<fmt:setBundle basename="registrationRegExp" var="regEx"/>
 
 <html>
 <head>
