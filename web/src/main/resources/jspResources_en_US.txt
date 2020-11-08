@@ -200,3 +200,4 @@ profileSubMenu.changePatientInfo.changeResultTechError=Because of a technical fa
 profileSubMenu.changePatientInfo.changeResultValidationError=Because of inputted incorrect data there is no possibility to change required information
 
 profileSubMenu.changeEmail.heading=User's email change
+profileSubMenu.changeEmail.warning=In order to change an email You should submit an actual password

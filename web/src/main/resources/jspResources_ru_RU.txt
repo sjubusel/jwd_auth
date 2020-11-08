@@ -200,3 +200,4 @@ profileSubMenu.changePatientInfo.changeResultTechError=По технически
 profileSubMenu.changePatientInfo.changeResultValidationError=По причине введённых некорректных данных изменить информацию не представилось возможным
 
 profileSubMenu.changeEmail.heading=Смена адреса электронной почты
+profileSubMenu.changeEmail.warning=Для смены необходимо ввести новый адрес электронной почты, подтвердив данное действие действительным паролем
