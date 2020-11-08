@@ -22,6 +22,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -311,7 +312,7 @@ public class DefaultProfileDao implements ProfileDao {
                         "                                               serial_number_of_document, latin_holder_name, latin_holder_surname,\n" +
                         "                                               citizenship_id, birth_date, personal_number, gender, place_of_origin,\n" +
                         "                                               date_of_issue, date_of_expiry, issue_authority)\n" +
-                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);");
+                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
         statements.add(idDocInsertStatement);
 
         idDocInsertStatement.setInt(1, patientId);
@@ -332,7 +333,10 @@ public class DefaultProfileDao implements ProfileDao {
         idDocInsertStatement.setObject(13, idDocument.getDateOfExpiry());
         idDocInsertStatement.setString(14, idDocument.getIssueAuthority());
 
-        int idOfIdentityDocument = idDocInsertStatement.executeUpdate();
+        idDocInsertStatement.executeUpdate();
+
+        int idOfIdentityDocument = receiveGeneratedKeyAfterStatementExecution
+                (idDocInsertStatement);
 
         PreparedStatement updatePatientWithIdDoc = conn.prepareStatement("UPDATE hospital.persons p\n" +
                 "SET p.identification_document_id = ?\n" +
@@ -348,7 +352,7 @@ public class DefaultProfileDao implements ProfileDao {
     private void changeAddress(Address address, int patientId, Connection conn,
             ArrayList<PreparedStatement> statements) throws SQLException {
         PreparedStatement addressInsertStatement = conn.prepareStatement("INSERT INTO hospital.addresses (zip_code, road_id, house, building, room)\n" +
-                "VALUES (?, ?, ?, ?, ?);");
+                "VALUES (?, ?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
         statements.add(addressInsertStatement);
 
         addressInsertStatement.setString(1, address.getZipCode());
@@ -358,7 +362,8 @@ public class DefaultProfileDao implements ProfileDao {
         addressInsertStatement.setString(4, address.getBuilding());
         addressInsertStatement.setString(5, address.getRoom());
 
-        int addressId = addressInsertStatement.executeUpdate();
+        addressInsertStatement.executeUpdate();
+        int addressId = receiveGeneratedKeyAfterStatementExecution(addressInsertStatement);
 
         PreparedStatement updatePatientWithNewAddress = conn.prepareStatement("UPDATE hospital.persons p \n" +
                 "SET p.permanent_home_address_id = ?\n" +
@@ -458,5 +463,15 @@ public class DefaultProfileDao implements ProfileDao {
         updateTransportationStatus.setInt(2, patientId);
 
         updateTransportationStatus.executeUpdate();
+    }
+
+    private int receiveGeneratedKeyAfterStatementExecution(PreparedStatement
+            idDocInsertStatement) throws SQLException {
+        int generatedId = 0;
+        ResultSet generatedKeys = idDocInsertStatement.getGeneratedKeys();
+        if (generatedKeys.next()) {
+            generatedId = generatedKeys.getInt(1);
+        }
+        return generatedId;
     }
 }
