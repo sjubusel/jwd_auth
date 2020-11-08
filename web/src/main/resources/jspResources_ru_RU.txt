@@ -197,3 +197,6 @@ profileSubMenu.changePatientInfo.latinHolderNamePattern=[A-Za-z -]{1,255}
 profileSubMenu.changePatientInfo.idDocLatinHolderSurname=Фамилия латинскими буквами
 profileSubMenu.changePatientInfo.latinHolderSurnamePlaceholder=Введите фамилию латинскими буквами
 profileSubMenu.changePatientInfo.idDocCitizenship=Гражданство
+profileSubMenu.changePatientInfo.idDocPersonalNumber=Личный номер
+profileSubMenu.changePatientInfo.idDocPersonalNumberPlaceholder=Введите личный номер (допускаются цифры, латинские буквы)
+profileSubMenu.changePatientInfo.idDocPersonalNumberPattern=[0-9A-Za-z]{1,255}
