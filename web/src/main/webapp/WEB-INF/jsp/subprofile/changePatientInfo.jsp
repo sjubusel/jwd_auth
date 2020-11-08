@@ -728,7 +728,7 @@
                                                class="form-check-input"
                                                id="unmarried"
                                                name="maritalStatusInput"
-                                               value="unmarried">
+                                               value="UNMARRIED">
                                         <label for="unmarried"
                                                class="form-check-label"
                                                style="margin-right: 10px">
@@ -739,7 +739,7 @@
                                                class="form-check-input"
                                                id="married"
                                                name="maritalStatusInput"
-                                               value="married">
+                                               value="MARRIED">
                                         <label for="married"
                                                class="form-check-label"
                                                style="margin-right: 10px">
@@ -750,7 +750,7 @@
                                                class="form-check-input"
                                                id="divorced"
                                                name="maritalStatusInput"
-                                               value="divorced">
+                                               value="DIVORCED">
                                         <label for="divorced"
                                                class="form-check-label"
                                                style="margin-right: 10px">
@@ -761,7 +761,7 @@
                                                class="form-check-input"
                                                id="widower"
                                                name="maritalStatusInput"
-                                               value="widower">
+                                               value="WIDOWER">
                                         <label for="widower"
                                                class="form-check-label"
                                                style="margin-right: 10px">
