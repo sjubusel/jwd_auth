@@ -1,5 +1,6 @@
 package by.epamtc.jwd.auth.web.util;
 
+import by.epamtc.jwd.auth.model.constant.AppParameter;
 import by.epamtc.jwd.auth.model.user_info.Address;
 import by.epamtc.jwd.auth.model.user_info.BloodType;
 import by.epamtc.jwd.auth.model.user_info.DisabilityDegree;
@@ -43,7 +44,7 @@ public class ChangingInfoCompiler {
         String newPhoneNumber = compileNewPhone(req);
         patientInfo.setPhoneNumber(newPhoneNumber);
 
-        String maritalStatusInput = req.getParameter("maritalStatusInput");
+        String maritalStatusInput = req.getParameter(AppParameter.MARITAL_STATUS);
         MaritalStatus maritalStatus = compileMaritalStatus(maritalStatusInput);
         patientInfo.setMaritalStatus(maritalStatus);
 
@@ -53,38 +54,45 @@ public class ChangingInfoCompiler {
         Address address = compileAddress(req);
         patientInfo.setHomeAddress(address);
 
-        String contactPersonInput = req.getParameter("inCaseOfEmergencyContactPersonInfoInput");
+        String contactPersonInput = req.getParameter(AppParameter
+                .IN_CASE_OF_EMERGENCY_CONTACT_PERSON_INFO);
         contactPersonInput = compileNullReferenceIfEmpty(contactPersonInput);
         patientInfo.setInCaseOfEmergencyContactPersonInfo(contactPersonInput);
 
         String emergencyNumber = compileEmergencyNumber(req);
         patientInfo.setInCaseOfEmergencyContactPersonPhone(emergencyNumber);
 
-        String bloodTypeInput = req.getParameter("bloodTypeInput");
+        String bloodTypeInput = req.getParameter(AppParameter.BLOOD_TYPE);
         BloodType bloodTypeEnum = compileBloodTypeEnum(bloodTypeInput);
         patientInfo.setBloodType(bloodTypeEnum);
 
-        String rhBloodGroupInput = req.getParameter("rhBloodGroupInput");
+        String rhBloodGroupInput = req.getParameter(AppParameter
+                .RH_BLOOD_GROUP);
         RhBloodGroup rhBloodGroupEnum = compileRhBloodGroupEnum(rhBloodGroupInput);
         patientInfo.setRhBloodGroup(rhBloodGroupEnum);
 
-        String disabilityDegreeInput = req.getParameter("disabilityDegreeInput");
-        DisabilityDegree disabilityDegreeEnum = compileDisabilityDegree(disabilityDegreeInput);
+        String disabilityDegreeInput = req.getParameter(AppParameter
+                .DISABILITY_DEGREE);
+        DisabilityDegree disabilityDegreeEnum = compileDisabilityDegree
+                (disabilityDegreeInput);
         patientInfo.setDisabilityDegree(disabilityDegreeEnum);
 
-        String transportationStatusInput = req.getParameter("transportationStatusInput");
-        TransportationStatus transportationStatus = compileTransStatusEnum(transportationStatusInput);
+        String transportationStatusInput = req.getParameter(AppParameter
+                .TRANSPORTATION_STATUS);
+        TransportationStatus transportationStatus = compileTransStatusEnum
+                (transportationStatusInput);
         patientInfo.setTransportationStatus(transportationStatus);
 
         return patientInfo;
     }
 
     private String compileNewPhone(HttpServletRequest req) {
-        boolean isNewPhone = Boolean.parseBoolean(req.getParameter("isNewPhone"));
+        boolean isNewPhone = Boolean.parseBoolean(req.getParameter(AppParameter
+                .IS_NEW_PHONE));
         if (isNewPhone) {
-            String phoneNumberCountryCode = req.getParameter("phoneNumberCountryCode");
-            String phoneNumberInnerCode = req.getParameter("phoneNumberInnerCode");
-            String phoneNumberInnerNumber = req.getParameter("phoneNumberInnerNumber");
+            String phoneNumberCountryCode = req.getParameter(AppParameter.NUMBER_COUNTRY_CODE);
+            String phoneNumberInnerCode = req.getParameter(AppParameter.NUMBER_INNER_CODE);
+            String phoneNumberInnerNumber = req.getParameter(AppParameter.INNER_NUMBER);
             return regInfCompiler.compilePhoneNumber(phoneNumberCountryCode,
                     phoneNumberInnerCode, phoneNumberInnerNumber);
         }
@@ -118,62 +126,72 @@ public class ChangingInfoCompiler {
     }
 
     private IdentityDocument compileIdentityDocument(HttpServletRequest req) {
-        boolean isNewIdDocument = Boolean.parseBoolean(req.getParameter("isNewIdDocument"));
+        boolean isNewIdDocument = Boolean.parseBoolean(req
+                .getParameter(AppParameter.IS_NEW_DOCUMENT));
         if (isNewIdDocument) {
             IdentityDocument identityDocument = new IdentityDocument();
 
-            String idDocumentInput = req.getParameter("idDocumentInput");
+            String idDocumentInput = req.getParameter(AppParameter
+                    .ID_DOCUMENT);
             // TODO logj4 and handle exception Runtime
             IdentificationDocumentType documentType = IdentificationDocumentType
                     .valueOf(idDocumentInput);
             identityDocument.setIdentificationDocumentType(documentType);
 
-            String seriesInput = req.getParameter("seriesInput");
+            String seriesInput = req.getParameter(AppParameter.SERIES);
             seriesInput = compileNullReferenceIfEmpty(seriesInput);
             identityDocument.setSeries(seriesInput);
 
-            String idDocumentNumberInput = req.getParameter("idDocumentNumberInput");
-            idDocumentNumberInput = compileNullReferenceIfEmpty(idDocumentNumberInput);
+            String idDocNumberInput = req.getParameter(AppParameter
+                    .ID_DOCUMENT_NUMBER);
+            idDocNumberInput = compileNullReferenceIfEmpty(idDocNumberInput);
             // TODO logj4 and handle exception Runtime
-            identityDocument.setDocumentNumber(Integer.parseInt(idDocumentNumberInput));
+            identityDocument.setDocumentNumber(Integer.parseInt(idDocNumberInput));
 
-            String latinHolderNameInput = req.getParameter("latinHolderNameInput");
+            String latinHolderNameInput = req.getParameter(AppParameter
+                    .LATIN_NAME);
             latinHolderNameInput = compileNullReferenceIfEmpty(latinHolderNameInput);
             identityDocument.setLatinHolderName(latinHolderNameInput);
 
-            String latinHolderSurnameInput = req.getParameter("latinHolderSurnameInput");
+            String latinHolderSurnameInput = req.getParameter(AppParameter
+                    .LATIN_SURNAME);
             latinHolderSurnameInput = compileNullReferenceIfEmpty(latinHolderSurnameInput);
             identityDocument.setLatinHolderSurName(latinHolderSurnameInput);
 
-            String hiddenCitizenshipInput = req.getParameter("hiddenCitizenshipInput");
+            String hiddenCitizenshipInput = req.getParameter(AppParameter
+                    .HIDDEN_CITIZENSHIP);
             hiddenCitizenshipInput = compileNullReferenceIfEmpty(hiddenCitizenshipInput);
             identityDocument.setCitizenShip(hiddenCitizenshipInput);
 
-            String birthdayInput = req.getParameter("birthdayInput");
+            String birthdayInput = req.getParameter(AppParameter.CHANGE_BIRTHDAY);
             LocalDate birthDay = regInfCompiler.compileBirthdayDate(birthdayInput);
             identityDocument.setBirthday(birthDay);
 
-            String personalNumberInput = req.getParameter("personalNumberInput");
+            String personalNumberInput = req.getParameter(AppParameter
+                    .PERSONAL_NUMBER);
             personalNumberInput = compileNullReferenceIfEmpty(personalNumberInput);
             identityDocument.setPersonalNumber(personalNumberInput);
 
-            String gender = req.getParameter("gender");
+            String gender = req.getParameter(AppParameter.GENDER);
             Gender genderEnum = regInfCompiler.compileGenderEnum(gender);
             identityDocument.setGender(genderEnum);
 
-            String placeOfOriginInput = req.getParameter("placeOfOriginInput");
+            String placeOfOriginInput = req.getParameter(AppParameter
+                    .PLACE_OF_ORIGIN);
             placeOfOriginInput = compileNullReferenceIfEmpty(placeOfOriginInput);
             identityDocument.setPlaceOfOrigin(placeOfOriginInput);
 
-            String dateOfIssueInput = req.getParameter("dateOfIssueInput");
-            LocalDate dateOfIssue = regInfCompiler.compileBirthdayDate(dateOfIssueInput);
+            String isDate = req.getParameter(AppParameter.DATE_OF_ISSUE);
+            LocalDate dateOfIssue = regInfCompiler.compileBirthdayDate(isDate);
             identityDocument.setDateOfIssue(dateOfIssue);
 
-            String dateOfExpiryInput = req.getParameter("dateOfExpiryInput");
+            String dateOfExpiryInput = req.getParameter(AppParameter
+                    .DATE_OF_EXPIRY);
             LocalDate dateOfExpiry = regInfCompiler.compileBirthdayDate(dateOfExpiryInput);
             identityDocument.setDateOfExpiry(dateOfExpiry);
 
-            String issueAuthorityInput = req.getParameter("issueAuthorityInput");
+            String issueAuthorityInput = req.getParameter(AppParameter
+                    .ISSUEING_AUTHORITY);
             issueAuthorityInput = compileNullReferenceIfEmpty(issueAuthorityInput);
             identityDocument.setIssueAuthority(issueAuthorityInput);
 
@@ -183,43 +201,47 @@ public class ChangingInfoCompiler {
     }
 
     private Address compileAddress(HttpServletRequest req) {
-        boolean isNewAddress = Boolean.parseBoolean(req.getParameter("isNewAddress"));
+        boolean isNewAddress = Boolean.parseBoolean(req.getParameter
+                (AppParameter.IS_NEW_ADDRESS));
         if (isNewAddress) {
             Address address = new Address();
 
-            String zipCodeInput = req.getParameter("zipCodeInput");
+            String zipCodeInput = req.getParameter(AppParameter.ZIP_CODE);
             zipCodeInput = compileNullReferenceIfEmpty(zipCodeInput);
             address.setZipCode(zipCodeInput);
 
-            String hiddenCountryInput = req.getParameter("hiddenCountryInput");
+            String hiddenCountryInput = req.getParameter(AppParameter
+                    .HIDDEN_COUNTRY);
             hiddenCountryInput = compileNullReferenceIfEmpty(hiddenCountryInput);
             address.setCountry(hiddenCountryInput);
 
-            String hiddenRegionInput = req.getParameter("hiddenRegionInput");
+            String hiddenRegionInput = req.getParameter(AppParameter
+                    .HIDDEN_REGION);
             hiddenRegionInput = compileNullReferenceIfEmpty(hiddenRegionInput);
             address.setRegion(hiddenRegionInput);
 
-            String hiddenAreaInput = req.getParameter("hiddenAreaInput");
+            String hiddenAreaInput = req.getParameter(AppParameter.HIDDEN_AREA);
             hiddenAreaInput = compileNullReferenceIfEmpty(hiddenAreaInput);
             address.setArea(hiddenAreaInput);
 
-            String hiddenSettlementInput = req.getParameter("hiddenSettlementInput");
+            String hiddenSettlementInput = req.getParameter(AppParameter
+                    .HIDDEN_SETTLEMENT);
             hiddenSettlementInput = compileNullReferenceIfEmpty(hiddenSettlementInput);
             address.setSettlement(hiddenSettlementInput);
 
-            String hiddenRoadInput = req.getParameter("hiddenRoadInput");
+            String hiddenRoadInput = req.getParameter(AppParameter.HIDDEN_ROAD);
             hiddenRoadInput = compileNullReferenceIfEmpty(hiddenRoadInput);
             address.setRoad(hiddenRoadInput);
 
-            String houseInput = req.getParameter("houseInput");
+            String houseInput = req.getParameter(AppParameter.HOUSE);
             houseInput = compileNullReferenceIfEmpty(houseInput);
             address.setHouse(houseInput);
 
-            String buildingInput = req.getParameter("buildingInput");
+            String buildingInput = req.getParameter(AppParameter.BUILDING);
             buildingInput = compileNullReferenceIfEmpty(buildingInput);
             address.setBuilding(buildingInput);
 
-            String roomInput = req.getParameter("roomInput");
+            String roomInput = req.getParameter(AppParameter.ROOM);
             roomInput = compileNullReferenceIfEmpty(roomInput);
             address.setRoom(roomInput);
 
@@ -229,12 +251,17 @@ public class ChangingInfoCompiler {
     }
 
     private String compileEmergencyNumber(HttpServletRequest req) {
-        boolean isNewEmergencyPhone = Boolean.parseBoolean(req.getParameter("isNewEmergencyPhone"));
+        boolean isNewEmergencyPhone = Boolean.parseBoolean(req.getParameter
+                (AppParameter.IS_NEW_EMERGENCY_PHONE));
         if (isNewEmergencyPhone) {
-            String emergencyCountryCode = req.getParameter("emergencyPhoneNumberCountryCode");
-            String emergencyInnerCode = req.getParameter("emergencyPhoneNumberInnerCode");
-            String emergencyInnerNumber = req.getParameter("emergencyPhoneNumberInnerNumber");
-            return regInfCompiler.compilePhoneNumber(emergencyCountryCode, emergencyInnerCode, emergencyInnerNumber);
+            String emergencyCountryCode = req.getParameter(AppParameter
+                    .EMERGENCY_NUMBER_COUNTRY_CODE);
+            String emergencyInnerCode = req.getParameter(AppParameter
+                    .EMERGENCY_NUMBER_INNER_CODE);
+            String emergencyInnerNumber = req.getParameter(AppParameter
+                    .EMERGENCY_INNER_NUMBER);
+            return regInfCompiler.compilePhoneNumber(emergencyCountryCode,
+                    emergencyInnerCode, emergencyInnerNumber);
         }
         return null;
     }
