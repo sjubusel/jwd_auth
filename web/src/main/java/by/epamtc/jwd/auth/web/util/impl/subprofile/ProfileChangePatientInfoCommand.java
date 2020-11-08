@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class ProfileChangePatientInfo implements Command {
+public class ProfileChangePatientInfoCommand implements Command {
     private ServiceFactory serviceFactory = ServiceFactory.getInstance();
     private ProfileService profileService = serviceFactory.getProfileService();
     private ChangingInfoCompiler changingInfoCompiler = ChangingInfoCompiler
