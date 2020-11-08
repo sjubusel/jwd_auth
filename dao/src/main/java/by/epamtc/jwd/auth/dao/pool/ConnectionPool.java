@@ -147,7 +147,9 @@ public class ConnectionPool {
 
     public void rollBackTransaction(Connection conn) {
         try {
-            conn.rollback();
+            if (conn != null) {
+                conn.rollback();
+            }
         } catch (SQLException ex) {
             //TODO log4j
             ex.printStackTrace();
