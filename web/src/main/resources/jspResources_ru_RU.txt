@@ -198,3 +198,5 @@ profileSubMenu.changePatientInfo.idDocIssueAuthorityPlaceholder=Введите �
 profileSubMenu.changePatientInfo.changeResultSuccessful=Введённые данные успешно изменены
 profileSubMenu.changePatientInfo.changeResultTechError=По техническим причинам изменить информацию не представилось возможным
 profileSubMenu.changePatientInfo.changeResultValidationError=По причине введённых некорректных данных изменить информацию не представилось возможным
+
+profileSubMenu.changeEmail.heading=Смена адреса электронной почты

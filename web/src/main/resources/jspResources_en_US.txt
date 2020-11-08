@@ -198,3 +198,5 @@ profileSubMenu.changePatientInfo.idDocIssueAuthorityPlaceholder=Insert an author
 profileSubMenu.changePatientInfo.changeResultSuccessful=Inputted data is successfully changed
 profileSubMenu.changePatientInfo.changeResultTechError=Because of a technical factor there is no possibility to change inputted data
 profileSubMenu.changePatientInfo.changeResultValidationError=Because of inputted incorrect data there is no possibility to change required information
+
+profileSubMenu.changeEmail.heading=User's email change
