@@ -134,6 +134,7 @@ public class DefaultProfileDao implements ProfileDao {
             conn.commit();
 
         } catch (ConnectionPoolException e) {
+            //noinspection ConstantConditions
             pool.rollBackTransaction(conn);
             throw new DaoException("An error while taking a connection from " +
                     "the connection pool during changing of patient info", e);
