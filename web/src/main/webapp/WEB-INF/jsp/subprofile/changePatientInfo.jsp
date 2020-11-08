@@ -509,7 +509,7 @@
                                      key="profileSubMenu.changePatientInfo.headingChangeAvailablePatientData"/>
                     </h1>
                     <form action="${pageContext.request.contextPath}/profile"
-                          method="post">
+                          method="post" onsubmit="verifyOnSubmitIfChanged()">
                         <input type="hidden" name="command"
                                value="profile-change-patient-info"/>
 
@@ -1455,6 +1455,17 @@
                                        class="col-4 custom-form-label pl-0 pr-0">
                                     <fmt:message bundle="${jspMessages}"
                                                  key="profile.inCaseOfEmergencyContactPerson"/>
+                                    <script type="text/javascript">
+                                        const inCaseOfEmergencyContactPersonInit =
+                                            <c:choose>
+                                            <c:when test="${requestScope.patientInfo.inCaseOfEmergencyContactPersonInfo ne null}">
+                                            "${requestScope.patientInfo.inCaseOfEmergencyContactPersonInfo}";
+                                        </c:when>
+                                        <c:otherwise>
+                                        "";
+                                        </c:otherwise>
+                                        </c:choose>
+                                    </script>
                                 </label>
                                 <input type="text"
                                        class="form-control col"
@@ -1472,16 +1483,11 @@
                             </div>
                             <hr>
                             <script>
-                                const inCaseOfEmergencyContactPersonInit
-                                    = (" " + document.getElementById("inCaseOfEmergencyContactPersonInfoLabel").value).slice(1);
-
-                                // TODO use it on submit
                                 function verifyOnSubmitIfChanged() {
-                                    let currentValueOfContactPerson = document
-                                        .getElementById("inCaseOfEmergencyContactPersonInfoLabel").value;
+                                    let contactPerson = document.getElementById("inCaseOfEmergencyContactPersonInfoLabel");
+                                    let currentValueOfContactPerson = contactPerson.value;
                                     if (inCaseOfEmergencyContactPersonInit.localeCompare(currentValueOfContactPerson) === 0) {
-                                        // TODO maybe replace with currentValueOfContactPerson.value = null;
-                                        currentValueOfContactPerson.value = "";
+                                        contactPerson.value = "";
                                     }
                                 }
                             </script>
@@ -1842,7 +1848,7 @@
                         </div>
 
                         <button type="submit"
-                                class="btn align-self-center btn-primary" onsubmit="verifyOnSubmitIfChanged()">
+                                class="btn align-self-center btn-primary">
                             <fmt:message bundle="${jspMessages}"
                                          key="profileSubMenu.changePatientInfo.changePhoto"/>
                         </button>
