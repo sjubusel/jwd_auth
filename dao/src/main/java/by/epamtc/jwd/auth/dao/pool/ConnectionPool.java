@@ -21,6 +21,7 @@ import java.sql.SQLXML;
 import java.sql.Savepoint;
 import java.sql.Statement;
 import java.sql.Struct;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
@@ -133,6 +134,13 @@ public class ConnectionPool {
 
     public void closeConnection(Connection connection, Statement statement) {
         closeStatement(statement);
+        closeConnection(connection);
+    }
+
+    public void closeConnection(Connection connection, ArrayList<PreparedStatement> statements) {
+        for (PreparedStatement statement : statements) {
+            closeStatement(statement);
+        }
         closeConnection(connection);
     }
 
