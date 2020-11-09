@@ -15,6 +15,7 @@
 <c:set var="activeSubMenuProfileTab" value="changeEmail" scope="page"/>
 
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
+<fmt:setBundle basename="registrationRegExp" var="regEx"/>
 
 <html>
 <head>
@@ -36,7 +37,49 @@
     <div class="row mt-2 mr-2 ml-2">
         <%@ include file="../structural_element/profileSubMenu.jsp" %>
         <div class="bg-light d-inline-block col">
-            <div class="">EMAIL TO BE CHANGED</div>
+            <h1 class="text-left">
+                <fmt:message bundle="${jspMessages}"
+                             key="profileSubMenu.changeEmail.heading"/>
+            </h1>
+
+            <div class="text-muted">
+                <fmt:message bundle="${jspMessages}"
+                             key="profileSubMenu.changeEmail.warning"/>
+            </div>
+
+            <form action="${pageContext.request.contextPath}/main"
+                  method="post">
+                <input type="hidden" name="command" value="profile-email-change"/>
+
+                <div class="form-group form-inline row">
+                    <label for="emailInput" class="col-4 custom-form-label">
+                        <fmt:message bundle="${jspMessages}"
+                                     key="register.emailInputLabel"/>
+                    </label>
+                    <input type="email" class="form-control col" id="emailInput"
+                           name="email" required placeholder="xxxxx@xxxxx.xxx"
+                           pattern="<fmt:message bundle="${regEx}" key="email"/>">
+                    <div id="emailIndent" class="col-4"></div>
+                    <small id="emailDescription"
+                           class="form-text text-muted col">
+                        <fmt:message bundle="${jspMessages}"
+                                     key="register.emailDescription"/>
+                    </small>
+                </div>
+
+                <div class="form-group form-inline row">
+                    <label for="passwordInput" class="col-4 custom-form-label">
+                        <fmt:message bundle="${jspMessages}"
+                                     key="register.passwordInputLabel"/>
+                    </label>
+                    <input type="password" class="form-control col"
+                           id="passwordInput" name="password" required
+                           placeholder="<fmt:message bundle="${jspMessages}"
+                   key="register.passwordInput.placeholder"/>"
+                           pattern="<fmt:message bundle="${regEx}" key="password"/>">
+                </div>
+            </form>
+
         </div>
     </div>
 </div>
