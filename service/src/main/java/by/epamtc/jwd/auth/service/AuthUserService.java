@@ -12,4 +12,7 @@ public interface AuthUserService {
 
     String changeEmail(String email, String password, AuthUser user)
             throws ServiceException;
+
+    String changePassword(String newPassword, String password, AuthUser user)
+            throws ServiceException;
 }

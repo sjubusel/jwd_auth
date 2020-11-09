@@ -79,6 +79,21 @@ public class DefaultAuthUserService implements AuthUserService {
         return null;
     }
 
+    @Override
+    public String changePassword(String newPassword, String password,
+            AuthUser user) throws ServiceException {
+        if (regInfValidator.isPasswordValid(newPassword)
+                && regInfValidator.isPasswordValid(password)) {
+            try {
+                return authUserDao.changePasswordIfCorrect(newPassword, password
+                        , user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return null;
+    }
+
     private void hashPassword(RegistrationInfo regInfo) {
         String salt = BCrypt.gensalt();
         String hashedPassword = BCrypt.hashpw(regInfo.getPassword(), salt);
