@@ -14,6 +14,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -518,8 +519,12 @@ public class DefaultProfileDao implements ProfileDao {
                         ? firstName + AppConstant.ONE_WHITESPACE + middleName
                                 + AppConstant.ONE_WHITESPACE + lastName
                         : firstName + AppConstant.ONE_WHITESPACE + lastName;
-        LocalDateTime permissionDateTime = ((LocalDateTime) rSet.getObject(6));
-        LocalDateTime cancellationDateTime = ((LocalDateTime) rSet.getObject(7));
+        LocalDateTime permissionDateTime = rSet.getTimestamp(6).toLocalDateTime();
+        LocalDateTime cancellationDateTime = null;
+        Timestamp cancellationTimeStamp = rSet.getTimestamp(7);
+        if (cancellationTimeStamp != null) {
+            cancellationDateTime = cancellationTimeStamp.toLocalDateTime();
+        }
         String cancellationDescription = rSet.getString(8);
         return new MedicalHistoryPermission(permissionId, recipientId,
                 recipientInfo, permissionDateTime, cancellationDateTime,

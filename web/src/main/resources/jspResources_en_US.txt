@@ -216,8 +216,13 @@ profileSubMenu.changePassword.changeResultValidationError=Inputted password is n
 profileSubMenu.changePassword.changeResultDuplicateError=You have inputted equal passwords
 
 profileSubMenu.medicalHistoryPermission.heading=Granting an access to your medical information to other users
-profileSubMenu.medicalHistoryPermission.disclaimer=Your information about Your medical information granted to other users is presented here. There is a form, which gives permissions by first, middle or last names (it is a test variant), as well You have a possibility to cancel an access by clicking on a corresponding button near a record.
+profileSubMenu.medicalHistoryPermission.disclaimer=Your information about Your medical information granted to other users is presented here. There is a form, which gives permissions by first, middle or last names (it is a test variant), as well You have a possibility to cancel an access by clicking on a corresponding button near a record. While on hover under a cancellation date the reason will be popped up.
 profileSubMenu.medicalHistoryPermission.noRecordsMessage=You have never granted Your medical information.
 profileSubMenu.medicalHistoryPermission.techError=Because of a technical factor there is no possibility to fetch medical history permissions
 profileSubMenu.medicalHistoryPermission.validationError=Because of an incorrect user type there is no possibility to fetch medical history permissions
 profileSubMenu.medicalHistoryPermission.add=add a record
+profileSubMenu.medicalHistoryPermission.delete=delete
+profileSubMenu.medicalHistoryPermission.recipient=Permission holder
+profileSubMenu.medicalHistoryPermission.permissionDateTime=Permission date
+profileSubMenu.medicalHistoryPermission.cancellationDateTime=Cancellation date
+profileSubMenu.medicalHistoryPermission.deleteButton=Delete-buttons

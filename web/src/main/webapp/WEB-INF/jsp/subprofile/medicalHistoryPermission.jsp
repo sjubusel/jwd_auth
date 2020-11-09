@@ -79,7 +79,71 @@
                 <c:otherwise>
                     <c:choose>
                         <c:when test="${requestScope.medicalHistoryPermissions ne null}">
-                            STUB
+                            <%--header--%>
+                            <div class="row d-flex">
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.medicalHistoryPermission.recipient"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.medicalHistoryPermission.permissionDateTime"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.medicalHistoryPermission.cancellationDateTime"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.medicalHistoryPermission.deleteButton"/>
+                                </div>
+                            </div>
+                            <%--contents--%>
+                            <c:forEach var="medPermission"
+                                       items="${requestScope.medicalHistoryPermissions}">
+                                <div class="row d-flex">
+                                    <form action="${pageContext.request.contextPath}/profile"
+                                          method="post">
+                                        <input type="hidden" name="command"
+                                               value="profile-medical-history-permission-delete"/>
+                                        <input type="hidden"
+                                               name="permissionIdInput"
+                                               value="${medPermission.recipientId}"/>
+                                            <%--1st column--%>
+                                        <div class="col">
+                                            <c:out value="${medPermission.recipientInfo}"/>
+                                        </div>
+                                            <%--2nd column--%>
+                                        <div class="col">
+                                            <c:out value="${medPermission.permissionDateTime}"/>
+                                        </div>
+                                            <%--3rd column--%>
+                                        <div class="col"
+                                                <c:if test="${medPermission.cancellationDescription ne null}">
+                                                    title="${medPermission.cancellationDescription}"
+                                                </c:if>
+                                        >
+                                            <c:if test="${medPermission.cancellationDateTime ne null}">
+                                                <c:out value="${medPermission.cancellationDateTime}"/>
+                                            </c:if>
+                                        </div>
+                                            <%-- 4th column (button) --%>
+                                        <div class="col">
+                                            <button type="submit"
+                                                    class="btn align-self-center btn-primary"
+                                                    <c:if test="${medPermission.cancellationDateTime ne null}">
+                                                        disabled
+                                                    </c:if>
+                                            >
+                                                <fmt:message
+                                                        bundle="${jspMessages}"
+                                                        key="profileSubMenu.medicalHistoryPermission.delete"/>
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </c:forEach>
                         </c:when>
                         <c:otherwise>
                             <fmt:message bundle="${jspMessages}"
