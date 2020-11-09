@@ -100,7 +100,7 @@
                   method="post">
 
                 <input type="hidden" name="command"
-                       value="profile-password-change"/>
+                       value="profile-change-password"/>
 
                 <div class="form-group form-inline row">
                     <label for="newPasswordInput"
