@@ -85,8 +85,12 @@ public class DefaultAuthUserService implements AuthUserService {
         if (regInfValidator.isPasswordValid(newPassword)
                 && regInfValidator.isPasswordValid(password)) {
             try {
-                return authUserDao.changePasswordIfCorrect(newPassword, password
-                        , user);
+                if (newPassword.equals(password)) {
+                    return ChangeResult.DUPLICATE_ERROR.name();
+                }
+                newPassword = hashPassword(newPassword);
+                return authUserDao.changePasswordIfCorrect(newPassword, password,
+                        user);
             } catch (DaoException e) {
                 throw new ServiceException(e);
             }
@@ -98,6 +102,11 @@ public class DefaultAuthUserService implements AuthUserService {
         String salt = BCrypt.gensalt();
         String hashedPassword = BCrypt.hashpw(regInfo.getPassword(), salt);
         regInfo.setPassword(hashedPassword);
+    }
+
+    private String hashPassword(String password) {
+        String salt = BCrypt.gensalt();
+        return BCrypt.hashpw(password, salt);
     }
 
     private void cleanOutPassword(RegistrationInfo registrationInfo) {
