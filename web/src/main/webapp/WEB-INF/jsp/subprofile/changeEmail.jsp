@@ -47,7 +47,7 @@
                              key="profileSubMenu.changeEmail.warning"/>
             </div>
 
-            <form action="${pageContext.request.contextPath}/main"
+            <form action="${pageContext.request.contextPath}/profile"
                   method="post">
 
                 <c:if test="${requestScope.changeResult ne null}">

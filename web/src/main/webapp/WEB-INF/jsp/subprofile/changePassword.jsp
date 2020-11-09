@@ -95,7 +95,7 @@
                 </c:choose>
             </c:if>
 
-            <form action="${pageContext.request.contextPath}/main"
+            <form action="${pageContext.request.contextPath}/profile"
                   method="post">
 
                 <input type="hidden" name="command"
