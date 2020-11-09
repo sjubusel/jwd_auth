@@ -57,4 +57,19 @@ public class DefaultProfileService implements ProfileService {
         }
         return null;
     }
+
+    @Override
+    public boolean deleteMedicalHistoryPermission(String permission,
+            AuthUser user) throws ServiceException {
+        if (validator.isAuthUserValidForProfileActitity(user)
+                && permission.matches("[0-9]+")) {
+            try {
+                return profileDao.deleteMedicalHistoryPermission(permission,
+                        user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return false;
+    }
 }

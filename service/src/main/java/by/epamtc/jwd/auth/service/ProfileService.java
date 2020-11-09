@@ -15,4 +15,7 @@ public interface ProfileService {
 
     List<MedicalHistoryPermission> fetchMedicalHistoryPermissions(AuthUser user)
             throws ServiceException;
+
+    boolean deleteMedicalHistoryPermission(String permission, AuthUser user)
+            throws ServiceException;
 }
