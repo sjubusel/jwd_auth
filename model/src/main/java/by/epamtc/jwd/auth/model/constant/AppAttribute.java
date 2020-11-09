@@ -12,6 +12,8 @@ public final class AppAttribute {
     public static final String REQUEST_ERROR_VALUE_TECH = "tech";
     public static final String REQUEST_ERROR_VALUE_VAL = "val";
     public static final String REQUEST_PHOTO_UPLOAD = "photoUpload";
+    public static final String REQUEST_MEDICAL_HISTORY_PERMISSIONS
+            = "medicalHistoryPermissions";
 
     private AppAttribute() {
     }
