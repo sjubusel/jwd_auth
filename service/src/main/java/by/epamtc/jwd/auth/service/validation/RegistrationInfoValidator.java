@@ -62,7 +62,7 @@ public class RegistrationInfoValidator {
                 && password.matches(RegistrationInfoPattern.PASSWORD);
     }
 
-    private boolean isEmailValid(String email) {
+    public boolean isEmailValid(String email) {
         if (email == null) {
             return false;
         }
