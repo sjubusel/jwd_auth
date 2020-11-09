@@ -23,8 +23,14 @@ public final class CommandName {
     public static final String SUBPROFILE_EMAIL_CHANGE = "PROFILE-EMAIL-CHANGE";
     public static final String SUBPROFILE_GO_TO_CHANGE_PASSWORD
             = "GO-TO-PROFILE-CHANGE-PASSWORD";
+    public static final String SUBPROFILE_CHANGE_PASSWORD
+            = "PROFILE-CHANGE-PASSWORD";
     public static final String SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO
             = "GO-TO-PROFILE-CHANGE-PATIENT-INFO";
+    public static final String SUBPROFILE_CHANGE_PATIENT_PHOTO
+            = "PROFILE-CHANGE-PATIENT-PHOTO";
+    public static final String SUBPROFILE_CHANGE_PATIENT_INFO
+            = "PROFILE-CHANGE-PATIENT-INFO";
     public static final String SUBPROFILE_GO_TO_CHANGE_PHOTO
             = "GO-TO-PROFILE-CHANGE-PHOTO";
     public static final String SUBPROFILE_GO_TO_CHANGE_STAFF_INFO
@@ -37,10 +43,6 @@ public final class CommandName {
             = "GO-TO-PROFILE-STAFF-HISTORY";
     public static final String SUBPROFILE_GO_TO_STAFF_INFO
             = "GO-TO-PROFILE-STAFF-INFO";
-    public static final String SUBPROFILE_CHANGE_PATIENT_PHOTO
-            = "PROFILE-CHANGE-PATIENT-PHOTO";
-    public static final String SUBPROFILE_CHANGE_PATIENT_INFO
-            = "PROFILE-CHANGE-PATIENT-INFO";
 
     private CommandName() {
     }
