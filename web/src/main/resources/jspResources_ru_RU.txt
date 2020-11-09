@@ -104,7 +104,7 @@ profileSubMenu.patientInfo=Информация о пользователе
 profileSubMenu.changePatientInfo=Изменение информации о пользователе
 profileSubMenu.changePassword=Изменение пароля
 profileSubMenu.changeEmail=Изменение электронной почты
-profileSubMenu.changePhoto=Изменение фотографии пользователя
+profileSubMenu.medicalHistoryPermission=Разрешение доступа к мединформации
 
 profileSubMenu.staffInfo=Информация о медицинком работнике
 profileSubMenu.changeStaffInfo=Изменение информации о медицинком работнике
@@ -214,3 +214,7 @@ profileSubMenu.changePassword.changeResultSuccessful=Изменение паро
 profileSubMenu.changePassword.changeResultTechError=По техническим причинам изменить пароль не представилось возможным
 profileSubMenu.changePassword.changeResultValidationError=Введённый пароль не соответствует требованиям
 profileSubMenu.changePassword.changeResultDuplicateError=Вы ввели одинаковые пароли
+
+profileSubMenu.medicalHistoryPermission.heading=Предоставление доступа к Вашей медицинской информации иным пользователям системы
+profileSubMenu.medicalHistoryPermission.disclaimer=Ниже представлена информация о предоставлении Вами доступа к Вашей медицинской информации. Присутствует форма добавления пользователя по фамилии, имени и отчеству (тестовый вариант), а также вы можете удалить отказать в предоставлении доступа, нажав на соответствующую кнопку у записи.
+profileSubMenu.medicalHistoryPermission.noRecordsMessage=Вы ранее не предоставляли доступ к своей информации.

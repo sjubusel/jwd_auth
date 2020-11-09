@@ -69,7 +69,7 @@ public final class CommandPath {
     public static final String SUBPROFILE_CHANGE_EMAIL_JSP = "/WEB-INF/jsp/subprofile/changeEmail.jsp";
     public static final String SUBPROFILE_CHANGE_PASSWORD_JSP = "/WEB-INF/jsp/subprofile/changePassword.jsp";
     public static final String SUBPROFILE_CHANGE_PATIENT_INFO_JSP = "/WEB-INF/jsp/subprofile/changePatientInfo.jsp";
-    public static final String SUBPROFILE_CHANGE_PHOTO_JSP = "/WEB-INF/jsp/subprofile/changePhoto.jsp";
+    public static final String SUBPROFILE_MEDICAL_HISTORY_PERMISSION_jsp = "/WEB-INF/jsp/subprofile/medicalHistoryPermission.jsp";
     public static final String SUBPROFILE_CHANGE_STAFF_INFO_JSP = "/WEB-INF/jsp/subprofile/changeStaffInfo.jsp";
     public static final String SUBPROFILE_CHANGE_STAFF_PHOTO_JSP = "/WEB-INF/jsp/subprofile/changeStaffPhoto.jsp";
     public static final String SUBPROFILE_EXTREMELY_HAZARDOUS_DISEASES_JSP = "/WEB-INF/jsp/subprofile/extremelyHazardousDiseases.jsp";

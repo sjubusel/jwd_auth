@@ -20,6 +20,7 @@ import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangeEmailCommand
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangePasswordCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangePatientInformationCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileExtremelyHazardousDiseasesCommand;
+import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileMedicalHistoryPermissionCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileChangeEmailCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileChangePasswordCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileChangePatientInfoCommand;
@@ -67,8 +68,8 @@ public class CommandProvider {
                 new ProfileChangePatientPhotoCommand());
         repository.put(CommandName.SUBPROFILE_CHANGE_PATIENT_INFO,
                 new ProfileChangePatientInfoCommand());
-//        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_PHOTO,
-//                new GoToProfileChangePhotoCommand());
+        repository.put(CommandName.SUBPROFILE_GO_TO_MEDICAL_HISTORY_PERMISSION,
+                new GoToProfileMedicalHistoryPermissionCommand());
 //        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_STAFF_INFO,
 //                new GoToProfileChangeStaffInformationCommand());
 //        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_STAFF_PHOTO,

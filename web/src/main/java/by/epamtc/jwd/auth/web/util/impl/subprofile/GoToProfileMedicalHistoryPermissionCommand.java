@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class GoToProfileChangePhotoCommand implements Command {
+public class GoToProfileMedicalHistoryPermissionCommand implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        req.getRequestDispatcher(CommandPath.SUBPROFILE_CHANGE_PHOTO_JSP)
-                .forward(req, res);
+        req.getRequestDispatcher(CommandPath
+                .SUBPROFILE_MEDICAL_HISTORY_PERMISSION_jsp).forward(req, res);
     }
 }

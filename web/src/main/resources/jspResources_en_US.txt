@@ -104,7 +104,7 @@ profileSubMenu.patientInfo=User information
 profileSubMenu.changePatientInfo=Change user information
 profileSubMenu.changePassword=Change a password
 profileSubMenu.changeEmail=Change an email
-profileSubMenu.changePhoto=Change a user photo
+profileSubMenu.medicalHistoryPermission=Medical history permission
 
 profileSubMenu.staffInfo=Medical staff member information
 profileSubMenu.changeStaffInfo=Change medical staff member information
@@ -214,3 +214,7 @@ profileSubMenu.changePassword.changeResultSuccessful=Password changing is succes
 profileSubMenu.changePassword.changeResultTechError=Because of a technical factor there is no possibility to change a password
 profileSubMenu.changePassword.changeResultValidationError=Inputted password is not valid
 profileSubMenu.changePassword.changeResultDuplicateError=You have inputted equal passwords
+
+profileSubMenu.medicalHistoryPermission.heading=Granting an access to your medical information to other users
+profileSubMenu.medicalHistoryPermission.disclaimer=Your information about Your medical information granted to other users is presented here. There is a form, which gives permissions by first, middle or last names (it is a test variant), as well You have a possibility to cancel an access by clicking on a corresponding button near a record.
+profileSubMenu.medicalHistoryPermission.noRecordsMessage=You have never granted Your medical information.
