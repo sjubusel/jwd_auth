@@ -48,6 +48,16 @@ public final class SqlStatement {
     public static final String UPDATE_PHOTO_PATH = "UPDATE hospital.persons p\n" +
             "SET p.photo_path = ?\n" +
             "WHERE p.person_id = ?;";
+    public static final String SELECT_IF_CONTAINS_LOGIN = "SELECT login FROM " +
+            "hospital.auth_user WHERE login = ?";
+    public static final String SELECT_IF_CONTAINS_EMAIL = "SELECT email FROM " +
+            "hospital.persons WHERE email = ?";
+    public static final String SELECT_PASSWORD_BY_AUTH_USER_ID =
+            "SELECT au.password\n" +
+            "FROM auth_user au\n" +
+            "WHERE au.id = ?;";
+    public static final String UPDATE_EMAIL = "UPDATE hospital.persons p\n" +
+            "SET p.email = ? WHERE p.person_id = ?;";
 
     private SqlStatement() {
     }
