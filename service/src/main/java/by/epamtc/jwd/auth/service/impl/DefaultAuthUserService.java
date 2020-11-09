@@ -6,6 +6,7 @@ import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.auth_info.AuthenticationInfo;
 import by.epamtc.jwd.auth.model.auth_info.RegistrationInfo;
+import by.epamtc.jwd.auth.model.constant.ChangeResult;
 import by.epamtc.jwd.auth.service.AuthUserService;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.service.util.DuplicateAuthUserProvider;
@@ -58,6 +59,23 @@ public class DefaultAuthUserService implements AuthUserService {
                 cleanOutPassword(regInfo);
             }
         }
+        return null;
+    }
+
+    @Override
+    public String changeEmail(String email, String password, AuthUser user)
+            throws ServiceException {
+        if (regInfValidator.isEmailValid(email)) {
+            try {
+                if (authUserDao.containsEmail(email)) {
+                    return ChangeResult.DUPLICATE_ERROR.name();
+                }
+                return authUserDao.changeEmailIfCorrect(email, password, user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+
         return null;
     }
 

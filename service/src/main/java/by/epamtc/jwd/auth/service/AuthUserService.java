@@ -9,4 +9,7 @@ public interface AuthUserService {
     AuthUser login(AuthenticationInfo authenticationInfo) throws ServiceException;
 
     AuthUser register(RegistrationInfo registrationInfo) throws ServiceException;
+
+    String changeEmail(String email, String password, AuthUser user)
+            throws ServiceException;
 }
