@@ -4,6 +4,7 @@ import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
 import by.epamtc.jwd.auth.model.constant.AppParameter;
 import by.epamtc.jwd.auth.model.constant.ChangeResult;
+import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.service.AuthUserService;
 import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
@@ -32,26 +33,54 @@ public class ProfileChangePasswordCommand implements Command {
             result = authUserService.changePassword(newPassword, password, user);
         } catch (ServiceException e) {
             // TODO loj4j
-//            sendRedirectWithTechError(req, res);
+            sendRedirectWithTechError(req, res);
         }
 
         if (result == null) {
-//            sendRedirectWithValidationError(req, res);
+            sendRedirectWithValidationError(req, res);
             return;
         }
 
         if (result.equals(ChangeResult.DUPLICATE_ERROR.name())) {
-//            sendRedirectWithDuplicateError(req, res);
+            sendRedirectWithDuplicateError(req, res);
             return;
         }
 
         if (result.equals(ChangeResult.ILLEGAL_PASSWORD.name())) {
-//            sendRedirectWithIllegalPasswordError(req, res);
+            sendRedirectWithIllegalPasswordError(req, res);
             return;
         }
 
-//        sendRedirectWithSuccessMessage(req, res);
+        sendRedirectWithSuccessMessage(req, res);
+    }
 
+    private void sendRedirectWithTechError(HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBPROFILE_GO_TO_CHANGE_PASSWORD_RESULT_TECH_ERROR);
+    }
 
+    private void sendRedirectWithValidationError(HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBPROFILE_GO_TO_CHANGE_PASSWORD_RESULT_VALID_ERROR);
+    }
+
+    private void sendRedirectWithDuplicateError(HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBPROFILE_GO_TO_CHANGE_PASSWORD_RESULT_DUPLICATE_ERROR);
+    }
+
+    private void sendRedirectWithIllegalPasswordError(HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBPROFILE_GO_TO_CHANGE_PASSWORD_RESULT_ILLEGAL_PASSWORD_ERROR);
+    }
+
+    private void sendRedirectWithSuccessMessage(HttpServletRequest req, HttpServletResponse res)
+            throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBPROFILE_GO_TO_CHANGE_PASSWORD_SUCCESSFUL_RESULT);
     }
 }
