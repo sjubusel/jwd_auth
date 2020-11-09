@@ -36,11 +36,12 @@ public class GoToProfileMedicalHistoryPermissionCommand implements Command {
         if (permissions == null) {
             req.setAttribute(AppAttribute.REQUEST_ERROR, AppAttribute
                     .REQUEST_ERROR_VALUE_VAL);
+        } else if (permissions.size() > 0) {
+            req.setAttribute(AppAttribute.REQUEST_MEDICAL_HISTORY_PERMISSIONS,
+                    permissions);
         }
 
-
-
-        req.getRequestDispatcher(CommandPath
-                .SUBPROFILE_MEDICAL_HISTORY_PERMISSION_jsp).forward(req, res);
+        req.getRequestDispatcher(CommandPath.SUBPROFILE_MEDICAL_HISTORY_PERMISSION_jsp)
+                .forward(req, res);
     }
 }
