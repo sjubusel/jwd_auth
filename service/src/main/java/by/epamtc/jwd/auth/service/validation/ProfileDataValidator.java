@@ -10,7 +10,7 @@ import by.epamtc.jwd.auth.model.user_info.PatientInfo;
 import java.time.LocalDate;
 
 public class ProfileDataValidator {
-    public boolean isAuthUserValidToFetchPatientInfo(AuthUser authUser) {
+    public boolean isAuthUserValidForProfileActitity(AuthUser authUser) {
         if (authUser != null) {
             return authUser.getUserId() > 0;
         }

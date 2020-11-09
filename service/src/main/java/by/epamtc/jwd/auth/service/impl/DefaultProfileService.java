@@ -4,10 +4,13 @@ import by.epamtc.jwd.auth.dao.DaoFactory;
 import by.epamtc.jwd.auth.dao.ProfileDao;
 import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
+import by.epamtc.jwd.auth.model.user_info.MedicalHistoryPermission;
 import by.epamtc.jwd.auth.model.user_info.PatientInfo;
 import by.epamtc.jwd.auth.service.ProfileService;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.service.validation.ProfileDataValidator;
+
+import java.util.List;
 
 
 public class DefaultProfileService implements ProfileService {
@@ -18,7 +21,7 @@ public class DefaultProfileService implements ProfileService {
     @Override
     public PatientInfo fetchPatientInfo(AuthUser authUser)
             throws ServiceException {
-        if (validator.isAuthUserValidToFetchPatientInfo(authUser)) {
+        if (validator.isAuthUserValidForProfileActitity(authUser)) {
             try {
                 return profileDao.fetchPatientInfo(authUser);
             } catch (DaoException e) {
@@ -31,7 +34,7 @@ public class DefaultProfileService implements ProfileService {
     @Override
     public boolean changePatientInfo(PatientInfo changingPatientInfo,
             AuthUser user) throws ServiceException {
-        if (validator.isAuthUserValidToFetchPatientInfo(user)
+        if (validator.isAuthUserValidForProfileActitity(user)
                 && validator.isChangingPatientInfoValid(changingPatientInfo)) {
             try {
                 return profileDao.changePatientInfo(changingPatientInfo, user);
@@ -40,5 +43,18 @@ public class DefaultProfileService implements ProfileService {
             }
         }
         return false;
+    }
+
+    @Override
+    public List<MedicalHistoryPermission> fetchMedicalHistoryPermissions(AuthUser user)
+            throws ServiceException {
+        if (validator.isAuthUserValidForProfileActitity(user)) {
+            try {
+                return profileDao.fetchMedicalHistoryPermissions(user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return null;
     }
 }
