@@ -199,7 +199,7 @@ public class DefaultProfileDao implements ProfileDao {
             conn = pool.takeConnection();
             statement = conn.prepareStatement(
                     "UPDATE hospital.medical_history_share_permission_records m\n" +
-                            "SET m.cancellation_datetime = ?, m.cancellation_reason = 'В НАСТОЯЩИЙ МОМЕНТ НЕ РЕАЛИЗОВАНО'\n" +
+                            "SET m.cancellation_datetime = ?, m.cancellation_reason = 'ОТМЕНЕНО ВЛАДЕЛЬЦЕМ ИНФОРМАЦИИ'\n" +
                             "WHERE m.record_id = ?;"
             );
             statement.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
@@ -214,6 +214,7 @@ public class DefaultProfileDao implements ProfileDao {
                     "the connection pool during deleting of " +
                     "MedicalHistoryPermission", e);
         } finally {
+            //noinspection ConstantConditions
             pool.closeConnection(conn, statement, rSet);
         }
 
