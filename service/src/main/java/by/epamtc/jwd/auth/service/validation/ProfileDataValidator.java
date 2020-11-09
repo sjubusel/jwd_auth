@@ -85,7 +85,7 @@ public class ProfileDataValidator {
         }
 
         String series = idDocument.getSeries();
-        if (series != null && !series.matches("[0-9A-Za-z]{1,255}")) {
+        if (series != null && !series.matches(RegistrationInfoPattern.SERIES)) {
             return false;
         }
 
@@ -98,7 +98,7 @@ public class ProfileDataValidator {
         if (latinHolderName == null) {
             return false;
         }
-        if (!latinHolderName.matches("[A-Za-z -]{1,255}")) {
+        if (!latinHolderName.matches(RegistrationInfoPattern.ANY_LATIN_NAME)) {
             return false;
         }
 
@@ -106,7 +106,7 @@ public class ProfileDataValidator {
         if (latinHolderSurName == null) {
             return false;
         }
-        if (!latinHolderSurName.matches("[A-Za-z -]{1,255}")) {
+        if (!latinHolderSurName.matches(RegistrationInfoPattern.ANY_LATIN_NAME)) {
             return false;
         }
 
@@ -114,7 +114,7 @@ public class ProfileDataValidator {
         if (citizenShip == null) {
             return false;
         }
-        if (!citizenShip.matches("[0-9]+")) {
+        if (!citizenShip.matches(RegistrationInfoPattern.DIGITS)) {
             return false;
         }
 
@@ -136,7 +136,7 @@ public class ProfileDataValidator {
         if (personalNumber == null) {
             return false;
         }
-        if (!personalNumber.matches("[0-9A-Za-z]{1,255}")) {
+        if (!personalNumber.matches(RegistrationInfoPattern.PERSONAL_NUMBER)) {
             return false;
         }
 
@@ -144,7 +144,7 @@ public class ProfileDataValidator {
         if (placeOfOrigin == null) {
             return false;
         }
-        if (!placeOfOrigin.matches("[0-9A-Za-zА-Яа-яЁё \\-,.]{1,255}")) {
+        if (!placeOfOrigin.matches(RegistrationInfoPattern.PLACE_OF_ORIGIN)) {
             return false;
         }
 
@@ -153,7 +153,6 @@ public class ProfileDataValidator {
             return false;
         }
         LocalDate currentDate = LocalDate.now();
-//        LocalDate startDate = currentDate.minusYears(21);
         if (dateOfIssue.compareTo(currentDate) > 0) {
             return false;
         }
@@ -162,7 +161,6 @@ public class ProfileDataValidator {
         if (dateOfExpiry == null) {
             return false;
         }
-//        LocalDate endDate = currentDate.plusYears(21);
         if (dateOfExpiry.compareTo(currentDate) <= 0) {
             return false;
         }
@@ -172,7 +170,7 @@ public class ProfileDataValidator {
             return false;
         }
 
-        return issueAuthority.matches("[0-9A-Za-zА-Яа-яЁё \\-,.]{1,255}");
+        return issueAuthority.matches(RegistrationInfoPattern.ISSUE_AUTHORITY);
     }
 
     private boolean isAddressValid(Address address) {
