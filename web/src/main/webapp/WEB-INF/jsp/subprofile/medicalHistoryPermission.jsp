@@ -49,22 +49,52 @@
                              key="profileSubMenu.medicalHistoryPermission.disclaimer"/>
             </div>
 
-<%--            <fmt:message bundle="${jspMessages}"--%>
-<%--                         key="profileSubMenu.medicalHistoryPermission.tableHeadDescription"/>--%>
-<%--            <fmt:message bundle="${jspMessages}"--%>
-<%--                         key="profileSubMenu.medicalHistoryPermission.tableHeadVacantQuantity"/>--%>
-<%--            <fmt:message bundle="${jspMessages}"--%>
-<%--                         key="profileSubMenu.medicalHistoryPermission.tableHeadTotalQuantity"/>--%>
-
+            <%-- whether there is an error. if it is so, then print an error-message and quit, otherwise present contents of this jsp--%>
             <c:choose>
-                <c:when test="${requestScope.medicalHistoryPermissionRecord ne null}">
-                    STUB
+                <c:when test="${requestScope.error ne null}">
+                    <c:choose>
+                        <%-- a tech error --%>
+                        <c:when test="tech">
+                            <div class="alert alert-danger" role="alert">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profileSubMenu.medicalHistoryPermission.techError"/>
+                            </div>
+                        </c:when>
+                        <%-- a validation error --%>
+                        <c:when test="val">
+                            <div class="alert alert-danger" role="alert">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profileSubMenu.medicalHistoryPermission.validationError"/>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="alert alert-danger" role="alert">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="main.unknownCondition"/>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
                 </c:when>
+                <%--Here the jsp's contents begin--%>
                 <c:otherwise>
-                    <fmt:message bundle="${jspMessages}"
-                                 key="profileSubMenu.medicalHistoryPermission.noRecordsMessage"/>
+                    <c:choose>
+                        <c:when test="${requestScope.medicalHistoryPermissions ne null}">
+                            STUB
+                        </c:when>
+                        <c:otherwise>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="profileSubMenu.medicalHistoryPermission.noRecordsMessage"/>
+                        </c:otherwise>
+                    </c:choose>
                 </c:otherwise>
             </c:choose>
+
+            <%--            <fmt:message bundle="${jspMessages}"--%>
+            <%--                         key="profileSubMenu.medicalHistoryPermission.tableHeadDescription"/>--%>
+            <%--            <fmt:message bundle="${jspMessages}"--%>
+            <%--                         key="profileSubMenu.medicalHistoryPermission.tableHeadVacantQuantity"/>--%>
+            <%--            <fmt:message bundle="${jspMessages}"--%>
+            <%--                         key="profileSubMenu.medicalHistoryPermission.tableHeadTotalQuantity"/>--%>
 
             <%--                <c:forEach var="hospitalReportPart"--%>
             <%--                           items="${requestScope.hospitalReport.contents}">--%>
