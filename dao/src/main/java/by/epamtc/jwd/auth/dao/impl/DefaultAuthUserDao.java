@@ -9,6 +9,8 @@ import by.epamtc.jwd.auth.model.auth_info.AuthenticationInfo;
 import by.epamtc.jwd.auth.model.auth_info.RegistrationInfo;
 import by.epamtc.jwd.auth.model.auth_info.Role;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
+import by.epamtc.jwd.auth.model.constant.AppParameter;
+import by.epamtc.jwd.auth.model.constant.ChangeResult;
 import by.epamtc.jwd.auth.model.constant.SqlStatement;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -144,6 +146,50 @@ public class DefaultAuthUserDao implements AuthUserDao {
         }
     }
 
+    @Override
+    public String changeEmailIfCorrect(String email, String password,
+            AuthUser user) throws DaoException {
+        Connection conn = null;
+        PreparedStatement[] statements = new PreparedStatement[2];
+        ResultSet rSet = null;
+        int statIndex = 0;
+        String savedEmail = null;
+
+        try {
+            conn = pool.takeConnection();
+            statements[statIndex] = conn.prepareStatement("SELECT au.password\n" +
+                    "FROM auth_user au\n" +
+                    "WHERE au.id = ?;");
+            statements[statIndex].setInt(1, user.getId());
+            rSet = statements[statIndex].executeQuery();
+
+            if (rSet.next()) {
+                String dbPassword = rSet.getString(1);
+                if (!isPasswordCorrect(password, dbPassword)) {
+                    return ChangeResult.ILLEGAL_PASSWORD.name();
+                }
+
+                statements[++statIndex] = conn.prepareStatement("UPDATE hospital.persons p\n" +
+                        "SET p.email = ? WHERE p.person_id = ?;", Statement.RETURN_GENERATED_KEYS);
+                statements[statIndex].setString(1, email);
+                statements[statIndex].setInt(2, user.getUserId());
+                statements[statIndex].executeUpdate();
+
+                savedEmail = receiveGeneratedKeyAfterStatementExecution(
+                        statements[statIndex], AppParameter.EMAIL);
+            }
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while changing an email", e);
+        } catch (SQLException e) {
+            throw new DaoException("An error while taking a conneciton" +
+                    "during changing an email", e);
+        } finally {
+            pool.closeConnection(conn, statements, rSet);
+        }
+
+        return savedEmail;
+    }
+
     private boolean isPasswordCorrect(String plainPassword, String dbPassword) {
         return BCrypt.checkpw(plainPassword, dbPassword);
     }
@@ -201,13 +247,23 @@ public class DefaultAuthUserDao implements AuthUserDao {
     }
 
     private int receiveGeneratedKeyAfterStatementExecution(PreparedStatement
-            personCreationStat) throws SQLException {
-        int personId;
-        personId = AppConstant.AUTH_USER_STANDARD_INT_VALUE;
-        ResultSet personsGeneratedKeys = personCreationStat.getGeneratedKeys();
-        while (personsGeneratedKeys.next()) {
-            personId = personsGeneratedKeys.getInt(1);
+            preparedStatement) throws SQLException {
+        int primaryKeyId;
+        primaryKeyId = AppConstant.AUTH_USER_STANDARD_INT_VALUE;
+        ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+        while (generatedKeys.next()) {
+            primaryKeyId = generatedKeys.getInt(1);
         }
-        return personId;
+        return primaryKeyId;
+    }
+
+    private String receiveGeneratedKeyAfterStatementExecution(PreparedStatement
+            preparedStatement, String columnLabel) throws SQLException {
+        String someColumn = null;
+        ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+        while (generatedKeys.next()) {
+            someColumn = generatedKeys.getString(columnLabel);
+        }
+        return someColumn;
     }
 }
