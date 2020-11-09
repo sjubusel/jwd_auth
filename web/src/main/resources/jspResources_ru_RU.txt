@@ -210,3 +210,7 @@ profileSubMenu.changeEMail.changeResultIllegalPassWordError=Введённый �
 
 profileSubMenu.changePassword.heading=Смена пароля
 profileSubMenu.changePassword.warning=Для смены необходимо ввести новый пароль, подтвердив данное действие действительным паролем
+profileSubMenu.changePassword.changeResultSuccessful=Изменение пароля прошло успешно
+profileSubMenu.changePassword.changeResultTechError=По техническим причинам изменить пароль не представилось возможным
+profileSubMenu.changePassword.changeResultValidationError=Введённый пароль не соответствует требованиям
+profileSubMenu.changePassword.changeResultDuplicateError=Вы ввели одинаковые пароли

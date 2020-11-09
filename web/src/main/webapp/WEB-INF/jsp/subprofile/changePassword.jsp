@@ -48,53 +48,52 @@
                              key="profileSubMenu.changePassword.warning"/>
             </div>
 
-
-            <%--                <c:if test="${requestScope.changeResult ne null}">--%>
-            <%--                    <c:choose>--%>
-            <%--                        <c:when test="${requestScope.changeResult eq 'success'}">--%>
-            <%--                            <div class="alert alert-success"--%>
-            <%--                                 role="alert">--%>
-            <%--                                <fmt:message bundle="${jspMessages}"--%>
-            <%--                                             key="profileSubMenu.changeEMail.changeResultSuccessful"/>--%>
-            <%--                            </div>--%>
-            <%--                        </c:when>--%>
-            <%--                        <c:when test="${requestScope.changeResult eq 'techError'}">--%>
-            <%--                            <div class="alert alert-danger"--%>
-            <%--                                 role="alert">--%>
-            <%--                                <fmt:message bundle="${jspMessages}"--%>
-            <%--                                             key="profileSubMenu.changeEMail.changeResultTechError"/>--%>
-            <%--                            </div>--%>
-            <%--                        </c:when>--%>
-            <%--                        <c:when test="${requestScope.changeResult eq 'validationError'}">--%>
-            <%--                            <div class="alert alert-danger"--%>
-            <%--                                 role="alert">--%>
-            <%--                                <fmt:message bundle="${jspMessages}"--%>
-            <%--                                             key="profileSubMenu.changeEMail.changeResultValidationError"/>--%>
-            <%--                            </div>--%>
-            <%--                        </c:when>--%>
-            <%--                        <c:when test="${requestScope.changeResult eq 'duplicateError'}">--%>
-            <%--                            <div class="alert alert-danger"--%>
-            <%--                                 role="alert">--%>
-            <%--                                <fmt:message bundle="${jspMessages}"--%>
-            <%--                                             key="profileSubMenu.changeEMail.changeResultDuplicateError"/>--%>
-            <%--                            </div>--%>
-            <%--                        </c:when>--%>
-            <%--                        <c:when test="${requestScope.changeResult eq 'illegalPassWordError'}">--%>
-            <%--                            <div class="alert alert-danger"--%>
-            <%--                                 role="alert">--%>
-            <%--                                <fmt:message bundle="${jspMessages}"--%>
-            <%--                                             key="profileSubMenu.changeEMail.changeResultIllegalPassWordError"/>--%>
-            <%--                            </div>--%>
-            <%--                        </c:when>--%>
-            <%--                        <c:otherwise>--%>
-            <%--                            <div class="alert alert-danger"--%>
-            <%--                                 role="alert">--%>
-            <%--                                <fmt:message bundle="${jspMessages}"--%>
-            <%--                                             key="main.unknownCondition"/>--%>
-            <%--                            </div>--%>
-            <%--                        </c:otherwise>--%>
-            <%--                    </c:choose>--%>
-            <%--                </c:if>--%>
+            <c:if test="${requestScope.changeResult ne null}">
+                <c:choose>
+                    <c:when test="${requestScope.changeResult eq 'success'}">
+                        <div class="alert alert-success"
+                             role="alert">
+                            <fmt:message bundle="${jspMessages}"
+                                         key="profileSubMenu.changePassword.changeResultSuccessful"/>
+                        </div>
+                    </c:when>
+                    <c:when test="${requestScope.changeResult eq 'techError'}">
+                        <div class="alert alert-danger"
+                             role="alert">
+                            <fmt:message bundle="${jspMessages}"
+                                         key="profileSubMenu.changePassword.changeResultTechError"/>
+                        </div>
+                    </c:when>
+                    <c:when test="${requestScope.changeResult eq 'validationError'}">
+                        <div class="alert alert-danger"
+                             role="alert">
+                            <fmt:message bundle="${jspMessages}"
+                                         key="profileSubMenu.changePassword.changeResultValidationError"/>
+                        </div>
+                    </c:when>
+                    <c:when test="${requestScope.changeResult eq 'duplicateError'}">
+                        <div class="alert alert-danger"
+                             role="alert">
+                            <fmt:message bundle="${jspMessages}"
+                                         key="profileSubMenu.changePassword.changeResultDuplicateError"/>
+                        </div>
+                    </c:when>
+                    <c:when test="${requestScope.changeResult eq 'illegalPassWordError'}">
+                        <div class="alert alert-danger"
+                             role="alert">
+                            <fmt:message bundle="${jspMessages}"
+                                         key="profileSubMenu.changeEMail.changeResultIllegalPassWordError"/>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="alert alert-danger"
+                             role="alert">
+                            <fmt:message bundle="${jspMessages}"
+                                         key="main.unknownCondition"/>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
+            </c:if>
 
             <form action="${pageContext.request.contextPath}/main"
                   method="post">
