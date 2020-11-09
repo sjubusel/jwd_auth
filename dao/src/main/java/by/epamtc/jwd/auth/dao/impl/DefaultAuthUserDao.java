@@ -108,8 +108,7 @@ public class DefaultAuthUserDao implements AuthUserDao {
         PreparedStatement stat = null;
         try {
             conn = pool.takeConnection();
-            stat = conn.prepareStatement("SELECT login FROM " +
-                    "hospital.auth_user WHERE login = ?");
+            stat = conn.prepareStatement(SqlStatement.SELECT_IF_CONTAINS_LOGIN);
             stat.setString(1, login);
             return stat.executeQuery().next();
         } catch (SQLException e) {
@@ -129,8 +128,7 @@ public class DefaultAuthUserDao implements AuthUserDao {
         PreparedStatement stat = null;
         try {
             conn = pool.takeConnection();
-            stat = conn.prepareStatement("SELECT email FROM " +
-                    "hospital.persons WHERE email = ?");
+            stat = conn.prepareStatement(SqlStatement.SELECT_IF_CONTAINS_EMAIL);
             stat.setString(1, email);
             return stat.executeQuery().next();
         } catch (SQLException e) {
@@ -155,9 +153,8 @@ public class DefaultAuthUserDao implements AuthUserDao {
 
         try {
             conn = pool.takeConnection();
-            statements[statIndex] = conn.prepareStatement("SELECT au.password\n" +
-                    "FROM auth_user au\n" +
-                    "WHERE au.id = ?;");
+            statements[statIndex] = conn.prepareStatement(SqlStatement
+                    .SELECT_PASSWORD_BY_AUTH_USER_ID);
             statements[statIndex].setInt(1, user.getId());
             rSet = statements[statIndex].executeQuery();
 
@@ -167,8 +164,8 @@ public class DefaultAuthUserDao implements AuthUserDao {
                     return ChangeResult.ILLEGAL_PASSWORD.name();
                 }
 
-                statements[++statIndex] = conn.prepareStatement("UPDATE hospital.persons p\n" +
-                        "SET p.email = ? WHERE p.person_id = ?;", Statement.RETURN_GENERATED_KEYS);
+                statements[++statIndex] = conn.prepareStatement(SqlStatement
+                        .UPDATE_EMAIL, Statement.RETURN_GENERATED_KEYS);
                 statements[statIndex].setString(1, email);
                 statements[statIndex].setInt(2, user.getUserId());
                 statements[statIndex].executeUpdate();
@@ -198,9 +195,8 @@ public class DefaultAuthUserDao implements AuthUserDao {
 
         try {
             conn = pool.takeConnection();
-            statements[statIndex] = conn.prepareStatement("SELECT au.password\n" +
-                    "FROM auth_user au\n" +
-                    "WHERE au.id = ?;");
+            statements[statIndex] = conn.prepareStatement(SqlStatement
+                    .SELECT_PASSWORD_BY_AUTH_USER_ID);
             statements[statIndex].setInt(1, user.getId());
             rSet = statements[statIndex].executeQuery();
 
