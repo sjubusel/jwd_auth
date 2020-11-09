@@ -14,4 +14,7 @@ public interface AuthUserDao {
     boolean containsLogin(String login) throws DaoException;
 
     boolean containsEmail(String email) throws DaoException;
+
+    String changeEmailIfCorrect(String email, String password, AuthUser user)
+            throws DaoException;
 }
