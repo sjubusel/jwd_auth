@@ -42,14 +42,15 @@
                              key="profileSubMenu.changeEmail.heading"/>
             </h1>
 
-            <div class="text-muted">
+            <div class="text-muted mb-3">
                 <fmt:message bundle="${jspMessages}"
                              key="profileSubMenu.changeEmail.warning"/>
             </div>
 
             <form action="${pageContext.request.contextPath}/main"
                   method="post">
-                <input type="hidden" name="command" value="profile-email-change"/>
+                <input type="hidden" name="command"
+                       value="profile-email-change"/>
 
                 <div class="form-group form-inline row">
                     <label for="emailInput" class="col-4 custom-form-label">
@@ -59,6 +60,8 @@
                     <input type="email" class="form-control col" id="emailInput"
                            name="email" required placeholder="xxxxx@xxxxx.xxx"
                            pattern="<fmt:message bundle="${regEx}" key="email"/>">
+                </div>
+                <div class="row mb-3">
                     <div id="emailIndent" class="col-4"></div>
                     <small id="emailDescription"
                            class="form-text text-muted col">
@@ -75,9 +78,15 @@
                     <input type="password" class="form-control col"
                            id="passwordInput" name="password" required
                            placeholder="<fmt:message bundle="${jspMessages}"
-                   key="register.passwordInput.placeholder"/>"
+                   key="profileSubMenu.changeEmail.passwordPlaceholder"/>"
                            pattern="<fmt:message bundle="${regEx}" key="password"/>">
                 </div>
+
+                <button type="submit"
+                        class="btn align-self-center btn-primary">
+                    <fmt:message bundle="${jspMessages}"
+                                 key="profileSubMenu.changePatientInfo.changePhoto"/>
+                </button>
             </form>
 
         </div>

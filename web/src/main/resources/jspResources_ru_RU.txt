@@ -201,3 +201,4 @@ profileSubMenu.changePatientInfo.changeResultValidationError=По причине
 
 profileSubMenu.changeEmail.heading=Смена адреса электронной почты
 profileSubMenu.changeEmail.warning=Для смены необходимо ввести новый адрес электронной почты, подтвердив данное действие действительным паролем
+profileSubMenu.changeEmail.passwordPlaceholder=Введите актуальный пароль
