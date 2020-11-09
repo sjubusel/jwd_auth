@@ -33,6 +33,9 @@ public final class CommandName {
             = "PROFILE-CHANGE-PATIENT-INFO";
     public static final String SUBPROFILE_GO_TO_MEDICAL_HISTORY_PERMISSION
             = "GO-TO-PROFILE-MEDICAL-HISTORY-PERMISSION";
+    public static final String SUBPROFILE_MEDICAL_HISTORY_PERMISSION_DELETE
+            = "PROFILE-MEDICAL-HISTORY-PERMISSION-DELETE";
+
     public static final String SUBPROFILE_GO_TO_CHANGE_STAFF_INFO
             = "GO-TO-PROFILE-CHANGE-STAFF-INFO";
     public static final String SUBPROFILE_GO_TO_CHANGE_STAFF_PHOTO
