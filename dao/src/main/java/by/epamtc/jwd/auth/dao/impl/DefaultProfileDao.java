@@ -154,19 +154,8 @@ public class DefaultProfileDao implements ProfileDao {
 
         try {
             conn = pool.takeConnection();
-            statement = conn.prepareStatement(
-                    "SELECT rec.record_id,\n" +
-                            "       rec.recipient_id,\n" +
-                            "       p.first_name,\n" +
-                            "       p.middle_name,\n" +
-                            "       p.last_name,\n" +
-                            "       rec.permission_datetime,\n" +
-                            "       rec.cancellation_datetime,\n" +
-                            "       rec.cancellation_reason\n" +
-                            "FROM hospital.medical_history_share_permission_records rec\n" +
-                            "         JOIN hospital.persons p ON rec.recipient_id = p.person_id\n" +
-                            "WHERE rec.patient_id = ?;"
-            );
+            statement = conn.prepareStatement(SqlStatement
+                    .SELECT_MEDICAL_HISTORY_PERMISSIONS);
             statement.setInt(1, user.getUserId());
             rSet = statement.executeQuery();
             while (rSet.next()) {
@@ -197,11 +186,8 @@ public class DefaultProfileDao implements ProfileDao {
 
         try {
             conn = pool.takeConnection();
-            statement = conn.prepareStatement(
-                    "UPDATE hospital.medical_history_share_permission_records m\n" +
-                            "SET m.cancellation_datetime = ?, m.cancellation_reason = 'ОТМЕНЕНО ВЛАДЕЛЬЦЕМ ИНФОРМАЦИИ'\n" +
-                            "WHERE m.record_id = ?;"
-            );
+            statement = conn.prepareStatement(SqlStatement
+                    .CANCEL_MEDICAL_HISTORY_PERMISSION);
             statement.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
             statement.setInt(2, Integer.parseInt(permissionId));
             statement.executeUpdate();
@@ -350,9 +336,8 @@ public class DefaultProfileDao implements ProfileDao {
     private void changePatientPhoneNumber(String phoneNumber, int patientId,
             Connection conn, ArrayList<PreparedStatement> statements)
             throws SQLException {
-        PreparedStatement phoneNumberInsertStatement = conn.prepareStatement("UPDATE hospital.persons p\n" +
-                "SET p.phone_number = ?\n" +
-                "WHERE p.person_id = ?");
+        PreparedStatement phoneNumberInsertStatement = conn.prepareStatement(
+                SqlStatement.UPDATE_PHONE_NUMBER);
         statements.add(phoneNumberInsertStatement);
 
         phoneNumberInsertStatement.setString(1, phoneNumber);
@@ -364,9 +349,8 @@ public class DefaultProfileDao implements ProfileDao {
     private void changeMaritalStatus(MaritalStatus maritalStatus, int patientId,
             Connection conn, ArrayList<PreparedStatement> statements)
             throws SQLException {
-        PreparedStatement mStatusUpdateStatement = conn.prepareStatement("UPDATE hospital.persons p\n" +
-                "SET p.marital_status = ?\n" +
-                "WHERE p.person_id = ?;");
+        PreparedStatement mStatusUpdateStatement = conn.prepareStatement(
+                SqlStatement.UPDATE_MARITAL_STATUS);
         statements.add(mStatusUpdateStatement);
 
         mStatusUpdateStatement.setString(1, maritalStatus.name());
@@ -378,12 +362,8 @@ public class DefaultProfileDao implements ProfileDao {
     private void changeIdentityDocument(IdentityDocument idDocument, int patientId,
             Connection conn, ArrayList<PreparedStatement> statements)
             throws SQLException {
-        PreparedStatement idDocInsertStatement = conn
-                .prepareStatement("INSERT INTO hospital.identification_documents (person_id, identification_document_type_id, series,\n" +
-                        "                                               serial_number_of_document, latin_holder_name, latin_holder_surname,\n" +
-                        "                                               citizenship_id, birth_date, personal_number, gender, place_of_origin,\n" +
-                        "                                               date_of_issue, date_of_expiry, issue_authority)\n" +
-                        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
+        PreparedStatement idDocInsertStatement = conn.prepareStatement(
+                SqlStatement.INSERT_IDENTITY_DOCUMENT, Statement.RETURN_GENERATED_KEYS);
         statements.add(idDocInsertStatement);
 
         idDocInsertStatement.setInt(1, patientId);
@@ -409,9 +389,8 @@ public class DefaultProfileDao implements ProfileDao {
         int idOfIdentityDocument = receiveGeneratedKeyAfterStatementExecution
                 (idDocInsertStatement);
 
-        PreparedStatement updatePatientWithIdDoc = conn.prepareStatement("UPDATE hospital.persons p\n" +
-                "SET p.identification_document_id = ?\n" +
-                "WHERE p.person_id = ?;");
+        PreparedStatement updatePatientWithIdDoc = conn.prepareStatement(
+                SqlStatement.UPDATE_IDENTITY_DOCUMENT);
         statements.add(updatePatientWithIdDoc);
 
         updatePatientWithIdDoc.setInt(1, idOfIdentityDocument);
@@ -422,8 +401,8 @@ public class DefaultProfileDao implements ProfileDao {
 
     private void changeAddress(Address address, int patientId, Connection conn,
             ArrayList<PreparedStatement> statements) throws SQLException {
-        PreparedStatement addressInsertStatement = conn.prepareStatement("INSERT INTO hospital.addresses (zip_code, road_id, house, building, room)\n" +
-                "VALUES (?, ?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
+        PreparedStatement addressInsertStatement = conn.prepareStatement(
+                SqlStatement.INSERT_ADDRESS, Statement.RETURN_GENERATED_KEYS);
         statements.add(addressInsertStatement);
 
         addressInsertStatement.setString(1, address.getZipCode());
@@ -436,9 +415,8 @@ public class DefaultProfileDao implements ProfileDao {
         addressInsertStatement.executeUpdate();
         int addressId = receiveGeneratedKeyAfterStatementExecution(addressInsertStatement);
 
-        PreparedStatement updatePatientWithNewAddress = conn.prepareStatement("UPDATE hospital.persons p \n" +
-                "SET p.permanent_home_address_id = ?\n" +
-                "WHERE p.person_id = ?;");
+        PreparedStatement updatePatientWithNewAddress = conn.prepareStatement(
+                SqlStatement.UPDATE_ADDRESS);
         statements.add(updatePatientWithNewAddress);
 
         updatePatientWithNewAddress.setInt(1, addressId);
@@ -451,9 +429,7 @@ public class DefaultProfileDao implements ProfileDao {
             int patientId, Connection conn, ArrayList<PreparedStatement> statements)
             throws SQLException {
         PreparedStatement updatePatientWithEmergencyPersonInfo = conn
-                .prepareStatement("UPDATE hospital.persons p\n" +
-                        "SET p.in_case_of_emergency_person_id = ?\n" +
-                        "WHERE p.person_id = ?;");
+                .prepareStatement(SqlStatement.UPDATE_EMERGENCY_PERSON);
         statements.add(updatePatientWithEmergencyPersonInfo);
 
         updatePatientWithEmergencyPersonInfo.setString(1,
@@ -467,9 +443,7 @@ public class DefaultProfileDao implements ProfileDao {
             int patientId, Connection conn, ArrayList<PreparedStatement> statements)
             throws SQLException {
         PreparedStatement updatePatientWithEmergencyPersonPhone = conn
-                .prepareStatement("UPDATE hospital.persons p\n" +
-                        "SET p.in_case_of_emergency_phone_number = ?\n" +
-                        "WHERE p.person_id = ?;");
+                .prepareStatement(SqlStatement.UPDATE_EMERGENCY_PHONE);
         statements.add(updatePatientWithEmergencyPersonPhone);
 
         updatePatientWithEmergencyPersonPhone.setString(1,
@@ -482,9 +456,8 @@ public class DefaultProfileDao implements ProfileDao {
     private void changeBloodType(BloodType bloodType, int patientId,
             Connection conn, ArrayList<PreparedStatement> statements)
             throws SQLException {
-        PreparedStatement updatePatientWithBloodType = conn.prepareStatement("UPDATE hospital.persons p \n" +
-                "SET p.blood_type = ?\n" +
-                "WHERE p.person_id = ?;");
+        PreparedStatement updatePatientWithBloodType = conn.prepareStatement(
+                SqlStatement.UPDATE_BLOOD_TYPE);
         statements.add(updatePatientWithBloodType);
 
         updatePatientWithBloodType.setString(1, bloodType != BloodType.UNKNOWN
@@ -498,9 +471,8 @@ public class DefaultProfileDao implements ProfileDao {
     private void changeRhBloodGroup(RhBloodGroup rhBloodGroup, int patientId,
             Connection conn, ArrayList<PreparedStatement> statements)
             throws SQLException {
-        PreparedStatement updatePatientWithRhGroup = conn.prepareStatement("UPDATE hospital.persons p\n" +
-                "SET p.rhesus_factor = ?\n" +
-                "WHERE p.person_id = ?;");
+        PreparedStatement updatePatientWithRhGroup = conn.prepareStatement(
+                SqlStatement.UPDATE_RH_BLOOD_GROUP);
         statements.add(updatePatientWithRhGroup);
 
         updatePatientWithRhGroup.setString(1, rhBloodGroup != RhBloodGroup.UNKNOWN
@@ -514,9 +486,8 @@ public class DefaultProfileDao implements ProfileDao {
     private void changeDisabilityDegree(DisabilityDegree disabilityDegree,
             int patientId, Connection conn, ArrayList<PreparedStatement> statements)
             throws SQLException {
-        PreparedStatement updatePatientWithDisability = conn.prepareStatement("UPDATE hospital.persons p\n" +
-                "SET p.disability_degree = ?\n" +
-                "WHERE p.person_id = ?;");
+        PreparedStatement updatePatientWithDisability = conn.prepareStatement(
+                SqlStatement.UPDATE_DISABILITY_DEGREE);
         statements.add(updatePatientWithDisability);
 
         updatePatientWithDisability.setString(1, disabilityDegree
@@ -529,9 +500,8 @@ public class DefaultProfileDao implements ProfileDao {
     private void changeTransportationStatus(TransportationStatus status,
             int patientId, Connection conn, ArrayList<PreparedStatement> statements)
             throws SQLException {
-        PreparedStatement updateTransportationStatus = conn.prepareStatement("UPDATE hospital.persons p\n" +
-                "SET p.transportation_status = ?\n" +
-                "WHERE p.person_id = ?;");
+        PreparedStatement updateTransportationStatus = conn.prepareStatement(
+                SqlStatement.UPDATE_TRANSPORTATION_STATUS);
         statements.add(updateTransportationStatus);
 
         updateTransportationStatus.setString(1, status.name());

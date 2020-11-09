@@ -54,13 +54,70 @@ public final class SqlStatement {
             "hospital.persons WHERE email = ?";
     public static final String SELECT_PASSWORD_BY_AUTH_USER_ID =
             "SELECT au.password\n" +
-            "FROM auth_user au\n" +
-            "WHERE au.id = ?;";
+                    "FROM auth_user au\n" +
+                    "WHERE au.id = ?;";
     public static final String UPDATE_EMAIL = "UPDATE hospital.persons p\n" +
             "SET p.email = ? WHERE p.person_id = ?;";
     public static final String UPDATE_PASSWORD = "UPDATE hospital.auth_user au " +
             "SET au.password = ?" +
             "WHERE au.id = ?;";
+    public static final String SELECT_MEDICAL_HISTORY_PERMISSIONS
+            = "SELECT rec.record_id,\n" +
+            "       rec.recipient_id,\n" +
+            "       p.first_name,\n" +
+            "       p.middle_name,\n" +
+            "       p.last_name,\n" +
+            "       rec.permission_datetime,\n" +
+            "       rec.cancellation_datetime,\n" +
+            "       rec.cancellation_reason\n" +
+            "FROM hospital.medical_history_share_permission_records rec\n" +
+            "         JOIN hospital.persons p ON rec.recipient_id = p.person_id\n" +
+            "WHERE rec.patient_id = ?;";
+    public static final String CANCEL_MEDICAL_HISTORY_PERMISSION
+            = "UPDATE hospital.medical_history_share_permission_records m\n" +
+            "SET m.cancellation_datetime = ?, m.cancellation_reason = 'ОТМЕНЕНО ВЛАДЕЛЬЦЕМ ИНФОРМАЦИИ'\n" +
+            "WHERE m.record_id = ?;";
+    public static final String UPDATE_PHONE_NUMBER = "UPDATE hospital.persons p\n" +
+            "SET p.phone_number = ?\n" +
+            "WHERE p.person_id = ?";
+    public static final String UPDATE_MARITAL_STATUS = "UPDATE hospital.persons p\n" +
+            "SET p.marital_status = ?\n" +
+            "WHERE p.person_id = ?;";
+    public static final String INSERT_IDENTITY_DOCUMENT
+            = "INSERT INTO hospital.identification_documents (person_id, identification_document_type_id, series,\n" +
+            "serial_number_of_document, latin_holder_name, latin_holder_surname,\n" +
+            "citizenship_id, birth_date, personal_number, gender, place_of_origin,\n" +
+            "date_of_issue, date_of_expiry, issue_authority)\n" +
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    public static final String UPDATE_IDENTITY_DOCUMENT
+            = "UPDATE hospital.persons p\n" +
+            "SET p.identification_document_id = ?\n" +
+            "WHERE p.person_id = ?;";
+    public static final String INSERT_ADDRESS
+            = "INSERT INTO hospital.addresses (zip_code, road_id, house, " +
+            "building, room)\n" +
+            "VALUES (?, ?, ?, ?, ?);";
+    public static final String UPDATE_ADDRESS = "UPDATE hospital.persons p \n" +
+            "SET p.permanent_home_address_id = ?\n" +
+            "WHERE p.person_id = ?;";
+    public static final String UPDATE_EMERGENCY_PERSON = "UPDATE hospital.persons p\n" +
+            "SET p.in_case_of_emergency_person_id = ?\n" +
+            "WHERE p.person_id = ?;";
+    public static final String UPDATE_EMERGENCY_PHONE = "UPDATE hospital.persons p\n" +
+            "SET p.in_case_of_emergency_phone_number = ?\n" +
+            "WHERE p.person_id = ?;";
+    public static final String UPDATE_BLOOD_TYPE = "UPDATE hospital.persons p \n" +
+            "SET p.blood_type = ?\n" +
+            "WHERE p.person_id = ?;";
+    public static final String UPDATE_RH_BLOOD_GROUP = "UPDATE hospital.persons p\n" +
+            "SET p.rhesus_factor = ?\n" +
+            "WHERE p.person_id = ?;";
+    public static final String UPDATE_DISABILITY_DEGREE = "UPDATE hospital.persons p\n" +
+            "SET p.disability_degree = ?\n" +
+            "WHERE p.person_id = ?;";
+    public static final String UPDATE_TRANSPORTATION_STATUS = "UPDATE hospital.persons p\n" +
+            "SET p.transportation_status = ?\n" +
+            "WHERE p.person_id = ?;";
 
     private SqlStatement() {
     }
