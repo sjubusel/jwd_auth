@@ -4,6 +4,7 @@ import by.epamtc.jwd.auth.dao.DaoFactory;
 import by.epamtc.jwd.auth.dao.ProfileDao;
 import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
+import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
 import by.epamtc.jwd.auth.model.user_info.MedicalHistoryPermission;
 import by.epamtc.jwd.auth.model.user_info.PatientInfo;
 import by.epamtc.jwd.auth.service.ProfileService;
@@ -59,12 +60,12 @@ public class DefaultProfileService implements ProfileService {
     }
 
     @Override
-    public boolean deleteMedicalHistoryPermission(String permission,
+    public boolean cancelMedicalHistoryPermission(String permission,
             AuthUser user) throws ServiceException {
         if (validator.isAuthUserValidForProfileActitity(user)
-                && permission.matches("[0-9]+")) {
+                && permission.matches(RegistrationInfoPattern.DIGITS)) {
             try {
-                return profileDao.deleteMedicalHistoryPermission(permission,
+                return profileDao.cancelMedicalHistoryPermission(permission,
                         user);
             } catch (DaoException e) {
                 throw new ServiceException(e);

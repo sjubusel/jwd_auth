@@ -188,6 +188,38 @@ public class DefaultProfileDao implements ProfileDao {
         return medicalHistoryPermissions;
     }
 
+    @Override
+    public boolean cancelMedicalHistoryPermission(String permissionId,
+            AuthUser user) throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet rSet = null;
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(
+                    "UPDATE hospital.medical_history_share_permission_records m\n" +
+                            "SET m.cancellation_datetime = ? AND m.cancellation_reason = 'В НАСТОЯЩИЙ МОМЕНТ НЕ РЕАЛИЗОВАНО'\n" +
+                            "WHERE m.record_id = ?;"
+            );
+            statement.setObject(1, LocalDateTime.now());
+            statement.setInt(2, Integer.parseInt(permissionId));
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new DaoException("An error while deleting data from DB " +
+                    "(MedicalHistoryPermission records)", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection from " +
+                    "the connection pool during deleting of " +
+                    "MedicalHistoryPermission", e);
+        } finally {
+            pool.closeConnection(conn, statement, rSet);
+        }
+
+        return true;
+    }
+
     private PatientInfo compilePatientInfo(ResultSet rSet) throws SQLException {
         String photoPath = rSet.getString(1);
         String firstName = rSet.getString(2);

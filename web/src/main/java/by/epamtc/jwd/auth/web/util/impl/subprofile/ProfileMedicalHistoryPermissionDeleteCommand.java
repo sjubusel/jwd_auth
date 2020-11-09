@@ -25,19 +25,19 @@ public class ProfileMedicalHistoryPermissionDeleteCommand implements Command {
         String permission = req.getParameter("permissionIdInput");
         boolean isDeleted = false;
 
-        try {
-            isDeleted = profileService.deleteMedicalHistoryPermission(permission, user);
-        } catch (ServiceException e) {
-            // TODO log4j
-            sendRedirectWithTechError(req, res);
-            return;
-        }
+//        try {
+//            isDeleted = profileService.cancelMedicalHistoryPermission(permission, user);
+//        } catch (ServiceException e) {
+//            // TODO log4j
+//            sendRedirectWithTechError(req, res);
+//            return;
+//        }
+//
+//        if (!isDeleted) {
+//            sendRedirectWithValidationError(req, res);
+//            return;
+//        }
 
-        if (!isDeleted) {
-            sendRedirectWithValidationError(req, res);
-            return;
-        }
-
-        sendRedirectWithSuccessMessage(req, res);
+//        sendRedirectWithSuccessMessage(req, res);
     }
 }

@@ -15,4 +15,7 @@ public interface ProfileDao {
 
     List<MedicalHistoryPermission> fetchMedicalHistoryPermissions(AuthUser user)
             throws DaoException;
+
+    boolean cancelMedicalHistoryPermission(String permissionId, AuthUser user)
+            throws DaoException;
 }
