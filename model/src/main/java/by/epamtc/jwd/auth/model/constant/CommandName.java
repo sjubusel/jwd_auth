@@ -20,6 +20,7 @@ public final class CommandName {
             = "GO-TO-PROFILE-ALLERGIC-REACTIONS";
     public static final String SUBPROFILE_GO_TO_EMAIL_CHANGE
             = "GO-TO-PROFILE-EMAIL-CHANGE";
+    public static final String SUBPROFILE_EMAIL_CHANGE = "PROFILE-EMAIL-CHANGE";
     public static final String SUBPROFILE_GO_TO_CHANGE_PASSWORD
             = "GO-TO-PROFILE-CHANGE-PASSWORD";
     public static final String SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO
