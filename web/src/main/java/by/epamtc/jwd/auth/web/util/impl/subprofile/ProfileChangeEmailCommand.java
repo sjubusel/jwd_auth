@@ -4,6 +4,7 @@ import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
 import by.epamtc.jwd.auth.model.constant.AppParameter;
 import by.epamtc.jwd.auth.model.constant.ChangeResult;
+import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.service.AuthUserService;
 import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
@@ -31,23 +32,54 @@ public class ProfileChangeEmailCommand implements Command {
             resultEmail = authUserService.changeEmail(email, password, user);
         } catch (ServiceException e) {
             // TODO loj4j
+            sendRedirectWithTechError(req, res);
         }
 
         if (resultEmail == null) {
-//            sendRedirectWithValidationError(req, res);
+            sendRedirectWithValidationError(req, res);
             return;
         }
 
         if (resultEmail.equals(ChangeResult.DUPLICATE_ERROR.name())) {
-//            sendRedirectWithDuplicateError(req, res);
+            sendRedirectWithDuplicateError(req, res);
             return;
         }
 
         if (resultEmail.equals(ChangeResult.ILLEGAL_PASSWORD.name())) {
-//            sendRedirectWithIllegalPasswordError(req, res);
+            sendRedirectWithIllegalPasswordError(req, res);
             return;
         }
 
-//        sendRedirectWithSuccessMessage(req, res);
+        sendRedirectWithSuccessMessage(req, res);
+    }
+
+    private void sendRedirectWithTechError(HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBPROFILE_GO_TO_EMAIL_CHANGE_RESULT_TECH_ERROR);
+    }
+
+    private void sendRedirectWithValidationError(HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBPROFILE_GO_TO_EMAIL_CHANGE_RESULT_VALID_ERROR);
+    }
+
+    private void sendRedirectWithDuplicateError(HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBPROFILE_GO_TO_EMAIL_CHANGE_RESULT_DUPLICATE_ERROR);
+    }
+
+    private void sendRedirectWithIllegalPasswordError(HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBPROFILE_GO_TO_EMAIL_CHANGE_RESULT_ILLEGAL_PASSWORD_ERROR);
+    }
+
+    private void sendRedirectWithSuccessMessage(HttpServletRequest req, HttpServletResponse res)
+            throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBPROFILE_GO_TO_EMAIL_CHANGE_SUCCESSFUL_RESULT);
     }
 }
