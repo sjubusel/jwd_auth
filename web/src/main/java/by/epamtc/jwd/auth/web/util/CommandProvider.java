@@ -14,13 +14,14 @@ import by.epamtc.jwd.auth.web.util.impl.GoToStaffCommand;
 import by.epamtc.jwd.auth.web.util.impl.LogOutCommand;
 import by.epamtc.jwd.auth.web.util.impl.LoginCommand;
 import by.epamtc.jwd.auth.web.util.impl.MainCommand;
-import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileChangePatientInfoCommand;
-import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileChangePatientPhotoCommand;
 import by.epamtc.jwd.auth.web.util.impl.RegisterCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileAllergicReactionsCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangeEmailCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangePatientInformationCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileExtremelyHazardousDiseasesCommand;
+import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileChangeEmailCommand;
+import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileChangePatientInfoCommand;
+import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileChangePatientPhotoCommand;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -52,6 +53,8 @@ public class CommandProvider {
                 new GoToProfileAllergicReactionsCommand());
         repository.put(CommandName.SUBPROFILE_GO_TO_EMAIL_CHANGE,
                 new GoToProfileChangeEmailCommand());
+        repository.put(CommandName.SUBPROFILE_EMAIL_CHANGE,
+                new ProfileChangeEmailCommand());
 //        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_PASSWORD,
 //                new GoToProfileChangePasswordCommand());
         repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_PATIENT_INFO,
