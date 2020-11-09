@@ -58,6 +58,9 @@ public final class SqlStatement {
             "WHERE au.id = ?;";
     public static final String UPDATE_EMAIL = "UPDATE hospital.persons p\n" +
             "SET p.email = ? WHERE p.person_id = ?;";
+    public static final String UPDATE_PASSWORD = "UPDATE hospital.auth_user au " +
+            "SET au.password = ?" +
+            "WHERE au.id = ?;";
 
     private SqlStatement() {
     }

@@ -208,11 +208,8 @@ public class DefaultAuthUserDao implements AuthUserDao {
                     return ChangeResult.ILLEGAL_PASSWORD.name();
                 }
 
-                statements[++statIndex] = conn.prepareStatement(
-                        "UPDATE hospital.auth_user au " +
-                                "SET au.password = ?" +
-                                "WHERE au.id = ?;"
-                );
+                statements[++statIndex] = conn.prepareStatement(SqlStatement
+                        .UPDATE_PASSWORD);
                 statements[statIndex].setString(1, newPassword);
                 statements[statIndex].setInt(2, user.getId());
                 statements[statIndex].executeUpdate();
