@@ -80,7 +80,7 @@
                     <c:choose>
                         <c:when test="${requestScope.medicalHistoryPermissions ne null}">
                             <%--header--%>
-                            <div class="row d-flex">
+                            <div class="row d-flex mb-1 border">
                                 <div class="col">
                                     <fmt:message bundle="${jspMessages}"
                                                  key="profileSubMenu.medicalHistoryPermission.recipient"/>
@@ -101,9 +101,10 @@
                             <%--contents--%>
                             <c:forEach var="medPermission"
                                        items="${requestScope.medicalHistoryPermissions}">
-                                <div class="row d-flex">
-                                    <form action="${pageContext.request.contextPath}/profile"
-                                          method="post">
+                                <form action="${pageContext.request.contextPath}/profile"
+                                      method="post">
+                                    <div class="row d-flex mb-1 border align-items-center">
+
                                         <input type="hidden" name="command"
                                                value="profile-medical-history-permission-delete"/>
                                         <input type="hidden"
@@ -140,9 +141,9 @@
                                                         key="profileSubMenu.medicalHistoryPermission.delete"/>
                                             </button>
                                         </div>
-                                    </form>
 
-                                </div>
+                                    </div>
+                                </form>
                             </c:forEach>
                         </c:when>
                         <c:otherwise>
@@ -152,22 +153,6 @@
                     </c:choose>
                 </c:otherwise>
             </c:choose>
-
-            <%--            <fmt:message bundle="${jspMessages}"--%>
-            <%--                         key="profileSubMenu.medicalHistoryPermission.tableHeadDescription"/>--%>
-            <%--            <fmt:message bundle="${jspMessages}"--%>
-            <%--                         key="profileSubMenu.medicalHistoryPermission.tableHeadVacantQuantity"/>--%>
-            <%--            <fmt:message bundle="${jspMessages}"--%>
-            <%--                         key="profileSubMenu.medicalHistoryPermission.tableHeadTotalQuantity"/>--%>
-
-            <%--                <c:forEach var="hospitalReportPart"--%>
-            <%--                           items="${requestScope.hospitalReport.contents}">--%>
-            <%--                    <tr>--%>
-            <%--                        <td><c:out value="${hospitalReportPart.deptName}"/></td>--%>
-            <%--                        <td><c:out value="${hospitalReportPart.vacantPlacesNumber}"/></td>--%>
-            <%--                        <td><c:out value="${hospitalReportPart.totalPlacesNumber}"/></td>--%>
-            <%--                    </tr>--%>
-            <%--                </c:forEach>--%>
 
             <form action="${pageContext.request.contextPath}/profile"
                   method="post">

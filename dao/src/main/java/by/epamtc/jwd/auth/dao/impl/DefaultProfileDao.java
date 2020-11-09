@@ -169,7 +169,7 @@ public class DefaultProfileDao implements ProfileDao {
             );
             statement.setInt(1, user.getUserId());
             rSet = statement.executeQuery();
-            if (rSet.next()) {
+            while (rSet.next()) {
                 MedicalHistoryPermission record = compileMedicalHistoryPermission
                         (rSet);
                 medicalHistoryPermissions.add(record);
