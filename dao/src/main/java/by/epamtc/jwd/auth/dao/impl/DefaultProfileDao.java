@@ -7,16 +7,7 @@ import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
 import by.epamtc.jwd.auth.model.constant.SqlStatement;
-import by.epamtc.jwd.auth.model.user_info.Address;
-import by.epamtc.jwd.auth.model.user_info.BloodType;
-import by.epamtc.jwd.auth.model.user_info.DisabilityDegree;
-import by.epamtc.jwd.auth.model.user_info.Gender;
-import by.epamtc.jwd.auth.model.user_info.IdentificationDocumentType;
-import by.epamtc.jwd.auth.model.user_info.IdentityDocument;
-import by.epamtc.jwd.auth.model.user_info.MaritalStatus;
-import by.epamtc.jwd.auth.model.user_info.PatientInfo;
-import by.epamtc.jwd.auth.model.user_info.RhBloodGroup;
-import by.epamtc.jwd.auth.model.user_info.TransportationStatus;
+import by.epamtc.jwd.auth.model.user_info.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -24,7 +15,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DefaultProfileDao implements ProfileDao {
     private ConnectionPool pool = ConnectionPool.getInstance();
@@ -148,6 +141,50 @@ public class DefaultProfileDao implements ProfileDao {
         }
 
         return true;
+    }
+
+    @Override
+    public List<MedicalHistoryPermission> fetchMedicalHistoryPermissions(AuthUser user)
+            throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet rSet = null;
+        List<MedicalHistoryPermission> medicalHistoryPermissions = new ArrayList<>();
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(
+                    "SELECT rec.record_id,\n" +
+                            "       rec.recipient_id,\n" +
+                            "       p.first_name,\n" +
+                            "       p.middle_name,\n" +
+                            "       p.last_name,\n" +
+                            "       rec.permission_datetime,\n" +
+                            "       rec.cancellation_datetime,\n" +
+                            "       rec.cancellation_reason\n" +
+                            "FROM hospital.medical_history_share_permission_records rec\n" +
+                            "         JOIN hospital.persons p ON rec.recipient_id = p.person_id\n" +
+                            "WHERE rec.patient_id = ?;"
+            );
+            statement.setInt(1, user.getUserId());
+            rSet = statement.executeQuery();
+            if (rSet.next()) {
+                MedicalHistoryPermission record = compileMedicalHistoryPermission
+                        (rSet);
+                medicalHistoryPermissions.add(record);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("An error while fetching data from DB " +
+                    "(MedicalHistoryPermission records)", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection from " +
+                    "the connection pool during fetching of " +
+                    "MedicalHistoryPermission", e);
+        } finally {
+            pool.closeConnection(conn, statement, rSet);
+        }
+
+        return medicalHistoryPermissions;
     }
 
     private PatientInfo compilePatientInfo(ResultSet rSet) throws SQLException {
@@ -467,6 +504,26 @@ public class DefaultProfileDao implements ProfileDao {
         updateTransportationStatus.setInt(2, patientId);
 
         updateTransportationStatus.executeUpdate();
+    }
+
+    private MedicalHistoryPermission compileMedicalHistoryPermission(ResultSet
+            rSet) throws SQLException {
+        int permissionId = rSet.getInt(1);
+        int recipientId = rSet.getInt(2);
+        String recipientInfo;
+        String firstName = rSet.getString(3);
+        String middleName = rSet.getString(4);
+        String lastName = rSet.getString(5);
+        recipientInfo = (middleName != null)
+                        ? firstName + AppConstant.ONE_WHITESPACE + middleName
+                                + AppConstant.ONE_WHITESPACE + lastName
+                        : firstName + AppConstant.ONE_WHITESPACE + lastName;
+        LocalDateTime permissionDateTime = ((LocalDateTime) rSet.getObject(6));
+        LocalDateTime cancellationDateTime = ((LocalDateTime) rSet.getObject(7));
+        String cancellationDescription = rSet.getString(8);
+        return new MedicalHistoryPermission(permissionId, recipientId,
+                recipientInfo, permissionDateTime, cancellationDateTime,
+                cancellationDescription);
     }
 
     private int receiveGeneratedKeyAfterStatementExecution(PreparedStatement
