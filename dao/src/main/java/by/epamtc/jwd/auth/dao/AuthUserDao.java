@@ -17,4 +17,7 @@ public interface AuthUserDao {
 
     String changeEmailIfCorrect(String email, String password, AuthUser user)
             throws DaoException;
+
+    String changePasswordIfCorrect(String newPassword, String password,
+            AuthUser user) throws DaoException;
 }

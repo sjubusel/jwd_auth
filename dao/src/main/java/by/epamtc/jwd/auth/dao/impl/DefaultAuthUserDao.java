@@ -187,6 +187,53 @@ public class DefaultAuthUserDao implements AuthUserDao {
         return savedEmail;
     }
 
+    @Override
+    public String changePasswordIfCorrect(String newPassword, String password,
+            AuthUser user) throws DaoException {
+        Connection conn = null;
+        PreparedStatement[] statements = new PreparedStatement[2];
+        ResultSet rSet = null;
+        int statIndex = 0;
+        String savedPassword = null;
+
+        try {
+            conn = pool.takeConnection();
+            statements[statIndex] = conn.prepareStatement("SELECT au.password\n" +
+                    "FROM auth_user au\n" +
+                    "WHERE au.id = ?;");
+            statements[statIndex].setInt(1, user.getId());
+            rSet = statements[statIndex].executeQuery();
+
+            if (rSet.next()) {
+                String dbPassword = rSet.getString(1);
+                if (!isPasswordCorrect(password, dbPassword)) {
+                    return ChangeResult.ILLEGAL_PASSWORD.name();
+                }
+
+                statements[++statIndex] = conn.prepareStatement(
+                        "UPDATE hospital.auth_user au " +
+                                "SET au.password = ?" +
+                                "WHERE au.id = ?;"
+                );
+                statements[statIndex].setString(1, newPassword);
+                statements[statIndex].setInt(2, user.getId());
+                statements[statIndex].executeUpdate();
+
+                savedPassword = ChangeResult.CHANGED.name();
+            }
+
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while changing a password", e);
+        } catch (SQLException e) {
+            throw new DaoException("An error while taking a connection" +
+                    "during changing a password", e);
+        } finally {
+            pool.closeConnection(conn, statements, rSet);
+        }
+
+        return savedPassword;
+    }
+
     private boolean isPasswordCorrect(String plainPassword, String dbPassword) {
         return BCrypt.checkpw(plainPassword, dbPassword);
     }
