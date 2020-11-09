@@ -20,3 +20,4 @@ profileSubMenu.changePatientInfo.latinHolderNamePattern=[A-Za-z -]{1,255}
 profileSubMenu.changePatientInfo.idDocPersonalNumberPattern=[0-9A-Za-z]{1,255}
 profileSubMenu.changePatientInfo.idDocPlaceOfOriginPattern=[0-9A-Za-zА-Яа-яЁё \\-,.]{1,255}
 profileSubMenu.changePatientInfo.idDocIssueAuthorityPattern=[0-9A-Za-zА-Яа-яЁё \\-,.]{1,255}
+profileSubMenu.medicalHistoryPermission.recipientPattern=[А-ЯаяЁё \\-]{1,255}

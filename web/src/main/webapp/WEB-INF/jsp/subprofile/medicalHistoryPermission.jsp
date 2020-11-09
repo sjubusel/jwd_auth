@@ -16,6 +16,7 @@
        scope="page"/>
 
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
+<fmt:setBundle basename="registrationRegExp" var="regEx"/>
 
 <html>
 <head>
@@ -187,11 +188,42 @@
                 </c:otherwise>
             </c:choose>
 
+            <%--########################################################################--%>
+            <h1 class="text-left">
+                <fmt:message bundle="${jspMessages}"
+                             key="profileSubMenu.medicalHistoryPermission.formHeading"/>
+            </h1>
+
+            <div class="text-muted mb-3">
+                <fmt:message bundle="${jspMessages}"
+                             key="profileSubMenu.medicalHistoryPermission.formDisclaimer"/>
+            </div>
+
             <form action="${pageContext.request.contextPath}/profile"
                   method="post">
 
                 <input type="hidden" name="command"
                        value="profile-medical-history-permission"/>
+
+                <div class="form-group form-inline row">
+                    <label for="recipient" class="col-4 custom-form-label">
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profileSubMenu.medicalHistoryPermission.recipient"/>
+                    </label>
+                    <input type="hidden" id="hiddenRecipientId"
+                           name="hiddenRecipientIdInput" value=""/>
+                    <input type="text"
+                           class="form-control col"
+                           id="recipient"
+                           name="recipientInput"
+                           placeholder="<fmt:message bundle="${jspMessages}"
+                                       key="profileSubMenu.medicalHistoryPermission.recipientPlaceholder"/>"
+                           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.medicalHistoryPermission.recipientPattern"/>"
+                    />
+                </div>
+                <div id="recipientResult" class="overflow-auto"
+                     style="max-height: 100px">
+                </div>
 
                 <button type="submit"
                         class="btn align-self-center btn-primary">

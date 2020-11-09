@@ -229,3 +229,7 @@ profileSubMenu.medicalHistoryPermission.deleteButton=Кнопки
 profileSubMenu.medicalHistoryPermission.successAfterDeletingOfPermission=Доступ успешно прекращён
 profileSubMenu.medicalHistoryPermission.techErrorAfterDeletingOfPermission=По техническим причинам прекратить доступ не представилось возможным
 profileSubMenu.medicalHistoryPermission.validationErrorAfterDeletingOfPermission=Из-за неверного типа пользователя или конфигурации страницы прекратить доступ не представилось возможным
+
+profileSubMenu.medicalHistoryPermission.formHeading=Форма добавления разрешения
+profileSubMenu.medicalHistoryPermission.formDisclaimer=После ввода части установочных данных получателя разрешения на русском языке Вам необходимо выбрать получателя путём клика по нему левой кнопкой мыши
+profileSubMenu.medicalHistoryPermission.recipientPlaceholder=Введите часть установочных данных получателя разрешения на русском языке
