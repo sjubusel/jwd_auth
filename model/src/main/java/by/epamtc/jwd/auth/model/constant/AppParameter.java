@@ -7,6 +7,7 @@ public final class AppParameter {
     public static final String ERROR = "error";
     public static final String LOGIN = "login";
     public static final String PASSWORD = "password";
+    public static final String NEW_PASSWORD = "newPassword";
 
     public static final String EMAIL = "email";
     public static final String NUMBER_COUNTRY_CODE = "phoneNumberCountryCode";
