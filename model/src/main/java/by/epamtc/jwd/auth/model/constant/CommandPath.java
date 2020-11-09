@@ -54,6 +54,12 @@ public final class CommandPath {
     public static final String SUBPROFILE_GO_TO_CHANGE_PASSWORD_SUCCESSFUL_RESULT
             = "/profile?command=go-to-profile-change-password&changeResult=success";
 
+    public static final String SUBPROFILE_GO_TO_MEDICAL_HISTORY_PERMISSION_DEL_RESULT_TECH_ERROR
+            = "/profile?command=go-to-profile-medical-history-permission&deleteResult=techError";
+    public static final String SUBPROFILE_GO_TO_MEDICAL_HISTORY_PERMISSION_DEL_RESULT_VALID_ERROR
+            = "/profile?command=go-to-profile-medical-history-permission&deleteResult=validationError";
+    public static final String SUBPROFILE_GO_TO_MEDICAL_HISTORY_PERMISSION_DEL_SUCCESSFUL_RESULT
+            = "/profile?command=go-to-profile-medical-history-permission&deleteResult=success";
 
     public static final String LOGIN_JSP = "/WEB-INF/jsp/login.jsp";
     public static final String PROFILE_JSP = "/WEB-INF/jsp/profile.jsp";

@@ -226,3 +226,6 @@ profileSubMenu.medicalHistoryPermission.recipient=Держатель разре�
 profileSubMenu.medicalHistoryPermission.permissionDateTime=Дата разрешения
 profileSubMenu.medicalHistoryPermission.cancellationDateTime=Дата отмены
 profileSubMenu.medicalHistoryPermission.deleteButton=Кнопки
+profileSubMenu.medicalHistoryPermission.successAfterDeletingOfPermission=Доступ успешно прекращён
+profileSubMenu.medicalHistoryPermission.techErrorAfterDeletingOfPermission=По техническим причинам прекратить доступ не представилось возможным
+profileSubMenu.medicalHistoryPermission.validationErrorAfterDeletingOfPermission=Из-за неверного типа пользователя или конфигурации страницы прекратить доступ не представилось возможным

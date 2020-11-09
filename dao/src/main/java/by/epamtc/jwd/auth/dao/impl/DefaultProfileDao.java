@@ -199,10 +199,10 @@ public class DefaultProfileDao implements ProfileDao {
             conn = pool.takeConnection();
             statement = conn.prepareStatement(
                     "UPDATE hospital.medical_history_share_permission_records m\n" +
-                            "SET m.cancellation_datetime = ? AND m.cancellation_reason = 'В НАСТОЯЩИЙ МОМЕНТ НЕ РЕАЛИЗОВАНО'\n" +
+                            "SET m.cancellation_datetime = ?, m.cancellation_reason = 'В НАСТОЯЩИЙ МОМЕНТ НЕ РЕАЛИЗОВАНО'\n" +
                             "WHERE m.record_id = ?;"
             );
-            statement.setObject(1, LocalDateTime.now());
+            statement.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now()));
             statement.setInt(2, Integer.parseInt(permissionId));
             statement.executeUpdate();
 

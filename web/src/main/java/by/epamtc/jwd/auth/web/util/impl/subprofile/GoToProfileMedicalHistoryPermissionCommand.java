@@ -2,6 +2,7 @@ package by.epamtc.jwd.auth.web.util.impl.subprofile;
 
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
+import by.epamtc.jwd.auth.model.constant.AppParameter;
 import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.model.user_info.MedicalHistoryPermission;
 import by.epamtc.jwd.auth.service.ProfileService;
@@ -39,6 +40,11 @@ public class GoToProfileMedicalHistoryPermissionCommand implements Command {
         } else if (permissions.size() > 0) {
             req.setAttribute(AppAttribute.REQUEST_MEDICAL_HISTORY_PERMISSIONS,
                     permissions);
+        }
+
+        String permissionDeleteResult = req.getParameter(AppParameter.DELETE_RESULT);
+        if (permissionDeleteResult != null) {
+            req.setAttribute(AppParameter.DELETE_RESULT, permissionDeleteResult);
         }
 
         req.getRequestDispatcher(CommandPath.SUBPROFILE_MEDICAL_HISTORY_PERMISSION_jsp)

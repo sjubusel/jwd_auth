@@ -25,6 +25,7 @@ public final class AppParameter {
     public static final String HEADER_CONTENT_DISPOSITION_FILENAME = "filename";
     public static final String PHOTO_UPLOAD_MESSAGE = "photoUpload";
     public static final String CHANGE_RESULT = "changeResult";
+    public static final String DELETE_RESULT = "deleteResult";
 
     public static final String MARITAL_STATUS = "maritalStatusInput";
     public static final String IN_CASE_OF_EMERGENCY_CONTACT_PERSON_INFO

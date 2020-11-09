@@ -48,20 +48,53 @@
                 <fmt:message bundle="${jspMessages}"
                              key="profileSubMenu.medicalHistoryPermission.disclaimer"/>
             </div>
+            <%--AFTER DELETING OF PERMISSION  --%>
+            <c:choose>
+                <c:when test="${requestScope.deleteResult ne null}">
+                    <c:choose>
+                        <c:when test="${requestScope.deleteResult eq 'success'}">
+                            <div class="alert alert-success" role="alert">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profileSubMenu.medicalHistoryPermission.successAfterDeletingOfPermission"/>
+                            </div>
+                        </c:when>
+                        <%-- a tech error --%>
+                        <c:when test="${requestScope.deleteResult eq 'techError'}">
+                            <div class="alert alert-danger" role="alert">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profileSubMenu.medicalHistoryPermission.techErrorAfterDeletingOfPermission"/>
+                            </div>
+                        </c:when>
+                        <%-- a validation error --%>
+                        <c:when test="${requestScope.deleteResult eq 'validationError'}">
+                            <div class="alert alert-danger" role="alert">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profileSubMenu.medicalHistoryPermission.validationErrorAfterDeletingOfPermission"/>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="alert alert-danger" role="alert">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="main.unknownCondition"/>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+                </c:when>
+            </c:choose>
 
-            <%-- whether there is an error. if it is so, then print an error-message and quit, otherwise present contents of this jsp--%>
+            <%-- SIMPLE GET REQUEST: whether there is an error. if it is so, then print an error-message and quit, otherwise present contents of this jsp--%>
             <c:choose>
                 <c:when test="${requestScope.error ne null}">
                     <c:choose>
                         <%-- a tech error --%>
-                        <c:when test="tech">
+                        <c:when test="${requestScope.error eq 'tech'}">
                             <div class="alert alert-danger" role="alert">
                                 <fmt:message bundle="${jspMessages}"
                                              key="profileSubMenu.medicalHistoryPermission.techError"/>
                             </div>
                         </c:when>
                         <%-- a validation error --%>
-                        <c:when test="val">
+                        <c:when test="${requestScope.error eq 'val'}">
                             <div class="alert alert-danger" role="alert">
                                 <fmt:message bundle="${jspMessages}"
                                              key="profileSubMenu.medicalHistoryPermission.validationError"/>
@@ -109,7 +142,7 @@
                                                value="profile-medical-history-permission-delete"/>
                                         <input type="hidden"
                                                name="permissionIdInput"
-                                               value="${medPermission.recipientId}"/>
+                                               value="${medPermission.permissionId}"/>
                                             <%--1st column--%>
                                         <div class="col">
                                             <c:out value="${medPermission.recipientInfo}"/>
