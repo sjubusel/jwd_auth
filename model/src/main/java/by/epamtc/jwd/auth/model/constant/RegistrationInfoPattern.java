@@ -17,6 +17,11 @@ public class RegistrationInfoPattern {
     public static final String PLACE_OF_ORIGIN;
     public static final String ISSUE_AUTHORITY;
 
+    public static final String ZIP_CODE;
+    public static final String HOUSE;
+    public static final String BUILDING;
+    public static final String ROOM;
+
 
     static {
         ResourceBundle bundle = ResourceBundle.getBundle("registrationRegExp",
@@ -33,5 +38,10 @@ public class RegistrationInfoPattern {
         PERSONAL_NUMBER = bundle.getString("profileSubMenu.changePatientInfo.idDocPersonalNumberPattern");
         PLACE_OF_ORIGIN = bundle.getString("profileSubMenu.changePatientInfo.idDocPlaceOfOriginPattern");
         ISSUE_AUTHORITY = bundle.getString("profileSubMenu.changePatientInfo.idDocIssueAuthorityPattern");
+
+        ZIP_CODE = bundle.getString("profileSubMenu.changePatientInfo.address.zipCodePattern");
+        HOUSE = bundle.getString("profileSubMenu.changePatientInfo.address.housePattern");
+        BUILDING = bundle.getString("profileSubMenu.changePatientInfo.address.buildingPattern");
+        ROOM = bundle.getString("profileSubMenu.changePatientInfo.address.roomPattern");
     }
 }

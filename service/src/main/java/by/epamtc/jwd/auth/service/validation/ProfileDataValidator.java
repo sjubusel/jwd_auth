@@ -179,47 +179,50 @@ public class ProfileDataValidator {
         }
 
         String zipCode = address.getZipCode();
-        if ((zipCode == null) || !zipCode.matches("[0-9A-Za-z \\-]{1,255}")) {
+        if ((zipCode == null) || !zipCode.matches(RegistrationInfoPattern
+                .ZIP_CODE)) {
             return false;
         }
 
         String country = address.getCountry();
-        if ((country == null) || !country.matches("[0-9]+")) {
+        if ((country == null) || !country.matches(RegistrationInfoPattern.DIGITS)) {
             return false;
         }
 
         String region = address.getRegion();
-        if ((region == null) || !region.matches("[0-9]+")) {
+        if ((region == null) || !region.matches(RegistrationInfoPattern.DIGITS)) {
             return false;
         }
 
         String area = address.getArea();
-        if ((area == null) || !area.matches("[0-9]+")) {
+        if ((area == null) || !area.matches(RegistrationInfoPattern.DIGITS)) {
             return false;
         }
 
         String settlement = address.getSettlement();
-        if ((settlement == null) || !settlement.matches("[0-9]+")) {
+        if ((settlement == null) || !settlement.matches(RegistrationInfoPattern
+                .DIGITS)) {
             return false;
         }
 
         String road = address.getRoad();
-        if ((road == null) || !road.matches("[0-9]+")) {
+        if ((road == null) || !road.matches(RegistrationInfoPattern.DIGITS)) {
             return false;
         }
 
         String house = address.getHouse();
-        if ((house == null) || !house.matches("[0-9А-Яа-яЁё \\-]{1,255}")) {
+        if ((house == null) || !house.matches(RegistrationInfoPattern.HOUSE)) {
             return false;
         }
 
         String building = address.getBuilding();
-        if ((building != null) && !building.matches("[0-9А-Яа-яЁё \\-]{1,255}")) {
+        if ((building != null) && !building.matches(RegistrationInfoPattern
+                .BUILDING)) {
             return false;
         }
 
         String room = address.getRoom();
-        if ((room != null) && !room.matches("[0-9А-Яа-яЁё \\-]{1,255}")) {
+        if ((room != null) && !room.matches(RegistrationInfoPattern.ROOM)) {
             return false;
         }
 
