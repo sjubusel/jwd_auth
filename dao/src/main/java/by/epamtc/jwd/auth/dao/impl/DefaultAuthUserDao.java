@@ -9,11 +9,9 @@ import by.epamtc.jwd.auth.model.auth_info.AuthenticationInfo;
 import by.epamtc.jwd.auth.model.auth_info.RegistrationInfo;
 import by.epamtc.jwd.auth.model.auth_info.Role;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
-import by.epamtc.jwd.auth.model.constant.AppParameter;
 import by.epamtc.jwd.auth.model.constant.ChangeResult;
 import by.epamtc.jwd.auth.model.constant.SqlStatement;
 import org.mindrot.jbcrypt.BCrypt;
-
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -175,13 +173,12 @@ public class DefaultAuthUserDao implements AuthUserDao {
                 statements[statIndex].setInt(2, user.getUserId());
                 statements[statIndex].executeUpdate();
 
-                savedEmail = receiveGeneratedKeyAfterStatementExecution(
-                        statements[statIndex], AppParameter.EMAIL);
+                savedEmail = ChangeResult.CHANGED.name();
             }
         } catch (ConnectionPoolException e) {
             throw new DaoException("An error while changing an email", e);
         } catch (SQLException e) {
-            throw new DaoException("An error while taking a conneciton" +
+            throw new DaoException("An error while taking a connection" +
                     "during changing an email", e);
         } finally {
             pool.closeConnection(conn, statements, rSet);
@@ -255,15 +252,5 @@ public class DefaultAuthUserDao implements AuthUserDao {
             primaryKeyId = generatedKeys.getInt(1);
         }
         return primaryKeyId;
-    }
-
-    private String receiveGeneratedKeyAfterStatementExecution(PreparedStatement
-            preparedStatement, String columnLabel) throws SQLException {
-        String someColumn = null;
-        ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
-        while (generatedKeys.next()) {
-            someColumn = generatedKeys.getString(columnLabel);
-        }
-        return someColumn;
     }
 }
