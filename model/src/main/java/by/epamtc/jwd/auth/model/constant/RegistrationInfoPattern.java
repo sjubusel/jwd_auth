@@ -7,6 +7,7 @@ public class RegistrationInfoPattern {
     public static final String LOGIN;
     public static final String PASSWORD;
     public static final String EMAIL;
+    public static final String EMAIL_SUFFIX;
     public static final String PHONE_NUMBER;
     public static final String ANY_NAME;
 
@@ -30,6 +31,7 @@ public class RegistrationInfoPattern {
         LOGIN = bundle.getString("login");
         PASSWORD = bundle.getString("password");
         EMAIL = bundle.getString("email");
+        EMAIL_SUFFIX = bundle.getString("emailSuffix");
         PHONE_NUMBER = bundle.getString("phoneNumber");
         ANY_NAME = bundle.getString("anyName");
 
