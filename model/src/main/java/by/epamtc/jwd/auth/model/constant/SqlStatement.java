@@ -118,6 +118,10 @@ public final class SqlStatement {
     public static final String UPDATE_TRANSPORTATION_STATUS = "UPDATE hospital.persons p\n" +
             "SET p.transportation_status = ?\n" +
             "WHERE p.person_id = ?;";
+    public static final String INSERT_MEDICAL_HISTORY_PERMISSION
+            = "INSERT INTO hospital.medical_history_share_permission_records " +
+            "(patient_id, recipient_id, permission_datetime)\n" +
+            "VALUES (?, ?, CURRENT_TIMESTAMP);";
 
     private SqlStatement() {
     }

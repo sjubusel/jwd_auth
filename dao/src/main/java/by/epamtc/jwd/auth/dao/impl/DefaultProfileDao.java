@@ -182,7 +182,6 @@ public class DefaultProfileDao implements ProfileDao {
             AuthUser user) throws DaoException {
         Connection conn = null;
         PreparedStatement statement = null;
-        ResultSet rSet = null;
 
         try {
             conn = pool.takeConnection();
@@ -200,8 +199,34 @@ public class DefaultProfileDao implements ProfileDao {
                     "the connection pool during deleting of " +
                     "MedicalHistoryPermission", e);
         } finally {
-            //noinspection ConstantConditions
-            pool.closeConnection(conn, statement, rSet);
+            pool.closeConnection(conn, statement);
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean addMedicalHistoryPermission(String recipientId,
+            AuthUser user) throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement
+                    .INSERT_MEDICAL_HISTORY_PERMISSION);
+            statement.setInt(1, user.getUserId());
+            statement.setInt(2, Integer.parseInt(recipientId));
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException("An error while addition data into DB " +
+                    "(MedicalHistoryPermission records)", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection from " +
+                    "the connection pool during addition of " +
+                    "MedicalHistoryPermission", e);
+        } finally {
+            pool.closeConnection(conn, statement);
         }
 
         return true;

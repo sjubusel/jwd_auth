@@ -18,4 +18,7 @@ public interface ProfileDao {
 
     boolean cancelMedicalHistoryPermission(String permissionId, AuthUser user)
             throws DaoException;
+
+    boolean addMedicalHistoryPermission(String recipientId, AuthUser user)
+            throws DaoException;
 }
