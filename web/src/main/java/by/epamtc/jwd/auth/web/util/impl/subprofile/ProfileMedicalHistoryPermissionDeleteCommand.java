@@ -8,6 +8,8 @@ import by.epamtc.jwd.auth.service.ProfileService;
 import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class ProfileMedicalHistoryPermissionDeleteCommand implements Command {
+    private static final Logger logger = LoggerFactory.getLogger(
+            ProfileMedicalHistoryPermissionDeleteCommand.class);
     private ServiceFactory serviceFactory = ServiceFactory.getInstance();
     private ProfileService profileService = serviceFactory.getProfileService();
 
@@ -30,7 +34,9 @@ public class ProfileMedicalHistoryPermissionDeleteCommand implements Command {
         try {
             isDeleted = profileService.cancelMedicalHistoryPermission(permission, user);
         } catch (ServiceException e) {
-            // TODO log4j
+            logger.error("An error while cancelling a permission for medical\n" +
+                    "history. Params = \"permission: {}\",\n" +
+                    "\"AuthUser: {}\"", permission, user, e);
             sendRedirectWithTechError(req, res);
             return;
         }
