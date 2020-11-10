@@ -267,6 +267,39 @@
                              key="profileSubMenu.medicalHistoryPermission.formDisclaimer"/>
             </div>
 
+            <c:choose>
+                <c:when test="${requestScope.deleteResult ne null}">
+                    <c:choose>
+                        <c:when test="${requestScope.deleteResult eq 'success'}">
+                            <div class="alert alert-success" role="alert">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profileSubMenu.medicalHistoryPermission.successAfterAddingOfPermission"/>
+                            </div>
+                        </c:when>
+                        <%-- a tech error --%>
+                        <c:when test="${requestScope.deleteResult eq 'techError'}">
+                            <div class="alert alert-danger" role="alert">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profileSubMenu.medicalHistoryPermission.techErrorAfterAddingOfPermission"/>
+                            </div>
+                        </c:when>
+                        <%-- a validation error --%>
+                        <c:when test="${requestScope.deleteResult eq 'validationError'}">
+                            <div class="alert alert-danger" role="alert">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profileSubMenu.medicalHistoryPermission.validationErrorAfterAddingOfPermission"/>
+                            </div>
+                        </c:when>
+                        <c:otherwise>
+                            <div class="alert alert-danger" role="alert">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="main.unknownCondition"/>
+                            </div>
+                        </c:otherwise>
+                    </c:choose>
+                </c:when>
+            </c:choose>
+
             <form action="${pageContext.request.contextPath}/profile"
                   method="post">
 

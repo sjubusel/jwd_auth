@@ -233,3 +233,6 @@ profileSubMenu.medicalHistoryPermission.validationErrorAfterDeletingOfPermission
 profileSubMenu.medicalHistoryPermission.formHeading=Форма добавления разрешения
 profileSubMenu.medicalHistoryPermission.formDisclaimer=После ввода части установочных данных получателя разрешения на русском языке Вам необходимо выбрать получателя путём клика по нему левой кнопкой мыши
 profileSubMenu.medicalHistoryPermission.recipientPlaceholder=Введите часть установочных данных получателя разрешения на русском языке
+profileSubMenu.medicalHistoryPermission.successAfterAddingOfPermission=Доступ успешно предоставлен
+profileSubMenu.medicalHistoryPermission.techErrorAfterAddingOfPermission=По техническим причинам предоставить доступ не представилось возможным
+profileSubMenu.medicalHistoryPermission.validationErrorAfterAddingOfPermission=Из-за неверного типа пользователя или конфигурации страницы предоставить доступ не представилось возможным
