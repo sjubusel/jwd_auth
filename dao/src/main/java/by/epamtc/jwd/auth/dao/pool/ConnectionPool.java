@@ -3,6 +3,8 @@ package by.epamtc.jwd.auth.dao.pool;
 import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
 import by.epamtc.jwd.auth.dao.pool.util.DbParameter;
 import by.epamtc.jwd.auth.dao.pool.util.DbResourceManager;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.sql.Array;
 import java.sql.Blob;
@@ -30,6 +32,8 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
 
 public class ConnectionPool {
+    private static final Logger logger = LoggerFactory.getLogger(ConnectionPool
+            .class);
     private static volatile ConnectionPool instance;
 
     private String driverName;
@@ -58,8 +62,9 @@ public class ConnectionPool {
         try {
             initPoolData();
         } catch (ConnectionPoolException e) {
-            // TODO log4j
-            e.printStackTrace(); // logger-stub
+            logger.error("Error occurred while ConnectionPool initialization,\n" +
+                    "the message of a src Exception is following:\n" +
+                    "\"{}\"", e.getCause().getMessage(), e);
         }
     }
 
@@ -98,8 +103,9 @@ public class ConnectionPool {
                 resultSet.close();
             }
         } catch (SQLException e) {
-            // TODO log4j
-            e.printStackTrace(); // logger-stub "Error closing the result set.", e);
+            logger.error("An error occurred while closing of a result set\n" +
+                    "in ConnectionPool.\n" +
+                    "ResultSet: {}", resultSet, e);
         }
     }
 
@@ -109,8 +115,9 @@ public class ConnectionPool {
                 statement.close();
             }
         } catch (SQLException e) {
-            // TODO log4j
-            e.printStackTrace(); // logger-stub "Error closing the statement.", e);
+            logger.error("An error occurred while closing of a java.sql." +
+                    "Statement\nin ConnectionPool\n" +
+                    "Statement: \"{}\"", statement, e);
         }
 
     }
@@ -121,8 +128,9 @@ public class ConnectionPool {
                 connection.close();
             }
         } catch (SQLException e) {
-            // TODO log4j
-            e.printStackTrace();
+            logger.error("An error occurred while closing of a Connection\n" +
+                    "in ConnectionPool.\n" +
+                    "Connection: \"{}\"", connection, e);
         }
     }
 
@@ -158,9 +166,10 @@ public class ConnectionPool {
             if (conn != null) {
                 conn.rollback();
             }
-        } catch (SQLException ex) {
-            //TODO log4j
-            ex.printStackTrace();
+        } catch (SQLException e) {
+            logger.error("An error occurred while rolling back of changes \n" +
+                    "performed by Connection in ConnectionPool.\n" +
+                    "Connection: \"{}\"", conn, e);
         }
     }
 
@@ -191,7 +200,10 @@ public class ConnectionPool {
             closeConnectionsQueue(freeConnections);
             closeConnectionsQueue(givenConnections);
         } catch (SQLException e) {
-            e.printStackTrace(); // logger-stub "Error closing the connection.", e);
+            logger.error("An error while clearing Connection Queues:\n" +
+                            "FreeConnections: \"{}\"\n" +
+                            "Given Connections: \"{}\".", freeConnections,
+                    givenConnections, e);
         }
     }
 
