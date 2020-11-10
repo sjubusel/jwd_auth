@@ -21,6 +21,7 @@ public class RegistrationInfoPattern {
     public static final String HOUSE;
     public static final String BUILDING;
     public static final String ROOM;
+    public static final String AJAX_INPUT_PATTERN;
 
 
     static {
@@ -43,5 +44,7 @@ public class RegistrationInfoPattern {
         HOUSE = bundle.getString("profileSubMenu.changePatientInfo.address.housePattern");
         BUILDING = bundle.getString("profileSubMenu.changePatientInfo.address.buildingPattern");
         ROOM = bundle.getString("profileSubMenu.changePatientInfo.address.roomPattern");
+
+        AJAX_INPUT_PATTERN = bundle.getString("ajax.input.pattern");
     }
 }
