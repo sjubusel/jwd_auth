@@ -9,6 +9,8 @@ import by.epamtc.jwd.auth.service.AuthUserService;
 import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class ProfileChangeEmailCommand implements Command {
+    private static final Logger logger = LoggerFactory.getLogger(
+            ProfileChangeEmailCommand.class);
+
     private ServiceFactory serviceFactory = ServiceFactory.getInstance();
     private AuthUserService authUserService = serviceFactory.getAuthUserService();
 
@@ -31,7 +36,9 @@ public class ProfileChangeEmailCommand implements Command {
         try {
             resultEmail = authUserService.changeEmail(email, password, user);
         } catch (ServiceException e) {
-            // TODO loj4j
+            logger.error("An error while changing of email with the following\n" +
+                    "parameters \"password: {}\", \"email: {}\",\n" +
+                    "AuthUser: \"{}\"", password, email, user, e);
             sendRedirectWithTechError(req, res);
         }
 
