@@ -2,7 +2,6 @@ package by.epamtc.jwd.auth.model.user_info;
 
 import java.time.LocalDate;
 
-// TODO add serialVersionUID
 public class IdentityDocument implements java.io.Serializable {
     private static final long serialVersionUID = 5045678592716134465L;
 
