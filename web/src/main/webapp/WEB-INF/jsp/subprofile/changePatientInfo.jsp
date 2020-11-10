@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="my" uri="/WEB-INF/tld/customTaglibPassport.tld" %>
 
 <c:choose>
     <c:when test="${sessionScope.language eq null}">
@@ -427,7 +428,6 @@
                     <form action="${pageContext.request.contextPath}/profile"
                           method="post"
                           enctype="multipart/form-data">
-                            <%-- TODO add i18n everywhere--%>
                         <c:if test="${requestScope.photoUpload ne null}">
                             <c:choose>
                                 <c:when test="${requestScope.photoUpload eq 'success'}">
@@ -647,10 +647,9 @@
                                                  key="register.emailInputLabel"/>
                                 </div>
                                 <div class="col d-flex align-items-center">
-                                        <%--TODO hide with ***--%>
                                     <c:choose>
                                         <c:when test="${requestScope.patientInfo.email ne null}">
-                                            <c:out value="${requestScope.patientInfo.email}"/>
+                                            <my:masker email="${requestScope.patientInfo.email}"/>
                                         </c:when>
                                         <c:otherwise>
                                             <c:out value=""/>
@@ -815,8 +814,7 @@
                                 <div class="col d-flex align-items-center">
                                     <c:choose>
                                         <c:when test="${requestScope.patientInfo.identityDocument ne null}">
-                                            <%-- TODO make your own tag in order to view identity document --%>
-                                            <c:out value="${requestScope.patientInfo.identityDocument.toString()}"/>
+                                            <my:printIdentityDocument idDoc="${requestScope.patientInfo.identityDocument}"/>
                                         </c:when>
                                         <c:otherwise>
                                             <c:out value=""/>
@@ -1213,8 +1211,7 @@
                                 <div class="col d-flex align-items-center">
                                     <c:choose>
                                         <c:when test="${requestScope.patientInfo.homeAddress ne null}">
-                                            <%-- TODO make your own tag in order to view identity document --%>
-                                            <c:out value="${requestScope.patientInfo.homeAddress.toString()}"/>
+                                            <my:printAddress address="${requestScope.patientInfo.homeAddress}"/>
                                         </c:when>
                                         <c:otherwise>
                                             <c:out value=""/>
