@@ -80,6 +80,7 @@
                                 childColId.className += "col border d-none justify-content-center";
                                 childRow.appendChild(childColId);
 
+                                <%--suppress JSUnresolvedVariable --%>
                                 childColId.innerHTML = data[i].personId;
                                 childRow.setAttribute("onclick", "changeHiddenInput(\"hiddenRecipientId\", \"recipient\", this, this.parentElement);");
 
