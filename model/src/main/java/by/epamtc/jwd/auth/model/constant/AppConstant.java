@@ -11,6 +11,9 @@ public final class AppConstant {
     public static final String REGEX_DOT = "\\.";
     public static final String UNDERSCORE = "_";
     public static final String DOT = ".";
+    public static final String COLON = ":";
+    public static final String COMMA = ",";
+
 
     public static final String SIMPLE_LOCAL_DATE_TIME_FORMAT = "yyyyMMddHHmmss";
 

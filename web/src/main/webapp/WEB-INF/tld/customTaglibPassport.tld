@@ -18,4 +18,26 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
+
+    <tag>
+        <name>printIdentityDocument</name>
+        <tag-class>by.epamtc.jwd.auth.web.tag.JspIdentityDocumentPrinter</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>idDoc</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+
+    <tag>
+        <name>printAddress</name>
+        <tag-class>by.epamtc.jwd.auth.web.tag.JspAddressPrinter</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>address</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
 </taglib>
