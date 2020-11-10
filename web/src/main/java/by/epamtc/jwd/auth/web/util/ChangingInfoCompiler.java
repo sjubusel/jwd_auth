@@ -125,7 +125,8 @@ public class ChangingInfoCompiler {
         return null;
     }
 
-    private IdentityDocument compileIdentityDocument(HttpServletRequest req) {
+    private IdentityDocument compileIdentityDocument(HttpServletRequest req)
+            throws RuntimeException {
         boolean isNewIdDocument = Boolean.parseBoolean(req
                 .getParameter(AppParameter.IS_NEW_DOCUMENT));
         if (isNewIdDocument) {
@@ -133,7 +134,6 @@ public class ChangingInfoCompiler {
 
             String idDocumentInput = req.getParameter(AppParameter
                     .ID_DOCUMENT);
-            // TODO logj4 and handle exception Runtime
             IdentificationDocumentType documentType = IdentificationDocumentType
                     .valueOf(idDocumentInput);
             identityDocument.setIdentificationDocumentType(documentType);
@@ -145,7 +145,6 @@ public class ChangingInfoCompiler {
             String idDocNumberInput = req.getParameter(AppParameter
                     .ID_DOCUMENT_NUMBER);
             idDocNumberInput = compileNullReferenceIfEmpty(idDocNumberInput);
-            // TODO logj4 and handle exception Runtime
             identityDocument.setDocumentNumber(Integer.parseInt(idDocNumberInput));
 
             String latinHolderNameInput = req.getParameter(AppParameter

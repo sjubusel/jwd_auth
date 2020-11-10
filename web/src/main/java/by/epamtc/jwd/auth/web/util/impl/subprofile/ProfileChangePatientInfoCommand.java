@@ -32,7 +32,7 @@ public class ProfileChangePatientInfoCommand implements Command {
         boolean isChanged;
         try {
             isChanged = profileService.changePatientInfo(changingPatientInfo, user);
-        } catch (ServiceException e) {
+        } catch (ServiceException | RuntimeException e) {
             // TODO log4j
             sendRedirectWithTechError(req, res);
             return;
