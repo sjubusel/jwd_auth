@@ -53,6 +53,11 @@ public class GoToProfileMedicalHistoryPermissionCommand implements Command {
             req.setAttribute(AppParameter.DELETE_RESULT, permissionDeleteResult);
         }
 
+        String permissionAddResult = req.getParameter(AppParameter.ADD_RESULT);
+        if (permissionAddResult != null) {
+            req.setAttribute(AppParameter.ADD_RESULT, permissionAddResult);
+        }
+
         req.getRequestDispatcher(CommandPath.SUBPROFILE_MEDICAL_HISTORY_PERMISSION_jsp)
                 .forward(req, res);
     }
