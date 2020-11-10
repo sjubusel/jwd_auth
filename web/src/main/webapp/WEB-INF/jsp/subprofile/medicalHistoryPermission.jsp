@@ -29,6 +29,71 @@
         <fmt:message bundle="${jspMessages}" key="all.htmlTitle"/>
     </title>
     <jsp:include page="../structural_element/metahead.jsp"/>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/js/jquery-3.5.1.js">
+    </script>
+    <script>
+        function changeHiddenInput(hiddenInputName, shownInputName, childRow, parent) {
+            let hiddenInput = document.getElementById(hiddenInputName);
+            let shownInput = document.getElementById(shownInputName);
+            hiddenInput.value = childRow.firstChild.innerHTML;
+            shownInput.value = childRow.lastChild.innerHTML;
+            parent.innerHTML = "<div class=\"mb-3\"><small><em>" + "<fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.changePatientInfo.ajax.chosen"/>: "
+                + shownInput.value + "</em></small></div>";
+        }
+
+        jQuery(document).ready(function () {
+            let searchRecipient = null;
+            $("#recipient").keyup(function () {
+                if (searchRecipient !== null) {
+                    searchRecipient.abort();
+                }
+                let text = $(this).val();
+                if (text == null) {
+                    $("#recipientResult").html("");
+                } else {
+                    $("#recipientResult").html("");
+                    searchRecipient = $.ajax({
+                        url: "ajax?command=fetch-persons-in-medical-history-permission-jsp",
+                        method: "post",
+                        data: $("#recipient").serialize(),
+                        datatype: "json",
+                        success: function (data) {
+                            if (data == null) {
+                                $("#recipientResult").html("<div class=\"mb-3\"><small><em><fmt:message bundle="${jspMessages}"
+                                           key="profileSubMenu.changePatientInfo.ajax.validation"/></em></small></div>");
+                                return;
+                            }
+                            if (data.length === 0) {
+                                $("#recipientResult").html("<div class=\"mb-3\"><small><em><fmt:message bundle="${jspMessages}"
+                                           key="profileSubMenu.changePatientInfo.ajax.zeroResult"/></em></small></div>");
+                                return;
+                            }
+                            let parent = document.getElementById("recipientResult");
+                            for (let i = 0; i < data.length; i++) {
+                                let childRow = document.createElement("div");
+                                childRow.className += "row border list-group-item-action d-flex align-items-start";
+                                parent.appendChild(childRow);
+
+                                let childColId = document.createElement("div");
+                                childColId.className += "col border d-none justify-content-center";
+                                childRow.appendChild(childColId);
+
+                                childColId.innerHTML = data[i].personId;
+                                childRow.setAttribute("onclick", "changeHiddenInput(\"hiddenRecipientId\", \"recipient\", this, this.parentElement);");
+
+                                let childColName = document.createElement("div");
+                                childColName.className += "col border d-flex justify-content-center";
+                                childRow.appendChild(childColName);
+                                childColName.innerHTML = data[i].personInfo;
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </head>
 <body>
 

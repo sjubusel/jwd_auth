@@ -6,6 +6,7 @@ import by.epamtc.jwd.auth.dao.pool.ConnectionPool;
 import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
 import by.epamtc.jwd.auth.model.ajax.AjaxArea;
 import by.epamtc.jwd.auth.model.ajax.AjaxCountry;
+import by.epamtc.jwd.auth.model.ajax.AjaxPerson;
 import by.epamtc.jwd.auth.model.ajax.AjaxRegion;
 import by.epamtc.jwd.auth.model.ajax.AjaxRoad;
 import by.epamtc.jwd.auth.model.ajax.AjaxSettlement;
@@ -185,5 +186,45 @@ public class DefaultAjaxFetchDao implements AjaxFetchDao {
         }
 
         return roads;
+    }
+
+    @Override
+    public List<AjaxPerson> fetchPersons(String personPart)
+            throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet rSet = null;
+        List<AjaxPerson> persons = new ArrayList<>();
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(AjaxSqlStatement.SELECT_PERSONS);
+            statement.setString(1, personPart);
+            statement.setString(2, personPart);
+            statement.setString(3, personPart);
+            rSet = statement.executeQuery();
+            while (rSet.next()) {
+                int personId = rSet.getInt(1);
+                String firstName = rSet.getString(2);
+                String middleName = rSet.getString(3);
+                String lastName = rSet.getString(4);
+                String personInfo = (middleName != null) ? firstName + AppConstant
+                        .ONE_WHITESPACE + middleName + AppConstant.ONE_WHITESPACE
+                        + lastName
+                                                         : firstName + AppConstant
+                        .ONE_WHITESPACE + lastName;
+                persons.add(new AjaxPerson(personId, personInfo));
+            }
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection from" +
+                    "the connection pool during ajax fetching of persons", e);
+        } catch (SQLException e) {
+            throw new DaoException("An error while ajax fetching persons " +
+                    "from DBs", e);
+        } finally {
+            pool.closeConnection(conn, statement, rSet);
+        }
+
+        return persons;
     }
 }

@@ -12,6 +12,8 @@ public final class AjaxCommandName {
             = "FETCH-SETTLEMENT-IN-CHANGE-PATIENT-INFO-JSP";
     public static final String FETCH_ROAD_IN_CHANGE_PATIENT_INFO_JSP
             = "FETCH-ROAD-IN-CHANGE-PATIENT-INFO-JSP";
+    public static final String FETCH_PERSON_IN_MEDICAL_HISTORY_PERMISSION_JSP
+            = "FETCH-PERSONS-IN-MEDICAL-HISTORY-PERMISSION-JSP";
 
     private AjaxCommandName() {
     }

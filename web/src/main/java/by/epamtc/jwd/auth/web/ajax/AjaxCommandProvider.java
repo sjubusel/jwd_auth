@@ -3,6 +3,7 @@ package by.epamtc.jwd.auth.web.ajax;
 import by.epamtc.jwd.auth.model.ajax.AjaxCommandName;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchAreaInChangePatientInfoJspAjaxCommand;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchCountryInChangePatientInfoJspAjaxCommand;
+import by.epamtc.jwd.auth.web.ajax.impl.FetchPersonInMedicalHistoryPermissionJspAjaxCommand;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchRegionInChangePatientInfoJspAjaxCommand;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchRoadInChangePatientInfoJspAjaxCommand;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchSettlementInChangePatientInfoJspAjaxCommand;
@@ -29,6 +30,8 @@ public class AjaxCommandProvider {
                 new FetchSettlementInChangePatientInfoJspAjaxCommand());
         repository.put(AjaxCommandName.FETCH_ROAD_IN_CHANGE_PATIENT_INFO_JSP,
                 new FetchRoadInChangePatientInfoJspAjaxCommand());
+        repository.put(AjaxCommandName.FETCH_PERSON_IN_MEDICAL_HISTORY_PERMISSION_JSP,
+                new FetchPersonInMedicalHistoryPermissionJspAjaxCommand());
     }
 
     public static AjaxCommandProvider getInstance() {

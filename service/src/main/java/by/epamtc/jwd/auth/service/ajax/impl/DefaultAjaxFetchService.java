@@ -85,4 +85,17 @@ public class DefaultAjaxFetchService implements AjaxFetchService {
         }
         return null;
     }
+
+    @Override
+    public List<AjaxPerson> fetchPersons(String recipientPerson)
+            throws ServiceException {
+        if (ajaxValidator.isFetchInputValid(recipientPerson)) {
+            try {
+                return ajaxFetchDao.fetchPersons(recipientPerson);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return null;
+    }
 }

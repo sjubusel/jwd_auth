@@ -26,6 +26,17 @@ public final class AjaxSqlStatement {
             "         JOIN hospital.settlements s ON r.settlement_id = s.settlement_id\n" +
             "WHERE r.settlement_id = ?\n" +
             "  AND r.road_name LIKE CONCAT('%', ?, '%');";
+    public static final String SELECT_PERSONS = "SELECT p.person_id, p.first_name, p.middle_name, p.last_name\n" +
+            "FROM hospital.persons p\n" +
+            "WHERE p.first_name LIKE CONCAT('%', ?, '%')\n" +
+            "UNION\n" +
+            "SELECT p2.person_id, p2.first_name, p2.middle_name, p2.last_name\n" +
+            "FROM hospital.persons p2\n" +
+            "WHERE p2.middle_name LIKE CONCAT('%', ?, '%')\n" +
+            "UNION\n" +
+            "SELECT p3.person_id, p3.first_name, p3.middle_name, p3.last_name\n" +
+            "FROM hospital.persons p3\n" +
+            "WHERE p3.last_name LIKE CONCAT('%', ?, '%');";
 
 
     private AjaxSqlStatement() {

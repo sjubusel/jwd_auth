@@ -12,6 +12,8 @@ public final class AjaxParameter {
     public static final String AREA_ID = "hiddenAreaId";
     public static final String SETTLEMENT_ID = "hiddenSettlementId";
 
+    public static final String RECIPIENT_PERSON = "recipientInput";
+
     public static final String AJAX_CONTENT_TYPE = "application/json";
     public static final String AJAX_CHARACTER_ENCODING = "UTF-8";
 
