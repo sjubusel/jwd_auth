@@ -1,6 +1,8 @@
 package by.epamtc.jwd.auth.service.util;
 
 import by.epamtc.jwd.auth.service.exception.ServiceException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,6 +11,8 @@ import java.net.URL;
 import java.util.Enumeration;
 
 public class FileAccessAssistant {
+    private static final Logger logger = LoggerFactory.getLogger
+            (FileAccessAssistant.class);
     private static volatile FileAccessAssistant instance;
     private static final String WEB_INF_PATH_PART = File.separator + "WEB-INF";
     private static final String UPLOAD_WEB_APP_FOLDER_ON_SERVER = "upload";
@@ -30,10 +34,11 @@ public class FileAccessAssistant {
                     try {
                         instance = localInstance = new FileAccessAssistant();
                     } catch (ServiceException e) {
-                        //TODO add log4j ("ERROR CAUGHT WHILE FINDING A SOURCES FILES" +
-                        //                    "PATH")
-                        // TODO log4j "You either did not specify a file to upload or are trying to upload a file to a protected or nonexistent location."
-                        e.printStackTrace();
+                        logger.error("An error occurred while initialization of \n" +
+                                "by.epamtc.jwd.auth.service.util.FileAccessAssistant\n" +
+                                "when You either did not specify a file to \n" +
+                                "upload or are trying to upload a file to a \n" +
+                                "protected or nonexistent location", e);
                     }
                 }
             }
