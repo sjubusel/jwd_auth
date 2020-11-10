@@ -10,12 +10,17 @@ import by.epamtc.jwd.auth.web.util.Command;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
 import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.web.util.RegistrationInfoCompiler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class RegisterCommand implements Command {
+    private static final Logger logger = LoggerFactory.getLogger(RegisterCommand
+            .class);
+
     private ServiceFactory serviceFactory = ServiceFactory.getInstance();
     private AuthUserService authUserService = serviceFactory.getAuthUserService();
     private RegistrationInfoCompiler regInfCompiler = RegistrationInfoCompiler
@@ -30,7 +35,8 @@ public class RegisterCommand implements Command {
         try {
             user = authUserService.register(regInfo);
         } catch (ServiceException e) {
-            // TODO log4j in catch of ServiceException
+            logger.error("An error occurred while registration of a user\n" +
+                    "with the following params:\nregInfo: \"{}\"", regInfo, e);
             sendRedirectWithTechError(req, res);
             return;
         }
