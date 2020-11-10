@@ -236,3 +236,6 @@ profileSubMenu.medicalHistoryPermission.recipientPlaceholder=Введите ча
 profileSubMenu.medicalHistoryPermission.successAfterAddingOfPermission=Доступ успешно предоставлен
 profileSubMenu.medicalHistoryPermission.techErrorAfterAddingOfPermission=По техническим причинам предоставить доступ не представилось возможным
 profileSubMenu.medicalHistoryPermission.validationErrorAfterAddingOfPermission=Из-за неверного типа пользователя или конфигурации страницы предоставить доступ не представилось возможным
+
+profileSubMenu.allergicReactionsFood.heading=Информация об аллергических реакциях на пищу
+profileSubMenu.allergicReactionsMedicine.heading=Информация об аллергических реакциях на медицинские препараты
