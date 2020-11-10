@@ -6,14 +6,14 @@
         <!--          <PatternLayout pattern="%d{yyyy-MMM-dd HH:mm:ss.SSS a} [%t] %-5level %logger{36} - %msg%n" />-->
         <!--        </Console>-->
         <!-- File Appender -->
-        <File name="File" fileName="../logs/hospital/by.epamtc.jwd.auth.web.log">
+        <File name="File" fileName="../logs/hospital/by.epamtc.jwd.auth.log">
             <PatternLayout
                     pattern="%d{yyyy-MMM-dd HH:mm:ss.SSS a} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
     </Appenders>
       
     <Loggers>
-        <Logger name="by.epamtc.jwd.auth.web" level="info" additivity="false">
+        <Logger name="by.epamtc.jwd.auth" level="info" additivity="false">
             <!--<AppenderRef ref="Console" />-->
             <AppenderRef ref="File"/>
         </Logger>
