@@ -9,6 +9,8 @@ import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.service.exception.UploadServiceException;
 import by.epamtc.jwd.auth.service.util.FileAccessAssistant;
 import by.epamtc.jwd.auth.service.validation.UpdateRelatedValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -17,6 +19,9 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 public class DefaultUploadService implements UploadService {
+    private static final Logger logger = LoggerFactory.getLogger
+            (DefaultUploadService.class);
+
     private DaoFactory daoFactory = DaoFactory.getInstance();
     private UploadDao uploadDao = daoFactory.getUploadDao();
     private UpdateRelatedValidator updateValidator = new UpdateRelatedValidator();
@@ -76,7 +81,10 @@ public class DefaultUploadService implements UploadService {
                 iFileStream.close();
             }
         } catch (IOException e) {
-            //TODO lof4j
+            logger.error("An error occurred while closing of IO streams,\n" +
+                    "which are used during file uploading:\n" +
+                    "InputStream: \"{}\",\n" +
+                    "OutputStream: \"{}\"\n", iFileStream, oFileStream, e);
         }
     }
 }
