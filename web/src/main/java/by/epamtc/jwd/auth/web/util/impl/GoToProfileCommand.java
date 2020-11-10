@@ -8,6 +8,8 @@ import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
 import by.epamtc.jwd.auth.model.constant.CommandPath;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +17,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class GoToProfileCommand implements Command {
+    private static final Logger logger = LoggerFactory.getLogger
+            (GoToProfileCommand.class);
+
     private ServiceFactory factory = ServiceFactory.getInstance();
     private ProfileService profileService = factory.getProfileService();
 
@@ -28,8 +33,8 @@ public class GoToProfileCommand implements Command {
         try {
             patientInfo = profileService.fetchPatientInfo(currentUser);
         } catch (ServiceException e) {
-            // TODO log4j
-            e.printStackTrace();
+            logger.error("An error occurred while fetching of patient info\n" +
+                    "of a user \"{}\"\n", currentUser, e);
             req.setAttribute(AppAttribute.REQUEST_ERROR, AppAttribute
                     .REQUEST_ERROR_VALUE_TECH);
         }
