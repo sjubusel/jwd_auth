@@ -254,6 +254,8 @@
             </c:choose>
 
             <%--########################################################################--%>
+            <br>
+            <br>
             <h1 class="text-left">
                 <fmt:message bundle="${jspMessages}"
                              key="profileSubMenu.medicalHistoryPermission.formHeading"/>
