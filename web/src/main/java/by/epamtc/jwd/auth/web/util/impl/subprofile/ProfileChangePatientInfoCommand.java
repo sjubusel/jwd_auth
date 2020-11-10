@@ -9,6 +9,8 @@ import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.ChangingInfoCompiler;
 import by.epamtc.jwd.auth.web.util.Command;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class ProfileChangePatientInfoCommand implements Command {
+    private static final Logger logger = LoggerFactory.getLogger(
+            ProfileChangePatientInfoCommand.class);
+
     private ServiceFactory serviceFactory = ServiceFactory.getInstance();
     private ProfileService profileService = serviceFactory.getProfileService();
     private ChangingInfoCompiler changingInfoCompiler = ChangingInfoCompiler
@@ -33,7 +38,10 @@ public class ProfileChangePatientInfoCommand implements Command {
         try {
             isChanged = profileService.changePatientInfo(changingPatientInfo, user);
         } catch (ServiceException | RuntimeException e) {
-            // TODO log4j
+            logger.error("An error while changing patient info with " +
+                    "the following parameters\n" +
+                    "AuthUser: \"{}\"\n" +
+                    "PatientInfo: \"{}\".", user, changingPatientInfo, e);
             sendRedirectWithTechError(req, res);
             return;
         }
