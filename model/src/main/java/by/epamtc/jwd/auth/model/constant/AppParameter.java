@@ -66,6 +66,7 @@ public final class AppParameter {
     public static final String EMERGENCY_INNER_NUMBER
             = "emergencyPhoneNumberInnerNumber";
     public static final String PERMISSION_ID = "permissionIdInput";
+    public static final String RECIPIENT_ID = "hiddenRecipientIdInput";
 
     private AppParameter() {
     }

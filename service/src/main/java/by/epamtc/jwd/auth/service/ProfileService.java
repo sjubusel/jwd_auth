@@ -18,4 +18,7 @@ public interface ProfileService {
 
     boolean cancelMedicalHistoryPermission(String permission, AuthUser user)
             throws ServiceException;
+
+    boolean addMedicalHistoryPermission(String recipientId, AuthUser user)
+            throws ServiceException;
 }

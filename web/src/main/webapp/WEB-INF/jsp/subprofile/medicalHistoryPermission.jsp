@@ -271,7 +271,7 @@
                   method="post">
 
                 <input type="hidden" name="command"
-                       value="profile-medical-history-permission"/>
+                       value="profile-medical-history-permission-add"/>
 
                 <div class="form-group form-inline row">
                     <label for="recipient" class="col-4 custom-form-label">

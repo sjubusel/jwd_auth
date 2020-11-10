@@ -22,7 +22,7 @@ public class DefaultProfileService implements ProfileService {
     @Override
     public PatientInfo fetchPatientInfo(AuthUser authUser)
             throws ServiceException {
-        if (validator.isAuthUserValidForProfileActitity(authUser)) {
+        if (validator.isAuthUserValidForProfileActivity(authUser)) {
             try {
                 return profileDao.fetchPatientInfo(authUser);
             } catch (DaoException e) {
@@ -35,7 +35,7 @@ public class DefaultProfileService implements ProfileService {
     @Override
     public boolean changePatientInfo(PatientInfo changingPatientInfo,
             AuthUser user) throws ServiceException {
-        if (validator.isAuthUserValidForProfileActitity(user)
+        if (validator.isAuthUserValidForProfileActivity(user)
                 && validator.isChangingPatientInfoValid(changingPatientInfo)) {
             try {
                 return profileDao.changePatientInfo(changingPatientInfo, user);
@@ -49,7 +49,7 @@ public class DefaultProfileService implements ProfileService {
     @Override
     public List<MedicalHistoryPermission> fetchMedicalHistoryPermissions(AuthUser user)
             throws ServiceException {
-        if (validator.isAuthUserValidForProfileActitity(user)) {
+        if (validator.isAuthUserValidForProfileActivity(user)) {
             try {
                 return profileDao.fetchMedicalHistoryPermissions(user);
             } catch (DaoException e) {
@@ -62,11 +62,24 @@ public class DefaultProfileService implements ProfileService {
     @Override
     public boolean cancelMedicalHistoryPermission(String permission,
             AuthUser user) throws ServiceException {
-        if (validator.isAuthUserValidForProfileActitity(user)
+        if (validator.isAuthUserValidForProfileActivity(user)
                 && permission.matches(RegistrationInfoPattern.DIGITS)) {
             try {
                 return profileDao.cancelMedicalHistoryPermission(permission,
                         user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean addMedicalHistoryPermission(String recipientId, AuthUser user) throws ServiceException {
+        if (validator.isAuthUserValidForProfileActivity(user)
+                && recipientId.matches(RegistrationInfoPattern.DIGITS)) {
+            try {
+                return profileDao.addMedicalHistoryPermission(recipientId, user);
             } catch (DaoException e) {
                 throw new ServiceException(e);
             }
