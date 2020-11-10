@@ -35,7 +35,7 @@ public class FetchAreaInChangePatientInfoJspAjaxCommand implements AjaxCommand {
             areas = ajaxFetchService.fetchAreas(regionId, areaInput);
         } catch (ServiceException e) {
             logger.error("An error occurred while fetching from db areas\n" +
-                    "with this param \"regionId: {}\" \n" +
+                    "with these params \"regionId: {}\" \n" +
                     "and \"areaInput{}\"", regionId, areaInput, e);
         }
         res.setContentType(AjaxParameter.AJAX_CONTENT_TYPE);
