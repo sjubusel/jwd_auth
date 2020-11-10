@@ -9,6 +9,8 @@ import by.epamtc.jwd.auth.service.AuthUserService;
 import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +18,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class ProfileChangePasswordCommand implements Command {
+    private static final Logger logger = LoggerFactory.getLogger(
+            ProfileChangePasswordCommand.class);
+
     private ServiceFactory serviceFactory = ServiceFactory.getInstance();
     private AuthUserService authUserService = serviceFactory.getAuthUserService();
 
@@ -32,7 +37,9 @@ public class ProfileChangePasswordCommand implements Command {
         try {
             result = authUserService.changePassword(newPassword, password, user);
         } catch (ServiceException e) {
-            // TODO loj4j
+            logger.error("An error while changing a password with the following" +
+                    "parameters:\npassword: \"{}\", newPassword: \"{}\",\n" +
+                    "AuthUser: \"{}\"", password, newPassword, user, e);
             sendRedirectWithTechError(req, res);
         }
 
