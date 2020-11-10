@@ -10,6 +10,8 @@ import by.epamtc.jwd.auth.service.UploadService;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.service.exception.UploadServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +23,9 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ProfileChangePatientPhotoCommand implements Command {
+    private static final Logger logger = LoggerFactory.getLogger(
+            ProfileChangePatientPhotoCommand.class);
+
     private ServiceFactory serviceFactory = ServiceFactory.getInstance();
     private UploadService uploadService = serviceFactory.getUploadService();
 
@@ -35,6 +40,8 @@ public class ProfileChangePatientPhotoCommand implements Command {
         InputStream iFileStreamFromClient = filePart.getInputStream();
 
         if (targetFileName == null) {
+            logger.info("Note: front-end allowed a NULL file.\n" +
+                    "AuthUser: \"{}\"", user);
             sendRedirectWithIncorrectFileNameMessage(req, res);
             return;
         }
@@ -44,21 +51,26 @@ public class ProfileChangePatientPhotoCommand implements Command {
             isUploaded = uploadService.updatePatientPhoto(targetFileName,
                     iFileStreamFromClient, user);
         } catch (UploadServiceException e) {
-            // TODO log4j that FILE is uploaded, but info is not.
+            logger.error("An error while patient photo updating with \n" +
+                    "name \"{}\". AuthUser: \"{}\"", targetFileName, user, e);
             sendRedirectWithTechError(req, res);
             return;
         } catch (ServiceException e) {
-            // TODO log4j
             // не получилось сформировать пути к серверу IOException | URISyntaxException → FileAccessAssistant
             // передан null вместо файла → FileAccessAssistant инициализация
             // не получилось создать файл для передачи в outputstream uploadPatientPhotoToServer
             // не получилось произвести запись через outputstream
-            e.printStackTrace();
+            logger.error("An error while uploading a photo (upload is failed)\n" +
+                    "name \"{}\". AuthUser: \"{}\"", targetFileName, user, e);
             sendRedirectWithTechError(req, res);
             return;
         }
 
         if (!isUploaded) {
+            logger.info("Front-end allowed an inconsistent data:\n" +
+                            "targetFileName: \"{}\"\niFileStreamFromClient: \"{}\"\n" +
+                            "AuthUser: \"{}\"", targetFileName, iFileStreamFromClient,
+                    user);
             sendRedirectWithValidationError(req, res);
             return;
         }
