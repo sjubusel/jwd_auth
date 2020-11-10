@@ -7,6 +7,8 @@ import by.epamtc.jwd.auth.service.ajax.AjaxServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.ajax.AjaxCommand;
 import com.google.gson.Gson;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +18,8 @@ import java.io.PrintWriter;
 import java.util.List;
 
 public class FetchAreaInChangePatientInfoJspAjaxCommand implements AjaxCommand {
+    private static final Logger logger = LoggerFactory.getLogger
+            (FetchAreaInChangePatientInfoJspAjaxCommand.class);
     private AjaxServiceFactory ajaxServiceFactory = AjaxServiceFactory.getInstance();
     private AjaxFetchService ajaxFetchService = ajaxServiceFactory
             .getAjaxFetchService();
@@ -31,6 +35,9 @@ public class FetchAreaInChangePatientInfoJspAjaxCommand implements AjaxCommand {
             areas = ajaxFetchService.fetchAreas(regionId, areaInput);
         } catch (ServiceException e) {
             // TODO log4j
+            logger.error("An error occurred while fetching from db areas\n" +
+                    "with this param \"regionId: {}\" \n" +
+                    "and \"areaInput{}\"", regionId, areaInput, e);
         }
         res.setContentType(AjaxParameter.AJAX_CONTENT_TYPE);
         res.setCharacterEncoding(AjaxParameter.AJAX_CHARACTER_ENCODING);
