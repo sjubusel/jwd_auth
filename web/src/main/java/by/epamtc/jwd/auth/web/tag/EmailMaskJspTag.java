@@ -1,5 +1,6 @@
 package by.epamtc.jwd.auth.web.tag;
 
+import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,8 +27,7 @@ public class EmailMaskJspTag extends javax.servlet.jsp.tagext.TagSupport {
 
     @Override
     public int doStartTag() {
-        // TODO REGEXP
-        Pattern pattern = Pattern.compile("@[0-9A-Za-z\\-]+(\\.)[a-z]+");
+        Pattern pattern = Pattern.compile(RegistrationInfoPattern.EMAIL_SUFFIX);
         Matcher matcher = pattern.matcher(email);
         if (matcher.find()) {
             String emailSuffix = matcher.group();
