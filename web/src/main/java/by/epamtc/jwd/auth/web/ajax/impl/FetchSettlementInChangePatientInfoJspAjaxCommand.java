@@ -7,6 +7,8 @@ import by.epamtc.jwd.auth.service.ajax.AjaxServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.ajax.AjaxCommand;
 import com.google.gson.Gson;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +18,9 @@ import java.io.PrintWriter;
 import java.util.List;
 
 public class FetchSettlementInChangePatientInfoJspAjaxCommand implements AjaxCommand {
+    private static final Logger logger = LoggerFactory.getLogger
+            (FetchSettlementInChangePatientInfoJspAjaxCommand.class);
+
     private AjaxServiceFactory ajaxServiceFactory = AjaxServiceFactory.getInstance();
     private AjaxFetchService ajaxFetchService = ajaxServiceFactory
             .getAjaxFetchService();
@@ -30,7 +35,9 @@ public class FetchSettlementInChangePatientInfoJspAjaxCommand implements AjaxCom
         try {
             settlements = ajaxFetchService.fetchSettlements(areaId, settlementInput);
         } catch (ServiceException e) {
-            // TODO log4j
+            logger.error("An error occurred while fetching from db " +
+                    "settlements\n with these params \"areaId: {}\"," +
+                    " \"settlementInput: {}\"", areaId, settlementInput, e);
         }
 
         res.setContentType(AjaxParameter.AJAX_CONTENT_TYPE);
