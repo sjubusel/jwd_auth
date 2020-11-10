@@ -4,12 +4,16 @@ import by.epamtc.jwd.auth.model.user_info.Gender;
 import by.epamtc.jwd.auth.model.auth_info.RegistrationInfo;
 import by.epamtc.jwd.auth.model.constant.AppParameter;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class RegistrationInfoCompiler {
+    private static final Logger logger = LoggerFactory.getLogger(
+            RegistrationInfoCompiler.class);
     private static volatile RegistrationInfoCompiler instance;
 
     private RegistrationInfoCompiler() {
@@ -79,9 +83,9 @@ public class RegistrationInfoCompiler {
         LocalDate birthdayDate = null;
         try {
             birthdayDate = LocalDate.parse(birthday, DateTimeFormatter.ISO_DATE);
-        } catch (Exception e) {
-            // TODO add log4j, because this situation is available only when someone wants to hack the system
-            e.printStackTrace();
+        } catch (RuntimeException e) {
+            logger.info("Front-end allowed inconsistent data:\n" +
+                    "param=\"birthday: {}\"", birthday, e);
         }
         return birthdayDate;
     }
