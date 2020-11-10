@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+        version="2.0">
+
+
+    <tlib-version>0.1</tlib-version>
+    <short-name>emailMaskTag</short-name>
+    <uri>/WEB-INF/tld/customTaglibPassport.tld</uri>
+    <tag>
+        <name>masker</name>
+        <tag-class>by.epamtc.jwd.auth.web.tag.EmailMaskJspTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>email</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+</taglib>
