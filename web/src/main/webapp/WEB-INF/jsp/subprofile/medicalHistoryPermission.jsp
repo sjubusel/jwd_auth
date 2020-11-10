@@ -268,23 +268,23 @@
             </div>
 
             <c:choose>
-                <c:when test="${requestScope.deleteResult ne null}">
+                <c:when test="${requestScope.addResult ne null}">
                     <c:choose>
-                        <c:when test="${requestScope.deleteResult eq 'success'}">
+                        <c:when test="${requestScope.addResult eq 'success'}">
                             <div class="alert alert-success" role="alert">
                                 <fmt:message bundle="${jspMessages}"
                                              key="profileSubMenu.medicalHistoryPermission.successAfterAddingOfPermission"/>
                             </div>
                         </c:when>
                         <%-- a tech error --%>
-                        <c:when test="${requestScope.deleteResult eq 'techError'}">
+                        <c:when test="${requestScope.addResult eq 'techError'}">
                             <div class="alert alert-danger" role="alert">
                                 <fmt:message bundle="${jspMessages}"
                                              key="profileSubMenu.medicalHistoryPermission.techErrorAfterAddingOfPermission"/>
                             </div>
                         </c:when>
                         <%-- a validation error --%>
-                        <c:when test="${requestScope.deleteResult eq 'validationError'}">
+                        <c:when test="${requestScope.addResult eq 'validationError'}">
                             <div class="alert alert-danger" role="alert">
                                 <fmt:message bundle="${jspMessages}"
                                              key="profileSubMenu.medicalHistoryPermission.validationErrorAfterAddingOfPermission"/>
