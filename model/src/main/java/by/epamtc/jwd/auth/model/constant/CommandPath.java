@@ -62,6 +62,14 @@ public final class CommandPath {
     public static final String SUBPROFILE_GO_TO_MEDICAL_HISTORY_PERMISSION_ADD_SUCCESSFUL_RESULT
             = "/profile?command=go-to-profile-medical-history-permission&addResult=success";
 
+    public static final String SUBPROFILE_GO_TO_ALLERGIC_REACTIONS_ADD_FOOD_RESULT_TECH_ERROR
+            = "/profile?command=go-to-profile-allergic-reactions&addFoodResult=techError";
+    public static final String SUBPROFILE_GO_TO_ALLERGIC_REACTIONS_ADD_FOOD_RESULT_VALID_ERROR
+            = "/profile?command=go-to-profile-allergic-reactions&addFoodResult=validError";
+    public static final String SUBPROFILE_GO_TO_ALLERGIC_REACTIONS_ADD_FOOD_SUCCESSFUL_RESULT
+            = "/profile?command=go-to-profile-allergic-reactions&addFoodResult=success";
+
+
     public static final String LOGIN_JSP = "/WEB-INF/jsp/login.jsp";
     public static final String PROFILE_JSP = "/WEB-INF/jsp/profile.jsp";
     public static final String REGISTER_JSP = "/WEB-INF/jsp/register.jsp";

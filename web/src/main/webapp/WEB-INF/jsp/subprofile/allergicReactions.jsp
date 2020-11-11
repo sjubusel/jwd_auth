@@ -237,6 +237,40 @@
                         <fmt:message bundle="${jspMessages}"
                                      key="profileSubMenu.allergicReactionsFood.headingForm"/>
                     </h1>
+
+                    <c:choose>
+                        <c:when test="${requestScope.addFoodResult ne null}">
+                            <c:choose>
+                                <c:when test="${requestScope.addFoodResult eq 'success'}">
+                                    <div class="alert alert-success" role="alert">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.allergicReactionsFood.success"/>
+                                    </div>
+                                </c:when>
+                                <%-- a tech error --%>
+                                <c:when test="${requestScope.addFoodResult eq 'techError'}">
+                                    <div class="alert alert-danger" role="alert">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.allergicReactionsFood.techError"/>
+                                    </div>
+                                </c:when>
+                                <%-- a validation error --%>
+                                <c:when test="${requestScope.addFoodResult eq 'validationError'}">
+                                    <div class="alert alert-danger" role="alert">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.allergicReactionsFood.validationErrorAfter"/>
+                                    </div>
+                                </c:when>
+                                <c:otherwise>
+                                    <div class="alert alert-danger" role="alert">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="main.unknownCondition"/>
+                                    </div>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:when>
+                    </c:choose>
+
                     <form action="${pageContext.request.contextPath}/profile"
                           method="post">
                         <input type="hidden" name="command"
@@ -284,7 +318,7 @@
                                 <fmt:message bundle="${jspMessages}"
                                              key="profileSubMenu.allergicReactionsFood.allergicReactionFoodDescription"/>
                             </label>
-                            <input type="date"
+                            <input type="text"
                                    class="form-control col"
                                    id="allergicReactionFoodDescription"
                                    name="allergicReactionFoodDescriptionInput"
@@ -398,7 +432,7 @@
                                 <fmt:message bundle="${jspMessages}"
                                              key="profileSubMenu.allergicMedicineReactions.allergicReactionMedicineDescription"/>
                             </label>
-                            <input type="date"
+                            <input type="text"
                                    class="form-control col"
                                    id="allergicReactionMedicineDescription"
                                    name="allergicReactionMedicineDescriptionInput"

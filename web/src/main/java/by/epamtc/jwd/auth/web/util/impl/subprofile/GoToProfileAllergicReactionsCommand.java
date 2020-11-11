@@ -54,24 +54,12 @@ public class GoToProfileAllergicReactionsCommand implements Command {
                         allergicReactionsInfo.getAllergicMedicineReactions());
             }
         }
-//
-//        String foodDeleteResult = req.getParameter(AppParameter.DELETE_RESULT
-//                + "Food");
-//        if (foodDeleteResult != null) {
-//            req.setAttribute(AppParameter.DELETE_RESULT + "Food", foodDeleteResult);
-//        }
-//
-//        String foodAddResult = req.getParameter(AppParameter.ADD_RESULT + "Food");
-//        if (foodAddResult != null) {
-//            req.setAttribute(AppParameter.ADD_RESULT + "Food", foodAddResult);
-//        }
-//
-//        String medicineDeleteResult = req.getParameter(AppParameter.DELETE_RESULT
-//                + "Medicine");
-//        if (medicineDeleteResult != null) {
-//            req.setAttribute(AppParameter.DELETE_RESULT + "Medicine", medicineDeleteResult);
-//        }
-//
+
+        String foodAddResult = req.getParameter(AppParameter.ADD_FOOD_RESULT);
+        if (foodAddResult != null) {
+            req.setAttribute(AppParameter.ADD_FOOD_RESULT, foodAddResult);
+        }
+
 //        String medicineAddResult = req.getParameter(AppParameter.ADD_RESULT + "Medicine");
 //        if (foodAddResult != null) {
 //            req.setAttribute(AppParameter.ADD_RESULT + "Medicine", foodAddResult);

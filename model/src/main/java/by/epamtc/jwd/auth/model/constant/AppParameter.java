@@ -68,6 +68,11 @@ public final class AppParameter {
             = "emergencyPhoneNumberInnerNumber";
     public static final String PERMISSION_ID = "permissionIdInput";
     public static final String RECIPIENT_ID = "hiddenRecipientIdInput";
+    public static final String FOOD_TYPE_ID = "hiddenFoodTypeIdInput";
+    public static final String FOOD_DETECTION_DATE = "detectionDateInput";
+    public static final String FOOD_DETECTION_DESCRIPTION
+            = "allergicReactionFoodDescriptionInput";
+    public static final String ADD_FOOD_RESULT = "addFoodResult";
 
     private AppParameter() {
     }

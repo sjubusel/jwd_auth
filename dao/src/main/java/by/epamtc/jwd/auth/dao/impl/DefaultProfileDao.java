@@ -273,6 +273,36 @@ public class DefaultProfileDao implements ProfileDao {
         return allergicReactions;
     }
 
+    @Override
+    public boolean addAllergicFoodReaction(AllergicFoodReaction reaction,
+            AuthUser user) throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement
+                    .INSERT_ALLERGIC_FOOD_REACTION);
+            statement.setInt(1, user.getUserId());
+            statement.setInt(2, Integer.parseInt(reaction
+                    .getFoodTypeInfo()));
+            statement.setObject(3, reaction.getDetectionDate());
+            statement.setString(4, reaction.getAllergicDescription());
+            statement.executeUpdate();
+         } catch (SQLException e) {
+            throw new DaoException("An error while addition data into DB " +
+                    "(AllergicFoodReaction records)", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection from " +
+                    "the connection pool during addition of " +
+                    "AllergicFoodReaction", e);
+        } finally {
+            pool.closeConnection(conn, statement);
+        }
+
+        return true;
+    }
+
     private PatientInfo compilePatientInfo(ResultSet rSet) throws SQLException {
         String photoPath = rSet.getString(1);
         String firstName = rSet.getString(2);

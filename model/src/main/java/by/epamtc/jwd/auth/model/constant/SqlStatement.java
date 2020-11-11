@@ -139,6 +139,9 @@ public final class SqlStatement {
             "              ON arm.pharmaceutical_substance_id = ps.atc_pharmaceutical_substance_id\n" +
             "         JOIN hospital.persons p ON arm.person_id = p.person_id\n" +
             "WHERE p.person_id = ?;";
+    public static final String INSERT_ALLERGIC_FOOD_REACTION
+            = "INSERT INTO hospital.allergic_reactions_food (person_id, food_type_id, detection_date, allergic_reaction_description)\n" +
+            "VALUES (?, ?, ?, ?);";
 
     private SqlStatement() {
     }
