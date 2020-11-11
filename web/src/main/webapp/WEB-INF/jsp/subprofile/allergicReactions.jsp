@@ -15,6 +15,7 @@
 <c:set var="activeSubMenuProfileTab" value="allergicReactions" scope="page"/>
 
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
+<fmt:setBundle basename="registrationRegExp" var="regEx"/>
 
 <html>
 <head>
@@ -74,7 +75,7 @@
                                      key="profileSubMenu.allergicReactionsFood.heading"/>
                     </h1>
                     <c:choose>
-                        <c:when test="${requestScope.medicalHistoryPermissions ne null}">
+                        <c:when test="${requestScope.allergicFoodReactions ne null}">
                             <%--header--%>
                             <div class="row d-flex mb-1 border">
                                 <div class="col">
@@ -91,62 +92,205 @@
                                 </div>
                             </div>
                             <%--contents--%>
-                            <c:forEach var="medPermission"
-                                       items="${requestScope.medicalHistoryPermissions}">
-                                <form action="${pageContext.request.contextPath}/profile"
-                                      method="post">
-                                    <div class="row d-flex mb-1 border align-items-center">
-
-                                        <input type="hidden" name="command"
-                                               value="profile-medical-history-permission-delete"/>
-                                        <input type="hidden"
-                                               name="permissionIdInput"
-                                               value="${medPermission.permissionId}"/>
-                                            <%--1st column--%>
-                                        <div class="col">
-                                            <c:out value="${medPermission.recipientInfo}"/>
-                                        </div>
-                                            <%--2nd column--%>
-                                        <div class="col">
-                                            <c:out value="${medPermission.permissionDateTime}"/>
-                                        </div>
-                                            <%--3rd column--%>
-                                        <div class="col"
-                                                <c:if test="${medPermission.cancellationDescription ne null}">
-                                                    title="${medPermission.cancellationDescription}"
-                                                </c:if>
-                                        >
-                                            <c:if test="${medPermission.cancellationDateTime ne null}">
-                                                <c:out value="${medPermission.cancellationDateTime}"/>
-                                            </c:if>
-                                        </div>
-                                            <%-- 4th column (button) --%>
-                                        <div class="col">
-                                            <button type="submit"
-                                                    class="btn align-self-center btn-primary"
-                                                    <c:if test="${medPermission.cancellationDateTime ne null}">
-                                                        disabled
-                                                    </c:if>
-                                            >
-                                                <fmt:message
-                                                        bundle="${jspMessages}"
-                                                        key="profileSubMenu.medicalHistoryPermission.delete"/>
-                                            </button>
-                                        </div>
-
+                            <c:forEach var="allergicFoodReactions"
+                                       items="${requestScope.allergicFoodReactions}">
+                                <div class="row d-flex mb-1 border align-items-center">
+                                        <%--1st column--%>
+                                    <div class="col">
+                                        <c:out value="${allergicFoodReactions.foodTypeInfo}"/>
                                     </div>
-                                </form>
+                                    <div class="col">
+                                        <c:out value="${allergicFoodReactions.detectionDate}"/>
+                                    </div>
+                                    <div class="col">
+                                        <c:if test="${allergicFoodReactions.allergicDescription ne null}">
+                                            <c:out value="${allergicFoodReactions.allergicDescription}"/>
+                                        </c:if>
+                                    </div>
+                                </div>
                             </c:forEach>
                         </c:when>
                         <c:otherwise>
                             <fmt:message bundle="${jspMessages}"
                                          key="profileSubMenu.allergicReactionsFood.noRecordsMessage"/>
                         </c:otherwise>
-
-
-                        <%--!!!!!!!!!! FORM--%>
                     </c:choose>
-                    <%--AND THE FOLLOWING--%>
+                    <h1 class="text-left">
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profileSubMenu.allergicReactionsFood.headingForm"/>
+                    </h1>
+                    <form action="${pageContext.request.contextPath}/profile"
+                          method="post">
+                        <input type="hidden" name="command"
+                            <%-- TODO command add food--%>
+                               value="profile-allergic-reactions-food-add"/>
+                        <div class="form-group form-inline row">--%>
+                            <label for="foodType"
+                                   class="col-4 custom-form-label">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profileSubMenu.allergicReactionsFood.foodType"/>
+                            </label>
+                            <input type="hidden" id="hiddenFoodTypeId"
+                                   name="hiddenFoodTypeIdInput" value=""/>
+                            <input type="text"
+                                   class="form-control col"
+                                   id="foodType"
+                                   name="foodTypeInput" required
+                                   placeholder="<fmt:message bundle="${jspMessages}"
+                                                                       key="profileSubMenu.allergicReactionsFood.foodType.recipientPlaceholder"/>"
+                                   pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.medicalHistoryPermission.recipientPattern"/>"
+                            />
+                        </div>
+                        <div id="foodTypeResult" class="overflow-auto"
+                             style="max-height: 100px">
+                        </div>
+
+                        <div class="form-group form-inline row">--%>
+                            <label for="detectionDate"
+                                   class="col-4 custom-form-label">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profileSubMenu.allergicReactionsFood.detectionDate"/>
+                            </label>
+                            <input type="date"
+                                   class="form-control col"
+                                   id="detectionDate"
+                                   name="detectionDateInput" required
+                                   placeholder="<fmt:message bundle="${jspMessages}"
+                                                                       key="profileSubMenu.allergicReactionsFood.foodType.detectionDatePlaceholder"/>"
+                            />
+                        </div>
+
+                        <div class="form-group form-inline row">--%>
+                            <label for="allergicReactionFoodDescription"
+                                   class="col-4 custom-form-label">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profileSubMenu.allergicReactionsFood.allergicReactionFoodDescription"/>
+                            </label>
+                            <input type="date"
+                                   class="form-control col"
+                                   id="allergicReactionFoodDescription"
+                                   name="allergicReactionFoodDescriptionInput"
+                                   placeholder="<fmt:message bundle="${jspMessages}"
+                                                                       key="profileSubMenu.allergicReactionsFood.foodType.allergicReactionFoodDescriptionPlaceholder"/>"
+                            />
+                        </div>
+
+                        <button type="submit">
+                            class="btn align-self-center btn-primary">
+                            <fmt:message bundle="${jspMessages}"
+                                         key="profileSubMenu.medicalHistoryPermission.add"/>
+                        </button>
+                    </form>
+<%--###########################################################################--%>
+                    <h1 class="text-left">
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profileSubMenu.allergicReactionsMedicine.heading"/>
+                    </h1>
+                    <c:choose>
+                        <c:when test="${requestScope.allergicMedicineReactions ne null}">
+                            <%--header--%>
+                            <div class="row d-flex mb-1 border">
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.allergicMedicineReactions.medicineName"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.allergicMedicineReactions.detectionData"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.allergicMedicineReactions.description"/>
+                                </div>
+                            </div>
+                            <%--contents--%>
+                            <c:forEach var="allergicMedicineReactions"
+                                       items="${requestScope.allergicMedicineReactions}">
+                                <div class="row d-flex mb-1 border align-items-center">
+                                        <%--1st column--%>
+                                    <div class="col">
+                                        <c:out value="${allergicMedicineReactions.medicineDescription}"/>
+                                    </div>
+                                    <div class="col">
+                                        <c:out value="${allergicMedicineReactions.detectionDate}"/>
+                                    </div>
+                                    <div class="col">
+                                        <c:if test="${allergicMedicineReactions.allergicReaction ne null}">
+                                            <c:out value="${allergicMedicineReactions.allergicReaction}"/>
+                                        </c:if>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="profileSubMenu.allergicMedicineReactions.noRecordsMessage"/>
+                        </c:otherwise>
+                    </c:choose>
+
+
+                    <form action="${pageContext.request.contextPath}/profile"
+                          method="post">
+                        <input type="hidden" name="command"
+                            <%-- TODO command add food--%>
+                               value="profile-allergic-reactions-medicine-add"/>
+                        <div class="form-group form-inline row">--%>
+                            <label for="medicineType"
+                                   class="col-4 custom-form-label">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profileSubMenu.allergicMedicineReactions.medicineType"/>
+                            </label>
+                            <input type="hidden" id="hiddenMedicineTypeId"
+                                   name="hiddenMedicineTypeIdInput" value=""/>
+                            <input type="text"
+                                   class="form-control col"
+                                   id="medicineType"
+                                   name="medicineTypeInput" required
+                                   placeholder="<fmt:message bundle="${jspMessages}"
+                                                                       key="profileSubMenu.allergicMedicineReactions.medicineTypePlaceholder"/>"
+                                   pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.changePatientInfo.latinHolderNamePattern"/>"
+                            />
+                        </div>
+                        <div id="medicineTypeResult" class="overflow-auto"
+                             style="max-height: 100px">
+                        </div>
+
+                        <div class="form-group form-inline row">--%>
+                            <label for="detectionDateMedicine"
+                                   class="col-4 custom-form-label">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profileSubMenu.allergicMedicineReactions.detectionDate"/>
+                            </label>
+                            <input type="date"
+                                   class="form-control col"
+                                   id="detectionDateMedicine"
+                                   name="detectionDateMedicineInput" required
+                                   placeholder="<fmt:message bundle="${jspMessages}"
+                                                                       key="profileSubMenu.allergicMedicineReactions.detectionDatePlaceholder"/>"
+                            />
+                        </div>
+
+                        <div class="form-group form-inline row">--%>
+                            <label for="allergicReactionMedicineDescription"
+                                   class="col-4 custom-form-label">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profileSubMenu.allergicMedicineReactions.allergicReactionMedicineDescription"/>
+                            </label>
+                            <input type="date"
+                                   class="form-control col"
+                                   id="allergicReactionMedicineDescription"
+                                   name="allergicReactionMedicineDescriptionInput"
+                                   placeholder="<fmt:message bundle="${jspMessages}"
+                                                                       key="profileSubMenu.allergicMedicineReactions.allergicReactionMedicineDescriptionPlaceholder"/>"
+                            />
+                        </div>
+
+                        <button type="submit">
+                            class="btn align-self-center btn-primary">
+                            <fmt:message bundle="${jspMessages}"
+                                         key="profileSubMenu.medicalHistoryPermission.add"/>
+                        </button>
+                    </form>
                 </c:otherwise>
             </c:choose>
 
