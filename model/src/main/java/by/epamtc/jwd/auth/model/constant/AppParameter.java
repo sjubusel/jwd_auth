@@ -79,6 +79,9 @@ public final class AppParameter {
             = "detectionDateMedicineInput";
     public static final String MEDICINE_DETECTION_DESCRIPTION
             = "allergicReactionMedicineDescriptionInput";
+    public static final String DISEASE_ID = "hiddenDiseaseIdInput";
+    public static final String HAZARDOUS_DETECTION_DATE = "detectionDateInput";
+    public static final String CASE_DESCRIPTION = "caseDescriptionInput";
 
 
     private AppParameter() {

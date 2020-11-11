@@ -253,7 +253,7 @@
                                    name="diseaseInput" required
                                    placeholder="<fmt:message bundle="${jspMessages}"
                                                                        key="profileSubMenu.extremelyHazardousDiseases.diseasePlaceholder"/>"
-                                   pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.medicalHistoryPermission.recipientPattern"/>"
+                                   pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.extremelyHazardousDiseases.disease"/>"
                             />
                         </div>
                         <div id="diseaseResult" class="overflow-auto"

@@ -366,6 +366,59 @@ public class DefaultProfileDao implements ProfileDao {
         return cases;
     }
 
+    @Override
+    public boolean addExtremelyHazardousDisease(ExtremelyHazardousDiseaseCase
+            disease, AuthUser user) throws DaoException {
+        Connection conn = null;
+        PreparedStatement[] statements = new PreparedStatement[3];
+        ResultSet resultSet = null;
+        int pointer = 0;
+
+        try {
+            conn = pool.takeConnection();
+            conn.setAutoCommit(false);
+            statements[pointer] = conn.prepareStatement(SqlStatement.SELECT_HAZARDOUS_STATUS);
+            statements[pointer].setInt(1, user.getUserId());
+
+            boolean isHazardousBefore = false;
+            resultSet = statements[pointer].executeQuery();
+            if (resultSet.next()) {
+                isHazardousBefore = resultSet.getBoolean(1);
+            }
+
+            if (!isHazardousBefore) {
+                statements[++pointer] = conn.prepareStatement(SqlStatement
+                        .INSERT_HAZARDOUS_FLAG_TO_PERSON);
+                statements[pointer].setInt(1, user.getUserId());
+                statements[pointer].executeUpdate();
+            }
+
+            statements[++pointer] = conn.prepareStatement(SqlStatement.ADD_HAZARDOUS_CASE);
+            statements[pointer].setInt(1, Integer.parseInt(disease
+                    .getDiseaseDescription()));
+            statements[pointer].setString(2, disease.getCaseDescription());
+            statements[pointer].setObject(3, disease.getDetectionDate());
+            statements[pointer].setObject(4, user.getUserId());
+
+            statements[pointer].executeUpdate();
+
+            conn.commit();
+        } catch (SQLException e) {
+            pool.rollBackTransaction(conn);
+            throw new DaoException("An error while adding extremely " +
+                    "hazardous disease", e);
+        } catch (ConnectionPoolException e) {
+            pool.rollBackTransaction(conn);
+            throw new DaoException("An error while adding extremely " +
+                    "hazardous disease in connection pool", e);
+        } finally {
+            pool.closeConnection(conn, statements, resultSet);
+        }
+
+
+        return true;
+    }
+
     private PatientInfo compilePatientInfo(ResultSet rSet) throws SQLException {
         String photoPath = rSet.getString(1);
         String firstName = rSet.getString(2);

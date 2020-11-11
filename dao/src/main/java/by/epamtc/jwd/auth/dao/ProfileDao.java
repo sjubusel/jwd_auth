@@ -37,4 +37,7 @@ public interface ProfileDao {
 
     List<ExtremelyHazardousDiseaseCase> fetchCasesOfExtremelyHazardousDiseases
             (AuthUser user) throws DaoException;
+
+    boolean addExtremelyHazardousDisease(ExtremelyHazardousDiseaseCase disease,
+            AuthUser user) throws DaoException;
 }

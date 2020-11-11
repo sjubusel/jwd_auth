@@ -158,6 +158,18 @@ public final class SqlStatement {
             "              ON c.extremely_hazardous_disease_id = ex.extremely_hazardous_disease_id\n" +
             "         JOIN hospital.icd_10_diseases d ON ex.icd_10_disease_id = d.icd_10_disease_id\n" +
             "WHERE c.person_id = ?;";
+    public static final String SELECT_HAZARDOUS_STATUS
+            = "SELECT p.extremely_hazardous_diseases FROM hospital.persons p\n" +
+            "WHERE p.person_id = ?";
+    public static final String INSERT_HAZARDOUS_FLAG_TO_PERSON
+            = "UPDATE hospital.persons p\n" +
+            "SET p.extremely_hazardous_diseases = FALSE\n" +
+            "WHERE p.person_id = ?;";
+    public static final String ADD_HAZARDOUS_CASE
+            = "INSERT INTO hospital.cases_extremely_hazardous_diseases " +
+            "(extremely_hazardous_disease_id, case_description,\n" +
+            "detection_date, person_id)\n" +
+            "VALUES (?, ?, ?, ?);";
 
     private SqlStatement() {
     }

@@ -52,6 +52,8 @@ public final class CommandName {
             = "GO-TO-PROFILE-STAFF-HISTORY";
     public static final String SUBPROFILE_GO_TO_STAFF_INFO
             = "GO-TO-PROFILE-STAFF-INFO";
+    public static final String SUBPROFILE_EXTREMELY_HAZARDOUS_DISEASES_ADD
+            = "PROFILE-EXTREMELY-HAZARDOUS-DISEASES-ADD";
 
     private CommandName() {
     }

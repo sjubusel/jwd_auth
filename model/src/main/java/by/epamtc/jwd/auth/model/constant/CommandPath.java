@@ -75,6 +75,12 @@ public final class CommandPath {
             = "/profile?command=go-to-profile-allergic-reactions&addMedicineResult=validationError";
     public static final String SUBPROFILE_GO_TO_ALLERGIC_REACTIONS_ADD_MEDICINE_SUCCESSFUL_RESULT
             = "/profile?command=go-to-profile-allergic-reactions&addMedicineResult=success";
+    public static final String SUBPROFILE_GO_TO_EXTREMELY_HAZARDOUS_DISEASES_ADD_RESULT_TECH_ERROR
+            = "/profile?command=go-to-profile-extremely-hazardous-diseases&addResult=techError";
+    public static final String SUBPROFILE_GO_TO_EXTREMELY_HAZARDOUS_DISEASES_ADD_RESULT_VALID_ERROR
+            = "/profile?command=go-to-profile-extremely-hazardous-diseases&addResult=validationError";
+    public static final String SUBPROFILE_GO_TO_EXTREMELY_HAZARDOUS_DISEASES_ADD_SUCCESSFUL_RESULT
+            = "/profile?command=go-to-profile-extremely-hazardous-diseases&addResult=success";
 
 
     public static final String LOGIN_JSP = "/WEB-INF/jsp/login.jsp";

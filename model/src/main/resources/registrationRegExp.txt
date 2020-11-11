@@ -22,5 +22,6 @@ profileSubMenu.changePatientInfo.idDocPersonalNumberPattern=[0-9A-Za-z]{1,255}
 profileSubMenu.changePatientInfo.idDocPlaceOfOriginPattern=[0-9A-Za-zА-Яа-яЁё \\-,.]{1,255}
 profileSubMenu.changePatientInfo.idDocIssueAuthorityPattern=[0-9A-Za-zА-Яа-яЁё \\-,.]{1,255}
 profileSubMenu.medicalHistoryPermission.recipientPattern=[А-Яа-яЁё \\-]{1,255}
+profileSubMenu.extremelyHazardousDiseases.disease=[^A-Za-z]{1,255}
 
 ajax.input.pattern=[А-Яа-яЁё \\-]{1,255}

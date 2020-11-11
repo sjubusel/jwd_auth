@@ -145,4 +145,19 @@ public class DefaultProfileService implements ProfileService {
         }
         return null;
     }
+
+    @Override
+    public boolean addExtremelyHazardousDisease(ExtremelyHazardousDiseaseCase disease, AuthUser user)
+            throws ServiceException {
+        if (validator.isAuthUserValidForProfileActivity(user)
+                && disease.getDiseaseDescription().matches
+                (RegistrationInfoPattern.DIGITS)) {
+            try {
+                return profileDao.addExtremelyHazardousDisease(disease, user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return false;
+    }
 }

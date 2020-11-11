@@ -37,4 +37,7 @@ public interface ProfileService {
 
     List<ExtremelyHazardousDiseaseCase> fetchCasesOfExtremelyHazardousDiseases
             (AuthUser user) throws ServiceException;
+
+    boolean addExtremelyHazardousDisease(ExtremelyHazardousDiseaseCase disease, AuthUser user)
+            throws ServiceException;
 }
