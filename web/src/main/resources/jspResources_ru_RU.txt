@@ -242,3 +242,7 @@ profileSubMenu.allergicReactionsMedicine.heading=Информация об ал�
 
 profileSubMenu.allergicReactions.techError=По техническим причинам загрузить сведения об аллергических реакциях не представилось возможным
 profileSubMenu.allergicReactions.validationError=По причине некорректного типа пользователя загрузить сведения об аллергических реакциях не представилось возможным
+profileSubMenu.allergicReactionsFood.foodType=Тип еды
+profileSubMenu.allergicReactionsFood.detectionData=Дата обнаружения
+profileSubMenu.allergicReactionsFood.description=Описание реакции на еду
+profileSubMenu.allergicReactionsFood.noRecordsMessage=Сведения об аллергических реакциях на еду отсутствуют

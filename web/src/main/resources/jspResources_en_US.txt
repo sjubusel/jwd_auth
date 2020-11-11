@@ -242,3 +242,7 @@ profileSubMenu.allergicReactionsMedicine.heading=Information about allergic reac
 
 profileSubMenu.allergicReactions.techError=Because of a technical factor there is no possibility to fetch allergic reactions
 profileSubMenu.allergicReactions.validationError=Because of an incorrect user type there is no possibility to fetch allergic reactions
+profileSubMenu.allergicReactionsFood.foodType=Food type
+profileSubMenu.allergicReactionsFood.detectionData=Detection date
+profileSubMenu.allergicReactionsFood.description=Description of a reaction on food
+profileSubMenu.allergicReactionsFood.noRecordsMessage=There is no data on allergic food reactions

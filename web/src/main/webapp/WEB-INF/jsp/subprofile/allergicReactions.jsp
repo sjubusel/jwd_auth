@@ -79,19 +79,15 @@
                             <div class="row d-flex mb-1 border">
                                 <div class="col">
                                     <fmt:message bundle="${jspMessages}"
-                                                 key="profileSubMenu.allergicReactionsFood.recipient"/>
+                                                 key="profileSubMenu.allergicReactionsFood.foodType"/>
                                 </div>
                                 <div class="col">
                                     <fmt:message bundle="${jspMessages}"
-                                                 key="profileSubMenu.allergicReactionsFood.permissionDateTime"/>
+                                                 key="profileSubMenu.allergicReactionsFood.detectionData"/>
                                 </div>
                                 <div class="col">
                                     <fmt:message bundle="${jspMessages}"
-                                                 key="profileSubMenu.allergicReactionsFood.cancellationDateTime"/>
-                                </div>
-                                <div class="col">
-                                    <fmt:message bundle="${jspMessages}"
-                                                 key="profileSubMenu.allergicReactionsFood.deleteButton"/>
+                                                 key="profileSubMenu.allergicReactionsFood.description"/>
                                 </div>
                             </div>
                             <%--contents--%>
