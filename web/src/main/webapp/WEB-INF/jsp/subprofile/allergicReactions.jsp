@@ -36,10 +36,6 @@
 
     <div class="row mt-2 mr-2 ml-2">
         <%@ include file="../structural_element/profileSubMenu.jsp" %>
-        <div class="bg-light d-inline-block col">
-            <div class="">ALLERGIC REACTIONS</div>
-        </div>
-
         <%--CONTENTS--%>
         <div class="bg-light d-inline-block col">
 
@@ -124,7 +120,7 @@
                         <input type="hidden" name="command"
                             <%-- TODO command add food--%>
                                value="profile-allergic-reactions-food-add"/>
-                        <div class="form-group form-inline row">--%>
+                        <div class="form-group form-inline row">
                             <label for="foodType"
                                    class="col-4 custom-form-label">
                                 <fmt:message bundle="${jspMessages}"
@@ -145,7 +141,7 @@
                              style="max-height: 100px">
                         </div>
 
-                        <div class="form-group form-inline row">--%>
+                        <div class="form-group form-inline row">
                             <label for="detectionDate"
                                    class="col-4 custom-form-label">
                                 <fmt:message bundle="${jspMessages}"
@@ -160,7 +156,7 @@
                             />
                         </div>
 
-                        <div class="form-group form-inline row">--%>
+                        <div class="form-group form-inline row">
                             <label for="allergicReactionFoodDescription"
                                    class="col-4 custom-form-label">
                                 <fmt:message bundle="${jspMessages}"
@@ -175,13 +171,13 @@
                             />
                         </div>
 
-                        <button type="submit">
-                            class="btn align-self-center btn-primary">
+                        <button type="submit"
+                                class="btn align-self-center btn-primary">
                             <fmt:message bundle="${jspMessages}"
                                          key="profileSubMenu.medicalHistoryPermission.add"/>
                         </button>
                     </form>
-<%--###########################################################################--%>
+                    <%--###########################################################################--%>
                     <h1 class="text-left">
                         <fmt:message bundle="${jspMessages}"
                                      key="profileSubMenu.allergicReactionsMedicine.heading"/>
@@ -228,13 +224,17 @@
                         </c:otherwise>
                     </c:choose>
 
+                    <h1 class="text-left">
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profileSubMenu.allergicReactionsMedicine.formHeading"/>
+                    </h1>
 
                     <form action="${pageContext.request.contextPath}/profile"
                           method="post">
                         <input type="hidden" name="command"
                             <%-- TODO command add food--%>
                                value="profile-allergic-reactions-medicine-add"/>
-                        <div class="form-group form-inline row">--%>
+                        <div class="form-group form-inline row">
                             <label for="medicineType"
                                    class="col-4 custom-form-label">
                                 <fmt:message bundle="${jspMessages}"
@@ -255,7 +255,7 @@
                              style="max-height: 100px">
                         </div>
 
-                        <div class="form-group form-inline row">--%>
+                        <div class="form-group form-inline row">
                             <label for="detectionDateMedicine"
                                    class="col-4 custom-form-label">
                                 <fmt:message bundle="${jspMessages}"
@@ -270,7 +270,7 @@
                             />
                         </div>
 
-                        <div class="form-group form-inline row">--%>
+                        <div class="form-group form-inline row">
                             <label for="allergicReactionMedicineDescription"
                                    class="col-4 custom-form-label">
                                 <fmt:message bundle="${jspMessages}"
@@ -285,7 +285,7 @@
                             />
                         </div>
 
-                        <button type="submit">
+                        <button type="submit"
                             class="btn align-self-center btn-primary">
                             <fmt:message bundle="${jspMessages}"
                                          key="profileSubMenu.medicalHistoryPermission.add"/>
@@ -293,59 +293,6 @@
                     </form>
                 </c:otherwise>
             </c:choose>
-
-            <%--            <br>--%>
-            <%--            <br>--%>
-            <%--            <h1 class="text-left">--%>
-            <%--                <fmt:message bundle="${jspMessages}"--%>
-            <%--                             key="profileSubMenu.allergicReactionsFood.formHeading"/>--%>
-            <%--            </h1>--%>
-
-            <%--            <form action="${pageContext.request.contextPath}/profile"--%>
-            <%--                  method="post">--%>
-
-            <%--                <input type="hidden" name="command"--%>
-            <%--                       value="profile-medical-history-permission-add"/>--%>
-
-            <%--                <div class="form-group form-inline row">--%>
-            <%--                    <label for="recipient" class="col-4 custom-form-label">--%>
-            <%--                        <fmt:message bundle="${jspMessages}"--%>
-            <%--                                     key="profileSubMenu.medicalHistoryPermission.recipient"/>--%>
-            <%--                    </label>--%>
-            <%--                    <input type="hidden" id="hiddenRecipientId"--%>
-            <%--                           name="hiddenRecipientIdInput" value=""/>--%>
-            <%--                    <input type="text"--%>
-            <%--                           class="form-control col"--%>
-            <%--                           id="recipient"--%>
-            <%--                           name="recipientInput"--%>
-            <%--                           placeholder="<fmt:message bundle="${jspMessages}"--%>
-            <%--                                       key="profileSubMenu.medicalHistoryPermission.recipientPlaceholder"/>"--%>
-            <%--                           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.medicalHistoryPermission.recipientPattern"/>"--%>
-            <%--                    />--%>
-            <%--                </div>--%>
-            <%--                <div id="recipientResult" class="overflow-auto"--%>
-            <%--                     style="max-height: 100px">--%>
-            <%--                </div>--%>
-
-            <%--                <button type="submit"--%>
-            <%--                        class="btn align-self-center btn-primary">--%>
-            <%--                    <fmt:message bundle="${jspMessages}"--%>
-            <%--                                 key="profileSubMenu.medicalHistoryPermission.add"/>--%>
-            <%--                </button>--%>
-            <%--            </form>--%>
-
-            <%--########################################################################--%>
-            <h1 class="text-left">
-                <fmt:message bundle="${jspMessages}"
-                             key="profileSubMenu.allergicReactionsMedicine.heading"/>
-            </h1>
-
-            <%--<div class="text-muted mb-3">
-                <fmt:message bundle="${jspMessages}"
-                             key="profileSubMenu.allergicReactionsMedicine.disclaimer"/>
-            </div>--%>
-
-
         </div>
         <%--CONTENTS--%>
     </div>
