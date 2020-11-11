@@ -144,7 +144,7 @@
                             <input type="radio"
                                    class="form-check-input"
                                    id="visitReasonEmergency"
-                                   name="visitReasonEmergencyInput" checked
+                                   name="visitReasonInput" checked
                                    value="EMERGENCY">
                             <label for="visitReasonEmergency"
                                    class="form-check-label"
@@ -156,7 +156,7 @@
                             <input type="radio"
                                    class="form-check-input"
                                    id="visitReasonIndependently"
-                                   name="visitReasonIndependentlyInput" required
+                                   name="visitReasonInput" required
                                    value="INDEPENDENTLY">
                             <label for="visitReasonIndependently"
                                    class="form-check-label"
@@ -167,7 +167,7 @@
                             <input type="radio"
                                    class="form-check-input"
                                    id="visitReasonPrescription"
-                                   name="visitReasonPrescriptionInput"
+                                   name="visitReasonInput"
                                    value="PRESCRIPTION">
                             <label for="visitReasonPrescription"
                                    class="form-check-label"
@@ -240,21 +240,21 @@
                     </div>
                 </div>
 
-                <div class="form-group form-inline row">
-                    <label for="complaintsDescription"
-                           class="col-4 custom-form-label">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="registerVisit.complaintsDescription"/>
-                    </label>
-                    <textarea type="text"
-                              class="form-control col"
-                              id="complaintsDescription"
-                              name="complaintsDescriptionInput" required
-                              rows="10" cols="30"
-                              placeholder="<fmt:message bundle="${jspMessages}"
-                                                                       key="registerVisit.complaintsDescriptionPlaceholder"/>"
-                    ></textarea>
-                </div>
+<%--                <div class="form-group form-inline row">--%>
+<%--                    <label for="complaintsDescription"--%>
+<%--                           class="col-4 custom-form-label">--%>
+<%--                        <fmt:message bundle="${jspMessages}"--%>
+<%--                                     key="registerVisit.complaintsDescription"/>--%>
+<%--                    </label>--%>
+<%--                    <textarea type="text"--%>
+<%--                              class="form-control col"--%>
+<%--                              id="complaintsDescription"--%>
+<%--                              name="complaintsDescriptionInput" required--%>
+<%--                              rows="10" cols="30"--%>
+<%--                              placeholder="<fmt:message bundle="${jspMessages}"--%>
+<%--                                                                       key="registerVisit.complaintsDescriptionPlaceholder"/>"--%>
+<%--                    ></textarea>--%>
+<%--                </div>--%>
 
                 <button type="submit"
                         class="btn align-self-center btn-primary">
