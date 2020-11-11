@@ -36,17 +36,15 @@
 
         </div>--%>
         <c:choose>
-            <c:when test="${sessionScope.authUser.role ne null}">
+            <c:when test="${sessionScope.authUser ne null}">
                 <c:choose>
-                    <c:when test="${sessionScope.authUser.role.roleId == 0}">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="staff.accessDeniedForPatient}"/>
+                    <c:when test="${sessionScope.authUser.role.roleId eq 0}">
+
                     </c:when>
-                    <%--REGISTAR--%>
                     <c:when test="${sessionScope.authUser.role.roleId == 1}">
-                        <%--                        <%@ include file="registrar/registrarSubMenu.jsp" %>--%>
+                        <fmt:message bundle="${jspMessages}"
+                                     key="staff.accessDeniedForPatient"/>
                     </c:when>
-                    <%--AID--%>
                     <c:when test="${sessionScope.authUser.role.roleId == 2}">
                         <%@ include file="registrar/registrarSubMenu.jsp" %>
                     </c:when>
@@ -78,22 +76,25 @@
 
                     </c:when>
                 </c:choose>
-                <div class="bg-light d-inline-block col">
-                    <fmt:message bundle="${jspMessages}" key="staff.welcome"/>
-                    <br>
-                    <c:out value="${sessionScope.authUser.lastName}"/>
-                    <c:out value=" "/>
-                    <c:out value="${sessionScope.authUser.firstName}"/>
-                    <br>
-                    <fmt:message bundle="${jspMessages}"
-                                 key="staff.announceRole"/>
-                    <c:out value=": "/>
-                    <c:out value="${sessionScope.authUser.role.roleDescription}"/>
-                </div>
+                <c:if test="${sessionScope.authUser.role.roleId > 1}">
+                    <div class="bg-light d-inline-block col">
+                        <fmt:message bundle="${jspMessages}"
+                                     key="staff.welcome"/>
+                        <br>
+                        <c:out value="${sessionScope.authUser.lastName}"/>
+                        <c:out value=" "/>
+                        <c:out value="${sessionScope.authUser.firstName}"/>
+                        <br>
+                        <fmt:message bundle="${jspMessages}"
+                                     key="staff.announceRole"/>
+                        <c:out value=": "/>
+                        <c:out value="${sessionScope.authUser.role.roleDescription}"/>
+                    </div>
+                </c:if>
             </c:when>
             <c:otherwise>
                 <fmt:message bundle="${jspMessages}"
-                             key="staff.accessDeniedForVisitors}"/>
+                             key="staff.accessDeniedForVisitors"/>
             </c:otherwise>
         </c:choose>
     </div>
