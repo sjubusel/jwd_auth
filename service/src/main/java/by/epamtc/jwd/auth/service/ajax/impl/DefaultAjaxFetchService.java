@@ -3,7 +3,14 @@ package by.epamtc.jwd.auth.service.ajax.impl;
 import by.epamtc.jwd.auth.dao.ajax.AjaxDaoFactory;
 import by.epamtc.jwd.auth.dao.ajax.AjaxFetchDao;
 import by.epamtc.jwd.auth.dao.exception.DaoException;
-import by.epamtc.jwd.auth.model.ajax.*;
+import by.epamtc.jwd.auth.model.ajax.AjaxArea;
+import by.epamtc.jwd.auth.model.ajax.AjaxCountry;
+import by.epamtc.jwd.auth.model.ajax.AjaxFoodType;
+import by.epamtc.jwd.auth.model.ajax.AjaxPerson;
+import by.epamtc.jwd.auth.model.ajax.AjaxRegion;
+import by.epamtc.jwd.auth.model.ajax.AjaxRoad;
+import by.epamtc.jwd.auth.model.ajax.AjaxSettlement;
+import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
 import by.epamtc.jwd.auth.service.ajax.AjaxFetchService;
 import by.epamtc.jwd.auth.service.ajax.validation.AjaxValidator;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
@@ -92,6 +99,19 @@ public class DefaultAjaxFetchService implements AjaxFetchService {
         if (ajaxValidator.isFetchInputValid(recipientPerson)) {
             try {
                 return ajaxFetchDao.fetchPersons(recipientPerson);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public List<AjaxFoodType> fetchFoodTypes(String foodTypePart)
+            throws ServiceException {
+        if (foodTypePart.matches(RegistrationInfoPattern.ROOM)) {
+            try {
+                return ajaxFetchDao.fetchFoodTypes(foodTypePart);
             } catch (DaoException e) {
                 throw new ServiceException(e);
             }

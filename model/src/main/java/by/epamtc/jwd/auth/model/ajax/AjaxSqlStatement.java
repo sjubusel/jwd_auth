@@ -37,6 +37,9 @@ public final class AjaxSqlStatement {
             "SELECT p3.person_id, p3.first_name, p3.middle_name, p3.last_name\n" +
             "FROM hospital.persons p3\n" +
             "WHERE p3.last_name LIKE CONCAT('%', ?, '%');";
+    public static final String SELECT_FOOD_TYPES
+            = "SELECT ft.food_type_id, ft.name from hospital.food_types ft\n" +
+            "WHERE ft.name LIKE CONCAT('%', ?, '%');";
 
 
     private AjaxSqlStatement() {

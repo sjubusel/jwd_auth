@@ -3,6 +3,7 @@ package by.epamtc.jwd.auth.dao.ajax;
 import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.model.ajax.AjaxArea;
 import by.epamtc.jwd.auth.model.ajax.AjaxCountry;
+import by.epamtc.jwd.auth.model.ajax.AjaxFoodType;
 import by.epamtc.jwd.auth.model.ajax.AjaxPerson;
 import by.epamtc.jwd.auth.model.ajax.AjaxRegion;
 import by.epamtc.jwd.auth.model.ajax.AjaxRoad;
@@ -26,4 +27,6 @@ public interface AjaxFetchDao {
             throws DaoException;
 
     List<AjaxPerson> fetchPersons(String recipientPerson) throws DaoException;
+
+    List<AjaxFoodType> fetchFoodTypes(String foodTypePart) throws DaoException;
 }

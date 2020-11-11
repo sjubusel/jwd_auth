@@ -6,6 +6,7 @@ import by.epamtc.jwd.auth.dao.pool.ConnectionPool;
 import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
 import by.epamtc.jwd.auth.model.ajax.AjaxArea;
 import by.epamtc.jwd.auth.model.ajax.AjaxCountry;
+import by.epamtc.jwd.auth.model.ajax.AjaxFoodType;
 import by.epamtc.jwd.auth.model.ajax.AjaxPerson;
 import by.epamtc.jwd.auth.model.ajax.AjaxRegion;
 import by.epamtc.jwd.auth.model.ajax.AjaxRoad;
@@ -226,5 +227,35 @@ public class DefaultAjaxFetchDao implements AjaxFetchDao {
         }
 
         return persons;
+    }
+
+    @Override
+    public List<AjaxFoodType> fetchFoodTypes(String foodTypePart) throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet rSet = null;
+        List<AjaxFoodType> foodTypes = new ArrayList<>();
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(AjaxSqlStatement.SELECT_FOOD_TYPES);
+            statement.setString(1, foodTypePart);
+            rSet = statement.executeQuery();
+            while (rSet.next()) {
+                int foodTypeId = rSet.getInt(1);
+                String foodTypeName = rSet.getString(2);
+                foodTypes.add(new AjaxFoodType(foodTypeId, foodTypeName));
+            }
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection from" +
+                    "the connection pool during ajax fetching of food types", e);
+        } catch (SQLException e) {
+            throw new DaoException("An error while ajax fetching food types " +
+                    "from DBs", e);
+        } finally {
+            pool.closeConnection(conn, statement, rSet);
+        }
+
+        return foodTypes;
     }
 }

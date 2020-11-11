@@ -81,15 +81,13 @@
                                 childRow.appendChild(childColId);
 
                                 <%--suppress JSUnresolvedVariable --%>
-                                // TODO CHANGE
-                                childColId.innerHTML = data[i].personId;
+                                childColId.innerHTML = data[i].foodTypeId;
                                 childRow.setAttribute("onclick", "changeHiddenInput(\"hiddenFoodTypeId\", \"foodType\", this, this.parentElement);");
 
                                 let childColName = document.createElement("div");
                                 childColName.className += "col border d-flex justify-content-center";
                                 childRow.appendChild(childColName);
-                                // TODO change
-                                childColName.innerHTML = data[i].personInfo;
+                                childColName.innerHTML = data[i].foodTypeName;
                             }
                         }
                     });

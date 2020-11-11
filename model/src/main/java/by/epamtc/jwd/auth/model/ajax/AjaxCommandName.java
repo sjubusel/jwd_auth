@@ -14,6 +14,11 @@ public final class AjaxCommandName {
             = "FETCH-ROAD-IN-CHANGE-PATIENT-INFO-JSP";
     public static final String FETCH_PERSON_IN_MEDICAL_HISTORY_PERMISSION_JSP
             = "FETCH-PERSONS-IN-MEDICAL-HISTORY-PERMISSION-JSP";
+    public static final String FETCH_FOOD_ALLERGY_IN_ALLERGIC_REACTIONS_JSP
+            = "FETCH-FOOD-ALLERGY-IN-ALLERGIC-REACTIONS-JSP";
+    public static final String FETCH_MEDICINE_ALLERGY_IN_ALLERGIC_REACTIONS_JSP
+            = "FETCH-MEDICINE-ALLERGY-IN-ALLERGIC-REACTIONS-JSP";
+
 
     private AjaxCommandName() {
     }

@@ -16,6 +16,7 @@ public final class AjaxParameter {
 
     public static final String AJAX_CONTENT_TYPE = "application/json";
     public static final String AJAX_CHARACTER_ENCODING = "UTF-8";
+    public static final String FOOD_TYPE = "foodTypeInput";
 
     private AjaxParameter() {
     }

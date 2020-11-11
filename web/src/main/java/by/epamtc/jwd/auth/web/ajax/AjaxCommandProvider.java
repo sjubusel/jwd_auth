@@ -3,6 +3,8 @@ package by.epamtc.jwd.auth.web.ajax;
 import by.epamtc.jwd.auth.model.ajax.AjaxCommandName;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchAreaInChangePatientInfoJspAjaxCommand;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchCountryInChangePatientInfoJspAjaxCommand;
+import by.epamtc.jwd.auth.web.ajax.impl.FetchFoodAllergyInAllergicReactionsJspAjaxCommand;
+import by.epamtc.jwd.auth.web.ajax.impl.FetchMedicineAllergyInAllergicReactionsJspAjaxCommand;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchPersonInMedicalHistoryPermissionJspAjaxCommand;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchRegionInChangePatientInfoJspAjaxCommand;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchRoadInChangePatientInfoJspAjaxCommand;
@@ -32,6 +34,11 @@ public class AjaxCommandProvider {
                 new FetchRoadInChangePatientInfoJspAjaxCommand());
         repository.put(AjaxCommandName.FETCH_PERSON_IN_MEDICAL_HISTORY_PERMISSION_JSP,
                 new FetchPersonInMedicalHistoryPermissionJspAjaxCommand());
+        repository.put(AjaxCommandName.FETCH_FOOD_ALLERGY_IN_ALLERGIC_REACTIONS_JSP,
+                new FetchFoodAllergyInAllergicReactionsJspAjaxCommand());
+        repository.put(AjaxCommandName.FETCH_MEDICINE_ALLERGY_IN_ALLERGIC_REACTIONS_JSP,
+                new FetchMedicineAllergyInAllergicReactionsJspAjaxCommand());
+
     }
 
     public static AjaxCommandProvider getInstance() {

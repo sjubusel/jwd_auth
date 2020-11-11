@@ -21,5 +21,9 @@ public interface AjaxFetchService {
     List<AjaxRoad> fetchRoads(String settlementId, String roadInput)
             throws ServiceException;
 
-    List<AjaxPerson> fetchPersons(String recipientPerson) throws ServiceException;
+    List<AjaxPerson> fetchPersons(String recipientPerson)
+            throws ServiceException;
+
+    List<AjaxFoodType> fetchFoodTypes(String foodTypePart)
+            throws ServiceException;
 }
