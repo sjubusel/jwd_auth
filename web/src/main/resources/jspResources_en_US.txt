@@ -273,3 +273,8 @@ profileSubMenu.allergicReactionsFood.validationErrorAfter=Not added because of a
 profileSubMenu.allergicReactionsMedicine.success=Successfully added
 profileSubMenu.allergicReactionsMedicine.techError=Not added because of a technical factor
 profileSubMenu.allergicReactionsMedicine.validationErrorAfter=Not added because of a wrong type of the user
+
+profileSubMenu.extremelyHazardousDiseases.techError=Because of a technical factor there is no possibility to fetch cases
+profileSubMenu.extremelyHazardousDiseases.validationError=Because of an incorrect user type there is no possibility to fetch cases
+profileSubMenu.extremelyHazardousDiseases.heading=Cases of extremely hazardous diseases
+profileSubMenu.extremelyHazardousDiseases.noRecords=Cases of extremely hazardous diseases are absent
