@@ -2,7 +2,7 @@ package by.epamtc.jwd.auth.model.auth_info;
 
 public enum Role {
     USER(1, "ПАЦИЕНТ (ПОЛЬЗОВАТЕЛЬ)"),
-    REGISTRAR(2, "МЕДИЦИНСКИЙ-РЕГИСТРАТОР"),
+    REGISTRAR(2, "МЕДИЦИНСКИЙ РЕГИСТРАТОР"),
     ADMISSION_AID(3, "САНИТАР ПРИЁМНОГО ОТДЕЛЕНИЯ"),
     AID(4, "САНИТАР СТАЦИОНАРНОГО ОТДЕЛЕНИЯ"),
     ADMISSION_NURSE(5, "МЕДИЦИНСКАЯ СЕСТРА ПРИЁМНОГО ОТДЕЛЕНИЯ"),

@@ -19,6 +19,7 @@ public final class AjaxParameter {
     public static final String FOOD_TYPE = "foodTypeInput";
     public static final String MEDICINE_TYPE = "medicineTypeInput";
     public static final String DISEASE = "diseaseInput";
+    public static final String VISIT_PERSON = "personInput";
 
     private AjaxParameter() {
     }

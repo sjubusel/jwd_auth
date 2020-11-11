@@ -297,3 +297,4 @@ staff.accessDeniedForPatient=Доступ для пациентов запрещ
 staff.accessDeniedForVisitors=Доступ для посетителй запрещён
 
 registrarSubMenu.registerVisit=Зарегистрировать обращение
+registerVisit.heading=Форма регистрации обращения в больницу

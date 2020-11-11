@@ -22,6 +22,8 @@ public final class AjaxCommandName {
             FETCH_EXTREMELY_HAZARDOUS_DISEASES_IN_EXTREMELY_HAZARDOUS_DISEASES_JSP
             = "FETCH-EXTREMELY-HAZARDOUS-DISEASES-IN-EXTREMELY-HAZARDOUS-" +
             "DISEASES-JSP";
+    public static final String FETCH_PERSON_IN_REGISTER_VISIT_JSP
+            = "FETCH-PERSONS-IN-REGISTER-VISIT-JSP";
 
 
     private AjaxCommandName() {
