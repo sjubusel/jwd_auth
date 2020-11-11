@@ -298,3 +298,4 @@ staff.accessDeniedForVisitors=Access denied for visitors
 
 registrarSubMenu.registerVisit=Register a visit
 registerVisit.heading=Form of registration of a hospital visit
+registerVisit.personInitData=Init data about a person
