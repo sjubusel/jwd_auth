@@ -92,7 +92,7 @@ public class DefaultProfileService implements ProfileService {
     public AllergicReactionsInfo fetchAllergicReactionsInfo(AuthUser user) throws ServiceException {
         if (validator.isAuthUserValidForProfileActivity(user)) {
             try {
-                return profileDao.fetchAlelrgicReactionsInfo(user);
+                return profileDao.fetchAllergicReactionsInfo(user);
             } catch (DaoException e) {
                 throw new ServiceException(e);
             }

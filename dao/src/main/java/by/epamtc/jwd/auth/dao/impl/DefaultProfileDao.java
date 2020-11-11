@@ -232,6 +232,45 @@ public class DefaultProfileDao implements ProfileDao {
         return true;
     }
 
+    @Override
+    public AllergicReactionsInfo fetchAllergicReactionsInfo(AuthUser user)
+            throws DaoException {
+        Connection conn = null;
+        PreparedStatement[] statements = new PreparedStatement[2];
+        ResultSet[] rSet = new ResultSet[2];
+        int pointer = 0;
+
+        AllergicReactionsInfo allergicReactions = new AllergicReactionsInfo();
+
+        /*try {
+            conn = pool.takeConnection();
+            statements[pointer] = conn.prepareStatement(SqlStatement.
+                    "SELECT * from hospital.");
+            statements[pointer].setInt(1, user.getUserId());
+
+            rSet[pointer] = statements[pointer].executeQuery();
+            updateWithAllergicMedicineReaction(allergicReactions, rSet[pointer]);
+
+            statements[++pointer] = conn.prepareStatement(SqlStatement."");
+            statements[pointer].setInt(1, user.getUserId());
+
+            rSet[pointer] = statements[pointer].executeQuery();
+            updateWithAllergicMedicineReaction(allergicReactions, rSet[pointer]);
+
+        } catch (SQLException e) {
+            throw new DaoException("An error while fetching data from DB " +
+                    "(AllergicReactionsInfo)", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection from " +
+                    "the connection pool during fetching of " +
+                    "AllergicReactionsInfo", e);
+        } finally {
+            pool.closeConnection(conn, statements, rSet);
+        }*/
+
+        return allergicReactions;
+    }
+
     private PatientInfo compilePatientInfo(ResultSet rSet) throws SQLException {
         String photoPath = rSet.getString(1);
         String firstName = rSet.getString(2);
@@ -557,6 +596,14 @@ public class DefaultProfileDao implements ProfileDao {
         return new MedicalHistoryPermission(permissionId, recipientId,
                 recipientInfo, permissionDateTime, cancellationDateTime,
                 cancellationDescription);
+    }
+
+    private void updateWithAllergicMedicineReaction(AllergicReactionsInfo
+            allergicReactions, ResultSet rSet) throws SQLException {
+        /*List<AllergicFoodReaction> food = new ArrayList<>();
+        while (rSet.next()) {
+
+        }*/
     }
 
     private int receiveGeneratedKeyAfterStatementExecution(PreparedStatement
