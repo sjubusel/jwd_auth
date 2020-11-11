@@ -107,58 +107,61 @@
     </a>
 
 
-    <a type="button"
-       href="${pageContext.request.contextPath}/profile?command=go-to-profile-staff-info"
-            <c:choose>
-                <c:when test="${pageScope.activeSubMenuProfileTab == 'staffInfo'}">
-                    class="list-group-item list-group-item-action border-top active"
-                </c:when>
-                <c:otherwise>
-                    class="list-group-item list-group-item-action border-top"
-                </c:otherwise>
-            </c:choose>
-    >
-        <fmt:message bundle="${jspMessages}" key="profileSubMenu.staffInfo"/>
-    </a>
-    <a type="button"
-       href="${pageContext.request.contextPath}/profile?command=go-to-profile-change-staff-info"
-            <c:choose>
-                <c:when test="${pageScope.activeSubMenuProfileTab == 'changeStaffInfo'}">
-                    class="list-group-item list-group-item-action active"
-                </c:when>
-                <c:otherwise>
-                    class="list-group-item list-group-item-action"
-                </c:otherwise>
-            </c:choose>
-    >
-        <fmt:message bundle="${jspMessages}"
-                     key="profileSubMenu.changeStaffInfo"/>
-    </a>
-    <a type="button"
-       href="${pageContext.request.contextPath}/profile?command=go-to-profile-staff-history"
-            <c:choose>
-                <c:when test="${pageScope.activeSubMenuProfileTab == 'staffHistory'}">
-                    class="list-group-item list-group-item-action active"
-                </c:when>
-                <c:otherwise>
-                    class="list-group-item list-group-item-action"
-                </c:otherwise>
-            </c:choose>
-    >
-        <fmt:message bundle="${jspMessages}" key="profileSubMenu.staffHistory"/>
-    </a>
-    <a type="button"
-       href="${pageContext.request.contextPath}/profile?command=go-to-profile-change-staff-photo"
-            <c:choose>
-                <c:when test="${pageScope.activeSubMenuProfileTab == 'changeStaffPhoto'}">
-                    class="list-group-item list-group-item-action active"
-                </c:when>
-                <c:otherwise>
-                    class="list-group-item list-group-item-action"
-                </c:otherwise>
-            </c:choose>
-    >
-        <fmt:message bundle="${jspMessages}"
-                     key="profileSubMenu.changeStaffPhoto"/>
-    </a>
+    <c:if test="${sessionScope.authUser.role.roleId > 1}">
+        <a type="button"
+           href="${pageContext.request.contextPath}/profile?command=go-to-profile-staff-info"
+                <c:choose>
+                    <c:when test="${pageScope.activeSubMenuProfileTab == 'staffInfo'}">
+                        class="list-group-item list-group-item-action border-top active"
+                    </c:when>
+                    <c:otherwise>
+                        class="list-group-item list-group-item-action border-top"
+                    </c:otherwise>
+                </c:choose>
+        >
+            <fmt:message bundle="${jspMessages}" key="profileSubMenu.staffInfo"/>
+        </a>
+        <a type="button"
+           href="${pageContext.request.contextPath}/profile?command=go-to-profile-change-staff-info"
+                <c:choose>
+                    <c:when test="${pageScope.activeSubMenuProfileTab == 'changeStaffInfo'}">
+                        class="list-group-item list-group-item-action active"
+                    </c:when>
+                    <c:otherwise>
+                        class="list-group-item list-group-item-action"
+                    </c:otherwise>
+                </c:choose>
+        >
+            <fmt:message bundle="${jspMessages}"
+                         key="profileSubMenu.changeStaffInfo"/>
+        </a>
+        <a type="button"
+           href="${pageContext.request.contextPath}/profile?command=go-to-profile-staff-history"
+                <c:choose>
+                    <c:when test="${pageScope.activeSubMenuProfileTab == 'staffHistory'}">
+                        class="list-group-item list-group-item-action active"
+                    </c:when>
+                    <c:otherwise>
+                        class="list-group-item list-group-item-action"
+                    </c:otherwise>
+                </c:choose>
+        >
+            <fmt:message bundle="${jspMessages}" key="profileSubMenu.staffHistory"/>
+        </a>
+        <a type="button"
+           href="${pageContext.request.contextPath}/profile?command=go-to-profile-change-staff-photo"
+                <c:choose>
+                    <c:when test="${pageScope.activeSubMenuProfileTab == 'changeStaffPhoto'}">
+                        class="list-group-item list-group-item-action active"
+                    </c:when>
+                    <c:otherwise>
+                        class="list-group-item list-group-item-action"
+                    </c:otherwise>
+                </c:choose>
+        >
+            <fmt:message bundle="${jspMessages}"
+                         key="profileSubMenu.changeStaffPhoto"/>
+        </a>
+    </c:if>
+
 </div>
