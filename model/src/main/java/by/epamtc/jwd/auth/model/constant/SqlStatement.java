@@ -156,7 +156,7 @@ public final class SqlStatement {
             "FROM hospital.cases_extremely_hazardous_diseases c\n" +
             "         JOIN hospital.extremely_hazardous_diseases ex\n" +
             "              ON c.extremely_hazardous_disease_id = ex.extremely_hazardous_disease_id\n" +
-            "         JOIN hospital.icd_10_diseases d ON ex.extremely_hazardous_disease_id = d.icd_10_disease_id\n" +
+            "         JOIN hospital.icd_10_diseases d ON ex.icd_10_disease_id = d.icd_10_disease_id\n" +
             "WHERE c.person_id = ?;";
 
     private SqlStatement() {
