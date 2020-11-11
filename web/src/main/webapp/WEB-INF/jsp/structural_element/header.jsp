@@ -57,7 +57,7 @@
             </div>
         </c:if>
 
-        <c:if test="${sessionScope.authUser ne null}">
+        <c:if test="${sessionScope.authUser ne null && sessionScope.authUser.role.roleId > 1}">
             <div class="nav-item">
                 <a <c:choose>
                     <c:when test="${pageScope.activeMenuTab == 'staff'}">
