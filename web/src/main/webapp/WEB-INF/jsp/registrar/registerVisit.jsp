@@ -134,6 +134,51 @@
                 <div id="personResult" class="overflow-auto"
                      style="max-height: 100px">
                 </div>
+                <div class="row mb-3">
+                    <div class="col-4 d-flex align-items-center">
+                        <fmt:message bundle="${jspMessages}"
+                                     key="registerVisit.visitReason"/>
+                    </div>
+                    <div class="col d-flex align-items-center pl-0 pr-0">
+                        <div class="form-control col form-check form-check-inline">
+                            <input type="radio"
+                                   class="form-check-input"
+                                   id="visitReasonEmergency"
+                                   name="visitReasonEmergencyInput" checked
+                                   value="EMERGENCY">
+                            <label for="visitReasonEmergency"
+                                   class="form-check-label"
+                                   style="margin-right: 10px">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="registerVisit.emergency"/>
+                            </label>
+
+                            <input type="radio"
+                                   class="form-check-input"
+                                   id="visitReasonIndependently"
+                                   name="visitReasonIndependentlyInput" required
+                                   value="INDEPENDENTLY">
+                            <label for="visitReasonIndependently"
+                                   class="form-check-label"
+                                   style="margin-right: 10px">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="registerVisit.independently"/>
+                            </label>
+                            <input type="radio"
+                                   class="form-check-input"
+                                   id="visitReasonPrescription"
+                                   name="visitReasonPrescriptionInput"
+                                   value="PRESCRIPTION">
+                            <label for="visitReasonPrescription"
+                                   class="form-check-label"
+                                   style="margin-right: 10px">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="registerVisit.prescription"/>
+                            </label>
+                        </div>
+
+                    </div>
+                </div>
 
                 <div class="form-group form-inline row">
                     <label for="visitReasonDescription"
@@ -141,13 +186,74 @@
                         <fmt:message bundle="${jspMessages}"
                                      key="registerVisit.visitReasonDescription"/>
                     </label>
-                    <input type="text"
-                           class="form-control col"
-                           id="visitReasonDescription"
-                           name="visitReasonDescriptionInput" required
-                           placeholder="<fmt:message bundle="${jspMessages}"
+                    <textarea type="text"
+                              class="form-control col"
+                              id="visitReasonDescription"
+                              name="visitReasonDescriptionInput" required
+                              rows="10" cols="30"
+                              placeholder="<fmt:message bundle="${jspMessages}"
                                                                        key="registerVisit.visitReasonDescriptionPlaceholder"/>"
-                    />
+                    ></textarea>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-4 d-flex align-items-center">
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profile.transportationStatus"/>
+                    </div>
+                    <div class="col d-flex align-items-center pl-0 pr-0">
+                        <div class="form-control col form-check form-check-inline">
+                            <input type="radio"
+                                   class="form-check-input"
+                                   id="transportationStatusWalking"
+                                   name="transportationStatusInput"
+                                   value="WALKING">
+                            <label for="transportationStatusWalking"
+                                   class="form-check-label"
+                                   style="margin-right: 10px">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profileSubMenu.changePatientInfo.transportationStatusWalking"/>
+                            </label>
+                            <input type="radio"
+                                   class="form-check-input"
+                                   id="transportationStatusWheelchair"
+                                   name="transportationStatusInput"
+                                   value="WHEELCHAIR">
+                            <label for="transportationStatusWheelchair"
+                                   class="form-check-label"
+                                   style="margin-right: 10px">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profileSubMenu.changePatientInfo.transportationStatusWheelchair"/>
+                            </label>
+                            <input type="radio"
+                                   class="form-check-input"
+                                   id="transportationStatusStretcher"
+                                   name="transportationStatusInput" checked
+                                   value="STRETCHER">
+                            <label for="transportationStatusStretcher"
+                                   class="form-check-label"
+                                   style="margin-right: 10px">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="profileSubMenu.changePatientInfo.transportationStatusStretcher"/>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group form-inline row">
+                    <label for="complaintsDescription"
+                           class="col-4 custom-form-label">
+                        <fmt:message bundle="${jspMessages}"
+                                     key="registerVisit.complaintsDescription"/>
+                    </label>
+                    <textarea type="text"
+                              class="form-control col"
+                              id="complaintsDescription"
+                              name="complaintsDescriptionInput" required
+                              rows="10" cols="30"
+                              placeholder="<fmt:message bundle="${jspMessages}"
+                                                                       key="registerVisit.complaintsDescriptionPlaceholder"/>"
+                    ></textarea>
                 </div>
 
                 <button type="submit"
