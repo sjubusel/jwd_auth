@@ -26,4 +26,7 @@ public interface AjaxFetchService {
 
     List<AjaxFoodType> fetchFoodTypes(String foodTypePart)
             throws ServiceException;
+
+    List<AjaxMedicineType> fetchMedicineTypes(String medicineTypePart)
+            throws ServiceException;
 }

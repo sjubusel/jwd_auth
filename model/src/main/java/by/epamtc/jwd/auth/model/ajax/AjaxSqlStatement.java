@@ -40,6 +40,10 @@ public final class AjaxSqlStatement {
     public static final String SELECT_FOOD_TYPES
             = "SELECT ft.food_type_id, ft.name from hospital.food_types ft\n" +
             "WHERE ft.name LIKE CONCAT('%', ?, '%');";
+    public static final String SELECT_MEDICINE_TYPES
+            = "SELECT ps.atc_pharmaceutical_substance_id, ps.atc_international_nonproprietary_name\n" +
+            "FROM hospital.atc_pharmaceutical_substances ps\n" +
+            "WHERE ps.atc_international_nonproprietary_name LIKE CONCAT('%', ?, '%');";
 
 
     private AjaxSqlStatement() {

@@ -7,6 +7,7 @@ import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
 import by.epamtc.jwd.auth.model.ajax.AjaxArea;
 import by.epamtc.jwd.auth.model.ajax.AjaxCountry;
 import by.epamtc.jwd.auth.model.ajax.AjaxFoodType;
+import by.epamtc.jwd.auth.model.ajax.AjaxMedicineType;
 import by.epamtc.jwd.auth.model.ajax.AjaxPerson;
 import by.epamtc.jwd.auth.model.ajax.AjaxRegion;
 import by.epamtc.jwd.auth.model.ajax.AjaxRoad;
@@ -257,5 +258,36 @@ public class DefaultAjaxFetchDao implements AjaxFetchDao {
         }
 
         return foodTypes;
+    }
+
+    @Override
+    public List<AjaxMedicineType> fetchMedicineTypes(String medicineTypePart) throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet rSet = null;
+        List<AjaxMedicineType> medicineTypes = new ArrayList<>();
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(AjaxSqlStatement.SELECT_MEDICINE_TYPES);
+            statement.setString(1, medicineTypePart);
+            rSet = statement.executeQuery();
+            while (rSet.next()) {
+                int medicineTypeId = rSet.getInt(1);
+                String medicineTypeName = rSet.getString(2);
+                medicineTypes.add(new AjaxMedicineType(medicineTypeId,
+                        medicineTypeName));
+            }
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection from" +
+                    "the connection pool during ajax fetching of medicine types", e);
+        } catch (SQLException e) {
+            throw new DaoException("An error while ajax fetching medicine types " +
+                    "from DBs", e);
+        } finally {
+            pool.closeConnection(conn, statement, rSet);
+        }
+
+        return medicineTypes;
     }
 }
