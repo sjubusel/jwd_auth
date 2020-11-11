@@ -1,6 +1,7 @@
 package by.epamtc.jwd.auth.service;
 
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
+import by.epamtc.jwd.auth.model.user_info.AllergicReactionsInfo;
 import by.epamtc.jwd.auth.model.user_info.MedicalHistoryPermission;
 import by.epamtc.jwd.auth.model.user_info.PatientInfo;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
@@ -20,5 +21,8 @@ public interface ProfileService {
             throws ServiceException;
 
     boolean addMedicalHistoryPermission(String recipientId, AuthUser user)
+            throws ServiceException;
+
+    AllergicReactionsInfo fetchAllergicReactionsInfo(AuthUser user)
             throws ServiceException;
 }

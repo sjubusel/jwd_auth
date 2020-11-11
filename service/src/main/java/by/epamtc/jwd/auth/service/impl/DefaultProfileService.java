@@ -5,6 +5,7 @@ import by.epamtc.jwd.auth.dao.ProfileDao;
 import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
+import by.epamtc.jwd.auth.model.user_info.AllergicReactionsInfo;
 import by.epamtc.jwd.auth.model.user_info.MedicalHistoryPermission;
 import by.epamtc.jwd.auth.model.user_info.PatientInfo;
 import by.epamtc.jwd.auth.service.ProfileService;
@@ -85,5 +86,17 @@ public class DefaultProfileService implements ProfileService {
             }
         }
         return false;
+    }
+
+    @Override
+    public AllergicReactionsInfo fetchAllergicReactionsInfo(AuthUser user) throws ServiceException {
+        if (validator.isAuthUserValidForProfileActivity(user)) {
+            try {
+                return profileDao.fetchAlelrgicReactionsInfo(user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return null;
     }
 }
