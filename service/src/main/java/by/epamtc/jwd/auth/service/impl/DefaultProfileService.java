@@ -8,6 +8,7 @@ import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
 import by.epamtc.jwd.auth.model.user_info.AllergicFoodReaction;
 import by.epamtc.jwd.auth.model.user_info.AllergicMedicineReaction;
 import by.epamtc.jwd.auth.model.user_info.AllergicReactionsInfo;
+import by.epamtc.jwd.auth.model.user_info.ExtremelyHazardousDiseaseCase;
 import by.epamtc.jwd.auth.model.user_info.MedicalHistoryPermission;
 import by.epamtc.jwd.auth.model.user_info.PatientInfo;
 import by.epamtc.jwd.auth.service.ProfileService;
@@ -130,5 +131,18 @@ public class DefaultProfileService implements ProfileService {
             }
         }
         return false;
+    }
+
+    @Override
+    public List<ExtremelyHazardousDiseaseCase>
+    fetchCasesOfExtremelyHazardousDiseases(AuthUser user) throws ServiceException {
+        if (validator.isAuthUserValidForProfileActivity(user)) {
+            try {
+                return profileDao.fetchCasesOfExtremelyHazardousDiseases(user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return null;
     }
 }

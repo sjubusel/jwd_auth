@@ -19,6 +19,8 @@ public final class AppAttribute {
             = "allergicFoodReactions";
     public static final String REQUEST_ALLERGIC_MEDICINE_REACTIONS
             = "allergicMedicineReactions";
+    public static final String REQUEST_EXTEREMELY_HAZARDOUS_DISEASES
+            = "extremelyHazardousDiseases";
 
     private AppAttribute() {
     }

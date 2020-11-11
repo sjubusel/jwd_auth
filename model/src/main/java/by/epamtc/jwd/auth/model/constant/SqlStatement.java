@@ -146,6 +146,18 @@ public final class SqlStatement {
             = "INSERT INTO hospital.allergic_reactions_medicine (person_id, pharmaceutical_substance_id, detection_date,\n" +
             "                                                  allergic_reaction_description)\n" +
             "VALUES (?, ?, ?, ?);";
+    public static final String SELECT_EXTREMELY_HAZARDOUS_DISEASE_CASE
+            = "SELECT c.case_id,\n" +
+            "       c.extremely_hazardous_disease_id,\n" +
+            "       d.icd_10_disease_name,\n" +
+            "       c.detection_date,\n" +
+            "       c.case_description,\n" +
+            "       c.recovery_date\n" +
+            "FROM hospital.cases_extremely_hazardous_diseases c\n" +
+            "         JOIN hospital.extremely_hazardous_diseases ex\n" +
+            "              ON c.extremely_hazardous_disease_id = ex.extremely_hazardous_disease_id\n" +
+            "         JOIN hospital.icd_10_diseases d ON ex.extremely_hazardous_disease_id = d.icd_10_disease_id\n" +
+            "WHERE c.person_id = ?;";
 
     private SqlStatement() {
     }

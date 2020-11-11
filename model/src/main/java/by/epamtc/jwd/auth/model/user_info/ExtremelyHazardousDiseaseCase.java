@@ -9,7 +9,30 @@ public class ExtremelyHazardousDiseaseCase implements java.io.Serializable {
     private int diseaseId;
     private String diseaseDescription;
     private LocalDate detectionDate;
+    private String caseDescription;
     private LocalDate recoveryDate;
+
+    public ExtremelyHazardousDiseaseCase(int caseId, int diseaseId,
+            String diseaseDescription, LocalDate detectionDate,
+            String caseDescription, LocalDate recoveryDate) {
+        this.caseId = caseId;
+        this.diseaseId = diseaseId;
+        this.diseaseDescription = diseaseDescription;
+        this.detectionDate = detectionDate;
+        this.caseDescription = caseDescription;
+        this.recoveryDate = recoveryDate;
+    }
+
+    public ExtremelyHazardousDiseaseCase() {
+    }
+
+    public String getCaseDescription() {
+        return caseDescription;
+    }
+
+    public void setCaseDescription(String caseDescription) {
+        this.caseDescription = caseDescription;
+    }
 
     public int getCaseId() {
         return caseId;
@@ -70,6 +93,10 @@ public class ExtremelyHazardousDiseaseCase implements java.io.Serializable {
         }
         if (diseaseDescription != null ? !diseaseDescription.equals(that.diseaseDescription)
                                        : that.diseaseDescription != null) {
+            return false;
+        }
+        if (caseDescription != null ? !caseDescription.equals(that.caseDescription)
+                                    : that.caseDescription != null) {
             return false;
         }
         if (detectionDate != null ? !detectionDate.equals(that.detectionDate)

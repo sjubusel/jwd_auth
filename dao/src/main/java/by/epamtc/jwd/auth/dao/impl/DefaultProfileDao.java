@@ -333,6 +333,39 @@ public class DefaultProfileDao implements ProfileDao {
         return true;
     }
 
+    @Override
+    public List<ExtremelyHazardousDiseaseCase>
+    fetchCasesOfExtremelyHazardousDiseases(AuthUser user) throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet rSet = null;
+
+        List<ExtremelyHazardousDiseaseCase> cases = new ArrayList<>();
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement
+                    .SELECT_EXTREMELY_HAZARDOUS_DISEASE_CASE);
+            statement.setInt(1, user.getUserId());
+            rSet = statement.executeQuery();
+            while (rSet.next()) {
+                ExtremelyHazardousDiseaseCase diseaseCase
+                        = compileExtremelyHazardousDiseaseCase(rSet);
+                cases.add(diseaseCase);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("An error while fetching data from DB " +
+                    "(ExtremelyHazardousDiseaseCase records)", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection from " +
+                    "the connection pool during fetching of " +
+                    "ExtremelyHazardousDiseaseCase", e);
+        } finally {
+            pool.closeConnection(conn, statement, rSet);
+        }
+        return cases;
+    }
+
     private PatientInfo compilePatientInfo(ResultSet rSet) throws SQLException {
         String photoPath = rSet.getString(1);
         String firstName = rSet.getString(2);
@@ -694,6 +727,26 @@ public class DefaultProfileDao implements ProfileDao {
                     medicineId, medicineDescription, detectionDate,
                     allergicReaction));
         }
+    }
+
+    private ExtremelyHazardousDiseaseCase compileExtremelyHazardousDiseaseCase
+            (ResultSet rSet) throws SQLException {
+        int caseId = rSet.getInt(1);
+        int diseaseId = rSet.getInt(2);
+        String diseaseDescription = rSet.getString(3);
+        LocalDate detectionDate = null;
+        Date detection = rSet.getDate(4);
+        if (detection != null) {
+            detectionDate = detection.toLocalDate();
+        }
+        String caseDescription = rSet.getString(5);
+        LocalDate recoveryDate = null;
+        Date recovery = rSet.getDate(6);
+        if (recovery != null) {
+            recoveryDate = recovery.toLocalDate();
+        }
+        return new ExtremelyHazardousDiseaseCase(caseId, diseaseId,
+                diseaseDescription, detectionDate, caseDescription, recoveryDate);
     }
 
     private int receiveGeneratedKeyAfterStatementExecution(PreparedStatement
