@@ -19,8 +19,12 @@ import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileAllergicReactionsC
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangeEmailCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangePasswordCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangePatientInformationCommand;
+import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangeStaffInformationCommand;
+import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangeStaffPhotoCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileExtremelyHazardousDiseasesCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileMedicalHistoryPermissionCommand;
+import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileStaffHistoryCommand;
+import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileStaffInformationCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileAllergicReactionsFoodAddCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileAllergicReactionsMedicineAddCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileChangeEmailCommand;
@@ -84,14 +88,15 @@ public class CommandProvider {
                 new ProfileMedicalHistoryPermissionAddCommand());
         repository.put(CommandName.SUBPROFILE_GO_TO_EXTREMELY_HAZARDOUS_DISEASES,
                 new GoToProfileExtremelyHazardousDiseasesCommand());
-//        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_STAFF_INFO,
-//                new GoToProfileChangeStaffInformationCommand());
-//        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_STAFF_PHOTO,
-//                new GoToProfileChangeStaffPhotoCommand());
-//        repository.put(CommandName.SUBPROFILE_GO_TO_STAFF_HISTORY,
-//                new GoToProfileStaffHistoryCommand());
-//        repository.put(CommandName.SUBPROFILE_GO_TO_STAFF_INFO,
-//                new GoToProfileStaffInformationCommand());
+
+        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_STAFF_INFO,
+                new GoToProfileChangeStaffInformationCommand());
+        repository.put(CommandName.SUBPROFILE_GO_TO_CHANGE_STAFF_PHOTO,
+                new GoToProfileChangeStaffPhotoCommand());
+        repository.put(CommandName.SUBPROFILE_GO_TO_STAFF_HISTORY,
+                new GoToProfileStaffHistoryCommand());
+        repository.put(CommandName.SUBPROFILE_GO_TO_STAFF_INFO,
+                new GoToProfileStaffInformationCommand());
 
         repository.put(CommandName.ERROR, new ErrorCommand());
     }
