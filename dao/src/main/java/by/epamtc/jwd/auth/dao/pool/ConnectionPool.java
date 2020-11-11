@@ -161,6 +161,17 @@ public class ConnectionPool {
         closeConnection(connection);
     }
 
+    public void closeConnection(Connection connection, Statement[] statements,
+            ResultSet[] resultSets) {
+        for (ResultSet resultSet : resultSets) {
+            closeResultSet(resultSet);
+        }
+        for (Statement statement : statements) {
+            closeStatement(statement);
+        }
+        closeConnection(connection);
+    }
+
     public void rollBackTransaction(Connection conn) {
         try {
             if (conn != null) {
