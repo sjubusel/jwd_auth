@@ -242,16 +242,17 @@ public class DefaultProfileDao implements ProfileDao {
 
         AllergicReactionsInfo allergicReactions = new AllergicReactionsInfo();
 
-        /*try {
+        try {
             conn = pool.takeConnection();
-            statements[pointer] = conn.prepareStatement(SqlStatement.
-                    "SELECT * from hospital.");
+            statements[pointer] = conn.prepareStatement(SqlStatement
+                    .SELECT_ALLERGIC_FOOD_REACTIONS);
             statements[pointer].setInt(1, user.getUserId());
 
             rSet[pointer] = statements[pointer].executeQuery();
-            updateWithAllergicMedicineReaction(allergicReactions, rSet[pointer]);
+            updateWithAllergicFoodReaction(allergicReactions, rSet[pointer]);
 
-            statements[++pointer] = conn.prepareStatement(SqlStatement."");
+            statements[++pointer] = conn.prepareStatement(SqlStatement
+                    .SELECT_ALLERGIC_MEDICINE_REACTION);
             statements[pointer].setInt(1, user.getUserId());
 
             rSet[pointer] = statements[pointer].executeQuery();
@@ -266,7 +267,7 @@ public class DefaultProfileDao implements ProfileDao {
                     "AllergicReactionsInfo", e);
         } finally {
             pool.closeConnection(conn, statements, rSet);
-        }*/
+        }
 
         return allergicReactions;
     }
@@ -598,12 +599,36 @@ public class DefaultProfileDao implements ProfileDao {
                 cancellationDescription);
     }
 
-    private void updateWithAllergicMedicineReaction(AllergicReactionsInfo
+    private void updateWithAllergicFoodReaction(AllergicReactionsInfo
             allergicReactions, ResultSet rSet) throws SQLException {
-        /*List<AllergicFoodReaction> food = new ArrayList<>();
+        List<AllergicFoodReaction> food = new ArrayList<>();
+        allergicReactions.setAllergicFoodReactions(food);
         while (rSet.next()) {
+            int reactionId = rSet.getInt(1);
+            int foodTypeId = rSet.getInt(2);
+            String foodTypeDescription = rSet.getString(3);
+            LocalDate detectionDate = rSet.getDate(4).toLocalDate();
+            String allergicReactionDescription = rSet.getString(5);
+            food.add(new AllergicFoodReaction(reactionId, foodTypeId,
+                    foodTypeDescription, detectionDate, allergicReactionDescription));
+        }
+    }
 
-        }*/
+    private void updateWithAllergicMedicineReaction(AllergicReactionsInfo
+            allergicReactions, ResultSet resultSet) throws SQLException {
+        List<AllergicMedicineReaction> medicineReactions = new ArrayList<>();
+        allergicReactions.setAllergicMedicineReactions(medicineReactions);
+
+        while (resultSet.next()) {
+            int reactionId = resultSet.getInt(1);
+            int medicineId = resultSet.getInt(2);
+            String medicineDescription = resultSet.getString(3);
+            LocalDate detectionDate = resultSet.getDate(4).toLocalDate();
+            String allergicReaction = resultSet.getString(5);
+            medicineReactions.add(new AllergicMedicineReaction(reactionId,
+                    medicineId, medicineDescription, detectionDate,
+                    allergicReaction));
+        }
     }
 
     private int receiveGeneratedKeyAfterStatementExecution(PreparedStatement

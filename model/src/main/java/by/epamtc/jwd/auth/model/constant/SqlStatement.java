@@ -122,6 +122,23 @@ public final class SqlStatement {
             = "INSERT INTO hospital.medical_history_share_permission_records " +
             "(patient_id, recipient_id, permission_datetime)\n" +
             "VALUES (?, ?, CURRENT_TIMESTAMP);";
+    public static final String SELECT_ALLERGIC_FOOD_REACTIONS
+            = "SELECT arf.reaction_id, ft.food_type_id, ft.name, arf.detection_date, arf.allergic_reaction_description\n" +
+            "FROM hospital.allergic_reactions_food arf\n" +
+            "         JOIN hospital.food_types ft ON arf.food_type_id = ft.food_type_id\n" +
+            "         JOIN hospital.persons p ON arf.person_id = p.person_id\n" +
+            "WHERE p.person_id = ?;";
+    public static final String SELECT_ALLERGIC_MEDICINE_REACTION
+            = "SELECT arm.reaction_id,\n" +
+            "       arm.pharmaceutical_substance_id,\n" +
+            "       ps.atc_international_nonproprietary_name,\n" +
+            "       arm.detection_date,\n" +
+            "       arm.allergic_reaction_description\n" +
+            "FROM hospital.allergic_reactions_medicine arm\n" +
+            "         JOIN hospital.atc_pharmaceutical_substances ps\n" +
+            "              ON arm.pharmaceutical_substance_id = ps.atc_pharmaceutical_substance_id\n" +
+            "         JOIN hospital.persons p ON arm.person_id = p.person_id\n" +
+            "WHERE p.person_id = ?;";
 
     private SqlStatement() {
     }
