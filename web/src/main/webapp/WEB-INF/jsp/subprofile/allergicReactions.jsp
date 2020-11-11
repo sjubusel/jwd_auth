@@ -28,6 +28,131 @@
         <fmt:message bundle="${jspMessages}" key="all.htmlTitle"/>
     </title>
     <jsp:include page="../structural_element/metahead.jsp"/>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/js/jquery-3.5.1.js">
+    </script>
+    <script>
+        function changeHiddenInput(hiddenInputName, shownInputName, childRow, parent) {
+            let hiddenInput = document.getElementById(hiddenInputName);
+            let shownInput = document.getElementById(shownInputName);
+            hiddenInput.value = childRow.firstChild.innerHTML;
+            shownInput.value = childRow.lastChild.innerHTML;
+            parent.innerHTML = "<div class=\"mb-3\"><small><em>" + "<fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.changePatientInfo.ajax.chosen"/>: "
+                + shownInput.value + "</em></small></div>";
+        }
+
+        jQuery(document).ready(function () {
+            let searchFoodReactions = null;
+            $("#foodType").keyup(function () {
+                if (searchFoodReactions !== null) {
+                    searchFoodReactions.abort();
+                }
+                let text = $(this).val();
+                if (text == null) {
+                    $("#foodTypeResult").html("");
+                } else {
+                    $("#foodTypeResult").html("");
+                    searchFoodReactions = $.ajax({
+                        // TODO command
+                        url: "ajax?command=fetch-food-allergy-in-allergic-reactions-jsp",
+                        method: "post",
+                        data: $("#foodType").serialize(),
+                        datatype: "json",
+                        success: function (data) {
+                            if (data == null) {
+                                $("#foodTypeResult").html("<div class=\"mb-3\"><small><em><fmt:message bundle="${jspMessages}"
+                                           key="profileSubMenu.changePatientInfo.ajax.validation"/></em></small></div>");
+                                return;
+                            }
+                            if (data.length === 0) {
+                                $("#foodTypeResult").html("<div class=\"mb-3\"><small><em><fmt:message bundle="${jspMessages}"
+                                           key="profileSubMenu.changePatientInfo.ajax.zeroResult"/></em></small></div>");
+                                return;
+                            }
+                            let parent = document.getElementById("foodTypeResult");
+                            for (let i = 0; i < data.length; i++) {
+                                let childRow = document.createElement("div");
+                                childRow.className += "row border list-group-item-action d-flex align-items-start";
+                                parent.appendChild(childRow);
+
+                                let childColId = document.createElement("div");
+                                childColId.className += "col border d-none justify-content-center";
+                                childRow.appendChild(childColId);
+
+                                <%--suppress JSUnresolvedVariable --%>
+                                // TODO CHANGE
+                                childColId.innerHTML = data[i].personId;
+                                childRow.setAttribute("onclick", "changeHiddenInput(\"hiddenFoodTypeId\", \"foodType\", this, this.parentElement);");
+
+                                let childColName = document.createElement("div");
+                                childColName.className += "col border d-flex justify-content-center";
+                                childRow.appendChild(childColName);
+                                // TODO change
+                                childColName.innerHTML = data[i].personInfo;
+                            }
+                        }
+                    });
+                }
+            });
+
+            let searchMedicineReactions = null;
+            $("#medicineType").keyup(function () {
+                if (searchMedicineReactions !== null) {
+                    searchMedicineReactions.abort();
+                }
+                let text = $(this).val();
+                if (text == null) {
+                    $("#medicineTypeResult").html("");
+                } else {
+                    $("#medicineTypeResult").html("");
+                    searchMedicineReactions = $.ajax({
+                        // TODO command
+                        url: "ajax?command=fetch-medicine-allergy-in-allergic-reactions-jsp",
+                        method: "post",
+                        data: $("#medicineType").serialize(),
+                        datatype: "json",
+                        success: function (data) {
+                            if (data == null) {
+                                $("#medicineTypeResult").html("<div class=\"mb-3\"><small><em><fmt:message bundle="${jspMessages}"
+                                           key="profileSubMenu.changePatientInfo.ajax.validation"/></em></small></div>");
+                                return;
+                            }
+                            if (data.length === 0) {
+                                $("#medicineTypeResult").html("<div class=\"mb-3\"><small><em><fmt:message bundle="${jspMessages}"
+                                           key="profileSubMenu.changePatientInfo.ajax.zeroResult"/></em></small></div>");
+                                return;
+                            }
+                            let parent = document.getElementById("medicineTypeResult");
+                            for (let i = 0; i < data.length; i++) {
+                                let childRow = document.createElement("div");
+                                childRow.className += "row border list-group-item-action d-flex align-items-start";
+                                parent.appendChild(childRow);
+
+                                let childColId = document.createElement("div");
+                                childColId.className += "col border d-none justify-content-center";
+                                childRow.appendChild(childColId);
+
+                                <%--suppress JSUnresolvedVariable --%>
+                                // TODO CHANGE
+                                childColId.innerHTML = data[i].personId;
+                                childRow.setAttribute("onclick", "changeHiddenInput(\"hiddenMedicineTypeId\", \"medicineType\", this, this.parentElement);");
+
+                                let childColName = document.createElement("div");
+                                childColName.className += "col border d-flex justify-content-center";
+                                childRow.appendChild(childColName);
+                                // TODO change
+                                childColName.innerHTML = data[i].personInfo;
+                            }
+                        }
+                    });
+                }
+            });
+
+
+        });
+
+    </script>
 </head>
 <body>
 
