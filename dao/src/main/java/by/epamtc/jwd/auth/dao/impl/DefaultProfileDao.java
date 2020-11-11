@@ -289,13 +289,43 @@ public class DefaultProfileDao implements ProfileDao {
             statement.setObject(3, reaction.getDetectionDate());
             statement.setString(4, reaction.getAllergicDescription());
             statement.executeUpdate();
-         } catch (SQLException e) {
+        } catch (SQLException e) {
             throw new DaoException("An error while addition data into DB " +
                     "(AllergicFoodReaction records)", e);
         } catch (ConnectionPoolException e) {
             throw new DaoException("An error while taking a connection from " +
                     "the connection pool during addition of " +
                     "AllergicFoodReaction", e);
+        } finally {
+            pool.closeConnection(conn, statement);
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean addAllergicMedicineReaction(AllergicMedicineReaction reaction,
+            AuthUser user) throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement
+                    .INSERT_ALLERGIC_MEDICINE_REACTION);
+            statement.setInt(1, user.getUserId());
+            statement.setInt(2, Integer.parseInt(reaction
+                    .getMedicineDescription()));
+            statement.setObject(3, reaction.getDetectionDate());
+            statement.setString(4, reaction.getAllergicReaction());
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException("An error while addition data into DB " +
+                    "(AllergicMedicineReaction records)", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection from " +
+                    "the connection pool during addition of " +
+                    "AllergicMedicineReaction", e);
         } finally {
             pool.closeConnection(conn, statement);
         }

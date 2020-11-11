@@ -20,6 +20,8 @@ public final class CommandName {
             = "GO-TO-PROFILE-ALLERGIC-REACTIONS";
     public static final String SUBPROFILE_ALLERGIC_REACTIONS_FOOD_ADD
             = "PROFILE-ALLERGIC-REACTIONS-FOOD-ADD";
+    public static final String SUBPROFILE_ALLERGIC_REACTIONS_MEDICINE_ADD
+            = "PROFILE-ALLERGIC-REACTIONS-MEDICINE-ADD";
     public static final String SUBPROFILE_GO_TO_EMAIL_CHANGE
             = "GO-TO-PROFILE-EMAIL-CHANGE";
     public static final String SUBPROFILE_EMAIL_CHANGE = "PROFILE-EMAIL-CHANGE";

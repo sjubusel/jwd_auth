@@ -65,9 +65,16 @@ public final class CommandPath {
     public static final String SUBPROFILE_GO_TO_ALLERGIC_REACTIONS_ADD_FOOD_RESULT_TECH_ERROR
             = "/profile?command=go-to-profile-allergic-reactions&addFoodResult=techError";
     public static final String SUBPROFILE_GO_TO_ALLERGIC_REACTIONS_ADD_FOOD_RESULT_VALID_ERROR
-            = "/profile?command=go-to-profile-allergic-reactions&addFoodResult=validError";
+            = "/profile?command=go-to-profile-allergic-reactions&addFoodResult=validationError";
     public static final String SUBPROFILE_GO_TO_ALLERGIC_REACTIONS_ADD_FOOD_SUCCESSFUL_RESULT
             = "/profile?command=go-to-profile-allergic-reactions&addFoodResult=success";
+
+    public static final String SUBPROFILE_GO_TO_ALLERGIC_REACTIONS_ADD_MEDICINE_RESULT_TECH_ERROR
+            = "/profile?command=go-to-profile-allergic-reactions&addMedicineResult=techError";
+    public static final String SUBPROFILE_GO_TO_ALLERGIC_REACTIONS_ADD_MEDICINE_RESULT_VALID_ERROR
+            = "/profile?command=go-to-profile-allergic-reactions&addMedicineResult=validationError";
+    public static final String SUBPROFILE_GO_TO_ALLERGIC_REACTIONS_ADD_MEDICINE_SUCCESSFUL_RESULT
+            = "/profile?command=go-to-profile-allergic-reactions&addMedicineResult=success";
 
 
     public static final String LOGIN_JSP = "/WEB-INF/jsp/login.jsp";

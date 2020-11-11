@@ -73,6 +73,13 @@ public final class AppParameter {
     public static final String FOOD_DETECTION_DESCRIPTION
             = "allergicReactionFoodDescriptionInput";
     public static final String ADD_FOOD_RESULT = "addFoodResult";
+    public static final String ADD_MEDICINE_RESULT = "addMedicineResult";
+    public static final String MEDICINE_TYPE_ID = "hiddenMedicineTypeIdInput";
+    public static final String MEDICINE_DETECTION_DATE
+            = "detectionDateMedicineInput";
+    public static final String MEDICINE_DETECTION_DESCRIPTION
+            = "allergicReactionMedicineDescriptionInput";
+
 
     private AppParameter() {
     }

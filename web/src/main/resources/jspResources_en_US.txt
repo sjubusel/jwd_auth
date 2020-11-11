@@ -269,3 +269,7 @@ profileSubMenu.allergicReactionsMedicine.formHeading=Form of adding an allergic 
 profileSubMenu.allergicReactionsFood.success=Successfully added
 profileSubMenu.allergicReactionsFood.techError=Not added because of a technical factor
 profileSubMenu.allergicReactionsFood.validationErrorAfter=Not added because of a wrong type of the user
+
+profileSubMenu.allergicReactionsMedicine.success=Successfully added
+profileSubMenu.allergicReactionsMedicine.techError=Not added because of a technical factor
+profileSubMenu.allergicReactionsMedicine.validationErrorAfter=Not added because of a wrong type of the user

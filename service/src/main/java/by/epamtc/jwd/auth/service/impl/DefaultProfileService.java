@@ -6,6 +6,7 @@ import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
 import by.epamtc.jwd.auth.model.user_info.AllergicFoodReaction;
+import by.epamtc.jwd.auth.model.user_info.AllergicMedicineReaction;
 import by.epamtc.jwd.auth.model.user_info.AllergicReactionsInfo;
 import by.epamtc.jwd.auth.model.user_info.MedicalHistoryPermission;
 import by.epamtc.jwd.auth.model.user_info.PatientInfo;
@@ -109,6 +110,21 @@ public class DefaultProfileService implements ProfileService {
                 .matches(RegistrationInfoPattern.DIGITS)) {
             try {
                 return profileDao.addAllergicFoodReaction(reaction, user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean addAllergicMedicineReaction(AllergicMedicineReaction reaction,
+            AuthUser user) throws ServiceException {
+        if (validator.isAuthUserValidForProfileActivity(user)
+                && reaction.getMedicineDescription().matches
+                (RegistrationInfoPattern.DIGITS)) {
+            try {
+                return profileDao.addAllergicMedicineReaction(reaction, user);
             } catch (DaoException e) {
                 throw new ServiceException(e);
             }

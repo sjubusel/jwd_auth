@@ -2,6 +2,7 @@ package by.epamtc.jwd.auth.service;
 
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.user_info.AllergicFoodReaction;
+import by.epamtc.jwd.auth.model.user_info.AllergicMedicineReaction;
 import by.epamtc.jwd.auth.model.user_info.AllergicReactionsInfo;
 import by.epamtc.jwd.auth.model.user_info.MedicalHistoryPermission;
 import by.epamtc.jwd.auth.model.user_info.PatientInfo;
@@ -29,4 +30,7 @@ public interface ProfileService {
 
     boolean addAllergicFoodReaction(AllergicFoodReaction reaction, AuthUser user)
             throws ServiceException;
+
+    boolean addAllergicMedicineReaction(AllergicMedicineReaction medicineReaction,
+            AuthUser user) throws ServiceException;
 }

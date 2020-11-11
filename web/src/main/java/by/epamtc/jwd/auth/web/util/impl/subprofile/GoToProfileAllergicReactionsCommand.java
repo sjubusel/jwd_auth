@@ -44,12 +44,12 @@ public class GoToProfileAllergicReactionsCommand implements Command {
             req.setAttribute(AppAttribute.REQUEST_ERROR, AppAttribute
                     .REQUEST_ERROR_VALUE_VAL);
         } else {
-            if (allergicReactionsInfo.getAllergicFoodReactions().size() > 0){
+            if (allergicReactionsInfo.getAllergicFoodReactions().size() > 0) {
                 req.setAttribute(AppAttribute.REQUEST_ALLERGIC_FOOD_REACTIONS,
                         allergicReactionsInfo.getAllergicFoodReactions());
             }
 
-            if (allergicReactionsInfo.getAllergicMedicineReactions().size() > 0){
+            if (allergicReactionsInfo.getAllergicMedicineReactions().size() > 0) {
                 req.setAttribute(AppAttribute.REQUEST_ALLERGIC_MEDICINE_REACTIONS,
                         allergicReactionsInfo.getAllergicMedicineReactions());
             }
@@ -60,11 +60,11 @@ public class GoToProfileAllergicReactionsCommand implements Command {
             req.setAttribute(AppParameter.ADD_FOOD_RESULT, foodAddResult);
         }
 
-//        String medicineAddResult = req.getParameter(AppParameter.ADD_RESULT + "Medicine");
-//        if (foodAddResult != null) {
-//            req.setAttribute(AppParameter.ADD_RESULT + "Medicine", foodAddResult);
-//        }
-//
+        String medicineAddResult = req.getParameter(AppParameter.ADD_MEDICINE_RESULT);
+        if (medicineAddResult != null) {
+            req.setAttribute(AppParameter.ADD_MEDICINE_RESULT, medicineAddResult);
+        }
+
         req.getRequestDispatcher(CommandPath.SUBPROFILE_ALLERGIC_REACTIONS_JSP)
                 .forward(req, res);
     }

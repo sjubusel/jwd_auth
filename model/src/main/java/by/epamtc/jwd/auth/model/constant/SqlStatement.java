@@ -142,6 +142,10 @@ public final class SqlStatement {
     public static final String INSERT_ALLERGIC_FOOD_REACTION
             = "INSERT INTO hospital.allergic_reactions_food (person_id, food_type_id, detection_date, allergic_reaction_description)\n" +
             "VALUES (?, ?, ?, ?);";
+    public static final String INSERT_ALLERGIC_MEDICINE_REACTION
+            = "INSERT INTO hospital.allergic_reactions_medicine (person_id, pharmaceutical_substance_id, detection_date,\n" +
+            "                                                  allergic_reaction_description)\n" +
+            "VALUES (?, ?, ?, ?);";
 
     private SqlStatement() {
     }

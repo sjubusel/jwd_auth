@@ -338,6 +338,40 @@
                         <fmt:message bundle="${jspMessages}"
                                      key="profileSubMenu.allergicReactionsMedicine.heading"/>
                     </h1>
+
+                    <c:choose>
+                        <c:when test="${requestScope.addMedicineResult ne null}">
+                            <c:choose>
+                                <c:when test="${requestScope.addMedicineResult eq 'success'}">
+                                    <div class="alert alert-success" role="alert">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.allergicReactionsMedicine.success"/>
+                                    </div>
+                                </c:when>
+                                <%-- a tech error --%>
+                                <c:when test="${requestScope.addMedicineResult eq 'techError'}">
+                                    <div class="alert alert-danger" role="alert">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.allergicReactionsMedicine.techError"/>
+                                    </div>
+                                </c:when>
+                                <%-- a validation error --%>
+                                <c:when test="${requestScope.addMedicineResult eq 'validationError'}">
+                                    <div class="alert alert-danger" role="alert">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="profileSubMenu.allergicReactionsMedicine.validationErrorAfter"/>
+                                    </div>
+                                </c:when>
+                                <c:otherwise>
+                                    <div class="alert alert-danger" role="alert">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="main.unknownCondition"/>
+                                    </div>
+                                </c:otherwise>
+                            </c:choose>
+                        </c:when>
+                    </c:choose>
+
                     <c:choose>
                         <c:when test="${requestScope.allergicMedicineReactions ne null}">
                             <%--header--%>

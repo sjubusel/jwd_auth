@@ -269,3 +269,7 @@ profileSubMenu.allergicReactionsMedicine.formHeading=Форма добавлен
 profileSubMenu.allergicReactionsFood.success=Успешно добавлено
 profileSubMenu.allergicReactionsFood.techError=Не добавлено по техническим причинам
 profileSubMenu.allergicReactionsFood.validationErrorAfter=Не добавлено по причине некорреткного типа пользователя
+
+profileSubMenu.allergicReactionsMedicine.success=Успешно добавлено
+profileSubMenu.allergicReactionsMedicine.techError=Не добавлено по техническим причинам
+profileSubMenu.allergicReactionsMedicine.validationErrorAfter=Не добавлено по причине некорреткного типа пользователя
