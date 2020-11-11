@@ -39,20 +39,20 @@
             <div class="">ALLERGIC REACTIONS</div>
         </div>
 
-        <%--&lt;%&ndash;CONTENTS&ndash;%&gt;
+        <%--CONTENTS--%>
         <div class="bg-light d-inline-block col">
 
             <c:choose>
                 <c:when test="${requestScope.error ne null}">
                     <c:choose>
-                        &lt;%&ndash; a tech error &ndash;%&gt;
+                        <%-- a tech error --%>
                         <c:when test="${requestScope.error eq 'tech'}">
                             <div class="alert alert-danger" role="alert">
                                 <fmt:message bundle="${jspMessages}"
                                              key="profileSubMenu.allergicReactions.techError"/>
                             </div>
                         </c:when>
-                        &lt;%&ndash; a validation error &ndash;%&gt;
+                        <%-- a validation error --%>
                         <c:when test="${requestScope.error eq 'val'}">
                             <div class="alert alert-danger" role="alert">
                                 <fmt:message bundle="${jspMessages}"
@@ -67,20 +67,15 @@
                         </c:otherwise>
                     </c:choose>
                 </c:when>
-                &lt;%&ndash;Here the jsp's contents begin&ndash;%&gt;
+                <%--Here the jsp's contents begin--%>
                 <c:otherwise>
                     <h1 class="text-left">
                         <fmt:message bundle="${jspMessages}"
                                      key="profileSubMenu.allergicReactionsFood.heading"/>
                     </h1>
-
-                    &lt;%&ndash;<div class="text-muted mb-3">
-                        <fmt:message bundle="${jspMessages}"
-                                     key="profileSubMenu.allergicReactionsFood.disclaimer"/>
-                    </div>&ndash;%&gt;
                     <c:choose>
                         <c:when test="${requestScope.medicalHistoryPermissions ne null}">
-                            &lt;%&ndash;header&ndash;%&gt;
+                            <%--header--%>
                             <div class="row d-flex mb-1 border">
                                 <div class="col">
                                     <fmt:message bundle="${jspMessages}"
@@ -99,7 +94,7 @@
                                                  key="profileSubMenu.allergicReactionsFood.deleteButton"/>
                                 </div>
                             </div>
-                            &lt;%&ndash;contents&ndash;%&gt;
+                            <%--contents--%>
                             <c:forEach var="medPermission"
                                        items="${requestScope.medicalHistoryPermissions}">
                                 <form action="${pageContext.request.contextPath}/profile"
@@ -111,15 +106,15 @@
                                         <input type="hidden"
                                                name="permissionIdInput"
                                                value="${medPermission.permissionId}"/>
-                                            &lt;%&ndash;1st column&ndash;%&gt;
+                                            <%--1st column--%>
                                         <div class="col">
                                             <c:out value="${medPermission.recipientInfo}"/>
                                         </div>
-                                            &lt;%&ndash;2nd column&ndash;%&gt;
+                                            <%--2nd column--%>
                                         <div class="col">
                                             <c:out value="${medPermission.permissionDateTime}"/>
                                         </div>
-                                            &lt;%&ndash;3rd column&ndash;%&gt;
+                                            <%--3rd column--%>
                                         <div class="col"
                                                 <c:if test="${medPermission.cancellationDescription ne null}">
                                                     title="${medPermission.cancellationDescription}"
@@ -129,7 +124,7 @@
                                                 <c:out value="${medPermission.cancellationDateTime}"/>
                                             </c:if>
                                         </div>
-                                            &lt;%&ndash; 4th column (button) &ndash;%&gt;
+                                            <%-- 4th column (button) --%>
                                         <div class="col">
                                             <button type="submit"
                                                     class="btn align-self-center btn-primary"
@@ -153,65 +148,65 @@
                         </c:otherwise>
 
 
-                        &lt;%&ndash;!!!!!!!!!! FORM&ndash;%&gt;
+                        <%--!!!!!!!!!! FORM--%>
                     </c:choose>
-                    &lt;%&ndash;AND THE FOLLOWING&ndash;%&gt;
+                    <%--AND THE FOLLOWING--%>
                 </c:otherwise>
             </c:choose>
 
-            &lt;%&ndash;            <br>&ndash;%&gt;
-            &lt;%&ndash;            <br>&ndash;%&gt;
-            &lt;%&ndash;            <h1 class="text-left">&ndash;%&gt;
-            &lt;%&ndash;                <fmt:message bundle="${jspMessages}"&ndash;%&gt;
-            &lt;%&ndash;                             key="profileSubMenu.allergicReactionsFood.formHeading"/>&ndash;%&gt;
-            &lt;%&ndash;            </h1>&ndash;%&gt;
+            <%--            <br>--%>
+            <%--            <br>--%>
+            <%--            <h1 class="text-left">--%>
+            <%--                <fmt:message bundle="${jspMessages}"--%>
+            <%--                             key="profileSubMenu.allergicReactionsFood.formHeading"/>--%>
+            <%--            </h1>--%>
 
-            &lt;%&ndash;            <form action="${pageContext.request.contextPath}/profile"&ndash;%&gt;
-            &lt;%&ndash;                  method="post">&ndash;%&gt;
+            <%--            <form action="${pageContext.request.contextPath}/profile"--%>
+            <%--                  method="post">--%>
 
-            &lt;%&ndash;                <input type="hidden" name="command"&ndash;%&gt;
-            &lt;%&ndash;                       value="profile-medical-history-permission-add"/>&ndash;%&gt;
+            <%--                <input type="hidden" name="command"--%>
+            <%--                       value="profile-medical-history-permission-add"/>--%>
 
-            &lt;%&ndash;                <div class="form-group form-inline row">&ndash;%&gt;
-            &lt;%&ndash;                    <label for="recipient" class="col-4 custom-form-label">&ndash;%&gt;
-            &lt;%&ndash;                        <fmt:message bundle="${jspMessages}"&ndash;%&gt;
-            &lt;%&ndash;                                     key="profileSubMenu.medicalHistoryPermission.recipient"/>&ndash;%&gt;
-            &lt;%&ndash;                    </label>&ndash;%&gt;
-            &lt;%&ndash;                    <input type="hidden" id="hiddenRecipientId"&ndash;%&gt;
-            &lt;%&ndash;                           name="hiddenRecipientIdInput" value=""/>&ndash;%&gt;
-            &lt;%&ndash;                    <input type="text"&ndash;%&gt;
-            &lt;%&ndash;                           class="form-control col"&ndash;%&gt;
-            &lt;%&ndash;                           id="recipient"&ndash;%&gt;
-            &lt;%&ndash;                           name="recipientInput"&ndash;%&gt;
-            &lt;%&ndash;                           placeholder="<fmt:message bundle="${jspMessages}"&ndash;%&gt;
-            &lt;%&ndash;                                       key="profileSubMenu.medicalHistoryPermission.recipientPlaceholder"/>"&ndash;%&gt;
-            &lt;%&ndash;                           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.medicalHistoryPermission.recipientPattern"/>"&ndash;%&gt;
-            &lt;%&ndash;                    />&ndash;%&gt;
-            &lt;%&ndash;                </div>&ndash;%&gt;
-            &lt;%&ndash;                <div id="recipientResult" class="overflow-auto"&ndash;%&gt;
-            &lt;%&ndash;                     style="max-height: 100px">&ndash;%&gt;
-            &lt;%&ndash;                </div>&ndash;%&gt;
+            <%--                <div class="form-group form-inline row">--%>
+            <%--                    <label for="recipient" class="col-4 custom-form-label">--%>
+            <%--                        <fmt:message bundle="${jspMessages}"--%>
+            <%--                                     key="profileSubMenu.medicalHistoryPermission.recipient"/>--%>
+            <%--                    </label>--%>
+            <%--                    <input type="hidden" id="hiddenRecipientId"--%>
+            <%--                           name="hiddenRecipientIdInput" value=""/>--%>
+            <%--                    <input type="text"--%>
+            <%--                           class="form-control col"--%>
+            <%--                           id="recipient"--%>
+            <%--                           name="recipientInput"--%>
+            <%--                           placeholder="<fmt:message bundle="${jspMessages}"--%>
+            <%--                                       key="profileSubMenu.medicalHistoryPermission.recipientPlaceholder"/>"--%>
+            <%--                           pattern="<fmt:message bundle="${regEx}" key="profileSubMenu.medicalHistoryPermission.recipientPattern"/>"--%>
+            <%--                    />--%>
+            <%--                </div>--%>
+            <%--                <div id="recipientResult" class="overflow-auto"--%>
+            <%--                     style="max-height: 100px">--%>
+            <%--                </div>--%>
 
-            &lt;%&ndash;                <button type="submit"&ndash;%&gt;
-            &lt;%&ndash;                        class="btn align-self-center btn-primary">&ndash;%&gt;
-            &lt;%&ndash;                    <fmt:message bundle="${jspMessages}"&ndash;%&gt;
-            &lt;%&ndash;                                 key="profileSubMenu.medicalHistoryPermission.add"/>&ndash;%&gt;
-            &lt;%&ndash;                </button>&ndash;%&gt;
-            &lt;%&ndash;            </form>&ndash;%&gt;
+            <%--                <button type="submit"--%>
+            <%--                        class="btn align-self-center btn-primary">--%>
+            <%--                    <fmt:message bundle="${jspMessages}"--%>
+            <%--                                 key="profileSubMenu.medicalHistoryPermission.add"/>--%>
+            <%--                </button>--%>
+            <%--            </form>--%>
 
-            &lt;%&ndash;########################################################################&ndash;%&gt;
+            <%--########################################################################--%>
             <h1 class="text-left">
                 <fmt:message bundle="${jspMessages}"
                              key="profileSubMenu.allergicReactionsMedicine.heading"/>
             </h1>
 
-            &lt;%&ndash;<div class="text-muted mb-3">
+            <%--<div class="text-muted mb-3">
                 <fmt:message bundle="${jspMessages}"
                              key="profileSubMenu.allergicReactionsMedicine.disclaimer"/>
-            </div>&ndash;%&gt;
+            </div>--%>
 
 
-        </div>--%>
+        </div>
         <%--CONTENTS--%>
     </div>
 </div>
