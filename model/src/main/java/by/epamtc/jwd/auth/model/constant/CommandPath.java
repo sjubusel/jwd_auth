@@ -104,6 +104,8 @@ public final class CommandPath {
     public static final String SUBPROFILE_STAFF_HISTORY_JSP = "/WEB-INF/jsp/subprofile/staffHistory.jsp";
     public static final String SUBPROFILE_STAFF_INFO_JSP = "/WEB-INF/jsp/subprofile/staffInfo.jsp";
 
+    public static final String SUBSTAFF_REGISTER_VISIT_JSP = "/WEB-INF/jsp/registrar/registerVisit.jsp";
+
 
     private CommandPath() {
     }
