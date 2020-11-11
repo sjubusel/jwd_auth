@@ -18,44 +18,42 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class GoToProfileAllergicReactionsCommand implements Command {
-//    private static final Logger logger = LoggerFactory.getLogger
-//            (GoToProfileAllergicReactionsCommand.class);
-//
-//    private ServiceFactory factory = ServiceFactory.getInstance();
-//    private ProfileService profileService = factory.getProfileService();
-//
+    private static final Logger logger = LoggerFactory.getLogger
+            (GoToProfileAllergicReactionsCommand.class);
+
+    private ServiceFactory factory = ServiceFactory.getInstance();
+    private ProfileService profileService = factory.getProfileService();
+
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-//        AuthUser user = (AuthUser) req.getSession()
-//                .getAttribute(AppAttribute.SESSION_AUTH_USER);
-//        AllergicReactionsInfo allergicReactionsInfo = null;
-////        List<AllergicFoodReaction> foodReactions = null;
-////        List<AllergicMedicineReaction> medicineReactions = null;
-//
-//        try {
-//            allergicReactionsInfo = profileService.fetchAllergicReactionsInfo(user);
-//        } catch (ServiceException e) {
-//            logger.error("An error while fetching of allergic reactions " +
-//                    "information. AuthUser: \"{}\"", user, e);
-//            req.setAttribute(AppAttribute.REQUEST_ERROR, AppAttribute
-//                    .REQUEST_ERROR_VALUE_TECH);
-//        }
-//
-//        if (allergicReactionsInfo == null) {
-//            req.setAttribute(AppAttribute.REQUEST_ERROR, AppAttribute
-//                    .REQUEST_ERROR_VALUE_VAL);
-//        } else {
-//            if (allergicReactionsInfo.getAllergicFoodReactions().size() > 0){
-//                req.setAttribute(AppAttribute."allergicFoodReactions",
-//                        allergicReactionsInfo.getAllergicFoodReactions());
-//            }
-//
-//            if (allergicReactionsInfo.getAllergicMedicineReactions().size() > 0){
-//                req.setAttribute(AppAttribute."allergicMedicineReactions",
-//                        allergicReactionsInfo.getAllergicMedicineReactions());
-//            }
-//        }
+        AuthUser user = (AuthUser) req.getSession()
+                .getAttribute(AppAttribute.SESSION_AUTH_USER);
+        AllergicReactionsInfo allergicReactionsInfo = null;
+
+        try {
+            allergicReactionsInfo = profileService.fetchAllergicReactionsInfo(user);
+        } catch (ServiceException e) {
+            logger.error("An error while fetching of allergic reactions " +
+                    "information. AuthUser: \"{}\"", user, e);
+            req.setAttribute(AppAttribute.REQUEST_ERROR, AppAttribute
+                    .REQUEST_ERROR_VALUE_TECH);
+        }
+
+        if (allergicReactionsInfo == null) {
+            req.setAttribute(AppAttribute.REQUEST_ERROR, AppAttribute
+                    .REQUEST_ERROR_VALUE_VAL);
+        } else {
+            if (allergicReactionsInfo.getAllergicFoodReactions().size() > 0){
+                req.setAttribute(AppAttribute.REQUEST_ALLERGIC_FOOD_REACTIONS,
+                        allergicReactionsInfo.getAllergicFoodReactions());
+            }
+
+            if (allergicReactionsInfo.getAllergicMedicineReactions().size() > 0){
+                req.setAttribute(AppAttribute.REQUEST_ALLERGIC_MEDICINE_REACTIONS,
+                        allergicReactionsInfo.getAllergicMedicineReactions());
+            }
+        }
 //
 //        String foodDeleteResult = req.getParameter(AppParameter.DELETE_RESULT
 //                + "Food");
