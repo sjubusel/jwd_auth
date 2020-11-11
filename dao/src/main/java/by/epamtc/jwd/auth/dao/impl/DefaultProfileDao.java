@@ -10,6 +10,7 @@ import by.epamtc.jwd.auth.model.constant.SqlStatement;
 import by.epamtc.jwd.auth.model.user_info.*;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -607,7 +608,9 @@ public class DefaultProfileDao implements ProfileDao {
             int reactionId = rSet.getInt(1);
             int foodTypeId = rSet.getInt(2);
             String foodTypeDescription = rSet.getString(3);
-            LocalDate detectionDate = rSet.getDate(4).toLocalDate();
+            Date date = rSet.getDate(4);
+            LocalDate detectionDate = date != null ? date.toLocalDate()
+                                                   : null;
             String allergicReactionDescription = rSet.getString(5);
             food.add(new AllergicFoodReaction(reactionId, foodTypeId,
                     foodTypeDescription, detectionDate, allergicReactionDescription));
@@ -623,7 +626,9 @@ public class DefaultProfileDao implements ProfileDao {
             int reactionId = resultSet.getInt(1);
             int medicineId = resultSet.getInt(2);
             String medicineDescription = resultSet.getString(3);
-            LocalDate detectionDate = resultSet.getDate(4).toLocalDate();
+            Date date = resultSet.getDate(4);
+            LocalDate detectionDate = date != null ? date.toLocalDate()
+                                                   : null;
             String allergicReaction = resultSet.getString(5);
             medicineReactions.add(new AllergicMedicineReaction(reactionId,
                     medicineId, medicineDescription, detectionDate,
