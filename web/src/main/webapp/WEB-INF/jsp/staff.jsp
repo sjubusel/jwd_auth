@@ -28,10 +28,75 @@
 
 <div class="main-content">
     <%@ include file="structural_element/header.jsp" %>
+    <div class="row mt-2 mr-2 ml-2">
+        <%--<div class="list-group d-inline-block col-3">
 
-    <h2 style="padding-left: 25px">
-        STAFF STUB MESSAGE WITHOUT I18N
-    </h2>
+        </div>
+        <div class="bg-light d-inline-block col">
+
+        </div>--%>
+        <c:choose>
+            <c:when test="${sessionScope.authUser.role ne null}">
+                <c:choose>
+                    <c:when test="${sessionScope.authUser.role.roleId == 0}">
+                        <fmt:message bundle="${jspMessages}"
+                                     key="staff.accessDeniedForPatient}"/>
+                    </c:when>
+                    <%--REGISTAR--%>
+                    <c:when test="${sessionScope.authUser.role.roleId == 1}">
+                        <%--                        <%@ include file="registrar/registrarSubMenu.jsp" %>--%>
+                    </c:when>
+                    <%--AID--%>
+                    <c:when test="${sessionScope.authUser.role.roleId == 2}">
+                        <%@ include file="registrar/registrarSubMenu.jsp" %>
+                    </c:when>
+                    <c:when test="${sessionScope.authUser.role.roleId == 3}">
+
+                    </c:when>
+                    <c:when test="${sessionScope.authUser.role.roleId == 4}">
+
+                    </c:when>
+                    <c:when test="${sessionScope.authUser.role.roleId == 5}">
+
+                    </c:when>
+                    <c:when test="${sessionScope.authUser.role.roleId == 7}">
+
+                    </c:when>
+                    <c:when test="${sessionScope.authUser.role.roleId == 8}">
+
+                    </c:when>
+                    <c:when test="${sessionScope.authUser.role.roleId == 9}">
+
+                    </c:when>
+                    <c:when test="${sessionScope.authUser.role.roleId == 10}">
+
+                    </c:when>
+                    <c:when test="${sessionScope.authUser.role.roleId == 11}">
+
+                    </c:when>
+                    <c:when test="${sessionScope.authUser.role.roleId == 12}">
+
+                    </c:when>
+                </c:choose>
+                <div class="bg-light d-inline-block col">
+                    <fmt:message bundle="${jspMessages}" key="staff.welcome"/>
+                    <br>
+                    <c:out value="${sessionScope.authUser.lastName}"/>
+                    <c:out value=" "/>
+                    <c:out value="${sessionScope.authUser.firstName}"/>
+                    <br>
+                    <fmt:message bundle="${jspMessages}"
+                                 key="staff.announceRole"/>
+                    <c:out value=": "/>
+                    <c:out value="${sessionScope.authUser.role.roleDescription}"/>
+                </div>
+            </c:when>
+            <c:otherwise>
+                <fmt:message bundle="${jspMessages}"
+                             key="staff.accessDeniedForVisitors}"/>
+            </c:otherwise>
+        </c:choose>
+    </div>
 </div>
 
 <jsp:include page="structural_element/footer.jsp"/>

@@ -290,3 +290,10 @@ profileSubMenu.extremelyHazardousDiseases.diseasePlaceholder=Введите на
 profileSubMenu.extremelyHazardousDiseases.detectionDate=Дата выявления
 profileSubMenu.extremelyHazardousDiseases.detectionDatePlaceholder=Введите дату выявления
 profileSubMenu.extremelyHazardousDiseases.caseDescriptionPlaceholder=Введите описание случая заболевания
+
+staff.welcome=Добро пожаловать
+staff.announceRole=Вы вошли как
+staff.accessDeniedForPatient=Доступ для пациентов запрещён
+staff.accessDeniedForVisitors=Доступ для посетителй запрещён
+
+registrarSubMenu.registerVisit=Зарегистрировать обращение
