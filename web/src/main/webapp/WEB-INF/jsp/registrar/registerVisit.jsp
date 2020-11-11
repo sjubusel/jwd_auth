@@ -145,6 +145,8 @@
                            class="form-control col"
                            id="visitReasonDescription"
                            name="visitReasonDescriptionInput" required
+                           placeholder="<fmt:message bundle="${jspMessages}"
+                                                                       key="registerVisit.visitReasonDescriptionPlaceholder"/>"
                     />
                 </div>
 
