@@ -44,7 +44,11 @@ public final class AjaxSqlStatement {
             = "SELECT ps.atc_pharmaceutical_substance_id, ps.atc_international_nonproprietary_name\n" +
             "FROM hospital.atc_pharmaceutical_substances ps\n" +
             "WHERE ps.atc_international_nonproprietary_name LIKE CONCAT('%', ?, '%');";
-
+    public static final String SELECT_EXTREMELY_HAZARDOUS_DISEASES
+            = "SELECT ehd.extremely_hazardous_disease_id, d.icd_10_disease_name\n" +
+            "FROM hospital.extremely_hazardous_diseases ehd\n" +
+            "         JOIN hospital.icd_10_diseases d ON ehd.icd_10_disease_id = d.icd_10_disease_id\n" +
+            "WHERE d.icd_10_disease_name LIKE CONCAT('%', ?, '%');";
 
     private AjaxSqlStatement() {
     }

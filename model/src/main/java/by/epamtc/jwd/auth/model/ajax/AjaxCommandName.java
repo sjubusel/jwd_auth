@@ -18,6 +18,10 @@ public final class AjaxCommandName {
             = "FETCH-FOOD-ALLERGY-IN-ALLERGIC-REACTIONS-JSP";
     public static final String FETCH_MEDICINE_ALLERGY_IN_ALLERGIC_REACTIONS_JSP
             = "FETCH-MEDICINE-ALLERGY-IN-ALLERGIC-REACTIONS-JSP";
+    public static final String
+            FETCH_EXTREMELY_HAZARDOUS_DISEASES_IN_EXTREMELY_HAZARDOUS_DISEASES_JSP
+            = "FETCH-EXTREMELY-HAZARDOUS-DISEASES-IN-EXTREMELY-HAZARDOUS-" +
+            "DISEASES-JSP";
 
 
     private AjaxCommandName() {

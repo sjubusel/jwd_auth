@@ -7,6 +7,7 @@ import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
 import by.epamtc.jwd.auth.model.ajax.AjaxArea;
 import by.epamtc.jwd.auth.model.ajax.AjaxCountry;
 import by.epamtc.jwd.auth.model.ajax.AjaxFoodType;
+import by.epamtc.jwd.auth.model.ajax.AjaxHazardousDisease;
 import by.epamtc.jwd.auth.model.ajax.AjaxMedicineType;
 import by.epamtc.jwd.auth.model.ajax.AjaxPerson;
 import by.epamtc.jwd.auth.model.ajax.AjaxRegion;
@@ -289,5 +290,37 @@ public class DefaultAjaxFetchDao implements AjaxFetchDao {
         }
 
         return medicineTypes;
+    }
+
+    @Override
+    public List<AjaxHazardousDisease> fetchExtremelyHazardousDiseases(String
+            diseasePart) throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet rSet = null;
+        List<AjaxHazardousDisease> diseases = new ArrayList<>();
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(AjaxSqlStatement.SELECT_EXTREMELY_HAZARDOUS_DISEASES);
+            statement.setString(1, diseasePart);
+            rSet = statement.executeQuery();
+            while (rSet.next()) {
+                int diseaseId = rSet.getInt(1);
+                String diseaseName = rSet.getString(2);
+                diseases.add(new AjaxHazardousDisease(diseaseId, diseaseName));
+            }
+
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection from" +
+                    "the connection pool during ajax fetching of " +
+                    "AjaxHazardousDisease", e);
+        } catch (SQLException e) {
+            throw new DaoException("An error while ajax fetching " +
+                    "AjaxHazardousDisease from DBs", e);
+        } finally {
+            pool.closeConnection(conn, statement, rSet);
+        }
+        return diseases;
     }
 }

@@ -4,6 +4,7 @@ import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.model.ajax.AjaxArea;
 import by.epamtc.jwd.auth.model.ajax.AjaxCountry;
 import by.epamtc.jwd.auth.model.ajax.AjaxFoodType;
+import by.epamtc.jwd.auth.model.ajax.AjaxHazardousDisease;
 import by.epamtc.jwd.auth.model.ajax.AjaxMedicineType;
 import by.epamtc.jwd.auth.model.ajax.AjaxPerson;
 import by.epamtc.jwd.auth.model.ajax.AjaxRegion;
@@ -32,5 +33,8 @@ public interface AjaxFetchDao {
     List<AjaxFoodType> fetchFoodTypes(String foodTypePart) throws DaoException;
 
     List<AjaxMedicineType> fetchMedicineTypes(String medicineTypePart)
+            throws DaoException;
+
+    List<AjaxHazardousDisease> fetchExtremelyHazardousDiseases(String diseasePart)
             throws DaoException;
 }

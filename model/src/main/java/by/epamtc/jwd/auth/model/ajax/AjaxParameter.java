@@ -18,6 +18,7 @@ public final class AjaxParameter {
     public static final String AJAX_CHARACTER_ENCODING = "UTF-8";
     public static final String FOOD_TYPE = "foodTypeInput";
     public static final String MEDICINE_TYPE = "medicineTypeInput";
+    public static final String DISEASE = "diseaseInput";
 
     private AjaxParameter() {
     }

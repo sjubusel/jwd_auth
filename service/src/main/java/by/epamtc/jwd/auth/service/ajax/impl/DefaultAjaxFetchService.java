@@ -124,4 +124,17 @@ public class DefaultAjaxFetchService implements AjaxFetchService {
         }
         return null;
     }
+
+    @Override
+    public List<AjaxHazardousDisease> fetchExtremelyHazardousDiseases(String
+            diseasePart) throws ServiceException {
+        if (diseasePart.matches(RegistrationInfoPattern.ROOM)) {
+            try {
+                return ajaxFetchDao.fetchExtremelyHazardousDiseases(diseasePart);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return null;
+    }
 }

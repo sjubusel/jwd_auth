@@ -29,6 +29,74 @@
         <fmt:message bundle="${jspMessages}" key="all.htmlTitle"/>
     </title>
     <jsp:include page="../structural_element/metahead.jsp"/>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/js/jquery-3.5.1.js">
+    </script>
+    <script>
+        function changeHiddenInput(hiddenInputName, shownInputName, childRow, parent) {
+            let hiddenInput = document.getElementById(hiddenInputName);
+            let shownInput = document.getElementById(shownInputName);
+            hiddenInput.value = childRow.firstChild.innerHTML;
+            shownInput.value = childRow.lastChild.innerHTML;
+            parent.innerHTML = "<div class=\"mb-3\"><small><em>" + "<fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.changePatientInfo.ajax.chosen"/>: "
+                + shownInput.value + "</em></small></div>";
+        }
+
+        let searchExtremeCases = null;
+        jQuery(document).ready(function () {
+            let searchExtremeCases = null;
+            $("#disease").keyup(function () {
+                if (searchExtremeCases !== null) {
+                    searchExtremeCases.abort();
+                }
+                let text = $(this).val();
+                if (text == null) {
+                    $("#diseaseResult").html("");
+                } else {
+                    $("#diseaseResult").html("");
+                    searchExtremeCases = $.ajax({
+                        url: "ajax?command=fetch-extremely-hazardous-diseases-in-extremely-hazardous-diseases-jsp",
+                        method: "post",
+                        data: $("#disease").serialize(),
+                        datatype: "json",
+                        success: function (data) {
+                            if (data == null) {
+                                $("#diseaseResult").html("<div class=\"mb-3\"><small><em><fmt:message bundle="${jspMessages}"
+                                           key="profileSubMenu.changePatientInfo.ajax.validation"/></em></small></div>");
+                                return;
+                            }
+                            if (data.length === 0) {
+                                $("#diseaseResult").html("<div class=\"mb-3\"><small><em><fmt:message bundle="${jspMessages}"
+                                           key="profileSubMenu.changePatientInfo.ajax.zeroResult"/></em></small></div>");
+                                return;
+                            }
+                            let parent = document.getElementById("diseaseResult");
+                            for (let i = 0; i < data.length; i++) {
+                                let childRow = document.createElement("div");
+                                childRow.className += "row border list-group-item-action d-flex align-items-start";
+                                parent.appendChild(childRow);
+
+                                let childColId = document.createElement("div");
+                                childColId.className += "col border d-none justify-content-center";
+                                childRow.appendChild(childColId);
+
+                                <%--suppress JSUnresolvedVariable --%>
+                                childColId.innerHTML = data[i].diseaseId;
+                                childRow.setAttribute("onclick", "changeHiddenInput(\"hiddenDiseaseId\", \"disease\", this, this.parentElement);");
+
+                                let childColName = document.createElement("div");
+                                childColName.className += "col border d-flex justify-content-center";
+                                childRow.appendChild(childColName);
+                                childColName.innerHTML = data[i].diseaseName;
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
+    </script>
 </head>
 <body>
 

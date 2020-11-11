@@ -29,4 +29,7 @@ public interface AjaxFetchService {
 
     List<AjaxMedicineType> fetchMedicineTypes(String medicineTypePart)
             throws ServiceException;
+
+    List<AjaxHazardousDisease> fetchExtremelyHazardousDiseases(String diseasePart)
+            throws ServiceException;
 }
