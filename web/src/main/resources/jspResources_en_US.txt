@@ -327,3 +327,8 @@ newVisits.validationErrorAccept=The patient is not accepted because of an incorr
 
 ordinary.techError=Because of a technical factor there is no possibility to load target information
 ordinary.validationError=Because of a damaged configuration of a page there is no possibility to load target information
+
+admissionDoctorSubMenu.visitsOnControl=Controlled visits
+visitsOnControl.completeness=Completeness of prescriptions
+visitsOnControl.viewButton=View
+visitsOnControl.noControlledVisits=There is no visits on control
