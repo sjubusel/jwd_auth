@@ -164,5 +164,7 @@
         </div>
     </div>
 </div>
+
+<jsp:include page="../structural_element/footer.jsp"/>
 </body>
 </html>

@@ -63,6 +63,8 @@ public final class CommandName {
             = "DOCTOR-ACCEPT-PATIENT";
     public static final String SUBSTAFF_GO_TO_VISITS_ON_CONTROL
             = "GO-TO-STAFF-VISITS-ON-CONTROL";
+    public static final String SUBSTAFF_GO_TO_DOCTOR_VIEW_CONTROLLED_VISIT
+            = "GO-TO-DOCTOR-VIEW-CONTROLLED-VISIT";
 
     private CommandName() {
     }

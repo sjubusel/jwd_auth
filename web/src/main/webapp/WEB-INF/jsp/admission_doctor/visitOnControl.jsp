@@ -94,7 +94,7 @@
                                 <form action="${pageContext.request.contextPath}/profile"
                                       method="post">
                                     <input type="hidden" name="command"
-                                           value="doctor-view-controlled-visit"/>
+                                           value="go-to-doctor-view-controlled-visit"/>
 
                                     <div class="row d-flex mb-1 border align-items-center">
                                             <%--1st column--%>
@@ -147,5 +147,7 @@
         </div>
     </div>
 </div>
+
+<jsp:include page="../structural_element/footer.jsp"/>
 </body>
 </html>
