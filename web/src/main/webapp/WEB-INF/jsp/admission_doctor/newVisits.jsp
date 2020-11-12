@@ -63,6 +63,39 @@
                     </c:choose>
                 </c:when>
                 <c:otherwise>
+                    <c:if test="${requestScope.acceptResult ne null}">
+                        <c:choose>
+                            <c:when test="${requestScope.acceptResult eq 'success'}">
+                                <div class="alert alert-success"
+                                     role="alert">
+                                        <%-- TODO link for acceptedVisitInfo--%>
+                                    <a href="${pageContext.request.contextPath}/profile">
+                                        <fmt:message
+                                                bundle="${jspMessages}"
+                                                key="newVisits.successAcceptance"/>
+                                    </a>
+                                </div>
+                            </c:when>
+                            <c:when test="${requestScope.acceptResult eq 'techError'}">
+                                <div class="alert alert-danger"
+                                     role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="newVisits.techErrorAccept"/>
+                                </div>
+                            </c:when>
+                            <c:when test="${requestScope.acceptResult eq 'validationError'}">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="newVisits.validationErrorAccept"/>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="alert alert-danger"
+                                     role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="main.unknownCondition"/>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:if>
                     <c:choose>
                         <c:when test="${requestScope.visits ne null}">
                             <%--header--%>

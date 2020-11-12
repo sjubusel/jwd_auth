@@ -94,12 +94,14 @@ public class DefaultVisitDao implements VisitDao {
         PreparedStatement[] statements = new PreparedStatement[2];
         ResultSet resultSet = null;
         int pointer = 0;
+        int visitNumber = Integer.parseInt(visitId);
         lock.lock();
 
         try {
             conn = pool.takeConnection();
             statements[pointer] = conn.prepareStatement(SqlStatement
                     .SELECT_RESPONSIBLE_DOCTOR);
+            statements[pointer].setInt(1, visitNumber);
             resultSet = statements[pointer].executeQuery();
             if (resultSet.next()) {
                 int responsibleDoctorId = resultSet.getInt(1);
@@ -111,7 +113,7 @@ public class DefaultVisitDao implements VisitDao {
             statements[++pointer] = conn.prepareStatement(SqlStatement
                     .INSERT_RESPONSIBLE_DOCTOR);
             statements[pointer].setInt(1, user.getStaffId());
-            statements[pointer].setInt(2, Integer.parseInt(visitId));
+            statements[pointer].setInt(2, visitNumber);
             statements[pointer].executeUpdate();
         } catch (SQLException e) {
             throw new DaoException("An error while accepting a patient for " +
