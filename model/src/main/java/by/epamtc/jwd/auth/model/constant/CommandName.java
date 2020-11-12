@@ -57,6 +57,8 @@ public final class CommandName {
     public static final String SUBSTAFF_GO_TO_REGISTER_VISIT
             = "GO-TO-STAFF-REGISTER-VISIT";
     public static final String SUBSTAFF_REGISTER_VISIT = "STAFF-REGISTER-VISIT";
+    public static final String SUBSTAFF_GO_TO_STAFF_NEW_VISITS
+            = "GO-TO-STAFF-NEW-VISITS";
 
     private CommandName() {
     }

@@ -111,6 +111,7 @@ public final class CommandPath {
     public static final String SUBPROFILE_STAFF_INFO_JSP = "/WEB-INF/jsp/subprofile/staffInfo.jsp";
 
     public static final String SUBSTAFF_REGISTER_VISIT_JSP = "/WEB-INF/jsp/registrar/registerVisit.jsp";
+    public static final String SUBSTAFF_NEW_VISITS_JSP = "/WEB-INF/JSP/admission_doctor/newVisits.jsp";
 
     private CommandPath() {
     }

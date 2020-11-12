@@ -34,6 +34,7 @@ import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileChangePatientPhotoComm
 import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileExtremelyHazardousDiseasesAddCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileMedicalHistoryPermissionAddCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileMedicalHistoryPermissionDeleteCommand;
+import by.epamtc.jwd.auth.web.util.impl.substaff.GoToStaffNewVisitsCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToStaffRegisterVisitCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.StaffRegisterVisitCommand;
 
@@ -107,6 +108,8 @@ public class CommandProvider {
                 new GoToStaffRegisterVisitCommand());
         repository.put(CommandName.SUBSTAFF_REGISTER_VISIT,
                 new StaffRegisterVisitCommand());
+        repository.put(CommandName.SUBSTAFF_GO_TO_STAFF_NEW_VISITS,
+                new GoToStaffNewVisitsCommand());
 
         repository.put(CommandName.ERROR, new ErrorCommand());
     }
