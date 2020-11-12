@@ -61,7 +61,7 @@
 
                     </c:when>
                     <c:when test="${sessionScope.authUser.role.roleId == 8}">
-
+                        <%@ include file="admission_doctor/admissionDoctorSubMenu.jsp" %>
                     </c:when>
                     <c:when test="${sessionScope.authUser.role.roleId == 9}">
 

@@ -312,3 +312,4 @@ registerVisit.complaintsDescriptionPlaceholder=Insert health complaints
 registerVisit.successfullyAdded=Registration of a visit is successfully completed
 registerVisit.techError=Not completed because of a technical factor
 registerVisit.valError=Not completed because of an incorrect page configuration
+admissionDoctorSubMenu.newVisits=New visits

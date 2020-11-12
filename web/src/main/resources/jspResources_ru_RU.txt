@@ -312,3 +312,4 @@ registerVisit.complaintsDescriptionPlaceholder=Введи жалобы на со
 registerVisit.successfullyAdded=Регистрация ображения успешно завершена
 registerVisit.techError=Не завершено по техническим причинам
 registerVisit.valError=Не завершено по причине неверной конфигурации страницы
+admissionDoctorSubMenu.newVisits=Просмотр новых визитов
