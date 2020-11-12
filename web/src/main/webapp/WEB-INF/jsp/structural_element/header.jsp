@@ -50,7 +50,7 @@
                         class="nav-link"
                     </c:otherwise>
                 </c:choose>
-                        href="${pageContext.request.contextPath}/main?command=go-to-patients">
+                        href="${pageContext.request.contextPath}/profile?command=go-to-patients">
                     <fmt:message bundle="${jspMessages}"
                                  key="header.menu.patients"/>
                 </a>
@@ -67,7 +67,7 @@
                         class="nav-link"
                     </c:otherwise>
                 </c:choose>
-                        href="${pageContext.request.contextPath}/main?command=go-to-staff">
+                        href="${pageContext.request.contextPath}/profile?command=go-to-staff">
                     <fmt:message bundle="${jspMessages}"
                                  key="header.menu.medStaff"/>
                 </a>

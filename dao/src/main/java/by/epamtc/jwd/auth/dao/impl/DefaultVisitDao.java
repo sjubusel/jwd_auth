@@ -27,7 +27,8 @@ public class DefaultVisitDao implements VisitDao {
             statement.setInt(1, Integer.parseInt(hospVisit
                     .getPatientShortInfo()));
             statement.setString(2, hospVisit.getVisitReason().name());
-            statement.setString(3, hospVisit.getTransportationStatus().name());
+            statement.setString(3, hospVisit.getPatientVisitDescriptionInfo());
+            statement.setString(4, hospVisit.getTransportationStatus().name());
 
             statement.executeUpdate();
         } catch (SQLException e) {

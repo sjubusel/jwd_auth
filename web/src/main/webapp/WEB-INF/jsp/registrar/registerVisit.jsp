@@ -108,6 +108,36 @@
                 <fmt:message bundle="${jspMessages}"
                              key="registerVisit.heading"/>
             </h1>
+            <c:if test="${requestScope.addResult ne null}">
+                <c:choose>
+                    <c:when test="${requestScope.addResult eq 'success'}">
+                        <div class="alert alert-success" role="alert">
+                            <fmt:message bundle="${jspMessages}"
+                                         key="registerVisit.successfullyAdded"/>
+                        </div>
+                    </c:when>
+                    <%-- a tech error --%>
+                    <c:when test="${requestScope.addResult eq 'techError'}">
+                        <div class="alert alert-danger" role="alert">
+                            <fmt:message bundle="${jspMessages}"
+                                         key="registerVisit.techError"/>
+                        </div>
+                    </c:when>
+                    <%-- a validation error --%>
+                    <c:when test="${requestScope.addResult eq 'validationError'}">
+                        <div class="alert alert-danger" role="alert">
+                            <fmt:message bundle="${jspMessages}"
+                                         key="registerVisit.valError"/>
+                        </div>
+                    </c:when>
+                    <c:otherwise>
+                        <div class="alert alert-danger" role="alert">
+                            <fmt:message bundle="${jspMessages}"
+                                         key="main.unknownCondition"/>
+                        </div>
+                    </c:otherwise>
+                </c:choose>
+            </c:if>
 
             <form action="${pageContext.request.contextPath}/profile"
                   method="post">
@@ -240,21 +270,21 @@
                     </div>
                 </div>
 
-<%--                <div class="form-group form-inline row">--%>
-<%--                    <label for="complaintsDescription"--%>
-<%--                           class="col-4 custom-form-label">--%>
-<%--                        <fmt:message bundle="${jspMessages}"--%>
-<%--                                     key="registerVisit.complaintsDescription"/>--%>
-<%--                    </label>--%>
-<%--                    <textarea type="text"--%>
-<%--                              class="form-control col"--%>
-<%--                              id="complaintsDescription"--%>
-<%--                              name="complaintsDescriptionInput" required--%>
-<%--                              rows="10" cols="30"--%>
-<%--                              placeholder="<fmt:message bundle="${jspMessages}"--%>
-<%--                                                                       key="registerVisit.complaintsDescriptionPlaceholder"/>"--%>
-<%--                    ></textarea>--%>
-<%--                </div>--%>
+                <%--                <div class="form-group form-inline row">--%>
+                <%--                    <label for="complaintsDescription"--%>
+                <%--                           class="col-4 custom-form-label">--%>
+                <%--                        <fmt:message bundle="${jspMessages}"--%>
+                <%--                                     key="registerVisit.complaintsDescription"/>--%>
+                <%--                    </label>--%>
+                <%--                    <textarea type="text"--%>
+                <%--                              class="form-control col"--%>
+                <%--                              id="complaintsDescription"--%>
+                <%--                              name="complaintsDescriptionInput" required--%>
+                <%--                              rows="10" cols="30"--%>
+                <%--                              placeholder="<fmt:message bundle="${jspMessages}"--%>
+                <%--                                                                       key="registerVisit.complaintsDescriptionPlaceholder"/>"--%>
+                <%--                    ></textarea>--%>
+                <%--                </div>--%>
 
                 <button type="submit"
                         class="btn align-self-center btn-primary">

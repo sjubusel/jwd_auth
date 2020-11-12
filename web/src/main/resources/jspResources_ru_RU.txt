@@ -308,3 +308,7 @@ registerVisit.prescription=предписание учреждения здра�
 registerVisit.visitReason=Причина обращения
 registerVisit.complaintsDescription=Жалобы на состояние здоровья
 registerVisit.complaintsDescriptionPlaceholder=Введи жалобы на состояние здоровья
+
+registerVisit.successfullyAdded=Регистрация ображения успешно завершена
+registerVisit.techError=Не завершено по техническим причинам
+registerVisit.valError=Не завершено по причине неверной конфигурации страницы
