@@ -44,14 +44,14 @@
                         <c:when test="${requestScope.error eq 'tech'}">
                             <div class="alert alert-danger" role="alert">
                                 <fmt:message bundle="${jspMessages}"
-                                             key="profileSubMenu.medicalHistoryPermission.techError"/>
+                                             key="ordinary.techError"/>
                             </div>
                         </c:when>
                         <%-- a validation error --%>
                         <c:when test="${requestScope.error eq 'val'}">
                             <div class="alert alert-danger" role="alert">
                                 <fmt:message bundle="${jspMessages}"
-                                             key="profileSubMenu.medicalHistoryPermission.validationError"/>
+                                             key="ordinary.validationError"/>
                             </div>
                         </c:when>
                         <c:otherwise>
