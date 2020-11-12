@@ -67,11 +67,7 @@
                         <c:when test="${requestScope.visits ne null}">
                             <%--header--%>
                             <div class="row d-flex mb-1 border">
-                                <div class="col
-<c:if test="${requestScope.completeness ne true}">
-bg-success
-</c:if>
-">
+                                <div class="col">
                                     <fmt:message bundle="${jspMessages}"
                                                  key="visitsOnControl.completeness"/>
                                 </div>
@@ -102,6 +98,13 @@ bg-success
 
                                     <div class="row d-flex mb-1 border align-items-center">
                                             <%--1st column--%>
+                                        <div class="col
+                                            <c:out value=" "/>
+                                            <c:if test="${visits.isPrescriptionsComplete eq true}">
+                                            bg-success
+                                            </c:if>
+                                        ">
+                                        </div>
                                         <div class="col">
                                             <c:out value="${visits.visitDateTime}"/>
                                         </div>

@@ -129,6 +129,13 @@ public class DefaultVisitDao implements VisitDao {
         return true;
     }
 
+    @Override
+    public List<AdmissionDepartmentVisit> fetchControlledVisits(AuthUser user)
+            throws DaoException {
+
+        return null;
+    }
+
     private AdmissionDepartmentVisit compileShortenedVisit(ResultSet resultSet)
             throws SQLException {
         AdmissionDepartmentVisit visit = new AdmissionDepartmentVisit();

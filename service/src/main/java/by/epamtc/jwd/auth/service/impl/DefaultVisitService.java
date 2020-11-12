@@ -55,4 +55,17 @@ public class DefaultVisitService implements VisitService {
         }
         return false;
     }
+
+    @Override
+    public List<AdmissionDepartmentVisit> fetchControlledVisits(AuthUser user)
+            throws ServiceException {
+        if (validator.isAuthUserHasRights(user)) {
+            try {
+                return visitDao.fetchControlledVisits(user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return null;
+    }
 }

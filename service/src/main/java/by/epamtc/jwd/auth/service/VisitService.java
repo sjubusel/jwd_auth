@@ -15,4 +15,7 @@ public interface VisitService {
 
     boolean acceptPatientForTreatment(String visitId, AuthUser user)
             throws ServiceException;
+
+    List<AdmissionDepartmentVisit> fetchControlledVisits(AuthUser user)
+            throws ServiceException;
 }

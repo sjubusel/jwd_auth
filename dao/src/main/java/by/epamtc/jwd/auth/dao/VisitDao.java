@@ -15,4 +15,7 @@ public interface VisitDao {
 
     boolean acceptPatientForTreatment(String visitId, AuthUser user)
             throws DaoException;
+
+    List<AdmissionDepartmentVisit> fetchControlledVisits(AuthUser user)
+            throws DaoException;
 }
