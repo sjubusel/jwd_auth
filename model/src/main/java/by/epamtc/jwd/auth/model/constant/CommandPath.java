@@ -82,6 +82,12 @@ public final class CommandPath {
     public static final String SUBPROFILE_GO_TO_EXTREMELY_HAZARDOUS_DISEASES_ADD_SUCCESSFUL_RESULT
             = "/profile?command=go-to-profile-extremely-hazardous-diseases&addResult=success";
 
+    public static final String SUBSTAFF_GO_TO_REGISTER_VISIT_ADD_RESULT_TECHERROR
+            = "/profile?command=go-to-staff-register-visit&addResult=techError";
+    public static final String SUBSTAFF_GO_TO_REGISTER_VISIT_ADD_RESULT_VAL_ERROR
+            = "/profile?command=go-to-staff-register-visit&addResult=validationError";
+    public static final String SUBSTAFF_GO_TO_REGISTER_VISIT_ADD_RESULT_SUCCESS
+            = "/profile?command=go-to-staff-register-visit&addResult=success";
 
     public static final String LOGIN_JSP = "/WEB-INF/jsp/login.jsp";
     public static final String PROFILE_JSP = "/WEB-INF/jsp/profile.jsp";
@@ -105,7 +111,6 @@ public final class CommandPath {
     public static final String SUBPROFILE_STAFF_INFO_JSP = "/WEB-INF/jsp/subprofile/staffInfo.jsp";
 
     public static final String SUBSTAFF_REGISTER_VISIT_JSP = "/WEB-INF/jsp/registrar/registerVisit.jsp";
-
 
     private CommandPath() {
     }

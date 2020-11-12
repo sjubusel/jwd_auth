@@ -4,6 +4,7 @@ import by.epamtc.jwd.auth.dao.impl.DefaultAuthUserDao;
 import by.epamtc.jwd.auth.dao.impl.DefaultHospitalReportDao;
 import by.epamtc.jwd.auth.dao.impl.DefaultProfileDao;
 import by.epamtc.jwd.auth.dao.impl.DefaultUploadDao;
+import by.epamtc.jwd.auth.dao.impl.DefaultVisitDao;
 
 public class DaoFactory {
     private static volatile DaoFactory instance;
@@ -12,6 +13,7 @@ public class DaoFactory {
     private final AuthUserDao authUserDao = new DefaultAuthUserDao();
     private final ProfileDao profileDao = new DefaultProfileDao();
     private final UploadDao uploadDao = new DefaultUploadDao();
+    private final VisitDao visitDao = new DefaultVisitDao();
 
     private DaoFactory() {
     }
@@ -43,5 +45,9 @@ public class DaoFactory {
 
     public UploadDao getUploadDao() {
         return uploadDao;
+    }
+
+    public VisitDao getVisitDao() {
+        return visitDao;
     }
 }

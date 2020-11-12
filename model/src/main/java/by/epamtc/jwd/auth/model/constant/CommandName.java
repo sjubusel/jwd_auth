@@ -56,6 +56,7 @@ public final class CommandName {
             = "PROFILE-EXTREMELY-HAZARDOUS-DISEASES-ADD";
     public static final String SUBSTAFF_GO_TO_REGISTER_VISIT
             = "GO-TO-STAFF-REGISTER-VISIT";
+    public static final String SUBSTAFF_REGISTER_VISIT = "STAFF-REGISTER-VISIT";
 
     private CommandName() {
     }

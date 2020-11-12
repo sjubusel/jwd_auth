@@ -1,9 +1,6 @@
 package by.epamtc.jwd.auth.service;
 
-import by.epamtc.jwd.auth.service.impl.DefaultAuthUserService;
-import by.epamtc.jwd.auth.service.impl.DefaultHospitalReportService;
-import by.epamtc.jwd.auth.service.impl.DefaultProfileService;
-import by.epamtc.jwd.auth.service.impl.DefaultUploadService;
+import by.epamtc.jwd.auth.service.impl.*;
 
 public class ServiceFactory {
     private static volatile ServiceFactory instance;
@@ -12,6 +9,8 @@ public class ServiceFactory {
     private final AuthUserService authUserService = new DefaultAuthUserService();
     private final ProfileService profileService = new DefaultProfileService();
     private final UploadService uploadService = new DefaultUploadService();
+    private final VisitService visitService = new DefaultVisitService();
+
 
     private ServiceFactory() {
     }
@@ -43,5 +42,9 @@ public class ServiceFactory {
 
     public UploadService getUploadService() {
         return uploadService;
+    }
+
+    public VisitService getVisitService() {
+        return visitService;
     }
 }

@@ -82,6 +82,9 @@ public final class AppParameter {
     public static final String DISEASE_ID = "hiddenDiseaseIdInput";
     public static final String HAZARDOUS_DETECTION_DATE = "detectionDateInput";
     public static final String CASE_DESCRIPTION = "caseDescriptionInput";
+    public static final String VISIT_PERSON_ID = "hiddenPersonIdInput";
+    public static final String VISIT_REASON = "visitReasonInput";
+    public static final String VISIT_DESCRIPTION = "visitReasonDescriptionInput";
 
 
     private AppParameter() {

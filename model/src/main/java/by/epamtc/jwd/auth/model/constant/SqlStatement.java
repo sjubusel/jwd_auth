@@ -170,6 +170,11 @@ public final class SqlStatement {
             "(extremely_hazardous_disease_id, case_description,\n" +
             "detection_date, person_id)\n" +
             "VALUES (?, ?, ?, ?);";
+    public static final String INSERT_VISIT = "INSERT INTO " +
+            "hospital.visits_to_admission_department\n" +
+            "(visit_datetime, person_id, visit_reason, visit_reason_description," +
+            " transportation_status)\n" +
+            "VALUES (CURRENT_TIMESTAMP, ?, ?, ?, ?);";
 
     private SqlStatement() {
     }
