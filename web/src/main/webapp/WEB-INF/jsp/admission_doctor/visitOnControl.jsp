@@ -98,12 +98,17 @@
 
                                     <div class="row d-flex mb-1 border align-items-center">
                                             <%--1st column--%>
-                                        <div class="col
-                                            <c:out value=" "/>
-                                            <c:if test="${visits.isPrescriptionsComplete eq true}">
-                                            bg-success
-                                            </c:if>
-                                        ">
+                                        <div class="col">
+                                            <c:choose>
+                                                <c:when test="${visits.isPrescriptionsComplete eq true}">
+                                                    <img src="${pageContext.request.contextPath}/img/plus.png"
+                                                         alt="plus">
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <img src="${pageContext.request.contextPath}/img/minus.png"
+                                                         alt="minus">
+                                                </c:otherwise>
+                                            </c:choose>
                                         </div>
                                         <div class="col">
                                             <c:out value="${visits.visitDateTime}"/>
