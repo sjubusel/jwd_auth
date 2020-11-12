@@ -85,6 +85,7 @@ public final class AppParameter {
     public static final String VISIT_PERSON_ID = "hiddenPersonIdInput";
     public static final String VISIT_REASON = "visitReasonInput";
     public static final String VISIT_DESCRIPTION = "visitReasonDescriptionInput";
+    public static final String ACCEPT_RESULT = "acceptResult";
 
 
     private AppParameter() {

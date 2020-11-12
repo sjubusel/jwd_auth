@@ -4,12 +4,19 @@ import by.epamtc.jwd.auth.dao.VisitDao;
 import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.dao.pool.ConnectionPool;
 import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
+import by.epamtc.jwd.auth.model.auth_info.AuthUser;
+import by.epamtc.jwd.auth.model.constant.AppConstant;
 import by.epamtc.jwd.auth.model.constant.SqlStatement;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DefaultVisitDao implements VisitDao {
     private ConnectionPool pool = ConnectionPool.getInstance();
@@ -43,5 +50,61 @@ public class DefaultVisitDao implements VisitDao {
         }
 
         return true;
+    }
+
+    @Override
+    public List<AdmissionDepartmentVisit> fetchNewVisits(AuthUser user)
+            throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<AdmissionDepartmentVisit> shortenVisits = new ArrayList<>();
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement.FETCH_NEW_VISITS);
+            LocalDateTime dayBefore = LocalDateTime.now().minusDays(1);
+            statement.setTimestamp(1, Timestamp.valueOf(dayBefore));
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                AdmissionDepartmentVisit visit = compileShortenedVisit(resultSet);
+                shortenVisits.add(visit);
+            }
+
+        } catch (SQLException e) {
+            throw new DaoException("An error while fetching " +
+                    "AdmissionDepartmentVisit-s", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection from " +
+                    "the connection pool during fetching of" +
+                    "AdmissionDepartmentVisit", e);
+        } finally {
+            pool.closeConnection(conn, statement, resultSet);
+        }
+
+        return shortenVisits;
+    }
+
+    private AdmissionDepartmentVisit compileShortenedVisit(ResultSet resultSet)
+            throws SQLException {
+        AdmissionDepartmentVisit visit = new AdmissionDepartmentVisit();
+        int visitId = resultSet.getInt(1);
+        visit.setVisitId(visitId);
+        Timestamp timestamp = resultSet.getTimestamp(2);
+        LocalDateTime visitDateTime = timestamp != null
+                                      ? timestamp.toLocalDateTime()
+                                      : null;
+        visit.setVisitDateTime(visitDateTime);
+        String lastName = resultSet.getString(3);
+        String firstName = resultSet.getString(4);
+        String middleName = resultSet.getString(5);
+        String personInfo = middleName != null
+                            ? lastName + AppConstant.ONE_WHITESPACE + firstName
+                                    + AppConstant.ONE_WHITESPACE + middleName
+                            : lastName + AppConstant.ONE_WHITESPACE + firstName;
+        visit.setPatientShortInfo(personInfo);
+        String visitDescription = resultSet.getString(6);
+        visit.setPatientVisitDescriptionInfo(visitDescription);
+        return visit;
     }
 }

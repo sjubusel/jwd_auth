@@ -313,3 +313,10 @@ registerVisit.successfullyAdded=Registration of a visit is successfully complete
 registerVisit.techError=Not completed because of a technical factor
 registerVisit.valError=Not completed because of an incorrect page configuration
 admissionDoctorSubMenu.newVisits=New visits
+
+newVisits.dateTime=Date and time of visit registration
+newVisits.patientInfo=Patient
+newVisits.visitDescription=Reason
+newVisits.buttons=Action
+visits.acceptPatient=Accept
+visits.noNewVisits=There is no new patients

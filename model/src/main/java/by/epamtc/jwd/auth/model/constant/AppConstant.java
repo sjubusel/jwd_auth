@@ -27,6 +27,7 @@ public final class AppConstant {
     public static final int DUPLICATE_AUTH_USER_LOGIN_ID = -1;
     public static final int DUPLICATE_AUTH_USER_EMAIL_ID = -1;
     public static final int AUTH_USER_STANDARD_INT_VALUE = 0;
+    public static final int STAFF_WHICH_CAN_TREAT = 8;
 
 
     private AppConstant() {

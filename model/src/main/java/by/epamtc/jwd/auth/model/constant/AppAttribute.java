@@ -21,6 +21,7 @@ public final class AppAttribute {
             = "allergicMedicineReactions";
     public static final String REQUEST_EXTEREMELY_HAZARDOUS_DISEASES
             = "extremelyHazardousDiseases";
+    public static final String REQUEST_VISITS = "visits";
 
     private AppAttribute() {
     }

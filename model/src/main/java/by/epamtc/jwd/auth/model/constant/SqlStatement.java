@@ -175,6 +175,17 @@ public final class SqlStatement {
             "(visit_datetime, person_id, visit_reason, visit_reason_description," +
             " transportation_status)\n" +
             "VALUES (CURRENT_TIMESTAMP, ?, ?, ?, ?);";
+    public static final String FETCH_NEW_VISITS
+            = "SELECT v2ad.visit_id,\n" +
+            "       v2ad.visit_datetime,\n" +
+            "       p.last_name,\n" +
+            "       p.first_name,\n" +
+            "       p.middle_name,\n" +
+            "       v2ad.visit_reason_description\n" +
+            "from visits_to_admission_department v2ad\n" +
+            "         JOIN hospital.persons p ON v2ad.person_id = p.person_id\n" +
+            "WHERE v2ad.responsible_doctor_id IS NULL\n" +
+            "  AND v2ad.visit_datetime > ?;";
 
     private SqlStatement() {
     }

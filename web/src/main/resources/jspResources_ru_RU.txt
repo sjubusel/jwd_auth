@@ -313,3 +313,10 @@ registerVisit.successfullyAdded=Регистрация ображения усп
 registerVisit.techError=Не завершено по техническим причинам
 registerVisit.valError=Не завершено по причине неверной конфигурации страницы
 admissionDoctorSubMenu.newVisits=Просмотр новых визитов
+
+newVisits.dateTime=Дата регистрации визита
+newVisits.patientInfo=Пациент
+newVisits.visitDescription=Причина
+newVisits.buttons=Действие
+visits.acceptPatient=Принять
+visits.noNewVisits=Новые пациенты отсутствуют
