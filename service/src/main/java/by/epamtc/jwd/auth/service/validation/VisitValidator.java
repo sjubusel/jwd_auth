@@ -15,4 +15,8 @@ public class VisitValidator {
     public boolean isAuthUserHasRights(AuthUser user) {
         return user.getRole().getRoleId() >= AppConstant.STAFF_WHICH_CAN_TREAT;
     }
+
+    public boolean isVisitIdCorrect(String visitId) {
+        return visitId.matches(RegistrationInfoPattern.DIGITS);
+    }
 }

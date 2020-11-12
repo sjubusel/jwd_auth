@@ -41,4 +41,18 @@ public class DefaultVisitService implements VisitService {
         }
         return null;
     }
+
+    @Override
+    public boolean acceptPatientForTreatment(String visitId, AuthUser user)
+            throws ServiceException {
+        if (validator.isAuthUserHasRights(user) && validator
+                .isVisitIdCorrect(visitId)) {
+            try {
+                return visitDao.acceptPatientForTreatment(visitId, user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return false;
+    }
 }

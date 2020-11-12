@@ -12,4 +12,7 @@ public interface VisitService {
 
     List<AdmissionDepartmentVisit> fetchNewVisits(AuthUser user)
             throws ServiceException;
+
+    boolean acceptPatientForTreatment(String visitId, AuthUser user)
+            throws ServiceException;
 }

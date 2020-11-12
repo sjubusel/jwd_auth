@@ -17,8 +17,10 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class DefaultVisitDao implements VisitDao {
+    public static ReentrantLock lock = new ReentrantLock();
     private ConnectionPool pool = ConnectionPool.getInstance();
 
     @Override
@@ -83,6 +85,46 @@ public class DefaultVisitDao implements VisitDao {
         }
 
         return shortenVisits;
+    }
+
+    @Override
+    public boolean acceptPatientForTreatment(String visitId, AuthUser user)
+            throws DaoException {
+        Connection conn = null;
+        PreparedStatement[] statements = new PreparedStatement[2];
+        ResultSet resultSet = null;
+        int pointer = 0;
+        lock.lock();
+
+        try {
+            conn = pool.takeConnection();
+            statements[pointer] = conn.prepareStatement(SqlStatement
+                    .SELECT_RESPONSIBLE_DOCTOR);
+            resultSet = statements[pointer].executeQuery();
+            if (resultSet.next()) {
+                int responsibleDoctorId = resultSet.getInt(1);
+                if (responsibleDoctorId != 0) {
+                    return false;
+                }
+            }
+
+            statements[++pointer] = conn.prepareStatement(SqlStatement
+                    .INSERT_RESPONSIBLE_DOCTOR);
+            statements[pointer].setInt(1, user.getStaffId());
+            statements[pointer].setInt(2, Integer.parseInt(visitId));
+            statements[pointer].executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException("An error while accepting a patient for " +
+                    "treatment", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection" +
+                    " from a Connection pool", e);
+        } finally {
+            lock.unlock();
+            pool.closeConnection(conn, statements, resultSet);
+        }
+
+        return true;
     }
 
     private AdmissionDepartmentVisit compileShortenedVisit(ResultSet resultSet)

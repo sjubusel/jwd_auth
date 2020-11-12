@@ -36,6 +36,7 @@ import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileMedicalHistoryPermissi
 import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileMedicalHistoryPermissionDeleteCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToStaffNewVisitsCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToStaffRegisterVisitCommand;
+import by.epamtc.jwd.auth.web.util.impl.substaff.StaffDoctorAcceptPatient;
 import by.epamtc.jwd.auth.web.util.impl.substaff.StaffRegisterVisitCommand;
 
 import javax.servlet.ServletException;
@@ -110,6 +111,8 @@ public class CommandProvider {
                 new StaffRegisterVisitCommand());
         repository.put(CommandName.SUBSTAFF_GO_TO_STAFF_NEW_VISITS,
                 new GoToStaffNewVisitsCommand());
+        repository.put(CommandName.SUBSTAFF_DOCTOR_ACCEPT_PATIENT,
+                new StaffDoctorAcceptPatient());
 
         repository.put(CommandName.ERROR, new ErrorCommand());
     }

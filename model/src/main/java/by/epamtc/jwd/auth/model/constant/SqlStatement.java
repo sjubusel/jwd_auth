@@ -186,6 +186,14 @@ public final class SqlStatement {
             "         JOIN hospital.persons p ON v2ad.person_id = p.person_id\n" +
             "WHERE v2ad.responsible_doctor_id IS NULL\n" +
             "  AND v2ad.visit_datetime > ?;";
+    public static final String SELECT_RESPONSIBLE_DOCTOR
+            = "SELECT v.responsible_doctor_id\n" +
+            "FROM hospital.visits_to_admission_department v\n" +
+            "WHERE v.visit_id = ?;";
+    public static final String INSERT_RESPONSIBLE_DOCTOR
+            = "UPDATE hospital.visits_to_admission_department v\n" +
+            "SET v.responsible_doctor_id = ?\n" +
+            "WHERE v.visit_id = ?;";
 
     private SqlStatement() {
     }

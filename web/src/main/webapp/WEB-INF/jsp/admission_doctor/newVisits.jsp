@@ -90,7 +90,7 @@
                                 <form action="${pageContext.request.contextPath}/profile"
                                       method="post">
                                     <input type="hidden" name="command"
-                                           value="go-to-patient-info-view"/>
+                                           value="doctor-accept-patient"/>
 
                                     <div class="row d-flex mb-1 border align-items-center">
                                             <%--1st column--%>
