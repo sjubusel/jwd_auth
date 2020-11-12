@@ -132,8 +132,31 @@ public class DefaultVisitDao implements VisitDao {
     @Override
     public List<AdmissionDepartmentVisit> fetchControlledVisits(AuthUser user)
             throws DaoException {
+        Connection conn;
+        PreparedStatement statement;
+        ResultSet resultSet;
+        List<AdmissionDepartmentVisit> controlledVisits = new ArrayList<>();
 
-        return null;
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement.SELECT_VISITS_ON_CONTROL_BY_DOCTOR);
+            statement.setInt(1, user.getStaffId());
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                AdmissionDepartmentVisit controlledVisit = compileControlledVisit
+                        (resultSet);
+                controlledVisits.add(controlledVisit);
+            }
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection " +
+                    "during fetching visits controlled by AuthUser " +
+                    user.toString(), e);
+        } catch (SQLException e) {
+            throw new DaoException("An error (SQLException) while fetching " +
+                    "visits controlled by AuthUser " + user.toString(), e);
+
+        }
+        return controlledVisits;
     }
 
     private AdmissionDepartmentVisit compileShortenedVisit(ResultSet resultSet)
@@ -156,6 +179,28 @@ public class DefaultVisitDao implements VisitDao {
         visit.setPatientShortInfo(personInfo);
         String visitDescription = resultSet.getString(6);
         visit.setPatientVisitDescriptionInfo(visitDescription);
+        return visit;
+    }
+
+    private AdmissionDepartmentVisit compileControlledVisit(ResultSet resultSet)
+            throws SQLException {
+        AdmissionDepartmentVisit visit = compileShortenedVisit(resultSet);
+        Timestamp executionDateTimeOfMedicine = resultSet.getTimestamp(7);
+        Timestamp patientDisagreementDateTimeOfMedicine = resultSet.getTimestamp(8);
+        Timestamp executionDateTimeOfDiagnostic = resultSet
+                .getTimestamp(9);
+        Timestamp patientDisagreementDateTimeOfDiagnostic = resultSet
+                .getTimestamp(10);
+        boolean isPrescriptionsComplete = true;
+        if ((executionDateTimeOfMedicine == null)
+                && (patientDisagreementDateTimeOfMedicine == null)) {
+            isPrescriptionsComplete = false;
+        }
+        if (executionDateTimeOfDiagnostic == null
+                && patientDisagreementDateTimeOfDiagnostic == null) {
+            isPrescriptionsComplete = false;
+        }
+        visit.setPrescriptionsComplete(isPrescriptionsComplete);
         return visit;
     }
 }

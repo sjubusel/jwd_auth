@@ -2,6 +2,7 @@ package by.epamtc.jwd.auth.web.util.impl.substaff;
 
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
+import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
 import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.VisitService;
@@ -46,5 +47,8 @@ public class GoToStaffVisitsOnControlCommand implements Command {
         } else if (visitsOnControl.size() > 0) {
             req.setAttribute(AppAttribute.REQUEST_VISITS, visitsOnControl);
         }
+
+        req.getRequestDispatcher(CommandPath.SUBSTAFF_VISIT_ON_CONTROL_JSP)
+                .forward(req, res);
     }
 }

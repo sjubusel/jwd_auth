@@ -23,6 +23,7 @@ public class AdmissionDepartmentVisit implements java.io.Serializable {
     private VisitResult visitResult;
     private int hospitalizationDepartmentId;
     private String hospitalizationDepartmentInfo;
+    private boolean isPrescriptionsComplete;
 
     public AdmissionDepartmentVisit(int visitId, LocalDateTime visitDateTime,
             int patientId, String patientShortInfo, VisitReason visitReason,
@@ -30,7 +31,8 @@ public class AdmissionDepartmentVisit implements java.io.Serializable {
             String responsibleDoctorInfo, TransportationStatus transportationStatus,
             int responsibleNonDoctorStaffId, String responsibleNonDoctorStaffInfo,
             String patientComplaints, VisitResult visitResult,
-            int hospitalizationDepartmentId, String hospitalizationDepartmentInfo) {
+            int hospitalizationDepartmentId, String hospitalizationDepartmentInfo,
+            boolean isPrescriptionsComplete) {
         this.visitId = visitId;
         this.visitDateTime = visitDateTime;
         this.patientId = patientId;
@@ -46,6 +48,7 @@ public class AdmissionDepartmentVisit implements java.io.Serializable {
         this.visitResult = visitResult;
         this.hospitalizationDepartmentId = hospitalizationDepartmentId;
         this.hospitalizationDepartmentInfo = hospitalizationDepartmentInfo;
+        this.isPrescriptionsComplete = isPrescriptionsComplete;
     }
 
     public AdmissionDepartmentVisit() {
@@ -171,6 +174,15 @@ public class AdmissionDepartmentVisit implements java.io.Serializable {
         this.hospitalizationDepartmentInfo = hospitalizationDepartmentInfo;
     }
 
+
+    public boolean isPrescriptionsComplete() {
+        return isPrescriptionsComplete;
+    }
+
+    public void setPrescriptionsComplete(boolean prescriptionsComplete) {
+        isPrescriptionsComplete = prescriptionsComplete;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -233,6 +245,11 @@ public class AdmissionDepartmentVisit implements java.io.Serializable {
         if (visitResult != that.visitResult) {
             return false;
         }
+
+        if (isPrescriptionsComplete != that.isPrescriptionsComplete) {
+            return false;
+        }
+
         return (hospitalizationDepartmentInfo != null)
                ? hospitalizationDepartmentInfo.equals(that.hospitalizationDepartmentInfo)
                : that.hospitalizationDepartmentInfo == null;
@@ -268,6 +285,7 @@ public class AdmissionDepartmentVisit implements java.io.Serializable {
                             ? visitResult.hashCode()
                             : 0);
         hash = 31 * hash + hospitalizationDepartmentId;
+        hash = 31 * hash + (isPrescriptionsComplete ? 0 : 1);
         hash = 31 * hash + (hospitalizationDepartmentInfo != null
                             ? hospitalizationDepartmentInfo.hashCode()
                             : 0);
@@ -280,7 +298,7 @@ public class AdmissionDepartmentVisit implements java.io.Serializable {
                 "visitId=" + visitId +
                 ", visitDateTime=" + visitDateTime +
                 ", patientId=" + patientId +
-                ", patientShortInfo=" + patientShortInfo +
+                ", patientShortInfo='" + patientShortInfo + '\'' +
                 ", visitReason=" + visitReason +
                 ", patientVisitDescriptionInfo='" + patientVisitDescriptionInfo + '\'' +
                 ", responsibleDoctorId=" + responsibleDoctorId +
@@ -292,6 +310,7 @@ public class AdmissionDepartmentVisit implements java.io.Serializable {
                 ", visitResult=" + visitResult +
                 ", hospitalizationDepartmentId=" + hospitalizationDepartmentId +
                 ", hospitalizationDepartmentInfo='" + hospitalizationDepartmentInfo + '\'' +
+                ", isPrescriptionsComplete=" + isPrescriptionsComplete +
                 '}';
     }
 }

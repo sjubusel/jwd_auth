@@ -194,6 +194,22 @@ public final class SqlStatement {
             = "UPDATE hospital.visits_to_admission_department v\n" +
             "SET v.responsible_doctor_id = ?\n" +
             "WHERE v.visit_id = ?;";
+    public static final String SELECT_VISITS_ON_CONTROL_BY_DOCTOR
+            = "SELECT v2ad.visit_id,\n" +
+            "       v2ad.visit_datetime,\n" +
+            "       p.last_name,\n" +
+            "       p.first_name,\n" +
+            "       p.middle_name,\n" +
+            "       v2ad.visit_reason_description,\n" +
+            "       vam.execution_datetime,\n" +
+            "       vam.patient_disagreement_datetime,\n" +
+            "       vpr.execution_datetime,\n" +
+            "       vpr.patient_disagreement_datetime\n" +
+            "FROM hospital.visits_to_admission_department v2ad\n" +
+            "         JOIN hospital.persons p ON v2ad.person_id = p.person_id\n" +
+            "         JOIN hospital.visit_applied_medicines vam ON v2ad.visit_id = vam.visit_id\n" +
+            "         JOIN hospital.visit_prescription_records vpr ON v2ad.visit_id = vpr.visit_id\n" +
+            "WHERE v2ad.responsible_doctor_id = ?;";
 
     private SqlStatement() {
     }

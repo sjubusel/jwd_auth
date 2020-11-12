@@ -107,19 +107,33 @@ public final class CommandPath {
     public static final String PATIENTS_JSP = "/WEB-INF/jsp/patients.jsp";
     public static final String STAFF_JSP = "/WEB-INF/jsp/staff.jsp";
 
-    public static final String SUBPROFILE_ALLERGIC_REACTIONS_JSP = "/WEB-INF/jsp/subprofile/allergicReactions.jsp";
-    public static final String SUBPROFILE_CHANGE_EMAIL_JSP = "/WEB-INF/jsp/subprofile/changeEmail.jsp";
-    public static final String SUBPROFILE_CHANGE_PASSWORD_JSP = "/WEB-INF/jsp/subprofile/changePassword.jsp";
-    public static final String SUBPROFILE_CHANGE_PATIENT_INFO_JSP = "/WEB-INF/jsp/subprofile/changePatientInfo.jsp";
-    public static final String SUBPROFILE_MEDICAL_HISTORY_PERMISSION_jsp = "/WEB-INF/jsp/subprofile/medicalHistoryPermission.jsp";
-    public static final String SUBPROFILE_CHANGE_STAFF_INFO_JSP = "/WEB-INF/jsp/subprofile/changeStaffInfo.jsp";
-    public static final String SUBPROFILE_CHANGE_STAFF_PHOTO_JSP = "/WEB-INF/jsp/subprofile/changeStaffPhoto.jsp";
-    public static final String SUBPROFILE_EXTREMELY_HAZARDOUS_DISEASES_JSP = "/WEB-INF/jsp/subprofile/extremelyHazardousDiseases.jsp";
-    public static final String SUBPROFILE_STAFF_HISTORY_JSP = "/WEB-INF/jsp/subprofile/staffHistory.jsp";
-    public static final String SUBPROFILE_STAFF_INFO_JSP = "/WEB-INF/jsp/subprofile/staffInfo.jsp";
+    public static final String SUBPROFILE_ALLERGIC_REACTIONS_JSP
+            = "/WEB-INF/jsp/subprofile/allergicReactions.jsp";
+    public static final String SUBPROFILE_CHANGE_EMAIL_JSP
+            = "/WEB-INF/jsp/subprofile/changeEmail.jsp";
+    public static final String SUBPROFILE_CHANGE_PASSWORD_JSP
+            = "/WEB-INF/jsp/subprofile/changePassword.jsp";
+    public static final String SUBPROFILE_CHANGE_PATIENT_INFO_JSP
+            = "/WEB-INF/jsp/subprofile/changePatientInfo.jsp";
+    public static final String SUBPROFILE_MEDICAL_HISTORY_PERMISSION_jsp
+            = "/WEB-INF/jsp/subprofile/medicalHistoryPermission.jsp";
+    public static final String SUBPROFILE_CHANGE_STAFF_INFO_JSP
+            = "/WEB-INF/jsp/subprofile/changeStaffInfo.jsp";
+    public static final String SUBPROFILE_CHANGE_STAFF_PHOTO_JSP
+            = "/WEB-INF/jsp/subprofile/changeStaffPhoto.jsp";
+    public static final String SUBPROFILE_EXTREMELY_HAZARDOUS_DISEASES_JSP
+            = "/WEB-INF/jsp/subprofile/extremelyHazardousDiseases.jsp";
+    public static final String SUBPROFILE_STAFF_HISTORY_JSP
+            = "/WEB-INF/jsp/subprofile/staffHistory.jsp";
+    public static final String SUBPROFILE_STAFF_INFO_JSP
+            = "/WEB-INF/jsp/subprofile/staffInfo.jsp";
 
-    public static final String SUBSTAFF_REGISTER_VISIT_JSP = "/WEB-INF/jsp/registrar/registerVisit.jsp";
-    public static final String SUBSTAFF_NEW_VISITS_JSP = "/WEB-INF/jsp/admission_doctor/newVisits.jsp";
+    public static final String SUBSTAFF_REGISTER_VISIT_JSP
+            = "/WEB-INF/jsp/registrar/registerVisit.jsp";
+    public static final String SUBSTAFF_NEW_VISITS_JSP
+            = "/WEB-INF/jsp/admission_doctor/newVisits.jsp";
+    public static final String SUBSTAFF_VISIT_ON_CONTROL_JSP
+            = "/WEB-INF/jsp/admission_doctor/visitOnControl.jsp";
 
     private CommandPath() {
     }
