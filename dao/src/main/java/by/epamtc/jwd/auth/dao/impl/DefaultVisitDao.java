@@ -132,19 +132,37 @@ public class DefaultVisitDao implements VisitDao {
     @Override
     public List<AdmissionDepartmentVisit> fetchControlledVisits(AuthUser user)
             throws DaoException {
-        Connection conn;
-        PreparedStatement statement;
-        ResultSet resultSet;
+        Connection conn = null;
+        PreparedStatement[] statements = new PreparedStatement[2];
+        List<ResultSet> resultSetList = new ArrayList<>();
+        int pointer = 0;
+
         List<AdmissionDepartmentVisit> controlledVisits = new ArrayList<>();
 
         try {
             conn = pool.takeConnection();
-            statement = conn.prepareStatement(SqlStatement.SELECT_VISITS_ON_CONTROL_BY_DOCTOR);
-            statement.setInt(1, user.getStaffId());
-            resultSet = statement.executeQuery();
+            statements[pointer] = conn.prepareStatement(SqlStatement
+                    .SELECT_VISITS_ON_CONTROL_BY_DOCTOR);
+            statements[pointer].setInt(1, user.getStaffId());
+            ResultSet resultSet = statements[pointer].executeQuery();
+            resultSetList.add(resultSet);
+
+            statements[++pointer] = conn.prepareStatement(SqlStatement
+                    .SELECT_IF_VISIT_PRESCRIPTION_IS_INCOMPLETE);
             while (resultSet.next()) {
-                AdmissionDepartmentVisit controlledVisit = compileControlledVisit
+                AdmissionDepartmentVisit controlledVisit = compileShortenedVisit
                         (resultSet);
+
+                boolean isVisitPrescriptionsComplete = true;
+                statements[pointer].setInt(1, controlledVisit.getVisitId());
+                statements[pointer].setInt(2, controlledVisit.getVisitId());
+                ResultSet rSet = statements[pointer].executeQuery();
+                if (rSet.next()) {
+                    isVisitPrescriptionsComplete = false;
+                }
+                resultSetList.add(rSet);
+
+                controlledVisit.setPrescriptionsComplete(isVisitPrescriptionsComplete);
                 controlledVisits.add(controlledVisit);
             }
         } catch (ConnectionPoolException e) {
@@ -155,6 +173,8 @@ public class DefaultVisitDao implements VisitDao {
             throw new DaoException("An error (SQLException) while fetching " +
                     "visits controlled by AuthUser " + user.toString(), e);
 
+        } finally {
+            pool.closeConnection(conn, statements, resultSetList);
         }
         return controlledVisits;
     }
@@ -179,28 +199,6 @@ public class DefaultVisitDao implements VisitDao {
         visit.setPatientShortInfo(personInfo);
         String visitDescription = resultSet.getString(6);
         visit.setPatientVisitDescriptionInfo(visitDescription);
-        return visit;
-    }
-
-    private AdmissionDepartmentVisit compileControlledVisit(ResultSet resultSet)
-            throws SQLException {
-        AdmissionDepartmentVisit visit = compileShortenedVisit(resultSet);
-        Timestamp executionDateTimeOfMedicine = resultSet.getTimestamp(7);
-        Timestamp patientDisagreementDateTimeOfMedicine = resultSet.getTimestamp(8);
-        Timestamp executionDateTimeOfDiagnostic = resultSet
-                .getTimestamp(9);
-        Timestamp patientDisagreementDateTimeOfDiagnostic = resultSet
-                .getTimestamp(10);
-        boolean isPrescriptionsComplete = true;
-        if ((executionDateTimeOfMedicine == null)
-                && (patientDisagreementDateTimeOfMedicine == null)) {
-            isPrescriptionsComplete = false;
-        }
-        if (executionDateTimeOfDiagnostic == null
-                && patientDisagreementDateTimeOfDiagnostic == null) {
-            isPrescriptionsComplete = false;
-        }
-        visit.setPrescriptionsComplete(isPrescriptionsComplete);
         return visit;
     }
 }

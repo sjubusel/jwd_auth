@@ -313,4 +313,8 @@ public class AdmissionDepartmentVisit implements java.io.Serializable {
                 ", isPrescriptionsComplete=" + isPrescriptionsComplete +
                 '}';
     }
+
+    public boolean getIsPrescriptionsComplete() {
+        return isPrescriptionsComplete;
+    }
 }

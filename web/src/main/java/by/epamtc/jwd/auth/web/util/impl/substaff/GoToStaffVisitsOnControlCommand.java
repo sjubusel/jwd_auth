@@ -42,8 +42,10 @@ public class GoToStaffVisitsOnControlCommand implements Command {
         }
 
         if (visitsOnControl == null) {
-            req.setAttribute(AppAttribute.REQUEST_ERROR, AppAttribute
-                    .REQUEST_ERROR_VALUE_VAL);
+            if (req.getAttribute(AppAttribute.REQUEST_ERROR) == null) {
+                req.setAttribute(AppAttribute.REQUEST_ERROR, AppAttribute
+                        .REQUEST_ERROR_VALUE_VAL);
+            }
         } else if (visitsOnControl.size() > 0) {
             req.setAttribute(AppAttribute.REQUEST_VISITS, visitsOnControl);
         }

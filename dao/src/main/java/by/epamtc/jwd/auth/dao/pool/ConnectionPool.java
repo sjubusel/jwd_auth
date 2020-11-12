@@ -24,6 +24,7 @@ import java.sql.Savepoint;
 import java.sql.Statement;
 import java.sql.Struct;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
@@ -163,6 +164,17 @@ public class ConnectionPool {
 
     public void closeConnection(Connection connection, Statement[] statements,
             ResultSet[] resultSets) {
+        for (ResultSet resultSet : resultSets) {
+            closeResultSet(resultSet);
+        }
+        for (Statement statement : statements) {
+            closeStatement(statement);
+        }
+        closeConnection(connection);
+    }
+
+    public void closeConnection(Connection connection, Statement[] statements,
+            List<ResultSet> resultSets) {
         for (ResultSet resultSet : resultSets) {
             closeResultSet(resultSet);
         }

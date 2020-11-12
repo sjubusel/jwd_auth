@@ -329,6 +329,6 @@ ordinary.techError=По техническим причинам загрузит
 ordinary.validationError=По причине нарушенного состояния страницы загрузить необходимую информацию не представляется возможным
 
 admissionDoctorSubMenu.visitsOnControl=Поступления на контроле
-visitsOnControl.completeness=Completeness of prescriptions
+visitsOnControl.completeness=Завершённость предписаний
 visitsOnControl.viewButton=Просмотреть
 visitsOnControl.noControlledVisits=Посещений на контроле нет
