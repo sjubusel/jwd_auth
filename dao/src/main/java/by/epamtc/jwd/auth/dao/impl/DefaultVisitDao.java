@@ -8,7 +8,7 @@ import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
 import by.epamtc.jwd.auth.model.constant.SqlStatement;
 import by.epamtc.jwd.auth.model.med_info.Diagnosis;
-import by.epamtc.jwd.auth.model.med_info.DiagnosisOrigin;
+import by.epamtc.jwd.auth.model.med_info.DepartmentOrigin;
 import by.epamtc.jwd.auth.model.user_info.TransportationStatus;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
 import by.epamtc.jwd.auth.model.visit_info.VisitReason;
@@ -231,7 +231,7 @@ public class DefaultVisitDao implements VisitDao {
             resultSets[pointer] = statements[pointer].executeQuery();
             while (resultSets[pointer].next()) {
                 Diagnosis diagnosis = compileDiagnosis(resultSets[pointer],
-                        DiagnosisOrigin.ADMISSION_DEPARTMENT);
+                        DepartmentOrigin.ADMISSION_DEPARTMENT);
                 diagnoses.add(diagnosis);
             }
 
@@ -240,7 +240,7 @@ public class DefaultVisitDao implements VisitDao {
             resultSets[pointer] = statements[pointer].executeQuery();
             while (resultSets[pointer].next()) {
                 Diagnosis diagnosis = compileDiagnosis(resultSets[pointer],
-                        DiagnosisOrigin.INNER_HOSPITAL_DEPARTMENT);
+                        DepartmentOrigin.INNER_HOSPITAL_DEPARTMENT);
                 diagnoses.add(diagnosis);
             }
         } catch (ConnectionPoolException e) {
@@ -325,10 +325,10 @@ public class DefaultVisitDao implements VisitDao {
         return visit;
     }
 
-    private Diagnosis compileDiagnosis(ResultSet resultSet, DiagnosisOrigin
-            diagnosisOrigin) throws SQLException {
+    private Diagnosis compileDiagnosis(ResultSet resultSet, DepartmentOrigin
+            departmentOrigin) throws SQLException {
         Diagnosis diagnosis = new Diagnosis();
-        diagnosis.setDiagnosisOrigin(diagnosisOrigin);
+        diagnosis.setDepartmentOrigin(departmentOrigin);
 
         int diagnosisId = resultSet.getInt(1);
         diagnosis.setDiagnosisId(diagnosisId);

@@ -1,16 +1,16 @@
 package by.epamtc.jwd.auth.model.med_info;
 
-public enum DiagnosisOrigin {
+public enum DepartmentOrigin {
     ADMISSION_DEPARTMENT ("приёмное"),
     INNER_HOSPITAL_DEPARTMENT("стационар");
 
     private String description;
 
-    DiagnosisOrigin(String description) {
+    DepartmentOrigin(String description) {
         this.description = description;
     }
 
-    DiagnosisOrigin() {
+    DepartmentOrigin() {
     }
 
     public String getDescription() {

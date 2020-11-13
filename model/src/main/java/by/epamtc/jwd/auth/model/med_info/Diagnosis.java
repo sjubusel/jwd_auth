@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 public class Diagnosis implements java.io.Serializable {
     private static final long serialVersionUID = 4833216655758359536L;
 
-    private DiagnosisOrigin diagnosisOrigin;
+    private DepartmentOrigin departmentOrigin;
     private int diagnosisId;
     private LocalDateTime diagnosisDateTime;
     private int diseaseId;
@@ -18,13 +18,13 @@ public class Diagnosis implements java.io.Serializable {
     private String cancellationDoctorInfo;
     private String cancellationDiagnosisDescription;
 
-    public Diagnosis(DiagnosisOrigin diagnosisOrigin, int diagnosisId,
+    public Diagnosis(DepartmentOrigin departmentOrigin, int diagnosisId,
             LocalDateTime diagnosisDateTime, int diseaseId, String diseaseInfo,
             String diagnosisDescription, int diagnoseDoctorId,
             String diagnoseDoctorInfo, LocalDateTime cancellationDateTime,
             int cancellationDoctorId, String cancellationDoctorInfo,
             String cancellationDiagnosisDescription) {
-        this.diagnosisOrigin = diagnosisOrigin;
+        this.departmentOrigin = departmentOrigin;
         this.diagnosisId = diagnosisId;
         this.diagnosisDateTime = diagnosisDateTime;
         this.diseaseId = diseaseId;
@@ -41,12 +41,12 @@ public class Diagnosis implements java.io.Serializable {
     public Diagnosis() {
     }
 
-    public DiagnosisOrigin getDiagnosisOrigin() {
-        return diagnosisOrigin;
+    public DepartmentOrigin getDepartmentOrigin() {
+        return departmentOrigin;
     }
 
-    public void setDiagnosisOrigin(DiagnosisOrigin diagnosisOrigin) {
-        this.diagnosisOrigin = diagnosisOrigin;
+    public void setDepartmentOrigin(DepartmentOrigin departmentOrigin) {
+        this.departmentOrigin = departmentOrigin;
     }
 
     public int getDiagnosisId() {
@@ -159,7 +159,7 @@ public class Diagnosis implements java.io.Serializable {
         }
         if (cancellationDoctorId != diagnosis.cancellationDoctorId)
             return false;
-        if (diagnosisOrigin != diagnosis.diagnosisOrigin) {
+        if (departmentOrigin != diagnosis.departmentOrigin) {
             return false;
         }
         if ((diagnosisDateTime != null)
@@ -199,8 +199,8 @@ public class Diagnosis implements java.io.Serializable {
     @Override
     public int hashCode() {
         int hash = 17;
-        hash = 31 * hash + (diagnosisOrigin != null ? diagnosisOrigin.hashCode()
-                                                    : 0);
+        hash = 31 * hash + (departmentOrigin != null ? departmentOrigin.hashCode()
+                                                     : 0);
         hash = 31 * hash + diagnosisId;
         hash = 31 * hash + (diagnosisDateTime != null
                             ? diagnosisDateTime.hashCode()
@@ -230,7 +230,7 @@ public class Diagnosis implements java.io.Serializable {
     @Override
     public String toString() {
         return "Diagnosis{" +
-                "diagnosisOrigin=" + diagnosisOrigin +
+                "departmentOrigin=" + departmentOrigin +
                 ", diagnosisId=" + diagnosisId +
                 ", diagnosisDateTime=" + diagnosisDateTime +
                 ", diseaseId=" + diseaseId +
