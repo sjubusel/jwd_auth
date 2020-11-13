@@ -3,7 +3,10 @@ package by.epamtc.jwd.auth.web.util.impl.substaff;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
 import by.epamtc.jwd.auth.model.constant.AppParameter;
+import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.model.med_info.Diagnosis;
+import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
+import by.epamtc.jwd.auth.model.med_info.Prescription;
 import by.epamtc.jwd.auth.model.user_info.AllergicReactionsInfo;
 import by.epamtc.jwd.auth.model.user_info.ExtremelyHazardousDiseaseCase;
 import by.epamtc.jwd.auth.model.user_info.PatientInfo;
@@ -40,7 +43,9 @@ public class GoToDoctorViewControlledVisitCommand implements Command {
         PatientInfo patientInfo = null;
         AllergicReactionsInfo allergicReactionsInfo = null;
         List<ExtremelyHazardousDiseaseCase> diseaseList = null;
-        List<Diagnosis> diagnosisList = null;
+        List<Diagnosis> diagnoses = null;
+        List<MedicinePrescription> medicinePrescriptions = null;
+        List<Prescription> prescriptions = null;
 
 
         try {
@@ -52,14 +57,19 @@ public class GoToDoctorViewControlledVisitCommand implements Command {
                     (patientAuthUser);
             diseaseList = profileService.fetchCasesOfExtremelyHazardousDiseases
                     (patientAuthUser);
-            diagnosisList = visitService.fetchInnerHospitalDiagnoses(visitInfo
+            diagnoses = visitService.fetchInnerHospitalDiagnoses(visitInfo
                     .getPatientId());
+            medicinePrescriptions = visitService.fetchVisitMedicinePrescriptions
+                    (visitId);
         } catch (ServiceException e) {
             logger.error("An error while fetching preparing combined " +
                     "information treatment. Params{visitId={}," +
                     "AuthUser={}}", visitId, user, e);
+            req.setAttribute(AppAttribute.REQUEST_ERROR, AppAttribute
+                    .REQUEST_ERROR_VALUE_TECH);
         }
 
-
+        req.getRequestDispatcher(CommandPath.SUBSTAFF__JSP)
+                .forward(req, res);
     }
 }

@@ -311,6 +311,51 @@ public final class SqlStatement {
             "                         ON cancelDoctorAsStaff.person_id = cancelDoctorAsPerson.person_id\n" +
             "\n" +
             "WHERE mc.person_id = ?;";
+    public static final String SELECT_MEDICINE_PRESCRIPTIONS_BY_VISIT
+            = "SELECT vam.prescription_id,\n" +
+            "       vam.visit_id,\n" +
+            "       vam.applied_medicine_id,\n" +
+            "       m.name,\n" +
+            "       dft.name,\n" +
+            "       mc.dosage_mg,\n" +
+            "       m.dosage_ml,\n" +
+            "       vam.prescription_datetime,\n" +
+            "       vam.prescribing_doctor,\n" +
+            "       doctorAsPerson.first_name,\n" +
+            "       doctorAsPerson.middle_name,\n" +
+            "       doctorAsPerson.last_name,\n" +
+            "       vam.dosage_quantity,\n" +
+            "       vam.dosage_measure_unit_id,\n" +
+            "       vam.application_datetime,\n" +
+            "       vam.executor_staff,\n" +
+            "       executorStaffAsPerson.first_name,\n" +
+            "       executorStaffAsPerson.middle_name,\n" +
+            "       executorStaffAsPerson.last_name,\n" +
+            "       vam.execution_datetime,\n" +
+            "       vam.execution_description,\n" +
+            "       vam.patient_agreement_mark,\n" +
+            "       vam.patient_disagreement_description,\n" +
+            "       vam.patient_disagreement_datetime\n" +
+            "\n" +
+            "FROM hospital.visit_applied_medicines vam\n" +
+            "         JOIN hospital.medicines m " +
+            "ON vam.applied_medicine_id = m.medicine_id\n" +
+            "         JOIN hospital.dosage_form_types dft " +
+            "ON m.dosage_form_type_id = dft.dosage_form_type_id\n" +
+            "         JOIN hospital.medicine_components mc " +
+            "ON m.main_medicine_component_id = mc.medicine_component_id\n" +
+            "\n" +
+            "         JOIN hospital.staff doctorAsStaff " +
+            "ON vam.prescribing_doctor = doctorAsStaff.staff_id\n" +
+            "         JOIN hospital.persons doctorAsPerson " +
+            "ON doctorAsPerson.person_id = doctorAsStaff.person_id\n" +
+            "\n" +
+            "         LEFT OUTER JOIN hospital.staff executorStaffAsStaff " +
+            "ON vam.executor_staff = executorStaffAsStaff.staff_id\n" +
+            "         LEFT OUTER JOIN hospital.persons executorStaffAsPerson\n" +
+            "ON executorStaffAsPerson.person_id = executorStaffAsStaff.person_id\n" +
+            "\n" +
+            "WHERE vam.visit_id = ?;";
 
     private SqlStatement() {
     }

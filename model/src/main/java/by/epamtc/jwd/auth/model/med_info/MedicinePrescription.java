@@ -60,6 +60,158 @@ public class MedicinePrescription implements java.io.Serializable {
         this.isPrescriptionComplete = isPrescriptionComplete;
     }
 
+    public DepartmentOrigin getDepartmentOrigin() {
+        return departmentOrigin;
+    }
+
+    public void setDepartmentOrigin(DepartmentOrigin departmentOrigin) {
+        this.departmentOrigin = departmentOrigin;
+    }
+
+    public int getPrescriptionId() {
+        return prescriptionId;
+    }
+
+    public void setPrescriptionId(int prescriptionId) {
+        this.prescriptionId = prescriptionId;
+    }
+
+    public int getOriginDocumentId() {
+        return originDocumentId;
+    }
+
+    public void setOriginDocumentId(int originDocumentId) {
+        this.originDocumentId = originDocumentId;
+    }
+
+    public int getMedicineId() {
+        return medicineId;
+    }
+
+    public void setMedicineId(int medicineId) {
+        this.medicineId = medicineId;
+    }
+
+    public String getMedicineInfo() {
+        return medicineInfo;
+    }
+
+    public void setMedicineInfo(String medicineInfo) {
+        this.medicineInfo = medicineInfo;
+    }
+
+    public LocalDateTime getPrescriptionDateTime() {
+        return prescriptionDateTime;
+    }
+
+    public void setPrescriptionDateTime(LocalDateTime prescriptionDateTime) {
+        this.prescriptionDateTime = prescriptionDateTime;
+    }
+
+    public int getPrescribingStaffId() {
+        return prescribingStaffId;
+    }
+
+    public void setPrescribingStaffId(int prescribingStaffId) {
+        this.prescribingStaffId = prescribingStaffId;
+    }
+
+    public String getPrescribingStaffInfo() {
+        return prescribingStaffInfo;
+    }
+
+    public void setPrescribingStaffInfo(String prescribingStaffInfo) {
+        this.prescribingStaffInfo = prescribingStaffInfo;
+    }
+
+    public double getDosageQuantity() {
+        return dosageQuantity;
+    }
+
+    public void setDosageQuantity(double dosageQuantity) {
+        this.dosageQuantity = dosageQuantity;
+    }
+
+    public MedicineMeasureUnit getDosageMeasureUnit() {
+        return dosageMeasureUnit;
+    }
+
+    public void setDosageMeasureUnit(MedicineMeasureUnit dosageMeasureUnit) {
+        this.dosageMeasureUnit = dosageMeasureUnit;
+    }
+
+    public LocalDateTime getTargetApplicationDateTime() {
+        return targetApplicationDateTime;
+    }
+
+    public void setTargetApplicationDateTime(LocalDateTime targetApplicationDateTime) {
+        this.targetApplicationDateTime = targetApplicationDateTime;
+    }
+
+    public int getExecutorStaffId() {
+        return executorStaffId;
+    }
+
+    public void setExecutorStaffId(int executorStaffId) {
+        this.executorStaffId = executorStaffId;
+    }
+
+    public String getExecutorStaffInfo() {
+        return executorStaffInfo;
+    }
+
+    public void setExecutorStaffInfo(String executorStaffInfo) {
+        this.executorStaffInfo = executorStaffInfo;
+    }
+
+    public LocalDateTime getExecutionDateTime() {
+        return executionDateTime;
+    }
+
+    public void setExecutionDateTime(LocalDateTime executionDateTime) {
+        this.executionDateTime = executionDateTime;
+    }
+
+    public String getExecutionDescription() {
+        return executionDescription;
+    }
+
+    public void setExecutionDescription(String executionDescription) {
+        this.executionDescription = executionDescription;
+    }
+
+    public boolean isDoesPatientAgree() {
+        return doesPatientAgree;
+    }
+
+    public void setDoesPatientAgree(boolean doesPatientAgree) {
+        this.doesPatientAgree = doesPatientAgree;
+    }
+
+    public String getPatientDisagreementDescription() {
+        return patientDisagreementDescription;
+    }
+
+    public void setPatientDisagreementDescription(String patientDisagreementDescription) {
+        this.patientDisagreementDescription = patientDisagreementDescription;
+    }
+
+    public LocalDateTime getPatientDisagreementDateTime() {
+        return patientDisagreementDateTime;
+    }
+
+    public void setPatientDisagreementDateTime(LocalDateTime patientDisagreementDateTime) {
+        this.patientDisagreementDateTime = patientDisagreementDateTime;
+    }
+
+    public boolean isPrescriptionComplete() {
+        return isPrescriptionComplete;
+    }
+
+    public void setPrescriptionComplete(boolean prescriptionComplete) {
+        isPrescriptionComplete = prescriptionComplete;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

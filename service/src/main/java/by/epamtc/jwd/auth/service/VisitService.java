@@ -2,6 +2,7 @@ package by.epamtc.jwd.auth.service;
 
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.med_info.Diagnosis;
+import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 
@@ -24,5 +25,8 @@ public interface VisitService {
             throws ServiceException;
 
     List<Diagnosis> fetchInnerHospitalDiagnoses(int patientId)
+            throws ServiceException;
+
+    List<MedicinePrescription> fetchVisitMedicinePrescriptions(String visitId)
             throws ServiceException;
 }

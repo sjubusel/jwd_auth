@@ -17,6 +17,11 @@ public final class AppConstant {
 
     public static final String SIMPLE_LOCAL_DATE_TIME_FORMAT = "yyyyMMddHHmmss";
 
+    public static final String MG_SUFFIX = "мг";
+    public static final String SLASH = "/";
+    public static final String ML_SUFFIX = "мл";
+
+
     public static final int LOGIN_MIN_LENGTH = 3;
     public static final int LOGIN_MAX_LENGTH = 20;
     public static final int PASSWORD_MIN_LENGTH = 6;
