@@ -7,10 +7,11 @@ import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
 import by.epamtc.jwd.auth.model.constant.SqlStatement;
-import by.epamtc.jwd.auth.model.med_info.Diagnosis;
 import by.epamtc.jwd.auth.model.med_info.DepartmentOrigin;
+import by.epamtc.jwd.auth.model.med_info.Diagnosis;
 import by.epamtc.jwd.auth.model.med_info.MedicineMeasureUnit;
 import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
+import by.epamtc.jwd.auth.model.med_info.Prescription;
 import by.epamtc.jwd.auth.model.user_info.TransportationStatus;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
 import by.epamtc.jwd.auth.model.visit_info.VisitReason;
@@ -295,6 +296,43 @@ public class DefaultVisitDao implements VisitDao {
         return prescriptionList;
     }
 
+    @Override
+    public List<Prescription> fetchVisitPrescriptions(String visitId)
+            throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet rSet = null;
+        List<Prescription> prescriptionList = new ArrayList<>();
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement
+                    .SELECT_NON_MEDICINE_PRESCRIPTIONS_BY_VISIT);
+            statement.setInt(1, Integer.parseInt(visitId));
+            rSet = statement.executeQuery();
+            while (rSet.next()) {
+                Prescription prescription = compileNonMedicinePrescription
+                        (rSet);
+                prescriptionList.add(prescription);
+            }
+
+        } catch (SQLException e) {
+            throw new DaoException("An error (SQLException) while fetching " +
+                    "all non-medicine prescriptions during a visit. VisitId="
+                    + visitId, e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error (ConnectionPoolException" +
+                    " while taking a connection in order to fetch " +
+                    "all non-medicine prescription during a visit. VisitId="
+                    + visitId, e);
+        } finally {
+            pool.closeConnection(conn, statement, rSet);
+        }
+
+
+        return prescriptionList;
+    }
+
     private AdmissionDepartmentVisit compileShortenedVisit(ResultSet resultSet)
             throws SQLException {
         AdmissionDepartmentVisit visit = new AdmissionDepartmentVisit();
@@ -527,5 +565,80 @@ public class DefaultVisitDao implements VisitDao {
                 + dosageFormTypeName + AppConstant.ONE_WHITESPACE
                 + dosageMgValue + AppConstant.ONE_WHITESPACE
                 + AppConstant.MG_SUFFIX;
+    }
+
+    private Prescription compileNonMedicinePrescription(ResultSet rSet)
+            throws SQLException {
+        Prescription prescription = new Prescription();
+        prescription.setDepartmentOrigin(DepartmentOrigin.ADMISSION_DEPARTMENT);
+
+        int prescriptionId = rSet.getInt(1);
+        prescription.setPrescriptionId(prescriptionId);
+
+        int originDocumentId = rSet.getInt(2);
+        prescription.setOriginDocumentId(originDocumentId);
+
+        LocalDateTime prescriptionDateTime = null;
+        Timestamp prescriptionTimestamp = rSet.getTimestamp(3);
+        if (prescriptionTimestamp != null) {
+            prescriptionDateTime = prescriptionTimestamp.toLocalDateTime();
+        }
+        prescription.setPrescriptionDateTime(prescriptionDateTime);
+
+        int prescribingStaffId = rSet.getInt(4);
+        prescription.setPrescribingStaffId(prescribingStaffId);
+
+        String prescribingStaffInfo = compileFullName(rSet.getString(5),
+                rSet.getString(6), rSet.getString(7));
+        prescription.setPrescribingStaffInfo(prescribingStaffInfo);
+
+        String prescriptionDescription = rSet.getString(8);
+        prescription.setPrescriptionDescription(prescriptionDescription);
+
+        int responsibleStaffId = rSet.getInt(9);
+        prescription.setResponsibleStaffId(responsibleStaffId);
+
+        String responsibleStaffInfo = compileFullName(rSet.getString(10),
+                rSet.getString(11), rSet.getString(12));
+        prescription.setResponsibleStaffInfo(responsibleStaffInfo);
+
+        int executorStaffId = rSet.getInt(13);
+        prescription.setExecutorStaffId(executorStaffId);
+
+        String executorStaffInfo = compileFullName(rSet.getString(14),
+                rSet.getString(15), rSet.getString(16));
+        prescription.setExecutorStaffInfo(executorStaffInfo);
+
+        LocalDateTime executionDateTime = null;
+        Timestamp executionTimestamp = rSet.getTimestamp(17);
+        if (executionTimestamp != null) {
+            executionDateTime = executionTimestamp.toLocalDateTime();
+        }
+        prescription.setExecutionDateTime(executionDateTime);
+
+        String executionDescription = rSet.getString(18);
+        prescription.setExecutionDescription(executionDescription);
+
+        boolean doesPatientAgree = rSet.getBoolean(19);
+        prescription.setDoesPatientAgree(doesPatientAgree);
+
+        String patientDisagreementDescription = rSet.getString(20);
+        prescription.setPatientDisagreementDescription
+                (patientDisagreementDescription);
+
+        LocalDateTime patientDisagreementDateTime = null;
+        Timestamp disagreementTimestamp = rSet.getTimestamp(21);
+        if (disagreementTimestamp != null) {
+            patientDisagreementDateTime = disagreementTimestamp.toLocalDateTime();
+        }
+        prescription.setPatientDisagreementDateTime(patientDisagreementDateTime);
+
+        boolean isPrescriptionComplete = false;
+        if ((executionDateTime != null) || (patientDisagreementDateTime != null)) {
+            isPrescriptionComplete = true;
+        }
+        prescription.setPrescriptionComplete(isPrescriptionComplete);
+
+        return prescription;
     }
 }
