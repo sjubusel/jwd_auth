@@ -68,4 +68,17 @@ public class DefaultVisitService implements VisitService {
         }
         return null;
     }
+
+    @Override
+    public AdmissionDepartmentVisit fetchFullAdmissionDepartmentVisit(String
+            visitId) throws ServiceException {
+        if (validator.isVisitIdCorrect(visitId)) {
+            try {
+                return visitDao.fetchFullAdmissionDepartmentVisit(visitId);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return null;
+    }
 }

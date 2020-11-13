@@ -18,4 +18,7 @@ public interface VisitService {
 
     List<AdmissionDepartmentVisit> fetchControlledVisits(AuthUser user)
             throws ServiceException;
+
+    AdmissionDepartmentVisit fetchFullAdmissionDepartmentVisit(String visitId)
+            throws ServiceException;
 }

@@ -18,4 +18,7 @@ public interface VisitDao {
 
     List<AdmissionDepartmentVisit> fetchControlledVisits(AuthUser user)
             throws DaoException;
+
+    AdmissionDepartmentVisit fetchFullAdmissionDepartmentVisit(String visitId)
+            throws DaoException;
 }

@@ -7,7 +7,10 @@ import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
 import by.epamtc.jwd.auth.model.constant.SqlStatement;
+import by.epamtc.jwd.auth.model.user_info.TransportationStatus;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
+import by.epamtc.jwd.auth.model.visit_info.VisitReason;
+import by.epamtc.jwd.auth.model.visit_info.VisitResult;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -179,6 +182,37 @@ public class DefaultVisitDao implements VisitDao {
         return controlledVisits;
     }
 
+    @Override
+    public AdmissionDepartmentVisit fetchFullAdmissionDepartmentVisit(String
+            visitId) throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement.SELECT_FULL_VISIT);
+            statement.setInt(1, Integer.parseInt(visitId));
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                AdmissionDepartmentVisit visit = compileShortenedVisit(resultSet);
+                return compileFullVisit(visit, resultSet);
+            }
+
+        } catch (SQLException e) {
+            throw new DaoException("An error while fetching full information" +
+                    " about a visit from a source", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection " +
+                    "intended for fetching full information about a visit", e);
+        } finally {
+            pool.closeConnection(conn, statement, resultSet);
+        }
+
+        throw new DaoException("In theory it is unreachable place");
+    }
+
     private AdmissionDepartmentVisit compileShortenedVisit(ResultSet resultSet)
             throws SQLException {
         AdmissionDepartmentVisit visit = new AdmissionDepartmentVisit();
@@ -192,13 +226,58 @@ public class DefaultVisitDao implements VisitDao {
         String lastName = resultSet.getString(3);
         String firstName = resultSet.getString(4);
         String middleName = resultSet.getString(5);
-        String personInfo = middleName != null
-                            ? lastName + AppConstant.ONE_WHITESPACE + firstName
-                                    + AppConstant.ONE_WHITESPACE + middleName
-                            : lastName + AppConstant.ONE_WHITESPACE + firstName;
+        String personInfo = compileFullName(firstName, middleName, lastName);
         visit.setPatientShortInfo(personInfo);
         String visitDescription = resultSet.getString(6);
         visit.setPatientVisitDescriptionInfo(visitDescription);
+        return visit;
+    }
+
+    private String compileFullName(String firstName, String middleName,
+            String lastName) {
+        return middleName != null
+               ? lastName + AppConstant.ONE_WHITESPACE + firstName
+                       + AppConstant.ONE_WHITESPACE + middleName
+               : lastName + AppConstant.ONE_WHITESPACE + firstName;
+    }
+
+    private AdmissionDepartmentVisit compileFullVisit(AdmissionDepartmentVisit
+            visit, ResultSet resultSet) throws SQLException {
+        int personId = resultSet.getInt(7);
+        visit.setPatientId(personId);
+        String visitReason = resultSet.getString(8);
+        if (visitReason != null) {
+            visit.setVisitReason(VisitReason.valueOf(visitReason));
+        }
+        int doctorId = resultSet.getInt(9);
+        visit.setResponsibleDoctorId(doctorId);
+        String doctorLastName = resultSet.getString(10);
+        String doctorFirstName = resultSet.getString(11);
+        String doctorMiddleName = resultSet.getString(12);
+        visit.setResponsibleDoctorInfo(compileFullName(doctorFirstName,
+                doctorMiddleName, doctorLastName));
+        String transStatus = resultSet.getString(13);
+        if (transStatus != null) {
+            visit.setTransportationStatus(TransportationStatus
+                    .valueOf(transStatus));
+        }
+        int paramedicalStaff = resultSet.getInt(14);
+        visit.setResponsibleNonDoctorStaffId(paramedicalStaff);
+        String paraLastName = resultSet.getString(15);
+        String paraFirstName = resultSet.getString(16);
+        String paraMiddleName = resultSet.getString(17);
+        visit.setResponsibleNonDoctorStaffInfo(compileFullName(paraFirstName,
+                paraMiddleName, paraLastName));
+        String complaints = resultSet.getString(18);
+        visit.setPatientComplaints(complaints);
+        String result = resultSet.getString(19);
+        if (result != null) {
+            visit.setVisitResult(VisitResult.valueOf(result));
+        }
+        int hospDepartmentId = resultSet.getInt(20);
+        visit.setHospitalizationDepartmentId(hospDepartmentId);
+        String hospDepartmentName = resultSet.getString(21);
+        visit.setHospitalizationDepartmentInfo(hospDepartmentName);
         return visit;
     }
 }
