@@ -7,6 +7,8 @@ import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
 import by.epamtc.jwd.auth.model.constant.SqlStatement;
+import by.epamtc.jwd.auth.model.med_info.Diagnosis;
+import by.epamtc.jwd.auth.model.med_info.DiagnosisOrigin;
 import by.epamtc.jwd.auth.model.user_info.TransportationStatus;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
 import by.epamtc.jwd.auth.model.visit_info.VisitReason;
@@ -213,6 +215,48 @@ public class DefaultVisitDao implements VisitDao {
         throw new DaoException("In theory it is unreachable place");
     }
 
+    @Override
+    public List<Diagnosis> fetchInnerHospitalDiagnoses(int patientId)
+            throws DaoException {
+        Connection conn = null;
+        PreparedStatement[] statements = new PreparedStatement[2];
+        ResultSet[] resultSets = new ResultSet[2];
+        int pointer = 0;
+        List<Diagnosis> diagnoses = new ArrayList<>();
+
+        try {
+            conn = pool.takeConnection();
+            statements[pointer] = conn.prepareStatement(SqlStatement
+                    .SELECT_VISIT_DIAGNOSES);
+            resultSets[pointer] = statements[pointer].executeQuery();
+            while (resultSets[pointer].next()) {
+                Diagnosis diagnosis = compileDiagnosis(resultSets[pointer],
+                        DiagnosisOrigin.ADMISSION_DEPARTMENT);
+                diagnoses.add(diagnosis);
+            }
+
+            statements[++pointer] = conn.prepareStatement(SqlStatement.
+                    SELECT_INNER_HOSPITAL_DIAGNOSES);
+            resultSets[pointer] = statements[pointer].executeQuery();
+            while (resultSets[pointer].next()) {
+                Diagnosis diagnosis = compileDiagnosis(resultSets[pointer],
+                        DiagnosisOrigin.INNER_HOSPITAL_DEPARTMENT);
+                diagnoses.add(diagnosis);
+            }
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking an Connection" +
+                    "during fetching of diagnoses of a particular " +
+                    "patient.", e);
+        } catch (SQLException e) {
+            throw new DaoException("An error while fetching all diagnoses of " +
+                    "a particular patient.", e);
+        } finally {
+            pool.closeConnection(conn, statements, resultSets);
+        }
+
+        return diagnoses;
+    }
+
     private AdmissionDepartmentVisit compileShortenedVisit(ResultSet resultSet)
             throws SQLException {
         AdmissionDepartmentVisit visit = new AdmissionDepartmentVisit();
@@ -279,5 +323,57 @@ public class DefaultVisitDao implements VisitDao {
         String hospDepartmentName = resultSet.getString(21);
         visit.setHospitalizationDepartmentInfo(hospDepartmentName);
         return visit;
+    }
+
+    private Diagnosis compileDiagnosis(ResultSet resultSet, DiagnosisOrigin
+            diagnosisOrigin) throws SQLException {
+        Diagnosis diagnosis = new Diagnosis();
+        diagnosis.setDiagnosisOrigin(diagnosisOrigin);
+
+        int diagnosisId = resultSet.getInt(1);
+        diagnosis.setDiagnosisId(diagnosisId);
+
+        LocalDateTime diagnosisDateTime = null;
+        Timestamp timestamp = resultSet.getTimestamp(2);
+        if (timestamp != null) {
+            diagnosisDateTime = timestamp.toLocalDateTime();
+        }
+        diagnosis.setDiagnosisDateTime(diagnosisDateTime);
+
+        int diseaseId = resultSet.getInt(3);
+        diagnosis.setDiseaseId(diseaseId);
+
+        String diseaseInfo = resultSet.getString(4);
+        diagnosis.setDiseaseInfo(diseaseInfo);
+
+        String diagnosisDescription = resultSet.getString(5);
+        diagnosis.setDiagnosisDescription(diagnosisDescription);
+
+        int diagnoseDoctorId = resultSet.getInt(6);
+        diagnosis.setDiagnoseDoctorId(diagnoseDoctorId);
+
+        String diagnoseDoctorInfo = compileFullName(resultSet.getString(7),
+                resultSet.getString(8), resultSet.getString(9));
+        diagnosis.setDiagnoseDoctorInfo(diagnoseDoctorInfo);
+
+        LocalDateTime cancellationDateTime = null;
+        Timestamp cancellationTimestamp = resultSet.getTimestamp(10);
+        if (cancellationTimestamp != null) {
+            cancellationDateTime = cancellationTimestamp.toLocalDateTime();
+        }
+        diagnosis.setCancellationDateTime(cancellationDateTime);
+
+        int cancellationDoctorId = resultSet.getInt(11);
+        diagnosis.setCancellationDoctorId(cancellationDoctorId);
+
+        String cancellationDoctorInfo = compileFullName(resultSet.getString(12),
+                resultSet.getString(13), resultSet.getString(14));
+        diagnosis.setCancellationDoctorInfo(cancellationDoctorInfo);
+
+        String cancellationDiagnosisDescription = resultSet.getString(15);
+        diagnosis.setCancellationDiagnosisDescription
+                (cancellationDiagnosisDescription);
+
+        return diagnosis;
     }
 }

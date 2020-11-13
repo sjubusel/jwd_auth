@@ -252,6 +252,65 @@ public final class SqlStatement {
             "\n" +
             "\n" +
             "WHERE v2ad.visit_id = ?;";
+    public static final String SELECT_VISIT_DIAGNOSES
+            = "SELECT vdr.diagnosis_id,\n" +
+            "       vdr.diagnosis_datetime,\n" +
+            "       vdr.disease_id,\n" +
+            "       d.icd_10_disease_name,\n" +
+            "       vdr.diagnosis_description,\n" +
+            "       vdr.established_diagnosis_staff_id,\n" +
+            "       doctorAsPerson.first_name,\n" +
+            "       doctorAsPerson.middle_name,\n" +
+            "       doctorAsPerson.last_name,\n" +
+            "       vdr.cancellation_datetime,\n" +
+            "       vdr.cancellation_staff_id,\n" +
+            "       cancelDoctorAsPerson.first_name,\n" +
+            "       cancelDoctorAsPerson.middle_name,\n" +
+            "       cancelDoctorAsPerson.last_name,\n" +
+            "       vdr.cancellation_reason\n" +
+            "\n" +
+            "\n" +
+            "FROM hospital.visit_diagnosis_records vdr\n" +
+            "         JOIN hospital.visits_to_admission_department v2ad ON vdr.visit_id = v2ad.visit_id\n" +
+            "         JOIN hospital.icd_10_diseases d ON vdr.disease_id = d.icd_10_disease_id\n" +
+            "\n" +
+            "         JOIN hospital.staff doctorAsStaff ON vdr.established_diagnosis_staff_id = doctorAsStaff.staff_id\n" +
+            "         JOIN hospital.persons doctorAsPerson ON doctorAsStaff.person_id = doctorAsPerson.person_id\n" +
+            "\n" +
+            "         LEFT OUTER JOIN hospital.staff cancelDoctorAsStaff ON vdr.cancellation_staff_id = cancelDoctorAsStaff.staff_id\n" +
+            "         LEFT OUTER JOIN hospital.persons cancelDoctorAsPerson\n" +
+            "                         ON cancelDoctorAsStaff.person_id = cancelDoctorAsPerson.person_id\n" +
+            "WHERE v2ad.person_id = ?;";
+    public static final String SELECT_INNER_HOSPITAL_DIAGNOSES
+            = "SELECT dr.diagnosis_id,\n" +
+            "       dr.diagnosis_datetime,\n" +
+            "       dr.disease_id,\n" +
+            "       d.icd_10_disease_name,\n" +
+            "       dr.diagnosis_description,\n" +
+            "       dr.doctor_id,\n" +
+            "       doctorAsPerson.first_name,\n" +
+            "       doctorAsPerson.middle_name,\n" +
+            "       doctorAsPerson.last_name,\n" +
+            "       dr.cancellation_datetime,\n" +
+            "       dr.cancellation_staff_id,\n" +
+            "       cancelDoctorAsPerson.first_name,\n" +
+            "       cancelDoctorAsPerson.middle_name,\n" +
+            "       cancelDoctorAsPerson.last_name,\n" +
+            "       dr.cancellation_reason\n" +
+            "\n" +
+            "\n" +
+            "FROM hospital.diagnosis_records dr\n" +
+            "         JOIN hospital.medical_charts mc ON dr.medical_chart_id = mc.medical_chart_id\n" +
+            "         JOIN hospital.icd_10_diseases d ON dr.disease_id = d.icd_10_disease_id\n" +
+            "\n" +
+            "         JOIN hospital.staff doctorAsStaff ON dr.doctor_id = doctorAsStaff.staff_id\n" +
+            "         JOIN hospital.persons doctorAsPerson ON doctorAsStaff.person_id = doctorAsPerson.person_id\n" +
+            "\n" +
+            "         LEFT OUTER JOIN hospital.staff cancelDoctorAsStaff ON dr.cancellation_staff_id = cancelDoctorAsStaff.staff_id\n" +
+            "         LEFT OUTER JOIN hospital.persons cancelDoctorAsPerson\n" +
+            "                         ON cancelDoctorAsStaff.person_id = cancelDoctorAsPerson.person_id\n" +
+            "\n" +
+            "WHERE mc.person_id = ?;";
 
     private SqlStatement() {
     }
