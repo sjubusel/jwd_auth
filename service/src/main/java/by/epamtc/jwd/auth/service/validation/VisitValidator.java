@@ -19,4 +19,8 @@ public class VisitValidator {
     public boolean isVisitIdCorrect(String visitId) {
         return visitId.matches(RegistrationInfoPattern.DIGITS);
     }
+
+    public boolean isPatientIdCorrect(int patientId) {
+        return patientId > 0;
+    }
 }

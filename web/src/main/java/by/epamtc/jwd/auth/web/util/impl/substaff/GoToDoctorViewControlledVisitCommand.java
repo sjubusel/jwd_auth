@@ -3,6 +3,7 @@ package by.epamtc.jwd.auth.web.util.impl.substaff;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
 import by.epamtc.jwd.auth.model.constant.AppParameter;
+import by.epamtc.jwd.auth.model.med_info.Diagnosis;
 import by.epamtc.jwd.auth.model.user_info.AllergicReactionsInfo;
 import by.epamtc.jwd.auth.model.user_info.ExtremelyHazardousDiseaseCase;
 import by.epamtc.jwd.auth.model.user_info.PatientInfo;
@@ -39,6 +40,7 @@ public class GoToDoctorViewControlledVisitCommand implements Command {
         PatientInfo patientInfo = null;
         AllergicReactionsInfo allergicReactionsInfo = null;
         List<ExtremelyHazardousDiseaseCase> diseaseList = null;
+        List<Diagnosis> diagnosisList = null;
 
 
         try {
@@ -50,6 +52,8 @@ public class GoToDoctorViewControlledVisitCommand implements Command {
                     (patientAuthUser);
             diseaseList = profileService.fetchCasesOfExtremelyHazardousDiseases
                     (patientAuthUser);
+            diagnosisList = visitService.fetchInnerHospitalDiagnoses(visitInfo
+                    .getPatientId());
         } catch (ServiceException e) {
             logger.error("An error while fetching preparing combined " +
                     "information treatment. Params{visitId={}," +
