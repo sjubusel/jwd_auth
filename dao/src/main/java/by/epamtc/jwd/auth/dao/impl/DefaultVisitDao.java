@@ -231,6 +231,7 @@ public class DefaultVisitDao implements VisitDao {
             conn = pool.takeConnection();
             statements[pointer] = conn.prepareStatement(SqlStatement
                     .SELECT_VISIT_DIAGNOSES);
+            statements[pointer].setInt(1, patientId);
             resultSets[pointer] = statements[pointer].executeQuery();
             while (resultSets[pointer].next()) {
                 Diagnosis diagnosis = compileDiagnosis(resultSets[pointer],
@@ -240,6 +241,7 @@ public class DefaultVisitDao implements VisitDao {
 
             statements[++pointer] = conn.prepareStatement(SqlStatement.
                     SELECT_INNER_HOSPITAL_DIAGNOSES);
+            statements[pointer].setInt(1, patientId);
             resultSets[pointer] = statements[pointer].executeQuery();
             while (resultSets[pointer].next()) {
                 Diagnosis diagnosis = compileDiagnosis(resultSets[pointer],

@@ -39,7 +39,8 @@ public class GoToDoctorViewControlledVisitCommand implements Command {
         AuthUser user = (AuthUser) req.getSession().getAttribute(AppAttribute
                 .SESSION_AUTH_USER);
         String visitId = req.getParameter(AppParameter.VISIT_ID);
-        AdmissionDepartmentVisit visitInfo;
+
+        AdmissionDepartmentVisit visitInfo = null;
         PatientInfo patientInfo = null;
         AllergicReactionsInfo allergicReactionsInfo = null;
         List<ExtremelyHazardousDiseaseCase> diseaseList = null;
@@ -50,17 +51,25 @@ public class GoToDoctorViewControlledVisitCommand implements Command {
 
         try {
             visitInfo = visitService.fetchFullAdmissionDepartmentVisit(visitId);
+
             AuthUser patientAuthUser = new AuthUser();
             patientAuthUser.setUserId(visitInfo.getPatientId());
+
             patientInfo = profileService.fetchPatientInfo(patientAuthUser);
+
             allergicReactionsInfo = profileService.fetchAllergicReactionsInfo
                     (patientAuthUser);
+
             diseaseList = profileService.fetchCasesOfExtremelyHazardousDiseases
                     (patientAuthUser);
+
             diagnoses = visitService.fetchInnerHospitalDiagnoses(visitInfo
                     .getPatientId());
+
             medicinePrescriptions = visitService.fetchVisitMedicinePrescriptions
                     (visitId);
+
+            prescriptions = visitService.fetchVisitPrescriptions(visitId);
         } catch (ServiceException e) {
             logger.error("An error while fetching preparing combined " +
                     "information treatment. Params{visitId={}," +
@@ -69,7 +78,71 @@ public class GoToDoctorViewControlledVisitCommand implements Command {
                     .REQUEST_ERROR_VALUE_TECH);
         }
 
-        req.getRequestDispatcher(CommandPath.SUBSTAFF__JSP)
+        if ((visitInfo == null) || (patientInfo == null)
+                || (allergicReactionsInfo == null) || (diseaseList == null)
+                || (diagnoses == null) || (medicinePrescriptions == null)
+                || (prescriptions == null)) {
+
+            setValidationErrorRequestAttributeIfNecessary(req);
+
+        } else {
+            addPossibleRequestAttributes(req, visitInfo, patientInfo,
+                    allergicReactionsInfo, diseaseList, diagnoses,
+                    medicinePrescriptions, prescriptions);
+        }
+
+        req.getRequestDispatcher(CommandPath.SUBSTAFF_VISIT_DETAIL_JSP)
                 .forward(req, res);
+    }
+
+    private void setValidationErrorRequestAttributeIfNecessary(HttpServletRequest req) {
+        if (req.getAttribute(AppAttribute.REQUEST_ERROR) == null) {
+            req.setAttribute(AppAttribute.REQUEST_ERROR, AppAttribute
+                    .REQUEST_ERROR_VALUE_VAL);
+        }
+    }
+
+    private void addPossibleRequestAttributes(HttpServletRequest req,
+            AdmissionDepartmentVisit visitInfo, PatientInfo patientInfo,
+            AllergicReactionsInfo allergicReactionsInfo,
+            List<ExtremelyHazardousDiseaseCase> diseaseList,
+            List<Diagnosis> diagnoses,
+            List<MedicinePrescription> medicinePrescriptions,
+            List<Prescription> prescriptions) {
+
+        req.setAttribute(AppAttribute.REQUEST_CONTROLLED_VISIT_INFO,
+                visitInfo);
+
+        req.setAttribute(AppAttribute.REQUEST_PATIENT_INFO, patientInfo);
+
+        if (allergicReactionsInfo.getAllergicFoodReactions().size() > 0) {
+            req.setAttribute(AppAttribute.REQUEST_ALLERGIC_FOOD_REACTIONS,
+                    allergicReactionsInfo.getAllergicFoodReactions());
+        }
+
+        if (allergicReactionsInfo.getAllergicMedicineReactions().size() > 0) {
+            req.setAttribute(AppAttribute.REQUEST_ALLERGIC_MEDICINE_REACTIONS,
+                    allergicReactionsInfo.getAllergicMedicineReactions());
+        }
+
+        if (diseaseList.size() > 0) {
+            req.setAttribute(AppAttribute.REQUEST_EXTEREMELY_HAZARDOUS_DISEASES,
+                    diseaseList);
+        }
+
+        if (diagnoses.size() > 0) {
+            req.setAttribute(AppAttribute.REQUEST_ALL_TIME_DIAGNOSES,
+                    diagnoses);
+        }
+
+        if (medicinePrescriptions.size() > 0) {
+            req.setAttribute(AppAttribute.REQUEST_MEDICINE_PRESCRIPTIONS,
+                    medicinePrescriptions);
+        }
+
+        if (prescriptions.size() > 0) {
+            req.setAttribute(AppAttribute.REQUEST_PRESCRIPTIONS,
+                    prescriptions);
+        }
     }
 }

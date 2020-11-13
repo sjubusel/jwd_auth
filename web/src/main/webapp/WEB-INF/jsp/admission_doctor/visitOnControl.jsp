@@ -92,7 +92,7 @@
                             <c:forEach var="visits"
                                        items="${requestScope.visits}">
                                 <form action="${pageContext.request.contextPath}/profile"
-                                      method="post">
+                                      method="get">
                                     <input type="hidden" name="command"
                                            value="go-to-doctor-view-controlled-visit"/>
 

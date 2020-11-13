@@ -22,6 +22,11 @@ public final class AppAttribute {
     public static final String REQUEST_EXTEREMELY_HAZARDOUS_DISEASES
             = "extremelyHazardousDiseases";
     public static final String REQUEST_VISITS = "visits";
+    public static final String REQUEST_CONTROLLED_VISIT_INFO = "visitInfo";
+    public static final String REQUEST_ALL_TIME_DIAGNOSES = "allDiagnoses";
+    public static final String REQUEST_MEDICINE_PRESCRIPTIONS
+            = "medicinePrescriptions";
+    public static final String REQUEST_PRESCRIPTIONS = "prescriptions";
 
     private AppAttribute() {
     }
