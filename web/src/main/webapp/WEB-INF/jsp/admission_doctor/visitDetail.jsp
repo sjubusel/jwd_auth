@@ -244,39 +244,46 @@
                                     </td>
                                 </tr>
 
-                                <tr class="row">
-                                    <td class="col-5 d-flex align-items-center">
-                                        <fmt:message bundle="${jspMessages}"
-                                                     key="visitDetail.responsibleNonDoctorStaffId"/>
-                                    </td>
-                                    <td class="col d-flex align-items-center">
-                                        <c:choose>
-                                            <c:when test="${requestScope.visitInfo.responsibleNonDoctorStaffId ne null}">
-                                                <c:out value="${requestScope.visitInfo.responsibleNonDoctorStaffId}"/>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <c:out value=""/>
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </td>
-                                </tr>
+                                <c:choose>
+                                    <c:when test="${requestScope.visitInfo.responsibleNonDoctorStaffId > 0}">
+                                        <tr class="row">
+                                            <td class="col-5 d-flex align-items-center">
+                                                <fmt:message
+                                                        bundle="${jspMessages}"
+                                                        key="visitDetail.responsibleNonDoctorStaffId"/>
+                                            </td>
+                                            <td class="col d-flex align-items-center">
+                                                <c:choose>
+                                                    <c:when test="${requestScope.visitInfo.responsibleNonDoctorStaffId ne null}">
+                                                        <c:out value="${requestScope.visitInfo.responsibleNonDoctorStaffId}"/>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <c:out value=""/>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </td>
+                                        </tr>
 
-                                <tr class="row">
-                                    <td class="col-5 d-flex align-items-center">
-                                        <fmt:message bundle="${jspMessages}"
-                                                     key="visitDetail.responsibleNonDoctorStaffInfo"/>
-                                    </td>
-                                    <td class="col d-flex align-items-center">
-                                        <c:choose>
-                                            <c:when test="${requestScope.visitInfo.responsibleNonDoctorStaffInfo ne null}">
-                                                <c:out value="${requestScope.visitInfo.responsibleNonDoctorStaffInfo}"/>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <c:out value=""/>
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </td>
-                                </tr>
+                                        <tr class="row">
+                                            <td class="col-5 d-flex align-items-center">
+                                                <fmt:message
+                                                        bundle="${jspMessages}"
+                                                        key="visitDetail.responsibleNonDoctorStaffInfo"/>
+                                            </td>
+                                            <td class="col d-flex align-items-center">
+                                                <c:choose>
+                                                    <c:when test="${requestScope.visitInfo.responsibleNonDoctorStaffInfo ne null}">
+                                                        <c:out value="${requestScope.visitInfo.responsibleNonDoctorStaffInfo}"/>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <c:out value=""/>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </td>
+                                        </tr>
+                                    </c:when>
+                                    <c:otherwise> </c:otherwise>
+                                </c:choose>
 
                                 <tr class="row">
                                     <td class="col-5 d-flex align-items-center">
@@ -288,7 +295,7 @@
                                     <td class="col d-flex align-items-center">
                                             <%--TODO make a command--%>
                                         <form action="${pageContext.request.contextPath}/profile?command=change-complaints-of=patient"
-                                              method="post">
+                                              method="post" class="d-block">
                                             <textarea type="text"
                                                       name="complaintsInput"
                                                       id="complaints"
@@ -325,39 +332,45 @@
                                     </td>
                                 </tr>
 
-                                <tr class="row">
-                                    <td class="col-5 d-flex align-items-center">
-                                        <fmt:message bundle="${jspMessages}"
-                                                     key="visitDetail.hospitalizationDepartmentId"/>
-                                    </td>
-                                    <td class="col d-flex align-items-center">
-                                        <c:choose>
-                                            <c:when test="${requestScope.visitInfo.hospitalizationDepartmentId ne null}">
-                                                <c:out value="${requestScope.visitInfo.hospitalizationDepartmentId}"/>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <c:out value=""/>
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </td>
-                                </tr>
-
-                                <tr class="row">
-                                    <td class="col-5 d-flex align-items-center">
-                                        <fmt:message bundle="${jspMessages}"
-                                                     key="visitDetail.hospitalizationDepartmentInfo"/>
-                                    </td>
-                                    <td class="col d-flex align-items-center">
-                                        <c:choose>
-                                            <c:when test="${requestScope.visitInfo.hospitalizationDepartmentInfo ne null}">
-                                                <c:out value="${requestScope.visitInfo.hospitalizationDepartmentInfo}"/>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <c:out value=""/>
-                                            </c:otherwise>
-                                        </c:choose>
-                                    </td>
-                                </tr>
+                                <c:choose>
+                                    <c:when test="${requestScope.visitInfo.hospitalizationDepartmentId > 0}">
+                                        <tr class="row">
+                                            <td class="col-5 d-flex align-items-center">
+                                                <fmt:message
+                                                        bundle="${jspMessages}"
+                                                        key="visitDetail.hospitalizationDepartmentId"/>
+                                            </td>
+                                            <td class="col d-flex align-items-center">
+                                                <c:choose>
+                                                    <c:when test="${requestScope.visitInfo.hospitalizationDepartmentId ne null}">
+                                                        <c:out value="${requestScope.visitInfo.hospitalizationDepartmentId}"/>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <c:out value=""/>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </td>
+                                        </tr>
+                                        <tr class="row">
+                                            <td class="col-5 d-flex align-items-center">
+                                                <fmt:message
+                                                        bundle="${jspMessages}"
+                                                        key="visitDetail.hospitalizationDepartmentInfo"/>
+                                            </td>
+                                            <td class="col d-flex align-items-center">
+                                                <c:choose>
+                                                    <c:when test="${requestScope.visitInfo.hospitalizationDepartmentInfo ne null}">
+                                                        <c:out value="${requestScope.visitInfo.hospitalizationDepartmentInfo}"/>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <c:out value=""/>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </td>
+                                        </tr>
+                                    </c:when>
+                                    <c:otherwise> </c:otherwise>
+                                </c:choose>
                                 </tbody>
                             </table>
                         </c:when>
