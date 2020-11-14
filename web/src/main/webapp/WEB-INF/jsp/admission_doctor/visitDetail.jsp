@@ -992,7 +992,122 @@
                     </h1>
                     <c:choose>
                         <c:when test="${requestScope.prescriptions ne null}">
-
+                            <%--header--%>
+                            <div class="row d-flex mb-1 border">
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.isThisPrescriptionComplete"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.prescriptionDateTime"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.prescribingDoctorInfo"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.prescriptionDescription"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.controllingStaff"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.prescriptionResult"/>
+                                </div>
+                            </div>
+                            <c:forEach var="prescription"
+                                       items="${requestScope.prescriptions}">
+                                <div class="row d-flex mb-1 border align-items-center">
+                                    <div class="col">
+                                        <c:choose>
+                                            <c:when test="${prescription.isPrescriptionComplete eq true}">
+                                                <img src="${pageContext.request.contextPath}/img/plus.png"
+                                                     alt="plus">
+                                            </c:when>
+                                            <c:otherwise>
+                                                <img src="${pageContext.request.contextPath}/img/minus.png"
+                                                     alt="minus">
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </div>
+                                    <div class="col">
+                                        <c:out value="${prescription.prescriptionDateTime}"/>
+                                    </div>
+                                    <div class="col">
+                                        <c:out value="${prescription.prescribingStaffInfo}"/>
+                                    </div>
+                                    <div class="col">
+                                        <c:out value="${prescription.prescriptionDescription}"/>
+                                    </div>
+                                    <div class="col d-block">
+                                        <c:choose>
+                                            <c:when test="${prescription.responsibleStaffId > 0}">
+                                                <div>
+                                                    <fmt:message
+                                                            bundle="${jspMessages}"
+                                                            key="visitDetail.responsibleStaff"/>
+                                                    <c:out value=": "/>
+                                                    <c:out value="${prescription.responsibleStaffInfo}"/>
+                                                </div>
+                                            </c:when>
+                                        </c:choose>
+                                    </div>
+                                    <div class="col d-block">
+                                        <c:choose>
+                                            <c:when test="${prescription.executorStaffId > 0}">
+                                                <div>
+                                                    <fmt:message
+                                                            bundle="${jspMessages}"
+                                                            key="visitDetail.executor"/>
+                                                    <c:out value=": "/>
+                                                    <c:out value="${prescription.executorStaffInfo}"/>
+                                                </div>
+                                                <div>
+                                                    <fmt:message
+                                                            bundle="${jspMessages}"
+                                                            key="visitDetail.executionDateTime"/>
+                                                    <c:out value=": "/>
+                                                    <c:out value="${prescription.executionDateTime}"/>
+                                                </div>
+                                                <div>
+                                                    <fmt:message
+                                                            bundle="${jspMessages}"
+                                                            key="visitDetail.executionResult"/>
+                                                    <c:out value=": "/>
+                                                    <c:out value="${prescription.executionDescription}"/>
+                                                </div>
+                                            </c:when>
+                                        </c:choose>
+                                        <c:choose>
+                                            <c:when test="${prescription.doesPatientAgree eq false}">
+                                                <div>
+                                                    <fmt:message
+                                                            bundle="${jspMessages}"
+                                                            key="visitDetail.patientDisagrees"/>
+                                                </div>
+                                                <div>
+                                                    <fmt:message
+                                                            bundle="${jspMessages}"
+                                                            key="visitDetail.disagreementDateTime"/>
+                                                    <c:out value=": "/>
+                                                    <c:out value="${prescription.patientDisagreementDateTime}"/>
+                                                </div>
+                                                <div>
+                                                    <fmt:message
+                                                            bundle="${jspMessages}"
+                                                            key="visitDetail.disagreementDiscription"/>
+                                                    <c:out value=": "/>
+                                                    <c:out value="${prescription.patientDisagreementDescription}"/>
+                                                </div>
+                                            </c:when>
+                                        </c:choose>
+                                    </div>
+                                </div>
+                            </c:forEach>
                         </c:when>
                         <c:otherwise>
                             <fmt:message bundle="${jspMessages}"
