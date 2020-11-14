@@ -425,3 +425,7 @@ establishMedicinePrescription.medicineMeasureUnitAmpoule=АМПУЛА(Ы)
 establishMedicinePrescription.medicineMeasureVial=ФЛАКОН(Ы)
 establishMedicinePrescription.medicineMeasureUnitSyrette=ШПРИЦ-ТЮБИК(И)
 establishMedicinePrescription.button=Add a medicine prescription
+
+establishMedicinePrescription.changeResultSuccess=Medicine prescription is successfully added
+establishMedicinePrescription.changeResultTechError=Medicine prescription is not added because of a technical factor
+establishMedicinePrescription.changeResultValidationError=Medicine prescription is not added because of an incorrect page configuration

@@ -425,3 +425,7 @@ establishMedicinePrescription.medicineMeasureUnitAmpoule=АМПУЛА(Ы)
 establishMedicinePrescription.medicineMeasureVial=ФЛАКОН(Ы)
 establishMedicinePrescription.medicineMeasureUnitSyrette=ШПРИЦ-ТЮБИК(И)
 establishMedicinePrescription.button=Добавить назначение лекарственного препарата
+
+establishMedicinePrescription.changeResultSuccess=Назначение лекарственного препарата успешно выполнено
+establishMedicinePrescription.changeResultTechError=Назначение лекарственного препарата не выполнено по техническим причинам
+establishMedicinePrescription.changeResultValidationError=Назначение лекарственного препарата не выполнено из-за некорректной конфигурации страницы

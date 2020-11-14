@@ -140,6 +140,28 @@
                                      key="establishMedicinePrescription.heading"/>
                     </h1>
                     <c:choose>
+                        <c:when test="${requestScope.changeResult ne null}">
+                            <c:if test="${requestScope.changeResult eq 'success'}">
+                                <div class="alert alert-success" role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="establishMedicinePrescription.changeResultSuccess"/>
+                                </div>
+                            </c:if>
+                            <c:if test="${requestScope.changeResult eq 'techError'}">
+                                <div class="alert alert-danger" role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="establishMedicinePrescription.changeResultTechError"/>
+                                </div>
+                            </c:if>
+                            <c:if test="${requestScope.changeResult eq 'validationError'}">
+                                <div class="alert alert-danger" role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="establishMedicinePrescription.changeResultValidationError"/>
+                                </div>
+                            </c:if>
+                        </c:when>
+                    </c:choose>
+                    <c:choose>
                         <c:when test="${true}">
                             <form action="${pageContext.request.contextPath}/profile"
                                   method="post">
