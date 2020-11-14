@@ -3,6 +3,7 @@ package by.epamtc.jwd.auth.web.ajax;
 import by.epamtc.jwd.auth.model.ajax.AjaxCommandName;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchAreaInChangePatientInfoJspAjaxCommand;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchCountryInChangePatientInfoJspAjaxCommand;
+import by.epamtc.jwd.auth.web.ajax.impl.FetchDiseasesInEstablishDiagnosisAjaxCommand;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchExtremelyHazardousDiseasesInExtremelyHazardousDiseasesJsp;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchFoodAllergyInAllergicReactionsJspAjaxCommand;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchMedicineAllergyInAllergicReactionsJspAjaxCommand;
@@ -44,6 +45,8 @@ public class AjaxCommandProvider {
                 new FetchExtremelyHazardousDiseasesInExtremelyHazardousDiseasesJsp());
         repository.put(AjaxCommandName.FETCH_PERSON_IN_REGISTER_VISIT_JSP,
                 new FetchPersonInRegisterVisitAjaxCommand());
+        repository.put(AjaxCommandName.FETCH_DISEASES_IN_ESTABLISH_DIAGNOSIS_JSP,
+                new FetchDiseasesInEstablishDiagnosisAjaxCommand());
 
     }
 

@@ -20,6 +20,7 @@ public final class AjaxParameter {
     public static final String MEDICINE_TYPE = "medicineTypeInput";
     public static final String DISEASE = "diseaseInput";
     public static final String VISIT_PERSON = "personInput";
+    public static final String DISEASE_PART = "diseaseInput";
 
     private AjaxParameter() {
     }
