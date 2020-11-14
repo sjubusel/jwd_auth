@@ -396,3 +396,8 @@ visitDetail.admittingDoctorMenu=Possible actions during a visit
 visitDetail.changeResultSuccess=Patient's complaints successfully changed
 visitDetail.changeResultTechError=Because of a technical factor patient's complaints are not changed
 visitDetail.changeResultValidationError=Because of an incorrect page configuration patient's complaints are not changed
+
+visitDetail.establishDiagnosis=Establish a diagnosis
+visitDetail.establishMedPrescription=Establish a medicine prescription
+visitDetail.establishPresription=Establish a prescription
+visitDetail.makeDecision=Make a decision

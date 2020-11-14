@@ -1272,22 +1272,22 @@
                                      key="visitDetail.admittingDoctorMenu"/>
                     </h1>
                     <div class="list-group">
-                        <a href="#"
+                        <a href="${pageContext.request.contextPath}/profile?command=go-to-establish-diagnosis&hiddenVisitId=${requestScope.visitInfo.visitId}"
                            class="list-group-item list-group-item-action">
                             <fmt:message bundle="${jspMessages}"
                                          key="visitDetail.establishDiagnosis"/>
                         </a>
-                        <a href="#"
+                        <a href="${pageContext.request.contextPath}/profile?command=go-to-establish-med-prescription&hiddenVisitId=${requestScope.visitInfo.visitId}"
                            class="list-group-item list-group-item-action">
                             <fmt:message bundle="${jspMessages}"
                                          key="visitDetail.establishMedPrescription"/>
                         </a>
-                        <a href="#"
+                        <a href="${pageContext.request.contextPath}/profile?command=go-to-establish-prescription&hiddenVisitId=${requestScope.visitInfo.visitId}"
                            class="list-group-item list-group-item-action">
                             <fmt:message bundle="${jspMessages}"
                                          key="visitDetail.establishPresription"/>
                         </a>
-                        <a href="#"
+                        <a href="${pageContext.request.contextPath}/profile?command=go-to-make-visit-decision&hiddenVisitId=${requestScope.visitInfo.visitId}"
                            class="list-group-item list-group-item-action">
                             <fmt:message bundle="${jspMessages}"
                                          key="visitDetail.makeDecision"/>
