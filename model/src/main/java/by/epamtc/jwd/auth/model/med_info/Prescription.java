@@ -191,6 +191,10 @@ public class Prescription implements java.io.Serializable {
         isPrescriptionComplete = prescriptionComplete;
     }
 
+    public boolean getIsPrescriptionComplete() {
+        return isPrescriptionComplete;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {

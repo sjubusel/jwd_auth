@@ -369,3 +369,10 @@ visitDetail.cancellationDateTime=Cancellation date and time
 visitDetail.cancellationStaff=Cancelling staff
 visitDetail.cancellationReason=Cancellation reason
 visitDetail.currentPrescriptions=Information about current visit prescriptions
+
+visitDetail.isThisPrescriptionComplete=Completeness status
+visitDetail.prescriptionDateTime=Prescription date and time
+visitDetail.prescribingDoctorInfo=Prescribing doctor
+visitDetail.prescriptionDescription=Prescription contents
+visitDetail.controllingStaff=Controlling staff
+visitDetail.prescriptionResult=Result

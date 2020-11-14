@@ -369,3 +369,10 @@ visitDetail.cancellationDateTime=Дата и время отмены
 visitDetail.cancellationStaff=Отметивший персонал
 visitDetail.cancellationReason=Причина отмены
 visitDetail.currentPrescriptions=Сведения о предписаниях в рамках текущего посещения
+
+visitDetail.isThisPrescriptionComplete=Статус выполнения
+visitDetail.prescriptionDateTime=Дата и время предписания
+visitDetail.prescribingDoctorInfo=Назначивший врач
+visitDetail.prescriptionDescription=Содержание назначения
+visitDetail.controllingStaff=Лицо, осуществляющее контроль выполнения назначения
+visitDetail.prescriptionResult=Результат
