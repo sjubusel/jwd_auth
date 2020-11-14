@@ -53,6 +53,12 @@ public final class AjaxSqlStatement {
             = "SELECT icdD.icd_10_disease_id, icdD.icd_10_disease_name\n" +
             "FROM hospital.icd_10_diseases icdD\n" +
             "WHERE icdD.icd_10_disease_name LIKE CONCAT('%', ?, '%')";
+    public static final String SELECT_MEDICINES
+            = "SELECT m.medicine_id, m.name, dft.name, mc.dosage_mg, m.dosage_ml\n" +
+            "FROM hospital.medicines m\n" +
+            "         JOIN hospital.dosage_form_types dft ON m.dosage_form_type_id = dft.dosage_form_type_id\n" +
+            "         JOIN hospital.medicine_components mc ON m.main_medicine_component_id = mc.medicine_component_id\n" +
+            "WHERE m.name LIKE CONCAT('%', ?, '%');";
 
     private AjaxSqlStatement() {
     }

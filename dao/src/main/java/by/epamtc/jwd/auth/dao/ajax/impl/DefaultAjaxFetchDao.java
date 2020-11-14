@@ -9,6 +9,7 @@ import by.epamtc.jwd.auth.model.ajax.AjaxCountry;
 import by.epamtc.jwd.auth.model.ajax.AjaxDisease;
 import by.epamtc.jwd.auth.model.ajax.AjaxFoodType;
 import by.epamtc.jwd.auth.model.ajax.AjaxHazardousDisease;
+import by.epamtc.jwd.auth.model.ajax.AjaxMedicine;
 import by.epamtc.jwd.auth.model.ajax.AjaxMedicineType;
 import by.epamtc.jwd.auth.model.ajax.AjaxPerson;
 import by.epamtc.jwd.auth.model.ajax.AjaxRegion;
@@ -358,5 +359,56 @@ public class DefaultAjaxFetchDao implements AjaxFetchDao {
         }
 
         return diseases;
+    }
+
+    @Override
+    public List<AjaxMedicine> fetchMedicines(String medicinePart)
+            throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet rSet = null;
+        List<AjaxMedicine> medicines = new ArrayList<>();
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(AjaxSqlStatement
+                    .SELECT_MEDICINES);
+            statement.setString(1, medicinePart);
+            rSet = statement.executeQuery();
+            while (rSet.next()) {
+                int medicineId = rSet.getInt(1);
+                String naming = rSet.getString(2);
+                String medicineFormTypeName = rSet.getString(3);
+                double mainComponentMg = rSet.getDouble(4);
+                double dosageMl = rSet.getDouble(5);
+
+                String medicineName;
+                if (dosageMl != 0) {
+                    medicineName = naming + AppConstant.ONE_WHITESPACE
+                            + medicineFormTypeName + AppConstant.ONE_WHITESPACE
+                            + mainComponentMg + AppConstant.ONE_WHITESPACE
+                            + AppConstant.SLASH + AppConstant.ONE_WHITESPACE
+                            + dosageMl + AppConstant.ONE_WHITESPACE;
+                } else {
+                    medicineName = naming + AppConstant.ONE_WHITESPACE
+                            + medicineFormTypeName + AppConstant.ONE_WHITESPACE
+                            + mainComponentMg;
+                }
+
+                medicines.add(new AjaxMedicine(medicineId, medicineName));
+            }
+
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection from" +
+                    "the connection pool during ajax fetching of " +
+                    "AjaxMedicine", e);
+        } catch (SQLException e) {
+            throw new DaoException("An error while ajax fetching " +
+                    "AjaxMedicine from DBs", e);
+        } finally {
+            pool.closeConnection(conn, statement, rSet);
+        }
+
+        return medicines;
     }
 }

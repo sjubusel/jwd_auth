@@ -31,4 +31,7 @@ public interface AjaxFetchDao {
             throws DaoException;
 
     List<AjaxDisease> fetchDiseases(String diseasePart) throws DaoException;
+
+    List<AjaxMedicine> fetchMedicines(String medicinePart)
+            throws DaoException;
 }
