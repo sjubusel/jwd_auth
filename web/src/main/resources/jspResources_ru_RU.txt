@@ -368,3 +368,4 @@ visitDetail.actual=Действительный
 visitDetail.cancellationDateTime=Дата и время отмены
 visitDetail.cancellationStaff=Отметивший персонал
 visitDetail.cancellationReason=Причина отмены
+visitDetail.currentPrescriptions=Сведения о предписаниях в рамках текущего посещения

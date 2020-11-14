@@ -368,3 +368,4 @@ visitDetail.actual=Actual
 visitDetail.cancellationDateTime=Cancellation date and time
 visitDetail.cancellationStaff=Cancelling staff
 visitDetail.cancellationReason=Cancellation reason
+visitDetail.currentPrescriptions=Information about current visit prescriptions

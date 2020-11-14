@@ -923,62 +923,80 @@
                                                  key="visitDetail.diagnoses.cancellationInfo"/>
                                 </div>
                             </div>
-                            <c:forEach var="diagnosis"
-                                       items="${requestScope.allDiagnoses}">
-                                <div class="row d-flex mb-1 border align-items-center">
-                                    <div class="col">
-                                        <c:out value="${diagnosis.departmentOrigin.description}"/>
-                                    </div>
-                                    <div class="col">
-                                        <c:out value="${diagnosis.diagnosisDateTime}"/>
-                                    </div>
-                                    <div class="col">
-                                        <c:out value="${diagnosis.diseaseInfo}"/>
-                                    </div>
-                                    <div class="col">
-                                        <c:out value="${diagnosis.diagnosisDescription}"/>
-                                    </div>
-                                    <div class="col">
-                                        <c:out value="${diagnosis.diagnoseDoctorInfo}"/>
-                                    </div>
-                                    <div class="col d-block">
-                                        <c:choose>
-                                            <c:when test="${diagnosis.cancellationDateTime ne null}">
-                                                <div>
+                            <div class="overflow-auto"
+                                 style="max-height: 250px">
+                                <c:forEach var="diagnosis"
+                                           items="${requestScope.allDiagnoses}">
+                                    <div class="row d-flex mb-1 border align-items-center">
+                                        <div class="col">
+                                            <c:out value="${diagnosis.departmentOrigin.description}"/>
+                                        </div>
+                                        <div class="col">
+                                            <c:out value="${diagnosis.diagnosisDateTime}"/>
+                                        </div>
+                                        <div class="col">
+                                            <c:out value="${diagnosis.diseaseInfo}"/>
+                                        </div>
+                                        <div class="col">
+                                            <c:out value="${diagnosis.diagnosisDescription}"/>
+                                        </div>
+                                        <div class="col">
+                                            <c:out value="${diagnosis.diagnoseDoctorInfo}"/>
+                                        </div>
+                                        <div class="col d-block">
+                                            <c:choose>
+                                                <c:when test="${diagnosis.cancellationDateTime ne null}">
+                                                    <div>
+                                                        <fmt:message
+                                                                bundle="${jspMessages}"
+                                                                key="visitDetail.cancellationDateTime"/>
+                                                        <c:out value=": "/>
+                                                        <c:out value="${diagnosis.cancellationDateTime}"/>
+                                                    </div>
+                                                    <div>
+                                                        <fmt:message
+                                                                bundle="${jspMessages}"
+                                                                key="visitDetail.cancellationStaff"/>
+                                                        <c:out value=": "/>
+                                                        <c:out value="${diagnosis.cancellationDoctorInfo}"/>
+                                                    </div>
+                                                    <div>
+                                                        <fmt:message
+                                                                bundle="${jspMessages}"
+                                                                key="visitDetail.cancellationReason"/>
+                                                        <c:out value=": "/>
+                                                        <c:out value="${diagnosis.cancellationDiagnosisDescription}"/>
+                                                    </div>
+                                                </c:when>
+                                                <c:otherwise>
                                                     <fmt:message
                                                             bundle="${jspMessages}"
-                                                            key="visitDetail.cancellationDateTime"/>
-                                                    <c:out value=": "/>
-                                                    <c:out value="${diagnosis.cancellationDateTime}"/>
-                                                </div>
-                                                <div>
-                                                    <fmt:message
-                                                            bundle="${jspMessages}"
-                                                            key="visitDetail.cancellationStaff"/>
-                                                    <c:out value=": "/>
-                                                    <c:out value="${diagnosis.cancellationDoctorInfo}"/>
-                                                </div>
-                                                <div>
-                                                    <fmt:message
-                                                            bundle="${jspMessages}"
-                                                            key="visitDetail.cancellationReason"/>
-                                                    <c:out value=": "/>
-                                                    <c:out value="${diagnosis.cancellationDiagnosisDescription}"/>
-                                                </div>
-                                            </c:when>
-                                            <c:otherwise>
-                                                <fmt:message
-                                                        bundle="${jspMessages}"
-                                                        key="visitDetail.actual"/>
-                                            </c:otherwise>
-                                        </c:choose>
+                                                            key="visitDetail.actual"/>
+                                                </c:otherwise>
+                                            </c:choose>
+                                        </div>
                                     </div>
-                                </div>
-                            </c:forEach>
+                                </c:forEach>
+                            </div>
                         </c:when>
                         <c:otherwise>
                             <fmt:message bundle="${jspMessages}"
                                          key="visitDetail.diagnoses.noRecords"/>
+                        </c:otherwise>
+                    </c:choose>
+                    <br>
+                    <br>
+                    <h1>
+                        <fmt:message bundle="${jspMessages}"
+                                     key="visitDetail.currentPrescriptions"/>
+                    </h1>
+                    <c:choose>
+                        <c:when test="${requestScope.prescriptions ne null}">
+
+                        </c:when>
+                        <c:otherwise>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="visitDetail.absenceOfSomething"/>
                         </c:otherwise>
                     </c:choose>
                 </c:otherwise>
