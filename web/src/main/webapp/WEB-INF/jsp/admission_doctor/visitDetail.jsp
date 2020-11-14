@@ -1273,16 +1273,19 @@
                     </h1>
                     <div class="list-group">
                         <a href="${pageContext.request.contextPath}/profile?command=go-to-establish-diagnosis&hiddenVisitId=${requestScope.visitInfo.visitId}"
+                           target="_blank"
                            class="list-group-item list-group-item-action">
                             <fmt:message bundle="${jspMessages}"
                                          key="visitDetail.establishDiagnosis"/>
                         </a>
                         <a href="${pageContext.request.contextPath}/profile?command=go-to-establish-med-prescription&hiddenVisitId=${requestScope.visitInfo.visitId}"
+                           target="_blank"
                            class="list-group-item list-group-item-action">
                             <fmt:message bundle="${jspMessages}"
                                          key="visitDetail.establishMedPrescription"/>
                         </a>
                         <a href="${pageContext.request.contextPath}/profile?command=go-to-establish-prescription&hiddenVisitId=${requestScope.visitInfo.visitId}"
+                           target="_blank"
                            class="list-group-item list-group-item-action">
                             <fmt:message bundle="${jspMessages}"
                                          key="visitDetail.establishPresription"/>
