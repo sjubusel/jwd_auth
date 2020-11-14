@@ -390,3 +390,5 @@ visitDetail.dosageInfo=Дозировка
 visitDetail.headingMedicinePrescriptions=Сведения о предписаниях лекарственных средств в рамках текущего посещения
 
 visitDetail.targetApplicationDateTime=Срок исполнения
+
+visitDetail.admittingDoctorMenu=Возможные действия в рамках визита

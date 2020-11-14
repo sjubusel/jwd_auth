@@ -1114,6 +1114,8 @@
                                          key="visitDetail.absenceOfSomething"/>
                         </c:otherwise>
                     </c:choose>
+                    <br>
+                    <br>
                     <h1>
                         <fmt:message bundle="${jspMessages}"
                                      key="visitDetail.headingMedicinePrescriptions"/>
@@ -1239,6 +1241,34 @@
                                          key="visitDetail.absenceOfSomething"/>
                         </c:otherwise>
                     </c:choose>
+                    <br>
+                    <br>
+                    <h1>
+                        <fmt:message bundle="${jspMessages}"
+                                     key="visitDetail.admittingDoctorMenu"/>
+                    </h1>
+                    <div class="list-group">
+                        <a href="#"
+                           class="list-group-item list-group-item-action">
+                            <fmt:message bundle="${jspMessages}"
+                                         key="visitDetail.establishDiagnosis"/>
+                        </a>
+                        <a href="#"
+                           class="list-group-item list-group-item-action">
+                            <fmt:message bundle="${jspMessages}"
+                                         key="visitDetail.establishMedPrescription"/>
+                        </a>
+                        <a href="#"
+                           class="list-group-item list-group-item-action">
+                            <fmt:message bundle="${jspMessages}"
+                                         key="visitDetail.establishPresription"/>
+                        </a>
+                        <a href="#"
+                           class="list-group-item list-group-item-action">
+                            <fmt:message bundle="${jspMessages}"
+                                         key="visitDetail.makeDecision"/>
+                        </a>
+                    </div>
                 </c:otherwise>
             </c:choose>
 
