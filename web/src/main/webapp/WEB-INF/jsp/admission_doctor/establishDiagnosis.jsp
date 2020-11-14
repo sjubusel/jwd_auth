@@ -80,7 +80,7 @@
                                 <input type="hidden" name="command"
                                        value="establish-diagnosis">
                                 <input type="hidden" name="hiddenVisitId"
-                                       value="${}">
+                                       value="${requestScope.hiddenVisitId}">
                                 <div class="form-group form-inline row">
                                     <label for="disease">
                                         <fmt:message bundle="${jspMessages}"
