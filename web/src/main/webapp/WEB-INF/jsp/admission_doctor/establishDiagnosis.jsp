@@ -21,7 +21,7 @@
 <head>
     <title>
         <fmt:message bundle="${jspMessages}"
-                     key="admissionDoctorSubMenu.establishDiagnosis"/>
+                     key="visitDetail.establishDiagnosis"/>
         <c:out value=" | "/>
         <fmt:message bundle="${jspMessages}"
                      key="admissionDoctorSubMenu.visitsOnControl"/>
@@ -71,7 +71,7 @@
                 <c:otherwise>
                     <h1>
                         <fmt:message bundle="${jspMessages}"
-                                     key="establishDiagnosis."/>
+                                     key="establishDiagnosis.heading"/>
                     </h1>
                     <c:choose>
                         <c:when test="${true}">

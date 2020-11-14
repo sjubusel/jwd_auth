@@ -401,3 +401,9 @@ visitDetail.establishDiagnosis=Поставить диагноз
 visitDetail.establishMedPrescription=Сделать медицинское назначение
 visitDetail.establishPresription=Сделать назначение
 visitDetail.makeDecision=Принять решение
+
+establishDiagnosis.heading=Форма добавления диагноза к визиту
+establishDiagnosis.diseaseLabel=Диагностированная болезнь
+establishDiagnosis.diseasePlaceholder=Введите наименования диагностированной болезни
+establishDiagnosis.diseaseDescriptionLabel=Описание к диагностированной болезни
+establishDiagnosis.diseaseDescriptionPlaceholder=Введите описание к диагностированной болезни
