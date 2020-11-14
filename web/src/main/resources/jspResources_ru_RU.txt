@@ -364,3 +364,7 @@ visitDetail.diagnoses.diseaseInfo=Наименование болезни
 visitDetail.diagnoses.diseaseDescription=Описание диагноза
 visitDetail.diagnoses.doctorInfo=Врач, поставивший диагноз
 visitDetail.diagnoses.cancellationInfo=Сведения об отмене
+visitDetail.actual=Действительный
+visitDetail.cancellationDateTime=Дата и время отмены
+visitDetail.cancellationStaff=Отметивший персонал
+visitDetail.cancellationReason=Причина отмены

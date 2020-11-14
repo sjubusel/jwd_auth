@@ -381,6 +381,7 @@
                         </c:otherwise>
                     </c:choose>
                     <br>
+                    <br>
                     <h1>
                         <fmt:message bundle="${jspMessages}"
                                      key="visitDetail.headingPersonalInformation"/>
@@ -739,6 +740,7 @@
                         </c:otherwise>
                     </c:choose>
                     <br>
+                    <br>
                     <h1 class="text-left">
                         <fmt:message bundle="${jspMessages}"
                                      key="profileSubMenu.allergicReactionsFood.heading"/>
@@ -785,6 +787,7 @@
                         </c:otherwise>
                     </c:choose>
                     <br>
+                    <br>
                     <h1 class="text-left">
                         <fmt:message bundle="${jspMessages}"
                                      key="profileSubMenu.allergicReactionsMedicine.heading"/>
@@ -830,6 +833,7 @@
                                          key="profileSubMenu.allergicMedicineReactions.noRecordsMessage"/>
                         </c:otherwise>
                     </c:choose>
+                    <br>
                     <br>
                     <h1 class="text-left">
                         <fmt:message bundle="${jspMessages}"
@@ -883,6 +887,98 @@
                         <c:otherwise>
                             <fmt:message bundle="${jspMessages}"
                                          key="profileSubMenu.extremelyHazardousDiseases.noRecords"/>
+                        </c:otherwise>
+                    </c:choose>
+                    <br>
+                    <br>
+                    <h1>
+                        <fmt:message bundle="${jspMessages}"
+                                     key="visitDetail.headingDiagnoses"/>
+                    </h1>
+                    <c:choose>
+                        <c:when test="${requestScope.allDiagnoses ne null}">
+                            <div class="row d-flex mb-1 border">
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.diagnoses.departmentType"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.diagnoses.diagnosisDateTime"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.diagnoses.diseaseInfo"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.diagnoses.diseaseDescription"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.diagnoses.doctorInfo"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.diagnoses.cancellationInfo"/>
+                                </div>
+                            </div>
+                            <c:forEach var="diagnosis"
+                                       items="${requestScope.allDiagnoses}">
+                                <div class="row d-flex mb-1 border align-items-center">
+                                    <div class="col">
+                                        <c:out value="${diagnosis.departmentOrigin.description}"/>
+                                    </div>
+                                    <div class="col">
+                                        <c:out value="${diagnosis.diagnosisDateTime}"/>
+                                    </div>
+                                    <div class="col">
+                                        <c:out value="${diagnosis.diseaseInfo}"/>
+                                    </div>
+                                    <div class="col">
+                                        <c:out value="${diagnosis.diagnosisDescription}"/>
+                                    </div>
+                                    <div class="col">
+                                        <c:out value="${diagnosis.diagnoseDoctorInfo}"/>
+                                    </div>
+                                    <div class="col d-block">
+                                        <c:choose>
+                                            <c:when test="${diagnosis.cancellationDateTime ne null}">
+                                                <div>
+                                                    <fmt:message
+                                                            bundle="${jspMessages}"
+                                                            key="visitDetail.cancellationDateTime"/>
+                                                    <c:out value=": "/>
+                                                    <c:out value="${diagnosis.cancellationDateTime}"/>
+                                                </div>
+                                                <div>
+                                                    <fmt:message
+                                                            bundle="${jspMessages}"
+                                                            key="visitDetail.cancellationStaff"/>
+                                                    <c:out value=": "/>
+                                                    <c:out value="${diagnosis.cancellationDoctorInfo}"/>
+                                                </div>
+                                                <div>
+                                                    <fmt:message
+                                                            bundle="${jspMessages}"
+                                                            key="visitDetail.cancellationReason"/>
+                                                    <c:out value=": "/>
+                                                    <c:out value="${diagnosis.cancellationDiagnosisDescription}"/>
+                                                </div>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <fmt:message
+                                                        bundle="${jspMessages}"
+                                                        key="visitDetail.actual"/>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="visitDetail.diagnoses.noRecords"/>
                         </c:otherwise>
                     </c:choose>
                 </c:otherwise>
