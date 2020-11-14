@@ -413,3 +413,15 @@ establishDiagnosis.changeResultTechError=Диагноз не добавлен п
 establishDiagnosis.changeResultValidationError=Диагноз не добавлен по причине некорректной конфигурации страницы
 
 establishDiagnosis.button=Постановить диагноз
+
+establishMedicinePrescription.heading=Форма назначения назначения лекарственного препарата
+establishMedicinePrescription.medicineLabel=Назначаемый лекарственный препарат
+establishMedicinePrescription.medicinePlaceholder=Введите лекартственный препарат, который требуется назначить
+establishMedicinePrescription.targetApplicationDateTime=Дата и время применения
+establishMedicinePrescription.dosage=Дозировка
+establishMedicinePrescription.dosagePlaceholder=Введи дозировку в формате ЧИСЛО(А) или ЧИСЛО(А).ЧИСЛО(А)
+establishMedicinePrescription.medicineMeasureUnitTablet=ТАБЛЕТКА(И)
+establishMedicinePrescription.medicineMeasureUnitAmpoule=АМПУЛА(Ы)
+establishMedicinePrescription.medicineMeasureVial=ФЛАКОН(Ы)
+establishMedicinePrescription.medicineMeasureUnitSyrette=ШПРИЦ-ТЮБИК(И)
+establishMedicinePrescription.button=Добавить назначение лекарственного препарата

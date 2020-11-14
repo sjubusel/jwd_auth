@@ -413,3 +413,15 @@ establishDiagnosis.changeResultTechError=Diagnosis is not added because of a tec
 establishDiagnosis.changeResultValidationError=Diagnosis is not added because of an incorrect page configuration
 
 establishDiagnosis.button=Establish a diagnosis
+
+establishMedicinePrescription.heading=Form of establishing of a medicine
+establishMedicinePrescription.medicineLabel=Medicine to be prescribed
+establishMedicinePrescription.medicinePlaceholder=Insert a medicine to be prescribed
+establishMedicinePrescription.targetApplicationDateTime=Date and time when medicine is to be applied
+establishMedicinePrescription.dosage=Dosage
+establishMedicinePrescription.dosagePlaceholder=Insert a dosage in the following format: DIGIT(S) or DIGIT(S).DIGIT(S)
+establishMedicinePrescription.medicineMeasureUnitTablet=ТАБЛЕТКА(И)
+establishMedicinePrescription.medicineMeasureUnitAmpoule=АМПУЛА(Ы)
+establishMedicinePrescription.medicineMeasureVial=ФЛАКОН(Ы)
+establishMedicinePrescription.medicineMeasureUnitSyrette=ШПРИЦ-ТЮБИК(И)
+establishMedicinePrescription.button=Add a medicine prescription
