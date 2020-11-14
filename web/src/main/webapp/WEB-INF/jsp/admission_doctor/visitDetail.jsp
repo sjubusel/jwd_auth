@@ -20,7 +20,7 @@
 <head>
     <title>
         <fmt:message bundle="${jspMessages}"
-                     key="admissionDoctorSubMenu.visitsOnControl"/>
+                     key="admissionDoctorSubMenu.visitDetail"/>
         <c:out value=" | "/>
         <fmt:message bundle="${jspMessages}" key="staff.htmlTitle"/>
         <c:out value=" | "/>
@@ -379,6 +379,7 @@
                                          key="visitDetail.absenceOfSomething"/>
                         </c:otherwise>
                     </c:choose>
+                    <
                 </c:otherwise>
             </c:choose>
 

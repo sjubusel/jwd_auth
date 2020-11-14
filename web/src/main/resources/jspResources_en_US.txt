@@ -353,3 +353,4 @@ visitDetail.visitResult=Result of the visit to the admitting department
 visitDetail.hospitalizationDepartmentId=Identification number of a department of hospitalization
 visitDetail.hospitalizationDepartmentInfo=Naming of a department of a hospitalization
 visitDetail.isPrescriptionsComplete=Completeness status of doctor's prescriptions during the visit
+admissionDoctorSubMenu.visitDetail=Detailed information about a chosen visit
