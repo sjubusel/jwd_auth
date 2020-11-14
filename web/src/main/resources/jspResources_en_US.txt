@@ -383,3 +383,10 @@ visitDetail.executionResult=Execution result
 visitDetail.patientDisagrees=Patient refused to accept a prescription
 visitDetail.disagreementDateTime=Date and time of refusal
 visitDetail.disagreementDiscription=Refusal description
+
+visitDetail.medicineInfo=Prescribed medicine
+visitDetail.dosageInfo=Dosage
+
+visitDetail.headingMedicinePrescriptions=Information about current visit medicine prescriptions
+
+visitDetail.targetApplicationDateTime=Term of execution

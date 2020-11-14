@@ -383,3 +383,10 @@ visitDetail.executionResult=Результат исполнения
 visitDetail.patientDisagrees=Пациент отказался от назначения
 visitDetail.disagreementDateTime=Дата и время отказа от назначения
 visitDetail.disagreementDiscription=Описание отказа
+
+visitDetail.medicineInfo=Назначенное лекарство
+visitDetail.dosageInfo=Дозировка
+
+visitDetail.headingMedicinePrescriptions=Сведения о предписаниях лекарственных средств в рамках текущего посещения
+
+visitDetail.targetApplicationDateTime=Срок исполнения
