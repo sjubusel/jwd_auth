@@ -91,6 +91,11 @@ public class GoToDoctorViewControlledVisitCommand implements Command {
                     medicinePrescriptions, prescriptions);
         }
 
+        String changeResult = req.getParameter(AppParameter.CHANGE_RESULT);
+        if (changeResult != null) {
+            req.setAttribute(AppParameter.CHANGE_RESULT, changeResult);
+        }
+
         req.getRequestDispatcher(CommandPath.SUBSTAFF_VISIT_DETAIL_JSP)
                 .forward(req, res);
     }

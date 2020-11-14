@@ -94,8 +94,14 @@ public final class CommandPath {
     public static final String SUBSTAFF_GO_TO_STAFF_NEW_VISITS_ACCEPT_RESULT_VAL_ERROR
             = "/profile?command=go-to-staff-new-visits&acceptResult=validationError";
     public static final String SUBSTAFF_GO_TO_STAFF_NEW_VISITS_ACCEPT_RESULT_SUCCESS
-            = "/profile?command=go-to-staff-new-visits&acceptResult=success";
+            = "/profile?command=go-to-staff-new-visits&acceptResult=success&hiddenVisitId=";
 
+    public static final String SUBSTAFF_CONTROLLED_VISIT_CHANGE_RESULT_TECH_ERROR
+            = "/profile?command=go-to-doctor-view-controlled-visit&changeResult=techError&hiddenVisitId=";
+    public static final String SUBSTAFF_CONTROLLED_VISIT_CHANGE_RESULT_VAL_ERROR
+            = "/profile?command=go-to-doctor-view-controlled-visit&changeResult=validationError&hiddenVisitId=";
+    public static final String SUBSTAFF_CONTROLLED_VISIT_CHANGE_RESULT_SUCCESS
+            = "/profile?command=go-to-doctor-view-controlled-visit&changeResult=success&hiddenVisitId=";
 
     public static final String LOGIN_JSP = "/WEB-INF/jsp/login.jsp";
     public static final String PROFILE_JSP = "/WEB-INF/jsp/profile.jsp";

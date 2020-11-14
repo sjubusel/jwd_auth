@@ -71,6 +71,28 @@
                                      key="visitDetail.headingVisitInfo"/>
                     </h1>
                     <c:choose>
+                        <c:when test="${requestScope.changeResult ne null}">
+                            <c:if test="${requestScope.changeResult eq 'success'}">
+                                <div class="alert alert-success" role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.changeResultSuccess"/>
+                                </div>
+                            </c:if>
+                            <c:if test="${requestScope.changeResult eq 'techError'}">
+                                <div class="alert alert-danger" role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.changeResultTechError"/>
+                                </div>
+                            </c:if>
+                            <c:if test="${requestScope.changeResult eq 'validationError'}">
+                                <div class="alert alert-danger" role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.changeResultValidationError"/>
+                                </div>
+                            </c:if>
+                        </c:when>
+                    </c:choose>
+                    <c:choose>
                         <c:when test="${requestScope.visitInfo ne null}">
                             <table class="table">
                                 <tbody>

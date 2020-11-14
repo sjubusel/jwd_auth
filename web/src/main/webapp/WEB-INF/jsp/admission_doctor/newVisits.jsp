@@ -68,8 +68,7 @@
                             <c:when test="${requestScope.acceptResult eq 'success'}">
                                 <div class="alert alert-success"
                                      role="alert">
-                                        <%-- TODO link for acceptedVisitInfo--%>
-                                    <a href="${pageContext.request.contextPath}/profile">
+                                    <a href="${pageContext.request.contextPath}/profile?command=go-to-doctor-view-controlled-visit&hiddenVisitId=${requestScope.hiddenVisitId}">
                                         <fmt:message
                                                 bundle="${jspMessages}"
                                                 key="newVisits.successAcceptance"/>

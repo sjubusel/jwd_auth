@@ -53,6 +53,11 @@ public class GoToStaffNewVisitsCommand implements Command {
             req.setAttribute(AppParameter.ACCEPT_RESULT, acceptVisitResult);
         }
 
+        String visitId = req.getParameter(AppParameter.VISIT_ID);
+        if (visitId != null) {
+            req.setAttribute(AppParameter.VISIT_ID, visitId);
+        }
+
         req.getRequestDispatcher(CommandPath.SUBSTAFF_NEW_VISITS_JSP)
                 .forward(req, res);
     }

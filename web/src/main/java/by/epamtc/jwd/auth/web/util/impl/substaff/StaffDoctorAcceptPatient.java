@@ -44,14 +44,13 @@ public class StaffDoctorAcceptPatient implements Command {
             return;
         }
 
-        sendRedirectWithSuccessMessage(req, res);
+        sendRedirectWithSuccessMessage(req, res, visitId);
     }
 
     private void sendRedirectWithTechError(HttpServletRequest req,
             HttpServletResponse res) throws IOException {
         res.sendRedirect(req.getContextPath() + CommandPath
-                .SUBSTAFF_GO_TO_STAFF_NEW_VISITS_ACCEPT_RESULT_TECH_ERROR)
-        ;
+                .SUBSTAFF_GO_TO_STAFF_NEW_VISITS_ACCEPT_RESULT_TECH_ERROR);
     }
 
     private void sendRedirectWithValidationError(HttpServletRequest req,
@@ -61,9 +60,9 @@ public class StaffDoctorAcceptPatient implements Command {
     }
 
     private void sendRedirectWithSuccessMessage(HttpServletRequest req,
-            HttpServletResponse res) throws IOException {
+            HttpServletResponse res, String visitId) throws IOException {
         res.sendRedirect(req.getContextPath() + CommandPath
-                .SUBSTAFF_GO_TO_STAFF_NEW_VISITS_ACCEPT_RESULT_SUCCESS);
+                .SUBSTAFF_GO_TO_STAFF_NEW_VISITS_ACCEPT_RESULT_SUCCESS + visitId);
     }
 
 }

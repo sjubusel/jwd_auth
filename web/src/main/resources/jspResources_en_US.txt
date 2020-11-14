@@ -392,3 +392,7 @@ visitDetail.headingMedicinePrescriptions=Information about current visit medicin
 visitDetail.targetApplicationDateTime=Term of execution
 
 visitDetail.admittingDoctorMenu=Possible actions during a visit
+
+visitDetail.changeResultSuccess=Patient's complaints successfully changed
+visitDetail.changeResultTechError=Because of a technical factor patient's complaints are not changed
+visitDetail.changeResultValidationError=Because of an incorrect page configuration patient's complaints are not changed
