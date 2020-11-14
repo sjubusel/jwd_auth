@@ -3,6 +3,7 @@ package by.epamtc.jwd.auth.service.validation;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
 import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
+import by.epamtc.jwd.auth.model.med_info.Diagnosis;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
 
 public class VisitValidator {
@@ -22,5 +23,9 @@ public class VisitValidator {
 
     public boolean isPatientIdCorrect(int patientId) {
         return patientId > 0;
+    }
+
+    public boolean isDiagnosisCorrect(Diagnosis diagnosis) {
+        return diagnosis.getDiseaseInfo().matches(RegistrationInfoPattern.DIGITS);
     }
 }

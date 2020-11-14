@@ -395,6 +395,11 @@ public final class SqlStatement {
             = "UPDATE hospital.visits_to_admission_department v2ad\n" +
             "SET v2ad.complaints_description = ?\n" +
             "WHERE v2ad.visit_id = ?;";
+    public static final String INSERT_VISIT_DIAGNOSIS
+            = "INSERT INTO hospital.visit_diagnosis_records (visit_id," +
+            " diagnosis_datetime, disease_id, established_diagnosis_staff_id,\n" +
+            " diagnosis_description)\n" +
+            "VALUES (?, CURRENT_TIMESTAMP, ?, ?, ?);";
 
     private SqlStatement() {
     }

@@ -137,4 +137,20 @@ public class DefaultVisitService implements VisitService {
         }
         return false;
     }
+
+    @Override
+    public boolean establishDiagnosis(Diagnosis diagnosis, String visitStrId,
+            AuthUser user) throws ServiceException {
+        if (validator.isVisitIdCorrect(visitStrId)
+                && validator.isDiagnosisCorrect(diagnosis)
+                && validator.isAuthUserHasRights(user)) {
+            try {
+                return visitDao.establishDiagnosis(diagnosis, visitStrId,
+                        user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return false;
+    }
 }

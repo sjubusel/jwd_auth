@@ -69,6 +69,8 @@ public final class CommandName {
             = "CHANGE-COMPLAINTS-OF-PATIENT";
     public static final String SUBSTAFF_GO_TO_ESTABLISH_DIAGNOSIS
             = "GO-TO-ESTABLISH-DIAGNOSIS";
+    public static final String SUBSTAFF_ESTABLISH_DIAGNOSIS
+            = "ESTABLISH-DIAGNOSIS";
 
     private CommandName() {
     }

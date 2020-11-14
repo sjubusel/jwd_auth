@@ -376,6 +376,30 @@ public class DefaultVisitDao implements VisitDao {
         }
     }
 
+    @Override
+    public boolean establishDiagnosis(Diagnosis diagnosis, String visitStrId,
+            AuthUser user) throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement.INSERT_VISIT_DIAGNOSIS);
+            statement.setInt(1, Integer.parseInt(visitStrId));
+            statement.setInt(2, Integer.parseInt(diagnosis.getDiseaseInfo()));
+            statement.setInt(3, user.getStaffId());
+            statement.setString(4, diagnosis.getDiagnosisDescription());
+            return statement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            throw new DaoException("An error while establishing new diagnosis", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection" +
+                    " during establishing new diagnosis", e);
+        } finally {
+            pool.closeConnection(conn, statement);
+        }
+    }
+
     private AdmissionDepartmentVisit compileShortenedVisit(ResultSet resultSet)
             throws SQLException {
         AdmissionDepartmentVisit visit = new AdmissionDepartmentVisit();

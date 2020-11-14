@@ -36,4 +36,7 @@ public interface VisitDao {
 
     boolean changeComplaints(String complaints, String visitId, AuthUser user)
             throws DaoException;
+
+    boolean establishDiagnosis(Diagnosis diagnosis, String visitStrId,
+            AuthUser user) throws DaoException;
 }
