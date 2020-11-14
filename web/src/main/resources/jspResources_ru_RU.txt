@@ -407,3 +407,9 @@ establishDiagnosis.diseaseLabel=Диагностированная болезн�
 establishDiagnosis.diseasePlaceholder=Введите наименования диагностированной болезни
 establishDiagnosis.diseaseDescriptionLabel=Описание к диагностированной болезни
 establishDiagnosis.diseaseDescriptionPlaceholder=Введите описание к диагностированной болезни
+
+establishDiagnosis.changeResultSuccess=Диагноз успешно добавлен
+establishDiagnosis.changeResultTechError=Диагноз не добавлен по технической причине
+establishDiagnosis.changeResultValidationError=Диагноз не добавлен по причине некорректной конфигурации страницы
+
+establishDiagnosis.button=Постановить диагноз

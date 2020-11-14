@@ -16,6 +16,11 @@ public class GoToEstablishDiagnosisCommand implements by.epamtc.jwd.auth.web.uti
         String visitId = req.getParameter(AppParameter.VISIT_ID);
         req.setAttribute(AppParameter.VISIT_ID, visitId);
 
+        String changeResult = req.getParameter(AppParameter.CHANGE_RESULT);
+        if (changeResult != null) {
+            req.setAttribute(AppParameter.CHANGE_RESULT, changeResult);
+        }
+
         req.getRequestDispatcher(CommandPath.SUBSTAFF_ESTABLISH_DIAGNOSIS_JSP)
                 .forward(req, res);
     }

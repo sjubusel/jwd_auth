@@ -103,6 +103,19 @@ public final class CommandPath {
     public static final String SUBSTAFF_CONTROLLED_VISIT_CHANGE_RESULT_SUCCESS
             = "/profile?command=go-to-doctor-view-controlled-visit&changeResult=success&hiddenVisitId=";
 
+    public static final String
+            SUBSTAFF_GO_TO_ESTABLISH_DIAGNOSIS_CHANGE_RESULT_TECHERROR
+            = "/profile?command=go-to-establish-diagnosis&changeResult=" +
+            "techError&hiddenVisitId=";
+    public static final String
+            SUBSTAFF_GO_TO_ESTABLISH_DIAGNOSIS_CHANGE_RESULT_VAL_ERROR
+            = "/profile?command=go-to-establish-diagnosis&changeResult=" +
+            "validationError&hiddenVisitId=";
+    public static final String
+            SUBSTAFF_GO_TO_ESTABLISH_DIAGNOSIS_CHANGE_RESULT_SUCCESS
+            = "/profile?command=go-to-establish-diagnosis&changeResult=" +
+            "success&hiddenVisitId=";
+
     public static final String LOGIN_JSP = "/WEB-INF/jsp/login.jsp";
     public static final String PROFILE_JSP = "/WEB-INF/jsp/profile.jsp";
     public static final String REGISTER_JSP = "/WEB-INF/jsp/register.jsp";

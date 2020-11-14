@@ -3,6 +3,7 @@ package by.epamtc.jwd.auth.web.util.impl.substaff;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
 import by.epamtc.jwd.auth.model.constant.AppParameter;
+import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.model.med_info.Diagnosis;
 import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.VisitService;
@@ -30,7 +31,8 @@ public class EstablishVisitDiagnosisCommand implements Command {
                 .SESSION_AUTH_USER);
         String visitStrId = req.getParameter(AppParameter.VISIT_ID);
         String diseaseId = req.getParameter(AppParameter.DISEASE_ID);
-        String diagnosisDescription = req.getParameter(AppParameter.DIAGNOSIS_DESCRIPTION);
+        String diagnosisDescription = req.getParameter(AppParameter
+                .DIAGNOSIS_DESCRIPTION);
         Diagnosis diagnosis = new Diagnosis();
         diagnosis.setDiseaseInfo(diseaseId);
         diagnosis.setDiagnosisDescription(diagnosisDescription);
@@ -44,9 +46,37 @@ public class EstablishVisitDiagnosisCommand implements Command {
             logger.error("An error while changing patient's complaints.\n" +
                             "Params{user={}, visitStrId={}, diseaseId={}}", user,
                     visitStrId, diseaseId, e);
-//            sendRedirectWithTechError(req, res, visitId);
+            sendRedirectWithTechError(req, res, visitStrId);
             return;
         }
 
+        if (!isChanged) {
+            sendRedirectWithValidationError(req, res, visitStrId);
+            return;
+        }
+
+        sendRedirectWithSuccessMessage(req, res, visitStrId);
+
+    }
+
+    private void sendRedirectWithTechError(HttpServletRequest req,
+            HttpServletResponse res, String visitStrId) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBSTAFF_GO_TO_ESTABLISH_DIAGNOSIS_CHANGE_RESULT_TECHERROR
+                + visitStrId);
+    }
+
+    private void sendRedirectWithValidationError(HttpServletRequest req,
+            HttpServletResponse res, String visitStrId) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBSTAFF_GO_TO_ESTABLISH_DIAGNOSIS_CHANGE_RESULT_VAL_ERROR
+                + visitStrId);
+    }
+
+    private void sendRedirectWithSuccessMessage(HttpServletRequest req,
+            HttpServletResponse res, String visitStrId) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBSTAFF_GO_TO_ESTABLISH_DIAGNOSIS_CHANGE_RESULT_SUCCESS
+                + visitStrId);
     }
 }

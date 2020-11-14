@@ -44,6 +44,7 @@
                                                  key="profileSubMenu.changePatientInfo.ajax.chosen"/>: "
                 + shownInput.value + "</em></small></div>";
         }
+
         jQuery(document).ready(function () {
             let searchDisease = null;
             $("#disease").keyup(function () {
@@ -138,6 +139,30 @@
                         <fmt:message bundle="${jspMessages}"
                                      key="establishDiagnosis.heading"/>
                     </h1>
+
+                    <c:choose>
+                        <c:when test="${requestScope.changeResult ne null}">
+                            <c:if test="${requestScope.changeResult eq 'success'}">
+                                <div class="alert alert-success" role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="establishDiagnosis.changeResultSuccess"/>
+                                </div>
+                            </c:if>
+                            <c:if test="${requestScope.changeResult eq 'techError'}">
+                                <div class="alert alert-danger" role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="establishDiagnosis.changeResultTechError"/>
+                                </div>
+                            </c:if>
+                            <c:if test="${requestScope.changeResult eq 'validationError'}">
+                                <div class="alert alert-danger" role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="establishDiagnosis.changeResultValidationError"/>
+                                </div>
+                            </c:if>
+                        </c:when>
+                    </c:choose>
+
                     <c:choose>
                         <c:when test="${true}">
                             <form action="${pageContext.request.contextPath}/profile"
@@ -152,7 +177,8 @@
                                                      key="establishDiagnosis.diseaseLabel"/>
                                     </label>
                                     <input type="hidden" id="hiddenDiseaseId"
-                                           name="hiddenDiseaseIdInput" required/>
+                                           name="hiddenDiseaseIdInput"
+                                           required/>
                                     <input type="text" id="disease"
                                            name="diseaseInput" required
                                            placeholder="<fmt:message bundle="${jspMessages}"
@@ -164,7 +190,8 @@
                                      style="max-height: 100px">
                                 </div>
                                 <div class="form-group form-inline row">
-                                    <label class="col col-5" for="diagnosisDescription">
+                                    <label class="col col-5"
+                                           for="diagnosisDescription">
                                         <fmt:message bundle="${jspMessages}"
                                                      key="establishDiagnosis.diseaseDescriptionLabel"/>
                                     </label>
@@ -173,6 +200,13 @@
                                               id="diagnosisDescription"
                                               name="diagnosisDescriptionInput"
                                               placeholder="<fmt:message bundle="${jspMessages}" key="establishDiagnosis.diseaseDescriptionPlaceholder"/>"></textarea>
+                                </div>
+                                <div>
+                                    <button type="submit"
+                                            class="btn align-self-center btn-primary ">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="establishDiagnosis.button"/>
+                                    </button>
                                 </div>
                             </form>
                         </c:when>
