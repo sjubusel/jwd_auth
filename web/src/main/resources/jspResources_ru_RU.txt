@@ -354,3 +354,4 @@ visitDetail.hospitalizationDepartmentId=Идентификационный но�
 visitDetail.hospitalizationDepartmentInfo=Наименование отделения госпитализации
 visitDetail.isPrescriptionsComplete=Статус выполнения всех врачебных предписаний в рамках визита
 admissionDoctorSubMenu.visitDetail=Детальная информация о визите
+visitDetail.headingPersonalInformation=Детальная информация о пациенте
