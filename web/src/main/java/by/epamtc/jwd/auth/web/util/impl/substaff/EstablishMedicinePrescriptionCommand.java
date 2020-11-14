@@ -3,6 +3,7 @@ package by.epamtc.jwd.auth.web.util.impl.substaff;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
 import by.epamtc.jwd.auth.model.constant.AppParameter;
+import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
 import by.epamtc.jwd.auth.model.med_info.DepartmentOrigin;
 import by.epamtc.jwd.auth.model.med_info.MedicineMeasureUnit;
@@ -54,16 +55,16 @@ public class EstablishMedicinePrescriptionCommand implements Command {
                             " medicineMeasureUnit={}}",
                     user, visitId, medicineStrId, dosage,
                     targetApplicationDateTimeInput, medicineMeasureUnit, e);
-//            sendRedirectWithTechError(req, res, visitStrId);
+            sendRedirectWithTechError(req, res, visitId);
             return;
         }
 
         if (!isChanged) {
-//            sendRedirectWithValidationError(req, res, visitStrId);
+            sendRedirectWithValidationError(req, res, visitId);
             return;
         }
 
-//        sendRedirectWithSuccessMessage(req, res, visitStrId);
+        sendRedirectWithSuccessMessage(req, res, visitId);
 
     }
 
@@ -97,5 +98,26 @@ public class EstablishMedicinePrescriptionCommand implements Command {
         }
 
         return prescription;
+    }
+
+    private void sendRedirectWithTechError(HttpServletRequest req,
+            HttpServletResponse res, String visitStrId) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBSTAFF_GO_TO_ESTABLISH_MED_PRESCRIPTION_CHANGE_RESULT_TECHERROR
+                + visitStrId);
+    }
+
+    private void sendRedirectWithValidationError(HttpServletRequest req,
+            HttpServletResponse res, String visitStrId) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBSTAFF_GO_TO_ESTABLISH_MED_PRESCRIPTION_CHANGE_RESULT_VAL_ERROR
+                + visitStrId);
+    }
+
+    private void sendRedirectWithSuccessMessage(HttpServletRequest req,
+            HttpServletResponse res, String visitStrId) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBSTAFF_GO_TO_ESTABLISH_MED_PRESCRIPTION_CHANGE_RESULT_SUCCESS
+                + visitStrId);
     }
 }
