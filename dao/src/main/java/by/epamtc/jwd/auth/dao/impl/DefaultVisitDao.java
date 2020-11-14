@@ -191,18 +191,35 @@ public class DefaultVisitDao implements VisitDao {
     public AdmissionDepartmentVisit fetchFullAdmissionDepartmentVisit(String
             visitId) throws DaoException {
         Connection conn = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
+        PreparedStatement[] statements = new PreparedStatement[2];
+        ResultSet[] resultSets = new ResultSet[2];
+        int pointer = 0;
+        int visitIdInt = Integer.parseInt(visitId);
 
         try {
             conn = pool.takeConnection();
-            statement = conn.prepareStatement(SqlStatement.SELECT_FULL_VISIT);
-            statement.setInt(1, Integer.parseInt(visitId));
-            resultSet = statement.executeQuery();
+            statements[pointer] = conn.prepareStatement(SqlStatement
+                    .SELECT_FULL_VISIT);
+            statements[pointer].setInt(1, visitIdInt);
+            resultSets[pointer] = statements[pointer].executeQuery();
 
-            if (resultSet.next()) {
-                AdmissionDepartmentVisit visit = compileShortenedVisit(resultSet);
-                return compileFullVisit(visit, resultSet);
+            if (resultSets[pointer].next()) {
+                AdmissionDepartmentVisit visit = compileShortenedVisit(
+                        resultSets[pointer]);
+
+                statements[++pointer] = conn.prepareStatement(SqlStatement
+                        .SELECT_IF_VISIT_PRESCRIPTION_IS_INCOMPLETE);
+                statements[pointer].setInt(1, visitIdInt);
+                statements[pointer].setInt(2, visitIdInt);
+                resultSets[pointer] = statements[pointer].executeQuery();
+
+                boolean isVisitPrescriptionsComplete = true;
+                if (resultSets[pointer].next()) {
+                    isVisitPrescriptionsComplete = false;
+                }
+
+                visit.setPrescriptionsComplete(isVisitPrescriptionsComplete);
+                return compileFullVisit(visit, resultSets[pointer - 1]);
             }
 
         } catch (SQLException e) {
@@ -212,7 +229,7 @@ public class DefaultVisitDao implements VisitDao {
             throw new DaoException("An error while taking a connection " +
                     "intended for fetching full information about a visit", e);
         } finally {
-            pool.closeConnection(conn, statement, resultSet);
+            pool.closeConnection(conn, statements, resultSets);
         }
 
         throw new DaoException("In theory it is unreachable place");
