@@ -355,3 +355,12 @@ visitDetail.hospitalizationDepartmentInfo=Naming of a department of a hospitaliz
 visitDetail.isPrescriptionsComplete=Completeness status of doctor's prescriptions during the visit
 admissionDoctorSubMenu.visitDetail=Detailed information about a chosen visit
 visitDetail.headingPersonalInformation=Detailed information about the patient
+
+visitDetail.headingDiagnoses=Information about previously established diagnoses
+visitDetail.diagnoses.noRecords=Diagnoses have not been established yet
+visitDetail.diagnoses.departmentType=Department type
+visitDetail.diagnoses.diagnosisDateTime=Date and Time
+visitDetail.diagnoses.diseaseInfo=Disease
+visitDetail.diagnoses.diseaseDescription=Description
+visitDetail.diagnoses.doctorInfo=Doctor
+visitDetail.diagnoses.cancellationInfo=Cancellation information
