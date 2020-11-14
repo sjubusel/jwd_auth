@@ -49,6 +49,10 @@ public final class AjaxSqlStatement {
             "FROM hospital.extremely_hazardous_diseases ehd\n" +
             "         JOIN hospital.icd_10_diseases d ON ehd.icd_10_disease_id = d.icd_10_disease_id\n" +
             "WHERE d.icd_10_disease_name LIKE CONCAT('%', ?, '%');";
+    public static final String SELECT_DISEASES
+            = "SELECT icdD.icd_10_disease_id, icdD.icd_10_disease_name\n" +
+            "FROM hospital.icd_10_diseases icdD\n" +
+            "WHERE icdD.icd_10_disease_name LIKE CONCAT('%', ?, '%')";
 
     private AjaxSqlStatement() {
     }

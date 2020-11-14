@@ -26,12 +26,13 @@ public class FetchDiseasesInEstablishDiagnosisAjaxCommand implements AjaxCommand
             .getAjaxFetchService();
 
     @Override
-    public void execute(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    public void execute(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
         String diseasePart = req.getParameter(AjaxParameter.DISEASE_PART);
         List<AjaxDisease> diseaseList = null;
 
         try {
-            diseaseList = ajaxFetchService.fetchDiseases(diseaseList);
+            diseaseList = ajaxFetchService.fetchDiseases(diseasePart);
         } catch (ServiceException e) {
             logger.error("An error occurred while fetching diseases from db \n" +
                     "with this param \"diseasePart: {}\" \n", diseasePart, e);

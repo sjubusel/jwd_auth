@@ -32,4 +32,7 @@ public interface AjaxFetchService {
 
     List<AjaxHazardousDisease> fetchExtremelyHazardousDiseases(String diseasePart)
             throws ServiceException;
+
+    List<AjaxDisease> fetchDiseases(String diseasePart)
+            throws ServiceException;
 }

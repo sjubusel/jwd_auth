@@ -137,4 +137,17 @@ public class DefaultAjaxFetchService implements AjaxFetchService {
         }
         return null;
     }
+
+    @Override
+    public List<AjaxDisease> fetchDiseases(String diseasePart)
+            throws ServiceException {
+        if (ajaxValidator.isFetchInputValid(diseasePart)) {
+            try {
+                return ajaxFetchDao.fetchDiseases(diseasePart);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return null;
+    }
 }
