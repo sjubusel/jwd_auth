@@ -83,13 +83,13 @@
                                 childRow.appendChild(childColId);
 
                                 <%--suppress JSUnresolvedVariable --%>
-                                childColId.innerHTML = data[i].;
+                                childColId.innerHTML = data[i].medicineId;
                                 childRow.setAttribute("onclick", "changeHiddenInput(\"hiddenMedicineId\", \"medicine\", this, this.parentElement);");
 
                                 let childColName = document.createElement("div");
                                 childColName.className += "col border d-flex justify-content-center";
                                 childRow.appendChild(childColName);
-                                childColName.innerHTML = data[i].;
+                                childColName.innerHTML = data[i].medicineInfo;
                             }
                         }
                     });
@@ -147,11 +147,11 @@
                                        value="establish-medicine-prescription">
                                 <input type="hidden" name="hiddenVisitId"
                                        value="${requestScope.hiddenVisitId}">
-                                <div class="form-group form-inline row">
+                                <div class="form-group form-inline row mb-3">
                                     <input type="hidden" id="hiddenMedicineId"
                                            name="hiddenMedicineIdInput"
                                            required/>
-                                    <label class="col col-5" for="medicine">
+                                    <label class="col col-5 text-left" for="medicine">
                                         <fmt:message bundle="${jspMessages}"
                                                      key="establishMedicinePrescription.medicineLabel"/>
                                     </label>
@@ -165,8 +165,8 @@
                                      class="overflow-auto"
                                      style="max-height: 100px">
                                 </div>
-                                <div class="form-group form-inline row">
-                                    <label for="targetApplicationDateTime">
+                                <div class="form-group form-inline row mb-3">
+                                    <label class="col col-5 text-left" for="targetApplicationDateTime">
                                         <fmt:message bundle="${jspMessages}"
                                                      key="establishMedicinePrescription.targetApplicationDateTime"/>
                                     </label>
@@ -175,8 +175,8 @@
                                            name="targetApplicationDateTimeInput"
                                            required/>
                                 </div>
-                                <div class="form-group form-inline row">
-                                    <label for="dosage">
+                                <div class="form-group form-inline row mb-3">
+                                    <label class="col col-5 text-left" for="dosage">
                                         <fmt:message bundle="${jspMessages}"
                                                      key="establishMedicinePrescription.dosage"/>
                                     </label>
@@ -187,7 +187,7 @@
                                                      key="establishMedicinePrescription.dosagePlaceholder"/>"
                                            pattern="([0-9]+)|([0-9]+\.[0-9]+)">
                                 </div>
-                                <div class="col d-flex align-items-center pl-0 pr-0">
+                                <div class="col d-flex align-items-center pl-0 pr-0 mb-3">
                                     <div class="form-control col form-check form-check-inline">
                                         <input type="radio"
                                                class="form-check-input"
