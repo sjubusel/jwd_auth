@@ -87,6 +87,8 @@ public final class AppParameter {
     public static final String VISIT_DESCRIPTION = "visitReasonDescriptionInput";
     public static final String ACCEPT_RESULT = "acceptResult";
     public static final String VISIT_ID = "hiddenVisitId";
+    public static final String VISIT_NUMBER = "visitNumberInput";
+    public static final String PATIENT_COMPLAINTS = "complaintsInput";
 
 
     private AppParameter() {

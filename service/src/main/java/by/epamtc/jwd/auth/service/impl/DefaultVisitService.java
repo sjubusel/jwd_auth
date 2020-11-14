@@ -123,4 +123,18 @@ public class DefaultVisitService implements VisitService {
         }
         return null;
     }
+
+    @Override
+    public boolean changeComplaints(String complaints, String visitId,
+            AuthUser user) throws ServiceException {
+        if (validator.isVisitIdCorrect(visitId)
+                && validator.isAuthUserHasRights(user)) {
+            try {
+                return visitDao.changeComplaints(complaints, visitId, user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return false;
+    }
 }

@@ -33,4 +33,7 @@ public interface VisitService {
 
     List<Prescription> fetchVisitPrescriptions(String visitId)
             throws ServiceException;
+
+    boolean changeComplaints(String complaints, String visitId, AuthUser user)
+            throws ServiceException;
 }

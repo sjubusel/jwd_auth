@@ -391,6 +391,10 @@ public final class SqlStatement {
             "         LEFT OUTER JOIN hospital.staff executorAsStaff ON vpr.executor_staff = executorAsStaff.staff_id\n" +
             "         LEFT OUTER JOIN hospital.persons executorAsPerson ON executorAsPerson.person_id = executorAsStaff.person_id\n" +
             "WHERE vpr.visit_id = ?;";
+    public static final String UPDATE_COMPLAINTS_BY_VISIT
+            = "UPDATE hospital.visits_to_admission_department v2ad\n" +
+            "SET v2ad.complaints_description = ?\n" +
+            "WHERE v2ad.visit_id = ?;";
 
     private SqlStatement() {
     }

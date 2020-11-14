@@ -33,4 +33,7 @@ public interface VisitDao {
 
     List<Prescription> fetchVisitPrescriptions(String visitId)
             throws DaoException;
+
+    boolean changeComplaints(String complaints, String visitId, AuthUser user)
+            throws DaoException;
 }

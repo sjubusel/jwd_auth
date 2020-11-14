@@ -352,6 +352,30 @@ public class DefaultVisitDao implements VisitDao {
         return prescriptionList;
     }
 
+    @Override
+    public boolean changeComplaints(String complaints, String visitId,
+            AuthUser user) throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement
+                    .UPDATE_COMPLAINTS_BY_VISIT);
+            statement.setString(1, complaints);
+            statement.setInt(2, Integer.parseInt(visitId));
+            return statement.executeUpdate() == 1;
+        } catch (SQLException e) {
+            throw new DaoException("An error while changing complaints " +
+                    "information during visit", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking connection " +
+                    "during changing of patient's complaints", e);
+        } finally {
+            pool.closeConnection(conn, statement);
+        }
+    }
+
     private AdmissionDepartmentVisit compileShortenedVisit(ResultSet resultSet)
             throws SQLException {
         AdmissionDepartmentVisit visit = new AdmissionDepartmentVisit();

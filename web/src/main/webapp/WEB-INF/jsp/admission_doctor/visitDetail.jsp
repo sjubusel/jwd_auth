@@ -294,8 +294,7 @@
                                         </label>
                                     </td>
                                     <td class="col d-flex align-items-center">
-                                            <%--TODO make a command--%>
-                                        <form action="${pageContext.request.contextPath}/profile?command=change-complaints-of=patient"
+                                        <form action="${pageContext.request.contextPath}/profile?command=change-complaints-of-patient"
                                               method="post" class="d-block">
                                             <textarea type="text"
                                                       name="complaintsInput"
@@ -306,6 +305,9 @@
                                                     value="${requestScope.visitInfo.patientComplaints}"/></c:when><c:otherwise><c:out
                                                     value=""/></c:otherwise></c:choose></textarea>
                                             <br/>
+                                            <input type="hidden"
+                                                   name="visitNumberInput"
+                                                   value="${requestScope.visitInfo.visitId}">
                                             <button type="submit"
                                                     class="btn align-self-center btn-primary">
                                                 <fmt:message
