@@ -738,6 +738,153 @@
                                          key="visitDetail.absenceOfSomething"/>
                         </c:otherwise>
                     </c:choose>
+                    <br>
+                    <h1 class="text-left">
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profileSubMenu.allergicReactionsFood.heading"/>
+                    </h1>
+                    <c:choose>
+                        <c:when test="${requestScope.allergicFoodReactions ne null}">
+                            <%--header--%>
+                            <div class="row d-flex mb-1 border">
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.allergicReactionsFood.foodType"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.allergicReactionsFood.detectionData"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.allergicReactionsFood.description"/>
+                                </div>
+                            </div>
+                            <%--contents--%>
+                            <c:forEach var="allergicFoodReactions"
+                                       items="${requestScope.allergicFoodReactions}">
+                                <div class="row d-flex mb-1 border align-items-center">
+                                        <%--1st column--%>
+                                    <div class="col">
+                                        <c:out value="${allergicFoodReactions.foodTypeInfo}"/>
+                                    </div>
+                                    <div class="col">
+                                        <c:out value="${allergicFoodReactions.detectionDate}"/>
+                                    </div>
+                                    <div class="col">
+                                        <c:if test="${allergicFoodReactions.allergicDescription ne null}">
+                                            <c:out value="${allergicFoodReactions.allergicDescription}"/>
+                                        </c:if>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="profileSubMenu.allergicReactionsFood.noRecordsMessage"/>
+                        </c:otherwise>
+                    </c:choose>
+                    <br>
+                    <h1 class="text-left">
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profileSubMenu.allergicReactionsMedicine.heading"/>
+                    </h1>
+                    <c:choose>
+                        <c:when test="${requestScope.allergicMedicineReactions ne null}">
+                            <%--header--%>
+                            <div class="row d-flex mb-1 border">
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.allergicMedicineReactions.medicineName"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.allergicMedicineReactions.detectionData"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.allergicMedicineReactions.description"/>
+                                </div>
+                            </div>
+                            <%--contents--%>
+                            <c:forEach var="allergicMedicineReactions"
+                                       items="${requestScope.allergicMedicineReactions}">
+                                <div class="row d-flex mb-1 border align-items-center">
+                                        <%--1st column--%>
+                                    <div class="col">
+                                        <c:out value="${allergicMedicineReactions.medicineDescription}"/>
+                                    </div>
+                                    <div class="col">
+                                        <c:out value="${allergicMedicineReactions.detectionDate}"/>
+                                    </div>
+                                    <div class="col">
+                                        <c:if test="${allergicMedicineReactions.allergicReaction ne null}">
+                                            <c:out value="${allergicMedicineReactions.allergicReaction}"/>
+                                        </c:if>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="profileSubMenu.allergicMedicineReactions.noRecordsMessage"/>
+                        </c:otherwise>
+                    </c:choose>
+                    <br>
+                    <h1 class="text-left">
+                        <fmt:message bundle="${jspMessages}"
+                                     key="profileSubMenu.extremelyHazardousDiseases.heading"/>
+                    </h1>
+                    <c:choose>
+                        <c:when test="${requestScope.extremelyHazardousDiseases ne null}">
+                            <%--header--%>
+                            <div class="row d-flex mb-1 border">
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.extremelyHazardousDiseases.columnName"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.extremelyHazardousDiseases.columnDetectionDate"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.extremelyHazardousDiseases.caseDescription"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.extremelyHazardousDiseases.recoveryDate"/>
+                                </div>
+                            </div>
+                            <%--contents--%>
+                            <c:forEach var="extremelyHazardousDiseases"
+                                       items="${requestScope.extremelyHazardousDiseases}">
+                                <div class="row d-flex mb-1 border align-items-center">
+                                        <%--1st column--%>
+                                    <div class="col">
+                                        <c:out value="${extremelyHazardousDiseases.diseaseDescription}"/>
+                                    </div>
+                                    <div class="col">
+                                        <c:out value="${extremelyHazardousDiseases.detectionDate}"/>
+                                    </div>
+                                    <div class="col">
+                                        <c:if test="${extremelyHazardousDiseases.caseDescription ne null}">
+                                            <c:out value="${extremelyHazardousDiseases.caseDescription}"/>
+                                        </c:if>
+                                    </div>
+                                    <div class="col">
+                                        <c:if test="${extremelyHazardousDiseases.recoveryDate ne null}">
+                                            <c:out value="${extremelyHazardousDiseases.recoveryDate}"/>
+                                        </c:if>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="profileSubMenu.extremelyHazardousDiseases.noRecords"/>
+                        </c:otherwise>
+                    </c:choose>
                 </c:otherwise>
             </c:choose>
 
