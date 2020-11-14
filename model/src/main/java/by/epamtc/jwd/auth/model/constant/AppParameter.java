@@ -91,6 +91,12 @@ public final class AppParameter {
     public static final String PATIENT_COMPLAINTS = "complaintsInput";
     public static final String DIAGNOSIS_DESCRIPTION
             = "diagnosisDescriptionInput";
+    public static final String MEDICINE_ID = "medicineInput";
+    public static final String APPLICATION_DATE_TIME
+            = "targetApplicationDateTimeInput";
+    public static final String DOSAGE = "dosageInput";
+    public static final String MEDICINE_MEASURE_UNIT = "medicineMeasureUnitInput";
+    public static final String HIDDEN_MEDICINE_ID = "hiddenMedicineIdInput";
 
 
     private AppParameter() {

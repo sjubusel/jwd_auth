@@ -73,6 +73,8 @@ public final class CommandName {
             = "ESTABLISH-DIAGNOSIS";
     public static final String SUBSTAFF_GO_TO_ESTABLISH_MED_PRESCRIPTION
             = "GO-TO-ESTABLISH-MED-PRESCRIPTION";
+    public static final String SUBSTAFF_ESTABLISH_MEDICINE_PRESCRIPTION
+            = "ESTABLISH-MEDICINE-PRESCRIPTION";
 
     private CommandName() {
     }
