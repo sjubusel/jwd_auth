@@ -82,13 +82,13 @@
                                 childRow.appendChild(childColId);
 
                                 <%--suppress JSUnresolvedVariable --%>
-                                childColId.innerHTML = data[i].;
+                                childColId.innerHTML = data[i].diseaseId;
                                 childRow.setAttribute("onclick", "changeHiddenInput(\"hiddenDiseaseId\", \"disease\", this, this.parentElement);");
 
                                 let childColName = document.createElement("div");
                                 childColName.className += "col border d-flex justify-content-center";
                                 childRow.appendChild(childColName);
-                                childColName.innerHTML = data[i].;
+                                childColName.innerHTML = data[i].diseaseName;
                             }
                         }
                     });
@@ -147,7 +147,7 @@
                                 <input type="hidden" name="hiddenVisitId"
                                        value="${requestScope.hiddenVisitId}">
                                 <div class="form-group form-inline row">
-                                    <label for="disease">
+                                    <label class="col col-5" for="disease">
                                         <fmt:message bundle="${jspMessages}"
                                                      key="establishDiagnosis.diseaseLabel"/>
                                     </label>
@@ -164,7 +164,7 @@
                                      style="max-height: 100px">
                                 </div>
                                 <div class="form-group form-inline row">
-                                    <label for="diagnosisDescription">
+                                    <label class="col col-5" for="diagnosisDescription">
                                         <fmt:message bundle="${jspMessages}"
                                                      key="establishDiagnosis.diseaseDescriptionLabel"/>
                                     </label>

@@ -25,7 +25,7 @@ public final class AjaxCommandName {
     public static final String FETCH_PERSON_IN_REGISTER_VISIT_JSP
             = "FETCH-PERSONS-IN-REGISTER-VISIT-JSP";
     public static final String FETCH_DISEASES_IN_ESTABLISH_DIAGNOSIS_JSP
-            = "fetch-diseases-in-establish-diagnosis-jsp";
+            = "FETCH-DISEASES-IN-ESTABLISH-DIAGNOSIS-JSP";
 
 
     private AjaxCommandName() {
