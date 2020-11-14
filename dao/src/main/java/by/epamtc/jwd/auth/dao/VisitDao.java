@@ -39,4 +39,7 @@ public interface VisitDao {
 
     boolean establishDiagnosis(Diagnosis diagnosis, String visitStrId,
             AuthUser user) throws DaoException;
+
+    boolean establishMedicinePrescription(MedicinePrescription prescription,
+            AuthUser user) throws DaoException;
 }

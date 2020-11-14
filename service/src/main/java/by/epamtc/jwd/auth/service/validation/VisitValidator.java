@@ -4,6 +4,7 @@ import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
 import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
 import by.epamtc.jwd.auth.model.med_info.Diagnosis;
+import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
 
 public class VisitValidator {
@@ -27,5 +28,21 @@ public class VisitValidator {
 
     public boolean isDiagnosisCorrect(Diagnosis diagnosis) {
         return diagnosis.getDiseaseInfo().matches(RegistrationInfoPattern.DIGITS);
+    }
+
+    public boolean isMedicinePrescriptionValid(MedicinePrescription prescription) {
+        if (prescription.getOriginDocumentId() < 1) {
+            return false;
+        }
+        if (prescription.getMedicineId() < 1) {
+            return false;
+        }
+        if (prescription.getTargetApplicationDateTime() == null) {
+            return false;
+        }
+        if (prescription.getDosageQuantity() <= 0) {
+            return false;
+        }
+        return (prescription.getDosageMeasureUnit() != null);
     }
 }

@@ -46,7 +46,7 @@ public class EstablishMedicinePrescriptionCommand implements Command {
 
         try {
             isChanged = visitService.establishMedicinePrescription(prescription,
-                    visitId, user);
+                    user);
         } catch (ServiceException e) {
             logger.error("An error while changing patient's complaints.\n" +
                             "Params{user={}, visitStrId={}, medicineStrId={}" +

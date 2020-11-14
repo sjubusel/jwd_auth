@@ -400,6 +400,12 @@ public final class SqlStatement {
             " diagnosis_datetime, disease_id, established_diagnosis_staff_id,\n" +
             " diagnosis_description)\n" +
             "VALUES (?, CURRENT_TIMESTAMP, ?, ?, ?);";
+    public static final String INSERT_VISIT_MEDICINE_PRESCRIPTION
+            = "INSERT INTO hospital.visit_applied_medicines (visit_id," +
+            " applied_medicine_id, prescription_datetime,\n" +
+            " application_datetime, dosage_quantity, dosage_measure_unit_id,\n" +
+            " prescribing_doctor)\n" +
+            "VALUES (?, ?, CURRENT_TIMESTAMP, ?, ?, ?, ?);";
 
     private SqlStatement() {
     }

@@ -39,4 +39,7 @@ public interface VisitService {
 
     boolean establishDiagnosis(Diagnosis diagnosis, String visitStrId,
             AuthUser user) throws ServiceException;
+
+    boolean establishMedicinePrescription(MedicinePrescription prescription,
+            AuthUser user) throws ServiceException;
 }
