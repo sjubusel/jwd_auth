@@ -429,3 +429,9 @@ establishMedicinePrescription.button=Добавить назначение ле�
 establishMedicinePrescription.changeResultSuccess=Назначение лекарственного препарата успешно выполнено
 establishMedicinePrescription.changeResultTechError=Назначение лекарственного препарата не выполнено по техническим причинам
 establishMedicinePrescription.changeResultValidationError=Назначение лекарственного препарата не выполнено из-за некорректной конфигурации страницы
+
+news.heading=Новости
+news.firstArticle=Inno Hosp
+news.firstArticleTitle=Открытие
+news.firstArticleText=Рады информировать вас, что мы открытились и готовы к визитам
+news.firstArticleLink=Исследуй

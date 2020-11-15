@@ -30,8 +30,31 @@
     <%@ include file="structural_element/header.jsp" %>
 
     <h2 style="padding-left: 25px">
-        NEWS STUB MESSAGE WITHOUT I18N
+        <fmt:message bundle="${jspMessages}" key="news.heading"/>
     </h2>
+
+    <div class="card text-center">
+        <div class="card-header">
+            <fmt:message bundle="${jspMessages}" key="news.firstArticle"/>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title"><fmt:message bundle="${jspMessages}"
+                                                key="news.firstArticleTitle"/></h5>
+            <p class="card-text">
+                <fmt:message bundle="${jspMessages}"
+                             key="news.firstArticleText"/>
+            </p>
+            <a href="${pageContext.request.contextPath}/main"
+               class="btn btn-primary"><fmt:message
+                    bundle="${jspMessages}"
+                    key="news.firstArticleLink"/>
+            </a>
+        </div>
+        <div class="card-footer text-muted">
+            15.11.2020
+        </div>
+    </div>
+
 </div>
 
 <jsp:include page="structural_element/footer.jsp"/>
