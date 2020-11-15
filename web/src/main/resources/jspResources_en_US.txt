@@ -443,3 +443,5 @@ contacts.address=Address
 contacts.addressValue=220102, Republic of Belarus, Minsk region, Minsk district, Bolshoye Stiklevo village, Lechebnaya street, building 1
 
 aboutUs.contents=The healthcare institution "Innovative Hospital named after Shablovskaya Albina Filippovna in Minsk" is one of the largest multidisciplinary hospitals in the country, providing highly qualified specialized medical care (inpatient and outpatient) to residents of Minsk, the Republic of Belarus and foreign citizens.
+
+establishMedicinePrescription.changeResultAllergy=Medicine prescription is not added the patient has an allergic reaction to one of components of medicine

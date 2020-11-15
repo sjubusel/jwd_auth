@@ -128,7 +128,10 @@ public final class CommandPath {
             SUBSTAFF_GO_TO_ESTABLISH_MED_PRESCRIPTION_CHANGE_RESULT_SUCCESS
             = "/profile?command=go-to-establish-med-prescription&changeResult" +
             "=success&hiddenVisitId=";
-
+    public static final String
+            SUBSTAFF_GO_TO_ESTABLISH_MED_PRESCRIPTION_CHANGE_RESULT_ALLERGY
+            = "/profile?command=go-to-establish-med-prescription&changeResult" +
+            "=allergy&hiddenVisitId=";
 
     public static final String LOGIN_JSP = "/WEB-INF/jsp/login.jsp";
     public static final String PROFILE_JSP = "/WEB-INF/jsp/profile.jsp";

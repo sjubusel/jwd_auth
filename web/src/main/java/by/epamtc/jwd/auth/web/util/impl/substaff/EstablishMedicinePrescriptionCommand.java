@@ -10,6 +10,7 @@ import by.epamtc.jwd.auth.model.med_info.MedicineMeasureUnit;
 import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
 import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.VisitService;
+import by.epamtc.jwd.auth.service.exception.AllergicServiceException;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
 import org.slf4j.Logger;
@@ -48,6 +49,11 @@ public class EstablishMedicinePrescriptionCommand implements Command {
         try {
             isChanged = visitService.establishMedicinePrescription(prescription,
                     user);
+        } catch (AllergicServiceException e) {
+            logger.error("An error when a doctor established a medicine, " +
+                    "to which there is an allergic reaction", e);
+            sendRedirectWithAllergicError(req, res, visitId);
+            return;
         } catch (ServiceException e) {
             logger.error("An error while changing patient's complaints.\n" +
                             "Params{user={}, visitStrId={}, medicineStrId={}" +
@@ -119,5 +125,12 @@ public class EstablishMedicinePrescriptionCommand implements Command {
         res.sendRedirect(req.getContextPath() + CommandPath
                 .SUBSTAFF_GO_TO_ESTABLISH_MED_PRESCRIPTION_CHANGE_RESULT_SUCCESS
                 + visitStrId);
+    }
+
+    private void sendRedirectWithAllergicError(HttpServletRequest req,
+            HttpServletResponse res, String visitId) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBSTAFF_GO_TO_ESTABLISH_MED_PRESCRIPTION_CHANGE_RESULT_ALLERGY
+                + visitId);
     }
 }

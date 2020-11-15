@@ -147,6 +147,12 @@
                                                  key="establishMedicinePrescription.changeResultSuccess"/>
                                 </div>
                             </c:if>
+                            <c:if test="${requestScope.changeResult eq 'allergy'}">
+                                <div class="alert alert-danger" role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="establishMedicinePrescription.changeResultAllergy"/>
+                                </div>
+                            </c:if>
                             <c:if test="${requestScope.changeResult eq 'techError'}">
                                 <div class="alert alert-danger" role="alert">
                                     <fmt:message bundle="${jspMessages}"

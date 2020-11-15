@@ -9,6 +9,7 @@ import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
 import by.epamtc.jwd.auth.model.med_info.Prescription;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
 import by.epamtc.jwd.auth.service.VisitService;
+import by.epamtc.jwd.auth.service.exception.AllergicServiceException;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.service.validation.VisitValidator;
 
@@ -160,7 +161,15 @@ public class DefaultVisitService implements VisitService {
         if (validator.isMedicinePrescriptionValid(prescription)
                 && validator.isAuthUserHasRights(user)) {
             try {
-                return visitDao.establishMedicinePrescription(prescription, user);
+                boolean isEstablished = visitDao.establishMedicinePrescription
+                        (prescription, user);
+                if (!isEstablished) {
+                    throw new AllergicServiceException("An error while " +
+                            "doctor tried to establish a medicine, to one " +
+                            "of which components a patient has an allergic " +
+                            "reaction");
+                }
+                return true;
             } catch (DaoException e) {
                 throw new ServiceException(e);
             }
