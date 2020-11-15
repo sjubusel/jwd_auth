@@ -30,8 +30,17 @@
     <%@ include file="structural_element/header.jsp" %>
 
     <h2 style="padding-left: 25px">
-        ABOUT-US STUB MESSAGE WITHOUT I18N
+        <fmt:message bundle="${jspMessages}" key="aboutUs.htmlTitle"/>
     </h2>
+    <div class="ml-2 mr-2 mb-2 mt-2">
+        <fmt:message bundle="${jspMessages}" key="aboutUs.contents"/>
+    </div>
+
+    <div class="text-center">
+        <img class="rounded mx-auto d-block" height="500"
+             src="http://${pageContext.request.serverName}:${pageContext.request.serverPort}/upload/assets/3.jpg"
+             alt="main photo">
+    </div>
 </div>
 
 <jsp:include page="structural_element/footer.jsp"/>
