@@ -13,6 +13,14 @@
 
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
 
+<div class="text-center">
+    <img class="rounded mx-auto d-block" height="350"
+         src="http://${pageContext.request.serverName}:${pageContext.request.serverPort}/upload/assets/2.jpg"
+         alt="main photo">
+</div>
+
+<br>
+
 <div class="text-body" style="padding-left: 25px; padding-right: 25px">
     <fmt:message bundle="${jspMessages}" key="mainContents.mainMessage"/>
 </div>
