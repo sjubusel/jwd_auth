@@ -435,3 +435,9 @@ news.firstArticle=Inno Hosp
 news.firstArticleTitle=Открытие
 news.firstArticleText=Рады информировать вас, что мы открытились и готовы к визитам
 news.firstArticleLink=Исследуй
+
+contacts.heading=Контакты
+contacts.contacts=Справочная служба
+contacts.hotLine=Горячая линия
+contacts.address=Адрес
+contacts.addressValue=220102, Республика Беларусь, Минская область, Минский район, деревня Большое Стиклево, улица Лечебная, дом 1
