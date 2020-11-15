@@ -404,21 +404,44 @@ public class DefaultVisitDao implements VisitDao {
     public boolean establishMedicinePrescription(MedicinePrescription
             prescription, AuthUser user) throws DaoException {
         Connection conn = null;
-        PreparedStatement statement = null;
+        PreparedStatement[] statements = new PreparedStatement[3];
+        ResultSet[] resultSets = new ResultSet[3];
+        int pointer = 0;
+
 
         try {
             conn = pool.takeConnection();
-            statement = conn.prepareStatement(SqlStatement
+            statements[pointer] = conn.prepareStatement(SqlStatement
+                    .SELECT_PATIENT_ID_BY_VISIT_ID);
+            statements[pointer].setInt(1, prescription.getOriginDocumentId());
+            resultSets[pointer] = statements[pointer].executeQuery();
+            int personId = 0;
+            if (resultSets[pointer].next()) {
+                personId = resultSets[pointer].getInt(1);
+            }
+
+
+            statements[++pointer] = conn.prepareStatement(SqlStatement
+                    .SELECT_IF_THERE_IS_ALLERGY);
+            statements[pointer].setInt(1, prescription.getMedicineId());
+            statements[pointer].setInt(2, personId);
+            resultSets[pointer] = statements[pointer].executeQuery();
+            if (resultSets[pointer].next()) {
+                return false;
+            }
+
+
+            statements[++pointer] = conn.prepareStatement(SqlStatement
                     .INSERT_VISIT_MEDICINE_PRESCRIPTION);
-            statement.setInt(1, prescription.getOriginDocumentId());
-            statement.setInt(2, prescription.getMedicineId());
-            statement.setTimestamp(3, Timestamp.valueOf
+            statements[pointer].setInt(1, prescription.getOriginDocumentId());
+            statements[pointer].setInt(2, prescription.getMedicineId());
+            statements[pointer].setTimestamp(3, Timestamp.valueOf
                     (prescription.getTargetApplicationDateTime()));
-            statement.setDouble(4, prescription.getDosageQuantity());
-            statement.setInt(5, prescription.getDosageMeasureUnit()
+            statements[pointer].setDouble(4, prescription.getDosageQuantity());
+            statements[pointer].setInt(5, prescription.getDosageMeasureUnit()
                     .getMeasureUnitId());
-            statement.setInt(6, user.getStaffId());
-            return statement.executeUpdate() == 1;
+            statements[pointer].setInt(6, user.getStaffId());
+            return statements[pointer].executeUpdate() == 1;
         } catch (SQLException e) {
             throw new DaoException("An error while establishing new medicine" +
                     " prescription.", e);
@@ -426,7 +449,7 @@ public class DefaultVisitDao implements VisitDao {
             throw new DaoException("An error while taking a connection" +
                     " during establishing new medicine prescription.", e);
         } finally {
-            pool.closeConnection(conn, statement);
+            pool.closeConnection(conn, statements, resultSets);
         }
     }
 

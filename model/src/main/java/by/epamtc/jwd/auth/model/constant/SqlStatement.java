@@ -406,6 +406,17 @@ public final class SqlStatement {
             " application_datetime, dosage_quantity, dosage_measure_unit_id,\n" +
             " prescribing_doctor)\n" +
             "VALUES (?, ?, CURRENT_TIMESTAMP, ?, ?, ?, ?);";
+    public static final String SELECT_PATIENT_ID_BY_VISIT_ID
+            = "SELECT v2ad.person_id\n" +
+            "FROM visits_to_admission_department v2ad\n" +
+            "WHERE v2ad.visit_id = ?;";
+    public static final String SELECT_IF_THERE_IS_ALLERGY
+            = "SELECT arm.allergic_reaction_description\n" +
+            "FROM hospital.allergic_reactions_medicine arm\n" +
+            "WHERE arm.pharmaceutical_substance_id IN\n" +
+            "      (SELECT mc.pharmaceutical_substance_id " +
+            "FROM medicine_components mc WHERE mc.medicine_id = ?)\n" +
+            "  AND arm.person_id = ?;";
 
     private SqlStatement() {
     }
