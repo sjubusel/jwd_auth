@@ -21,7 +21,7 @@
 <head>
     <title>
         <fmt:message bundle="${jspMessages}"
-                     key="admissionDoctorSubMenu.establishPrescription"/>
+                     key="visitDetail.establishPresription"/>
         <c:out value=" | "/>
         <fmt:message bundle="${jspMessages}"
                      key="admissionDoctorSubMenu.visitsOnControl"/>
@@ -71,14 +71,32 @@
                 <c:otherwise>
                     <h1>
                         <fmt:message bundle="${jspMessages}"
-                                     key="establishPrescription."/>
+                                     key="establishPrescription.heading"/>
                     </h1>
                     <c:choose>
-                        <c:when test="">
-
+                        <c:when test="${true}">
+                            <form action="${pageContext.request.contextPath}/profile"
+                                  method="post">
+                                <input type="hidden" name="command"
+                                       value="establish-prescription">
+                                <input type="hidden" name="hiddenVisitId"
+                                       value="${requestScope.hiddenVisitId}">
+                                <div class="form-group form-inline row mb-3">
+                                </div>
+                                <label for="prescriptionDescription">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="establishPrescription.prescriptionLabel"/>
+                                </label>
+                                <textarea type="text"
+                                          id="prescriptionDescription"
+                                          name="prescriptionDescriptionInput"
+                                          required
+                                          placeholder="<fmt:message bundle="${jspMessages}"
+                                       key="establishPrescription.medicinePlaceholder"/>"></textarea>
+                            </form>
                         </c:when>
                         <c:otherwise>
-
+                            <c:out value=""/>
                         </c:otherwise>
                     </c:choose>
                 </c:otherwise>
