@@ -466,3 +466,5 @@ visitDetail.cancelPrescriptionResultValidationError=Назначение не о
 visitDetail.cancelMedPrescriptionResultSuccess=Назначение лекарственного препарата успешно отменено
 visitDetail.cancelMedPrescriptionResultTechError=Назначение лекарственного препарата не отменено по техническим причинам
 visitDetail.cancelMedPrescriptionResultValidationError=Назначение лекарственного препарата не отменено из-за неверной конфигурации страницы
+
+patients.definition=Данный раздел разрабатывается. В будущем будет содержать информацию о текущих медицинских и иных назначениях, эпикризах и справках о состоянии здоровья до госпитализации

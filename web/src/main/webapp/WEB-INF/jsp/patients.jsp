@@ -30,7 +30,7 @@
     <%@ include file="structural_element/header.jsp" %>
 
     <h2 style="padding-left: 25px">
-        PATIENT STUB MESSAGE WITHOUT I18N
+        <fmt:message bundle="${jspMessages}" key="patients.definition"/>
     </h2>
 </div>
 

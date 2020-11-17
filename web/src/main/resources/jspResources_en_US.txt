@@ -466,3 +466,5 @@ visitDetail.cancelPrescriptionResultValidationError=Prescription is not cancelle
 visitDetail.cancelMedPrescriptionResultSuccess=Medicine prescription is successfully cancelled
 visitDetail.cancelMedPrescriptionResultTechError=Medicine prescription is not cancelled because of a technical factor
 visitDetail.cancelMedPrescriptionResultValidationError=Medicine prescription is not cancelled because of an incorrect page configuration
+
+patients.definition=This chapter is under development and in the future it will contain information about current non-medicine / medicine prescriptions, epicrisises and health certificates
