@@ -19,7 +19,7 @@ public class VisitValidator {
         return user.getRole().getRoleId() >= AppConstant.STAFF_WHICH_CAN_TREAT;
     }
 
-    public boolean isVisitIdCorrect(String visitId) {
+    public boolean isStringIdCorrect(String visitId) {
         return visitId.matches(RegistrationInfoPattern.DIGITS);
     }
 

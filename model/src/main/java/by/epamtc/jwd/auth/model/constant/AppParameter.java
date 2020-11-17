@@ -99,6 +99,9 @@ public final class AppParameter {
     public static final String HIDDEN_MEDICINE_ID = "hiddenMedicineIdInput";
     public static final String PRESCRIPTION_DESCRIPTION
             = "prescriptionDescriptionInput";
+    public static final String PRESCRIPTION_ID = "hiddenPrescriptionIdInput";
+    public static final String ANCHOR_TO_PRESCRIPTIONS
+            = "#prescriptionsTable";
 
 
     private AppParameter() {

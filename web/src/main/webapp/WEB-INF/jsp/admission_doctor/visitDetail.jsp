@@ -1017,6 +1017,7 @@
                     <c:choose>
                         <c:when test="${requestScope.prescriptions ne null}">
                             <%--header--%>
+                            <a id="prescriptionsTable"></a>
                             <div class="row d-flex mb-1 border">
                                 <div class="col">
                                     <fmt:message bundle="${jspMessages}"
@@ -1142,6 +1143,9 @@
                                                     <input type="hidden"
                                                            name="hiddenPrescriptionIdInput"
                                                            value="${prescription.prescriptionId}">
+                                                    <input type="hidden"
+                                                           name="hiddenVisitId"
+                                                           value="${requestScope.hiddenVisitId}">
                                                     <button type="submit"
                                                             class="btn align-self-center btn-primary ">
                                                         <fmt:message

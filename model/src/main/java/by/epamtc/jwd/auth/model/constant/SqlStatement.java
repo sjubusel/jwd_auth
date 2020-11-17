@@ -422,6 +422,12 @@ public final class SqlStatement {
             "(visit_id, prescription_datetime, prescribing_staff,\n" +
             " prescription_description)\n" +
             "VALUES (?, CURRENT_TIMESTAMP, ?, ?);";
+    public static final String UPDATE_CANCEL_PRESCRIPTION
+            = "UPDATE hospital.visit_prescription_records\n" +
+            "SET execution_result   = 'ОТМЕНЕНО ИНИЦИАТОРОМ НАЗНАЧЕНИЯ',\n" +
+            "    execution_datetime = CURRENT_TIMESTAMP,\n" +
+            "    executor_staff     = ?\n" +
+            "WHERE prescription_id = ?;";
 
     private SqlStatement() {
     }

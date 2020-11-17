@@ -50,7 +50,7 @@ public class DefaultVisitService implements VisitService {
     public boolean acceptPatientForTreatment(String visitId, AuthUser user)
             throws ServiceException {
         if (validator.isAuthUserHasRights(user) && validator
-                .isVisitIdCorrect(visitId)) {
+                .isStringIdCorrect(visitId)) {
             try {
                 return visitDao.acceptPatientForTreatment(visitId, user);
             } catch (DaoException e) {
@@ -76,7 +76,7 @@ public class DefaultVisitService implements VisitService {
     @Override
     public AdmissionDepartmentVisit fetchFullAdmissionDepartmentVisit(String
             visitId) throws ServiceException {
-        if (validator.isVisitIdCorrect(visitId)) {
+        if (validator.isStringIdCorrect(visitId)) {
             try {
                 return visitDao.fetchFullAdmissionDepartmentVisit(visitId);
             } catch (DaoException e) {
@@ -102,7 +102,7 @@ public class DefaultVisitService implements VisitService {
     @Override
     public List<MedicinePrescription> fetchVisitMedicinePrescriptions
             (String visitId) throws ServiceException {
-        if (validator.isVisitIdCorrect(visitId)) {
+        if (validator.isStringIdCorrect(visitId)) {
             try {
                 return visitDao.fetchVisitMedicinePrescriptions(visitId);
             } catch (DaoException e) {
@@ -115,7 +115,7 @@ public class DefaultVisitService implements VisitService {
     @Override
     public List<Prescription> fetchVisitPrescriptions(String visitId)
             throws ServiceException {
-        if (validator.isVisitIdCorrect(visitId)) {
+        if (validator.isStringIdCorrect(visitId)) {
             try {
                 return visitDao.fetchVisitPrescriptions(visitId);
             } catch (DaoException e) {
@@ -128,7 +128,7 @@ public class DefaultVisitService implements VisitService {
     @Override
     public boolean changeComplaints(String complaints, String visitId,
             AuthUser user) throws ServiceException {
-        if (validator.isVisitIdCorrect(visitId)
+        if (validator.isStringIdCorrect(visitId)
                 && validator.isAuthUserHasRights(user)) {
             try {
                 return visitDao.changeComplaints(complaints, visitId, user);
@@ -142,7 +142,7 @@ public class DefaultVisitService implements VisitService {
     @Override
     public boolean establishDiagnosis(Diagnosis diagnosis, String visitStrId,
             AuthUser user) throws ServiceException {
-        if (validator.isVisitIdCorrect(visitStrId)
+        if (validator.isStringIdCorrect(visitStrId)
                 && validator.isDiagnosisCorrect(diagnosis)
                 && validator.isAuthUserHasRights(user)) {
             try {
@@ -184,6 +184,20 @@ public class DefaultVisitService implements VisitService {
                 && validator.isAuthUserHasRights(user)) {
             try {
                 return visitDao.establishPrescription(prescription, user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public boolean cancelPrescription(String prescriptionId, AuthUser user)
+            throws ServiceException {
+        if (validator.isStringIdCorrect(prescriptionId)
+                && validator.isAuthUserHasRights(user)) {
+            try {
+                return visitDao.cancelPrescription(prescriptionId, user);
             } catch (DaoException e) {
                 throw new ServiceException(e);
             }
