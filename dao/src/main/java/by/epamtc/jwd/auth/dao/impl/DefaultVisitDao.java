@@ -491,7 +491,7 @@ public class DefaultVisitDao implements VisitDao {
             statement = conn.prepareStatement(SqlStatement
                     .UPDATE_CANCEL_PRESCRIPTION);
             statement.setInt(1, user.getStaffId());
-            statement.setInt(1, Integer.parseInt(prescriptionId));
+            statement.setInt(2, Integer.parseInt(prescriptionId));
             statement.executeUpdate();
         } catch (ConnectionPoolException e) {
             throw new DaoException("An error while taking a connection during " +

@@ -96,6 +96,13 @@ public class GoToDoctorViewControlledVisitCommand implements Command {
             req.setAttribute(AppParameter.CHANGE_RESULT, changeResult);
         }
 
+        String cancelPrescriptionResult = req.getParameter(AppParameter
+                .CANCEL_PRESCRIPTION_RESULT);
+        if (cancelPrescriptionResult != null) {
+            req.setAttribute(AppParameter.CANCEL_PRESCRIPTION_RESULT,
+                    cancelPrescriptionResult);
+        }
+
         req.getRequestDispatcher(CommandPath.SUBSTAFF_VISIT_DETAIL_JSP)
                 .forward(req, res);
     }

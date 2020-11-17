@@ -458,3 +458,7 @@ establishPrescription.addResultTechError=По технической причи�
 establishPrescription.addResultValidationError=По причине некорректной конфигурации страницы назначение не добавлено
 
 visitDetail.cancelBtn=Отметить
+
+visitDetail.cancelPrescriptionResultSuccess=Назначение успешно отменено
+visitDetail.cancelPrescriptionResultTechError=Назначение не отменено по техническим причинам
+visitDetail.cancelPrescriptionResultValidationError=Назначение не отменено из-за неверной конфигурации страницы

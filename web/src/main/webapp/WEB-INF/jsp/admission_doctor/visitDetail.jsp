@@ -1017,6 +1017,28 @@
                     <c:choose>
                         <c:when test="${requestScope.prescriptions ne null}">
                             <%--header--%>
+                            <c:choose>
+                                <c:when test="${requestScope.cancelPrescriptionResult ne null}">
+                                    <c:if test="${requestScope.cancelPrescriptionResult eq 'success'}">
+                                        <div class="alert alert-success" role="alert">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="visitDetail.cancelPrescriptionResultSuccess"/>
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${requestScope.cancelPrescriptionResult eq 'techError'}">
+                                        <div class="alert alert-danger" role="alert">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="visitDetail.cancelPrescriptionResultTechError"/>
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${requestScope.cancelPrescriptionResult eq 'validationError'}">
+                                        <div class="alert alert-danger" role="alert">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="visitDetail.cancelPrescriptionResultValidationError"/>
+                                        </div>
+                                    </c:if>
+                                </c:when>
+                            </c:choose>
                             <a id="prescriptionsTable"></a>
                             <div class="row d-flex mb-1 border">
                                 <div class="col">
@@ -1145,7 +1167,7 @@
                                                            value="${prescription.prescriptionId}">
                                                     <input type="hidden"
                                                            name="hiddenVisitId"
-                                                           value="${requestScope.hiddenVisitId}">
+                                                           value="${requestScope.visitInfo.visitId}">
                                                     <button type="submit"
                                                             class="btn align-self-center btn-primary ">
                                                         <fmt:message
