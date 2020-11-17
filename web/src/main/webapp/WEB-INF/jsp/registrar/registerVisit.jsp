@@ -142,7 +142,6 @@
             <form action="${pageContext.request.contextPath}/profile"
                   method="post">
                 <input type="hidden" name="command"
-                <%-- TODO command add --%>
                        value="staff-register-visit"/>
                 <div class="form-group form-inline row">
                     <label for="person"

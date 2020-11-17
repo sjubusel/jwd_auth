@@ -54,7 +54,6 @@
                 } else {
                     $("#foodTypeResult").html("");
                     searchFoodReactions = $.ajax({
-                        // TODO command
                         url: "ajax?command=fetch-food-allergy-in-allergic-reactions-jsp",
                         method: "post",
                         data: $("#foodType").serialize(),
@@ -105,7 +104,6 @@
                 } else {
                     $("#medicineTypeResult").html("");
                     searchMedicineReactions = $.ajax({
-                        // TODO command
                         url: "ajax?command=fetch-medicine-allergy-in-allergic-reactions-jsp",
                         method: "post",
                         data: $("#medicineType").serialize(),
@@ -138,7 +136,6 @@
                                 let childColName = document.createElement("div");
                                 childColName.className += "col border d-flex justify-content-center";
                                 childRow.appendChild(childColName);
-                                // TODO change
                                 childColName.innerHTML = data[i].medicineName;
                             }
                         }
@@ -274,7 +271,6 @@
                     <form action="${pageContext.request.contextPath}/profile"
                           method="post">
                         <input type="hidden" name="command"
-                            <%-- TODO command add food--%>
                                value="profile-allergic-reactions-food-add"/>
                         <div class="form-group form-inline row">
                             <label for="foodType"
@@ -422,7 +418,6 @@
                     <form action="${pageContext.request.contextPath}/profile"
                           method="post">
                         <input type="hidden" name="command"
-                            <%-- TODO command add food--%>
                                value="profile-allergic-reactions-medicine-add"/>
                         <div class="form-group form-inline row">
                             <label for="medicineType"

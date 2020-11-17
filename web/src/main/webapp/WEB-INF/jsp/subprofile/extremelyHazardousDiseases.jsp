@@ -237,7 +237,6 @@
                     <form action="${pageContext.request.contextPath}/profile"
                           method="post">
                         <input type="hidden" name="command"
-                            <%-- TODO command add --%>
                                value="profile-extremely-hazardous-diseases-add"/>
                         <div class="form-group form-inline row">
                             <label for="disease"
