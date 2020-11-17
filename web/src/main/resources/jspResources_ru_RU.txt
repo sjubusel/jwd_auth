@@ -452,3 +452,7 @@ establishPrescription.prescriptionLabel=Текст назначения
 establishPrescription.medicinePlaceholder=Введите текст назначения
 
 establishPrescription.button=Добавить назначение
+
+establishPrescription.addResultSuccess=Назначение успешно добавлено
+establishPrescription.addResultTechError=По технической причине назначение не добавлено
+establishPrescription.addResultValidationError=По причине некорректной конфигурации страницы назначение не добавлено

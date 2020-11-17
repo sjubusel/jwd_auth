@@ -74,6 +74,28 @@
                                      key="establishPrescription.heading"/>
                     </h1>
                     <c:choose>
+                        <c:when test="${requestScope.addResult ne null}">
+                            <c:if test="${requestScope.addResult eq 'success'}">
+                                <div class="alert alert-success" role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="establishPrescription.addResultSuccess"/>
+                                </div>
+                            </c:if>
+                            <c:if test="${requestScope.addResult eq 'techError'}">
+                                <div class="alert alert-danger" role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="establishPrescription.addResultTechError"/>
+                                </div>
+                            </c:if>
+                            <c:if test="${requestScope.addResult eq 'validationError'}">
+                                <div class="alert alert-danger" role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="establishPrescription.addResultValidationError"/>
+                                </div>
+                            </c:if>
+                        </c:when>
+                    </c:choose>
+                    <c:choose>
                         <c:when test="${true}">
                             <form action="${pageContext.request.contextPath}/profile"
                                   method="post">
