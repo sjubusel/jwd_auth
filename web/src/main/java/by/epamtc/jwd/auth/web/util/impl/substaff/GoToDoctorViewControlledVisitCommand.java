@@ -91,18 +91,6 @@ public class GoToDoctorViewControlledVisitCommand implements Command {
                     medicinePrescriptions, prescriptions);
         }
 
-        String changeResult = req.getParameter(AppParameter.CHANGE_RESULT);
-        if (changeResult != null) {
-            req.setAttribute(AppParameter.CHANGE_RESULT, changeResult);
-        }
-
-        String cancelPrescriptionResult = req.getParameter(AppParameter
-                .CANCEL_PRESCRIPTION_RESULT);
-        if (cancelPrescriptionResult != null) {
-            req.setAttribute(AppParameter.CANCEL_PRESCRIPTION_RESULT,
-                    cancelPrescriptionResult);
-        }
-
         req.getRequestDispatcher(CommandPath.SUBSTAFF_VISIT_DETAIL_JSP)
                 .forward(req, res);
     }
@@ -155,6 +143,25 @@ public class GoToDoctorViewControlledVisitCommand implements Command {
         if (prescriptions.size() > 0) {
             req.setAttribute(AppAttribute.REQUEST_PRESCRIPTIONS,
                     prescriptions);
+        }
+
+        String changeResult = req.getParameter(AppParameter.CHANGE_RESULT);
+        if (changeResult != null) {
+            req.setAttribute(AppParameter.CHANGE_RESULT, changeResult);
+        }
+
+        String cancelPrescriptionResult = req.getParameter(AppParameter
+                .CANCEL_PRESCRIPTION_RESULT);
+        if (cancelPrescriptionResult != null) {
+            req.setAttribute(AppParameter.CANCEL_PRESCRIPTION_RESULT,
+                    cancelPrescriptionResult);
+        }
+
+        String cancelMedPrescriptionResult = req.getParameter(AppParameter
+                .CANCEL_MED_PRESCRIPTION_RESULT);
+        if (cancelMedPrescriptionResult != null) {
+            req.setAttribute(AppParameter.CANCEL_MED_PRESCRIPTION_RESULT,
+                    cancelMedPrescriptionResult);
         }
     }
 }

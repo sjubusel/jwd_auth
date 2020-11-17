@@ -1020,19 +1020,22 @@
                             <c:choose>
                                 <c:when test="${requestScope.cancelPrescriptionResult ne null}">
                                     <c:if test="${requestScope.cancelPrescriptionResult eq 'success'}">
-                                        <div class="alert alert-success" role="alert">
+                                        <div class="alert alert-success"
+                                             role="alert">
                                             <fmt:message bundle="${jspMessages}"
                                                          key="visitDetail.cancelPrescriptionResultSuccess"/>
                                         </div>
                                     </c:if>
                                     <c:if test="${requestScope.cancelPrescriptionResult eq 'techError'}">
-                                        <div class="alert alert-danger" role="alert">
+                                        <div class="alert alert-danger"
+                                             role="alert">
                                             <fmt:message bundle="${jspMessages}"
                                                          key="visitDetail.cancelPrescriptionResultTechError"/>
                                         </div>
                                     </c:if>
                                     <c:if test="${requestScope.cancelPrescriptionResult eq 'validationError'}">
-                                        <div class="alert alert-danger" role="alert">
+                                        <div class="alert alert-danger"
+                                             role="alert">
                                             <fmt:message bundle="${jspMessages}"
                                                          key="visitDetail.cancelPrescriptionResultValidationError"/>
                                         </div>
@@ -1194,6 +1197,31 @@
                     </h1>
                     <c:choose>
                         <c:when test="${requestScope.medicinePrescriptions ne null}">
+                            <c:choose>
+                                <c:when test="${requestScope.cancelMedPrescriptionResult ne null}">
+                                    <c:if test="${requestScope.cancelMedPrescriptionResult eq 'success'}">
+                                        <div class="alert alert-success"
+                                             role="alert">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="visitDetail.cancelMedPrescriptionResultSuccess"/>
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${requestScope.cancelMedPrescriptionResult eq 'techError'}">
+                                        <div class="alert alert-danger"
+                                             role="alert">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="visitDetail.cancelMedPrescriptionResultTechError"/>
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${requestScope.cancelMedPrescriptionResult eq 'validationError'}">
+                                        <div class="alert alert-danger"
+                                             role="alert">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="visitDetail.cancelMedPrescriptionResultValidationError"/>
+                                        </div>
+                                    </c:if>
+                                </c:when>
+                            </c:choose>
                             <div class="row d-flex mb-1 border">
                                 <div class="col">
                                     <fmt:message bundle="${jspMessages}"
@@ -1256,6 +1284,33 @@
                                             <c:out value=": "/>
                                             <c:out value="${medPrescription.targetApplicationDateTime}"/>
                                         </div>
+                                        <c:choose>
+                                            <c:when test="${medPrescription.executionDateTime ne null
+                                            || medPrescription.patientDisagreementDateTime ne null}">
+
+                                            </c:when>
+                                            <c:otherwise>
+                                                <form action="${pageContext.request.contextPath}/profile"
+                                                      method="post">
+                                                    <input type="hidden"
+                                                           name="command"
+                                                        <%-- TODO cancel prescription --%>
+                                                           value="cancel-medicine-prescription">
+                                                    <input type="hidden"
+                                                           name="hiddenPrescriptionIdInput"
+                                                           value="${medPrescription.prescriptionId}">
+                                                    <input type="hidden"
+                                                           name="hiddenVisitId"
+                                                           value="${requestScope.visitInfo.visitId}">
+                                                    <button type="submit"
+                                                            class="btn align-self-center btn-primary ">
+                                                        <fmt:message
+                                                                bundle="${jspMessages}"
+                                                                key="visitDetail.cancelBtn"/>
+                                                    </button>
+                                                </form>
+                                            </c:otherwise>
+                                        </c:choose>
                                         <c:choose>
                                             <c:when test="${medPrescription.executorStaffId > 0}">
                                                 <div>

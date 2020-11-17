@@ -104,6 +104,8 @@ public final class AppParameter {
             = "#prescriptionsTable";
     public static final String CANCEL_PRESCRIPTION_RESULT
             = "cancelPrescriptionResult";
+    public static final String CANCEL_MED_PRESCRIPTION_RESULT
+            = "cancelMedPrescriptionResult";
 
 
     private AppParameter() {

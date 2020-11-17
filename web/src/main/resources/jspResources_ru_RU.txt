@@ -462,3 +462,7 @@ visitDetail.cancelBtn=Отметить
 visitDetail.cancelPrescriptionResultSuccess=Назначение успешно отменено
 visitDetail.cancelPrescriptionResultTechError=Назначение не отменено по техническим причинам
 visitDetail.cancelPrescriptionResultValidationError=Назначение не отменено из-за неверной конфигурации страницы
+
+visitDetail.cancelMedPrescriptionResultSuccess=Назначение лекарственного препарата успешно отменено
+visitDetail.cancelMedPrescriptionResultTechError=Назначение лекарственного препарата не отменено по техническим причинам
+visitDetail.cancelMedPrescriptionResultValidationError=Назначение лекарственного препарата не отменено из-за неверной конфигурации страницы
