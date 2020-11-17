@@ -1082,52 +1082,74 @@
                                     </div>
                                     <div class="col d-block">
                                         <c:choose>
-                                            <c:when test="${prescription.executorStaffId > 0}">
-                                                <div>
-                                                    <fmt:message
-                                                            bundle="${jspMessages}"
-                                                            key="visitDetail.executor"/>
-                                                    <c:out value=": "/>
-                                                    <c:out value="${prescription.executorStaffInfo}"/>
-                                                </div>
-                                                <div>
-                                                    <fmt:message
-                                                            bundle="${jspMessages}"
-                                                            key="visitDetail.executionDateTime"/>
-                                                    <c:out value=": "/>
-                                                    <c:out value="${prescription.executionDateTime}"/>
-                                                </div>
-                                                <div>
-                                                    <fmt:message
-                                                            bundle="${jspMessages}"
-                                                            key="visitDetail.executionResult"/>
-                                                    <c:out value=": "/>
-                                                    <c:out value="${prescription.executionDescription}"/>
-                                                </div>
+                                            <c:when test="${prescription.executionDateTime ne null || prescription.patientDisagreementDateTime ne null}">
+                                                <c:choose>
+                                                    <c:when test="${prescription.executorStaffId > 0}">
+                                                        <div>
+                                                            <fmt:message
+                                                                    bundle="${jspMessages}"
+                                                                    key="visitDetail.executor"/>
+                                                            <c:out value=": "/>
+                                                            <c:out value="${prescription.executorStaffInfo}"/>
+                                                        </div>
+                                                        <div>
+                                                            <fmt:message
+                                                                    bundle="${jspMessages}"
+                                                                    key="visitDetail.executionDateTime"/>
+                                                            <c:out value=": "/>
+                                                            <c:out value="${prescription.executionDateTime}"/>
+                                                        </div>
+                                                        <div>
+                                                            <fmt:message
+                                                                    bundle="${jspMessages}"
+                                                                    key="visitDetail.executionResult"/>
+                                                            <c:out value=": "/>
+                                                            <c:out value="${prescription.executionDescription}"/>
+                                                        </div>
+                                                    </c:when>
+                                                </c:choose>
+                                                <c:choose>
+                                                    <c:when test="${prescription.doesPatientAgree eq false}">
+                                                        <div>
+                                                            <fmt:message
+                                                                    bundle="${jspMessages}"
+                                                                    key="visitDetail.patientDisagrees"/>
+                                                        </div>
+                                                        <div>
+                                                            <fmt:message
+                                                                    bundle="${jspMessages}"
+                                                                    key="visitDetail.disagreementDateTime"/>
+                                                            <c:out value=": "/>
+                                                            <c:out value="${prescription.patientDisagreementDateTime}"/>
+                                                        </div>
+                                                        <div>
+                                                            <fmt:message
+                                                                    bundle="${jspMessages}"
+                                                                    key="visitDetail.disagreementDiscription"/>
+                                                            <c:out value=": "/>
+                                                            <c:out value="${prescription.patientDisagreementDescription}"/>
+                                                        </div>
+                                                    </c:when>
+                                                </c:choose>
                                             </c:when>
-                                        </c:choose>
-                                        <c:choose>
-                                            <c:when test="${prescription.doesPatientAgree eq false}">
-                                                <div>
-                                                    <fmt:message
-                                                            bundle="${jspMessages}"
-                                                            key="visitDetail.patientDisagrees"/>
-                                                </div>
-                                                <div>
-                                                    <fmt:message
-                                                            bundle="${jspMessages}"
-                                                            key="visitDetail.disagreementDateTime"/>
-                                                    <c:out value=": "/>
-                                                    <c:out value="${prescription.patientDisagreementDateTime}"/>
-                                                </div>
-                                                <div>
-                                                    <fmt:message
-                                                            bundle="${jspMessages}"
-                                                            key="visitDetail.disagreementDiscription"/>
-                                                    <c:out value=": "/>
-                                                    <c:out value="${prescription.patientDisagreementDescription}"/>
-                                                </div>
-                                            </c:when>
+                                            <c:otherwise>
+                                                <form action="${pageContext.request.contextPath}/profile"
+                                                      method="post">
+                                                    <input type="hidden"
+                                                           name="command"
+                                                        <%-- TODO cancel prescription --%>
+                                                           value="cancel-non-medicine-prescription">
+                                                    <input type="hidden"
+                                                           name="hiddenPrescriptionIdInput"
+                                                           value="${prescription.prescriptionId}">
+                                                    <button type="submit"
+                                                            class="btn align-self-center btn-primary ">
+                                                        <fmt:message
+                                                                bundle="${jspMessages}"
+                                                                key="visitDetail.cancelBtn"/>
+                                                    </button>
+                                                </form>
+                                            </c:otherwise>
                                         </c:choose>
                                     </div>
                                 </div>
