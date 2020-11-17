@@ -1196,6 +1196,7 @@
                     </h1>
                     <c:choose>
                         <c:when test="${requestScope.medicinePrescriptions ne null}">
+                            <a id="medPrescriptionsTable"></a>
                             <c:choose>
                                 <c:when test="${requestScope.cancelMedPrescriptionResult ne null}">
                                     <c:if test="${requestScope.cancelMedPrescriptionResult eq 'success'}">
@@ -1296,7 +1297,7 @@
                                                         <%-- TODO cancel prescription --%>
                                                            value="cancel-medicine-prescription">
                                                     <input type="hidden"
-                                                           name="hiddenPrescriptionIdInput"
+                                                           name="hiddenMedPrescriptionIdInput"
                                                            value="${medPrescription.prescriptionId}">
                                                     <input type="hidden"
                                                            name="hiddenVisitId"

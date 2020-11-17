@@ -201,6 +201,18 @@ public final class CommandPath {
     public static final String SUBSTAFF_GO_TO_ESTABLISH_PRESCRIPTION_ADD_RESULT_SUCCESS
             = "/profile?command=go-to-establish-prescription&addResult" +
             "=success&hiddenVisitId=";
+    public static final String
+            SUBSTAFF_CONTROLLED_VISIT_CANCEL_MED_PRESCR_RESULT_TECH_ERROR
+            = "/profile?command=go-to-doctor-view-controlled-visit" +
+            "&cancelMedPrescriptionResult=techError&hiddenVisitId=";
+    public static final String
+            SUBSTAFF_CONTROLLED_VISIT_CANCEL_MED_PRESCR_RESULT_VAL_ERROR
+            = "/profile?command=go-to-doctor-view-controlled-visit" +
+            "&cancelMedPrescriptionResult=validationError&hiddenVisitId=";
+    public static final String
+            SUBSTAFF_CONTROLLED_VISIT_CANCEL_MED_PRESCR_RESULT_SUCCESS
+            = "/profile?command=go-to-doctor-view-controlled-visit" +
+            "&cancelMedPrescriptionResult=success&hiddenVisitId=";
 
     private CommandPath() {
     }

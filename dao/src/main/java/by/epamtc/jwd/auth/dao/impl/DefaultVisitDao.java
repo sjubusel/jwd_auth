@@ -507,6 +507,33 @@ public class DefaultVisitDao implements VisitDao {
         return true;
     }
 
+    @Override
+    public boolean cancelMedicinePrescription(String medPrescriptionId,
+            AuthUser user) throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement
+                    .UPDATE_CANCEL_MED_PRESCRIPTION);
+            statement.setInt(1, user.getStaffId());
+            statement.setInt(2, Integer.parseInt(medPrescriptionId));
+            statement.executeUpdate();
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection during " +
+                    "cancellation of a medicine prescription. " +
+                    "MedPrescriptionId = " + medPrescriptionId, e);
+        } catch (SQLException e) {
+            throw new DaoException("An error while cancelling a medicine " +
+                    "prescription. MedPrescriptionId = " + medPrescriptionId, e);
+        } finally {
+            pool.closeConnection(conn, statement);
+        }
+
+        return true;
+    }
+
     private AdmissionDepartmentVisit compileShortenedVisit(ResultSet resultSet)
             throws SQLException {
         AdmissionDepartmentVisit visit = new AdmissionDepartmentVisit();

@@ -205,5 +205,20 @@ public class DefaultVisitService implements VisitService {
         return false;
     }
 
+    @Override
+    public boolean cancelMedicinePrescription(String medPrescriptionId,
+            AuthUser user) throws ServiceException {
+        if (validator.isStringIdCorrect(medPrescriptionId)
+                && validator.isAuthUserHasRights(user)) {
+            try {
+                return visitDao.cancelMedicinePrescription(medPrescriptionId,
+                        user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return false;
+    }
+
 
 }

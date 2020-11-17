@@ -48,4 +48,7 @@ public interface VisitService {
 
     boolean cancelPrescription(String prescriptionId, AuthUser user)
             throws ServiceException;
+
+    boolean cancelMedicinePrescription(String medPrescriptionId, AuthUser user)
+            throws  ServiceException;
 }

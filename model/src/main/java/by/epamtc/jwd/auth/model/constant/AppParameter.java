@@ -106,6 +106,10 @@ public final class AppParameter {
             = "cancelPrescriptionResult";
     public static final String CANCEL_MED_PRESCRIPTION_RESULT
             = "cancelMedPrescriptionResult";
+    public static final String MED_PRESCRIPTION_ID
+            = "hiddenMedPrescriptionIdInput";
+    public static final String ANCHOR_TO_MEDICINE_PRESCRIPTIONS
+            = "#medPrescriptionsTable";
 
 
     private AppParameter() {
