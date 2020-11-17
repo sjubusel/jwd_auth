@@ -42,4 +42,7 @@ public interface VisitDao {
 
     boolean establishMedicinePrescription(MedicinePrescription prescription,
             AuthUser user) throws DaoException;
+
+    boolean establishPrescription(Prescription prescription, AuthUser user)
+            throws DaoException;
 }

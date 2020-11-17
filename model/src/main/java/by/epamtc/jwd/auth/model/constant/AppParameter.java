@@ -97,6 +97,8 @@ public final class AppParameter {
     public static final String DOSAGE = "dosageInput";
     public static final String MEDICINE_MEASURE_UNIT = "medicineMeasureUnitInput";
     public static final String HIDDEN_MEDICINE_ID = "hiddenMedicineIdInput";
+    public static final String PRESCRIPTION_DESCRIPTION
+            = "prescriptionDescriptionInput";
 
 
     private AppParameter() {

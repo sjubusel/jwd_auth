@@ -417,6 +417,11 @@ public final class SqlStatement {
             "      (SELECT mc.pharmaceutical_substance_id " +
             "FROM medicine_components mc WHERE mc.medicine_id = ?)\n" +
             "  AND arm.person_id = ?;";
+    public static final String INSERT_VISIT_PRESCRIPTION
+            = "INSERT INTO hospital.visit_prescription_records " +
+            "(visit_id, prescription_datetime, prescribing_staff,\n" +
+            " prescription_description)\n" +
+            "VALUES (?, CURRENT_TIMESTAMP, ?, ?);";
 
     private SqlStatement() {
     }

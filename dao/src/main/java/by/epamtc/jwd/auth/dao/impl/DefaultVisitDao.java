@@ -453,6 +453,33 @@ public class DefaultVisitDao implements VisitDao {
         }
     }
 
+    @Override
+    public boolean establishPrescription(Prescription prescription,
+            AuthUser user) throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement
+                    .INSERT_VISIT_PRESCRIPTION);
+            statement.setInt(1, prescription.getOriginDocumentId());
+            statement.setInt(2, user.getStaffId());
+            statement.setString(3, prescription.getPrescriptionDescription());
+            statement.executeUpdate();
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection during " +
+                    "establishment of a prescription.\n"
+                    + prescription.toString(), e);
+        } catch (SQLException e) {
+            throw new DaoException("An error while establishment of a " +
+                    "prescription.\n" + prescription.toString(), e);
+        } finally {
+            pool.closeConnection(conn, statement);
+        }
+        return true;
+    }
+
     private AdmissionDepartmentVisit compileShortenedVisit(ResultSet resultSet)
             throws SQLException {
         AdmissionDepartmentVisit visit = new AdmissionDepartmentVisit();

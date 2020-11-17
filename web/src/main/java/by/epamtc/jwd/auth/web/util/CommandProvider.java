@@ -36,6 +36,7 @@ import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileMedicalHistoryPermissi
 import by.epamtc.jwd.auth.web.util.impl.subprofile.ProfileMedicalHistoryPermissionDeleteCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.ChangeComplaintsOfPatientCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.EstablishMedicinePrescriptionCommand;
+import by.epamtc.jwd.auth.web.util.impl.substaff.EstablishPrescriptionCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.EstablishVisitDiagnosisCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToDoctorViewControlledVisitCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToEstablishDiagnosisCommand;
@@ -137,6 +138,8 @@ public class CommandProvider {
                 new EstablishMedicinePrescriptionCommand());
         repository.put(CommandName.SUBSTAFF_GO_TO_ESTABLISH_PRESCRIPTION,
                 new GoToEstablishPrescriptionCommand());
+        repository.put(CommandName.SUBSTAFF_ESTABLISH_PRESCRIPTION,
+                new EstablishPrescriptionCommand());
 
         repository.put(CommandName.ERROR, new ErrorCommand());
     }

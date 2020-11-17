@@ -42,4 +42,7 @@ public interface VisitService {
 
     boolean establishMedicinePrescription(MedicinePrescription prescription,
             AuthUser user) throws ServiceException;
+
+    boolean establishPrescription(Prescription prescription, AuthUser user)
+            throws ServiceException;
 }

@@ -21,6 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeParseException;
 
 public class EstablishMedicinePrescriptionCommand implements Command {
     private static final Logger logger = LoggerFactory.getLogger
@@ -96,7 +97,7 @@ public class EstablishMedicinePrescriptionCommand implements Command {
 
             MedicineMeasureUnit unit = MedicineMeasureUnit.valueOf(medicineMeasureUnit);
             prescription.setDosageMeasureUnit(unit);
-        } catch (IllegalArgumentException e) {
+        } catch (DateTimeParseException | IllegalArgumentException e) {
             logger.error("An error while MedicinePrescription compilation." +
                             " Params{targetApplicationDateTimeInput={}, dosage={}," +
                             " medicineMeasureUnit={}}", targetApplicationDateTimeInput,

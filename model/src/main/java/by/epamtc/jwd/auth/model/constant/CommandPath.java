@@ -178,6 +178,15 @@ public final class CommandPath {
             = "/WEB-INF/jsp/admission_doctor/establishMedicinePrescription.jsp";
     public static final String SUBSTAFF_ESTABLISH_PRESCR_JSP
             = "/WEB-INF/jsp/admission_doctor/establishPrescription.jsp";
+    public static final String SUBSTAFF_GO_TO_ESTABLISH_PRESCRIPTION_ADD_RESULT_TECHERROR
+            = "/profile?command=go-to-establish-prescription&addResult" +
+            "=techError&hiddenVisitId=";
+    public static final String SUBSTAFF_GO_TO_ESTABLISH_PRESCRIPTION_ADD_RESULT_VAL_ERROR
+            = "/profile?command=go-to-establish-prescription&addResult" +
+            "=validationError&hiddenVisitId=";
+    public static final String SUBSTAFF_GO_TO_ESTABLISH_PRESCRIPTION_ADD_RESULT_SUCCESS
+            = "/profile?command=go-to-establish-prescription&addResult" +
+            "=success&hiddenVisitId=";
 
     private CommandPath() {
     }

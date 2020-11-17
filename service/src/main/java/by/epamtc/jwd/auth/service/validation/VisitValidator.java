@@ -5,6 +5,7 @@ import by.epamtc.jwd.auth.model.constant.AppConstant;
 import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
 import by.epamtc.jwd.auth.model.med_info.Diagnosis;
 import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
+import by.epamtc.jwd.auth.model.med_info.Prescription;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
 
 public class VisitValidator {
@@ -44,5 +45,18 @@ public class VisitValidator {
             return false;
         }
         return (prescription.getDosageMeasureUnit() != null);
+    }
+
+    public boolean isPrescriptionValid(Prescription prescription) {
+        if (prescription.getOriginDocumentId() <= 0) {
+            return false;
+        }
+        String prescriptionDescription = prescription.getPrescriptionDescription();
+        //noinspection RedundantIfStatement
+        if (prescriptionDescription == null
+                || prescriptionDescription.matches(AppConstant.EMPTY)) {
+            return false;
+        }
+        return true;
     }
 }
