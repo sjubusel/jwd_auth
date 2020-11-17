@@ -450,3 +450,5 @@ establishPrescription.heading=Форма постановки нового ме�
 
 establishPrescription.prescriptionLabel=Текст назначения
 establishPrescription.medicinePlaceholder=Введите текст назначения
+
+establishPrescription.button=Добавить назначение

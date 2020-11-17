@@ -450,3 +450,5 @@ establishPrescription.heading=Form of establishing of new medical prescription d
 
 establishPrescription.prescriptionLabel=Prescription text
 establishPrescription.medicinePlaceholder=Insert a text of a prescription
+
+establishPrescription.button=Add a prescription

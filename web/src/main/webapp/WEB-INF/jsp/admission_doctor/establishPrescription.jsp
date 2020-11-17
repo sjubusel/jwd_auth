@@ -90,9 +90,19 @@
                                 <textarea type="text"
                                           id="prescriptionDescription"
                                           name="prescriptionDescriptionInput"
+                                          rows="10"
+                                          cols="100"
                                           required
+                                          pattern=".{1,255}"
                                           placeholder="<fmt:message bundle="${jspMessages}"
                                        key="establishPrescription.medicinePlaceholder"/>"></textarea>
+                                <div>
+                                    <button type="submit"
+                                            class="btn align-self-center btn-primary ">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="establishPrescription.button"/>
+                                    </button>
+                                </div>
                             </form>
                         </c:when>
                         <c:otherwise>

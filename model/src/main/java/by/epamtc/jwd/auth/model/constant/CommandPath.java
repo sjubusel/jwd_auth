@@ -176,6 +176,8 @@ public final class CommandPath {
             = "/WEB-INF/jsp/admission_doctor/establishDiagnosis.jsp";
     public static final String SUBSTAFF_ESTABLISH_MED_PRESCR_JSP
             = "/WEB-INF/jsp/admission_doctor/establishMedicinePrescription.jsp";
+    public static final String SUBSTAFF_ESTABLISH_PRESCR_JSP
+            = "/WEB-INF/jsp/admission_doctor/establishPrescription.jsp";
 
     private CommandPath() {
     }
