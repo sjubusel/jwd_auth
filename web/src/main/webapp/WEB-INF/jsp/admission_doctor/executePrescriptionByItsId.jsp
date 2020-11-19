@@ -12,7 +12,7 @@
 </c:choose>
 
 <c:set var="activeMenuTab" value="staff" scope="page"/>
-<c:set var="activeSubMenuStaffTab" value="executePrescriptionsByItsId"
+<c:set var="activeSubMenuStaffTab" value="executePrescriptionByItsId"
        scope="page"/>
 
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
@@ -41,19 +41,29 @@
         <div class="bg-light d-inline-block col">
             <h1>
                 <fmt:message bundle="${jspMessages}"
-                             key="executePrescriptionsByItsId.heading"/>
+                             key="executePrescriptionByItsId.heading"/>
             </h1>
             <form action="${pageContext.request.contextPath}/profile"
                   method="post">
-                <label>
-                    <fmt:message bundle="${jspMessages}"
-                                 key="executePrescriptionsByItsId.label"/>
+                <div class="form-group form-inline row ml-1 mr-1">
+                    <input type="hidden" name="command"
+                           value="execute-prescription-by-its-id">
+                    <label for="prescriptionId">
+                        <fmt:message bundle="${jspMessages}"
+                                     key="executePrescriptionByItsId.label"/>
+                    </label>
                     <input type="text" name="prescriptionIdInput" required
-                           autofocus
+                           autofocus id="prescriptionId" class="col"
                            placeholder="<fmt:message bundle="${jspMessages}"
-                           key="executePrescriptionsByItsId.placeholder"/>"
+                           key="executePrescriptionByItsId.placeholder"/>"
                            pattern="[0-9]+">
-                </label>
+                </div>
+                <button type="submit"
+                        class="btn align-self-center btn-primary">
+                    <fmt:message
+                            bundle="${jspMessages}"
+                            key="executePrescriptionByItsId.button"/>
+                </button>
             </form>
         </div>
     </div>

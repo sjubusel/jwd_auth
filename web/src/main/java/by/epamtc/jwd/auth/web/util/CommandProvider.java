@@ -44,6 +44,7 @@ import by.epamtc.jwd.auth.web.util.impl.substaff.GoToDoctorViewControlledVisitCo
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToEstablishDiagnosisCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToEstablishMedPrescriptionCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToEstablishPrescriptionCommand;
+import by.epamtc.jwd.auth.web.util.impl.substaff.GoToExecutePrescriptionByItsIdCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToStaffAcceptMedicinePrescriptionCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToStaffNewMedicinePrescriptionsCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToStaffNewNonMedicinePrescriptionsCommand;
@@ -164,6 +165,8 @@ public class CommandProvider {
                 new StaffAcceptNonMedicinePrescriptionCommand());
         repository.put(CommandName.SUBSTAFF_GO_TO_PRESCRIPTIONS_ON_CONTROL,
                 new GoToStaffPrescriptionsOnControlCommand());
+        repository.put(CommandName.SUBSTAFF_GO_TO_EXECUTE_PRESCR_BY_ITS_ID,
+                new GoToExecutePrescriptionByItsIdCommand());
 
         repository.put(CommandName.ERROR, new ErrorCommand());
     }

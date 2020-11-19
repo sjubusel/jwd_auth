@@ -75,9 +75,9 @@
                      key="admissionDoctorSubMenu.prescriptionsOnControl"/>
     </a>
     <a type="button"
-       href="${pageContext.request.contextPath}/profile?command=go-to-execute-prescriptions-by-its-id"
+       href="${pageContext.request.contextPath}/profile?command=go-to-execute-prescription-by-its-id"
             <c:choose>
-                <c:when test="${pageScope.activeSubMenuStaffTab == 'executePrescriptionsByItsId'}">
+                <c:when test="${pageScope.activeSubMenuStaffTab == 'executePrescriptionByItsId'}">
                     class="list-group-item list-group-item-action active"
                 </c:when>
                 <c:otherwise>
@@ -86,6 +86,6 @@
             </c:choose>
     >
         <fmt:message bundle="${jspMessages}"
-                     key="admissionDoctorSubMenu.executePrescriptionsByItsId"/>
+                     key="admissionDoctorSubMenu.executePrescriptionByItsId"/>
     </a>
 </div>
