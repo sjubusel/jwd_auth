@@ -50,6 +50,7 @@ import by.epamtc.jwd.auth.web.util.impl.substaff.GoToStaffNewVisitsCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToStaffRegisterVisitCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToStaffVisitsOnControlCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.StaffDoctorAcceptPatient;
+import by.epamtc.jwd.auth.web.util.impl.substaff.StaffExecuteMedicinePrescriptionCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.StaffRegisterVisitCommand;
 
 import javax.servlet.ServletException;
@@ -152,6 +153,8 @@ public class CommandProvider {
                 new GoToStaffNewMedicinePrescriptionsCommand());
         repository.put(CommandName.SUBSTAFF_GO_TO_ACCEPT_MEDICINE_PRESCRIPTION,
                 new GoToStaffAcceptMedicinePrescriptionCommand());
+        repository.put(CommandName.SUBSTAFF_EXECUTE_MEDICINE_PRESCRIPTION,
+                new StaffExecuteMedicinePrescriptionCommand());
 
         repository.put(CommandName.ERROR, new ErrorCommand());
     }
