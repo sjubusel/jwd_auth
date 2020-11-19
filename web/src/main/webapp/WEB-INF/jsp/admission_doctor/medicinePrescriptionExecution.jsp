@@ -67,8 +67,149 @@
                                      key="medicinePrescriptionExecution.heading"/>
                     </h1>
                     <c:choose>
+                        <h1>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="medicinePrescriptionExecution.infoHeading"/>
+                        </h1>
                         <c:when test="${requestScope.medicinePrescription ne null}">
-
+                            <jsp:useBean id="medicinePrescription"
+                                         class="by.epamtc.jwd.auth.model.med_info.MedicinePrescription"
+                                         scope="request"/>
+                            <table class="table">
+                                <tbody>
+                                <tr class="row">
+                                    <td class="col-3 d-flex align-items-center">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="medicinePrescriptionExecution.prescriptionId"/>
+                                    </td>
+                                    <td class="col d-flex align-items-center">
+                                        <c:choose>
+                                            <c:when test="${medicinePrescription.prescriptionId > 0}">
+                                                <c:out value="${medicinePrescription.prescriptionId}"/>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <c:out value=""/>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                </tr>
+                                <tr class="row">
+                                    <td class="col-3 d-flex align-items-center">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="medicinePrescriptionExecution.originDocumentId"/>
+                                    </td>
+                                    <td class="col d-flex align-items-center">
+                                        <c:choose>
+                                            <c:when test="${medicinePrescription.originDocumentId > 0}">
+                                                <c:out value="${medicinePrescription.originDocumentId}"/>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <c:out value=""/>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                </tr>
+                                <tr class="row">
+                                    <td class="col-3 d-flex align-items-center">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="medicinePrescriptionExecution.patientInfo"/>
+                                    </td>
+                                    <td class="col d-flex align-items-center">
+                                        <c:choose>
+                                            <c:when test="${medicinePrescription.patientInfo ne null}">
+                                                <c:out value="${medicinePrescription.patientInfo}"/>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <c:out value=""/>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                </tr>
+                                <tr class="row">
+                                    <td class="col-3 d-flex align-items-center">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="medicinePrescriptionExecution.medicineInfo"/>
+                                    </td>
+                                    <td class="col d-flex align-items-center">
+                                        <c:choose>
+                                            <c:when test="${medicinePrescription.medicineInfo ne null}">
+                                                <c:out value="${medicinePrescription.medicineInfo}"/>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <c:out value=""/>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                </tr>
+                                <tr class="row">
+                                    <td class="col-3 d-flex align-items-center">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="medicinePrescriptionExecution.dosage"/>
+                                    </td>
+                                    <td class="col d-flex align-items-center">
+                                        <c:choose>
+                                            <c:when test="${medicinePrescription.dosageQuantity > 0
+                                            && medicinePrescription.dosageMeasureUnit ne null}">
+                                                <c:out value="${medicinePrescription.dosageQuantity}"/>
+                                                <c:out value=" "/>
+                                                <c:out value="${medicinePrescription.dosageMeasureUnit.shortName}"/>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <c:out value=""/>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                </tr>
+                                <tr class="row">
+                                    <td class="col-3 d-flex align-items-center">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="medicinePrescriptionExecution.prescriptionDateTime"/>
+                                    </td>
+                                    <td class="col d-flex align-items-center">
+                                        <c:choose>
+                                            <c:when test="${medicinePrescription.prescriptionDateTime ne null}">
+                                                <c:out value="${medicinePrescription.prescriptionDateTime}"/>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <c:out value=""/>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                </tr>
+                                <tr class="row">
+                                    <td class="col-3 d-flex align-items-center">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="medicinePrescriptionExecution.targetApplicationDateTime"/>
+                                    </td>
+                                    <td class="col d-flex align-items-center">
+                                        <c:choose>
+                                            <c:when test="${medicinePrescription.targetApplicationDateTime ne null}">
+                                                <c:out value="${medicinePrescription.targetApplicationDateTime}"/>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <c:out value=""/>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                </tr>
+                                <tr class="row">
+                                    <td class="col-3 d-flex align-items-center">
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="medicinePrescriptionExecution.prescribingStaffInfo"/>
+                                    </td>
+                                    <td class="col d-flex align-items-center">
+                                        <c:choose>
+                                            <c:when test="${medicinePrescription.prescribingStaffInfo ne null}">
+                                                <c:out value="${medicinePrescription.prescribingStaffInfo}"/>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <c:out value=""/>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </c:when>
                         <c:otherwise>
                             <fmt:message bundle="${jspMessages}"

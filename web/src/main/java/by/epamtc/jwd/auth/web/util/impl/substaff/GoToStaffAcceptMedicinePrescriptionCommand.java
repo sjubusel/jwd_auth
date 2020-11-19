@@ -48,7 +48,7 @@ public class GoToStaffAcceptMedicinePrescriptionCommand implements Command {
                         .REQUEST_ERROR_VALUE_VAL);
             }
         } else {
-            req.setAttribute(AppAttribute.REQUEST_MEDICINE_PRESCRIPTIONS,
+            req.setAttribute(AppAttribute.REQUEST_MEDICINE_PRESCRIPTION,
                     medicinePrescription);
         }
 

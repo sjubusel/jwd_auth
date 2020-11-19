@@ -27,6 +27,8 @@ public final class AppAttribute {
     public static final String REQUEST_MEDICINE_PRESCRIPTIONS
             = "medicinePrescriptions";
     public static final String REQUEST_PRESCRIPTIONS = "prescriptions";
+    public static final String REQUEST_MEDICINE_PRESCRIPTION
+            = "medicinePrescription";
 
     private AppAttribute() {
     }

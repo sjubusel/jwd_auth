@@ -484,3 +484,13 @@ newMedicinePrescriptions.noNewRecords=New medicine prescriptions are absent
 medicinePrescriptionExecution.title=Execution of a medicine prescription
 medicinePrescriptionExecution.heading=Form of sending a report about medicine prescription execution
 medicinePrescriptionExecution.prescriptionIsalreadyExecuted=Chosen medicine prescription is already executed
+
+medicinePrescriptionExecution.prescriptionId=Medicine prescription number
+medicinePrescriptionExecution.originDocumentId=Number of a visit to the admitting department
+medicinePrescriptionExecution.patientInfo=Information about a patient whom the medicine is prescribed for
+medicinePrescriptionExecution.medicineInfo=Information about a prescribed medicine
+medicinePrescriptionExecution.dosage=Dosage
+medicinePrescriptionExecution.prescriptionDateTime=Prescription date and time
+medicinePrescriptionExecution.targetApplicationDateTime=Deadline date and time
+medicinePrescriptionExecution.prescribingStaffInfo=Information about a staff member, who prescribed a medicine
+medicinePrescriptionExecution.infoHeading=Detailed information about a medicine prescription
