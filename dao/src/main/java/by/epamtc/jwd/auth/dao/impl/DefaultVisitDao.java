@@ -543,7 +543,23 @@ public class DefaultVisitDao implements VisitDao {
         List<MedicinePrescription> prescriptions = new ArrayList<>();
 
         try {
-
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement
+                    .SELECT_MEDICINE_UNEXECUTED_PRESCRIPTIONS);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                MedicinePrescription prescription = compileMedicinePrescription
+                        (resultSet);
+                updateMedPrescriptionWithPatientInfo(prescription, resultSet);
+                prescriptions.add(prescription);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("An error (SQLException) while fetching " +
+                    "all unexecuted medicine prescriptions", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error (ConnectionPoolException" +
+                    " while taking a connection in order to fetch " +
+                    "all unexecuted medicine prescriptions", e);
         } finally {
             pool.closeConnection(conn, statement, resultSet);
         }
@@ -858,5 +874,15 @@ public class DefaultVisitDao implements VisitDao {
         prescription.setPrescriptionComplete(isPrescriptionComplete);
 
         return prescription;
+    }
+
+    private void updateMedPrescriptionWithPatientInfo
+            (MedicinePrescription prescription, ResultSet resultSet)
+            throws SQLException {
+        int patientId = resultSet.getInt(25);
+        prescription.setPatientId(patientId);
+        String patientInfo = compileFullName(resultSet.getString(26),
+                resultSet.getString(27), resultSet.getString(28));
+        prescription.setPatientInfo(patientInfo);
     }
 }
