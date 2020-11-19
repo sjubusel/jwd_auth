@@ -34,6 +34,7 @@ public final class AppConstant {
     public static final int AUTH_USER_STANDARD_INT_VALUE = 0;
     public static final int STAFF_WHICH_CAN_TREAT = 8;
     public static final int APPLIEING_MEDICINE_STAFF = 5;
+    public static final int PARAMEDICAL_STAFF = 3;
 
 
     private AppConstant() {

@@ -50,9 +50,9 @@ public class GoToStaffNewNonMedicinePrescriptionsCommand implements Command {
                     prescriptions);
         }
 
-        String result = req.getParameter(AppParameter.EXECUTION_RESULT);
+        String result = req.getParameter(AppParameter.ACCEPT_RESULT);
         if (result != null) {
-            req.setAttribute(AppParameter.EXECUTION_RESULT, result);
+            req.setAttribute(AppParameter.ACCEPT_RESULT, result);
         }
 
         req.getRequestDispatcher(CommandPath.SUBSTAFF_NEW_NON_MED_PRESCR_JSP)

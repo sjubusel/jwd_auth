@@ -178,7 +178,15 @@ public final class CommandPath {
     public static final String SUBSTAFF_GO_TO_NEW_MED_PRESCR_EXEC_RESULT_SUCCESS
             = "/profile?command=go-to-staff-new-medicine-prescriptions" +
             "&executionResult=success";
-
+    public static final String SUBSTAFF_STAFF_ACCEPT_NON_MED_PRESCR_RESULT_TECH_ERROR
+            = "/profile?command=go-to-staff-new-non-medicine-prescriptions" +
+            "&acceptResult=techError";
+    public static final String SUBSTAFF_STAFF_ACCEPT_NON_MED_PRESCR_RESULT_VAL_ERROR
+            = "/profile?command=go-to-staff-new-non-medicine-prescriptions" +
+            "&acceptResult=validationError";
+    public static final String SUBSTAFF_STAFF_ACCEPT_NON_MED_PRESCR_RESULT_SUCCESS
+            = "/profile?command=go-to-staff-new-non-medicine-prescriptions" +
+            "&acceptResult=success";
 
     public static final String LOGIN_JSP = "/WEB-INF/jsp/login.jsp";
     public static final String PROFILE_JSP = "/WEB-INF/jsp/profile.jsp";

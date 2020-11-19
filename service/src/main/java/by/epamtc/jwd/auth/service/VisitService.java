@@ -63,4 +63,7 @@ public interface VisitService {
 
     List<Prescription> fetchAllNewNonMedicinePrescriptions(AuthUser user)
             throws ServiceException;
+
+    boolean acceptPrescriptionOnControl(String prescriptionId, AuthUser user)
+            throws ServiceException;
 }

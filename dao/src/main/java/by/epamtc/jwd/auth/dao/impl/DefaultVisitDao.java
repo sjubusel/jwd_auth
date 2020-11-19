@@ -661,6 +661,32 @@ public class DefaultVisitDao implements VisitDao {
         return prescriptions;
     }
 
+    @Override
+    public boolean acceptPrescriptionOnControl(String prescriptionId,
+            AuthUser user) throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement
+                    .UPDATE_CONTROL_PRESCRIPTION);
+            statement.setInt(1, user.getStaffId());
+            statement.setInt(2, Integer.parseInt(prescriptionId));
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException("An error while accepting a non-medicine " +
+                    "prescription on control", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection " +
+                    "while accepting a non-medicine prescription on control", e);
+        } finally {
+            pool.closeConnection(conn, statement);
+        }
+
+        return true;
+    }
+
     private AdmissionDepartmentVisit compileShortenedVisit(ResultSet resultSet)
             throws SQLException {
         AdmissionDepartmentVisit visit = new AdmissionDepartmentVisit();

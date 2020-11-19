@@ -64,4 +64,6 @@ public interface VisitDao {
     List<Prescription> fetchAllNewNonMedicinePrescriptions()
             throws DaoException;
 
+    boolean acceptPrescriptionOnControl(String prescriptionId, AuthUser user)
+            throws DaoException;
 }

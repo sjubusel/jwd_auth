@@ -275,4 +275,18 @@ public class DefaultVisitService implements VisitService {
         return null;
     }
 
+    @Override
+    public boolean acceptPrescriptionOnControl(String prescriptionId, AuthUser user)
+            throws ServiceException {
+        if (validator.isAuthUserHasRightsToControlPrescriptions(user)
+                && validator.isStringIdCorrect(prescriptionId)) {
+            try {
+                return visitDao.acceptPrescriptionOnControl(prescriptionId, user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return false;
+    }
+
 }
