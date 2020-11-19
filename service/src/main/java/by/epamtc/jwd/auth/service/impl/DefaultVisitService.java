@@ -289,4 +289,17 @@ public class DefaultVisitService implements VisitService {
         return false;
     }
 
+    @Override
+    public List<Prescription> fetchControlledVisitPrescriptions(AuthUser user)
+            throws ServiceException {
+        if (validator.isAuthUserHasRightsToControlPrescriptions(user)) {
+            try {
+                return visitDao.fetchControlledVisitPrescriptions(user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return null;
+    }
+
 }

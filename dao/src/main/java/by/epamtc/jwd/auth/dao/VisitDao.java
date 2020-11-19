@@ -66,4 +66,7 @@ public interface VisitDao {
 
     boolean acceptPrescriptionOnControl(String prescriptionId, AuthUser user)
             throws DaoException;
+
+    List<Prescription> fetchControlledVisitPrescriptions(AuthUser user)
+            throws DaoException;
 }

@@ -687,6 +687,40 @@ public class DefaultVisitDao implements VisitDao {
         return true;
     }
 
+    @Override
+    public List<Prescription> fetchControlledVisitPrescriptions(AuthUser user)
+            throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<Prescription> prescriptions = new ArrayList<>();
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement
+                    .SELECT_CONTROLLED_NON_MEDICINE_UNEXECUTED_PRESCRIPTIONS);
+            statement.setInt(1, user.getStaffId());
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Prescription prescription = compileNonMedicinePrescription(
+                        resultSet);
+                updateNonMedPrescriptionWithPatientInfo(prescription, resultSet);
+                prescriptions.add(prescription);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("An error (SQLException) while fetching " +
+                    "all controlled unexecuted non medicine prescriptions", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error (ConnectionPoolException" +
+                    " while taking a connection in order to fetch " +
+                    "all controlled unexecuted non medicine prescriptions", e);
+        } finally {
+            pool.closeConnection(conn, statement, resultSet);
+        }
+
+        return prescriptions;
+    }
+
     private AdmissionDepartmentVisit compileShortenedVisit(ResultSet resultSet)
             throws SQLException {
         AdmissionDepartmentVisit visit = new AdmissionDepartmentVisit();
