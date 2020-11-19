@@ -607,7 +607,8 @@ public final class SqlStatement {
             "  AND (vpr.patient_agreement_mark\n" +
             "    AND vpr.patient_disagreement_datetime IS NULL\n" +
             "    AND vpr.patient_disagreement_description IS NULL)\n" +
-            "  AND (v2ad.visit_result IS NULL);";
+            "  AND (v2ad.visit_result IS NULL)" +
+            "AND (vpr.responsible_paramedical_staff_id IS NULL);";
     public static final String UPDATE_CONTROL_PRESCRIPTION
             = "UPDATE hospital.visit_prescription_records vpr\n" +
             "SET vpr.responsible_paramedical_staff_id = ?\n" +
