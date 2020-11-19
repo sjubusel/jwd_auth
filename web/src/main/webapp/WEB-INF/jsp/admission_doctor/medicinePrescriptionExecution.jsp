@@ -64,13 +64,9 @@
                 <c:otherwise>
                     <h1>
                         <fmt:message bundle="${jspMessages}"
-                                     key="medicinePrescriptionExecution.heading"/>
+                                     key="medicinePrescriptionExecution.infoHeading"/>
                     </h1>
                     <c:choose>
-                        <h1>
-                            <fmt:message bundle="${jspMessages}"
-                                         key="medicinePrescriptionExecution.infoHeading"/>
-                        </h1>
                         <c:when test="${requestScope.medicinePrescription ne null}">
                             <jsp:useBean id="medicinePrescription"
                                          class="by.epamtc.jwd.auth.model.med_info.MedicinePrescription"
@@ -210,43 +206,47 @@
                                 </tr>
                                 </tbody>
                             </table>
+                            <h1>
+                                <fmt:message bundle="${jspMessages}"
+                                             key="medicinePrescriptionExecution.executionResultHeading"/>
+                            </h1>
+                            <form action="${pageContext.request.contextPath}/profile"
+                                  method="post">
+                                <div class="row">
+                                    <input type="hidden"
+                                           name="command"
+                                           value="staff-execute-medicine-prescription">
+                                    <input type="hidden"
+                                           name="hiddenPrescriptionIdInput"
+                                           value="${medicinePrescription.prescriptionId}">
+                                    <label>
+                                        <fmt:message bundle="${jspMessages}"
+                                                     key="medicinePrescriptionExecution.executionResult"/>
+                                        <textarea type="text"
+                                                  name="executionResultInput"
+                                                  rows="10"
+                                                  cols="100"
+                                                  placeholder="<fmt:message bundle="${jspMessages}"
+                                         key="medicinePrescriptionExecution.executionResultPlaceholder"/>"></textarea>
+                                    </label>
+                                </div>
+                                <div class="row">
+                                    <button type="submit"
+                                            class="btn align-self-center btn-primary">
+                                        <fmt:message
+                                                bundle="${jspMessages}"
+                                                key="medicinePrescriptionExecution.executeButton"/>
+                                    </button>
+                                </div>
+                            </form>
                         </c:when>
                         <c:otherwise>
                             <fmt:message bundle="${jspMessages}"
                                          key="medicinePrescriptionExecution.prescriptionIsalreadyExecuted"/>
                         </c:otherwise>
-                        <h1>
-                            <fmt:message bundle="${jspMessages}"
-                                         key="medicinePrescriptionExecution.executionResultHeading"/>
-                        </h1>
-                        <form action="${pageContext.request.contextPath}/profile"
-                              method="post">
-                            <input type="hidden"
-                                   name="command"
-                                   value="staff-execute-medicine-prescription">
-                            <input type="hidden"
-                                   name="hiddenPrescriptionIdInput"
-                                   value="${medicinePrescription.prescriptionId}">
-                            <label>
-                                <fmt:message bundle="${jspMessages}"
-                                             key="medicinePrescriptionExecution.executionResult"/>
-                                <textarea type="text"
-                                          name="executionResultInput"
-                                          placeholder="<fmt:message bundle="${jspMessages}"
-                                         key="medicinePrescriptionExecution.executionResultPlaceholder"/>"></textarea>
-                            </label>
-                            <button type="submit"
-                                    class="btn align-self-center btn-primary">
-                                <fmt:message
-                                        bundle="${jspMessages}"
-                                        key="medicinePrescriptionExecution.executeButton"/>
-                            </button>
-                        </form>
                     </c:choose>
                 </c:otherwise>
             </c:choose>
-
-
             <%--CONTENTS END--%>
         </div>
     </div>

@@ -218,8 +218,7 @@ public final class CommandPath {
     public static final String SUBSTAFF_ESTABLISH_PRESCR_JSP
             = "/WEB-INF/jsp/admission_doctor/establishPrescription.jsp";
     public static final String SUBSTAFF_NEW_MED_PRESCR_JSP
-            = "src/main/webapp/WEB-INF/jsp/admission_doctor" +
-            "/newMedicinePrescriptions.jsp";
+            = "/WEB-INF/jsp/admission_doctor/newMedicinePrescriptions.jsp";
     public static final String SUBSTAFF_MED_PRESCR_EXECUTION_JSP
             = "/WEB-INF/jsp/admission_doctor/medicinePrescriptionExecution.jsp";
 

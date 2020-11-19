@@ -53,6 +53,7 @@ public class GoToStaffAcceptMedicinePrescriptionCommand implements Command {
         }
 
         req.setAttribute(AppParameter.PRESCRIPTION_ID, medPrescriptionId);
-        req.getRequestDispatcher(CommandPath.SUBSTAFF_MED_PRESCR_EXECUTION_JSP);
+        req.getRequestDispatcher(CommandPath.SUBSTAFF_MED_PRESCR_EXECUTION_JSP)
+                .forward(req, res);
     }
 }

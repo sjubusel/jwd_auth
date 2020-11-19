@@ -48,6 +48,7 @@ public class GoToStaffNewMedicinePrescriptionsCommand implements Command {
                     prescriptions);
         }
 
-        req.getRequestDispatcher(CommandPath.SUBSTAFF_NEW_MED_PRESCR_JSP);
+        req.getRequestDispatcher(CommandPath.SUBSTAFF_NEW_MED_PRESCR_JSP)
+                .forward(req, res);
     }
 }
