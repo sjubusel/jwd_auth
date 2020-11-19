@@ -480,3 +480,7 @@ newMedPrescriptions.dosageInfo=Dosage
 newMedicinePrescriptions.buttons=Action
 newMedicinePrescriptions.execute=Execute
 newMedicinePrescriptions.noNewRecords=New medicine prescriptions are absent
+
+medicinePrescriptionExecution.title=Execution of a medicine prescription
+medicinePrescriptionExecution.heading=Form of sending a report about medicine prescription execution
+medicinePrescriptionExecution.prescriptionIsalreadyExecuted=Chosen medicine prescription is already executed

@@ -480,3 +480,7 @@ newMedPrescriptions.dosageInfo=Дозировка
 newMedicinePrescriptions.buttons=Действие
 newMedicinePrescriptions.execute=Выполнить
 newMedicinePrescriptions.noNewRecords=Новые назначения лекарственных средств отсутствуют
+
+medicinePrescriptionExecution.title=Выполнение назначения лекарственного средства
+medicinePrescriptionExecution.heading=Форма отправки сведений о выполнении назначение лекарственного средства
+medicinePrescriptionExecution.prescriptionIsalreadyExecuted=Выбранное назначение лекарственного средства уже выполнено
