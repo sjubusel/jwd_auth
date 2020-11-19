@@ -63,39 +63,36 @@
                     </c:choose>
                 </c:when>
                 <c:otherwise>
-                    <%--                    <c:if test="${requestScope.acceptResult ne null}">--%>
-                    <%--                        <c:choose>--%>
-                    <%--                            <c:when test="${requestScope.acceptResult eq 'success'}">--%>
-                    <%--                                <div class="alert alert-success"--%>
-                    <%--                                     role="alert">--%>
-                    <%--                                    &lt;%&ndash;TODO create a command &ndash;%&gt;--%>
-                    <%--                                    <a href="${pageContext.request.contextPath}/profile?command=go-to-doctor-view-controlled-visit&hiddenVisitId=${requestScope.hiddenVisitId}">--%>
-                    <%--                                        <fmt:message--%>
-                    <%--                                                bundle="${jspMessages}"--%>
-                    <%--                                                key="newMedPrescriptions.successAcceptance"/>--%>
-                    <%--                                    </a>--%>
-                    <%--                                </div>--%>
-                    <%--                            </c:when>--%>
-                    <%--                            <c:when test="${requestScope.acceptResult eq 'techError'}">--%>
-                    <%--                                <div class="alert alert-danger"--%>
-                    <%--                                     role="alert">--%>
-                    <%--                                    <fmt:message bundle="${jspMessages}"--%>
-                    <%--                                                 key="newMedPrescriptions.techErrorAccept"/>--%>
-                    <%--                                </div>--%>
-                    <%--                            </c:when>--%>
-                    <%--                            <c:when test="${requestScope.acceptResult eq 'validationError'}">--%>
-                    <%--                                <fmt:message bundle="${jspMessages}"--%>
-                    <%--                                             key="newMedPrescriptions.validationErrorAccept"/>--%>
-                    <%--                            </c:when>--%>
-                    <%--                            <c:otherwise>--%>
-                    <%--                                <div class="alert alert-danger"--%>
-                    <%--                                     role="alert">--%>
-                    <%--                                    <fmt:message bundle="${jspMessages}"--%>
-                    <%--                                                 key="main.unknownCondition"/>--%>
-                    <%--                                </div>--%>
-                    <%--                            </c:otherwise>--%>
-                    <%--                        </c:choose>--%>
-                    <%--                    </c:if>--%>
+                    <c:if test="${requestScope.executionResult ne null}">
+                        <c:choose>
+                            <c:when test="${requestScope.executionResult eq 'success'}">
+                                <div class="alert alert-success"
+                                     role="alert">
+                                    <fmt:message
+                                            bundle="${jspMessages}"
+                                            key="medicinePrescriptionExecution.success"/>
+                                </div>
+                            </c:when>
+                            <c:when test="${requestScope.executionResult eq 'techError'}">
+                                <div class="alert alert-danger"
+                                     role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="medicinePrescriptionExecution.techError"/>
+                                </div>
+                            </c:when>
+                            <c:when test="${requestScope.executionResult eq 'validationError'}">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="medicinePrescriptionExecution.validationError"/>
+                            </c:when>
+                            <c:otherwise>
+                                <div class="alert alert-danger"
+                                     role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="main.unknownCondition"/>
+                                </div>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:if>
                     <c:choose>
                         <c:when test="${requestScope.medicinePrescriptions ne null}">
                             <%--header--%>

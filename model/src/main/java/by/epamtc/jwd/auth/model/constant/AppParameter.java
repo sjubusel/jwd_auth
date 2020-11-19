@@ -110,6 +110,9 @@ public final class AppParameter {
             = "hiddenMedPrescriptionIdInput";
     public static final String ANCHOR_TO_MEDICINE_PRESCRIPTIONS
             = "#medPrescriptionsTable";
+    public static final String PRESCRIPTION_EXECUTION_RESULT
+            = "executionResultInput";
+    public static final String EXECUTION_RESULT = "executionResult";
 
 
     private AppParameter() {

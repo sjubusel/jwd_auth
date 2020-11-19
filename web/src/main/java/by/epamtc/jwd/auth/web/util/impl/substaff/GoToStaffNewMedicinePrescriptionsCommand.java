@@ -2,6 +2,7 @@ package by.epamtc.jwd.auth.web.util.impl.substaff;
 
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
+import by.epamtc.jwd.auth.model.constant.AppParameter;
 import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
 import by.epamtc.jwd.auth.service.ServiceFactory;
@@ -46,6 +47,11 @@ public class GoToStaffNewMedicinePrescriptionsCommand implements Command {
         } else if (prescriptions.size() > 0) {
             req.setAttribute(AppAttribute.REQUEST_MEDICINE_PRESCRIPTIONS,
                     prescriptions);
+        }
+
+        String result = req.getParameter(AppParameter.EXECUTION_RESULT);
+        if (result != null) {
+            req.setAttribute(AppParameter.EXECUTION_RESULT, result);
         }
 
         req.getRequestDispatcher(CommandPath.SUBSTAFF_NEW_MED_PRESCR_JSP)

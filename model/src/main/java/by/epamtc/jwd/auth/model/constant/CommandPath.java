@@ -170,6 +170,14 @@ public final class CommandPath {
             SUBSTAFF_CONTROLLED_VISIT_CANCEL_MED_PRESCR_RESULT_SUCCESS
             = "/profile?command=go-to-doctor-view-controlled-visit" +
             "&cancelMedPrescriptionResult=success&hiddenVisitId=";
+    public static final String SUBSTAFF_GO_TO_NEW_MED_PRESCR_EXEC_RESULT_TECH_ERR
+            = "/profile?command=go-to-staff-new-medicine-prescriptions&executionResult=techError";
+    public static final String SUBSTAFF_GO_TO_NEW_MED_PRESCR_EXEC_RESULT_VAL_ERR
+            = "/profile?command=go-to-staff-new-medicine-prescriptions" +
+            "&executionResult=validationError";
+    public static final String SUBSTAFF_GO_TO_NEW_MED_PRESCR_EXEC_RESULT_SUCCESS
+            = "/profile?command=go-to-staff-new-medicine-prescriptions" +
+            "&executionResult=success";
 
 
     public static final String LOGIN_JSP = "/WEB-INF/jsp/login.jsp";

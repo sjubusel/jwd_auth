@@ -498,3 +498,8 @@ medicinePrescriptionExecution.executionResultHeading=Форма исполнен
 medicinePrescriptionExecution.executionResult=Результат исполнения назначения
 medicinePrescriptionExecution.executionResultPlaceholder=Введите результат исполнения назначения (опционально)
 medicinePrescriptionExecution.executeButton=Сделать отметку об исполнении назначения
+
+medicinePrescriptionExecution.success=Назначение лекарственного препарата успешно выполнено
+medicinePrescriptionExecution.techError=Назначение лекарственного препарата не выполнено по техническим причинам
+medicinePrescriptionExecution.validationError=Назначение лекарственного препарата не выполнено из-за неверной конфигурации страницы
+

@@ -498,3 +498,8 @@ medicinePrescriptionExecution.executionResultHeading=Form of medicine prescripti
 medicinePrescriptionExecution.executionResult=Result of prescription execution
 medicinePrescriptionExecution.executionResultPlaceholder=Insert a result of prescription execution (optionally)
 medicinePrescriptionExecution.executeButton=Mark a result of prescription execution
+
+medicinePrescriptionExecution.success=Medicine prescription is successfully executed
+medicinePrescriptionExecution.techError=Medicine prescription is not executed because of a technical factor
+medicinePrescriptionExecution.validationError=Medicine prescription is not executed because of an incorrect page configuration
+

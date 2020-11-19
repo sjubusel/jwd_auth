@@ -3,6 +3,7 @@ package by.epamtc.jwd.auth.web.util.impl.substaff;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
 import by.epamtc.jwd.auth.model.constant.AppParameter;
+import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.VisitService;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
@@ -29,11 +30,13 @@ public class StaffExecuteMedicinePrescriptionCommand implements Command {
                 .SESSION_AUTH_USER);
         String medPrescriptionId = req.getParameter(AppParameter
                 .PRESCRIPTION_ID);
+        String executionResult = req.getParameter(AppParameter
+                .PRESCRIPTION_EXECUTION_RESULT);
 
-        boolean isExecuted = false;
+        boolean isExecuted;
         try {
             isExecuted = visitService.executeMedPrescription(medPrescriptionId,
-                    user);
+                    executionResult, user);
         } catch (ServiceException e) {
             logger.error("An error while putting a result of a medicine " +
                     "prescription execution. Params{medPrescriptionId={}, " +
@@ -48,7 +51,23 @@ public class StaffExecuteMedicinePrescriptionCommand implements Command {
         }
 
         sendRedirectWithSuccessMessage(req, res);
-//        res.sendRedirect(req.getContextPath() + CommandPath
-//                .SUBSTAFF_GO_TO_STAFF_NEW_VISITS_ACCEPT_RESULT_TECH_ERROR);
+    }
+
+    private void sendRedirectWithTechError(HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBSTAFF_GO_TO_NEW_MED_PRESCR_EXEC_RESULT_TECH_ERR);
+    }
+
+    private void sendRedirectWithValidationError(HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBSTAFF_GO_TO_NEW_MED_PRESCR_EXEC_RESULT_VAL_ERR);
+    }
+
+    private void sendRedirectWithSuccessMessage(HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBSTAFF_GO_TO_NEW_MED_PRESCR_EXEC_RESULT_SUCCESS);
     }
 }

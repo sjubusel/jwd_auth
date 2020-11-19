@@ -247,4 +247,19 @@ public class DefaultVisitService implements VisitService {
         return null;
     }
 
+    @Override
+    public boolean executeMedPrescription(String medPrescriptionId,
+            String executionResult, AuthUser user) throws ServiceException {
+        if (validator.isAuthUserHasRightsToExecuteMedicinePrescriptions(user)
+                && validator.isStringIdCorrect(medPrescriptionId)) {
+            try {
+                return visitDao.executeMedPrescription(medPrescriptionId,
+                        executionResult, user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return false;
+    }
+
 }

@@ -600,6 +600,34 @@ public class DefaultVisitDao implements VisitDao {
         return prescription;
     }
 
+    @Override
+    public boolean executeMedPrescription(String medPrescriptionId,
+            String executionResult, AuthUser user) throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement
+                    .UPDATE_EXECUTE_MED_PRESCRIPTION_BY_ID);
+            statement.setString(1, executionResult);
+            statement.setInt(2, user.getStaffId());
+            statement.setInt(3, Integer.parseInt(medPrescriptionId));
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException("An error while placing information about " +
+                    "execution of a medicine prescriptions.", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection during " +
+                    "placing information about execution of a medicine " +
+                    "prescriptions.", e);
+        } finally {
+            pool.closeConnection(conn, statement);
+        }
+
+        return true;
+    }
+
     private AdmissionDepartmentVisit compileShortenedVisit(ResultSet resultSet)
             throws SQLException {
         AdmissionDepartmentVisit visit = new AdmissionDepartmentVisit();

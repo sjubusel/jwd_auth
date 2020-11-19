@@ -547,6 +547,12 @@ public final class SqlStatement {
             "         JOIN hospital.persons patient " +
             "ON v2ad.person_id = patient.person_id\n" +
             "WHERE vam.prescription_id = ?;";
+    public static final String UPDATE_EXECUTE_MED_PRESCRIPTION_BY_ID
+            = "UPDATE hospital.visit_applied_medicines vam\n" +
+            "SET vam.execution_datetime    = CURRENT_TIMESTAMP,\n" +
+            "    vam.execution_description = ?,\n" +
+            "    vam.executor_staff        =?\n" +
+            "WHERE vam.prescription_id = ?;";
 
     private SqlStatement() {
     }

@@ -57,4 +57,7 @@ public interface VisitService {
 
     MedicinePrescription fetchVisitMedPrescriptionById(String medPrescriptionId,
             AuthUser user) throws ServiceException;
+
+    boolean executeMedPrescription(String medPrescriptionId,
+            String executionResult, AuthUser user) throws ServiceException;
 }
