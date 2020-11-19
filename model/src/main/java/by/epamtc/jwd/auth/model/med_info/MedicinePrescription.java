@@ -24,21 +24,23 @@ public class MedicinePrescription implements java.io.Serializable {
     private String patientDisagreementDescription;
     private LocalDateTime patientDisagreementDateTime;
     private boolean isPrescriptionComplete;
+    private int patientId;
+    private String patientInfo;
 
     public MedicinePrescription() {
     }
 
-    public MedicinePrescription(DepartmentOrigin departmentOrigin,
-            int prescriptionId, int originDocumentId, int medicineId,
-            String medicineInfo, LocalDateTime prescriptionDateTime,
-            int prescribingStaffId, String prescribingStaffInfo,
-            double dosageQuantity, MedicineMeasureUnit dosageMeasureUnit,
+    public MedicinePrescription(DepartmentOrigin departmentOrigin, int prescriptionId,
+            int originDocumentId, int medicineId, String medicineInfo,
+            LocalDateTime prescriptionDateTime, int prescribingStaffId,
+            String prescribingStaffInfo, double dosageQuantity,
+            MedicineMeasureUnit dosageMeasureUnit,
             LocalDateTime targetApplicationDateTime, int executorStaffId,
             String executorStaffInfo, LocalDateTime executionDateTime,
             String executionDescription, boolean doesPatientAgree,
             String patientDisagreementDescription,
             LocalDateTime patientDisagreementDateTime,
-            boolean isPrescriptionComplete) {
+            boolean isPrescriptionComplete, int patientId, String patientInfo) {
         this.departmentOrigin = departmentOrigin;
         this.prescriptionId = prescriptionId;
         this.originDocumentId = originDocumentId;
@@ -58,6 +60,8 @@ public class MedicinePrescription implements java.io.Serializable {
         this.patientDisagreementDescription = patientDisagreementDescription;
         this.patientDisagreementDateTime = patientDisagreementDateTime;
         this.isPrescriptionComplete = isPrescriptionComplete;
+        this.patientId = patientId;
+        this.patientInfo = patientInfo;
     }
 
     public DepartmentOrigin getDepartmentOrigin() {
@@ -216,6 +220,22 @@ public class MedicinePrescription implements java.io.Serializable {
         return isPrescriptionComplete;
     }
 
+    public int getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(int patientId) {
+        this.patientId = patientId;
+    }
+
+    public String getPatientInfo() {
+        return patientInfo;
+    }
+
+    public void setPatientInfo(String patientInfo) {
+        this.patientInfo = patientInfo;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -249,6 +269,9 @@ public class MedicinePrescription implements java.io.Serializable {
             return false;
         }
         if (isPrescriptionComplete != that.isPrescriptionComplete) {
+            return false;
+        }
+        if (patientId != that.patientId) {
             return false;
         }
         if (departmentOrigin != that.departmentOrigin) {
@@ -294,6 +317,10 @@ public class MedicinePrescription implements java.io.Serializable {
         if (patientDisagreementDescription != null
             ? !patientDisagreementDescription.equals(that.patientDisagreementDescription)
             : that.patientDisagreementDescription != null) {
+            return false;
+        }
+        if (patientInfo != null ? !patientInfo.equals(that.patientInfo)
+                                : that.patientInfo != null) {
             return false;
         }
         return patientDisagreementDateTime != null
@@ -345,6 +372,9 @@ public class MedicinePrescription implements java.io.Serializable {
                             ? patientDisagreementDateTime.hashCode()
                             : 0);
         hash = 31 * hash + (isPrescriptionComplete ? 1 : 0);
+        hash = 31 * hash + patientId;
+        hash = 31 * hash + (patientInfo != null ? patientInfo.hashCode()
+                                                : 0);
         return hash;
     }
 
@@ -370,6 +400,8 @@ public class MedicinePrescription implements java.io.Serializable {
                 ", patientDisagreementDescription='" + patientDisagreementDescription + '\'' +
                 ", patientDisagreementDateTime=" + patientDisagreementDateTime +
                 ", isPrescriptionComplete=" + isPrescriptionComplete +
+                ", patientId=" + patientId +
+                ", patientInfo='" + patientInfo + '\'' +
                 '}';
     }
 }
