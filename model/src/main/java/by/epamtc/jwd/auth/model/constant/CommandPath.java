@@ -146,6 +146,31 @@ public final class CommandPath {
             = "/profile?command=go-to-doctor-view-controlled-visit" +
             "&cancelPrescriptionResult=success&hiddenVisitId=";
 
+    public static final String
+            SUBSTAFF_GO_TO_ESTABLISH_PRESCRIPTION_ADD_RESULT_TECHERROR
+            = "/profile?command=go-to-establish-prescription&addResult" +
+            "=techError&hiddenVisitId=";
+    public static final String
+            SUBSTAFF_GO_TO_ESTABLISH_PRESCRIPTION_ADD_RESULT_VAL_ERROR
+            = "/profile?command=go-to-establish-prescription&addResult" +
+            "=validationError&hiddenVisitId=";
+    public static final String
+            SUBSTAFF_GO_TO_ESTABLISH_PRESCRIPTION_ADD_RESULT_SUCCESS
+            = "/profile?command=go-to-establish-prescription&addResult" +
+            "=success&hiddenVisitId=";
+    public static final String
+            SUBSTAFF_CONTROLLED_VISIT_CANCEL_MED_PRESCR_RESULT_TECH_ERROR
+            = "/profile?command=go-to-doctor-view-controlled-visit" +
+            "&cancelMedPrescriptionResult=techError&hiddenVisitId=";
+    public static final String
+            SUBSTAFF_CONTROLLED_VISIT_CANCEL_MED_PRESCR_RESULT_VAL_ERROR
+            = "/profile?command=go-to-doctor-view-controlled-visit" +
+            "&cancelMedPrescriptionResult=validationError&hiddenVisitId=";
+    public static final String
+            SUBSTAFF_CONTROLLED_VISIT_CANCEL_MED_PRESCR_RESULT_SUCCESS
+            = "/profile?command=go-to-doctor-view-controlled-visit" +
+            "&cancelMedPrescriptionResult=success&hiddenVisitId=";
+
 
     public static final String LOGIN_JSP = "/WEB-INF/jsp/login.jsp";
     public static final String PROFILE_JSP = "/WEB-INF/jsp/profile.jsp";
@@ -192,27 +217,9 @@ public final class CommandPath {
             = "/WEB-INF/jsp/admission_doctor/establishMedicinePrescription.jsp";
     public static final String SUBSTAFF_ESTABLISH_PRESCR_JSP
             = "/WEB-INF/jsp/admission_doctor/establishPrescription.jsp";
-    public static final String SUBSTAFF_GO_TO_ESTABLISH_PRESCRIPTION_ADD_RESULT_TECHERROR
-            = "/profile?command=go-to-establish-prescription&addResult" +
-            "=techError&hiddenVisitId=";
-    public static final String SUBSTAFF_GO_TO_ESTABLISH_PRESCRIPTION_ADD_RESULT_VAL_ERROR
-            = "/profile?command=go-to-establish-prescription&addResult" +
-            "=validationError&hiddenVisitId=";
-    public static final String SUBSTAFF_GO_TO_ESTABLISH_PRESCRIPTION_ADD_RESULT_SUCCESS
-            = "/profile?command=go-to-establish-prescription&addResult" +
-            "=success&hiddenVisitId=";
-    public static final String
-            SUBSTAFF_CONTROLLED_VISIT_CANCEL_MED_PRESCR_RESULT_TECH_ERROR
-            = "/profile?command=go-to-doctor-view-controlled-visit" +
-            "&cancelMedPrescriptionResult=techError&hiddenVisitId=";
-    public static final String
-            SUBSTAFF_CONTROLLED_VISIT_CANCEL_MED_PRESCR_RESULT_VAL_ERROR
-            = "/profile?command=go-to-doctor-view-controlled-visit" +
-            "&cancelMedPrescriptionResult=validationError&hiddenVisitId=";
-    public static final String
-            SUBSTAFF_CONTROLLED_VISIT_CANCEL_MED_PRESCR_RESULT_SUCCESS
-            = "/profile?command=go-to-doctor-view-controlled-visit" +
-            "&cancelMedPrescriptionResult=success&hiddenVisitId=";
+    public static final String SUBSTAFF_NEW_MED_PRESCR_JSP
+            = "src/main/webapp/WEB-INF/jsp/admission_doctor" +
+            "/newMedicinePrescriptions.jsp";
 
     private CommandPath() {
     }

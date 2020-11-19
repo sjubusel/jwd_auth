@@ -468,3 +468,7 @@ visitDetail.cancelMedPrescriptionResultTechError=Назначение лекар
 visitDetail.cancelMedPrescriptionResultValidationError=Назначение лекарственного препарата не отменено из-за неверной конфигурации страницы
 
 patients.definition=Данный раздел разрабатывается. В будущем будет содержать информацию о текущих медицинских и иных назначениях, эпикризах и справках о состоянии здоровья до госпитализации
+
+admissionDoctorSubMenu.newMedPrescriptions=Новые назначения лекарственных средств
+admissionDoctorSubMenu.newPrescriptions=Новые назначения
+admissionDoctorSubMenu.prescriptionsOnControl=Контролируемые назначения

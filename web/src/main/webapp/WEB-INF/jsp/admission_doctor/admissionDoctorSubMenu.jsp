@@ -32,4 +32,46 @@
         <fmt:message bundle="${jspMessages}"
                      key="admissionDoctorSubMenu.visitsOnControl"/>
     </a>
+    <a type="button"
+       href="${pageContext.request.contextPath}/profile?command=go-to-staff-new-medicine-prescriptions"
+            <c:choose>
+                <c:when test="${pageScope.activeSubMenuStaffTab == 'newMedPrescriptions'}">
+                    class="list-group-item list-group-item-action active"
+                </c:when>
+                <c:otherwise>
+                    class="list-group-item list-group-item-action"
+                </c:otherwise>
+            </c:choose>
+    >
+        <fmt:message bundle="${jspMessages}"
+                     key="admissionDoctorSubMenu.newMedPrescriptions"/>
+    </a>
+    <a type="button"
+       href="${pageContext.request.contextPath}/profile?command=go-to-staff-new-non-medicine-prescriptions"
+            <c:choose>
+                <c:when test="${pageScope.activeSubMenuStaffTab == 'newPrescriptions'}">
+                    class="list-group-item list-group-item-action active"
+                </c:when>
+                <c:otherwise>
+                    class="list-group-item list-group-item-action"
+                </c:otherwise>
+            </c:choose>
+    >
+        <fmt:message bundle="${jspMessages}"
+                     key="admissionDoctorSubMenu.newPrescriptions"/>
+    </a>
+    <a type="button"
+       href="${pageContext.request.contextPath}/profile?command=go-to-staff-prescriptions-on-control"
+            <c:choose>
+                <c:when test="${pageScope.activeSubMenuStaffTab == 'prescriptionsOnControl'}">
+                    class="list-group-item list-group-item-action active"
+                </c:when>
+                <c:otherwise>
+                    class="list-group-item list-group-item-action"
+                </c:otherwise>
+            </c:choose>
+    >
+        <fmt:message bundle="${jspMessages}"
+                     key="admissionDoctorSubMenu.prescriptionsOnControl"/>
+    </a>
 </div>
