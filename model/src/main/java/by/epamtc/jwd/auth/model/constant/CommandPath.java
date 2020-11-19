@@ -239,6 +239,8 @@ public final class CommandPath {
             = "/WEB-INF/jsp/admission_doctor/medicinePrescriptionExecution.jsp";
     public static final String SUBSTAFF_NEW_NON_MED_PRESCR_JSP
             = "WEB-INF/jsp/admission_doctor/newNonMedicinePrescriptions.jsp";
+    public static final String SUBSTAFF_PRESCR_ON_CONTROL_JSP
+            = "/WEB-INF/jsp/admission_doctor/prescriptionsOnControl.jsp";
 
     private CommandPath() {
     }

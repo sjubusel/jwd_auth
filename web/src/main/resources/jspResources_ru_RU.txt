@@ -515,3 +515,5 @@ newNonMedicinePrescriptions.prescribingStaff=Назначивший врач
 newNonMedicinePrescriptions.accept=Принять назначение на контроль
 
 newNonMedicinePrescriptions.noNewRecords=Новые назначения отсутствуют
+
+prescriptionsOnControl.noControlledNonPrescriptions=У Вас отсутствуют контролируемые назначения
