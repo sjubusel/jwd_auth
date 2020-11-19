@@ -125,14 +125,12 @@
                             <c:forEach var="medPrescription"
                                        items="${requestScope.medicinePrescriptions}">
                                 <form action="${pageContext.request.contextPath}/profile"
-                                      method="post">
+                                      method="get">
                                     <input type="hidden" name="command"
-                                        <%--TODO write command--%>
-                                           value="staff-accept-medicine-prescription"/>
-
+                                           value="go-to-staff-accept-medicine-prescription"/>
                                     <div class="row d-flex mb-1 border align-items-center">
                                         <input type="hidden"
-                                               name="hiddenMedPrescriptionId"
+                                               name="hiddenPrescriptionIdInput"
                                                value="<c:out value="${medPrescription.prescriptionId}"/>"/>
                                             <%--1st column--%>
                                         <div class="col">
