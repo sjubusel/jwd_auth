@@ -494,6 +494,59 @@ public final class SqlStatement {
             "    AND vam.patient_disagreement_datetime IS NULL\n" +
             "    AND vam.patient_disagreement_description IS NULL)\n" +
             "  AND (v2ad.visit_result IS NULL);";
+    public static final String SELECT_MED_PRESCRIPTION_BY_ID
+            = "SELECT vam.prescription_id,\n" +
+            "       vam.visit_id,\n" +
+            "       vam.applied_medicine_id,\n" +
+            "       m.name,\n" +
+            "       dft.name,\n" +
+            "       mc.dosage_mg,\n" +
+            "       m.dosage_ml,\n" +
+            "       vam.prescription_datetime,\n" +
+            "       vam.prescribing_doctor,\n" +
+            "       doctorAsPerson.first_name,\n" +
+            "       doctorAsPerson.middle_name,\n" +
+            "       doctorAsPerson.last_name,\n" +
+            "       vam.dosage_quantity,\n" +
+            "       vam.dosage_measure_unit_id,\n" +
+            "       vam.application_datetime,\n" +
+            "       vam.executor_staff,\n" +
+            "       executorStaffAsPerson.first_name,\n" +
+            "       executorStaffAsPerson.middle_name,\n" +
+            "       executorStaffAsPerson.last_name,\n" +
+            "       vam.execution_datetime,\n" +
+            "       vam.execution_description,\n" +
+            "       vam.patient_agreement_mark,\n" +
+            "       vam.patient_disagreement_description,\n" +
+            "       vam.patient_disagreement_datetime,\n" +
+            "       patient.person_id,\n" +
+            "       patient.first_name,\n" +
+            "       patient.middle_name,\n" +
+            "       patient.last_name\n" +
+            "\n" +
+            "FROM hospital.visit_applied_medicines vam\n" +
+            "         JOIN hospital.medicines m " +
+            "ON vam.applied_medicine_id = m.medicine_id\n" +
+            "         JOIN hospital.dosage_form_types dft " +
+            "ON m.dosage_form_type_id = dft.dosage_form_type_id\n" +
+            "         JOIN hospital.medicine_components mc " +
+            "ON m.main_medicine_component_id = mc.medicine_component_id\n" +
+            "\n" +
+            "         JOIN hospital.staff doctorAsStaff " +
+            "ON vam.prescribing_doctor = doctorAsStaff.staff_id\n" +
+            "         JOIN hospital.persons doctorAsPerson " +
+            "ON doctorAsPerson.person_id = doctorAsStaff.person_id\n" +
+            "\n" +
+            "         LEFT OUTER JOIN hospital.staff executorStaffAsStaff " +
+            "ON vam.executor_staff = executorStaffAsStaff.staff_id\n" +
+            "         LEFT OUTER JOIN hospital.persons executorStaffAsPerson\n" +
+            "ON executorStaffAsPerson.person_id = executorStaffAsStaff.person_id\n" +
+            "\n" +
+            "         JOIN hospital.visits_to_admission_department v2ad " +
+            "ON vam.visit_id = v2ad.visit_id\n" +
+            "         JOIN hospital.persons patient " +
+            "ON v2ad.person_id = patient.person_id\n" +
+            "WHERE vam.prescription_id = ?;";
 
     private SqlStatement() {
     }

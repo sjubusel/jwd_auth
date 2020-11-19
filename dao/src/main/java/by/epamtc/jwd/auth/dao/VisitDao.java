@@ -55,4 +55,6 @@ public interface VisitDao {
     List<MedicinePrescription> fetchAllNewMedicinePrescriptions()
             throws DaoException;
 
+    MedicinePrescription fetchVisitMedPrescriptionById(String medPrescriptionId)
+            throws DaoException;
 }

@@ -30,10 +30,10 @@ public class GoToStaffAcceptMedicinePrescriptionCommand implements Command {
         AuthUser user = (AuthUser) req.getSession().getAttribute(AppAttribute
                 .SESSION_AUTH_USER);
         String medPrescriptionId = req.getParameter(AppParameter.PRESCRIPTION_ID);
-        MedicinePrescription medicinePrescription;
+        MedicinePrescription medicinePrescription = null;
 
         try {
-            medicinePrescription = visitService.fetchVisitMedicinePrescription(
+            medicinePrescription = visitService.fetchVisitMedPrescriptionById(
                     medPrescriptionId, user);
         } catch (ServiceException e) {
             logger.error("An error while executing MedicinePrescription. " +

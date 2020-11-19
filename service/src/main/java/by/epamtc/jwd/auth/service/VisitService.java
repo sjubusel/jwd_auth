@@ -54,4 +54,7 @@ public interface VisitService {
 
     List<MedicinePrescription> fetchAllNewMedicinePrescriptions(AuthUser user)
             throws ServiceException;
+
+    MedicinePrescription fetchVisitMedPrescriptionById(String medPrescriptionId,
+            AuthUser user) throws ServiceException;
 }

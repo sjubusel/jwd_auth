@@ -233,5 +233,18 @@ public class DefaultVisitService implements VisitService {
         return null;
     }
 
+    @Override
+    public MedicinePrescription fetchVisitMedPrescriptionById(
+            String medPrescriptionId, AuthUser user) throws ServiceException {
+        if (validator.isAuthUserHasRightsToExecuteMedicinePrescriptions(user)
+                && validator.isStringIdCorrect(medPrescriptionId)) {
+            try {
+                return visitDao.fetchVisitMedPrescriptionById(medPrescriptionId);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return null;
+    }
 
 }

@@ -567,6 +567,39 @@ public class DefaultVisitDao implements VisitDao {
         return prescriptions;
     }
 
+    @Override
+    public MedicinePrescription fetchVisitMedPrescriptionById(
+            String medPrescriptionId) throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        MedicinePrescription prescription = null;
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement
+                    .SELECT_MED_PRESCRIPTION_BY_ID);
+            statement.setInt(1, Integer.parseInt(medPrescriptionId));
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                prescription = compileMedicinePrescription(resultSet);
+                updateMedPrescriptionWithPatientInfo(prescription, resultSet);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("An error while fetching a visit medicine " +
+                    "prescription by visit id from a db", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection " +
+                    "during fetching of a visit medicine prescription by " +
+                    "visit id", e);
+        } finally {
+            pool.closeConnection(conn, statement, resultSet);
+        }
+
+        return prescription;
+    }
+
     private AdmissionDepartmentVisit compileShortenedVisit(ResultSet resultSet)
             throws SQLException {
         AdmissionDepartmentVisit visit = new AdmissionDepartmentVisit();
