@@ -519,3 +519,7 @@ newNonMedicinePrescriptions.noNewRecords=Новые назначения отс�
 prescriptionsOnControl.noControlledNonPrescriptions=У Вас отсутствуют контролируемые назначения
 
 admissionDoctorSubMenu.executePrescriptionsByItsId=Выполнить назначение
+
+executePrescriptionsByItsId.heading=Выполнение назначения по его номеру
+executePrescriptionsByItsId.placeholder=Введите номер назначения
+executePrescriptionsByItsId.label=Номер назначения, подлежащего выполнению
