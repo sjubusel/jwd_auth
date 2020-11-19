@@ -1294,7 +1294,6 @@
                                                       method="post">
                                                     <input type="hidden"
                                                            name="command"
-                                                        <%-- TODO cancel prescription --%>
                                                            value="cancel-medicine-prescription">
                                                     <input type="hidden"
                                                            name="hiddenMedPrescriptionIdInput"
