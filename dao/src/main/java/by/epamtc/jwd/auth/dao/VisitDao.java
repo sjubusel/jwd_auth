@@ -51,4 +51,8 @@ public interface VisitDao {
 
     boolean cancelMedicinePrescription(String medPrescriptionId, AuthUser user)
             throws DaoException;
+
+    List<MedicinePrescription> fetchAllNewMedicinePrescriptions()
+            throws DaoException;
+
 }

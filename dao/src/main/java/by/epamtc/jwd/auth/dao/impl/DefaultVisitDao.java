@@ -534,6 +534,23 @@ public class DefaultVisitDao implements VisitDao {
         return true;
     }
 
+    @Override
+    public List<MedicinePrescription> fetchAllNewMedicinePrescriptions()
+            throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<MedicinePrescription> prescriptions = new ArrayList<>();
+
+        try {
+
+        } finally {
+            pool.closeConnection(conn, statement, resultSet);
+        }
+
+        return prescriptions;
+    }
+
     private AdmissionDepartmentVisit compileShortenedVisit(ResultSet resultSet)
             throws SQLException {
         AdmissionDepartmentVisit visit = new AdmissionDepartmentVisit();
