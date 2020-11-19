@@ -63,46 +63,46 @@
                     </c:choose>
                 </c:when>
                 <c:otherwise>
-<%--                    <c:if test="${requestScope.acceptResult ne null}">--%>
-<%--                        <c:choose>--%>
-<%--                            <c:when test="${requestScope.acceptResult eq 'success'}">--%>
-<%--                                <div class="alert alert-success"--%>
-<%--                                     role="alert">--%>
-<%--                                    &lt;%&ndash;TODO create a command &ndash;%&gt;--%>
-<%--                                    <a href="${pageContext.request.contextPath}/profile?command=go-to-doctor-view-controlled-visit&hiddenVisitId=${requestScope.hiddenVisitId}">--%>
-<%--                                        <fmt:message--%>
-<%--                                                bundle="${jspMessages}"--%>
-<%--                                                key="newMedPrescriptions.successAcceptance"/>--%>
-<%--                                    </a>--%>
-<%--                                </div>--%>
-<%--                            </c:when>--%>
-<%--                            <c:when test="${requestScope.acceptResult eq 'techError'}">--%>
-<%--                                <div class="alert alert-danger"--%>
-<%--                                     role="alert">--%>
-<%--                                    <fmt:message bundle="${jspMessages}"--%>
-<%--                                                 key="newMedPrescriptions.techErrorAccept"/>--%>
-<%--                                </div>--%>
-<%--                            </c:when>--%>
-<%--                            <c:when test="${requestScope.acceptResult eq 'validationError'}">--%>
-<%--                                <fmt:message bundle="${jspMessages}"--%>
-<%--                                             key="newMedPrescriptions.validationErrorAccept"/>--%>
-<%--                            </c:when>--%>
-<%--                            <c:otherwise>--%>
-<%--                                <div class="alert alert-danger"--%>
-<%--                                     role="alert">--%>
-<%--                                    <fmt:message bundle="${jspMessages}"--%>
-<%--                                                 key="main.unknownCondition"/>--%>
-<%--                                </div>--%>
-<%--                            </c:otherwise>--%>
-<%--                        </c:choose>--%>
-<%--                    </c:if>--%>
+                    <%--                    <c:if test="${requestScope.acceptResult ne null}">--%>
+                    <%--                        <c:choose>--%>
+                    <%--                            <c:when test="${requestScope.acceptResult eq 'success'}">--%>
+                    <%--                                <div class="alert alert-success"--%>
+                    <%--                                     role="alert">--%>
+                    <%--                                    &lt;%&ndash;TODO create a command &ndash;%&gt;--%>
+                    <%--                                    <a href="${pageContext.request.contextPath}/profile?command=go-to-doctor-view-controlled-visit&hiddenVisitId=${requestScope.hiddenVisitId}">--%>
+                    <%--                                        <fmt:message--%>
+                    <%--                                                bundle="${jspMessages}"--%>
+                    <%--                                                key="newMedPrescriptions.successAcceptance"/>--%>
+                    <%--                                    </a>--%>
+                    <%--                                </div>--%>
+                    <%--                            </c:when>--%>
+                    <%--                            <c:when test="${requestScope.acceptResult eq 'techError'}">--%>
+                    <%--                                <div class="alert alert-danger"--%>
+                    <%--                                     role="alert">--%>
+                    <%--                                    <fmt:message bundle="${jspMessages}"--%>
+                    <%--                                                 key="newMedPrescriptions.techErrorAccept"/>--%>
+                    <%--                                </div>--%>
+                    <%--                            </c:when>--%>
+                    <%--                            <c:when test="${requestScope.acceptResult eq 'validationError'}">--%>
+                    <%--                                <fmt:message bundle="${jspMessages}"--%>
+                    <%--                                             key="newMedPrescriptions.validationErrorAccept"/>--%>
+                    <%--                            </c:when>--%>
+                    <%--                            <c:otherwise>--%>
+                    <%--                                <div class="alert alert-danger"--%>
+                    <%--                                     role="alert">--%>
+                    <%--                                    <fmt:message bundle="${jspMessages}"--%>
+                    <%--                                                 key="main.unknownCondition"/>--%>
+                    <%--                                </div>--%>
+                    <%--                            </c:otherwise>--%>
+                    <%--                        </c:choose>--%>
+                    <%--                    </c:if>--%>
                     <c:choose>
-                        <c:when test="${requestScope. ne null}">
+                        <c:when test="${requestScope.medicinePrescriptions ne null}">
                             <%--header--%>
                             <div class="row d-flex mb-1 border">
                                 <div class="col">
                                     <fmt:message bundle="${jspMessages}"
-                                                 key="newMedPrescriptions.prescriptionDateTime"/>
+                                                 key="newMedPrescriptions.targetDateTime"/>
                                 </div>
                                 <div class="col">
                                     <fmt:message bundle="${jspMessages}"
@@ -127,22 +127,27 @@
                                 <form action="${pageContext.request.contextPath}/profile"
                                       method="post">
                                     <input type="hidden" name="command"
-                                           <%--TODO write command--%>
+                                        <%--TODO write command--%>
                                            value="staff-accept-medicine-prescription"/>
 
                                     <div class="row d-flex mb-1 border align-items-center">
                                         <input type="hidden"
-                                               name="hiddenVisitId"
-                                               value="<c:out value="${visits.visitId}"/>"/>
+                                               name="hiddenMedPrescriptionId"
+                                               value="<c:out value="${medPrescription.prescriptionId}"/>"/>
                                             <%--1st column--%>
                                         <div class="col">
-                                            <c:out value="${visits.visitDateTime}"/>
+                                            <c:out value="${medPrescription.targetApplicationDateTime}"/>
                                         </div>
                                         <div class="col">
-                                            <c:out value="${visits.patientShortInfo}"/>
+                                            <c:out value="${medPrescription.patientInfo}"/>
                                         </div>
                                         <div class="col">
-                                            <c:out value="${visits.patientVisitDescriptionInfo}"/>
+                                            <c:out value="${medPrescription.medicineInfo}"/>
+                                        </div>
+                                        <div class="col">
+                                            <c:out value="${medPrescription.dosageQuantity}"/>
+                                            <c:out value=" "/>
+                                            <c:out value="${medPrescription.dosageMeasureUnit.shortName}"/>
                                         </div>
                                         <div class="col">
                                             <button type="submit"

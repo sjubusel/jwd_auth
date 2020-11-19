@@ -472,3 +472,11 @@ patients.definition=Данный раздел разрабатывается. В
 admissionDoctorSubMenu.newMedPrescriptions=Новые назначения лекарственных средств
 admissionDoctorSubMenu.newPrescriptions=Новые назначения
 admissionDoctorSubMenu.prescriptionsOnControl=Контролируемые назначения
+
+newMedPrescriptions.targetDateTime=Срок выполнения
+newMedPrescriptions.patientInfo=Пациент
+newMedPrescriptions.medicineInfo=Лекарство
+newMedPrescriptions.dosageInfo=Дозировка
+newMedicinePrescriptions.buttons=Действие
+newMedicinePrescriptions.execute=Выполнить
+newMedicinePrescriptions.noNewRecords=Новые назначения лекарственных средств отсутствуют
