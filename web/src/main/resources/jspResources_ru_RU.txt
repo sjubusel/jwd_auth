@@ -517,3 +517,5 @@ newNonMedicinePrescriptions.accept=Принять назначение на ко
 newNonMedicinePrescriptions.noNewRecords=Новые назначения отсутствуют
 
 prescriptionsOnControl.noControlledNonPrescriptions=У Вас отсутствуют контролируемые назначения
+
+admissionDoctorSubMenu.executePrescriptionsByItsId=Выполнить назначение

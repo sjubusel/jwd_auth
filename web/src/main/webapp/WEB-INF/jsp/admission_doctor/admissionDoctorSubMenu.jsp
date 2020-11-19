@@ -74,4 +74,18 @@
         <fmt:message bundle="${jspMessages}"
                      key="admissionDoctorSubMenu.prescriptionsOnControl"/>
     </a>
+    <a type="button"
+       href="${pageContext.request.contextPath}/profile?command=go-to-execute-prescriptions-by-its-id"
+            <c:choose>
+                <c:when test="${pageScope.activeSubMenuStaffTab == 'executePrescriptionsByItsId'}">
+                    class="list-group-item list-group-item-action active"
+                </c:when>
+                <c:otherwise>
+                    class="list-group-item list-group-item-action"
+                </c:otherwise>
+            </c:choose>
+    >
+        <fmt:message bundle="${jspMessages}"
+                     key="admissionDoctorSubMenu.executePrescriptionsByItsId"/>
+    </a>
 </div>

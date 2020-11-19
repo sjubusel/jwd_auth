@@ -517,3 +517,5 @@ newNonMedicinePrescriptions.accept=Accept on control
 newNonMedicinePrescriptions.noNewRecords=New prescriptions are absent
 
 prescriptionsOnControl.noControlledNonPrescriptions=You have no controlled non-medicine prescriptions
+
+admissionDoctorSubMenu.executePrescriptionsByItsId=Execute a prescription
