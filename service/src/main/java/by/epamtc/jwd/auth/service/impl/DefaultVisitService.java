@@ -262,4 +262,17 @@ public class DefaultVisitService implements VisitService {
         return false;
     }
 
+    @Override
+    public List<Prescription> fetchAllNewNonMedicinePrescriptions(AuthUser user)
+            throws ServiceException {
+        if (validator.isAuthUserHasRightsToExecuteMedicinePrescriptions(user)) {
+            try {
+                return visitDao.fetchAllNewNonMedicinePrescriptions();
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return null;
+    }
+
 }

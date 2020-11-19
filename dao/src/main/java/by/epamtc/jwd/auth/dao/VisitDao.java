@@ -60,4 +60,8 @@ public interface VisitDao {
 
     boolean executeMedPrescription(String medPrescriptionId,
             String executionResult, AuthUser user) throws DaoException;
+
+    List<Prescription> fetchAllNewNonMedicinePrescriptions()
+            throws DaoException;
+
 }

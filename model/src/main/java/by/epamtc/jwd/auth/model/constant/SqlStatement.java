@@ -553,6 +553,61 @@ public final class SqlStatement {
             "    vam.execution_description = ?,\n" +
             "    vam.executor_staff        =?\n" +
             "WHERE vam.prescription_id = ?;";
+    public static final String SELECT_NON_MEDICINE_UNEXECUTED_PRESCRIPTIONS
+            = "SELECT vpr.prescription_id,\n" +
+            "       vpr.visit_id,\n" +
+            "       vpr.prescription_datetime,\n" +
+            "       vpr.prescribing_staff,\n" +
+            "       doctorAsPerson.first_name,\n" +
+            "       doctorAsPerson.middle_name,\n" +
+            "       doctorAsPerson.last_name,\n" +
+            "       vpr.prescription_description,\n" +
+            "       vpr.responsible_paramedical_staff_id,\n" +
+            "       responsibleAsPerson.first_name,\n" +
+            "       responsibleAsPerson.middle_name,\n" +
+            "       responsibleAsPerson.last_name,\n" +
+            "       vpr.executor_staff,\n" +
+            "       executorAsPerson.first_name,\n" +
+            "       executorAsPerson.middle_name,\n" +
+            "       executorAsPerson.last_name,\n" +
+            "       vpr.execution_datetime,\n" +
+            "       vpr.execution_result,\n" +
+            "       vpr.patient_agreement_mark,\n" +
+            "       vpr.patient_disagreement_description,\n" +
+            "       vpr.patient_disagreement_datetime,\n" +
+            "       patient.person_id,\n" +
+            "       patient.first_name,\n" +
+            "       patient.middle_name,\n" +
+            "       patient.last_name\n" +
+            "\n" +
+            "FROM hospital.visit_prescription_records vpr\n" +
+            "         JOIN hospital.staff doctorAsStaff " +
+            "ON vpr.prescribing_staff = doctorAsStaff.staff_id\n" +
+            "         JOIN hospital.persons doctorAsPerson " +
+            "ON doctorAsStaff.person_id = doctorAsPerson.person_id\n" +
+            "\n" +
+            "         LEFT OUTER JOIN hospital.staff responsibleAsStaff\n" +
+            "                         " +
+            "ON vpr.responsible_paramedical_staff_id = responsibleAsStaff.staff_id\n" +
+            "         LEFT OUTER JOIN hospital.persons responsibleAsPerson\n" +
+            "                         " +
+            "ON responsibleAsStaff.person_id = responsibleAsPerson.person_id\n" +
+            "         LEFT OUTER JOIN hospital.staff executorAsStaff " +
+            "ON vpr.executor_staff = executorAsStaff.staff_id\n" +
+            "         LEFT OUTER JOIN hospital.persons executorAsPerson " +
+            "ON executorAsPerson.person_id = executorAsStaff.person_id\n" +
+            "\n" +
+            "         JOIN hospital.visits_to_admission_department v2ad " +
+            "ON vpr.visit_id = v2ad.visit_id\n" +
+            "         JOIN hospital.persons patient " +
+            "ON v2ad.person_id = patient.person_id\n" +
+            "WHERE (vpr.executor_staff IS NULL\n" +
+            "    AND vpr.execution_datetime IS NULL\n" +
+            "    AND vpr.execution_result IS NULL)\n" +
+            "  AND (vpr.patient_agreement_mark\n" +
+            "    AND vpr.patient_disagreement_datetime IS NULL\n" +
+            "    AND vpr.patient_disagreement_description IS NULL)\n" +
+            "  AND (v2ad.visit_result IS NULL);";
 
     private SqlStatement() {
     }

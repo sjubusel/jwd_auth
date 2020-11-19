@@ -60,4 +60,7 @@ public interface VisitService {
 
     boolean executeMedPrescription(String medPrescriptionId,
             String executionResult, AuthUser user) throws ServiceException;
+
+    List<Prescription> fetchAllNewNonMedicinePrescriptions(AuthUser user)
+            throws ServiceException;
 }

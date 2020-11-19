@@ -628,6 +628,39 @@ public class DefaultVisitDao implements VisitDao {
         return true;
     }
 
+    @Override
+    public List<Prescription> fetchAllNewNonMedicinePrescriptions()
+            throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<Prescription> prescriptions = new ArrayList<>();
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement
+                    .SELECT_NON_MEDICINE_UNEXECUTED_PRESCRIPTIONS);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Prescription prescription = compileNonMedicinePrescription(
+                        resultSet);
+                updateNonMedPrescriptionWithPatientInfo(prescription, resultSet);
+                prescriptions.add(prescription);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("An error (SQLException) while fetching " +
+                    "all unexecuted non medicine prescriptions", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error (ConnectionPoolException" +
+                    " while taking a connection in order to fetch " +
+                    "all unexecuted non medicine prescriptions", e);
+        } finally {
+            pool.closeConnection(conn, statement, resultSet);
+        }
+
+        return prescriptions;
+    }
+
     private AdmissionDepartmentVisit compileShortenedVisit(ResultSet resultSet)
             throws SQLException {
         AdmissionDepartmentVisit visit = new AdmissionDepartmentVisit();
@@ -944,6 +977,15 @@ public class DefaultVisitDao implements VisitDao {
         prescription.setPatientId(patientId);
         String patientInfo = compileFullName(resultSet.getString(26),
                 resultSet.getString(27), resultSet.getString(28));
+        prescription.setPatientInfo(patientInfo);
+    }
+
+    private void updateNonMedPrescriptionWithPatientInfo(
+            Prescription prescription, ResultSet resultSet) throws SQLException {
+        int patientId = resultSet.getInt(22);
+        prescription.setPatientId(patientId);
+        String patientInfo = compileFullName(resultSet.getString(23),
+                resultSet.getString(24), resultSet.getString(25));
         prescription.setPatientInfo(patientInfo);
     }
 }
