@@ -15,7 +15,7 @@ public class VisitValidator {
         return hospVisit.getPatientShortInfo().matches(RegistrationInfoPattern.DIGITS);
     }
 
-    public boolean isAuthUserHasRights(AuthUser user) {
+    public boolean isAuthUserHasRightsToTreat(AuthUser user) {
         return user.getRole().getRoleId() >= AppConstant.STAFF_WHICH_CAN_TREAT;
     }
 
@@ -58,5 +58,9 @@ public class VisitValidator {
             return false;
         }
         return true;
+    }
+
+    public boolean isAuthUserHasRightsToExecuteMedicinePrescriptions(AuthUser user) {
+        return user.getRole().getRoleId() >= AppConstant.APPLIEING_MEDICINE_STAFF;
     }
 }

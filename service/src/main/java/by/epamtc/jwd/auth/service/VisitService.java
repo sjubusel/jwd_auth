@@ -50,5 +50,8 @@ public interface VisitService {
             throws ServiceException;
 
     boolean cancelMedicinePrescription(String medPrescriptionId, AuthUser user)
-            throws  ServiceException;
+            throws ServiceException;
+
+    List<MedicinePrescription> fetchAllNewMedicinePrescriptions(AuthUser user)
+            throws ServiceException;
 }
