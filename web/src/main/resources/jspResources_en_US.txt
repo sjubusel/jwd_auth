@@ -503,3 +503,15 @@ medicinePrescriptionExecution.success=Medicine prescription is successfully exec
 medicinePrescriptionExecution.techError=Medicine prescription is not executed because of a technical factor
 medicinePrescriptionExecution.validationError=Medicine prescription is not executed because of an incorrect page configuration
 
+nonMedicinePrescriptionExecution.success=Prescription is successfully set on control
+nonMedicinePrescriptionExecution.techError=Prescription is not set on control because of a technical factor
+nonMedicinePrescriptionExecution.validationError=Prescription is not set on control because of an incorrect page configuration
+
+newNonMedicinePrescriptions.prescriptioDateTime=Date and time
+newNonMedicinePrescriptions.prescriptionId=Prescription id
+newNonMedicinePrescriptions.patientInfo=Patient
+newNonMedicinePrescriptions.prescriptionDescription=Prescription contents
+newNonMedicinePrescriptions.prescribingStaff=Prescribing staff
+newNonMedicinePrescriptions.accept=Accept on control
+
+newNonMedicinePrescriptions.noNewRecords=New prescriptions are absent

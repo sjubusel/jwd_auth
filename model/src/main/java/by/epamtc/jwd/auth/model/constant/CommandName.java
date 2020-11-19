@@ -89,6 +89,8 @@ public final class CommandName {
             = "GO-TO-STAFF-ACCEPT-MEDICINE-PRESCRIPTION";
     public static final String SUBSTAFF_EXECUTE_MEDICINE_PRESCRIPTION
             = "STAFF-EXECUTE-MEDICINE-PRESCRIPTION";
+    public static final String SUBSTAFF_GO_TO_NEW_NON_MED_PRESCRIPTIONS
+            = "GO-TO-STAFF-NEW-NON-MEDICINE-PRESCRIPTIONS";
 
     private CommandName() {
     }
