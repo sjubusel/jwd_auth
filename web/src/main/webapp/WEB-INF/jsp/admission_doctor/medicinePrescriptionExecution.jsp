@@ -215,6 +215,33 @@
                             <fmt:message bundle="${jspMessages}"
                                          key="medicinePrescriptionExecution.prescriptionIsalreadyExecuted"/>
                         </c:otherwise>
+                        <h1>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="medicinePrescriptionExecution.executionResultHeading"/>
+                        </h1>
+                        <form action="${pageContext.request.contextPath}/profile"
+                              method="post">
+                            <input type="hidden"
+                                   name="command"
+                                   value="staff-execute-medicine-prescription">
+                            <input type="hidden"
+                                   name="hiddenPrescriptionIdInput"
+                                   value="${medicinePrescription.prescriptionId}">
+                            <label>
+                                <fmt:message bundle="${jspMessages}"
+                                             key="medicinePrescriptionExecution.executionResult"/>
+                                <textarea type="text"
+                                          name="executionResultInput"
+                                          placeholder="<fmt:message bundle="${jspMessages}"
+                                         key="medicinePrescriptionExecution.executionResultPlaceholder"/>"></textarea>
+                            </label>
+                            <button type="submit"
+                                    class="btn align-self-center btn-primary">
+                                <fmt:message
+                                        bundle="${jspMessages}"
+                                        key="medicinePrescriptionExecution.executeButton"/>
+                            </button>
+                        </form>
                     </c:choose>
                 </c:otherwise>
             </c:choose>

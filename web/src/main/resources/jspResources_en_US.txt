@@ -494,3 +494,7 @@ medicinePrescriptionExecution.prescriptionDateTime=Prescription date and time
 medicinePrescriptionExecution.targetApplicationDateTime=Deadline date and time
 medicinePrescriptionExecution.prescribingStaffInfo=Information about a staff member, who prescribed a medicine
 medicinePrescriptionExecution.infoHeading=Detailed information about a medicine prescription
+medicinePrescriptionExecution.executionResultHeading=Form of medicine prescription execution
+medicinePrescriptionExecution.executionResult=Result of prescription execution
+medicinePrescriptionExecution.executionResultPlaceholder=Insert a result of prescription execution (optionally)
+medicinePrescriptionExecution.executeButton=Mark a result of prescription execution
