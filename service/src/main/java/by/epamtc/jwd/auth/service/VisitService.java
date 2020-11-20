@@ -69,4 +69,7 @@ public interface VisitService {
 
     List<Prescription> fetchControlledVisitPrescriptions(AuthUser user)
             throws ServiceException;
+
+    Prescription fetchVisitPrescriptionById(String prescriptionId, AuthUser user)
+            throws ServiceException;
 }

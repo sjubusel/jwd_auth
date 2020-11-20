@@ -524,3 +524,16 @@ executePrescriptionByItsId.heading=Выполнение назначения п�
 executePrescriptionByItsId.placeholder=Введите номер назначения
 executePrescriptionByItsId.label=Номер назначения, подлежащего выполнению
 executePrescriptionByItsId.button=Перейти к выполнению
+
+executePrescriptionByItsId.detailedHeading=Подрбная информация о назначении
+executePrescriptionByItsId.alreadyExecuted=Выбранное назначение уже выполнено
+
+executePrescriptionByItsId.prescriptionId=Номер назначения
+executePrescriptionByItsId.prescriptionDateTime=Дата и время назначения
+executePrescriptionByItsId.patientInfo=Информация о пациенте
+executePrescriptionByItsId.prescriptionDescription=Содержание назначения
+executePrescriptionByItsId.prescribingStaffInfo=Назначивший сотрудник
+executePrescriptionByItsId.executionResultHeading=Форма исполнения назначения
+executePrescriptionByItsId.executionResult=Результат исполнения назначения
+executePrescriptionByItsId.executionResultPlaceholder=Введите результат исполнения назначения (обязательно)
+executePrescriptionByItsId.executeButton=Сделать отметку об исполнении назначения

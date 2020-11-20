@@ -69,4 +69,7 @@ public interface VisitDao {
 
     List<Prescription> fetchControlledVisitPrescriptions(AuthUser user)
             throws DaoException;
+
+    Prescription fetchVisitPrescriptionById(String prescriptionId)
+            throws DaoException;
 }

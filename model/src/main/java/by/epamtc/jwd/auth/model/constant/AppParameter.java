@@ -113,6 +113,7 @@ public final class AppParameter {
     public static final String PRESCRIPTION_EXECUTION_RESULT
             = "executionResultInput";
     public static final String EXECUTION_RESULT = "executionResult";
+    public static final String PRESCRIPTION_ID_INPUT = "prescriptionIdInput";
 
 
     private AppParameter() {
