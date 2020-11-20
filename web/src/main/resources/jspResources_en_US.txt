@@ -537,3 +537,7 @@ executePrescriptionByItsId.executionResultHeading=Form of prescription execution
 executePrescriptionByItsId.executionResult=Result of prescription execution
 executePrescriptionByItsId.executionResultPlaceholder=Insert a result of prescription execution (obligatory)
 executePrescriptionByItsId.executeButton=Mark a result of prescription execution
+
+executePrescriptionByItsId.executionResultSuccess=Prescription is successfully completed
+executePrescriptionByItsId.executionResultTechError=Prescription is not completed because of a technical factor
+executePrescriptionByItsId.executionResultValidationError=Prescription is not completed because of an incorrect page configuration

@@ -537,3 +537,7 @@ executePrescriptionByItsId.executionResultHeading=Форма исполнени�
 executePrescriptionByItsId.executionResult=Результат исполнения назначения
 executePrescriptionByItsId.executionResultPlaceholder=Введите результат исполнения назначения (обязательно)
 executePrescriptionByItsId.executeButton=Сделать отметку об исполнении назначения
+
+executePrescriptionByItsId.executionResultSuccess=Назначение успешно выполнено
+executePrescriptionByItsId.executionResultTechError=Назначение не выполнено по техническим причинам
+executePrescriptionByItsId.executionResultValidationError=Назначение не выполнено из-за неверной конфигурации страницы

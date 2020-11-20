@@ -199,6 +199,32 @@
                         </c:choose>
                     </c:if>
                     <br>
+                    <c:if test="${requestScope.executionResult ne null}">
+                        <c:choose>
+                            <c:when test="${requestScope.executionResult eq 'success'}">
+                                <div class="alert alert-success" role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="executePrescriptionByItsId.executionResultSuccess"/>
+                                </div>
+                            </c:when>
+                            <c:when test="${requestScope.executionResult eq 'techError'}">
+                                <div class="alert alert-danger" role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="executePrescriptionByItsId.executionResultTechError"/>
+                                </div>
+                            </c:when>
+                            <c:when test="${requestScope.executionResult eq 'validationError'}">
+                                <div class="alert alert-danger" role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="executePrescriptionByItsId.executionResultValidationError"/>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                <fmt:message bundle="${jspMessages}"
+                                             key="main.unknownCondition"/>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:if>
                     <h1>
                         <fmt:message bundle="${jspMessages}"
                                      key="executePrescriptionByItsId.heading"/>

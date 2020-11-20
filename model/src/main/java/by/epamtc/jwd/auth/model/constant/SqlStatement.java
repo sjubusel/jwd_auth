@@ -717,6 +717,14 @@ public final class SqlStatement {
             "         JOIN hospital.persons patient " +
             "ON v2ad.person_id = patient.person_id\n" +
             "WHERE vpr.prescription_id = ?;";
+    public static final String UPDATE_EXECUTE_NON_MED_PRESCRIPTION_BY_ID
+            = "UPDATE hospital.visit_prescription_records vpr\n" +
+            "SET vpr.execution_datetime = CURRENT_TIMESTAMP,\n" +
+            "    vpr.execution_result   = ?,\n" +
+            "    vpr.executor_staff     = ?\n" +
+            "WHERE vpr.prescription_id = ?\n" +
+            "  AND (vpr.execution_datetime IS NULL)\n" +
+            "  AND (vpr.patient_disagreement_datetime IS NULL);";
 
     private SqlStatement() {
     }

@@ -72,4 +72,7 @@ public interface VisitDao {
 
     Prescription fetchVisitPrescriptionById(String prescriptionId)
             throws DaoException;
+
+    boolean executePrescription(String prescriptionId, String executionResult,
+            AuthUser user) throws DaoException;
 }

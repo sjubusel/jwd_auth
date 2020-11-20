@@ -72,4 +72,7 @@ public interface VisitService {
 
     Prescription fetchVisitPrescriptionById(String prescriptionId, AuthUser user)
             throws ServiceException;
+
+    boolean executePrescription(String prescriptionId, String executionResult,
+            AuthUser user) throws ServiceException;
 }
