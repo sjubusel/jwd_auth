@@ -544,3 +544,7 @@ executePrescriptionByItsId.executionResultValidationError=Назначение �
 
 patientSubMenu.newMedicinePrescriptions=Новые назначения лекарственных средств
 patientSubMenu.newNonMedicinePrescriptions=Новые назначения
+
+patients.welcome=Доброе пожаловать
+patients.announceRole=Вы вошли как
+patients.rolePatient=ПАЦИЕНТ
