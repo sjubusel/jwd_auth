@@ -170,12 +170,12 @@
                                         <input type="hidden"
                                                name="hiddenPrescriptionIdInput"
                                                value="${requestScope.prescription.prescriptionId}">
-                                        <label>
+                                        <label class="d-flex justify-content-center">
                                             <fmt:message bundle="${jspMessages}"
                                                          key="executePrescriptionByItsId.executionResult"/>
                                             <textarea type="text"
                                                       name="executionResultInput"
-                                                      rows="30"
+                                                      rows="10"
                                                       cols="100"
                                                       required
                                                       placeholder="<fmt:message bundle="${jspMessages}"
@@ -214,7 +214,7 @@
                             </label>
                             <input type="text" name="prescriptionIdInput"
                                    required
-                                   autofocus id="prescriptionId" class="col"
+                                   id="prescriptionId" class="col"
                                    placeholder="<fmt:message bundle="${jspMessages}"
                            key="executePrescriptionByItsId.placeholder"/>"
                                    pattern="[0-9]+">
