@@ -22,10 +22,7 @@
 <head>
     <title>
         <fmt:message bundle="${jspMessages}"
-                     key="visitDetail.establishDiagnosis"/>
-        <c:out value=" | "/>
-        <fmt:message bundle="${jspMessages}"
-                     key="admissionDoctorSubMenu.visitsOnControl"/>
+                     key="admissionDoctorSubMenu.executePrescriptionByItsId"/>
         <c:out value=" | "/>
         <fmt:message bundle="${jspMessages}" key="staff.htmlTitle"/>
         <c:out value=" | "/>
