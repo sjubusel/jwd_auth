@@ -541,3 +541,6 @@ executePrescriptionByItsId.executeButton=Mark a result of prescription execution
 executePrescriptionByItsId.executionResultSuccess=Prescription is successfully completed
 executePrescriptionByItsId.executionResultTechError=Prescription is not completed because of a technical factor
 executePrescriptionByItsId.executionResultValidationError=Prescription is not completed because of an incorrect page configuration
+
+patientSubMenu.newMedicinePrescriptions=New medicine prescriptions
+patientSubMenu.newNonMedicinePrescriptions=New prescriptions

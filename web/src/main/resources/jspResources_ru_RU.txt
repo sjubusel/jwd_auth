@@ -541,3 +541,6 @@ executePrescriptionByItsId.executeButton=Сделать отметку об ис
 executePrescriptionByItsId.executionResultSuccess=Назначение успешно выполнено
 executePrescriptionByItsId.executionResultTechError=Назначение не выполнено по техническим причинам
 executePrescriptionByItsId.executionResultValidationError=Назначение не выполнено из-за неверной конфигурации страницы
+
+patientSubMenu.newMedicinePrescriptions=Новые назначения лекарственных средств
+patientSubMenu.newNonMedicinePrescriptions=Новые назначения
