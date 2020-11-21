@@ -553,8 +553,12 @@ patient.currentVisitInfo=Information about a current visit to the admitting depa
 patient.noCurrentVisit=There are no current processed visits concerning You
 
 patient.newMedPrescriptions.disagreeResultSuccess=You successfully refused from the medicine prescription
-patient.newMedPrescriptions.disagreeResultTechError=You didn't refused from the medicine prescription because of a technical factor
-patient.newMedPrescriptions.disagreeResultValidationError=You didn't refused from the medicine prescription because of an incorrect page configuration
+patient.newMedPrescriptions.disagreeResultTechError=You didn't refuse from the medicine prescription because of a technical factor
+patient.newMedPrescriptions.disagreeResultValidationError=You didn't refuse from the medicine prescription because of an incorrect page configuration
 patient.newMedPrescriptions.disagreement=Refusal reason
 patient.newMedPrescriptions.disagree=Refuse
 newMedPrescriptions.doctor=Prescribing staff
+
+patient.newNonMedicinePrescriptions.disagreeResultSuccess=You successfully refused from the prescription
+patient.newNonMedicinePrescriptions.disagreeResultTechError=You didn't refuse from the prescription because of a technical factor
+patient.newNonMedicinePrescriptions.disagreeResultValidationError=You didn't refuse from the prescription because of an incorrect page configuration
