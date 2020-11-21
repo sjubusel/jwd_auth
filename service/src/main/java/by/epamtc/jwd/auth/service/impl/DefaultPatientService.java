@@ -6,6 +6,7 @@ import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
 import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
+import by.epamtc.jwd.auth.model.med_info.Prescription;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
 import by.epamtc.jwd.auth.service.PatientService;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
@@ -58,5 +59,18 @@ public class DefaultPatientService implements PatientService {
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
+    }
+
+    @Override
+    public List<Prescription> fetchAllNewPrescriptions(AuthUser user)
+            throws ServiceException {
+        if (user.getUserId() > 0) {
+            try {
+                return patientDao.fetchAllNewPrescriptions(user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return null;
     }
 }

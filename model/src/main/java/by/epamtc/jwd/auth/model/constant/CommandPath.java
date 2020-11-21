@@ -268,6 +268,8 @@ public final class CommandPath {
             = "/WEB-INF/jsp/admission_doctor/executePrescriptionByItsId.jsp";
     public static final String SUBPATIENT_NEW_MED_PRESCR_JSP
             = "/WEB-INF/jsp/patient/newMedPrescriptions.jsp";
+    public static final String SUBPATIENT_NEW_PRESCR_JSP
+            = "/WEB-INF/jsp/patient/newPrescriptions.jsp";
 
     private CommandPath() {
     }

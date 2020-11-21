@@ -153,10 +153,6 @@
                                             <c:choose>
                                                 <c:when test="${prescription.responsibleStaffId > 0}">
                                                     <div>
-                                                        <fmt:message
-                                                                bundle="${jspMessages}"
-                                                                key="visitDetail.responsibleStaff"/>
-                                                        <c:out value=": "/>
                                                         <c:out value="${prescription.responsibleStaffInfo}"/>
                                                     </div>
                                                 </c:when>

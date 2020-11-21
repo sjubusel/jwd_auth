@@ -8,6 +8,7 @@ import by.epamtc.jwd.auth.dao.util.VisitRelatedEntitiesCompiler;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.SqlStatement;
 import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
+import by.epamtc.jwd.auth.model.med_info.Prescription;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
 
 import java.sql.Connection;
@@ -147,5 +148,41 @@ public class DefaultPatientDao implements PatientDao {
         }
 
         return true;
+    }
+
+    @Override
+    public List<Prescription> fetchAllNewPrescriptions(AuthUser user)
+            throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<Prescription> prescriptions = new ArrayList<>();
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement
+                    .SELECT_NON_MEDICINE_PRESCRIPTIONS_BY_PATIENT_ID);
+            statement.setInt(1, user.getUserId());
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                Prescription prescription = visitRelatedEntitiesCompiler
+                        .compileNonMedicinePrescription(resultSet);
+                prescriptions.add(prescription);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("An error (SQLException) while fetching " +
+                    "all non-medicine unexecuted per current visit prescriptions " +
+                    "by patientId. PatientId=" + user.getUserId(), e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error (ConnectionPoolException" +
+                    " while taking a connection in order to fetch " +
+                    "all non-medicine unexecuted per current visit prescriptions " +
+                    "by patientId. PatientId=" + user.getUserId(), e);
+        } finally {
+            pool.closeConnection(conn, statement, resultSet);
+        }
+
+        return prescriptions;
     }
 }

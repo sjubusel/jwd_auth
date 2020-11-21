@@ -105,6 +105,8 @@ public final class CommandName {
             = "GO-TO-PATIENT-NEW-MEDICINE-PRESCRIPTIONS";
     public static final String SUBPATIENT_DISAGREE_WITH_MEDICINE_PRESCRIPTION
             = "PATIENT-DISAGREE-WITH-MEDICINE-PRESCRIPTION";
+    public static final String SUBPATIENT_GO_TO_NEW_PRESCRIPTIONS
+            = "GO-TO-PATIENT-NEW-PRESCRIPTIONS";
 
     private CommandName() {
     }
