@@ -51,6 +51,7 @@ import by.epamtc.jwd.auth.web.util.impl.substaff.GoToEstablishMedPrescriptionCom
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToEstablishPrescriptionCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToExecutePrescriptionByItsIdCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToMakeVisitDecisionCommand;
+import by.epamtc.jwd.auth.web.util.impl.substaff.GoToRefuseToHospitalizeCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToStaffAcceptMedicinePrescriptionCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToStaffNewMedicinePrescriptionsCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToStaffNewNonMedicinePrescriptionsCommand;
@@ -188,6 +189,8 @@ public class CommandProvider {
                 new PatientDisagreeWithPrescriptionCommand());
         repository.put(CommandName.SUBSTAFF_GO_TO_MAKE_VISIT_DECISION,
                 new GoToMakeVisitDecisionCommand());
+        repository.put(CommandName.SUBSTAFF_GO_TO_REFUSE_TO_HOSPITALIZE,
+                new GoToRefuseToHospitalizeCommand());
 
         repository.put(CommandName.ERROR, new ErrorCommand());
     }

@@ -111,6 +111,8 @@ public final class CommandName {
             = "PATIENT-DISAGREE-WITH-NON-MEDICINE-PRESCRIPTION";
     public static final String SUBSTAFF_GO_TO_MAKE_VISIT_DECISION
             = "GO-TO-MAKE-VISIT-DECISION";
+    public static final String SUBSTAFF_GO_TO_REFUSE_TO_HOSPITALIZE
+            = "GO-TO-REFUSE-TO-HOSPITALIZE";
 
     private CommandName() {
     }
