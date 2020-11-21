@@ -557,3 +557,4 @@ patient.newMedPrescriptions.disagreeResultTechError=Вы не смогли от�
 patient.newMedPrescriptions.disagreeResultValidationError=Вы не смогли отказаться от назначения лекарственного средства из-за неверной конфигурации страницы
 patient.newMedPrescriptions.disagreement=Причина отказа
 patient.newMedPrescriptions.disagree=Отказаться
+newMedPrescriptions.doctor=Назначивший сотрудник

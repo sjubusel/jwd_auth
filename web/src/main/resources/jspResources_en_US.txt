@@ -557,3 +557,4 @@ patient.newMedPrescriptions.disagreeResultTechError=You didn't refused from the 
 patient.newMedPrescriptions.disagreeResultValidationError=You didn't refused from the medicine prescription because of an incorrect page configuration
 patient.newMedPrescriptions.disagreement=Refusal reason
 patient.newMedPrescriptions.disagree=Refuse
+newMedPrescriptions.doctor=Prescribing staff

@@ -12,7 +12,8 @@
 </c:choose>
 
 <c:set var="activeMenuTab" value="staff" scope="page"/>
-<c:set var="activeSubMenuTab" value="patientNewMedicinePrescriptions" scope="page"/>
+<c:set var="activeSubMenuTab" value="patientNewMedicinePrescriptions"
+       scope="page"/>
 
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
 
@@ -98,15 +99,22 @@
                             <div class="row d-flex mb-1 border">
                                 <div class="col">
                                     <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.diagnoses.departmentType"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
                                                  key="newMedPrescriptions.targetDateTime"/>
                                 </div>
                                 <div class="col">
                                     <fmt:message bundle="${jspMessages}"
                                                  key="newMedPrescriptions.medicineInfo"/>
+                                    <c:out value=" / "/>
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="newMedPrescriptions.dosageInfo"/>
                                 </div>
                                 <div class="col">
                                     <fmt:message bundle="${jspMessages}"
-                                                 key="newMedPrescriptions.dosageInfo"/>
+                                                 key="newMedPrescriptions.doctor"/>
                                 </div>
                                 <div class="col">
                                     <label for="disagreementDescription">
@@ -130,17 +138,21 @@
                                         <input type="hidden"
                                                name="hiddenPrescriptionIdInput"
                                                value="<c:out value="${medPrescription.prescriptionId}"/>"/>
-                                            <%--1st column--%>
+                                        <div class="col">
+                                            <c:out value="${medPrescription.departmentOrigin.description}"/>
+                                        </div>
                                         <div class="col">
                                             <c:out value="${medPrescription.targetApplicationDateTime}"/>
                                         </div>
                                         <div class="col">
                                             <c:out value="${medPrescription.medicineInfo}"/>
-                                        </div>
-                                        <div class="col">
+                                            <c:out value=" / "/>
                                             <c:out value="${medPrescription.dosageQuantity}"/>
                                             <c:out value=" "/>
                                             <c:out value="${medPrescription.dosageMeasureUnit.shortName}"/>
+                                        </div>
+                                        <div class="col">
+                                            <c:out value="${medPrescription.prescribingStaffInfo}"/>
                                         </div>
                                         <div class="col">
                                             <input type="text"
