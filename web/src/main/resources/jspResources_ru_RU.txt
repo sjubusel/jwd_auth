@@ -548,3 +548,6 @@ patientSubMenu.newNonMedicinePrescriptions=Новые назначения
 patients.welcome=Доброе пожаловать
 patients.announceRole=Вы вошли как
 patients.rolePatient=ПАЦИЕНТ
+
+patient.currentVisitInfo=Информация о текущем обращении в приёмное отделение
+patient.noCurrentVisit=В настоящий момент отсутствуют обращения, по которым в отношении Вас не принято решение
