@@ -210,6 +210,18 @@ public final class CommandPath {
             SUBPATIENT_GO_TO_NEW_MED_PRESCR_DISAGREE_RESULT_SUCCESS
             = "/profile?command=go-to-patient-new-medicine-prescriptions" +
             "&disagreeResult=success";
+    public static final String
+            SUBPATIENT_GO_TO_NEW_PRESCR_DISAGREE_RESULT_TECH_ERROR
+            = "/profile?command=go-to-patient-new-prescriptions" +
+            "&disagreeResult=techError";
+    public static final String
+            SUBPATIENT_GO_TO_NEW_PRESCR_DISAGREE_RESULT_VAL_ERROR
+            = "/profile?command=go-to-patient-new-prescriptions" +
+            "&disagreeResult=validationError";
+    public static final String
+            SUBPATIENT_GO_TO_NEW_PRESCR_DISAGREE_RESULT_SUCCESS
+            = "/profile?command=go-to-patient-new-prescriptions" +
+            "&disagreeResult=success";
 
     public static final String LOGIN_JSP = "/WEB-INF/jsp/login.jsp";
     public static final String PROFILE_JSP = "/WEB-INF/jsp/profile.jsp";

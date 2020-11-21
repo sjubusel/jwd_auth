@@ -48,12 +48,10 @@ public class DefaultPatientService implements PatientService {
             throws ServiceException {
         try {
             if (prescriptionId.matches(RegistrationInfoPattern.DIGITS)
-                    && (patientDao.fetchPatientIdByPrescriptionId(prescriptionId)
-                    == user.getUserId())) {
-
+                    && (patientDao.fetchPatientIdByMedicinePrescriptionId(
+                    prescriptionId) == user.getUserId())) {
                 return patientDao.disagreeWithMedicinePrescription(prescriptionId,
                         disagreementDescription);
-
             }
             return false;
         } catch (DaoException e) {
@@ -72,5 +70,21 @@ public class DefaultPatientService implements PatientService {
             }
         }
         return null;
+    }
+
+    @Override
+    public boolean disagreeWithPrescription(AuthUser user, String prescriptionId,
+            String disagreementDescription) throws ServiceException {
+        try {
+            if (prescriptionId.matches(RegistrationInfoPattern.DIGITS)
+                    && (patientDao.fetchPatientIdByPrescriptionId(prescriptionId)
+                    == user.getUserId())) {
+                return patientDao.disagreeWithPrescription(prescriptionId,
+                        disagreementDescription);
+            }
+            return false;
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
     }
 }

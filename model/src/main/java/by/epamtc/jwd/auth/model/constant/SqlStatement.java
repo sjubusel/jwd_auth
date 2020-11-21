@@ -894,6 +894,20 @@ public final class SqlStatement {
             "    AND vpr.patient_disagreement_description IS NULL)\n" +
             "  AND (v2ad.visit_result IS NULL)\n" +
             "  AND patient.person_id = ?;";
+    public static final String SELECT_PATIENT_ID_BY_PRESCRIPTION_ID
+            = "SELECT v2ad.person_id\n" +
+            "FROM hospital.visit_prescription_records vpr\n" +
+            "         JOIN hospital.visits_to_admission_department v2ad\n" +
+            "              ON vpr.visit_id = v2ad.visit_id\n" +
+            "WHERE vpr.prescription_id = ?;";
+    public static final String UPDATE_DISAGREEMENT_WITH_PRESCRIPTION
+            = "UPDATE hospital.visit_prescription_records vpr\n" +
+            "SET vpr.patient_disagreement_description = ?,\n" +
+            "    vpr.patient_disagreement_datetime    " +
+            "= CURRENT_TIMESTAMP,\n" +
+            "    vpr.patient_agreement_mark           " +
+            "= NOT vpr.patient_agreement_mark\n" +
+            "WHERE vpr.prescription_id = ?;";
 
     private SqlStatement() {
     }

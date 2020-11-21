@@ -18,6 +18,7 @@ import by.epamtc.jwd.auth.web.util.impl.RegisterCommand;
 import by.epamtc.jwd.auth.web.util.impl.subpatient.GoToPatientNewMedicinePrescriptionsCommand;
 import by.epamtc.jwd.auth.web.util.impl.subpatient.GoToPatientNewPrescriptionsCommand;
 import by.epamtc.jwd.auth.web.util.impl.subpatient.PatientDisagreeWithMedicinePrescriptionCommand;
+import by.epamtc.jwd.auth.web.util.impl.subpatient.PatientDisagreeWithPrescriptionCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileAllergicReactionsCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangeEmailCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileChangePasswordCommand;
@@ -182,6 +183,8 @@ public class CommandProvider {
                 new PatientDisagreeWithMedicinePrescriptionCommand());
         repository.put(CommandName.SUBPATIENT_GO_TO_NEW_PRESCRIPTIONS,
                 new GoToPatientNewPrescriptionsCommand());
+        repository.put(CommandName.SUBPATIENT_PATIENT_DISAGREE_WITH_PRESCRIPTION,
+                new PatientDisagreeWithPrescriptionCommand());
 
         repository.put(CommandName.ERROR, new ErrorCommand());
     }
