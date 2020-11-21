@@ -74,12 +74,12 @@
                                      key="makeVisitDecision.heading"/>
                     </h1>
                     <div class="list-group">
-                        <a href="${pageContext.request.contextPath}/profile?command=go-to-refuse-to-hospitalize&hiddenVisitId=${requestScope.hiddenVisitId}"
+                        <a href="${pageContext.request.contextPath}/profile?command=refuse-to-hospitalize&hiddenVisitId=${requestScope.hiddenVisitId}"
                            class="list-group-item list-group-item-action">
                             <fmt:message bundle="${jspMessages}"
                                          key="makeVisitDecision.refuseToHospitalize"/>
                         </a>
-                        <a href="${pageContext.request.contextPath}/profile?command=go-to-hospitalize&hiddenVisitId=${requestScope.hiddenVisitId}"
+                        <a href="${pageContext.request.contextPath}/profile?command=hospitalize&hiddenVisitId=${requestScope.hiddenVisitId}"
                            class="list-group-item list-group-item-action disabled">
                             <fmt:message bundle="${jspMessages}"
                                          key="makeVisitDecision.hospitalize"/>

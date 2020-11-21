@@ -113,6 +113,8 @@ public final class CommandName {
             = "GO-TO-MAKE-VISIT-DECISION";
     public static final String SUBSTAFF_GO_TO_REFUSE_TO_HOSPITALIZE
             = "GO-TO-REFUSE-TO-HOSPITALIZE";
+    public static final String SUBSTAFF_REFUSE_TO_HOSPITALIZE
+            = "REFUSE-TO-HOSPITALIZE";
 
     private CommandName() {
     }
