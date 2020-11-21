@@ -11,7 +11,7 @@
     </c:otherwise>
 </c:choose>
 
-<c:set var="activeMenuTab" value="staff" scope="page"/>
+<c:set var="activeMenuTab" value="patients" scope="page"/>
 <c:set var="activeSubMenuTab" value="patientNewNonMedicinePrescriptions"
        scope="page"/>
 
