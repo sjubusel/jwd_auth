@@ -4,6 +4,7 @@ import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
 import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
+import by.epamtc.jwd.auth.service.PatientService;
 import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.Command;
@@ -29,8 +30,7 @@ public class GoToPatientsCommand implements Command {
         AdmissionDepartmentVisit visitInfo = null;
 
         try {
-            visitInfo = patientService.fetchFullAdmissionDepartmentVisitIfExist(
-                    user);
+            visitInfo = patientService.fetchFullVisitIfExist(user);
         } catch (ServiceException e) {
             logger.error("An error while fetching full visit information " +
                     "if it exists.", e);

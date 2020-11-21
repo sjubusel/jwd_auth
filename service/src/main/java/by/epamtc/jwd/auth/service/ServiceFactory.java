@@ -10,7 +10,7 @@ public class ServiceFactory {
     private final ProfileService profileService = new DefaultProfileService();
     private final UploadService uploadService = new DefaultUploadService();
     private final VisitService visitService = new DefaultVisitService();
-
+    private PatientService patientService = new DefaultPatientService();
 
     private ServiceFactory() {
     }
@@ -46,5 +46,9 @@ public class ServiceFactory {
 
     public VisitService getVisitService() {
         return visitService;
+    }
+
+    public PatientService getPatientService() {
+        return patientService;
     }
 }
