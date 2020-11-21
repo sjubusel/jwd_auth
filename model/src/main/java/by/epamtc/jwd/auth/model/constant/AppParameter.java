@@ -114,7 +114,7 @@ public final class AppParameter {
             = "executionResultInput";
     public static final String EXECUTION_RESULT = "executionResult";
     public static final String PRESCRIPTION_ID_INPUT = "prescriptionIdInput";
-
+    public static final String DISAGREE_RESULT = "disagreeResult";
 
     private AppParameter() {
     }

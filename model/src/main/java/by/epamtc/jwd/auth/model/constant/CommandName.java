@@ -101,6 +101,8 @@ public final class CommandName {
             = "GO-TO-DETAIL-EXECUTE-PRESCRIPTION-BY-ITS-ID";
     public static final String SUBSTAFF_EXECUTE_NON_MEDICINE_PRESCRIPTION
             = "STAFF-EXECUTE-NON-MEDICINE-PRESCRIPTION";
+    public static final String SUBPATIENT_GO_TO_NEW_MEDICINE_PRESCRIPTIONS
+            = "GO-TO-PATIENT-NEW-MEDICINE-PRESCRIPTIONS";
 
     private CommandName() {
     }
