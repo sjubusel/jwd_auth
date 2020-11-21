@@ -566,3 +566,6 @@ patient.newNonMedicinePrescriptions.disagreeResultValidationError=Вы не см
 makeVisitDecision.heading=Решение по обращению в приёмное отделение
 makeVisitDecision.refuseToHospitalize=Отказать в госпитализации
 makeVisitDecision.hospitalize=Госпитализировать
+
+makeVisitDecision.refusalResultTechError=Процедура отказа в регистрации не инициирована по техническим причинам
+makeVisitDecision.refusalResultValError=Процедура отказа в регистрации не инициирована из-за некорректной конфигурации страницы

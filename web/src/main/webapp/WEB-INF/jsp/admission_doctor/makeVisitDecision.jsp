@@ -69,6 +69,22 @@
                     </c:choose>
                 </c:when>
                 <c:otherwise>
+                    <c:if test="${requestScope.refusalResult ne null}">
+                        <c:choose>
+                            <c:when test="${requestScope.refusalResult eq 'techError'}">
+                                <div class="alert alert-danger" role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="makeVisitDecision.refusalResultTechError"/>
+                                </div>
+                            </c:when>
+                            <c:when test="${requestScope.refusalResult eq 'validationError'}">
+                                <div class="alert alert-danger" role="alert">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="makeVisitDecision.refusalResultValError"/>
+                                </div>
+                            </c:when>
+                        </c:choose>
+                    </c:if>
                     <h1>
                         <fmt:message bundle="${jspMessages}"
                                      key="makeVisitDecision.heading"/>

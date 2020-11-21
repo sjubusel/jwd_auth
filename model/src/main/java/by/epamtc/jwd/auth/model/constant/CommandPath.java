@@ -222,6 +222,16 @@ public final class CommandPath {
             SUBPATIENT_GO_TO_NEW_PRESCR_DISAGREE_RESULT_SUCCESS
             = "/profile?command=go-to-patient-new-prescriptions" +
             "&disagreeResult=success";
+    public static final String
+            SUBSTAFF_GO_TO_MAKE_VISIT_DECISION_REFUSAL_RESULT_VAL_ERROR
+            = "/profile?command=go-to-make-visit-decision" +
+            "&refusalResult=validationError";
+    public static final String
+            SUBSTAFF_GO_TO_MAKE_VISIT_DECISION_REFUSAL_RESULT_TECH_ERROR
+            = "/profile?command=go-to-make-visit-decision" +
+            "&refusalResult=techError";
+    public static final String SUBSTAFF_GO_TO_REFUSE_TO_HOSPITALIZE
+            = "/profile?command=go-to-refuse-to-hospitalize";
 
     public static final String LOGIN_JSP = "/WEB-INF/jsp/login.jsp";
     public static final String PROFILE_JSP = "/WEB-INF/jsp/profile.jsp";

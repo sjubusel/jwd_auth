@@ -3,6 +3,7 @@ package by.epamtc.jwd.auth.web.util.impl.substaff;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
 import by.epamtc.jwd.auth.model.constant.AppParameter;
+import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.VisitService;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
@@ -44,5 +45,23 @@ public class RefuseToHospitalizeCommand implements Command {
         }
 
         sendRedirectWithSuccess(req, res);
+    }
+
+    private void sendRedirectWithTechError(HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBSTAFF_GO_TO_MAKE_VISIT_DECISION_REFUSAL_RESULT_TECH_ERROR);
+    }
+
+    private void sendRedirectWithValidationError(HttpServletRequest req,
+            HttpServletResponse res) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBSTAFF_GO_TO_MAKE_VISIT_DECISION_REFUSAL_RESULT_VAL_ERROR);
+    }
+
+    private void sendRedirectWithSuccess(HttpServletRequest req, HttpServletResponse res)
+            throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBSTAFF_GO_TO_REFUSE_TO_HOSPITALIZE);
     }
 }

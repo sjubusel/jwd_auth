@@ -116,6 +116,7 @@ public final class AppParameter {
     public static final String PRESCRIPTION_ID_INPUT = "prescriptionIdInput";
     public static final String DISAGREE_RESULT = "disagreeResult";
     public static final String DISAGREEMENT_CONTENTS = "disagreementDescriptionInput";
+    public static final String REFUSAL_RESULT = "refusalResult";
 
     private AppParameter() {
     }

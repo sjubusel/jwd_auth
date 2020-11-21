@@ -14,8 +14,12 @@ public class GoToMakeVisitDecisionCommand implements Command {
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
         String visitId = req.getParameter(AppParameter.VISIT_ID);
-
         req.setAttribute(AppParameter.VISIT_ID, visitId);
+
+        String result = req.getParameter(AppParameter.REFUSAL_RESULT);
+        if (result != null) {
+            req.setAttribute(AppParameter.REFUSAL_RESULT, result);
+        }
 
         req.getRequestDispatcher(CommandPath.SUBSTAFF_MAKE_VISIT_DECISION_JSP)
                 .forward(req, res);
