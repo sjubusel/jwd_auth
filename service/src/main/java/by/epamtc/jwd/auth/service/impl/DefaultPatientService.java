@@ -4,6 +4,7 @@ import by.epamtc.jwd.auth.dao.DaoFactory;
 import by.epamtc.jwd.auth.dao.PatientDao;
 import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
+import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
 import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
 import by.epamtc.jwd.auth.service.PatientService;
@@ -38,5 +39,24 @@ public class DefaultPatientService implements PatientService {
             }
         }
         return null;
+    }
+
+    @Override
+    public boolean disagreeWithMedicinePrescription(AuthUser user,
+            String prescriptionId, String disagreementDescription)
+            throws ServiceException {
+        try {
+            if (prescriptionId.matches(RegistrationInfoPattern.DIGITS)
+                    && (patientDao.fetchPatientIdByPrescriptionId(prescriptionId)
+                    == user.getUserId())) {
+
+                return patientDao.disagreeWithMedicinePrescription(prescriptionId,
+                        disagreementDescription);
+
+            }
+            return false;
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
     }
 }

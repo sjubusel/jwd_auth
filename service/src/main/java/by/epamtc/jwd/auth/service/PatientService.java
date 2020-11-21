@@ -13,4 +13,7 @@ public interface PatientService {
 
     List<MedicinePrescription> fetchAllNewMedicinePrescriptions(AuthUser user)
             throws ServiceException;
+
+    boolean disagreeWithMedicinePrescription(AuthUser user, String prescriptionId,
+            String disagreementDescription) throws ServiceException;
 }

@@ -13,4 +13,10 @@ public interface PatientDao {
 
     List<MedicinePrescription> fetchAllNewMedicinePrescriptions(AuthUser user)
             throws DaoException;
+
+    int fetchPatientIdByPrescriptionId(String prescriptionId)
+            throws DaoException;
+
+    boolean disagreeWithMedicinePrescription(String prescriptionId,
+            String disagreementDescription) throws DaoException;
 }

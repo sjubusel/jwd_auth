@@ -92,4 +92,60 @@ public class DefaultPatientDao implements PatientDao {
 
         return prescriptions;
     }
+
+    @Override
+    public int fetchPatientIdByPrescriptionId(String prescriptionId)
+            throws DaoException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = pool.takeConnection();
+            statement = connection.prepareStatement(SqlStatement
+                    .SELECT_PATIENT_ID_BY_MED_PRESCRIPTION_ID);
+            statement.setInt(1, Integer.parseInt(prescriptionId));
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("An error while fetching a patient id by " +
+                    "prescription id", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection in " +
+                    "order to fetch a patient id by " +
+                    "prescription id", e);
+        } finally {
+            pool.closeConnection(connection, statement, resultSet);
+        }
+
+        return -1;
+    }
+
+    @Override
+    public boolean disagreeWithMedicinePrescription(String prescriptionId,
+            String disagreementDescription) throws DaoException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        try {
+            connection = pool.takeConnection();
+            statement = connection.prepareStatement(SqlStatement
+                    .UPDATE_DISAGREEMENT_WITH_MED_PRESCRIPTION);
+            statement.setString(1, disagreementDescription);
+            statement.setInt(2, Integer.parseInt(prescriptionId));
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException("An error while saving information " +
+                    "about disagreement with a medicine prescription", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection " +
+                    "in order to disagree with a medicine prescription", e);
+        } finally {
+            pool.closeConnection(connection, statement);
+        }
+
+        return true;
+    }
 }
