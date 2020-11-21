@@ -551,3 +551,9 @@ patients.rolePatient=ПАЦИЕНТ
 
 patient.currentVisitInfo=Информация о текущем обращении в приёмное отделение
 patient.noCurrentVisit=В настоящий момент отсутствуют обращения, по которым в отношении Вас не принято решение
+
+patient.newMedPrescriptions.disagreeResultSuccess=Вы успешно отказались от назначения лекарственного средства
+patient.newMedPrescriptions.disagreeResultTechError=Вы не смогли отказаться от назначения лекарственного средства по техническим причинам
+patient.newMedPrescriptions.disagreeResultValidationError=Вы не смогли отказаться от назначения лекарственного средства из-за неверной конфигурации страницы
+patient.newMedPrescriptions.disagreement=Причина отказа
+patient.newMedPrescriptions.disagree=Отказаться

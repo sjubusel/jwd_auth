@@ -7,7 +7,7 @@
     <a type="button"
        href="${pageContext.request.contextPath}/profile?command=go-to-patient-new-medicine-prescriptions"
             <c:choose>
-                <c:when test="${pageScope.activeSubMenuStaffTab == 'newMedicinePrescriptions'}">
+                <c:when test="${pageScope.activeSubMenuTab == 'patientNewMedicinePrescriptions'}">
                     class="list-group-item list-group-item-action active"
                 </c:when>
                 <c:otherwise>
@@ -21,7 +21,7 @@
     <a type="button"
        href="${pageContext.request.contextPath}/profile?command=go-to-patient-new-prescriptions"
             <c:choose>
-                <c:when test="${pageScope.activeSubMenuStaffTab == 'newNonMedicinePrescriptions'}">
+                <c:when test="${pageScope.activeSubMenuTab == 'patientNewNonMedicinePrescriptions'}">
                     class="list-group-item list-group-item-action active"
                 </c:when>
                 <c:otherwise>
