@@ -725,6 +725,48 @@ public final class SqlStatement {
             "WHERE vpr.prescription_id = ?\n" +
             "  AND (vpr.execution_datetime IS NULL)\n" +
             "  AND (vpr.patient_disagreement_datetime IS NULL);";
+    public static final String SELECT_FULL_VISIT_BY_PERSON_ID
+            = "SELECT v2ad.visit_id,\n" +
+            "       v2ad.visit_datetime,\n" +
+            "       p.last_name,\n" +
+            "       p.first_name,\n" +
+            "       p.middle_name,\n" +
+            "       v2ad.visit_reason_description,\n" +
+            "       v2ad.person_id,\n" +
+            "       v2ad.visit_reason,\n" +
+            "       v2ad.responsible_doctor_id,\n" +
+            "       dp.last_name,\n" +
+            "       dp.first_name,\n" +
+            "       dp.middle_name,\n" +
+            "       v2ad.transportation_status,\n" +
+            "       v2ad.responsible_paramedical_staff_id,\n" +
+            "       paraPerson.last_name,\n" +
+            "       paraPerson.first_name,\n" +
+            "       paraPerson.middle_name,\n" +
+            "       v2ad.complaints_description,\n" +
+            "       v2ad.visit_result,\n" +
+            "       v2ad.hospitalization_department_id,\n" +
+            "       hospDep.name\n" +
+            "\n" +
+            "FROM hospital.visits_to_admission_department v2ad\n" +
+            "         JOIN hospital.persons p ON v2ad.person_id = p.person_id\n" +
+            "\n" +
+            "         JOIN hospital.staff d ON v2ad.responsible_doctor_id " +
+            "= d.staff_id\n" +
+            "         JOIN hospital.persons dp ON d.person_id = dp.person_id\n" +
+            "\n" +
+            "         LEFT OUTER JOIN hospital.staff paraStaff " +
+            "ON v2ad.responsible_paramedical_staff_id = paraStaff.staff_id\n" +
+            "         LEFT OUTER JOIN hospital.persons paraPerson " +
+            "ON paraStaff.person_id = paraPerson.person_id\n" +
+            "\n" +
+            "         LEFT OUTER JOIN hospital_departments hospDep\n" +
+            "ON v2ad.hospitalization_department_id = hospDep.hospital_department_id\n" +
+            "\n" +
+            "\n" +
+            "WHERE p.person_id = ?\n" +
+            "AND v2ad.visit_result IS NULL\n" +
+            "AND v2ad.hospitalization_department_id IS NULL;";
 
     private SqlStatement() {
     }
