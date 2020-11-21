@@ -908,6 +908,10 @@ public final class SqlStatement {
             "    vpr.patient_agreement_mark           " +
             "= NOT vpr.patient_agreement_mark\n" +
             "WHERE vpr.prescription_id = ?;";
+    public static final String UPDATE_START_REFUSAL_PROCEDURE
+            = "UPDATE hospital.visits_to_admission_department v2ad\n" +
+            "SET v2ad.visit_result = 'REFUSAL'\n" +
+            "WHERE v2ad.visit_id = ?;";
 
     private SqlStatement() {
     }

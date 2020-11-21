@@ -75,4 +75,7 @@ public interface VisitService {
 
     boolean executePrescription(String prescriptionId, String executionResult,
             AuthUser user) throws ServiceException;
+
+    boolean startRefusalProcedure(String visitId, AuthUser user)
+            throws ServiceException;
 }

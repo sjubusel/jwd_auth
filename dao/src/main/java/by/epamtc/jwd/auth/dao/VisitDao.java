@@ -75,4 +75,7 @@ public interface VisitDao {
 
     boolean executePrescription(String prescriptionId, String executionResult,
             AuthUser user) throws DaoException;
+
+    boolean startRefusalProcedure(String visitId, AuthUser user)
+            throws DaoException;
 }

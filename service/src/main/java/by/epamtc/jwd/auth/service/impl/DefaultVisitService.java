@@ -330,4 +330,18 @@ public class DefaultVisitService implements VisitService {
         }
         return false;
     }
+
+    @Override
+    public boolean startRefusalProcedure(String visitId, AuthUser user)
+            throws ServiceException {
+        if (validator.isAuthUserHasRightsToTreat(user)
+                && validator.isStringIdCorrect(visitId)) {
+            try {
+                return visitDao.startRefusalProcedure(visitId, user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return false;
+    }
 }

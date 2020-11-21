@@ -786,4 +786,29 @@ public class DefaultVisitDao implements VisitDao {
         }
     }
 
+    @Override
+    public boolean startRefusalProcedure(String visitId, AuthUser user)
+            throws DaoException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        try {
+            connection = pool.takeConnection();
+            statement = connection.prepareStatement(SqlStatement
+                    .UPDATE_START_REFUSAL_PROCEDURE);
+            statement.setInt(1, Integer.parseInt(visitId));
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException("An error while starting a refusal " +
+                    "procedure.", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection " +
+                    "in order to start a refusal procedure.", e);
+        } finally {
+            pool.closeConnection(connection, statement);
+        }
+
+        return true;
+    }
+
 }
