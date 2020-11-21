@@ -562,3 +562,7 @@ newMedPrescriptions.doctor=Prescribing staff
 patient.newNonMedicinePrescriptions.disagreeResultSuccess=You successfully refused from the prescription
 patient.newNonMedicinePrescriptions.disagreeResultTechError=You didn't refuse from the prescription because of a technical factor
 patient.newNonMedicinePrescriptions.disagreeResultValidationError=You didn't refuse from the prescription because of an incorrect page configuration
+
+makeVisitDecision.heading=Decision on the visit to the admitting department
+makeVisitDecision.refuseToHospitalize=Refuse to hospitalize
+makeVisitDecision.hospitalize=Hospitalize

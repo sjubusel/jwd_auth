@@ -282,6 +282,8 @@ public final class CommandPath {
             = "/WEB-INF/jsp/patient/newMedPrescriptions.jsp";
     public static final String SUBPATIENT_NEW_PRESCR_JSP
             = "/WEB-INF/jsp/patient/newPrescriptions.jsp";
+    public static final String SUBSTAFF_MAKE_VISIT_DECISION_JSP
+            = "/WEB-INF/jsp/admission_doctor/makeVisitDecision.jsp";
 
     private CommandPath() {
     }

@@ -562,3 +562,7 @@ newMedPrescriptions.doctor=Назначивший сотрудник
 patient.newNonMedicinePrescriptions.disagreeResultSuccess=Вы успешно отказались от назначения
 patient.newNonMedicinePrescriptions.disagreeResultTechError=Вы не смогли отказаться от назначения по техническим причинам
 patient.newNonMedicinePrescriptions.disagreeResultValidationError=Вы не смогли отказаться от назначения из-за неверной конфигурации страницы
+
+makeVisitDecision.heading=Решение по обращению в приёмное отделение
+makeVisitDecision.refuseToHospitalize=Отказать в госпитализации
+makeVisitDecision.hospitalize=Госпитализировать
