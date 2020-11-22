@@ -601,3 +601,9 @@ refuseToHospitalize.validationErrorAddResult=Medicine recommendation is not adde
 refuseToHospitalize.successCancelResult=Medicine recommendation is successfully cancelled
 refuseToHospitalize.techErrorCancelResult=Medicine recommendation is not cancelled because of a technical factor
 refuseToHospitalize.validationErrorCancelResult=Medicine recommendation is not cancelled because of an incorrect page configuration
+
+refusalsOnControl.refusalReference=Form  reference about stay at the admitting department
+
+refuseToHospitalize.refusalRecommendationsLabel=Recommendations
+refuseToHospitalize.refusalRecommendationsPlaceholder=Indert recommendations on further treatment
+refuseToHospitalize.refuseToHospitalizeBtn=Form a reference

@@ -951,6 +951,11 @@ public final class SqlStatement {
             = "DELETE\n" +
             "FROM hospital.refusal_medicine_recommendations rmr\n" +
             "WHERE rmr.recommendation_id = ?;";
+    public static final String INSERT_REFUSAL_REFERENCE
+            = "INSERT INTO hospital.refusal_references\n" +
+            "    (reference_datetime, visit_id, doctor_id, " +
+            "refusal_recommendations)\n" +
+            "VALUES (CURRENT_TIMESTAMP, ?, ?, ?);";
 
     private SqlStatement() {
     }

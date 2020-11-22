@@ -18,6 +18,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -935,5 +936,40 @@ public class DefaultVisitDao implements VisitDao {
         }
 
         return true;
+    }
+
+    @Override
+    public int formRefusalReference(String refusalRecommendations,
+            String visitId, AuthUser user) throws DaoException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        int referenceId = 0;
+
+        try {
+            connection = pool.takeConnection();
+            statement = connection.prepareStatement(SqlStatement
+                    .INSERT_REFUSAL_REFERENCE, Statement.RETURN_GENERATED_KEYS);
+            statement.setInt(1, Integer.parseInt(visitId));
+            statement.setInt(2, user.getStaffId());
+            statement.setString(3, refusalRecommendations);
+            statement.executeUpdate();
+
+            resultSet = statement.getGeneratedKeys();
+            if (resultSet.next()) {
+                referenceId = resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("An error while forming a refusal " +
+                    "reference if a patient is not hospitalized.", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while takina  connection in " +
+                    "order to form a refusal reference if a patient " +
+                    "is not hospitalized.", e);
+        } finally {
+            pool.closeConnection(connection, statement, resultSet);
+        }
+
+        return referenceId;
     }
 }

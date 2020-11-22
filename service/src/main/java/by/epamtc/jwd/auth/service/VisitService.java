@@ -92,4 +92,7 @@ public interface VisitService {
 
     boolean cancelRefusalMedicineRecommendation(String recommendationId,
             AuthUser user) throws ServiceException;
+
+    int formRefusalReference(String refusalRecommendations, String visitId,
+            AuthUser user) throws ServiceException;
 }

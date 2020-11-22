@@ -311,7 +311,37 @@
                             </button>
                         </div>
                     </form>
-
+                    <br>
+                    <br>
+                    <h5>
+                        <fmt:message bundle="${jspMessages}"
+                                     key="refusalsOnControl.refusalReference"/>
+                    </h5>
+                    <form action="${pageContext.request.contextPath}/profile"
+                          method="post">
+                        <input type="hidden" name="command"
+                               value="form-refusal-reference">
+                        <input type="hidden" name="hiddenVisitId"
+                               value="${requestScope.hiddenVisitId}">
+                        <div class="form-group form-inline row mb-3">
+                            <label class="col col-5 text-left" for="refusalRecommendations">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="refuseToHospitalize.refusalRecommendationsLabel"/>
+                            </label>
+                            <textarea type="text" id="refusalRecommendations" class="col"
+                                      rows="15"
+                                      name="refusalRecommendationsInput" required
+                                      placeholder="<fmt:message bundle="${jspMessages}"
+                                       key="refuseToHospitalize.refusalRecommendationsPlaceholder"/>"></textarea>
+                        </div>
+                        <div>
+                            <button type="submit"
+                                    class="btn align-self-center btn-primary ">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="refuseToHospitalize.refuseToHospitalizeBtn"/>
+                            </button>
+                        </div>
+                    </form>
                 </c:otherwise>
             </c:choose>
         </div>

@@ -601,3 +601,9 @@ refuseToHospitalize.validationErrorAddResult=Из-за неверной конф
 refuseToHospitalize.successCancelResult=Рекомендация лекарственного средства успешно отменена
 refuseToHospitalize.techErrorCancelResult=По техническим причинам рекомендация лекарственного средства не отменена
 refuseToHospitalize.validationErrorCancelResult=Из-за неверной конфигурации страницы рекомендация лекарственного средства не отменена
+
+refusalsOnControl.refusalReference=Сформировать справку о пребывании в приемном отделении
+
+refuseToHospitalize.refusalRecommendationsLabel=Рекомендации
+refuseToHospitalize.refusalRecommendationsPlaceholder=Введите рекоммендации по дальнейшему лечению
+refuseToHospitalize.refuseToHospitalizeBtn=Сформировать справку

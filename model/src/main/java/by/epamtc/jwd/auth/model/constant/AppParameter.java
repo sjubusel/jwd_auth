@@ -121,6 +121,8 @@ public final class AppParameter {
     public static final String CANCEL_RESULT = "cancelResult";
     public static final String MEDICINE_RECOMMENDATION_ID
             = "hiddenRecommendationIdInput";
+    public static final String REFUSAL_RECOMMENDATIONS
+            = "refusalRecommendationsInput";
 
     private AppParameter() {
     }

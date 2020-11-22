@@ -91,4 +91,7 @@ public interface VisitDao {
 
     boolean cancelRefusalMedicineRecommendation(String recommendId,
             AuthUser user) throws DaoException;
+
+    int formRefusalReference(String refusalRecommendations, String visitId,
+            AuthUser user) throws DaoException;
 }

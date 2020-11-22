@@ -405,4 +405,20 @@ public class DefaultVisitService implements VisitService {
         }
         return false;
     }
+
+    @Override
+    public int formRefusalReference(String refusalRecommendations,
+            String visitId, AuthUser user) throws ServiceException {
+        if (validator.isAuthUserHasRightsToTreat(user)
+                && validator.isStringIdCorrect(visitId)
+                && (refusalRecommendations != null)) {
+            try {
+                return visitDao.formRefusalReference(refusalRecommendations,
+                        visitId, user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return -1;
+    }
 }

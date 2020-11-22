@@ -121,6 +121,8 @@ public final class CommandName {
             = "ADD-REFUSAL-MEDICINE-RECOMMENDATION";
     public static final String SUBSTAFF_CANCEL_REFUSAL_MED_RECOMMENDATION
             = "CANCEL-REFUSAL-MEDICINE-RECOMMENDATION";
+    public static final String SUBSTAFF_FORM_REFUSAL_REFERENCE
+            = "FORM-REFUSAL-REFERENCE";
 
     private CommandName() {
     }
