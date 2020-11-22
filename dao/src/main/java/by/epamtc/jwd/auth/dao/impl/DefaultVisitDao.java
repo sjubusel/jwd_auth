@@ -881,4 +881,33 @@ public class DefaultVisitDao implements VisitDao {
         return visits;
     }
 
+    @Override
+    public boolean addRefusalMedicineRecommendation(String medicineId,
+            String visitId, String intakeInstruction, AuthUser user)
+            throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement
+                    .UPDATE_ADD_REFUSAL_MEDICINE_RECOMMENDATION);
+            statement.setInt(1, Integer.parseInt(visitId));
+            statement.setInt(2, user.getStaffId());
+            statement.setInt(3, Integer.parseInt(medicineId));
+            statement.setString(4, intakeInstruction);
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new DaoException("An error while adding a refusal medicine " +
+                    "recommendation", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection in " +
+                    "order to add a refusal medicine recommendation.", e);
+        } finally {
+            pool.closeConnection(conn, statement);
+        }
+
+        return true;
+    }
 }

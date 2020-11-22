@@ -37,7 +37,7 @@ public class RefusalMedicineRecommendationAddCommand implements Command {
 
         try {
             isAdded = visitService.addRefusalMedicineRecommendation(medicineId,
-                    visitId, user);
+                    intakeInstruction, visitId, user);
         } catch (ServiceException e) {
             logger.error("An error while adding a refusal medicine " +
                             "recommendation. Params{user={}, visitId={}, " +

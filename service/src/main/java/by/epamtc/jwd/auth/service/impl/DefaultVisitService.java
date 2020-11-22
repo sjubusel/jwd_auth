@@ -373,4 +373,21 @@ public class DefaultVisitService implements VisitService {
         }
         return null;
     }
+
+    @Override
+    public boolean addRefusalMedicineRecommendation(String medicineId,
+            String intakeInstruction, String visitId, AuthUser user)
+            throws ServiceException {
+        if (validator.isAuthUserHasRightsToTreat(user)
+                && validator.isStringIdCorrect(medicineId)
+                && validator.isStringIdCorrect(visitId)) {
+            try {
+                return visitDao.addRefusalMedicineRecommendation(medicineId,
+                        visitId, intakeInstruction, user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return false;
+    }
 }

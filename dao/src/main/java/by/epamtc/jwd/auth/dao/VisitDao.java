@@ -85,4 +85,7 @@ public interface VisitDao {
 
     List<AdmissionDepartmentVisit> fetchVisitToRefuse(AuthUser user)
             throws DaoException;
+
+    boolean addRefusalMedicineRecommendation(String medicineId, String visitId,
+            String intakeInstruction, AuthUser user) throws DaoException;
 }

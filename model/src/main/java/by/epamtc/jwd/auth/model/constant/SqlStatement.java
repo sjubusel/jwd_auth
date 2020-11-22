@@ -942,6 +942,11 @@ public final class SqlStatement {
             "JOIN hospital.persons p ON v2ad.person_id = p.person_id\n" +
             "WHERE v2ad.responsible_doctor_id = ?\n" +
             "  AND v2ad.visit_result = 'REFUSAL';";
+    public static final String UPDATE_ADD_REFUSAL_MEDICINE_RECOMMENDATION
+            = "INSERT INTO hospital.refusal_medicine_recommendations " +
+            "(visit_id, med_recom_datetime, doctor_id, medicine_id,\n" +
+            " intake_instructions)\n" +
+            "VALUES (?, CURRENT_TIMESTAMP, ?, ?, ?);";
 
     private SqlStatement() {
     }
