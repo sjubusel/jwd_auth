@@ -939,9 +939,11 @@ public final class SqlStatement {
             "       p.middle_name,\n" +
             "       v2ad.visit_reason_description\n" +
             "from visits_to_admission_department v2ad\n" +
-            "JOIN hospital.persons p ON v2ad.person_id = p.person_id\n" +
+            "         JOIN hospital.persons p ON v2ad.person_id = p.person_id\n" +
             "WHERE v2ad.responsible_doctor_id = ?\n" +
-            "  AND v2ad.visit_result = 'REFUSAL';";
+            "  AND v2ad.visit_result = 'REFUSAL'\n" +
+            "  AND v2ad.visit_id NOT IN " +
+            "(SELECT rr.visit_id FROM hospital.refusal_references rr);";
     public static final String UPDATE_ADD_REFUSAL_MEDICINE_RECOMMENDATION
             = "INSERT INTO hospital.refusal_medicine_recommendations " +
             "(visit_id, med_recom_datetime, doctor_id, medicine_id,\n" +
