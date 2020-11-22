@@ -360,4 +360,17 @@ public class DefaultVisitService implements VisitService {
         }
         return null;
     }
+
+    @Override
+    public List<AdmissionDepartmentVisit> fetchVisitToRefuse(AuthUser user)
+            throws ServiceException {
+        if (validator.isAuthUserHasRightsToTreat(user)) {
+            try {
+                return visitDao.fetchVisitToRefuse(user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return null;
+    }
 }

@@ -845,4 +845,40 @@ public class DefaultVisitDao implements VisitDao {
         return recommendations;
     }
 
+    @Override
+    public List<AdmissionDepartmentVisit> fetchVisitToRefuse(AuthUser user)
+            throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        List<AdmissionDepartmentVisit> visits = new ArrayList<>();
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement
+                    .SELECT_VISITS_TO_REFUSE_BY_DOCTOR);
+            statement.setInt(1, user.getStaffId());
+            resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                AdmissionDepartmentVisit visit = visitRelatedCompiler
+                        .compileShortenedVisit(resultSet);
+                visits.add(visit);
+            }
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection " +
+                    "during fetching visits to refuse by AuthUser " +
+                    user.toString(), e);
+        } catch (SQLException e) {
+            throw new DaoException("An error (SQLException) while fetching " +
+                    "visits to refuse by AuthUser " + user.toString(), e);
+
+        } finally {
+            pool.closeConnection(conn, statement, resultSet);
+        }
+
+        return visits;
+    }
+
 }

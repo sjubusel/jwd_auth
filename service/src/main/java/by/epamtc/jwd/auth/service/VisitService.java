@@ -82,4 +82,7 @@ public interface VisitService {
 
     List<RefusalMedicineRecommendation> fetchRefusalMedicineRecommendations(
             String visitId, AuthUser user) throws ServiceException;
+
+    List<AdmissionDepartmentVisit> fetchVisitToRefuse(AuthUser user)
+            throws ServiceException;
 }

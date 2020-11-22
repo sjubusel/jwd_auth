@@ -44,7 +44,7 @@ public class RefuseToHospitalizeCommand implements Command {
             sendRedirectWithValidationError(req, res);
         }
 
-        sendRedirectWithSuccess(req, res);
+        sendRedirectWithSuccess(req, res, visitId);
     }
 
     private void sendRedirectWithTechError(HttpServletRequest req,
@@ -59,9 +59,9 @@ public class RefuseToHospitalizeCommand implements Command {
                 .SUBSTAFF_GO_TO_MAKE_VISIT_DECISION_REFUSAL_RESULT_VAL_ERROR);
     }
 
-    private void sendRedirectWithSuccess(HttpServletRequest req, HttpServletResponse res)
-            throws IOException {
+    private void sendRedirectWithSuccess(HttpServletRequest req,
+            HttpServletResponse res, String visitId) throws IOException {
         res.sendRedirect(req.getContextPath() + CommandPath
-                .SUBSTAFF_GO_TO_REFUSE_TO_HOSPITALIZE);
+                .SUBSTAFF_GO_TO_REFUSE_TO_HOSPITALIZE + visitId);
     }
 }

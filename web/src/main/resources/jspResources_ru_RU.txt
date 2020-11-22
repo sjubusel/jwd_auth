@@ -580,3 +580,11 @@ refuseToHospitalize.medicineInfo=Информация о лекарственн�
 refuseToHospitalize.intakeInstructions=Способ приёма
 refuseToHospitalize.actions=Действие
 refuseToHospitalize.cancel=Отменить
+
+refusalsOnControl.heading=Обращения в приёмное отделение, по которым требуется сформировать справку о пребывании в приемном отделении
+refusalsOnControl.visitDateTime=Дата и время обращения
+refusalsOnControl.patientShortInfo=Пациент
+refusalsOnControl.patientVisitDescriptionInfo=Описание обращения
+refusalsOnControl.actions=Действие
+refusalsOnControl.view=Подробно
+refusalsOnControl.noRecords=Обращения в приёмное отделение, по которым требуется сформировать справку о пребывании в приемном отделении, отсутствуют

@@ -115,6 +115,8 @@ public final class CommandName {
             = "GO-TO-REFUSE-TO-HOSPITALIZE";
     public static final String SUBSTAFF_REFUSE_TO_HOSPITALIZE
             = "REFUSE-TO-HOSPITALIZE";
+    public static final String SUBSTAFF_GO_TO_REFUSALS_OF_HOSPITALIZATION
+            = "GO-TO-REFUSALS-OF-HOSPITALIZATION";
 
     private CommandName() {
     }

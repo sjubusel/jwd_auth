@@ -231,7 +231,7 @@ public final class CommandPath {
             = "/profile?command=go-to-make-visit-decision" +
             "&refusalResult=techError";
     public static final String SUBSTAFF_GO_TO_REFUSE_TO_HOSPITALIZE
-            = "/profile?command=go-to-refuse-to-hospitalize";
+            = "/profile?command=go-to-refuse-to-hospitalize&hiddenVisitId=";
 
     public static final String LOGIN_JSP = "/WEB-INF/jsp/login.jsp";
     public static final String PROFILE_JSP = "/WEB-INF/jsp/profile.jsp";
@@ -296,6 +296,8 @@ public final class CommandPath {
             = "/WEB-INF/jsp/admission_doctor/makeVisitDecision.jsp";
     public static final String SUBSTAFF_REFUSE_TO_HOSPITALIZE_JSP
             = "/WEB-INF/jsp/admission_doctor/refuseToHospitalize.jsp";
+    public static final String SUBSTAFF_REFUSALS_ON_CONTROL_JSP
+            = "/WEB-INF/jsp/admission_doctor/refusalsOnControl.jsp";
 
     private CommandPath() {
     }

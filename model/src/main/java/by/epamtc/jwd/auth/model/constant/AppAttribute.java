@@ -31,6 +31,7 @@ public final class AppAttribute {
             = "medicinePrescription";
     public static final String REQUEST_PRESCRIPTION = "prescription";
     public static final String REQUEST_REFUSAL_MED_RECOMS = "medRecoms";
+    public static final String REQUEST_REFUSALS = "refusals";
 
     private AppAttribute() {
     }

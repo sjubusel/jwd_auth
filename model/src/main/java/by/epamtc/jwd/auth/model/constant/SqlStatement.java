@@ -931,6 +931,17 @@ public final class SqlStatement {
             "         JOIN hospital.medicine_components mc " +
             "ON m.main_medicine_component_id = mc.medicine_component_id\n" +
             "WHERE rmr.visit_id = ?;";
+    public static final String SELECT_VISITS_TO_REFUSE_BY_DOCTOR
+            = "SELECT v2ad.visit_id,\n" +
+            "       v2ad.visit_datetime,\n" +
+            "       p.last_name,\n" +
+            "       p.first_name,\n" +
+            "       p.middle_name,\n" +
+            "       v2ad.visit_reason_description\n" +
+            "from visits_to_admission_department v2ad\n" +
+            "JOIN hospital.persons p ON v2ad.person_id = p.person_id\n" +
+            "WHERE v2ad.responsible_doctor_id = ?\n" +
+            "  AND v2ad.visit_result = 'REFUSAL';";
 
     private SqlStatement() {
     }
