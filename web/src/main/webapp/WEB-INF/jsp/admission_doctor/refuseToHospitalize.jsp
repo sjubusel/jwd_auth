@@ -69,27 +69,82 @@
                     </c:choose>
                 </c:when>
                 <c:otherwise>
-<%--                    <c:if test="${requestScope.refusalResult ne null}">--%>
-<%--                        <c:choose>--%>
-<%--                            <c:when test="${requestScope.refusalResult eq 'techError'}">--%>
-<%--                                <div class="alert alert-danger" role="alert">--%>
-<%--                                    <fmt:message bundle="${jspMessages}"--%>
-<%--                                                 key="makeVisitDecision.refusalResultTechError"/>--%>
-<%--                                </div>--%>
-<%--                            </c:when>--%>
-<%--                            <c:when test="${requestScope.refusalResult eq 'validationError'}">--%>
-<%--                                <div class="alert alert-danger" role="alert">--%>
-<%--                                    <fmt:message bundle="${jspMessages}"--%>
-<%--                                                 key="makeVisitDecision.refusalResultValError"/>--%>
-<%--                                </div>--%>
-<%--                            </c:when>--%>
-<%--                        </c:choose>--%>
-<%--                    </c:if>--%>
+                    <%--                    <c:if test="${requestScope.refusalResult ne null}">--%>
+                    <%--                        <c:choose>--%>
+                    <%--                            <c:when test="${requestScope.refusalResult eq 'techError'}">--%>
+                    <%--                                <div class="alert alert-danger" role="alert">--%>
+                    <%--                                    <fmt:message bundle="${jspMessages}"--%>
+                    <%--                                                 key="makeVisitDecision.refusalResultTechError"/>--%>
+                    <%--                                </div>--%>
+                    <%--                            </c:when>--%>
+                    <%--                            <c:when test="${requestScope.refusalResult eq 'validationError'}">--%>
+                    <%--                                <div class="alert alert-danger" role="alert">--%>
+                    <%--                                    <fmt:message bundle="${jspMessages}"--%>
+                    <%--                                                 key="makeVisitDecision.refusalResultValError"/>--%>
+                    <%--                                </div>--%>
+                    <%--                            </c:when>--%>
+                    <%--                        </c:choose>--%>
+                    <%--                    </c:if>--%>
                     <h1>
                         <fmt:message bundle="${jspMessages}"
                                      key="refuseToHospitalize.heading"/>
                     </h1>
-
+                    <c:choose>
+                        <c:when test="${requestScope.medRecoms ne null}">
+                            <div class="row d-flex mb-1 border">
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="refuseToHospitalize.recommendationDateTime"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="refuseToHospitalize.medicineInfo"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="refuseToHospitalize.intakeInstructions"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="refuseToHospitalize.actions"/>
+                                </div>
+                            </div>
+                            <c:forEach var="recommendation"
+                                       items="${requestScope.medRecoms}">
+                                <form action="${pageContext.request.contextPath}/profile"
+                                      method="post">
+                                    <input type="hidden" name="command"
+                                           value="<%--TODO command--%>">
+                                    <input type="hidden"
+                                           name="hiddenRecommendationIdInput"
+                                           value="${recommendation.recommendationId}">
+                                    <div class="row d-flex mb-1 border align-items-center">
+                                        <div class="col">
+                                            <c:out value="${recommendation.recommendationDateTime}"/>
+                                        </div>
+                                        <div class="col">
+                                            <c:out value="${recommendation.medicineInfo}"/>
+                                        </div>
+                                        <div class="col">
+                                            <c:out value="${recommendation.intakeInstructions}"/>
+                                        </div>
+                                        <div class="col">
+                                            <button type="submit"
+                                                    class="btn align-self-center btn-primary">
+                                                <fmt:message
+                                                        bundle="${jspMessages}"
+                                                        key="refuseToHospitalize.cancel"/>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="refuseToHospitalize.noRecords"/>
+                        </c:otherwise>
+                    </c:choose>
                 </c:otherwise>
             </c:choose>
         </div>

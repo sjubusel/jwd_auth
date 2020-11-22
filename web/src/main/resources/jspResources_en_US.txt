@@ -573,3 +573,10 @@ makeVisitDecision.refusalResultValError=Procedure of refusal to hospitalization 
 staff.formRefuseToHospitalize=Complete refusal of hospitalization
 staff.refuseToHospitalize=Refusals of hospitalization
 refuseToHospitalize.heading=Forming of refusal of hospitalization
+
+refuseToHospitalize.noRecords=Medicine prescriptions haven't been established yet
+refuseToHospitalize.recommendationDateTime=Date and time recommendation
+refuseToHospitalize.medicineInfo=Information about a medicine
+refuseToHospitalize.intakeInstructions=Intake instruction
+refuseToHospitalize.actions=Action
+refuseToHospitalize.cancel=Cancel

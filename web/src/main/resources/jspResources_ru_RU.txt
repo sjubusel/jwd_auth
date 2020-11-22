@@ -573,3 +573,10 @@ makeVisitDecision.refusalResultValError=Процедура отказа в ре�
 staff.formRefuseToHospitalize=Сформировать отказ в госпитализации
 staff.refuseToHospitalize=Отказы в госпитализации
 refuseToHospitalize.heading=Формирование отказа в госпитализации
+
+refuseToHospitalize.noRecords=Рекомендации по лекарственным препаратам ещё не назначены
+refuseToHospitalize.recommendationDateTime=Дата и время рекомендации
+refuseToHospitalize.medicineInfo=Информация о лекарственном препарате
+refuseToHospitalize.intakeInstructions=Способ приёма
+refuseToHospitalize.actions=Действие
+refuseToHospitalize.cancel=Отменить
