@@ -912,6 +912,25 @@ public final class SqlStatement {
             = "UPDATE hospital.visits_to_admission_department v2ad\n" +
             "SET v2ad.visit_result = 'REFUSAL'\n" +
             "WHERE v2ad.visit_id = ?;";
+    public static final String SELECT_REFUSAL_MEDICINE_RECOMMENDATIONS
+            = "SELECT rmr.recommendation_id,\n" +
+            "       rmr.visit_id,\n" +
+            "       rmr.med_recom_datetime,\n" +
+            "       rmr.medicine_id,\n" +
+            "       m.name,\n" +
+            "       dft.name,\n" +
+            "       mc.dosage_mg,\n" +
+            "       m.dosage_ml,\n" +
+            "       rmr.intake_instructions\n" +
+            "\n" +
+            "FROM hospital.refusal_medicine_recommendations rmr\n" +
+            "         JOIN hospital.medicines m " +
+            "ON rmr.medicine_id = m.medicine_id\n" +
+            "         JOIN hospital.dosage_form_types dft " +
+            "ON m.dosage_form_type_id = dft.dosage_form_type_id\n" +
+            "         JOIN hospital.medicine_components mc " +
+            "ON m.main_medicine_component_id = mc.medicine_component_id\n" +
+            "WHERE rmr.visit_id = ?;";
 
     private SqlStatement() {
     }

@@ -12,6 +12,7 @@ import by.epamtc.jwd.auth.model.med_info.Diagnosis;
 import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
 import by.epamtc.jwd.auth.model.med_info.Prescription;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
+import by.epamtc.jwd.auth.model.visit_info.RefusalMedicineRecommendation;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -809,6 +810,39 @@ public class DefaultVisitDao implements VisitDao {
         }
 
         return true;
+    }
+
+    @Override
+    public List<RefusalMedicineRecommendation> fetchRefusalMedicineRecommendations(
+            String visitId, AuthUser user) throws DaoException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<RefusalMedicineRecommendation> recommendations = new ArrayList<>();
+
+        try {
+            connection = pool.takeConnection();
+            statement = connection.prepareStatement(SqlStatement
+                    .SELECT_REFUSAL_MEDICINE_RECOMMENDATIONS);
+            statement.setInt(1, Integer.parseInt(visitId));
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                RefusalMedicineRecommendation recom = visitRelatedCompiler
+                        .compileRefusalMedicineRecommendation(resultSet);
+                recommendations.add(recom);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("An error while fetching refusal medicine " +
+                    " recommendations by visit id.", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection in " +
+                    "order to fetch refusal medicine recommendations by " +
+                    "visit id.", e);
+        } finally {
+            pool.closeConnection(connection, statement, resultSet);
+        }
+
+        return recommendations;
     }
 
 }

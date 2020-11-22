@@ -1,9 +1,14 @@
 package by.epamtc.jwd.auth.dao.util;
 
 import by.epamtc.jwd.auth.model.constant.AppConstant;
-import by.epamtc.jwd.auth.model.med_info.*;
+import by.epamtc.jwd.auth.model.med_info.DepartmentOrigin;
+import by.epamtc.jwd.auth.model.med_info.Diagnosis;
+import by.epamtc.jwd.auth.model.med_info.MedicineMeasureUnit;
+import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
+import by.epamtc.jwd.auth.model.med_info.Prescription;
 import by.epamtc.jwd.auth.model.user_info.TransportationStatus;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
+import by.epamtc.jwd.auth.model.visit_info.RefusalMedicineRecommendation;
 import by.epamtc.jwd.auth.model.visit_info.VisitReason;
 import by.epamtc.jwd.auth.model.visit_info.VisitResult;
 
@@ -330,6 +335,26 @@ public class VisitRelatedEntitiesCompiler {
                ? lastName + AppConstant.ONE_WHITESPACE + firstName
                        + AppConstant.ONE_WHITESPACE + middleName
                : lastName + AppConstant.ONE_WHITESPACE + firstName;
+    }
+
+    public RefusalMedicineRecommendation compileRefusalMedicineRecommendation(
+            ResultSet resultSet) throws SQLException {
+        int recommendationId = resultSet.getInt(1);
+        int visitId = resultSet.getInt(2);
+        LocalDateTime recommendationDateTime = null;
+        Timestamp recomTimestamp = resultSet.getTimestamp(3);
+        if (recomTimestamp != null) {
+            recommendationDateTime = recomTimestamp.toLocalDateTime();
+        }
+        int medicineId = resultSet.getInt(4);
+        String medicineInfo = compileShortenedMedicineInfo(resultSet
+                        .getString(5), resultSet.getString(6),
+                resultSet.getDouble(7), resultSet.getDouble(8));
+        String intakeInstructions = resultSet.getString(9);
+
+        return new RefusalMedicineRecommendation(recommendationId, visitId,
+                recommendationDateTime, medicineId, medicineInfo,
+                intakeInstructions);
     }
 
     private MedicineMeasureUnit receiveMedicineMeasureUnit(int unitId) {

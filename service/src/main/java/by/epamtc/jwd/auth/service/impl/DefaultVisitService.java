@@ -8,6 +8,7 @@ import by.epamtc.jwd.auth.model.med_info.Diagnosis;
 import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
 import by.epamtc.jwd.auth.model.med_info.Prescription;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
+import by.epamtc.jwd.auth.model.visit_info.RefusalMedicineRecommendation;
 import by.epamtc.jwd.auth.service.VisitService;
 import by.epamtc.jwd.auth.service.exception.AllergicServiceException;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
@@ -343,5 +344,20 @@ public class DefaultVisitService implements VisitService {
             }
         }
         return false;
+    }
+
+    @Override
+    public List<RefusalMedicineRecommendation>
+    fetchRefusalMedicineRecommendations(String visitId, AuthUser user)
+            throws ServiceException {
+        if (validator.isAuthUserHasRightsToTreat(user)
+                && validator.isStringIdCorrect(visitId)) {
+            try {
+                return visitDao.fetchRefusalMedicineRecommendations(visitId, user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return null;
     }
 }
