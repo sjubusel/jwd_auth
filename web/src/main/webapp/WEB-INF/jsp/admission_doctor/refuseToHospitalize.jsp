@@ -225,7 +225,7 @@
                     <form action="${pageContext.request.contextPath}/profile"
                           method="post">
                         <input type="hidden" name="command"
-                               value="<%--TODO command--%>">
+                               value="add-refusal-medicine-recommendation">
                         <input type="hidden" name="hiddenVisitId"
                                value="${requestScope.hiddenVisitId}">
                         <input type="hidden" id="hiddenMedicineId"
@@ -246,7 +246,8 @@
                              style="max-height: 100px">
                         </div>
                         <div class="form-group form-inline row mb-3">
-                            <label class="col col-5 text-left" for="intakeInstructions">
+                            <label class="col col-5 text-left"
+                                   for="intakeInstructions">
                                 <fmt:message bundle="${jspMessages}"
                                              key="refuseToHospitalize.intakeInstructions"/>
                             </label>

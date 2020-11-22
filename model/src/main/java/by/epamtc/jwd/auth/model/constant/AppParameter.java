@@ -117,6 +117,7 @@ public final class AppParameter {
     public static final String DISAGREE_RESULT = "disagreeResult";
     public static final String DISAGREEMENT_CONTENTS = "disagreementDescriptionInput";
     public static final String REFUSAL_RESULT = "refusalResult";
+    public static final String INTAKE_INSTRUCTIONS = "intakeInstructionsInput";
 
     private AppParameter() {
     }

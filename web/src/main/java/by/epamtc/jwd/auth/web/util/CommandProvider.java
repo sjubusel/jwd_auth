@@ -60,6 +60,7 @@ import by.epamtc.jwd.auth.web.util.impl.substaff.GoToStaffNewVisitsCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToStaffPrescriptionsOnControlCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToStaffRegisterVisitCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToStaffVisitsOnControlCommand;
+import by.epamtc.jwd.auth.web.util.impl.substaff.RefusalMedicineRecommendationAddCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.RefuseToHospitalizeCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.StaffAcceptNonMedicinePrescriptionCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.StaffDoctorAcceptPatient;
@@ -197,6 +198,8 @@ public class CommandProvider {
                 new RefuseToHospitalizeCommand());
         repository.put(CommandName.SUBSTAFF_GO_TO_REFUSALS_OF_HOSPITALIZATION,
                 new GoToRefusalsOfHospitalizationCommand());
+        repository.put(CommandName.SUBSTAFF_ADD_REFUSAL_MEDICINE_RECOMMENDATION,
+                new RefusalMedicineRecommendationAddCommand());
 
         repository.put(CommandName.ERROR, new ErrorCommand());
     }

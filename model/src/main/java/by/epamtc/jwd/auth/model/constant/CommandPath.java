@@ -232,6 +232,19 @@ public final class CommandPath {
             "&refusalResult=techError";
     public static final String SUBSTAFF_GO_TO_REFUSE_TO_HOSPITALIZE
             = "/profile?command=go-to-refuse-to-hospitalize&hiddenVisitId=";
+    public static final String
+            SUBSTAFF_GO_TO_REFUSE_TO_HOSPITALIZE_ADD_RESULT_VAL_ERROR
+            = "/profile?command=go-to-refuse-to-hospitalize" +
+            "&addResult=validationError&hiddenVisitId=";
+    public static final String
+            SUBSTAFF_GO_TO_REFUSE_TO_HOSPITALIZE_ADD_RESULT_TECH_ERROR
+            = "/profile?command=go-to-refuse-to-hospitalize" +
+            "&addResult=techError&hiddenVisitId=";
+    public static final String
+            SUBSTAFF_GO_TO_REFUSE_TO_HOSPITALIZE_ADD_RESULT_SUCCESS
+            = "/profile?command=go-to-refuse-to-hospitalize" +
+            "&addResult=success&hiddenVisitId=";
+
 
     public static final String LOGIN_JSP = "/WEB-INF/jsp/login.jsp";
     public static final String PROFILE_JSP = "/WEB-INF/jsp/profile.jsp";
