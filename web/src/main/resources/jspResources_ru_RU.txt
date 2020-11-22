@@ -569,3 +569,7 @@ makeVisitDecision.hospitalize=Госпитализировать
 
 makeVisitDecision.refusalResultTechError=Процедура отказа в регистрации не инициирована по техническим причинам
 makeVisitDecision.refusalResultValError=Процедура отказа в регистрации не инициирована из-за некорректной конфигурации страницы
+
+staff.formRefuseToHospitalize=Сформировать отказ в госпитализации
+staff.refuseToHospitalize=Отказы в госпитализации
+refuseToHospitalize.heading=Формирование отказа в госпитализации

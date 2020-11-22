@@ -294,6 +294,8 @@ public final class CommandPath {
             = "/WEB-INF/jsp/patient/newPrescriptions.jsp";
     public static final String SUBSTAFF_MAKE_VISIT_DECISION_JSP
             = "/WEB-INF/jsp/admission_doctor/makeVisitDecision.jsp";
+    public static final String SUBSTAFF_REFUSE_TO_HOSPITALIZE_JSP
+            = "/WEB-INF/jsp/admission_doctor/refuseToHospitalize.jsp";
 
     private CommandPath() {
     }
