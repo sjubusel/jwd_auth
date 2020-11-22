@@ -910,4 +910,30 @@ public class DefaultVisitDao implements VisitDao {
 
         return true;
     }
+
+    @Override
+    public boolean cancelRefusalMedicineRecommendation(String recommendId,
+            AuthUser user) throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(SqlStatement
+                    .DELETE_CANCEL_REFUSAL_MEDICINE_RECOMMENDATION);
+            statement.setInt(1, Integer.parseInt(recommendId));
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new DaoException("An error while cancelling a refusal " +
+                    "medicine recommendation", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection in " +
+                    "order to cancel a refusal medicine recommendation.", e);
+        } finally {
+            pool.closeConnection(conn, statement);
+        }
+
+        return true;
+    }
 }

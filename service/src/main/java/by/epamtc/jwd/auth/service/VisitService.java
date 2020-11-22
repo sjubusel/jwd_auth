@@ -89,4 +89,7 @@ public interface VisitService {
     boolean addRefusalMedicineRecommendation(String medicineId,
             String intakeInstruction, String visitId, AuthUser user)
             throws ServiceException;
+
+    boolean cancelRefusalMedicineRecommendation(String recommendationId,
+            AuthUser user) throws ServiceException;
 }

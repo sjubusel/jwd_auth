@@ -52,6 +52,16 @@ public class GoToRefuseToHospitalizeCommand implements Command {
             req.setAttribute(AppAttribute.REQUEST_REFUSAL_MED_RECOMS, medRecoms);
         }
 
+        String addResult = req.getParameter(AppParameter.ADD_RESULT);
+        if (addResult != null) {
+            req.setAttribute(AppParameter.ADD_RESULT, addResult);
+        }
+
+        String cancelResult = req.getParameter(AppParameter.CANCEL_RESULT);
+        if (cancelResult != null) {
+            req.setAttribute(AppParameter.CANCEL_RESULT, cancelResult);
+        }
+
         req.setAttribute(AppParameter.VISIT_ID, visitId);
 
         req.getRequestDispatcher(CommandPath.SUBSTAFF_REFUSE_TO_HOSPITALIZE_JSP)

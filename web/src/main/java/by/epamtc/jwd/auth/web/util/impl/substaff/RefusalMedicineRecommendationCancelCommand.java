@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class RefusalMedicineRecommendationAddCommand implements Command {
+public class RefusalMedicineRecommendationCancelCommand implements Command {
     private static final Logger logger = LoggerFactory.getLogger(
-            RefusalMedicineRecommendationAddCommand.class);
+            RefusalMedicineRecommendationCancelCommand.class);
 
     private ServiceFactory serviceFactory = ServiceFactory.getInstance();
     private VisitService visitService = serviceFactory.getVisitService();
@@ -29,25 +29,23 @@ public class RefusalMedicineRecommendationAddCommand implements Command {
         AuthUser user = (AuthUser) req.getSession().getAttribute(AppAttribute
                 .SESSION_AUTH_USER);
         String visitId = req.getParameter(AppParameter.VISIT_ID);
-        String medicineId = req.getParameter(AppParameter.HIDDEN_MEDICINE_ID);
-        String intakeInstruction = req.getParameter(AppParameter
-                .INTAKE_INSTRUCTIONS);
+        String recommendationId = req.getParameter(AppParameter
+                .MEDICINE_RECOMMENDATION_ID);
 
-        boolean isAdded;
+        boolean isCancelled;
 
         try {
-            isAdded = visitService.addRefusalMedicineRecommendation(medicineId,
-                    intakeInstruction, visitId, user);
+            isCancelled = visitService.cancelRefusalMedicineRecommendation(
+                    recommendationId, user);
         } catch (ServiceException e) {
-            logger.error("An error while adding a refusal medicine " +
-                            "recommendation. Params{user={}, visitId={}, " +
-                            "medicineId={}, intakeInstruction={}}", user, visitId,
-                    medicineId, intakeInstruction, e);
+            logger.error("An error while cancelling a refusal medicine " +
+                            "recommendation. Params{user={}, " +
+                            "recommendationId={}}", user, recommendationId, e);
             sendRedirectWithTechError(req, res, visitId);
             return;
         }
 
-        if (!isAdded) {
+        if (!isCancelled) {
             sendRedirectWithValidationError(req, res, visitId);
             return;
         }
@@ -58,21 +56,21 @@ public class RefusalMedicineRecommendationAddCommand implements Command {
     private void sendRedirectWithTechError(HttpServletRequest req,
             HttpServletResponse res, String visitId) throws IOException {
         res.sendRedirect(req.getContextPath() + CommandPath
-                .SUBSTAFF_GO_TO_REFUSE_TO_HOSPITALIZE_ADD_RESULT_TECH_ERROR
+                .SUBSTAFF_GO_TO_REFUSE_TO_HOSPITALIZE_CANCEL_RESULT_TECH_ERROR
                 + visitId);
     }
 
     private void sendRedirectWithValidationError(HttpServletRequest req,
             HttpServletResponse res, String visitId) throws IOException {
         res.sendRedirect(req.getContextPath() + CommandPath
-                .SUBSTAFF_GO_TO_REFUSE_TO_HOSPITALIZE_ADD_RESULT_VAL_ERROR
+                .SUBSTAFF_GO_TO_REFUSE_TO_HOSPITALIZE_CANCEL_RESULT_VAL_ERROR
                 + visitId);
     }
 
     private void sendRedirectWithSuccess(HttpServletRequest req,
             HttpServletResponse res, String visitId) throws IOException {
         res.sendRedirect(req.getContextPath() + CommandPath
-                .SUBSTAFF_GO_TO_REFUSE_TO_HOSPITALIZE_ADD_RESULT_SUCCESS
+                .SUBSTAFF_GO_TO_REFUSE_TO_HOSPITALIZE_CANCEL_RESULT_SUCCESS
                 + visitId);
     }
 }

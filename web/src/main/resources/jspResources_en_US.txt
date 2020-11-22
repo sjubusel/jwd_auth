@@ -593,3 +593,11 @@ refuseToHospitalize.recommendationHeading=Current medicine recommendations
 refuseToHospitalize.newRecommendationForm=Add a new medicine recommendation
 refuseToHospitalize.intakeInstructionsPlaceholder=Insert an intake instruction
 refuseToHospitalize.button=Add
+
+refuseToHospitalize.successAddResult=Medicine recommendation is successfully added
+refuseToHospitalize.techErrorAddResult=Medicine recommendation is not added because of a technical factor
+refuseToHospitalize.validationErrorAddResult=Medicine recommendation is not added because of an incorrect page configuration
+
+refuseToHospitalize.successCancelResult=Medicine recommendation is successfully cancelled
+refuseToHospitalize.techErrorCancelResult=Medicine recommendation is not cancelled because of a technical factor
+refuseToHospitalize.validationErrorCancelResult=Medicine recommendation is not cancelled because of an incorrect page configuration

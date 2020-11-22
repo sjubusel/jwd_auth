@@ -119,6 +119,8 @@ public final class CommandName {
             = "GO-TO-REFUSALS-OF-HOSPITALIZATION";
     public static final String SUBSTAFF_ADD_REFUSAL_MEDICINE_RECOMMENDATION
             = "ADD-REFUSAL-MEDICINE-RECOMMENDATION";
+    public static final String SUBSTAFF_CANCEL_REFUSAL_MED_RECOMMENDATION
+            = "CANCEL-REFUSAL-MEDICINE-RECOMMENDATION";
 
     private CommandName() {
     }

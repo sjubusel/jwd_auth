@@ -161,6 +161,28 @@
                                      key="refuseToHospitalize.recommendationHeading"/>
                     </h5>
                     <c:choose>
+                        <c:when test="${requestScope.cancelResult ne null}">
+                            <c:if test="${requestScope.cancelResult eq 'success'}">
+                                <div class="alert alert-success">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="refuseToHospitalize.successCancelResult"/>
+                                </div>
+                            </c:if>
+                            <c:if test="${requestScope.cancelResult eq 'techError'}">
+                                <div class="alert alert-danger">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="refuseToHospitalize.techErrorCancelResult"/>
+                                </div>
+                            </c:if>
+                            <c:if test="${requestScope.cancelResult eq 'validationError'}">
+                                <div class="alert alert-danger">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="refuseToHospitalize.validationErrorCancelResult"/>
+                                </div>
+                            </c:if>
+                        </c:when>
+                    </c:choose>
+                    <c:choose>
                         <c:when test="${requestScope.medRecoms ne null}">
                             <div class="row d-flex mb-1 border">
                                 <div class="col">
@@ -185,10 +207,12 @@
                                 <form action="${pageContext.request.contextPath}/profile"
                                       method="post">
                                     <input type="hidden" name="command"
-                                           value="<%--TODO command--%>">
+                                           value="cancel-refusal-medicine-recommendation">
                                     <input type="hidden"
                                            name="hiddenRecommendationIdInput"
                                            value="${recommendation.recommendationId}">
+                                    <input type="hidden" name="hiddenVisitId"
+                                           value="${requestScope.hiddenVisitId}">
                                     <div class="row d-flex mb-1 border align-items-center">
                                         <div class="col">
                                             <c:out value="${recommendation.recommendationDateTime}"/>
@@ -222,6 +246,28 @@
                         <fmt:message bundle="${jspMessages}"
                                      key="refuseToHospitalize.newRecommendationForm"/>
                     </h5>
+                    <c:choose>
+                        <c:when test="${requestScope.addResult ne null}">
+                            <c:if test="${requestScope.addResult eq 'success'}">
+                                <div class="alert alert-success">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="refuseToHospitalize.successAddResult"/>
+                                </div>
+                            </c:if>
+                            <c:if test="${requestScope.addResult eq 'techError'}">
+                                <div class="alert alert-danger">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="refuseToHospitalize.techErrorAddResult"/>
+                                </div>
+                            </c:if>
+                            <c:if test="${requestScope.addResult eq 'validationError'}">
+                                <div class="alert alert-danger">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="refuseToHospitalize.validationErrorAddResult"/>
+                                </div>
+                            </c:if>
+                        </c:when>
+                    </c:choose>
                     <form action="${pageContext.request.contextPath}/profile"
                           method="post">
                         <input type="hidden" name="command"

@@ -947,6 +947,10 @@ public final class SqlStatement {
             "(visit_id, med_recom_datetime, doctor_id, medicine_id,\n" +
             " intake_instructions)\n" +
             "VALUES (?, CURRENT_TIMESTAMP, ?, ?, ?);";
+    public static final String DELETE_CANCEL_REFUSAL_MEDICINE_RECOMMENDATION
+            = "DELETE\n" +
+            "FROM hospital.refusal_medicine_recommendations rmr\n" +
+            "WHERE rmr.recommendation_id = ?;";
 
     private SqlStatement() {
     }

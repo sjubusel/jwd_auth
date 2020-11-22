@@ -88,4 +88,7 @@ public interface VisitDao {
 
     boolean addRefusalMedicineRecommendation(String medicineId, String visitId,
             String intakeInstruction, AuthUser user) throws DaoException;
+
+    boolean cancelRefusalMedicineRecommendation(String recommendId,
+            AuthUser user) throws DaoException;
 }

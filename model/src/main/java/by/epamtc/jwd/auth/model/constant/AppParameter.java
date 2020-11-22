@@ -118,6 +118,9 @@ public final class AppParameter {
     public static final String DISAGREEMENT_CONTENTS = "disagreementDescriptionInput";
     public static final String REFUSAL_RESULT = "refusalResult";
     public static final String INTAKE_INSTRUCTIONS = "intakeInstructionsInput";
+    public static final String CANCEL_RESULT = "cancelResult";
+    public static final String MEDICINE_RECOMMENDATION_ID
+            = "hiddenRecommendationIdInput";
 
     private AppParameter() {
     }
