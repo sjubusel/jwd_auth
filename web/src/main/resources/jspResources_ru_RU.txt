@@ -588,3 +588,8 @@ refusalsOnControl.patientVisitDescriptionInfo=Описание обращени�
 refusalsOnControl.actions=Действие
 refusalsOnControl.view=Подробно
 refusalsOnControl.noRecords=Обращения в приёмное отделение, по которым требуется сформировать справку о пребывании в приемном отделении, отсутствуют
+
+refuseToHospitalize.recommendationHeading=Текущие рекоммендации лекартсвенных средств
+refuseToHospitalize.newRecommendationForm=Добавить новую рекоммендацию лекарственного препарата
+refuseToHospitalize.intakeInstructionsPlaceholder=Введите способ приёма
+refuseToHospitalize.button=Добавить

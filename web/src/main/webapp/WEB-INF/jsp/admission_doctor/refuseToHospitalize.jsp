@@ -31,6 +31,72 @@
         <fmt:message bundle="${jspMessages}" key="all.htmlTitle"/>
     </title>
     <jsp:include page="../structural_element/metahead.jsp"/>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/js/jquery-3.5.1.js">
+    </script>
+    <script>
+        function changeHiddenInput(hiddenInputName, shownInputName, childRow, parent) {
+            let hiddenInput = document.getElementById(hiddenInputName);
+            let shownInput = document.getElementById(shownInputName);
+            hiddenInput.value = childRow.firstChild.innerHTML;
+            shownInput.value = childRow.lastChild.innerHTML;
+            parent.innerHTML = "<div class=\"mb-3\"><small><em>" + "<fmt:message bundle="${jspMessages}"
+                                                 key="profileSubMenu.changePatientInfo.ajax.chosen"/>: "
+                + shownInput.value + "</em></small></div>";
+        }
+
+        jQuery(document).ready(function () {
+            let searchMedicine = null;
+            $("#medicine").keyup(function () {
+                if (searchMedicine !== null) {
+                    searchMedicine.abort();
+                }
+                let text = $(this).val();
+                if (text == null) {
+                    $("#medicineResult").html("");
+                } else {
+                    $("#medicineResult").html("");
+                    searchMedicine = $.ajax({
+                        url: "ajax?command=fetch-medicines-in-establish-medicine_prescription-jsp",
+                        method: "post",
+                        data: $("#medicine").serialize(),
+                        datatype: "json",
+                        success: function (data) {
+                            if (data == null) {
+                                $("#medicineResult").html("<div class=\"mb-3\"><small><em><fmt:message bundle="${jspMessages}"
+                                           key="profileSubMenu.changePatientInfo.ajax.validation"/></em></small></div>");
+                                return;
+                            }
+                            if (data.length === 0) {
+                                $("#medicineResult").html("<div class=\"mb-3\"><small><em><fmt:message bundle="${jspMessages}"
+                                           key="profileSubMenu.changePatientInfo.ajax.zeroResult"/></em></small></div>");
+                                return;
+                            }
+                            let parent = document.getElementById("medicineResult");
+                            for (let i = 0; i < data.length; i++) {
+                                let childRow = document.createElement("div");
+                                childRow.className += "row border list-group-item-action d-flex align-items-start";
+                                parent.appendChild(childRow);
+
+                                let childColId = document.createElement("div");
+                                childColId.className += "col border d-none justify-content-center";
+                                childRow.appendChild(childColId);
+
+                                <%--suppress JSUnresolvedVariable --%>
+                                childColId.innerHTML = data[i].medicineId;
+                                childRow.setAttribute("onclick", "changeHiddenInput(\"hiddenMedicineId\", \"medicine\", this, this.parentElement);");
+
+                                let childColName = document.createElement("div");
+                                childColName.className += "col border d-flex justify-content-center";
+                                childRow.appendChild(childColName);
+                                childColName.innerHTML = data[i].medicineInfo;
+                            }
+                        }
+                    });
+                }
+            });
+        })
+    </script>
 </head>
 <body>
 
@@ -89,6 +155,11 @@
                         <fmt:message bundle="${jspMessages}"
                                      key="refuseToHospitalize.heading"/>
                     </h1>
+                    <br>
+                    <h5>
+                        <fmt:message bundle="${jspMessages}"
+                                     key="refuseToHospitalize.recommendationHeading"/>
+                    </h5>
                     <c:choose>
                         <c:when test="${requestScope.medRecoms ne null}">
                             <div class="row d-flex mb-1 border">
@@ -145,6 +216,55 @@
                                          key="refuseToHospitalize.noRecords"/>
                         </c:otherwise>
                     </c:choose>
+                    <br>
+                    <br>
+                    <h5>
+                        <fmt:message bundle="${jspMessages}"
+                                     key="refuseToHospitalize.newRecommendationForm"/>
+                    </h5>
+                    <form action="${pageContext.request.contextPath}/profile"
+                          method="post">
+                        <input type="hidden" name="command"
+                               value="<%--TODO command--%>">
+                        <input type="hidden" name="hiddenVisitId"
+                               value="${requestScope.hiddenVisitId}">
+                        <input type="hidden" id="hiddenMedicineId"
+                               name="hiddenMedicineIdInput"
+                               required/>
+                        <div class="form-group form-inline row mb-3">
+                            <label class="col col-5 text-left" for="medicine">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="establishMedicinePrescription.medicineLabel"/>
+                            </label>
+                            <input type="text" id="medicine" class="col"
+                                   name="medicineInput" required
+                                   placeholder="<fmt:message bundle="${jspMessages}"
+                                       key="establishMedicinePrescription.medicinePlaceholder"/>"/>
+                        </div>
+                        <div id="medicineResult"
+                             class="overflow-auto"
+                             style="max-height: 100px">
+                        </div>
+                        <div class="form-group form-inline row mb-3">
+                            <label class="col col-5 text-left" for="intakeInstructions">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="refuseToHospitalize.intakeInstructions"/>
+                            </label>
+                            <input type="text" id="intakeInstructions"
+                                   name="intakeInstructionsInput" required
+                                   maxlength="255" class="col"
+                                   placeholder="<fmt:message bundle="${jspMessages}"
+                                       key="refuseToHospitalize.intakeInstructionsPlaceholder"/>"/>
+                        </div>
+                        <div>
+                            <button type="submit"
+                                    class="btn align-self-center btn-primary ">
+                                <fmt:message bundle="${jspMessages}"
+                                             key="refuseToHospitalize.button"/>
+                            </button>
+                        </div>
+                    </form>
+
                 </c:otherwise>
             </c:choose>
         </div>

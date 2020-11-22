@@ -110,7 +110,7 @@
                             <c:forEach var="refusal"
                                        items="${requestScope.refusals}">
                                 <form action="${pageContext.request.contextPath}/profile"
-                                      method="post">
+                                      method="get">
                                     <input type="hidden" name="command"
                                            value="go-to-refuse-to-hospitalize">
                                     <input type="hidden"
