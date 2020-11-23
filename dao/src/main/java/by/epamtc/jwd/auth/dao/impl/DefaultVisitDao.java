@@ -11,6 +11,7 @@ import by.epamtc.jwd.auth.model.med_info.DepartmentOrigin;
 import by.epamtc.jwd.auth.model.med_info.Diagnosis;
 import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
 import by.epamtc.jwd.auth.model.med_info.Prescription;
+import by.epamtc.jwd.auth.model.user_info.PatientInfo;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
 import by.epamtc.jwd.auth.model.visit_info.RefusalMedicineRecommendation;
 import by.epamtc.jwd.auth.model.visit_info.RefusalReference;
@@ -980,11 +981,26 @@ public class DefaultVisitDao implements VisitDao {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
+        List<RefusalReference> references = new ArrayList<>();
 
         try {
             connection = pool.takeConnection();
-            statement = connection.prepareStatement(SqlStatement.);
+            statement = connection.prepareStatement(SqlStatement
+                    .SELECT_REFUSAL_REFERENCES);
+            statement.setInt(1, user.getStaffId());
             resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                RefusalReference reference = new RefusalReference();
+                int refusalReferenceId = resultSet.getInt(1);
+                LocalDateTime referenceDatetime = null;
+                Timestamp referenceTimestamp = resultSet.getTimestamp(2);
+                if (referenceTimestamp != null) {
+                    referenceDatetime = referenceTimestamp.toLocalDateTime();
+                }
+                String refusalRecommendations = resultSet.getString(3);
+                PatientInfo patientInfo = ;
+                AdmissionDepartmentVisit visitInfo = ;
+            }
         } catch (SQLException e) {
             throw new DaoException("An error while fetching all refusal " +
                     "references.", e);
