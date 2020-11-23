@@ -29,60 +29,64 @@ public class ProfileRelatedEntitiesCompiler {
         return localInstance;
     }
 
-    public PatientInfo compilePatientInfo(ResultSet rSet) throws SQLException {
-        String photoPath = rSet.getString(1);
-        String firstName = rSet.getString(2);
-        String middleName = rSet.getString(3);
-        String lastName = rSet.getString(4);
-        LocalDate birthday = rSet.getDate(5).toLocalDate();
+    public PatientInfo compilePatientInfo(ResultSet rSet, int startIndex)
+            throws SQLException {
+        String photoPath = rSet.getString(startIndex);
+        String firstName = rSet.getString(++startIndex);
+        String middleName = rSet.getString(++startIndex);
+        String lastName = rSet.getString(++startIndex);
+        LocalDate birthday = rSet.getDate(++startIndex).toLocalDate();
         Gender gender = null;
-        String genderString = rSet.getString(6);
+        String genderString = rSet.getString(++startIndex);
         if (genderString != null) {
             gender = Gender.valueOf(genderString);
         }
 
-        String email = rSet.getString(7);
-        String phoneNumber = rSet.getString(8);
+        String email = rSet.getString(++startIndex);
+        String phoneNumber = rSet.getString(++startIndex);
 
         MaritalStatus maritalStatus = null;
-        String maritalStatusString = rSet.getString(9);
+        String maritalStatusString = rSet.getString(++startIndex);
         if (maritalStatusString != null) {
             maritalStatus = MaritalStatus.valueOf(maritalStatusString);
         }
 
-        IdentityDocument identityDocument = compileIdentityDocument(rSet);
-        Address address = compileAddress(rSet);
+        IdentityDocument identityDocument = compileIdentityDocument(rSet,
+                ++startIndex);
+        startIndex = startIndex + 15;
+        Address address = compileAddress(rSet, startIndex);
 
-        String inCaseOfEmergencyPerson = rSet.getString(39);
-        String inCaseOfEmergencyPhone = rSet.getString(40);
+        startIndex = startIndex + 14;
+        String inCaseOfEmergencyPerson = rSet.getString(startIndex);
+        String inCaseOfEmergencyPhone = rSet.getString(++startIndex);
 
         BloodType bloodType = null;
-        String bloodTypeString = rSet.getString(41);
+        String bloodTypeString = rSet.getString(++startIndex);
         if (bloodTypeString != null) {
             bloodType = BloodType.valueOf(bloodTypeString);
         }
 
         RhBloodGroup rhBlood = null;
-        String rhBloodString = rSet.getString(42);
+        String rhBloodString = rSet.getString(++startIndex);
         if (rhBloodString != null) {
             rhBlood = RhBloodGroup.valueOf(rhBloodString);
         }
 
         DisabilityDegree disabilityDegree = null;
-        String disabilityDegreeString = rSet.getString(43);
+        String disabilityDegreeString = rSet.getString(++startIndex);
         if (disabilityDegreeString != null) {
             disabilityDegree = DisabilityDegree.valueOf(disabilityDegreeString);
         }
 
         TransportationStatus transStatus = null;
-        String transStatusString = rSet.getString(44);
+        String transStatusString = rSet.getString(++startIndex);
         if (transStatusString != null) {
             transStatus = TransportationStatus.valueOf(transStatusString);
         }
 
-        boolean hasAllergyToFood = rSet.getBoolean(45);
-        boolean hasAllergyToMedicine = rSet.getBoolean(46);
-        boolean hasExtremelyHazardousDiseases = rSet.getBoolean(47);
+        boolean hasAllergyToFood = rSet.getBoolean(++startIndex);
+        boolean hasAllergyToMedicine = rSet.getBoolean(++startIndex);
+        boolean hasExtremelyHazardousDiseases = rSet.getBoolean(++startIndex);
 
         return new PatientInfo(photoPath, firstName, middleName, lastName,
                 birthday, gender, email, phoneNumber, maritalStatus,
@@ -92,11 +96,11 @@ public class ProfileRelatedEntitiesCompiler {
                 hasExtremelyHazardousDiseases);
     }
 
-    public IdentityDocument compileIdentityDocument(ResultSet rSet)
-            throws SQLException {
-        int identityDocId = rSet.getInt(10);
+    public IdentityDocument compileIdentityDocument(ResultSet rSet,
+            int startIndex) throws SQLException {
+        int identityDocId = rSet.getInt(startIndex);
         if (identityDocId > 0) {
-            int identityDocTypeId = rSet.getInt(11);
+            int identityDocTypeId = rSet.getInt(++startIndex);
             IdentificationDocumentType identityDocType = null;
             for (IdentificationDocumentType docType
                     : IdentificationDocumentType.values()) {
@@ -108,19 +112,19 @@ public class ProfileRelatedEntitiesCompiler {
             if (identityDocType == null) {
                 identityDocType = IdentificationDocumentType.PASSPORT;
             }
-            identityDocType.setDescription(rSet.getString(12));
-            String series = rSet.getString(13);
-            int serialNumberOfDocument = rSet.getInt(14);
-            String latinHolderName = rSet.getString(15);
-            String latinHolderSurname = rSet.getString(16);
-            String idDocCountryName = rSet.getString(17);
-            LocalDate idDocBirthday = rSet.getDate(18).toLocalDate();
-            String personalNumber = rSet.getString(19);
-            Gender idDocGender = Gender.valueOf(rSet.getString(20));
-            String placeOfOrigin = rSet.getString(21);
-            LocalDate dateOfIssue = rSet.getDate(22).toLocalDate();
-            LocalDate dateOfExpiry = rSet.getDate(23).toLocalDate();
-            String issueAuthority = rSet.getString(24);
+            identityDocType.setDescription(rSet.getString(++startIndex));
+            String series = rSet.getString(++startIndex);
+            int serialNumberOfDocument = rSet.getInt(++startIndex);
+            String latinHolderName = rSet.getString(++startIndex);
+            String latinHolderSurname = rSet.getString(++startIndex);
+            String idDocCountryName = rSet.getString(++startIndex);
+            LocalDate idDocBirthday = rSet.getDate(++startIndex).toLocalDate();
+            String personalNumber = rSet.getString(++startIndex);
+            Gender idDocGender = Gender.valueOf(rSet.getString(++startIndex));
+            String placeOfOrigin = rSet.getString(++startIndex);
+            LocalDate dateOfIssue = rSet.getDate(++startIndex).toLocalDate();
+            LocalDate dateOfExpiry = rSet.getDate(++startIndex).toLocalDate();
+            String issueAuthority = rSet.getString(++startIndex);
             return new IdentityDocument(identityDocId, identityDocType, series,
                     serialNumberOfDocument, latinHolderName, latinHolderSurname,
                     idDocCountryName, idDocBirthday, personalNumber,
@@ -130,26 +134,26 @@ public class ProfileRelatedEntitiesCompiler {
         return null;
     }
 
-    public Address compileAddress(ResultSet rSet) throws SQLException {
-        int addressId = rSet.getInt(25);
+    public Address compileAddress(ResultSet rSet, int startIndex) throws SQLException {
+        int addressId = rSet.getInt(startIndex);
         if (addressId > 0) {
-            String zipCode = rSet.getString(26);
-            String shortCountryName = rSet.getString(27);
-            String regionName = rSet.getString(28)
+            String zipCode = rSet.getString(++startIndex);
+            String shortCountryName = rSet.getString(++startIndex);
+            String regionName = rSet.getString(++startIndex)
                     + AppConstant.ONE_WHITESPACE
-                    + rSet.getString(29);
-            String areaName = rSet.getString(30)
+                    + rSet.getString(++startIndex);
+            String areaName = rSet.getString(++startIndex)
                     + AppConstant.ONE_WHITESPACE
-                    + rSet.getString(31);
-            String settleName = rSet.getString(32)
+                    + rSet.getString(++startIndex);
+            String settleName = rSet.getString(++startIndex)
                     + AppConstant.ONE_WHITESPACE
-                    + rSet.getString(33);
-            String roadName = rSet.getString(34)
+                    + rSet.getString(++startIndex);
+            String roadName = rSet.getString(++startIndex)
                     + AppConstant.ONE_WHITESPACE
-                    + rSet.getString(35);
-            String house = rSet.getString(36);
-            String building = rSet.getString(37);
-            String room = rSet.getString(38);
+                    + rSet.getString(++startIndex);
+            String house = rSet.getString(++startIndex);
+            String building = rSet.getString(++startIndex);
+            String room = rSet.getString(++startIndex);
             return new Address(addressId, zipCode, shortCountryName, regionName,
                     areaName, settleName, roadName, house, building, room);
         }

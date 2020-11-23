@@ -4,6 +4,7 @@ import by.epamtc.jwd.auth.dao.VisitDao;
 import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.dao.pool.ConnectionPool;
 import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
+import by.epamtc.jwd.auth.dao.util.ProfileRelatedEntitiesCompiler;
 import by.epamtc.jwd.auth.dao.util.VisitRelatedEntitiesCompiler;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.SqlStatement;
@@ -11,7 +12,6 @@ import by.epamtc.jwd.auth.model.med_info.DepartmentOrigin;
 import by.epamtc.jwd.auth.model.med_info.Diagnosis;
 import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
 import by.epamtc.jwd.auth.model.med_info.Prescription;
-import by.epamtc.jwd.auth.model.user_info.PatientInfo;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
 import by.epamtc.jwd.auth.model.visit_info.RefusalMedicineRecommendation;
 import by.epamtc.jwd.auth.model.visit_info.RefusalReference;
@@ -32,6 +32,8 @@ public class DefaultVisitDao implements VisitDao {
     private ConnectionPool pool = ConnectionPool.getInstance();
     private VisitRelatedEntitiesCompiler visitRelatedCompiler
             = VisitRelatedEntitiesCompiler.getInstance();
+    private ProfileRelatedEntitiesCompiler profileRelatedEntitiesCompiler
+            = ProfileRelatedEntitiesCompiler.getInstance();
 
     @Override
     public boolean registerVisit(AdmissionDepartmentVisit hospVisit)
@@ -80,7 +82,7 @@ public class DefaultVisitDao implements VisitDao {
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 AdmissionDepartmentVisit visit = visitRelatedCompiler
-                        .compileShortenedVisit(resultSet);
+                        .compileShortenedVisit(resultSet, 1);
                 shortenVisits.add(visit);
             }
 
@@ -162,7 +164,7 @@ public class DefaultVisitDao implements VisitDao {
                     .SELECT_IF_VISIT_PRESCRIPTION_IS_INCOMPLETE);
             while (resultSet.next()) {
                 AdmissionDepartmentVisit controlledVisit = visitRelatedCompiler
-                        .compileShortenedVisit(resultSet);
+                        .compileShortenedVisit(resultSet, 1);
 
                 boolean isVisitPrescriptionsComplete = true;
                 statements[pointer].setInt(1, controlledVisit.getVisitId());
@@ -208,7 +210,7 @@ public class DefaultVisitDao implements VisitDao {
 
             if (resultSets[pointer].next()) {
                 AdmissionDepartmentVisit visit = visitRelatedCompiler
-                        .compileShortenedVisit(resultSets[pointer]);
+                        .compileShortenedVisit(resultSets[pointer], 1);
 
                 statements[++pointer] = conn.prepareStatement(SqlStatement
                         .SELECT_IF_VISIT_PRESCRIPTION_IS_INCOMPLETE);
@@ -866,7 +868,7 @@ public class DefaultVisitDao implements VisitDao {
 
             while (resultSet.next()) {
                 AdmissionDepartmentVisit visit = visitRelatedCompiler
-                        .compileShortenedVisit(resultSet);
+                        .compileShortenedVisit(resultSet, 1);
                 visits.add(visit);
             }
         } catch (ConnectionPoolException e) {
@@ -997,9 +999,9 @@ public class DefaultVisitDao implements VisitDao {
                 if (referenceTimestamp != null) {
                     referenceDatetime = referenceTimestamp.toLocalDateTime();
                 }
-                String refusalRecommendations = resultSet.getString(3);
-                PatientInfo patientInfo = ;
-                AdmissionDepartmentVisit visitInfo = ;
+                AdmissionDepartmentVisit visitInfo = visitRelatedCompiler
+                        .compileShortenedVisit(resultSet, 4);
+
             }
         } catch (SQLException e) {
             throw new DaoException("An error while fetching all refusal " +

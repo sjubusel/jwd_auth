@@ -36,22 +36,23 @@ public class VisitRelatedEntitiesCompiler {
         return localInstance;
     }
 
-    public AdmissionDepartmentVisit compileShortenedVisit(ResultSet resultSet)
+    public AdmissionDepartmentVisit compileShortenedVisit(ResultSet resultSet,
+            int startIndex)
             throws SQLException {
         AdmissionDepartmentVisit visit = new AdmissionDepartmentVisit();
-        int visitId = resultSet.getInt(1);
+        int visitId = resultSet.getInt(startIndex);
         visit.setVisitId(visitId);
-        Timestamp timestamp = resultSet.getTimestamp(2);
+        Timestamp timestamp = resultSet.getTimestamp(++startIndex);
         LocalDateTime visitDateTime = timestamp != null
                                       ? timestamp.toLocalDateTime()
                                       : null;
         visit.setVisitDateTime(visitDateTime);
-        String lastName = resultSet.getString(3);
-        String firstName = resultSet.getString(4);
-        String middleName = resultSet.getString(5);
+        String lastName = resultSet.getString(++startIndex);
+        String firstName = resultSet.getString(++startIndex);
+        String middleName = resultSet.getString(++startIndex);
         String personInfo = compileFullName(firstName, middleName, lastName);
         visit.setPatientShortInfo(personInfo);
-        String visitDescription = resultSet.getString(6);
+        String visitDescription = resultSet.getString(++startIndex);
         visit.setPatientVisitDescriptionInfo(visitDescription);
         return visit;
     }
