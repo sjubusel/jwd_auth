@@ -607,3 +607,6 @@ refusalsOnControl.refusalReference=Form  reference about stay at the admitting d
 refuseToHospitalize.refusalRecommendationsLabel=Recommendations
 refuseToHospitalize.refusalRecommendationsPlaceholder=Indert recommendations on further treatment
 refuseToHospitalize.refuseToHospitalizeBtn=Form a reference
+
+staff.allRefusalReferences=All references
+allRefusalReferences.heading=References about stay at the admitting department

@@ -102,4 +102,18 @@
         <fmt:message bundle="${jspMessages}"
                      key="staff.refuseToHospitalize"/>
     </a>
+    <a type="button"
+       href="${pageContext.request.contextPath}/profile?command=go-to-all-refusal-references"
+            <c:choose>
+                <c:when test="${pageScope.activeSubMenuStaffTab == 'allRefusalReferences'}">
+                    class="list-group-item list-group-item-action active"
+                </c:when>
+                <c:otherwise>
+                    class="list-group-item list-group-item-action"
+                </c:otherwise>
+            </c:choose>
+    >
+        <fmt:message bundle="${jspMessages}"
+                     key="staff.allRefusalReferences"/>
+    </a>
 </div>
