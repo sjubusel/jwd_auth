@@ -988,20 +988,27 @@ public class DefaultVisitDao implements VisitDao {
         try {
             connection = pool.takeConnection();
             statement = connection.prepareStatement(SqlStatement
-                    .SELECT_REFUSAL_REFERENCES);
+                    .SELECT_REFUSAL_REFERENCES_BY_DOCTOR_ID);
             statement.setInt(1, user.getStaffId());
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 RefusalReference reference = new RefusalReference();
+
                 int refusalReferenceId = resultSet.getInt(1);
+                reference.setRefusalReferenceId(refusalReferenceId);
+
                 LocalDateTime referenceDatetime = null;
                 Timestamp referenceTimestamp = resultSet.getTimestamp(2);
                 if (referenceTimestamp != null) {
                     referenceDatetime = referenceTimestamp.toLocalDateTime();
                 }
+                reference.setReferenceDatetime(referenceDatetime);
+
                 AdmissionDepartmentVisit visitInfo = visitRelatedCompiler
                         .compileShortenedVisit(resultSet, 4);
+                reference.setVisitInfo(visitInfo);
 
+                references.add(reference);
             }
         } catch (SQLException e) {
             throw new DaoException("An error while fetching all refusal " +
@@ -1012,6 +1019,7 @@ public class DefaultVisitDao implements VisitDao {
         } finally {
             pool.closeConnection(connection, statement, resultSet);
         }
-        return null;
+
+        return references;
     }
 }
