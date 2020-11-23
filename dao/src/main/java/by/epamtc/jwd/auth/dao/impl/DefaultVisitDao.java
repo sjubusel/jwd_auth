@@ -13,6 +13,7 @@ import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
 import by.epamtc.jwd.auth.model.med_info.Prescription;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
 import by.epamtc.jwd.auth.model.visit_info.RefusalMedicineRecommendation;
+import by.epamtc.jwd.auth.model.visit_info.RefusalReference;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -971,5 +972,28 @@ public class DefaultVisitDao implements VisitDao {
         }
 
         return referenceId;
+    }
+
+    @Override
+    public List<RefusalReference> fetchRefusalReferences(AuthUser user)
+            throws DaoException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = pool.takeConnection();
+            statement = connection.prepareStatement(SqlStatement.);
+            resultSet = statement.executeQuery();
+        } catch (SQLException e) {
+            throw new DaoException("An error while fetching all refusal " +
+                    "references.", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection " +
+                    "in order to fetch all refusal references.", e);
+        } finally {
+            pool.closeConnection(connection, statement, resultSet);
+        }
+        return null;
     }
 }

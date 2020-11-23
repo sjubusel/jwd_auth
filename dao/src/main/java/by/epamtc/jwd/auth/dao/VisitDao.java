@@ -7,6 +7,7 @@ import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
 import by.epamtc.jwd.auth.model.med_info.Prescription;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
 import by.epamtc.jwd.auth.model.visit_info.RefusalMedicineRecommendation;
+import by.epamtc.jwd.auth.model.visit_info.RefusalReference;
 
 import java.util.List;
 
@@ -94,4 +95,7 @@ public interface VisitDao {
 
     int formRefusalReference(String refusalRecommendations, String visitId,
             AuthUser user) throws DaoException;
+
+    List<RefusalReference> fetchRefusalReferences(AuthUser user)
+            throws DaoException;
 }

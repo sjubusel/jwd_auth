@@ -123,6 +123,7 @@ public final class AppParameter {
             = "hiddenRecommendationIdInput";
     public static final String REFUSAL_RECOMMENDATIONS
             = "refusalRecommendationsInput";
+    public static final String PAGE_NUMBER = "page";
 
     private AppParameter() {
     }

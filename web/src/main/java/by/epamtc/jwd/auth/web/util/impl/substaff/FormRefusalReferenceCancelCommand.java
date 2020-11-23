@@ -69,6 +69,7 @@ public class FormRefusalReferenceCancelCommand implements Command {
     private void sendRedirectWithSuccess(HttpServletRequest req,
             HttpServletResponse res, String referenceId) throws IOException {
         res.sendRedirect(req.getContextPath()
+                // TODO redirect to a reference viewer
 //                + CommandPath
 //                .SUBSTAFF_GO_TO_REFUSE_TO_HOSPITALIZE_FORM_RESULT_SUCCESS
                 + referenceId);

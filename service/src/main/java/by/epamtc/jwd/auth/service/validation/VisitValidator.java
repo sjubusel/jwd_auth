@@ -71,4 +71,9 @@ public class VisitValidator {
     public boolean isAuthUserHasRightsToExecutePrescriptions(AuthUser user) {
         return user.getRole().getRoleId() >= AppConstant.APPLIEING_MEDICINE_STAFF;
     }
+
+    public boolean isAuthUserHasRightsToViewMedicineDocuments(AuthUser user) {
+        return user.getRole().getRoleId() >= AppConstant
+                .STAFF_WHICH_CAN_VIEW_MEDICINE_DOCUMENTS;
+    }
 }
