@@ -330,6 +330,8 @@ public final class CommandPath {
             = "/WEB-INF/jsp/admission_doctor/refuseToHospitalize.jsp";
     public static final String SUBSTAFF_REFUSALS_ON_CONTROL_JSP
             = "/WEB-INF/jsp/admission_doctor/refusalsOnControl.jsp";
+    public static final String REFUSAL_REFERENCES_JSP
+            = "/WEB-INF/jsp/admission_doctor/refusalReferences.jsp";
 
     private CommandPath() {
     }

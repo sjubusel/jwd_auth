@@ -45,6 +45,7 @@ import by.epamtc.jwd.auth.web.util.impl.substaff.EstablishMedicinePrescriptionCo
 import by.epamtc.jwd.auth.web.util.impl.substaff.EstablishPrescriptionCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.EstablishVisitDiagnosisCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.FormRefusalReferenceCancelCommand;
+import by.epamtc.jwd.auth.web.util.impl.substaff.GoToAllRefusalReferencesCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToDetailExecutePrescriptionByItsIdCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToDoctorViewControlledVisitCommand;
 import by.epamtc.jwd.auth.web.util.impl.substaff.GoToEstablishDiagnosisCommand;
@@ -206,6 +207,8 @@ public class CommandProvider {
                 new RefusalMedicineRecommendationCancelCommand());
         repository.put(CommandName.SUBSTAFF_FORM_REFUSAL_REFERENCE,
                 new FormRefusalReferenceCancelCommand());
+        repository.put(CommandName.SUBSTAFF_GO_TO_ALL_REFUSAL_REFERENCES,
+                new GoToAllRefusalReferencesCommand());
 
         repository.put(CommandName.ERROR, new ErrorCommand());
     }

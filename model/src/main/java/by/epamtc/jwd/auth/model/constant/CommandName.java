@@ -123,6 +123,8 @@ public final class CommandName {
             = "CANCEL-REFUSAL-MEDICINE-RECOMMENDATION";
     public static final String SUBSTAFF_FORM_REFUSAL_REFERENCE
             = "FORM-REFUSAL-REFERENCE";
+    public static final String SUBSTAFF_GO_TO_ALL_REFUSAL_REFERENCES
+            = "GO-TO-ALL-REFUSAL-REFERENCES";
 
     private CommandName() {
     }
