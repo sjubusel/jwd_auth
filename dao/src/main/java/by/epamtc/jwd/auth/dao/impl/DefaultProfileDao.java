@@ -410,7 +410,6 @@ public class DefaultProfileDao implements ProfileDao {
             throw new DaoException("An error while adding extremely " +
                     "hazardous disease", e);
         } catch (ConnectionPoolException e) {
-            pool.rollBackTransaction(conn);
             throw new DaoException("An error while adding extremely " +
                     "hazardous disease in connection pool", e);
         } finally {
