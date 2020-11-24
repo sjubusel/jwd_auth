@@ -41,7 +41,7 @@ public class DefaultPatientDao implements PatientDao {
                 visit = visitRelatedEntitiesCompiler.compileShortenedVisit(
                         resultSet, 1);
                 visit = visitRelatedEntitiesCompiler.compileFullVisit(visit,
-                        resultSet);
+                        resultSet, 7);
             }
 
         } catch (SQLException e) {

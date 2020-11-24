@@ -978,6 +978,131 @@ public final class SqlStatement {
             "WHERE rr.doctor_id = ?\n" +
             "ORDER BY rr.reference_datetime DESC\n" +
             "LIMIT 10 OFFSET ?;";
+    public static final String SELECT_REFUSAL_REFERENCE_BY_ID
+            = "SELECT rr.refusal_reference_id,        #1\n" +
+            "       rr.reference_datetime,\n" +
+            "       rr.refusal_recommendations,\n" +
+            "\n" +
+            "       p.photo_path,                   #4\n" +
+            "       p.first_name,\n" +
+            "       p.middle_name,\n" +
+            "       p.last_name,\n" +
+            "       p.birth_date,\n" +
+            "       p.gender,\n" +
+            "       p.email,\n" +
+            "       p.phone_number,\n" +
+            "       p.marital_status,\n" +
+            "       id.identification_document_id,\n" +
+            "       id.identification_document_type_id,\n" +
+            "       idt.name,\n" +
+            "       id.series,\n" +
+            "       id.serial_number_of_document,\n" +
+            "       id.latin_holder_name,\n" +
+            "       id.latin_holder_surname,\n" +
+            "       c.full_country_name,\n" +
+            "       id.birth_date,\n" +
+            "       id.personal_number,\n" +
+            "       id.gender,\n" +
+            "       id.place_of_origin,\n" +
+            "       id.date_of_issue,\n" +
+            "       id.date_of_expiry,\n" +
+            "       id.issue_authority,\n" +
+            "       a.address_id,\n" +
+            "       a.zip_code,\n" +
+            "       c2.short_country_name,\n" +
+            "       ret.region_type_name,\n" +
+            "       re.region_name,\n" +
+            "       art.area_type_name,\n" +
+            "       ar.area_name,\n" +
+            "       st.settlement_type_name,\n" +
+            "       s.settlement_name,\n" +
+            "       rt.road_type_name,\n" +
+            "       r.road_name,\n" +
+            "       a.house,\n" +
+            "       a.building,\n" +
+            "       a.room,\n" +
+            "       p.in_case_of_emergency_person_id,\n" +
+            "       p.in_case_of_emergency_phone_number,\n" +
+            "       p.blood_type,\n" +
+            "       p.rhesus_factor,\n" +
+            "       p.disability_degree,\n" +
+            "       p.transportation_status,\n" +
+            "       p.allergic_anamnesis_food,\n" +
+            "       p.allergic_anamnesis_medicine,\n" +
+            "       p.extremely_hazardous_diseases, #50\n" +
+            "\n" +
+            "       v2ad.visit_id,                  #51\n" +
+            "       v2ad.visit_datetime,\n" +
+            "       p.last_name,\n" +
+            "       p.first_name,\n" +
+            "       p.middle_name,\n" +
+            "       v2ad.visit_reason_description,\n" +
+            "       v2ad.person_id,                 #57\n" +
+            "       v2ad.visit_reason,\n" +
+            "       v2ad.responsible_doctor_id,\n" +
+            "       dp.last_name,\n" +
+            "       dp.first_name,\n" +
+            "       dp.middle_name,\n" +
+            "       v2ad.transportation_status,\n" +
+            "       v2ad.responsible_paramedical_staff_id,\n" +
+            "       paraPerson.last_name,\n" +
+            "       paraPerson.first_name,\n" +
+            "       paraPerson.middle_name,\n" +
+            "       v2ad.complaints_description,\n" +
+            "       v2ad.visit_result,\n" +
+            "       v2ad.hospitalization_department_id,\n" +
+            "       hospDep.name                    #71\n" +
+            "\n" +
+            "\n" +
+            "FROM hospital.refusal_references rr\n" +
+            "         JOIN hospital.visits_to_admission_department v2ad " +
+            "ON rr.visit_id = v2ad.visit_id\n" +
+            "         JOIN hospital.persons p " +
+            "ON v2ad.person_id = p.person_id\n" +
+            "\n" +
+            "         LEFT OUTER JOIN hospital.identification_documents id\n" +
+            " ON p.identification_document_id = id.identification_document_id\n" +
+            "         LEFT OUTER JOIN hospital.identification_document_types idt\n" +
+            " ON id.identification_document_type_id " +
+            "= idt.identification_document_type_id\n" +
+            "         LEFT OUTER JOIN hospital.countries c " +
+            "ON id.citizenship_id = c.country_id\n" +
+            "         LEFT OUTER JOIN hospital.addresses a " +
+            "ON p.permanent_home_address_id = a.address_id\n" +
+            "         LEFT OUTER JOIN hospital.roads r " +
+            "ON a.road_id = r.road_id\n" +
+            "         LEFT OUTER JOIN hospital.road_types rt " +
+            "ON r.road_type_id = rt.road_type_id\n" +
+            "         LEFT OUTER JOIN hospital.settlements s " +
+            "ON r.settlement_id = s.settlement_id\n" +
+            "         LEFT OUTER JOIN hospital.settlement_types st " +
+            "ON s.settlement_type_id = st.settlement_type_id\n" +
+            "         LEFT OUTER JOIN hospital.areas ar " +
+            "ON s.area_id = ar.area_id\n" +
+            "         LEFT OUTER JOIN hospital.area_types art " +
+            "ON ar.area_type_id = art.area_type_id\n" +
+            "         LEFT OUTER JOIN hospital.regions re " +
+            "ON ar.region_id = re.region_id\n" +
+            "         LEFT OUTER JOIN hospital.region_types ret " +
+            "ON re.region_type_id = ret.region_type_id\n" +
+            "         LEFT OUTER JOIN hospital.countries c2 " +
+            "ON re.country_id = c2.country_id\n" +
+            "\n" +
+            "         JOIN hospital.staff d " +
+            "ON v2ad.responsible_doctor_id = d.staff_id\n" +
+            "         JOIN hospital.persons dp " +
+            "ON d.person_id = dp.person_id\n" +
+            "\n" +
+            "         LEFT OUTER JOIN hospital.staff paraStaff " +
+            "ON v2ad.responsible_paramedical_staff_id = paraStaff.staff_id\n" +
+            "         LEFT OUTER JOIN hospital.persons paraPerson " +
+            "ON paraStaff.person_id = paraPerson.person_id\n" +
+            "\n" +
+            "         LEFT OUTER JOIN hospital_departments hospDep\n" +
+            "ON v2ad.hospitalization_department_id " +
+            "= hospDep.hospital_department_id\n" +
+            "\n" +
+            "WHERE rr.refusal_reference_id = ?;";
 
     private SqlStatement() {
     }

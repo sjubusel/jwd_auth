@@ -13,6 +13,7 @@ import by.epamtc.jwd.auth.model.med_info.DepartmentOrigin;
 import by.epamtc.jwd.auth.model.med_info.Diagnosis;
 import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
 import by.epamtc.jwd.auth.model.med_info.Prescription;
+import by.epamtc.jwd.auth.model.user_info.PatientInfo;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
 import by.epamtc.jwd.auth.model.visit_info.RefusalMedicineRecommendation;
 import by.epamtc.jwd.auth.model.visit_info.RefusalReference;
@@ -226,7 +227,7 @@ public class DefaultVisitDao implements VisitDao {
 
                 visit.setPrescriptionsComplete(isVisitPrescriptionsComplete);
                 return visitRelatedCompiler.compileFullVisit(visit,
-                        resultSets[pointer - 1]);
+                        resultSets[pointer - 1], 7);
             }
 
         } catch (SQLException e) {
@@ -1030,7 +1031,52 @@ public class DefaultVisitDao implements VisitDao {
     @Override
     public RefusalReference fetchDetailedRefusalReference(String referenceId,
             AuthUser user) throws DaoException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        RefusalReference reference = null;
 
-        return null;
+        try {
+            connection = pool.takeConnection();
+            statement = connection.prepareStatement(SqlStatement
+                    .SELECT_REFUSAL_REFERENCE_BY_ID);
+            statement.setInt(1, Integer.parseInt(referenceId));
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                reference = new RefusalReference();
+                int refusalReferenceId = resultSet.getInt(1);
+
+                LocalDateTime referenceDatetime = null;
+                Timestamp referenceTimestamp = resultSet.getTimestamp(2);
+                if (referenceTimestamp != null) {
+                    referenceDatetime = referenceTimestamp.toLocalDateTime();
+                }
+
+                String refusalRecommendations = resultSet.getString(3);
+
+                PatientInfo patientInfo = profileRelatedEntitiesCompiler
+                        .compilePatientInfo(resultSet, 4);
+
+                AdmissionDepartmentVisit visit = visitRelatedCompiler
+                        .compileShortenedVisit(resultSet, 51);
+                visitRelatedCompiler.compileFullVisit(visit, resultSet, 57);
+
+                List<Diagnosis> diagnoses;
+                List<MedicinePrescription> medPrescriptions;
+                List<Prescription> prescriptions;
+                List<RefusalMedicineRecommendation> refusalMedicineRecommendations;
+            }
+
+        } catch (SQLException e) {
+            throw new DaoException("An error while fetching a refusal " +
+                    "reference in detail.", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection " +
+                    "in order to fetch a refusal reference in detail.", e);
+        } finally {
+            pool.closeConnection(connection, statement, resultSet);
+        }
+
+        return reference;
     }
 }

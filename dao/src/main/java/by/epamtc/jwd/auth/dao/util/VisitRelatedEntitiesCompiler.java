@@ -58,41 +58,41 @@ public class VisitRelatedEntitiesCompiler {
     }
 
     public AdmissionDepartmentVisit compileFullVisit(AdmissionDepartmentVisit
-            visit, ResultSet resultSet) throws SQLException {
-        int personId = resultSet.getInt(7);
+            visit, ResultSet resultSet, int startIndex) throws SQLException {
+        int personId = resultSet.getInt(startIndex);
         visit.setPatientId(personId);
-        String visitReason = resultSet.getString(8);
+        String visitReason = resultSet.getString(++startIndex);
         if (visitReason != null) {
             visit.setVisitReason(VisitReason.valueOf(visitReason));
         }
-        int doctorId = resultSet.getInt(9);
+        int doctorId = resultSet.getInt(++startIndex);
         visit.setResponsibleDoctorId(doctorId);
-        String doctorLastName = resultSet.getString(10);
-        String doctorFirstName = resultSet.getString(11);
-        String doctorMiddleName = resultSet.getString(12);
+        String doctorLastName = resultSet.getString(++startIndex);
+        String doctorFirstName = resultSet.getString(++startIndex);
+        String doctorMiddleName = resultSet.getString(++startIndex);
         visit.setResponsibleDoctorInfo(compileFullName(doctorFirstName,
                 doctorMiddleName, doctorLastName));
-        String transStatus = resultSet.getString(13);
+        String transStatus = resultSet.getString(++startIndex);
         if (transStatus != null) {
             visit.setTransportationStatus(TransportationStatus
                     .valueOf(transStatus));
         }
-        int paramedicalStaff = resultSet.getInt(14);
+        int paramedicalStaff = resultSet.getInt(++startIndex);
         visit.setResponsibleNonDoctorStaffId(paramedicalStaff);
-        String paraLastName = resultSet.getString(15);
-        String paraFirstName = resultSet.getString(16);
-        String paraMiddleName = resultSet.getString(17);
+        String paraLastName = resultSet.getString(++startIndex);
+        String paraFirstName = resultSet.getString(++startIndex);
+        String paraMiddleName = resultSet.getString(++startIndex);
         visit.setResponsibleNonDoctorStaffInfo(compileFullName(paraFirstName,
                 paraMiddleName, paraLastName));
-        String complaints = resultSet.getString(18);
+        String complaints = resultSet.getString(++startIndex);
         visit.setPatientComplaints(complaints);
-        String result = resultSet.getString(19);
+        String result = resultSet.getString(++startIndex);
         if (result != null) {
             visit.setVisitResult(VisitResult.valueOf(result));
         }
-        int hospDepartmentId = resultSet.getInt(20);
+        int hospDepartmentId = resultSet.getInt(++startIndex);
         visit.setHospitalizationDepartmentId(hospDepartmentId);
-        String hospDepartmentName = resultSet.getString(21);
+        String hospDepartmentName = resultSet.getString(++startIndex);
         visit.setHospitalizationDepartmentInfo(hospDepartmentName);
         return visit;
     }
