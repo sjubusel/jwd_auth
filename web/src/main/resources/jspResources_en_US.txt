@@ -610,3 +610,11 @@ refuseToHospitalize.refuseToHospitalizeBtn=Form a reference
 
 staff.allRefusalReferences=All references
 allRefusalReferences.heading=References about stay at the admitting department
+
+allRefusalReferences.numberHead=Reference number
+allRefusalReferences.departureDateTime=Reference date and time
+allRefusalReferences.visitDateTime=Visit date and time
+allRefusalReferences.patientInfo=Patient
+allRefusalReferences.visitDescription=Visit description
+allRefusalReferences.actions=Action
+allRefusalReferences.details=In detail

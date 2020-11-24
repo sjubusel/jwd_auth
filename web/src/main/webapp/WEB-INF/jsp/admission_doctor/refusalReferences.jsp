@@ -70,64 +70,76 @@
                         <fmt:message bundle="${jspMessages}"
                                      key="allRefusalReferences.heading"/>
                     </h1>
-<%--                    <c:choose>--%>
-<%--                        <c:when test="${requestScope.medRecoms ne null}">--%>
-<%--                            <div class="row d-flex mb-1 border">--%>
-<%--                                <div class="col">--%>
-<%--                                    <fmt:message bundle="${jspMessages}"--%>
-<%--                                                 key="refuseToHospitalize.recommendationDateTime"/>--%>
-<%--                                </div>--%>
-<%--                                <div class="col">--%>
-<%--                                    <fmt:message bundle="${jspMessages}"--%>
-<%--                                                 key="refuseToHospitalize.medicineInfo"/>--%>
-<%--                                </div>--%>
-<%--                                <div class="col">--%>
-<%--                                    <fmt:message bundle="${jspMessages}"--%>
-<%--                                                 key="refuseToHospitalize.intakeInstructions"/>--%>
-<%--                                </div>--%>
-<%--                                <div class="col">--%>
-<%--                                    <fmt:message bundle="${jspMessages}"--%>
-<%--                                                 key="refuseToHospitalize.actions"/>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                            <c:forEach var="recommendation"--%>
-<%--                                       items="${requestScope.medRecoms}">--%>
-<%--                                <form action="${pageContext.request.contextPath}/profile"--%>
-<%--                                      method="post">--%>
-<%--                                    <input type="hidden" name="command"--%>
-<%--                                           value="cancel-refusal-medicine-recommendation">--%>
-<%--                                    <input type="hidden"--%>
-<%--                                           name="hiddenRecommendationIdInput"--%>
-<%--                                           value="${recommendation.recommendationId}">--%>
-<%--                                    <input type="hidden" name="hiddenVisitId"--%>
-<%--                                           value="${requestScope.hiddenVisitId}">--%>
-<%--                                    <div class="row d-flex mb-1 border align-items-center">--%>
-<%--                                        <div class="col">--%>
-<%--                                            <c:out value="${recommendation.recommendationDateTime}"/>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="col">--%>
-<%--                                            <c:out value="${recommendation.medicineInfo}"/>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="col">--%>
-<%--                                            <c:out value="${recommendation.intakeInstructions}"/>--%>
-<%--                                        </div>--%>
-<%--                                        <div class="col">--%>
-<%--                                            <button type="submit"--%>
-<%--                                                    class="btn align-self-center btn-primary">--%>
-<%--                                                <fmt:message--%>
-<%--                                                        bundle="${jspMessages}"--%>
-<%--                                                        key="refuseToHospitalize.cancel"/>--%>
-<%--                                            </button>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </form>--%>
-<%--                            </c:forEach>--%>
-<%--                        </c:when>--%>
-<%--                        <c:otherwise>--%>
-<%--                            <fmt:message bundle="${jspMessages}"--%>
-<%--                                         key="refuseToHospitalize.noRecords"/>--%>
-<%--                        </c:otherwise>--%>
-<%--                    </c:choose>--%>
+                    <c:choose>
+                        <c:when test="${requestScope.refusalReferences ne null}">
+                            <div class="row d-flex mb-1 border">
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="allRefusalReferences.numberHead"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="allRefusalReferences.departureDateTime"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="allRefusalReferences.visitDateTime"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="allRefusalReferences.patientInfo"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="allRefusalReferences.visitDescription"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="allRefusalReferences.actions"/>
+                                </div>
+                            </div>
+                            <c:forEach var="reference"
+                                       items="${requestScope.refusalReferences}">
+                                <form action="${pageContext.request.contextPath}/profile"
+                                      method="post">
+                                    <input type="hidden" name="command"
+                                           value="<%--TODO--%>">
+                                    <input type="hidden"
+                                           name="hiddenReferenceIdInput"
+                                           value="${reference.refusalReferenceId}">
+                                    <div class="row d-flex mb-1 border align-items-center">
+                                        <div class="col">
+                                            <c:out value="${reference.refusalReferenceId}"/>
+                                        </div>
+                                        <div class="col">
+                                            <c:out value="${reference.referenceDatetime}"/>
+                                        </div>
+                                        <div class="col">
+                                            <c:out value="${reference.visitInfo.visitDateTime}"/>
+                                        </div>
+                                        <div class="col">
+                                            <c:out value="${reference.visitInfo.patientShortInfo}"/>
+                                        </div>
+                                        <div class="col">
+                                            <c:out value="${reference.visitInfo.patientVisitDescriptionInfo}"/>
+                                        </div>
+                                        <div class="col">
+                                            <button type="submit"
+                                                    class="btn align-self-center btn-primary">
+                                                <fmt:message
+                                                        bundle="${jspMessages}"
+                                                        key="allRefusalReferences.details"/>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="refuseToHospitalize.noRecords"/>
+                        </c:otherwise>
+                    </c:choose>
                 </c:otherwise>
             </c:choose>
         </div>

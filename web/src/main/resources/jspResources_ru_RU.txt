@@ -610,3 +610,11 @@ refuseToHospitalize.refuseToHospitalizeBtn=Сформировать справк
 
 staff.allRefusalReferences=Все справки
 allRefusalReferences.heading=Справки о пребывании в приёмном отделении
+
+allRefusalReferences.numberHead=Номер справки
+allRefusalReferences.departureDateTime=Дата и время справки
+allRefusalReferences.visitDateTime=Дата и время обращения
+allRefusalReferences.patientInfo=Пациент
+allRefusalReferences.visitDescription=Описание обращения
+allRefusalReferences.actions=Действие
+allRefusalReferences.details=Подробно
