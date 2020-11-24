@@ -36,6 +36,7 @@ public final class AppConstant {
     public static final int APPLIEING_MEDICINE_STAFF = 5;
     public static final int PARAMEDICAL_STAFF = 3;
     public static final int STAFF_WHICH_CAN_VIEW_MEDICINE_DOCUMENTS = 7;
+    public static final String DEFAULT_PAGE_NUMBER = "1";
 
 
     private AppConstant() {

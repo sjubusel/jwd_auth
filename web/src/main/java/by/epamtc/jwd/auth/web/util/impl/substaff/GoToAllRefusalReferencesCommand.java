@@ -2,6 +2,7 @@ package by.epamtc.jwd.auth.web.util.impl.substaff;
 
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
+import by.epamtc.jwd.auth.model.constant.AppConstant;
 import by.epamtc.jwd.auth.model.constant.AppParameter;
 import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.model.visit_info.RefusalReference;
@@ -30,7 +31,13 @@ public class GoToAllRefusalReferencesCommand implements Command {
             throws ServletException, IOException {
         AuthUser user = (AuthUser) req.getSession().getAttribute(AppAttribute
                 .SESSION_AUTH_USER);
+
         String pageNumber = req.getParameter(AppParameter.PAGE_NUMBER);
+        if (pageNumber == null) {
+            pageNumber = AppConstant.DEFAULT_PAGE_NUMBER;
+        }
+        req.setAttribute(AppAttribute.PAGE, pageNumber);
+
         List<RefusalReference> references = null;
 
         try {

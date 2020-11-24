@@ -28,6 +28,79 @@
         <fmt:message bundle="${jspMessages}" key="all.htmlTitle"/>
     </title>
     <jsp:include page="../structural_element/metahead.jsp"/>
+    <script type="text/javascript"
+            src="${pageContext.request.contextPath}/js/jquery-3.5.1.js"></script>
+    <script>
+        let currentPagePath = "${pageContext.request.contextPath}/profile?command=go-to-all-refusal-references&page";
+        let pageNumber = parseInt(${pageContext.page});
+        let pageQuantity = function () {
+            return $.ajax({
+                url: "ajax?command=fetch-page-quantity-in-refusal-references-jsp",
+                method: "post",
+                data: {},
+                datatype: "json",
+                success: function (data) {
+                    return parseInt(data);
+                }
+            });
+        };
+
+        function createPageLink(isLiActive, isLiDisabled, pageNumber, aInnerHtml) {
+            let liElement = document.createElement("li");
+            liElement.className = "page-item";
+            if (isLiActive === true) {
+                liElement.className += " active"
+            }
+            if (isLiDisabled === true) {
+                liElement.className += "  disabled"
+            }
+
+            let aElement = document.createElement("a");
+            aElement.className = "page-link";
+            aElement.href = currentPagePath + pageNumber;
+            aElement.innerHTML = aInnerHtml;
+            liElement.appendChild(aElement);
+
+            return liElement;
+        }
+
+        $(document).ready(function () {
+                let paginationContainer = document.getElementById("pagination");
+                let pagesAmount = pageQuantity();
+                if (pagesAmount === 0) {
+                    return;
+                }
+                if (pageNumber < pagesAmount) {
+                    for (let i = 1; i <= pagesAmount; i++) {
+                        let isActive = false;
+                        if (i === pageNumber) {
+                            isActive = true;
+                        }
+                        let pageLink = createPageLink(isActive, false, i, i);
+                        paginationContainer.appendChild(pageLink);
+                    }
+                } else {
+                    let liElement = createPageLink(false, false, 1, 1);
+                    paginationContainer.appendChild(liElement);
+                }
+
+                let isPreviousPageDisabled = false;
+                if ((pageNumber - 1) < 1) {
+                    isPreviousPageDisabled = true;
+                }
+                paginationContainer.prepend(createPageLink(false, isPreviousPageDisabled, 1, "Previous"));
+
+                let isNextPageDisabled = false;
+                if ((pageNumber + 1) > pagesAmount) {
+                    isNextPageDisabled = true;
+                }
+                paginationContainer.appendChild(createPageLink(false, isNextPageDisabled, pagesAmount, "Next"));
+
+                paginationContainer.prepend(createPageLink(false, false, 1, "First"));
+                paginationContainer.appendChild(createPageLink(false, false, pagesAmount, "Last"))
+            }
+        );
+    </script>
 </head>
 <body>
 
@@ -134,6 +207,45 @@
                                     </div>
                                 </form>
                             </c:forEach>
+                            <nav aria-label="Page navigation example">
+                                <ul id="pagination"
+                                    class="pagination justify-content-center">
+                                        <%--                                    <li class="page-item">--%>
+                                        <%--                                        <a class="page-link"--%>
+                                        <%--                                           href="${pageContext.request.contextPath}/profile?command=go-to-all-refusal-references&page=1"--%>
+                                        <%--                                        >First</a>--%>
+                                        <%--                                    </li>--%>
+                                        <%--                                    <li class="page-item disabled">--%>
+                                        <%--                                        <a class="page-link" href="#"--%>
+                                        <%--                                        >Previous</a>--%>
+                                        <%--                                    </li>--%>
+                                        <%--                                    <li class="page-item active">--%>
+                                        <%--                                        <a class="page-link"--%>
+                                        <%--                                           href="${pageContext.request.contextPath}/profile?command=go-to-all-refusal-references&page=1"--%>
+                                        <%--                                        >1</a>--%>
+                                        <%--                                    </li>--%>
+                                        <%--                                    <li class="page-item">--%>
+                                        <%--                                        <a class="page-link"--%>
+                                        <%--                                           href="${pageContext.request.contextPath}/profile?command=go-to-all-refusal-references&page=2"--%>
+                                        <%--                                        >2</a>--%>
+                                        <%--                                    </li>--%>
+                                        <%--                                    <li class="page-item">--%>
+                                        <%--                                        <a class="page-link"--%>
+                                        <%--                                           href="${pageContext.request.contextPath}/profile?command=go-to-all-refusal-references&page=3"--%>
+                                        <%--                                        >3</a>--%>
+                                        <%--                                    </li>--%>
+                                        <%--                                    <li class="page-item">--%>
+                                        <%--                                        <a class="page-link"--%>
+                                        <%--                                           href="${pageContext.request.contextPath}/profile?command=go-to-all-refusal-references&page=2"--%>
+                                        <%--                                        >Next</a>--%>
+                                        <%--                                    </li>--%>
+                                        <%--                                    <li class="page-item">--%>
+                                        <%--                                        <a class="page-link"--%>
+                                        <%--                                           href="${pageContext.request.contextPath}/profile?command=go-to-all-refusal-references&page=2"--%>
+                                        <%--                                        >Last</a>--%>
+                                        <%--                                    </li>--%>
+                                </ul>
+                            </nav>
                         </c:when>
                         <c:otherwise>
                             <fmt:message bundle="${jspMessages}"
