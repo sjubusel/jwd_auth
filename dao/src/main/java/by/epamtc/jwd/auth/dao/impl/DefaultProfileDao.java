@@ -39,7 +39,7 @@ public class DefaultProfileDao implements ProfileDao {
             statement.setInt(1, authUser.getUserId());
             rSet = statement.executeQuery();
             if (rSet.next()) {
-                patientInfo = profileRelatedCompiler.compilePatientInfo(rSet);
+                patientInfo = profileRelatedCompiler.compilePatientInfo(rSet, 1);
             }
         } catch (SQLException e) {
             throw new DaoException("An error while fetching data from DB " +

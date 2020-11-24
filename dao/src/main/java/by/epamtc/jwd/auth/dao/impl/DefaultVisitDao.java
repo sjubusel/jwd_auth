@@ -1005,7 +1005,7 @@ public class DefaultVisitDao implements VisitDao {
                 reference.setReferenceDatetime(referenceDatetime);
 
                 AdmissionDepartmentVisit visitInfo = visitRelatedCompiler
-                        .compileShortenedVisit(resultSet, 4);
+                        .compileShortenedVisit(resultSet, 3);
                 reference.setVisitInfo(visitInfo);
 
                 references.add(reference);

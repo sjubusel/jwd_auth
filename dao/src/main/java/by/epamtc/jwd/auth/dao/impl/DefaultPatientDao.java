@@ -39,7 +39,7 @@ public class DefaultPatientDao implements PatientDao {
             resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 visit = visitRelatedEntitiesCompiler.compileShortenedVisit(
-                        resultSet);
+                        resultSet, 1);
                 visit = visitRelatedEntitiesCompiler.compileFullVisit(visit,
                         resultSet);
             }

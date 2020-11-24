@@ -5,7 +5,6 @@ import by.epamtc.jwd.auth.model.constant.AppAttribute;
 import by.epamtc.jwd.auth.model.constant.AppParameter;
 import by.epamtc.jwd.auth.model.constant.CommandPath;
 import by.epamtc.jwd.auth.model.visit_info.RefusalReference;
-import by.epamtc.jwd.auth.service.ProfileService;
 import by.epamtc.jwd.auth.service.ServiceFactory;
 import by.epamtc.jwd.auth.service.VisitService;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
@@ -25,8 +24,6 @@ public class GoToAllRefusalReferencesCommand implements Command {
 
     private ServiceFactory serviceFactory = ServiceFactory.getInstance();
     private VisitService visitService = serviceFactory.getVisitService();
-    private ProfileService profileService = serviceFactory.getProfileService();
-
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
