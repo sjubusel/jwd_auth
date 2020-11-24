@@ -7,6 +7,7 @@ import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
 import by.epamtc.jwd.auth.dao.util.ProfileRelatedEntitiesCompiler;
 import by.epamtc.jwd.auth.dao.util.VisitRelatedEntitiesCompiler;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
+import by.epamtc.jwd.auth.model.constant.AppConstant;
 import by.epamtc.jwd.auth.model.constant.SqlStatement;
 import by.epamtc.jwd.auth.model.med_info.DepartmentOrigin;
 import by.epamtc.jwd.auth.model.med_info.Diagnosis;
@@ -978,11 +979,12 @@ public class DefaultVisitDao implements VisitDao {
     }
 
     @Override
-    public List<RefusalReference> fetchRefusalReferences(AuthUser user)
-            throws DaoException {
+    public List<RefusalReference> fetchRefusalReferences(String pageNumber,
+            AuthUser user) throws DaoException {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
+        int pageId = Integer.parseInt(pageNumber) - 1;
         List<RefusalReference> references = new ArrayList<>();
 
         try {
@@ -990,6 +992,8 @@ public class DefaultVisitDao implements VisitDao {
             statement = connection.prepareStatement(SqlStatement
                     .SELECT_REFUSAL_REFERENCES_BY_DOCTOR_ID);
             statement.setInt(1, user.getStaffId());
+            statement.setInt(2, Math.max(0, pageId) * AppConstant
+                    .REFERENCES_PER_PAGE);
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
                 RefusalReference reference = new RefusalReference();

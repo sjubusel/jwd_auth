@@ -41,7 +41,7 @@ public class GoToAllRefusalReferencesCommand implements Command {
         List<RefusalReference> references = null;
 
         try {
-            references = visitService.fetchRefusalReferences(user);
+            references = visitService.fetchRefusalReferences(pageNumber, user);
         } catch (ServiceException e) {
             logger.error("An error while fetching refusal references. " +
                     "User={}", user, e);

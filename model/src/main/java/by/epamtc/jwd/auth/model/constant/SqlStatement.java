@@ -959,9 +959,9 @@ public final class SqlStatement {
             "refusal_recommendations)\n" +
             "VALUES (CURRENT_TIMESTAMP, ?, ?, ?);";
     public static final String SELECT_REFUSAL_REFERENCES_BY_DOCTOR_ID
-            = "SELECT rr.refusal_reference_id, #1\n" +
-            "       rr.reference_datetime,   #2\n" +
-            "       \n" +
+            = "SELECT rr.refusal_reference_id,\n" +
+            "       rr.reference_datetime,\n" +
+            "\n" +
             "       v2ad.visit_id,\n" +
             "       v2ad.visit_datetime,\n" +
             "       p.last_name,\n" +
@@ -972,9 +972,12 @@ public final class SqlStatement {
             "FROM hospital.refusal_references rr\n" +
             "         JOIN hospital.visits_to_admission_department v2ad " +
             "ON rr.visit_id = v2ad.visit_id\n" +
-            "         JOIN hospital.persons p ON v2ad.person_id = p.person_id\n" +
+            "         JOIN hospital.persons p " +
+            "ON v2ad.person_id = p.person_id\n" +
             "\n" +
-            "WHERE rr.doctor_id = ?;";
+            "WHERE rr.doctor_id = ?\n" +
+            "ORDER BY rr.reference_datetime DESC\n" +
+            "LIMIT 10 OFFSET ?;";
 
     private SqlStatement() {
     }

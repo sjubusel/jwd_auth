@@ -424,11 +424,12 @@ public class DefaultVisitService implements VisitService {
     }
 
     @Override
-    public List<RefusalReference> fetchRefusalReferences(AuthUser user)
-            throws ServiceException {
-        if (validator.isAuthUserHasRightsToViewMedicineDocuments(user)) {
+    public List<RefusalReference> fetchRefusalReferences(String pageNumber,
+            AuthUser user) throws ServiceException {
+        if (validator.isAuthUserHasRightsToViewMedicineDocuments(user)
+                && validator.isStringIdCorrect(pageNumber)) {
             try {
-                return visitDao.fetchRefusalReferences(user);
+                return visitDao.fetchRefusalReferences(pageNumber, user);
             } catch (DaoException e) {
                 throw new ServiceException(e);
             }

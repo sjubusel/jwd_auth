@@ -96,6 +96,6 @@ public interface VisitDao {
     int formRefusalReference(String refusalRecommendations, String visitId,
             AuthUser user) throws DaoException;
 
-    List<RefusalReference> fetchRefusalReferences(AuthUser user)
+    List<RefusalReference> fetchRefusalReferences(String pageNumber, AuthUser user)
             throws DaoException;
 }

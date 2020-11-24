@@ -97,6 +97,6 @@ public interface VisitService {
     int formRefusalReference(String refusalRecommendations, String visitId,
             AuthUser user) throws ServiceException;
 
-    List<RefusalReference> fetchRefusalReferences(AuthUser user)
+    List<RefusalReference> fetchRefusalReferences(String pageNumber, AuthUser user)
             throws ServiceException;
 }
