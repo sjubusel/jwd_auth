@@ -33,17 +33,19 @@
     <script>
         let currentPagePath = "${pageContext.request.contextPath}/profile?command=go-to-all-refusal-references&page=";
         let pageNumber = parseInt(${requestScope.page});
-        let pageQuantity = function () {
+        let pagesAmount = 1;
+
+        function fetchPageQuantity() {
             return $.ajax({
                 url: "ajax?command=fetch-page-quantity-in-refusal-references-jsp",
                 method: "post",
                 data: {},
                 datatype: "json",
                 success: function (data) {
-                    return parseInt(data);
+                    pagesAmount = parseInt(data);
                 }
             });
-        };
+        }
 
         function createPageLink(isLiActive, isLiDisabled, pageNumber, aInnerHtml) {
             let liElement = document.createElement("li");
@@ -66,7 +68,7 @@
 
         $(document).ready(function () {
                 let paginationContainer = document.getElementById("pagination");
-                let pagesAmount = pageQuantity();
+                fetchPageQuantity();
                 if (pagesAmount === 0) {
                     return;
                 }
@@ -80,7 +82,7 @@
                         paginationContainer.appendChild(pageLink);
                     }
                 } else {
-                    let liElement = createPageLink(false, false, 1, 1);
+                    let liElement = createPageLink(true, false, 1, 1);
                     paginationContainer.appendChild(liElement);
                 }
 
