@@ -124,6 +124,7 @@ public final class AppParameter {
     public static final String REFUSAL_RECOMMENDATIONS
             = "refusalRecommendationsInput";
     public static final String PAGE_NUMBER = "page";
+    public static final String REFUSAL_REFERENCE_ID = "hiddenReferenceIdInput";
 
     private AppParameter() {
     }

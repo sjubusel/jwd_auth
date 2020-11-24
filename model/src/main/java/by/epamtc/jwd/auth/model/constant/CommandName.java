@@ -125,6 +125,8 @@ public final class CommandName {
             = "FORM-REFUSAL-REFERENCE";
     public static final String SUBSTAFF_GO_TO_ALL_REFUSAL_REFERENCES
             = "GO-TO-ALL-REFUSAL-REFERENCES";
+    public static final String GO_TO_REFUSAL_REFERENCE_IN_DETAIL
+            = "GO-TO-REFUSAL-REFERENCE-IN-DETAIL";
 
     private CommandName() {
     }

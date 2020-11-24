@@ -204,7 +204,7 @@
                                 <form action="${pageContext.request.contextPath}/profile"
                                       method="post">
                                     <input type="hidden" name="command"
-                                           value="<%--TODO--%>">
+                                           value="go-to-refusal-reference-in-detail">
                                     <input type="hidden"
                                            name="hiddenReferenceIdInput"
                                            value="${reference.refusalReferenceId}">

@@ -618,3 +618,6 @@ allRefusalReferences.patientInfo=Пациент
 allRefusalReferences.visitDescription=Описание обращения
 allRefusalReferences.actions=Действие
 allRefusalReferences.details=Подробно
+
+staff.refusalReferenceInDetail=Медицинская справка о состоянии здоровья
+refusalReferenceInDetail.heading=Медицинская справка о состоянии здоровья

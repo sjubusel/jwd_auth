@@ -618,3 +618,6 @@ allRefusalReferences.patientInfo=Patient
 allRefusalReferences.visitDescription=Visit description
 allRefusalReferences.actions=Action
 allRefusalReferences.details=In detail
+
+staff.refusalReferenceInDetail=Medical reference about health state
+refusalReferenceInDetail.heading=Medical reference about health state

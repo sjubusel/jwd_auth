@@ -332,6 +332,8 @@ public final class CommandPath {
             = "/WEB-INF/jsp/admission_doctor/refusalsOnControl.jsp";
     public static final String REFUSAL_REFERENCES_JSP
             = "/WEB-INF/jsp/admission_doctor/refusalReferences.jsp";
+    public static final String REFUSAL_REFERENCE_IN_DETAIL_JSP
+            = "/WEB-INF/jsp/admission_doctor/refusalReferenceInDetail.jsp";
 
     private CommandPath() {
     }
