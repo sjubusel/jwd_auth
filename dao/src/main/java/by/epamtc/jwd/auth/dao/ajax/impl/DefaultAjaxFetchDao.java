@@ -16,6 +16,7 @@ import by.epamtc.jwd.auth.model.ajax.AjaxRegion;
 import by.epamtc.jwd.auth.model.ajax.AjaxRoad;
 import by.epamtc.jwd.auth.model.ajax.AjaxSettlement;
 import by.epamtc.jwd.auth.model.ajax.AjaxSqlStatement;
+import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
 
 import java.sql.Connection;
@@ -410,5 +411,47 @@ public class DefaultAjaxFetchDao implements AjaxFetchDao {
         }
 
         return medicines;
+    }
+
+    @Override
+    public int fetchAmountOfPagesOfReferences(AuthUser user) throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet rSet = null;
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(AjaxSqlStatement
+                    .SELECT_NUMBER_OF_REFUFAL_REFERENCES_OF_DOCTOR);
+            statement.setInt(1, user.getStaffId());
+            rSet = statement.executeQuery();
+            if (rSet.next()) {
+                int referencesAmount = rSet.getInt(1);
+                if (referencesAmount == 0) {
+                    return 0;
+                }
+
+                int quotient = referencesAmount / AppConstant.REFERENCES_PER_PAGE;
+                if (quotient >= 1) {
+                    int remainder = referencesAmount % AppConstant
+                            .REFERENCES_PER_PAGE;
+                    return (remainder > 0) ? ++quotient
+                                           : quotient;
+                } else {
+                    return 1;
+                }
+            }
+
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection from" +
+                    "the connection pool", e);
+        } catch (SQLException e) {
+            throw new DaoException("An error while ajax fetching " +
+                    "amount of pages of references", e);
+        } finally {
+            pool.closeConnection(conn, statement, rSet);
+        }
+
+        return 0;
     }
 }

@@ -3,7 +3,19 @@ package by.epamtc.jwd.auth.service.ajax.impl;
 import by.epamtc.jwd.auth.dao.ajax.AjaxDaoFactory;
 import by.epamtc.jwd.auth.dao.ajax.AjaxFetchDao;
 import by.epamtc.jwd.auth.dao.exception.DaoException;
-import by.epamtc.jwd.auth.model.ajax.*;
+import by.epamtc.jwd.auth.model.ajax.AjaxArea;
+import by.epamtc.jwd.auth.model.ajax.AjaxCountry;
+import by.epamtc.jwd.auth.model.ajax.AjaxDisease;
+import by.epamtc.jwd.auth.model.ajax.AjaxFoodType;
+import by.epamtc.jwd.auth.model.ajax.AjaxHazardousDisease;
+import by.epamtc.jwd.auth.model.ajax.AjaxMedicine;
+import by.epamtc.jwd.auth.model.ajax.AjaxMedicineType;
+import by.epamtc.jwd.auth.model.ajax.AjaxPerson;
+import by.epamtc.jwd.auth.model.ajax.AjaxRegion;
+import by.epamtc.jwd.auth.model.ajax.AjaxRoad;
+import by.epamtc.jwd.auth.model.ajax.AjaxSettlement;
+import by.epamtc.jwd.auth.model.auth_info.AuthUser;
+import by.epamtc.jwd.auth.model.constant.AppConstant;
 import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
 import by.epamtc.jwd.auth.service.ajax.AjaxFetchService;
 import by.epamtc.jwd.auth.service.ajax.validation.AjaxValidator;
@@ -162,5 +174,19 @@ public class DefaultAjaxFetchService implements AjaxFetchService {
             }
         }
         return null;
+    }
+
+    @Override
+    public int fetchAmountOfPagesOfReferences(AuthUser user)
+            throws ServiceException {
+        if (user.getRole().getRoleId() >= AppConstant
+                .STAFF_WHICH_CAN_VIEW_MEDICINE_DOCUMENTS) {
+            try {
+                return ajaxFetchDao.fetchAmountOfPagesOfReferences(user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return 0;
     }
 }

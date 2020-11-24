@@ -31,8 +31,8 @@
     <script type="text/javascript"
             src="${pageContext.request.contextPath}/js/jquery-3.5.1.js"></script>
     <script>
-        let currentPagePath = "${pageContext.request.contextPath}/profile?command=go-to-all-refusal-references&page";
-        let pageNumber = parseInt(${pageContext.page});
+        let currentPagePath = "${pageContext.request.contextPath}/profile?command=go-to-all-refusal-references&page=";
+        let pageNumber = parseInt(${requestScope.page});
         let pageQuantity = function () {
             return $.ajax({
                 url: "ajax?command=fetch-page-quantity-in-refusal-references-jsp",

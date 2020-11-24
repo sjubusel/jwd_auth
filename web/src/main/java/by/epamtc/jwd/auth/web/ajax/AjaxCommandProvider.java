@@ -8,6 +8,7 @@ import by.epamtc.jwd.auth.web.ajax.impl.FetchExtremelyHazardousDiseasesInExtreme
 import by.epamtc.jwd.auth.web.ajax.impl.FetchFoodAllergyInAllergicReactionsJspAjaxCommand;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchMedicineAllergyInAllergicReactionsJspAjaxCommand;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchMedicinesInEstablishMedicinePrescriptionAjaxCommand;
+import by.epamtc.jwd.auth.web.ajax.impl.FetchPageQuantityInRefusalReferencesJspAjaxCommand;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchPersonInMedicalHistoryPermissionJspAjaxCommand;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchPersonInRegisterVisitAjaxCommand;
 import by.epamtc.jwd.auth.web.ajax.impl.FetchRegionInChangePatientInfoJspAjaxCommand;
@@ -50,6 +51,8 @@ public class AjaxCommandProvider {
                 new FetchDiseasesInEstablishDiagnosisAjaxCommand());
         repository.put(AjaxCommandName.FETCH_MEDICINES_IN_ESTABLISH_MEDICINE_PRESCRIPTION_JSP,
                 new FetchMedicinesInEstablishMedicinePrescriptionAjaxCommand());
+        repository.put(AjaxCommandName.FETCH_PAGE_QUANTITY_IN_REFUSAL_REFERENCES_JSP,
+                new FetchPageQuantityInRefusalReferencesJspAjaxCommand());
 
     }
 

@@ -59,6 +59,10 @@ public final class AjaxSqlStatement {
             "         JOIN hospital.dosage_form_types dft ON m.dosage_form_type_id = dft.dosage_form_type_id\n" +
             "         JOIN hospital.medicine_components mc ON m.main_medicine_component_id = mc.medicine_component_id\n" +
             "WHERE m.name LIKE CONCAT('%', ?, '%');";
+    public static final String SELECT_NUMBER_OF_REFUFAL_REFERENCES_OF_DOCTOR
+            = "SELECT COUNT(rr.refusal_reference_id)\n" +
+            "FROM hospital.refusal_references rr\n" +
+            "WHERE rr.doctor_id = ?;";
 
     private AjaxSqlStatement() {
     }

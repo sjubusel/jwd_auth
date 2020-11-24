@@ -28,6 +28,8 @@ public final class AjaxCommandName {
             = "FETCH-DISEASES-IN-ESTABLISH-DIAGNOSIS-JSP";
     public static final String FETCH_MEDICINES_IN_ESTABLISH_MEDICINE_PRESCRIPTION_JSP
             = "FETCH-MEDICINES-IN-ESTABLISH-MEDICINE_PRESCRIPTION-JSP";
+    public static final String FETCH_PAGE_QUANTITY_IN_REFUSAL_REFERENCES_JSP
+            = "FETCH-PAGE-QUANTITY-IN-REFUSAL-REFERENCES-JSP";
 
 
     private AjaxCommandName() {
