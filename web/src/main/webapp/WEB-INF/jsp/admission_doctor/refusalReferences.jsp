@@ -33,21 +33,22 @@
     <script>
         let currentPagePath = "${pageContext.request.contextPath}/profile?command=go-to-all-refusal-references&page=";
         let pageNumber = parseInt(${requestScope.page});
-        let pagesAmount = 1;
+        window.pagesAmount = parseInt(fetchPageQuantity().responseText);
 
         function fetchPageQuantity() {
             return $.ajax({
                 url: "ajax?command=fetch-page-quantity-in-refusal-references-jsp",
                 method: "post",
+                async: false,
                 data: {},
                 datatype: "json",
                 success: function (data) {
-                    pagesAmount = parseInt(data);
+                    return parseInt(data);
                 }
             });
         }
 
-        function createPageLink(isLiActive, isLiDisabled, pageNumber, aInnerHtml) {
+        function createPageLink(isLiActive, isLiDisabled, page, aInnerHtml) {
             let liElement = document.createElement("li");
             liElement.className = "page-item";
             if (isLiActive === true) {
@@ -59,7 +60,7 @@
 
             let aElement = document.createElement("a");
             aElement.className = "page-link";
-            aElement.href = currentPagePath + pageNumber;
+            aElement.href = currentPagePath + page;
             aElement.innerHTML = aInnerHtml;
             liElement.appendChild(aElement);
 
@@ -68,11 +69,10 @@
 
         $(document).ready(function () {
                 let paginationContainer = document.getElementById("pagination");
-                fetchPageQuantity();
                 if (pagesAmount === 0) {
                     return;
                 }
-                if (pageNumber < pagesAmount) {
+                if (pageNumber <= pagesAmount) {
                     for (let i = 1; i <= pagesAmount; i++) {
                         let isActive = false;
                         if (i === pageNumber) {
@@ -90,13 +90,13 @@
                 if ((pageNumber - 1) < 1) {
                     isPreviousPageDisabled = true;
                 }
-                paginationContainer.prepend(createPageLink(false, isPreviousPageDisabled, 1, "Previous"));
+                paginationContainer.prepend(createPageLink(false, isPreviousPageDisabled, pageNumber - 1, "Previous"));
 
                 let isNextPageDisabled = false;
                 if ((pageNumber + 1) > pagesAmount) {
                     isNextPageDisabled = true;
                 }
-                paginationContainer.appendChild(createPageLink(false, isNextPageDisabled, pagesAmount, "Next"));
+                paginationContainer.appendChild(createPageLink(false, isNextPageDisabled, pageNumber + 1, "Next"));
 
                 paginationContainer.prepend(createPageLink(false, false, 1, "First"));
                 paginationContainer.appendChild(createPageLink(false, false, pagesAmount, "Last"))
