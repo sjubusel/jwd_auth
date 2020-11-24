@@ -72,14 +72,40 @@
                 if (pagesAmount === 0) {
                     return;
                 }
+
                 if (pageNumber <= pagesAmount) {
-                    for (let i = 1; i <= pagesAmount; i++) {
-                        let isActive = false;
-                        if (i === pageNumber) {
-                            isActive = true;
+                    let minIndex;
+                    let maxIndex;
+
+                    if ((pageNumber - 5 >= 0) && pageNumber + 5 <= window.pagesAmount) {
+                        minIndex = pageNumber - 5 + 1;
+                        maxIndex = pageNumber + 5;
+                    } else if (pageNumber - 5 >= 0) {
+                        maxIndex = window.pagesAmount;
+                        if (maxIndex - 10 >= 0) {
+                            minIndex = maxIndex - 10 + 1;
+                        } else {
+                            minIndex = 1;
                         }
-                        let pageLink = createPageLink(isActive, false, i, i);
-                        paginationContainer.appendChild(pageLink);
+                    } else if (pageNumber + 5 <= 10) {
+                        minIndex = 1;
+                        if (minIndex + 10 - 1 <= window.pagesAmount) {
+                            maxIndex = minIndex + 10 - 1;
+                        } else {
+                            maxIndex = window.pagesAmount;
+                        }
+                    } else {
+                        minIndex = 1;
+                        maxIndex = window.pagesAmount;
+                    }
+
+                    for (let i = minIndex; i < pageNumber; i++) {
+                        paginationContainer.appendChild(createPageLink(false, false, i, i));
+                    }
+                    let currentPageLink = createPageLink(true, false, pageNumber, pageNumber);
+                    paginationContainer.appendChild(currentPageLink);
+                    for (let i = pageNumber + 1; i <= maxIndex; i++) {
+                        paginationContainer.appendChild(createPageLink(false, false, i, i));
                     }
                 } else {
                     let liElement = createPageLink(true, false, 1, 1);
