@@ -1028,20 +1028,22 @@ public class DefaultVisitDao implements VisitDao {
         return references;
     }
 
+    @SuppressWarnings("ConstantConditions")
     @Override
     public RefusalReference fetchDetailedRefusalReference(String referenceId,
             AuthUser user) throws DaoException {
         Connection connection = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
+        PreparedStatement[] statements = new PreparedStatement[5];
+        List<ResultSet> resultSets = new ArrayList<>();
         RefusalReference reference = null;
 
         try {
             connection = pool.takeConnection();
-            statement = connection.prepareStatement(SqlStatement
-                    .SELECT_REFUSAL_REFERENCE_BY_ID);
-            statement.setInt(1, Integer.parseInt(referenceId));
-            resultSet = statement.executeQuery();
+            prepareStatementsToFetchDetailedReferences(connection, statements);
+
+            statements[0].setInt(1, Integer.parseInt(referenceId));
+            ResultSet resultSet = statements[0].executeQuery();
+            resultSets.add(resultSet);
             while (resultSet.next()) {
                 int refusalReferenceId = resultSet.getInt(1);
 
@@ -1060,9 +1062,9 @@ public class DefaultVisitDao implements VisitDao {
                         .compileShortenedVisit(resultSet, 51);
                 visitRelatedCompiler.compileFullVisit(visit, resultSet, 57);
 
-                PreparedStatement statementDiagnoses = connection.prepareStatement(SqlStatement.SELECT_DIAGNOSIS_BY_VISIT_ID);
-                statementDiagnoses.setInt(1, visit.getVisitId());
-                ResultSet resultSetDiagnosis = statementDiagnoses.executeQuery();
+                statements[1].setInt(1, visit.getVisitId());
+                ResultSet resultSetDiagnosis = statements[1].executeQuery();
+                resultSets.add(resultSetDiagnosis);
                 List<Diagnosis> diagnoses = new ArrayList<>();
                 while (resultSetDiagnosis.next()) {
                     Diagnosis diagnosis = visitRelatedCompiler.compileDiagnosis(
@@ -1070,9 +1072,9 @@ public class DefaultVisitDao implements VisitDao {
                     diagnoses.add(diagnosis);
                 }
 
-                PreparedStatement statementMedPrescriptions = connection.prepareStatement(SqlStatement.SELECT_MEDICINE_PRESCRIPTIONS_BY_VISIT);
-                statementMedPrescriptions.setInt(1, visit.getVisitId());
-                ResultSet resultMedPrescriptions = statementMedPrescriptions.executeQuery();
+                statements[2].setInt(1, visit.getVisitId());
+                ResultSet resultMedPrescriptions = statements[2].executeQuery();
+                resultSets.add(resultMedPrescriptions);
                 List<MedicinePrescription> medPrescriptions = new ArrayList<>();
                 while (resultMedPrescriptions.next()) {
                     MedicinePrescription prescription = visitRelatedCompiler
@@ -1080,9 +1082,9 @@ public class DefaultVisitDao implements VisitDao {
                     medPrescriptions.add(prescription);
                 }
 
-                PreparedStatement statementPrescriptions = connection.prepareStatement(SqlStatement.SELECT_NON_MEDICINE_PRESCRIPTIONS_BY_VISIT);
-                statementPrescriptions.setInt(1, visit.getVisitId());
-                ResultSet resultPrescriptions = statementPrescriptions.executeQuery();
+                statements[3].setInt(1, visit.getVisitId());
+                ResultSet resultPrescriptions = statements[3].executeQuery();
+                resultSets.add(resultPrescriptions);
                 List<Prescription> prescriptions = new ArrayList<>();
                 while (resultPrescriptions.next()) {
                     Prescription prescription = visitRelatedCompiler
@@ -1090,17 +1092,23 @@ public class DefaultVisitDao implements VisitDao {
                     prescriptions.add(prescription);
                 }
 
-                PreparedStatement statementRefusalMedicineRecommendations = connection.prepareStatement(SqlStatement.SELECT_REFUSAL_MEDICINE_RECOMMENDATIONS);
-                statementRefusalMedicineRecommendations.setInt(1, visit.getVisitId());
-                ResultSet resultRefusalMedicineRecommendations = statementRefusalMedicineRecommendations.executeQuery();
-                List<RefusalMedicineRecommendation> refusalMedicineRecommendations = new ArrayList<>();
+                statements[4].setInt(1, visit.getVisitId());
+                ResultSet resultRefusalMedicineRecommendations = statements[4]
+                        .executeQuery();
+                resultSets.add(resultRefusalMedicineRecommendations);
+                List<RefusalMedicineRecommendation> refusalMedicineRecommendations
+                        = new ArrayList<>();
                 while (resultRefusalMedicineRecommendations.next()) {
                     RefusalMedicineRecommendation recom = visitRelatedCompiler
-                            .compileRefusalMedicineRecommendation(resultRefusalMedicineRecommendations);
+                            .compileRefusalMedicineRecommendation(
+                                    resultRefusalMedicineRecommendations);
                     refusalMedicineRecommendations.add(recom);
                 }
 
-                reference = new RefusalReference(refusalReferenceId, referenceDatetime, refusalRecommendations, patientInfo, visit, diagnoses, medPrescriptions, prescriptions, refusalMedicineRecommendations);
+                reference = new RefusalReference(refusalReferenceId,
+                        referenceDatetime, refusalRecommendations, patientInfo,
+                        visit, diagnoses, medPrescriptions, prescriptions,
+                        refusalMedicineRecommendations);
             }
 
         } catch (SQLException e) {
@@ -1110,9 +1118,23 @@ public class DefaultVisitDao implements VisitDao {
             throw new DaoException("An error while taking a connection " +
                     "in order to fetch a refusal reference in detail.", e);
         } finally {
-            pool.closeConnection(connection, statement, resultSet);
+            pool.closeConnection(connection, statements, resultSets);
         }
 
         return reference;
+    }
+
+    private void prepareStatementsToFetchDetailedReferences(Connection connection,
+            PreparedStatement[] statements) throws SQLException {
+        statements[0] = connection.prepareStatement(SqlStatement
+                .SELECT_REFUSAL_REFERENCE_BY_ID);
+        statements[1] = connection.prepareStatement(SqlStatement
+                .SELECT_DIAGNOSIS_BY_VISIT_ID);
+        statements[2] = connection.prepareStatement(SqlStatement
+                .SELECT_MEDICINE_PRESCRIPTIONS_BY_VISIT);
+        statements[3] = connection.prepareStatement(SqlStatement
+                .SELECT_NON_MEDICINE_PRESCRIPTIONS_BY_VISIT);
+        statements[4] = connection.prepareStatement(SqlStatement
+                .SELECT_REFUSAL_MEDICINE_RECOMMENDATIONS);
     }
 }
