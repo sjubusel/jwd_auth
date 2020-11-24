@@ -621,3 +621,17 @@ allRefusalReferences.details=In detail
 
 staff.refusalReferenceInDetail=Medical reference about health state
 refusalReferenceInDetail.heading=Medical reference about health state
+
+refusalReferenceInDetail.recepient=Given to
+refusalReferenceInDetail.birthday=Birth date
+refusalReferenceInDetail.gender=Gender
+refusalReferenceInDetail.homeAddress=Place of residence
+refusalReferenceInDetail.additionalMedicalInformation=Additional medical information
+refusalReferenceInDetail.visitDateTime=Date and time of visit to the admitting department
+refusalReferenceInDetail.referenceDatetime=Date and time of departure from the admitting department
+refusalReferenceInDetail.medicalExamination=Medical examinations
+refusalReferenceInDetail.performedAid=Performed medical aid
+refusalReferenceInDetail.recommendation=Recommendations
+refusalReferenceInDetail.recommendedMedicines=medicines
+refusalReferenceInDetail.otherRecommendations=other recommendations
+refusalReferenceInDetail.conclusion=Conclusion

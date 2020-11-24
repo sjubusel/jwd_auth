@@ -621,3 +621,17 @@ allRefusalReferences.details=Подробно
 
 staff.refusalReferenceInDetail=Медицинская справка о состоянии здоровья
 refusalReferenceInDetail.heading=Медицинская справка о состоянии здоровья
+
+refusalReferenceInDetail.recepient=Выдана
+refusalReferenceInDetail.birthday=Дата рождения
+refusalReferenceInDetail.gender=Пол
+refusalReferenceInDetail.homeAddress=Место проживания
+refusalReferenceInDetail.additionalMedicalInformation=Дополнительная медицинская информация
+refusalReferenceInDetail.visitDateTime=Дата и время обращения в приёмное отделение
+refusalReferenceInDetail.referenceDatetime=Дата и время убытия из приёмного отделения
+refusalReferenceInDetail.medicalExamination=Обследования
+refusalReferenceInDetail.performedAid=Оказанная помощь
+refusalReferenceInDetail.recommendation=Рекомендации
+refusalReferenceInDetail.recommendedMedicines=лекарственные средства
+refusalReferenceInDetail.otherRecommendations=иные рекомендации
+refusalReferenceInDetail.conclusion=Заключение
