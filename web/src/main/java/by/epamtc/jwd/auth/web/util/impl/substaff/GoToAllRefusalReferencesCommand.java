@@ -54,7 +54,7 @@ public class GoToAllRefusalReferencesCommand implements Command {
                 req.setAttribute(AppAttribute.REQUEST_ERROR, AppAttribute
                         .REQUEST_ERROR_VALUE_VAL);
             }
-        } else {
+        } else if (references.size() > 0) {
             req.setAttribute(AppAttribute.REQUEST_REFUSAL_REFERENCES,
                     references);
         }
