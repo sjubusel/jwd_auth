@@ -1026,4 +1026,11 @@ public class DefaultVisitDao implements VisitDao {
 
         return references;
     }
+
+    @Override
+    public RefusalReference fetchDetailedRefusalReference(String referenceId,
+            AuthUser user) throws DaoException {
+
+        return null;
+    }
 }

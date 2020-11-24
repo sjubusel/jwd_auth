@@ -98,4 +98,7 @@ public interface VisitDao {
 
     List<RefusalReference> fetchRefusalReferences(String pageNumber, AuthUser user)
             throws DaoException;
+
+    RefusalReference fetchDetailedRefusalReference(String referenceId,
+            AuthUser user) throws DaoException;
 }

@@ -436,4 +436,18 @@ public class DefaultVisitService implements VisitService {
         }
         return null;
     }
+
+    @Override
+    public RefusalReference fetchDetailedRefusalReference(String referenceId,
+            AuthUser user) throws ServiceException {
+        if (validator.isAuthUserHasRightsToViewMedicineDocuments(user)
+                && validator.isStringIdCorrect(referenceId)) {
+            try {
+                return visitDao.fetchDetailedRefusalReference(referenceId, user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return null;
+    }
 }
