@@ -202,7 +202,7 @@
                             <c:forEach var="reference"
                                        items="${requestScope.refusalReferences}">
                                 <form action="${pageContext.request.contextPath}/profile"
-                                      method="post">
+                                      method="get">
                                     <input type="hidden" name="command"
                                            value="go-to-refusal-reference-in-detail">
                                     <input type="hidden"

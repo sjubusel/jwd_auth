@@ -833,7 +833,7 @@ public class DefaultVisitDao implements VisitDao {
                     .SELECT_REFUSAL_MEDICINE_RECOMMENDATIONS);
             statement.setInt(1, Integer.parseInt(visitId));
             resultSet = statement.executeQuery();
-            if (resultSet.next()) {
+            while (resultSet.next()) {
                 RefusalMedicineRecommendation recom = visitRelatedCompiler
                         .compileRefusalMedicineRecommendation(resultSet);
                 recommendations.add(recom);
@@ -1043,7 +1043,6 @@ public class DefaultVisitDao implements VisitDao {
             statement.setInt(1, Integer.parseInt(referenceId));
             resultSet = statement.executeQuery();
             while (resultSet.next()) {
-                reference = new RefusalReference();
                 int refusalReferenceId = resultSet.getInt(1);
 
                 LocalDateTime referenceDatetime = null;
@@ -1061,10 +1060,47 @@ public class DefaultVisitDao implements VisitDao {
                         .compileShortenedVisit(resultSet, 51);
                 visitRelatedCompiler.compileFullVisit(visit, resultSet, 57);
 
-                List<Diagnosis> diagnoses;
-                List<MedicinePrescription> medPrescriptions;
-                List<Prescription> prescriptions;
-                List<RefusalMedicineRecommendation> refusalMedicineRecommendations;
+                PreparedStatement statementDiagnoses = connection.prepareStatement(SqlStatement.SELECT_DIAGNOSIS_BY_VISIT_ID);
+                statementDiagnoses.setInt(1, visit.getVisitId());
+                ResultSet resultSetDiagnosis = statementDiagnoses.executeQuery();
+                List<Diagnosis> diagnoses = new ArrayList<>();
+                while (resultSetDiagnosis.next()) {
+                    Diagnosis diagnosis = visitRelatedCompiler.compileDiagnosis(
+                            resultSetDiagnosis, DepartmentOrigin.ADMISSION_DEPARTMENT);
+                    diagnoses.add(diagnosis);
+                }
+
+                PreparedStatement statementMedPrescriptions = connection.prepareStatement(SqlStatement.SELECT_MEDICINE_PRESCRIPTIONS_BY_VISIT);
+                statementMedPrescriptions.setInt(1, visit.getVisitId());
+                ResultSet resultMedPrescriptions = statementMedPrescriptions.executeQuery();
+                List<MedicinePrescription> medPrescriptions = new ArrayList<>();
+                while (resultMedPrescriptions.next()) {
+                    MedicinePrescription prescription = visitRelatedCompiler
+                            .compileMedicinePrescription(resultMedPrescriptions);
+                    medPrescriptions.add(prescription);
+                }
+
+                PreparedStatement statementPrescriptions = connection.prepareStatement(SqlStatement.SELECT_NON_MEDICINE_PRESCRIPTIONS_BY_VISIT);
+                statementPrescriptions.setInt(1, visit.getVisitId());
+                ResultSet resultPrescriptions = statementPrescriptions.executeQuery();
+                List<Prescription> prescriptions = new ArrayList<>();
+                while (resultPrescriptions.next()) {
+                    Prescription prescription = visitRelatedCompiler
+                            .compileNonMedicinePrescription(resultPrescriptions);
+                    prescriptions.add(prescription);
+                }
+
+                PreparedStatement statementRefusalMedicineRecommendations = connection.prepareStatement(SqlStatement.SELECT_REFUSAL_MEDICINE_RECOMMENDATIONS);
+                statementRefusalMedicineRecommendations.setInt(1, visit.getVisitId());
+                ResultSet resultRefusalMedicineRecommendations = statementRefusalMedicineRecommendations.executeQuery();
+                List<RefusalMedicineRecommendation> refusalMedicineRecommendations = new ArrayList<>();
+                while (resultRefusalMedicineRecommendations.next()) {
+                    RefusalMedicineRecommendation recom = visitRelatedCompiler
+                            .compileRefusalMedicineRecommendation(resultRefusalMedicineRecommendations);
+                    refusalMedicineRecommendations.add(recom);
+                }
+
+                reference = new RefusalReference(refusalReferenceId, referenceDatetime, refusalRecommendations, patientInfo, visit, diagnoses, medPrescriptions, prescriptions, refusalMedicineRecommendations);
             }
 
         } catch (SQLException e) {
