@@ -495,19 +495,60 @@
                         <fmt:message bundle="${jspMessages}"
                                      key="refusalReferenceInDetail.recommendation"/>
                     </h3>
-                    <h6>
-                        <fmt:message bundle="${jspMessages}"
-                                     key="refusalReferenceInDetail.recommendedMedicines"/>
-                    </h6>
-                    <%-- TODO refusal medicine prescriptions--%>
                     <div class="row">
+                        <div class="col col-4">
+                            <h6>
+                                <fmt:message bundle="${jspMessages}"
+                                             key="refusalReferenceInDetail.recommendedMedicines"/>
+                            </h6>
+                        </div>
                         <div class="col">
+                            <c:choose>
+                                <c:when test="${requestScope.refusalReference.refusalMedicineRecommendations.size() > 0}">
+                                    <div class="row d-flex mb-1 border">
+                                        <div class="col">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="refuseToHospitalize.recommendationDateTime"/>
+                                        </div>
+                                        <div class="col">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="refuseToHospitalize.medicineInfo"/>
+                                        </div>
+                                        <div class="col">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="refuseToHospitalize.intakeInstructions"/>
+                                        </div>
+                                    </div>
+                                    <c:forEach var="recommendation"
+                                               items="${requestScope.refusalReference.refusalMedicineRecommendations}">
+                                        <div class="row d-flex mb-1 border align-items-center">
+                                            <div class="col">
+                                                <c:out value="${recommendation.recommendationDateTime}"/>
+                                            </div>
+                                            <div class="col">
+                                                <c:out value="${recommendation.medicineInfo}"/>
+                                            </div>
+                                            <div class="col">
+                                                <c:out value="${recommendation.intakeInstructions}"/>
+                                            </div>
+                                        </div>
+                                    </c:forEach>
+                                </c:when>
+                                <c:otherwise>
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="refuseToHospitalize.noRecords"/>
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-4">
                             <h6>
                                 <fmt:message bundle="${jspMessages}"
                                              key="refusalReferenceInDetail.otherRecommendations"/>
                             </h6>
                         </div>
-                        <div class="col">
+                        <div class="col border border-1">
                             <c:out value="${requestScope.refusalReference.refusalRecommendations}"/>
                         </div>
                     </div>
