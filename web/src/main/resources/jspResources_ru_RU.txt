@@ -637,3 +637,4 @@ refusalReferenceInDetail.otherRecommendations=иные рекомендации
 refusalReferenceInDetail.conclusion=Заключение
 
 refusalReferenceInDetail.noDiagnosesRecords=Во время обращения заключения не осуществлялись
+refusalReferenceInDetail.noPerformedAid=Помощь не оказывалась
