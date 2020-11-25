@@ -73,6 +73,7 @@
                     <h1>
                         <fmt:message bundle="${jspMessages}"
                                      key="refusalReferenceInDetail.heading"/>
+                        <br>
                         <c:out value=" № "/>
                         <c:out value="${requestScope.refusalReference.refusalReferenceId}"/>
                     </h1>
@@ -536,7 +537,7 @@
                                 </c:when>
                                 <c:otherwise>
                                     <fmt:message bundle="${jspMessages}"
-                                                 key="refuseToHospitalize.noRecords"/>
+                                                 key="refusalReferenceInDetail.noRecords"/>
                                 </c:otherwise>
                             </c:choose>
                         </div>

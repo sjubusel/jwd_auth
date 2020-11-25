@@ -264,6 +264,11 @@ public final class CommandPath {
             SUBSTAFF_GO_TO_REFUSE_TO_HOSPITALIZE_FORM_RESULT_VAL_ERROR
             = "/profile?command=go-to-refuse-to-hospitalize" +
             "&formResult=validationError&hiddenVisitId=";
+    public static final String
+            SUBSTAFF_GO_TO_REFUSAL_REFERENCE_IN_DETAIL_SUCCESS_RESULT
+            = "/profile?command=go-to-refusal-reference-in-detail" +
+            "&hiddenReferenceIdInput=";
+
 
     public static final String LOGIN_JSP = "/WEB-INF/jsp/login.jsp";
     public static final String PROFILE_JSP = "/WEB-INF/jsp/profile.jsp";

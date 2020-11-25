@@ -44,12 +44,12 @@ public class FormRefusalReferenceCancelCommand implements Command {
             return;
         }
 
-        if (referenceId > 0) {
+        if (referenceId <= 0) {
             sendRedirectWithValidationError(req, res, visitId);
             return;
         }
 
-        sendRedirectWithSuccess(req, res, visitId);
+        sendRedirectWithSuccess(req, res, referenceId);
     }
 
     private void sendRedirectWithTechError(HttpServletRequest req,
@@ -67,11 +67,9 @@ public class FormRefusalReferenceCancelCommand implements Command {
     }
 
     private void sendRedirectWithSuccess(HttpServletRequest req,
-            HttpServletResponse res, String referenceId) throws IOException {
-        res.sendRedirect(req.getContextPath()
-                // TODO redirect to a reference viewer
-//                + CommandPath
-//                .SUBSTAFF_GO_TO_REFUSE_TO_HOSPITALIZE_FORM_RESULT_SUCCESS
+            HttpServletResponse res, int referenceId) throws IOException {
+        res.sendRedirect(req.getContextPath() + CommandPath
+                .SUBSTAFF_GO_TO_REFUSAL_REFERENCE_IN_DETAIL_SUCCESS_RESULT
                 + referenceId);
     }
 }

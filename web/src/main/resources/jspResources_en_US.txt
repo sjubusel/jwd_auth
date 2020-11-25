@@ -639,3 +639,4 @@ refusalReferenceInDetail.conclusion=Conclusion
 refusalReferenceInDetail.noDiagnosesRecords=There were no conclusions during a visit
 refusalReferenceInDetail.noMedicalExamination=There were no examinations
 refusalReferenceInDetail.noAppliedAid=There was no applied aid
+refusalReferenceInDetail.noRecords=There are no medicine recommendations
