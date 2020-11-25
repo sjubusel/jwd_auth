@@ -553,6 +553,19 @@
                             <c:out value="${requestScope.refusalReference.refusalRecommendations}"/>
                         </div>
                     </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class="col-2">
+                            <fmt:message bundle="${jspMessages}"
+                                         key="refusalReferenceInDetail.doctor"/>
+                        </div>
+                        <div class="col">
+                            <c:out value="${requestScope.refusalReference.visitInfo.responsibleDoctorInfo}"/>
+                        </div>
+                    </div>
                 </c:otherwise>
             </c:choose>
         </div>

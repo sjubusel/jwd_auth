@@ -640,3 +640,5 @@ refusalReferenceInDetail.noDiagnosesRecords=Во время обращения �
 refusalReferenceInDetail.noMedicalExamination=Обследования не осуществлялись
 refusalReferenceInDetail.noAppliedAid=Помощь не оказывалась
 refusalReferenceInDetail.noRecords=Рекомендации по лекарственным препаратам отсутствуют
+
+refusalReferenceInDetail.doctor=Врач
