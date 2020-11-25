@@ -635,3 +635,5 @@ refusalReferenceInDetail.recommendation=Рекомендации
 refusalReferenceInDetail.recommendedMedicines=лекарственные средства
 refusalReferenceInDetail.otherRecommendations=иные рекомендации
 refusalReferenceInDetail.conclusion=Заключение
+
+refusalReferenceInDetail.noDiagnosesRecords=Во время обращения заключения не осуществлялись

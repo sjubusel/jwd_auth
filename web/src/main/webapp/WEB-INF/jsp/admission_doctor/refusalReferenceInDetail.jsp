@@ -151,19 +151,98 @@
                         <fmt:message bundle="${jspMessages}"
                                      key="refusalReferenceInDetail.medicalExamination"/>
                     </h3>
-                    <%--prescriptions--%>
+                    <%-- TODO prescriptions--%>
                     <br>
                     <h3>
                         <fmt:message bundle="${jspMessages}"
                                      key="refusalReferenceInDetail.performedAid"/>
                     </h3>
-                    <%--medicine prescriptions--%>
+                    <%-- TODO medicine prescriptions--%>
                     <br>
                     <h3>
                         <fmt:message bundle="${jspMessages}"
                                      key="refusalReferenceInDetail.conclusion"/>
                     </h3>
-                    <%--medicine prescriptions--%>
+                    <c:choose>
+                        <c:when test="${requestScope.refusalReference.diagnoses.size() > 0}">
+                            <div class="row d-flex mb-1 border">
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.diagnoses.diagnosisDateTime"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.diagnoses.diseaseInfo"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.diagnoses.diseaseDescription"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.diagnoses.doctorInfo"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.diagnoses.cancellationInfo"/>
+                                </div>
+                            </div>
+
+                            <c:forEach var="diagnosis"
+                                       items="${requestScope.refusalReference.diagnoses}">
+                                <div class="row d-flex mb-1 border align-items-center">
+                                    <div class="col">
+                                        <c:out value="${diagnosis.diagnosisDateTime}"/>
+                                    </div>
+                                    <div class="col">
+                                        <c:out value="${diagnosis.diseaseInfo}"/>
+                                    </div>
+                                    <div class="col">
+                                        <c:out value="${diagnosis.diagnosisDescription}"/>
+                                    </div>
+                                    <div class="col">
+                                        <c:out value="${diagnosis.diagnoseDoctorInfo}"/>
+                                    </div>
+                                    <div class="col d-block">
+                                        <c:choose>
+                                            <c:when test="${diagnosis.cancellationDateTime ne null}">
+                                                <div>
+                                                    <fmt:message
+                                                            bundle="${jspMessages}"
+                                                            key="visitDetail.cancellationDateTime"/>
+                                                    <c:out value=": "/>
+                                                    <c:out value="${diagnosis.cancellationDateTime}"/>
+                                                </div>
+                                                <div>
+                                                    <fmt:message
+                                                            bundle="${jspMessages}"
+                                                            key="visitDetail.cancellationStaff"/>
+                                                    <c:out value=": "/>
+                                                    <c:out value="${diagnosis.cancellationDoctorInfo}"/>
+                                                </div>
+                                                <div>
+                                                    <fmt:message
+                                                            bundle="${jspMessages}"
+                                                            key="visitDetail.cancellationReason"/>
+                                                    <c:out value=": "/>
+                                                    <c:out value="${diagnosis.cancellationDiagnosisDescription}"/>
+                                                </div>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <fmt:message
+                                                        bundle="${jspMessages}"
+                                                        key="visitDetail.actual"/>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="refusalReferenceInDetail.noDiagnosesRecords"/>
+                        </c:otherwise>
+                    </c:choose>
                     <br>
                     <h3>
                         <fmt:message bundle="${jspMessages}"
@@ -173,7 +252,7 @@
                         <fmt:message bundle="${jspMessages}"
                                      key="refusalReferenceInDetail.recommendedMedicines"/>
                     </h6>
-                    <%--refusal medicine prescriptions--%>
+                    <%-- TODO refusal medicine prescriptions--%>
                     <div class="row">
                         <div class="col">
                             <h6>
