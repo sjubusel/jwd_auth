@@ -151,12 +151,6 @@
                         <fmt:message bundle="${jspMessages}"
                                      key="refusalReferenceInDetail.medicalExamination"/>
                     </h3>
-                    <%-- TODO prescriptions--%>
-                    <br>
-                    <h3>
-                        <fmt:message bundle="${jspMessages}"
-                                     key="refusalReferenceInDetail.performedAid"/>
-                    </h3>
                     <c:choose>
                         <c:when test="${requestScope.refusalReference.prescriptions.size() > 0}">
                             <%--header--%>
@@ -282,7 +276,133 @@
                         </c:when>
                         <c:otherwise>
                             <fmt:message bundle="${jspMessages}"
-                                         key="refusalReferenceInDetail.noPerformedAid"/>
+                                         key="refusalReferenceInDetail.noMedicalExamination"/>
+                        </c:otherwise>
+                    </c:choose>
+                    <br>
+                    <h3>
+                        <fmt:message bundle="${jspMessages}"
+                                     key="refusalReferenceInDetail.performedAid"/>
+                    </h3>
+                    <c:choose>
+                        <c:when test="${requestScope.refusalReference.medPrescriptions.size() > 0}">
+                            <div class="row d-flex mb-1 border">
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.isThisPrescriptionComplete"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.prescriptionDateTime"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.prescribingDoctorInfo"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.medicineInfo"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.dosageInfo"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
+                                                 key="visitDetail.prescriptionResult"/>
+                                </div>
+                            </div>
+                            <c:forEach var="medPrescription"
+                                       items="${requestScope.refusalReference.medPrescriptions}">
+                                <div class="row d-flex mb-1 border align-items-center">
+                                    <div class="col">
+                                        <c:choose>
+                                            <c:when test="${medPrescription.isPrescriptionComplete eq true}">
+                                                <img src="${pageContext.request.contextPath}/img/plus.png"
+                                                     alt="plus">
+                                            </c:when>
+                                            <c:otherwise>
+                                                <img src="${pageContext.request.contextPath}/img/minus.png"
+                                                     alt="minus">
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </div>
+                                    <div class="col">
+                                        <c:out value="${medPrescription.prescriptionDateTime}"/>
+                                    </div>
+                                    <div class="col">
+                                        <c:out value="${medPrescription.prescribingStaffInfo}"/>
+                                    </div>
+                                    <div class="col">
+                                        <c:out value="${medPrescription.medicineInfo}"/>
+                                    </div>
+                                    <div class="col">
+                                        <c:out value="${medPrescription.dosageQuantity}"/>
+                                        <c:out value=" "/>
+                                        <c:out value="${medPrescription.dosageMeasureUnit.shortName}"/>
+                                    </div>
+                                    <div class="col d-block">
+                                        <div>
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="visitDetail.targetApplicationDateTime"/>
+                                            <c:out value=": "/>
+                                            <c:out value="${medPrescription.targetApplicationDateTime}"/>
+                                        </div>
+                                        <c:choose>
+                                            <c:when test="${medPrescription.executorStaffId > 0}">
+                                                <div>
+                                                    <fmt:message
+                                                            bundle="${jspMessages}"
+                                                            key="visitDetail.executor"/>
+                                                    <c:out value=": "/>
+                                                    <c:out value="${medPrescription.executorStaffInfo}"/>
+                                                </div>
+                                                <div>
+                                                    <fmt:message
+                                                            bundle="${jspMessages}"
+                                                            key="visitDetail.executionDateTime"/>
+                                                    <c:out value=": "/>
+                                                    <c:out value="${medPrescription.executionDateTime}"/>
+                                                </div>
+                                                <div>
+                                                    <fmt:message
+                                                            bundle="${jspMessages}"
+                                                            key="visitDetail.executionResult"/>
+                                                    <c:out value=": "/>
+                                                    <c:out value="${medPrescription.executionDescription}"/>
+                                                </div>
+                                            </c:when>
+                                        </c:choose>
+                                        <c:choose>
+                                            <c:when test="${medPrescription.doesPatientAgree eq false}">
+                                                <div>
+                                                    <fmt:message
+                                                            bundle="${jspMessages}"
+                                                            key="visitDetail.patientDisagrees"/>
+                                                </div>
+                                                <div>
+                                                    <fmt:message
+                                                            bundle="${jspMessages}"
+                                                            key="visitDetail.disagreementDateTime"/>
+                                                    <c:out value=": "/>
+                                                    <c:out value="${medPrescription.patientDisagreementDateTime}"/>
+                                                </div>
+                                                <div>
+                                                    <fmt:message
+                                                            bundle="${jspMessages}"
+                                                            key="visitDetail.disagreementDiscription"/>
+                                                    <c:out value=": "/>
+                                                    <c:out value="${medPrescription.patientDisagreementDescription}"/>
+                                                </div>
+                                            </c:when>
+                                        </c:choose>
+                                    </div>
+                                </div>
+                            </c:forEach>
+                        </c:when>
+                        <c:otherwise>
+                            <fmt:message bundle="${jspMessages}"
+                                         key="refusalReferenceInDetail.noAppliedAid"/>
                         </c:otherwise>
                     </c:choose>
                     <br>
