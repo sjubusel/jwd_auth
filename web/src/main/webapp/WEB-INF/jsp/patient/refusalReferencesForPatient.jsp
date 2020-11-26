@@ -11,8 +11,8 @@
     </c:otherwise>
 </c:choose>
 
-<c:set var="activeMenuTab" value="staff" scope="page"/>
-<c:set var="activeSubMenuStaffTab" value="allRefusalReferences" scope="page"/>
+<c:set var="activeMenuTab" value="patients" scope="page"/>
+<c:set var="activeSubMenuTab" value="refusalReferencesForPatient" scope="page"/>
 
 <fmt:setBundle basename="jspResources" var="jspMessages"/>
 <fmt:setBundle basename="registrationRegExp" var="regEx"/>

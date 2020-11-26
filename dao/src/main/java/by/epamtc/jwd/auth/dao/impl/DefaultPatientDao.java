@@ -6,17 +6,21 @@ import by.epamtc.jwd.auth.dao.pool.ConnectionPool;
 import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
 import by.epamtc.jwd.auth.dao.util.VisitRelatedEntitiesCompiler;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
+import by.epamtc.jwd.auth.model.constant.AppConstant;
 import by.epamtc.jwd.auth.model.constant.SqlStatement;
 import by.epamtc.jwd.auth.model.med_info.DepartmentOrigin;
 import by.epamtc.jwd.auth.model.med_info.Diagnosis;
 import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
 import by.epamtc.jwd.auth.model.med_info.Prescription;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
+import by.epamtc.jwd.auth.model.visit_info.RefusalReference;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -364,5 +368,55 @@ public class DefaultPatientDao implements PatientDao {
             pool.closeConnection(connection, statement, resultSet);
         }
         return prescriptions;
+    }
+
+    @Override
+    public List<RefusalReference> fetchRefusalReferences(String pageNumber,
+            AuthUser user) throws DaoException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        int pageId = Integer.parseInt(pageNumber) - 1;
+        List<RefusalReference> references = new ArrayList<>();
+
+        try {
+            connection = pool.takeConnection();
+            statement = connection.prepareStatement(SqlStatement
+                    .SELECT_REFUSAL_REFERENCES_BY_PATIENT_ID);
+            statement.setInt(1, user.getUserId());
+            statement.setInt(2, Math.max(0, pageId) * AppConstant
+                    .REFERENCES_PER_PAGE);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                RefusalReference reference = new RefusalReference();
+
+                int refusalReferenceId = resultSet.getInt(1);
+                reference.setRefusalReferenceId(refusalReferenceId);
+
+                LocalDateTime referenceDatetime = null;
+                Timestamp referenceTimestamp = resultSet.getTimestamp(2);
+                if (referenceTimestamp != null) {
+                    referenceDatetime = referenceTimestamp.toLocalDateTime();
+                }
+                reference.setReferenceDatetime(referenceDatetime);
+
+                AdmissionDepartmentVisit visitInfo = visitRelatedEntitiesCompiler
+                        .compileShortenedVisit(resultSet, 3);
+                reference.setVisitInfo(visitInfo);
+
+                references.add(reference);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("An error while fetching all refusal " +
+                    "references by a patient id.", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection " +
+                    "in order to fetch all refusal references by a " +
+                    "patient id.", e);
+        } finally {
+            pool.closeConnection(connection, statement, resultSet);
+        }
+
+        return references;
     }
 }

@@ -1225,6 +1225,25 @@ public final class SqlStatement {
             "WHERE vpr.visit_id = ?\n" +
             "AND (vpr.execution_datetime IS NOT NULL " +
             "OR vpr.patient_disagreement_datetime IS NOT NULL);";
+    public static final String SELECT_REFUSAL_REFERENCES_BY_PATIENT_ID
+            = "SELECT rr.refusal_reference_id,\n" +
+            "       rr.reference_datetime,\n" +
+            "\n" +
+            "       v2ad.visit_id,\n" +
+            "       v2ad.visit_datetime,\n" +
+            "       p.last_name,\n" +
+            "       p.first_name,\n" +
+            "       p.middle_name,\n" +
+            "       v2ad.visit_reason_description\n" +
+            "\n" +
+            "FROM hospital.refusal_references rr\n" +
+            "         JOIN hospital.visits_to_admission_department v2ad " +
+            "ON rr.visit_id = v2ad.visit_id\n" +
+            "         JOIN hospital.persons p ON v2ad.person_id = p.person_id\n" +
+            "\n" +
+            "WHERE v2ad.person_id = ?\n" +
+            "ORDER BY rr.reference_datetime DESC\n" +
+            "LIMIT 10 OFFSET ?;";
 
     private SqlStatement() {
     }

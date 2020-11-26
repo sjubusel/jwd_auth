@@ -17,6 +17,7 @@ import by.epamtc.jwd.auth.web.util.impl.MainCommand;
 import by.epamtc.jwd.auth.web.util.impl.RegisterCommand;
 import by.epamtc.jwd.auth.web.util.impl.subpatient.GoToPatientNewMedicinePrescriptionsCommand;
 import by.epamtc.jwd.auth.web.util.impl.subpatient.GoToPatientNewPrescriptionsCommand;
+import by.epamtc.jwd.auth.web.util.impl.subpatient.GoToRefusalReferencesForPatientCommand;
 import by.epamtc.jwd.auth.web.util.impl.subpatient.PatientDisagreeWithMedicinePrescriptionCommand;
 import by.epamtc.jwd.auth.web.util.impl.subpatient.PatientDisagreeWithPrescriptionCommand;
 import by.epamtc.jwd.auth.web.util.impl.subprofile.GoToProfileAllergicReactionsCommand;
@@ -212,6 +213,8 @@ public class CommandProvider {
                 new GoToAllRefusalReferencesCommand());
         repository.put(CommandName.GO_TO_REFUSAL_REFERENCE_IN_DETAIL,
                 new GoToRefusalReferenceInDetailCommand());
+        repository.put(CommandName.GO_TO_REFUSAL_REFERENCES_FOR_PATIENT,
+                new GoToRefusalReferencesForPatientCommand());
 
         repository.put(CommandName.ERROR, new ErrorCommand());
     }

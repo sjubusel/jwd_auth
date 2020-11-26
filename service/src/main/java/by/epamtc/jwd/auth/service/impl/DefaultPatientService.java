@@ -9,6 +9,7 @@ import by.epamtc.jwd.auth.model.med_info.Diagnosis;
 import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
 import by.epamtc.jwd.auth.model.med_info.Prescription;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
+import by.epamtc.jwd.auth.model.visit_info.RefusalReference;
 import by.epamtc.jwd.auth.service.PatientService;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 
@@ -107,7 +108,7 @@ public class DefaultPatientService implements PatientService {
     public List<MedicinePrescription> fetchMedPrescriptionsFinishedDuringVisit(
             AuthUser user, int visitId) throws ServiceException {
         try {
-            if (visitId > 0 && (patientDao.fetchPatientIdByVisitId(visitId)
+            if (visitId >= 0 && (patientDao.fetchPatientIdByVisitId(visitId)
                     == user.getUserId())) {
                 return patientDao.fetchMedPrescriptionsFinishedDuringVisit(visitId);
             }
@@ -121,7 +122,7 @@ public class DefaultPatientService implements PatientService {
     public List<Prescription> fetchPrescriptionsFinishedDuringVisit(
             AuthUser user, int visitId) throws ServiceException {
         try {
-            if (visitId > 0 && (patientDao.fetchPatientIdByVisitId(visitId)
+            if (visitId >= 0 && (patientDao.fetchPatientIdByVisitId(visitId)
                     == user.getUserId())) {
                 return patientDao.fetchPrescriptionsFinishedDuringVisit(visitId);
             }
@@ -129,5 +130,19 @@ public class DefaultPatientService implements PatientService {
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
+    }
+
+    @Override
+    public List<RefusalReference> fetchRefusalReferences(String pageNumber,
+            AuthUser user) throws ServiceException {
+        if (pageNumber.matches(RegistrationInfoPattern.DIGITS)
+                && user.getUserId() > 0) {
+            try {
+                return patientDao.fetchRefusalReferences(pageNumber, user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return null;
     }
 }
