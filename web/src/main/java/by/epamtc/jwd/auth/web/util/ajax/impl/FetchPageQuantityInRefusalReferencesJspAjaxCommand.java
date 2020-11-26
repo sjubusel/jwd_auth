@@ -1,6 +1,6 @@
 package by.epamtc.jwd.auth.web.util.ajax.impl;
 
-import by.epamtc.jwd.auth.model.ajax.AjaxParameter;
+import by.epamtc.jwd.auth.model.ajax_entity.AjaxParameter;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppAttribute;
 import by.epamtc.jwd.auth.service.ajax.AjaxFetchService;

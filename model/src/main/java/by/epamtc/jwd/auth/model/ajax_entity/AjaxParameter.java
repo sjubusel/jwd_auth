@@ -1,4 +1,4 @@
-package by.epamtc.jwd.auth.model.ajax;
+package by.epamtc.jwd.auth.model.ajax_entity;
 
 public final class AjaxParameter {
     public static final String COUNTRY = "countryInput";

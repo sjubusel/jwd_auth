@@ -1,4 +1,4 @@
-package by.epamtc.jwd.auth.model.ajax;
+package by.epamtc.jwd.auth.model.ajax_entity;
 
 public class AjaxMedicineType implements java.io.Serializable{
     private static final long serialVersionUID = -7038705564577102064L;

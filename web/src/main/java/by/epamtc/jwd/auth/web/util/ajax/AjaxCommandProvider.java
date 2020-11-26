@@ -1,6 +1,6 @@
 package by.epamtc.jwd.auth.web.util.ajax;
 
-import by.epamtc.jwd.auth.model.ajax.AjaxCommandName;
+import by.epamtc.jwd.auth.model.ajax_entity.AjaxCommandName;
 import by.epamtc.jwd.auth.web.util.ajax.impl.FetchAreaInChangePatientInfoJspAjaxCommand;
 import by.epamtc.jwd.auth.web.util.ajax.impl.FetchCountryInChangePatientInfoJspAjaxCommand;
 import by.epamtc.jwd.auth.web.util.ajax.impl.FetchDiseasesInEstablishDiagnosisAjaxCommand;

@@ -1,4 +1,4 @@
-package by.epamtc.jwd.auth.model.ajax;
+package by.epamtc.jwd.auth.model.ajax_entity;
 
 public class AjaxFoodType implements java.io.Serializable {
     private static final long serialVersionUID = 6122195126890709440L;

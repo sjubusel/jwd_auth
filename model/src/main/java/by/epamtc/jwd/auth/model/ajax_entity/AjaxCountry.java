@@ -1,4 +1,4 @@
-package by.epamtc.jwd.auth.model.ajax;
+package by.epamtc.jwd.auth.model.ajax_entity;
 
 import java.io.Serializable;
 

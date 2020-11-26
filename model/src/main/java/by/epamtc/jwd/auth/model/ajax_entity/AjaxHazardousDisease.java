@@ -1,15 +1,15 @@
-package by.epamtc.jwd.auth.model.ajax;
+package by.epamtc.jwd.auth.model.ajax_entity;
 
-public class AjaxDisease implements java.io.Serializable {
-    private static final long serialVersionUID = 3555054572975756313L;
+public class AjaxHazardousDisease implements java.io.Serializable {
+    private static final long serialVersionUID = -2770563794735370987L;
 
     private int diseaseId;
     private String diseaseName;
 
-    public AjaxDisease() {
+    public AjaxHazardousDisease() {
     }
 
-    public AjaxDisease(int diseaseId, String diseaseName) {
+    public AjaxHazardousDisease(int diseaseId, String diseaseName) {
         this.diseaseId = diseaseId;
         this.diseaseName = diseaseName;
     }
@@ -39,13 +39,13 @@ public class AjaxDisease implements java.io.Serializable {
             return false;
         }
 
-        AjaxDisease that = (AjaxDisease) o;
+        AjaxHazardousDisease that = (AjaxHazardousDisease) o;
 
         if (diseaseId != that.diseaseId) {
             return false;
         }
-        return diseaseName != null ? diseaseName.equals(that.diseaseName)
-                                   : that.diseaseName == null;
+        return (diseaseName != null) ? diseaseName.equals(that.diseaseName)
+                                     : that.diseaseName == null;
     }
 
     @Override
@@ -58,7 +58,7 @@ public class AjaxDisease implements java.io.Serializable {
 
     @Override
     public String toString() {
-        return "AjaxDisease{" +
+        return "AjaxHazardousDisease{" +
                 "diseaseId=" + diseaseId +
                 ", diseaseName='" + diseaseName + '\'' +
                 '}';
