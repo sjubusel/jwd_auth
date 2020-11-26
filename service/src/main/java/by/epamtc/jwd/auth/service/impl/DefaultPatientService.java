@@ -145,4 +145,20 @@ public class DefaultPatientService implements PatientService {
         }
         return null;
     }
+
+    @Override
+    public RefusalReference fetchDetailedRefusalReference(String referenceId,
+            AuthUser user) throws ServiceException {
+        try {
+            if (referenceId.matches(RegistrationInfoPattern.DIGITS)
+                    && (patientDao.fetchPatientIdByReferenceId(referenceId)
+                    == user.getUserId())) {
+                return patientDao.fetchDetailedRefusalReference(referenceId);
+            }
+            return null;
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+
+    }
 }

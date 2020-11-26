@@ -1244,6 +1244,12 @@ public final class SqlStatement {
             "WHERE v2ad.person_id = ?\n" +
             "ORDER BY rr.reference_datetime DESC\n" +
             "LIMIT 10 OFFSET ?;";
+    public static final String SELECT_PATIENT_ID_BY_REFERENCE_ID
+            = "SELECT v2ad.person_id\n" +
+            "FROM hospital.refusal_references rr\n" +
+            "         JOIN hospital.visits_to_admission_department v2ad " +
+            "ON rr.visit_id = v2ad.visit_id\n" +
+            "WHERE rr.refusal_reference_id = ?;";
 
     private SqlStatement() {
     }

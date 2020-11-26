@@ -37,4 +37,7 @@ public interface PatientService {
 
     List<RefusalReference> fetchRefusalReferences(String pageNumber,
             AuthUser user) throws ServiceException;
+
+    RefusalReference fetchDetailedRefusalReference(String referenceId,
+            AuthUser user) throws ServiceException;
 }

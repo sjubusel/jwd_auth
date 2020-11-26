@@ -45,4 +45,9 @@ public interface PatientDao {
 
     List<RefusalReference> fetchRefusalReferences(String pageNumber,
             AuthUser user) throws DaoException;
+
+    int fetchPatientIdByReferenceId(String referenceId) throws DaoException;
+
+    RefusalReference fetchDetailedRefusalReference(String referenceId)
+            throws DaoException;
 }

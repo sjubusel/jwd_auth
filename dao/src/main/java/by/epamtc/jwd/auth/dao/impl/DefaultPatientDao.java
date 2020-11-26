@@ -1,5 +1,6 @@
 package by.epamtc.jwd.auth.dao.impl;
 
+import by.epamtc.jwd.auth.dao.DaoFactory;
 import by.epamtc.jwd.auth.dao.PatientDao;
 import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.dao.pool.ConnectionPool;
@@ -418,5 +419,41 @@ public class DefaultPatientDao implements PatientDao {
         }
 
         return references;
+    }
+
+    @Override
+    public int fetchPatientIdByReferenceId(String referenceId) throws DaoException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = pool.takeConnection();
+            statement = connection.prepareStatement(SqlStatement
+                    .SELECT_PATIENT_ID_BY_REFERENCE_ID);
+            statement.setInt(1, Integer.parseInt(referenceId));
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("An error while fetching a patient id by " +
+                    "refusal reference id", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection in " +
+                    "order to fetch a patient id by " +
+                    "refusal reference id", e);
+        } finally {
+            pool.closeConnection(connection, statement, resultSet);
+        }
+
+        return -1;
+    }
+
+    @Override
+    public RefusalReference fetchDetailedRefusalReference(String referenceId)
+            throws DaoException {
+        return DaoFactory.getInstance().getVisitDao()
+                .fetchDetailedRefusalReference(referenceId, null);
     }
 }
