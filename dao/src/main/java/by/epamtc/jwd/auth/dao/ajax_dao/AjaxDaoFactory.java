@@ -1,6 +1,6 @@
-package by.epamtc.jwd.auth.dao.ajax;
+package by.epamtc.jwd.auth.dao.ajax_dao;
 
-import by.epamtc.jwd.auth.dao.ajax.impl.DefaultAjaxFetchDao;
+import by.epamtc.jwd.auth.dao.ajax_dao.impl.DefaultAjaxFetchDao;
 
 public class AjaxDaoFactory {
 

@@ -1,7 +1,7 @@
 package by.epamtc.jwd.auth.service.ajax_service.impl;
 
-import by.epamtc.jwd.auth.dao.ajax.AjaxDaoFactory;
-import by.epamtc.jwd.auth.dao.ajax.AjaxFetchDao;
+import by.epamtc.jwd.auth.dao.ajax_dao.AjaxDaoFactory;
+import by.epamtc.jwd.auth.dao.ajax_dao.AjaxFetchDao;
 import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.model.ajax_entity.AjaxArea;
 import by.epamtc.jwd.auth.model.ajax_entity.AjaxCountry;

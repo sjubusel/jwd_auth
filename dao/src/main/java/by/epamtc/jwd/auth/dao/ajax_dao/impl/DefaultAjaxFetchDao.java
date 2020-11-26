@@ -1,6 +1,6 @@
-package by.epamtc.jwd.auth.dao.ajax.impl;
+package by.epamtc.jwd.auth.dao.ajax_dao.impl;
 
-import by.epamtc.jwd.auth.dao.ajax.AjaxFetchDao;
+import by.epamtc.jwd.auth.dao.ajax_dao.AjaxFetchDao;
 import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.dao.pool.ConnectionPool;
 import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;

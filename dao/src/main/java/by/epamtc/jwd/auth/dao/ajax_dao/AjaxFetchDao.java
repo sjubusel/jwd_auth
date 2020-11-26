@@ -1,4 +1,4 @@
-package by.epamtc.jwd.auth.dao.ajax;
+package by.epamtc.jwd.auth.dao.ajax_dao;
 
 import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.model.ajax_entity.AjaxArea;
