@@ -112,7 +112,7 @@
                                     <fmt:message bundle="${jspMessages}"
                                                  key="visitDetail.prescriptionDescription"/>
                                 </div>
-                                <div class="col col-2 bg-success">
+                                <div class="col col-2">
                                     <fmt:message bundle="${jspMessages}"
                                                  key="newPrescriptions.staff"/>
                                 </div>
@@ -149,7 +149,7 @@
                                         <div class="col col-3">
                                             <c:out value="${prescription.prescriptionDescription}"/>
                                         </div>
-                                        <div class="col col-2 bg-success">
+                                        <div class="col col-2">
                                             <fmt:message bundle="${jspMessages}"
                                                          key="visitDetail.prescribingDoctorInfo"/>
                                             <c:out value=": "/>
