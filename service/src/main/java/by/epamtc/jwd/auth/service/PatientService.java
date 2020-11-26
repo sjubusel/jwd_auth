@@ -1,6 +1,7 @@
 package by.epamtc.jwd.auth.service;
 
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
+import by.epamtc.jwd.auth.model.med_info.Diagnosis;
 import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
 import by.epamtc.jwd.auth.model.med_info.Prescription;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
@@ -23,4 +24,13 @@ public interface PatientService {
 
     boolean disagreeWithPrescription(AuthUser user, String prescriptionId,
             String disagreementDescription) throws ServiceException;
+
+    List<Diagnosis> fetchDiagnosesForPatientDuringVisit(AuthUser user,
+            int visitId) throws ServiceException;
+
+    List<MedicinePrescription> fetchMedPrescriptionsFinishedDuringVisit(
+            AuthUser user, int visitId) throws ServiceException;
+
+    List<Prescription> fetchPrescriptionsFinishedDuringVisit(AuthUser user,
+            int visitId) throws ServiceException;
 }

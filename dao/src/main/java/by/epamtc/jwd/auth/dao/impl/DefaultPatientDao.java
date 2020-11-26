@@ -7,6 +7,8 @@ import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
 import by.epamtc.jwd.auth.dao.util.VisitRelatedEntitiesCompiler;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.SqlStatement;
+import by.epamtc.jwd.auth.model.med_info.DepartmentOrigin;
+import by.epamtc.jwd.auth.model.med_info.Diagnosis;
 import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
 import by.epamtc.jwd.auth.model.med_info.Prescription;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
@@ -240,5 +242,127 @@ public class DefaultPatientDao implements PatientDao {
         }
 
         return true;
+    }
+
+    @Override
+    public int fetchPatientIdByVisitId(int visitId) throws DaoException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = pool.takeConnection();
+            statement = connection.prepareStatement(SqlStatement
+                    .SELECT_PATIENT_ID_BY_VISIT_ID);
+            statement.setInt(1, visitId);
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("An error while fetching a patient id by " +
+                    "a visit id", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection in " +
+                    "order to fetch a patient id by a visit id", e);
+        } finally {
+            pool.closeConnection(connection, statement, resultSet);
+        }
+        return -1;
+    }
+
+    @Override
+    public List<Diagnosis> fetchDiagnosesForPatientDuringVisit(int visitId)
+            throws DaoException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<Diagnosis> diagnoses = new ArrayList<>();
+
+        try {
+            connection = pool.takeConnection();
+            statement = connection.prepareStatement(SqlStatement
+                    .SELECT_DIAGNOSIS_BY_VISIT_ID);
+            statement.setInt(1, visitId);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Diagnosis diagnosis = visitRelatedEntitiesCompiler.compileDiagnosis(
+                        resultSet, DepartmentOrigin.ADMISSION_DEPARTMENT);
+                diagnoses.add(diagnosis);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("An error while fetching diagnoses " +
+                    "during a visit", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection " +
+                    "in order to fetch diagnoses during a visit", e);
+        } finally {
+            pool.closeConnection(connection, statement, resultSet);
+        }
+        return diagnoses;
+    }
+
+    @Override
+    public List<MedicinePrescription> fetchMedPrescriptionsFinishedDuringVisit(
+            int visitId) throws DaoException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<MedicinePrescription> prescriptions = new ArrayList<>();
+
+        try {
+            connection = pool.takeConnection();
+            statement = connection.prepareStatement(SqlStatement
+                    .SELECT_FINISHED_MEDICINE_PRESCRIPTIONS_BY_VISIT);
+            statement.setInt(1, visitId);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                MedicinePrescription prescription = visitRelatedEntitiesCompiler
+                        .compileMedicinePrescription(resultSet);
+                prescriptions.add(prescription);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("An error while fetching medicine " +
+                    "prescriptions finished during a visit", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection " +
+                    "in order to fetch finished medicine prescriptions " +
+                    "finished during a visit", e);
+        } finally {
+            pool.closeConnection(connection, statement, resultSet);
+        }
+        return prescriptions;
+    }
+
+    @Override
+    public List<Prescription> fetchPrescriptionsFinishedDuringVisit(int visitId)
+            throws DaoException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<Prescription> prescriptions = new ArrayList<>();
+
+        try {
+            connection = pool.takeConnection();
+            statement = connection.prepareStatement(SqlStatement
+                    .SELECT_FINISHED_PRESCRIPTIONS_BY_VISIT);
+            statement.setInt(1, visitId);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Prescription prescription = visitRelatedEntitiesCompiler
+                        .compileNonMedicinePrescription(resultSet);
+                prescriptions.add(prescription);
+            }
+        } catch (SQLException e) {
+            throw new DaoException("An error while fetching non-medicine " +
+                    "prescriptions finished during a visit", e);
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection " +
+                    "in order to fetch finished non-medicine prescriptions " +
+                    "finished during a visit", e);
+        } finally {
+            pool.closeConnection(connection, statement, resultSet);
+        }
+        return prescriptions;
     }
 }

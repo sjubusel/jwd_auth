@@ -2,6 +2,7 @@ package by.epamtc.jwd.auth.dao;
 
 import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
+import by.epamtc.jwd.auth.model.med_info.Diagnosis;
 import by.epamtc.jwd.auth.model.med_info.MedicinePrescription;
 import by.epamtc.jwd.auth.model.med_info.Prescription;
 import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
@@ -29,4 +30,15 @@ public interface PatientDao {
 
     boolean disagreeWithPrescription(String prescriptionId,
             String disagreementDescription) throws DaoException;
+
+    int fetchPatientIdByVisitId(int visitId) throws DaoException;
+
+    List<Diagnosis> fetchDiagnosesForPatientDuringVisit(int visitId)
+            throws DaoException;
+
+    List<MedicinePrescription> fetchMedPrescriptionsFinishedDuringVisit(int visitId)
+            throws DaoException;
+
+    List<Prescription> fetchPrescriptionsFinishedDuringVisit(int visitId)
+            throws DaoException;
 }

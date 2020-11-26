@@ -648,3 +648,8 @@ undefinedError.contents=Возникла неизвестная ошибка. П
 
 newPrescriptions.prescriptionNumber=№
 newPrescriptions.staff=Персонал
+
+patients.diagnosisWhileVisit=Диагнозы в рамках обращения
+
+patients.medicinePrescriptionsWhileVisit=Завершённые назначения лекарственного средства в рамках обращения
+patients.prescriptionsWhileVisit=Завершённые назначения в рамках обращения

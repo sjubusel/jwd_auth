@@ -35,6 +35,7 @@ public final class AppAttribute {
     public static final String REQUEST_REFUSAL_REFERENCES = "refusalReferences";
     public static final String PAGE = "page";
     public static final String REQUEST_REFUSAL_REFERENCE = "refusalReference";
+    public static final String REQUEST_DIAGNOSES = "diagnoses";
 
     private AppAttribute() {
     }

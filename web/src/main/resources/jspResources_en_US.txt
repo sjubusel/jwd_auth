@@ -648,3 +648,8 @@ undefinedError.contents=Undefined error has occurred. Please, go to main page ..
 
 newPrescriptions.prescriptionNumber=№
 newPrescriptions.staff=Staff
+
+patients.diagnosisWhileVisit=Diagnoses during a visit
+
+patients.medicinePrescriptionsWhileVisit=Finished medicine prescriptions during a visit
+patients.prescriptionsWhileVisit=Finished prescriptions during a visit
