@@ -645,3 +645,5 @@ refusalReferenceInDetail.doctor=Врач
 
 undefinedError.htmlTitle=Неизвестная ошибка
 undefinedError.contents=Возникла неизвестная ошибка. Просьба перейти на главную страницу ...
+
+newPrescriptions.prescriptionNumber=№

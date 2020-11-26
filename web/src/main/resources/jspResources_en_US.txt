@@ -645,3 +645,5 @@ refusalReferenceInDetail.doctor=Doctor
 
 undefinedError.htmlTitle=Undefined error
 undefinedError.contents=Undefined error has occurred. Please, go to main page ...
+
+newPrescriptions.prescriptionNumber=№

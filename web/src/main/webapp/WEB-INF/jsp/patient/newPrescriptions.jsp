@@ -98,6 +98,10 @@
                             <div class="row d-flex mb-1 border">
                                 <div class="col">
                                     <fmt:message bundle="${jspMessages}"
+                                                 key="newPrescriptions.prescriptionNumber"/>
+                                </div>
+                                <div class="col">
+                                    <fmt:message bundle="${jspMessages}"
                                                  key="visitDetail.diagnoses.departmentType"/>
                                 </div>
                                 <div class="col">
@@ -137,6 +141,9 @@
                                            name="hiddenPrescriptionIdInput"
                                            value="<c:out value="${prescription.prescriptionId}"/>"/>
                                     <div class="row d-flex mb-1 border align-items-center">
+                                        <div class="col">
+                                            <c:out value="${prescription.prescriptionId}"/>
+                                        </div>
                                         <div class="col">
                                             <c:out value="${prescription.departmentOrigin.description}"/>
                                         </div>
