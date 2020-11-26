@@ -48,4 +48,6 @@ public interface AjaxFetchDao {
 
     int fetchAmountOfPagesOfReferences(AuthUser user) throws DaoException;
 
+    int fetchAmountOfPagesOfReferencesForPatient(AuthUser user)
+            throws DaoException;
 }

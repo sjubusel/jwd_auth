@@ -63,6 +63,12 @@ public final class AjaxSqlStatement {
             = "SELECT COUNT(rr.refusal_reference_id)\n" +
             "FROM hospital.refusal_references rr\n" +
             "WHERE rr.doctor_id = ?;";
+    public static final String SELECT_NUMBER_OF_REFUFAL_REFERENCES_OF_PATIENT
+            = "SELECT COUNT(rr.refusal_reference_id)\n" +
+            "FROM hospital.refusal_references rr\n" +
+            "         JOIN hospital.visits_to_admission_department v2ad " +
+            "ON rr.visit_id = v2ad.visit_id\n" +
+            "WHERE v2ad.person_id = ?;";
 
     private AjaxSqlStatement() {
     }

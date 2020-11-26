@@ -31,13 +31,13 @@
     <script type="text/javascript"
             src="${pageContext.request.contextPath}/js/jquery-3.5.1.js"></script>
     <script>
-        let currentPagePath = "${pageContext.request.contextPath}/profile?command=go-to-all-refusal-references&page=";
+        let currentPagePath = "${pageContext.request.contextPath}/profile?command=go-to-refusal-references-for-patient&page=";
         let pageNumber = parseInt(${requestScope.page});
         window.pagesAmount = parseInt(fetchPageQuantity().responseText);
 
         function fetchPageQuantity() {
             return $.ajax({
-                url: "ajax?command=fetch-page-quantity-in-refusal-references-jsp",
+                url: "ajax?command=fetch-page-quantity-in-refusal-references-for-patient-jsp",
                 method: "post",
                 async: false,
                 data: {},

@@ -52,4 +52,5 @@ public interface AjaxFetchService {
 
     int fetchAmountOfPagesOfReferences(AuthUser user) throws ServiceException;
 
+    int fetchAmountOfPagesOfReferencesForPatient(AuthUser user) throws ServiceException;
 }

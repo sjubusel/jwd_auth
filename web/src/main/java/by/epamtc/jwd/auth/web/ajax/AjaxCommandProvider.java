@@ -1,19 +1,7 @@
 package by.epamtc.jwd.auth.web.ajax;
 
 import by.epamtc.jwd.auth.model.ajax.AjaxCommandName;
-import by.epamtc.jwd.auth.web.ajax.impl.FetchAreaInChangePatientInfoJspAjaxCommand;
-import by.epamtc.jwd.auth.web.ajax.impl.FetchCountryInChangePatientInfoJspAjaxCommand;
-import by.epamtc.jwd.auth.web.ajax.impl.FetchDiseasesInEstablishDiagnosisAjaxCommand;
-import by.epamtc.jwd.auth.web.ajax.impl.FetchExtremelyHazardousDiseasesInExtremelyHazardousDiseasesJsp;
-import by.epamtc.jwd.auth.web.ajax.impl.FetchFoodAllergyInAllergicReactionsJspAjaxCommand;
-import by.epamtc.jwd.auth.web.ajax.impl.FetchMedicineAllergyInAllergicReactionsJspAjaxCommand;
-import by.epamtc.jwd.auth.web.ajax.impl.FetchMedicinesInEstablishMedicinePrescriptionAjaxCommand;
-import by.epamtc.jwd.auth.web.ajax.impl.FetchPageQuantityInRefusalReferencesJspAjaxCommand;
-import by.epamtc.jwd.auth.web.ajax.impl.FetchPersonInMedicalHistoryPermissionJspAjaxCommand;
-import by.epamtc.jwd.auth.web.ajax.impl.FetchPersonInRegisterVisitAjaxCommand;
-import by.epamtc.jwd.auth.web.ajax.impl.FetchRegionInChangePatientInfoJspAjaxCommand;
-import by.epamtc.jwd.auth.web.ajax.impl.FetchRoadInChangePatientInfoJspAjaxCommand;
-import by.epamtc.jwd.auth.web.ajax.impl.FetchSettlementInChangePatientInfoJspAjaxCommand;
+import by.epamtc.jwd.auth.web.ajax.impl.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -53,7 +41,8 @@ public class AjaxCommandProvider {
                 new FetchMedicinesInEstablishMedicinePrescriptionAjaxCommand());
         repository.put(AjaxCommandName.FETCH_PAGE_QUANTITY_IN_REFUSAL_REFERENCES_JSP,
                 new FetchPageQuantityInRefusalReferencesJspAjaxCommand());
-
+        repository.put(AjaxCommandName.FETCH_PAGE_QUANTITY_IN_REFUSAL_REFERENCES_FOR_PATIENT_JSP,
+                new FetchPageQuantityInRefusalReferencesForPatientJspAjaxCommand());
     }
 
     public static AjaxCommandProvider getInstance() {

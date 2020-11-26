@@ -426,20 +426,7 @@ public class DefaultAjaxFetchDao implements AjaxFetchDao {
             statement.setInt(1, user.getStaffId());
             rSet = statement.executeQuery();
             if (rSet.next()) {
-                int referencesAmount = rSet.getInt(1);
-                if (referencesAmount == 0) {
-                    return 0;
-                }
-
-                int quotient = referencesAmount / AppConstant.REFERENCES_PER_PAGE;
-                if (quotient >= 1) {
-                    int remainder = referencesAmount % AppConstant
-                            .REFERENCES_PER_PAGE;
-                    return (remainder > 0) ? ++quotient
-                                           : quotient;
-                } else {
-                    return 1;
-                }
+                return calculateAmoutOfPages(rSet);
             }
 
         } catch (ConnectionPoolException e) {
@@ -453,5 +440,51 @@ public class DefaultAjaxFetchDao implements AjaxFetchDao {
         }
 
         return 0;
+    }
+
+    @Override
+    public int fetchAmountOfPagesOfReferencesForPatient(AuthUser user) throws DaoException {
+        Connection conn = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            conn = pool.takeConnection();
+            statement = conn.prepareStatement(AjaxSqlStatement
+                    .SELECT_NUMBER_OF_REFUFAL_REFERENCES_OF_PATIENT);
+            statement.setInt(1, user.getUserId());
+            resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return calculateAmoutOfPages(resultSet);
+            }
+
+        } catch (ConnectionPoolException e) {
+            throw new DaoException("An error while taking a connection from" +
+                    "the connection pool", e);
+        } catch (SQLException e) {
+            throw new DaoException("An error while ajax fetching " +
+                    "amount of pages of references", e);
+        } finally {
+            pool.closeConnection(conn, statement, resultSet);
+        }
+
+        return 0;
+    }
+
+    private int calculateAmoutOfPages(ResultSet resultSet) throws SQLException {
+        int referencesAmount = resultSet.getInt(1);
+        if (referencesAmount == 0) {
+            return 0;
+        }
+
+        int quotient = referencesAmount / AppConstant.REFERENCES_PER_PAGE;
+        if (quotient >= 1) {
+            int remainder = referencesAmount % AppConstant
+                    .REFERENCES_PER_PAGE;
+            return (remainder > 0) ? ++quotient
+                                   : quotient;
+        } else {
+            return 1;
+        }
     }
 }

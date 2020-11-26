@@ -189,4 +189,17 @@ public class DefaultAjaxFetchService implements AjaxFetchService {
         }
         return 0;
     }
+
+    @Override
+    public int fetchAmountOfPagesOfReferencesForPatient(AuthUser user)
+            throws ServiceException {
+        if (user.getUserId() > 0) {
+            try {
+                return ajaxFetchDao.fetchAmountOfPagesOfReferencesForPatient(user);
+            } catch (DaoException e) {
+                throw new ServiceException(e);
+            }
+        }
+        return 0;
+    }
 }
