@@ -371,9 +371,9 @@ visitDetail.cancellationReason=Cancellation reason
 visitDetail.currentPrescriptions=Information about current visit prescriptions
 
 visitDetail.isThisPrescriptionComplete=Completeness status
-visitDetail.prescriptionDateTime=Prescription date and time
+visitDetail.prescriptionDateTime=Date and time
 visitDetail.prescribingDoctorInfo=Prescribing doctor
-visitDetail.prescriptionDescription=Prescription contents
+visitDetail.prescriptionDescription=Contents
 visitDetail.controllingStaff=Controlling staff
 visitDetail.prescriptionResult=Result
 visitDetail.responsibleStaff=Staff controlling a prescription

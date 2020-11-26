@@ -371,10 +371,10 @@ visitDetail.cancellationReason=Причина отмены
 visitDetail.currentPrescriptions=Сведения о предписаниях в рамках текущего посещения
 
 visitDetail.isThisPrescriptionComplete=Статус выполнения
-visitDetail.prescriptionDateTime=Дата и время предписания
+visitDetail.prescriptionDateTime=Дата и время
 visitDetail.prescribingDoctorInfo=Назначивший врач
-visitDetail.prescriptionDescription=Содержание назначения
-visitDetail.controllingStaff=Лицо, осуществляющее контроль выполнения назначения
+visitDetail.prescriptionDescription=Содержание
+visitDetail.controllingStaff=Контролирующее лицо
 visitDetail.prescriptionResult=Результат
 visitDetail.responsibleStaff=Контролирующий назначение персонал
 visitDetail.executor=Исполнитель предприсания

@@ -96,7 +96,7 @@
                     <c:choose>
                         <c:when test="${requestScope.prescriptions ne null}">
                             <div class="row d-flex mb-1 border">
-                                <div class="col">
+                                <div class="col col-1">
                                     <fmt:message bundle="${jspMessages}"
                                                  key="newPrescriptions.prescriptionNumber"/>
                                 </div>
@@ -140,8 +140,8 @@
                                     <input type="hidden"
                                            name="hiddenPrescriptionIdInput"
                                            value="<c:out value="${prescription.prescriptionId}"/>"/>
-                                    <div class="row d-flex mb-1 border align-items-center">
-                                        <div class="col">
+                                    <div class="row d-flex mb-1 border">
+                                        <div class="col col-1">
                                             <c:out value="${prescription.prescriptionId}"/>
                                         </div>
                                         <div class="col">
@@ -156,7 +156,7 @@
                                         <div class="col">
                                             <c:out value="${prescription.prescribingStaffInfo}"/>
                                         </div>
-                                        <div class="col d-block">
+                                        <div class="col">
                                             <c:choose>
                                                 <c:when test="${prescription.responsibleStaffId > 0}">
                                                     <div>
