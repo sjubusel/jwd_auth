@@ -100,33 +100,29 @@
                                     <fmt:message bundle="${jspMessages}"
                                                  key="newPrescriptions.prescriptionNumber"/>
                                 </div>
-                                <div class="col">
+                                <div class="col col-1">
                                     <fmt:message bundle="${jspMessages}"
                                                  key="visitDetail.diagnoses.departmentType"/>
                                 </div>
-                                <div class="col">
+                                <div class="col col-1">
                                     <fmt:message bundle="${jspMessages}"
                                                  key="visitDetail.prescriptionDateTime"/>
                                 </div>
-                                <div class="col">
+                                <div class="col col-3">
                                     <fmt:message bundle="${jspMessages}"
                                                  key="visitDetail.prescriptionDescription"/>
                                 </div>
-                                <div class="col">
+                                <div class="col col-2 bg-success">
                                     <fmt:message bundle="${jspMessages}"
-                                                 key="visitDetail.prescribingDoctorInfo"/>
+                                                 key="newPrescriptions.staff"/>
                                 </div>
-                                <div class="col">
-                                    <fmt:message bundle="${jspMessages}"
-                                                 key="visitDetail.controllingStaff"/>
-                                </div>
-                                <div class="col">
+                                <div class="col col-2">
                                     <label for="disagreementDescription">
                                         <fmt:message bundle="${jspMessages}"
                                                      key="patient.newMedPrescriptions.disagreement"/>
                                     </label>
                                 </div>
-                                <div class="col">
+                                <div class="col col-1">
                                     <fmt:message bundle="${jspMessages}"
                                                  key="newMedicinePrescriptions.buttons"/>
                                 </div>
@@ -144,35 +140,42 @@
                                         <div class="col col-1">
                                             <c:out value="${prescription.prescriptionId}"/>
                                         </div>
-                                        <div class="col">
+                                        <div class="col col-1">
                                             <c:out value="${prescription.departmentOrigin.description}"/>
                                         </div>
-                                        <div class="col">
+                                        <div class="col col-1">
                                             <c:out value="${prescription.prescriptionDateTime}"/>
                                         </div>
-                                        <div class="col">
+                                        <div class="col col-3">
                                             <c:out value="${prescription.prescriptionDescription}"/>
                                         </div>
-                                        <div class="col">
+                                        <div class="col col-2 bg-success">
+                                            <fmt:message bundle="${jspMessages}"
+                                                         key="visitDetail.prescribingDoctorInfo"/>
+                                            <c:out value=": "/>
+                                            <br>
                                             <c:out value="${prescription.prescribingStaffInfo}"/>
-                                        </div>
-                                        <div class="col">
                                             <c:choose>
                                                 <c:when test="${prescription.responsibleStaffId > 0}">
-                                                    <div>
-                                                        <c:out value="${prescription.responsibleStaffInfo}"/>
-                                                    </div>
+                                                    <br>
+                                                    <fmt:message
+                                                            bundle="${jspMessages}"
+                                                            key="visitDetail.controllingStaff"/>
+                                                    <c:out value=": "/>
+                                                    <br>
+                                                    <c:out value="${prescription.responsibleStaffInfo}"/>
                                                 </c:when>
                                             </c:choose>
                                         </div>
-                                        <div class="col">
+                                        <div class="col col-2">
                                             <input type="text"
+                                                   style="width: 150px"
                                                    id="disagreementDescription"
                                                    name="disagreementDescriptionInput"
                                                    maxlength="255"
                                                    required>
                                         </div>
-                                        <div class="col">
+                                        <div class="col col-1">
                                             <button type="submit"
                                                     class="btn align-self-center btn-primary">
                                                 <fmt:message
