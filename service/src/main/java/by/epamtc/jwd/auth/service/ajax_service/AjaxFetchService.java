@@ -1,4 +1,4 @@
-package by.epamtc.jwd.auth.service.ajax;
+package by.epamtc.jwd.auth.service.ajax_service;
 
 import by.epamtc.jwd.auth.model.ajax_entity.AjaxArea;
 import by.epamtc.jwd.auth.model.ajax_entity.AjaxCountry;

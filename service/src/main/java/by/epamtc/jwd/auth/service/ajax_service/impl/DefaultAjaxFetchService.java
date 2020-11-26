@@ -1,4 +1,4 @@
-package by.epamtc.jwd.auth.service.ajax.impl;
+package by.epamtc.jwd.auth.service.ajax_service.impl;
 
 import by.epamtc.jwd.auth.dao.ajax.AjaxDaoFactory;
 import by.epamtc.jwd.auth.dao.ajax.AjaxFetchDao;
@@ -17,8 +17,8 @@ import by.epamtc.jwd.auth.model.ajax_entity.AjaxSettlement;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
 import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
-import by.epamtc.jwd.auth.service.ajax.AjaxFetchService;
-import by.epamtc.jwd.auth.service.ajax.validation.AjaxValidator;
+import by.epamtc.jwd.auth.service.ajax_service.AjaxFetchService;
+import by.epamtc.jwd.auth.service.ajax_service.validation.AjaxValidator;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 
 import java.util.List;

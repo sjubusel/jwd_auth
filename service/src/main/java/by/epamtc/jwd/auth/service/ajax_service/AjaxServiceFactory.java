@@ -1,6 +1,6 @@
-package by.epamtc.jwd.auth.service.ajax;
+package by.epamtc.jwd.auth.service.ajax_service;
 
-import by.epamtc.jwd.auth.service.ajax.impl.DefaultAjaxFetchService;
+import by.epamtc.jwd.auth.service.ajax_service.impl.DefaultAjaxFetchService;
 
 public class AjaxServiceFactory {
     private static volatile AjaxServiceFactory instance;

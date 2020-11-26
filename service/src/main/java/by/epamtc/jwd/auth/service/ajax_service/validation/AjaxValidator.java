@@ -1,4 +1,4 @@
-package by.epamtc.jwd.auth.service.ajax.validation;
+package by.epamtc.jwd.auth.service.ajax_service.validation;
 
 import by.epamtc.jwd.auth.model.constant.RegistrationInfoPattern;
 import by.epamtc.jwd.auth.service.exception.ServiceException;

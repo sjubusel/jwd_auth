@@ -2,8 +2,8 @@ package by.epamtc.jwd.auth.web.util.ajax.impl;
 
 import by.epamtc.jwd.auth.model.ajax_entity.AjaxParameter;
 import by.epamtc.jwd.auth.model.ajax_entity.AjaxPerson;
-import by.epamtc.jwd.auth.service.ajax.AjaxFetchService;
-import by.epamtc.jwd.auth.service.ajax.AjaxServiceFactory;
+import by.epamtc.jwd.auth.service.ajax_service.AjaxFetchService;
+import by.epamtc.jwd.auth.service.ajax_service.AjaxServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
 import by.epamtc.jwd.auth.web.util.ajax.AjaxCommand;
 import com.google.gson.Gson;
