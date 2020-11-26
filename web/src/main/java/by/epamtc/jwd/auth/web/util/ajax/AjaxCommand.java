@@ -1,4 +1,4 @@
-package by.epamtc.jwd.auth.web.ajax;
+package by.epamtc.jwd.auth.web.util.ajax;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

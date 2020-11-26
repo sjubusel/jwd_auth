@@ -1,10 +1,11 @@
-package by.epamtc.jwd.auth.web.ajax.impl;
+package by.epamtc.jwd.auth.web.util.ajax.impl;
 
-import by.epamtc.jwd.auth.model.ajax.AjaxHazardousDisease;
+import by.epamtc.jwd.auth.model.ajax.AjaxMedicine;
 import by.epamtc.jwd.auth.model.ajax.AjaxParameter;
 import by.epamtc.jwd.auth.service.ajax.AjaxFetchService;
 import by.epamtc.jwd.auth.service.ajax.AjaxServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
+import by.epamtc.jwd.auth.web.util.ajax.AjaxCommand;
 import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,10 +17,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-public class FetchExtremelyHazardousDiseasesInExtremelyHazardousDiseasesJsp
-        implements by.epamtc.jwd.auth.web.ajax.AjaxCommand {
-    private static final Logger logger = LoggerFactory.getLogger(
-            FetchExtremelyHazardousDiseasesInExtremelyHazardousDiseasesJsp.class);
+public class FetchMedicinesInEstablishMedicinePrescriptionAjaxCommand
+        implements AjaxCommand {
+    private static final Logger logger = LoggerFactory.getLogger
+            (FetchMedicinesInEstablishMedicinePrescriptionAjaxCommand.class);
+
     private AjaxServiceFactory ajaxServiceFactory = AjaxServiceFactory.getInstance();
     private AjaxFetchService ajaxFetchService = ajaxServiceFactory
             .getAjaxFetchService();
@@ -27,21 +29,19 @@ public class FetchExtremelyHazardousDiseasesInExtremelyHazardousDiseasesJsp
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        String diseasePart = req.getParameter(AjaxParameter.DISEASE);
-        List<AjaxHazardousDisease> hazardousDiseases = null;
+        String medicinePart = req.getParameter(AjaxParameter.MEDICINE_PART);
+        List<AjaxMedicine> medicineList = null;
 
         try {
-            hazardousDiseases = ajaxFetchService.fetchExtremelyHazardousDiseases
-                    (diseasePart);
+            medicineList = ajaxFetchService.fetchMedicines(medicinePart);
         } catch (ServiceException e) {
-            logger.error("An error occurred while fetching extremely hazardous" +
-                    " diseases types from db \n" +
-                    "persons with param \"{}\"", diseasePart, e);
+            logger.error("An error occurred while fetching medicines from db \n" +
+                    "with this param \"medicinePart: {}\" \n", medicinePart, e);
         }
 
         res.setContentType(AjaxParameter.AJAX_CONTENT_TYPE);
         res.setCharacterEncoding(AjaxParameter.AJAX_CHARACTER_ENCODING);
         PrintWriter writer = res.getWriter();
-        writer.write(new Gson().toJson(hazardousDiseases));
+        writer.write(new Gson().toJson(medicineList));
     }
 }

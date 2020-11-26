@@ -1,11 +1,11 @@
-package by.epamtc.jwd.auth.web.ajax.impl;
+package by.epamtc.jwd.auth.web.util.ajax.impl;
 
 import by.epamtc.jwd.auth.model.ajax.AjaxParameter;
-import by.epamtc.jwd.auth.model.ajax.AjaxPerson;
+import by.epamtc.jwd.auth.model.ajax.AjaxSettlement;
 import by.epamtc.jwd.auth.service.ajax.AjaxFetchService;
 import by.epamtc.jwd.auth.service.ajax.AjaxServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
-import by.epamtc.jwd.auth.web.ajax.AjaxCommand;
+import by.epamtc.jwd.auth.web.util.ajax.AjaxCommand;
 import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,9 +17,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-public class FetchPersonInMedicalHistoryPermissionJspAjaxCommand implements AjaxCommand {
+public class FetchSettlementInChangePatientInfoJspAjaxCommand implements AjaxCommand {
     private static final Logger logger = LoggerFactory.getLogger
-            (FetchPersonInMedicalHistoryPermissionJspAjaxCommand.class);
+            (FetchSettlementInChangePatientInfoJspAjaxCommand.class);
 
     private AjaxServiceFactory ajaxServiceFactory = AjaxServiceFactory.getInstance();
     private AjaxFetchService ajaxFetchService = ajaxServiceFactory
@@ -28,20 +28,21 @@ public class FetchPersonInMedicalHistoryPermissionJspAjaxCommand implements Ajax
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        String recipientPerson = req.getParameter(AjaxParameter.RECIPIENT_PERSON);
-        List<AjaxPerson> persons = null;
+        String areaId = req.getParameter(AjaxParameter.AREA_ID);
+        String settlementInput = req.getParameter(AjaxParameter.SETTLEMENT);
 
+        List<AjaxSettlement> settlements = null;
         try {
-            persons = ajaxFetchService.fetchPersons(recipientPerson);
+            settlements = ajaxFetchService.fetchSettlements(areaId, settlementInput);
         } catch (ServiceException e) {
-            logger.error("An error occurred while fetching countries from db \n" +
-                    "persons with param \"{}\"", recipientPerson, e);
+            logger.error("An error occurred while fetching from db " +
+                    "settlements\n with these params \"areaId: {}\"," +
+                    " \"settlementInput: {}\"", areaId, settlementInput, e);
         }
 
         res.setContentType(AjaxParameter.AJAX_CONTENT_TYPE);
         res.setCharacterEncoding(AjaxParameter.AJAX_CHARACTER_ENCODING);
         PrintWriter writer = res.getWriter();
-        writer.write(new Gson().toJson(persons));
-
+        writer.write(new Gson().toJson(settlements));
     }
 }

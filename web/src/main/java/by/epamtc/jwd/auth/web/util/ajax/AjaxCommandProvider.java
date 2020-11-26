@@ -1,7 +1,20 @@
-package by.epamtc.jwd.auth.web.ajax;
+package by.epamtc.jwd.auth.web.util.ajax;
 
 import by.epamtc.jwd.auth.model.ajax.AjaxCommandName;
-import by.epamtc.jwd.auth.web.ajax.impl.*;
+import by.epamtc.jwd.auth.web.util.ajax.impl.FetchAreaInChangePatientInfoJspAjaxCommand;
+import by.epamtc.jwd.auth.web.util.ajax.impl.FetchCountryInChangePatientInfoJspAjaxCommand;
+import by.epamtc.jwd.auth.web.util.ajax.impl.FetchDiseasesInEstablishDiagnosisAjaxCommand;
+import by.epamtc.jwd.auth.web.util.ajax.impl.FetchExtremelyHazardousDiseasesInExtremelyHazardousDiseasesJsp;
+import by.epamtc.jwd.auth.web.util.ajax.impl.FetchFoodAllergyInAllergicReactionsJspAjaxCommand;
+import by.epamtc.jwd.auth.web.util.ajax.impl.FetchMedicineAllergyInAllergicReactionsJspAjaxCommand;
+import by.epamtc.jwd.auth.web.util.ajax.impl.FetchMedicinesInEstablishMedicinePrescriptionAjaxCommand;
+import by.epamtc.jwd.auth.web.util.ajax.impl.FetchPageQuantityInRefusalReferencesForPatientJspAjaxCommand;
+import by.epamtc.jwd.auth.web.util.ajax.impl.FetchPageQuantityInRefusalReferencesJspAjaxCommand;
+import by.epamtc.jwd.auth.web.util.ajax.impl.FetchPersonInMedicalHistoryPermissionJspAjaxCommand;
+import by.epamtc.jwd.auth.web.util.ajax.impl.FetchPersonInRegisterVisitAjaxCommand;
+import by.epamtc.jwd.auth.web.util.ajax.impl.FetchRegionInChangePatientInfoJspAjaxCommand;
+import by.epamtc.jwd.auth.web.util.ajax.impl.FetchRoadInChangePatientInfoJspAjaxCommand;
+import by.epamtc.jwd.auth.web.util.ajax.impl.FetchSettlementInChangePatientInfoJspAjaxCommand;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

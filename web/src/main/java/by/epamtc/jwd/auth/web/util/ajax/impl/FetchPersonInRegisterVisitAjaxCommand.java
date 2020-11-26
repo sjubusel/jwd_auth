@@ -1,11 +1,11 @@
-package by.epamtc.jwd.auth.web.ajax.impl;
+package by.epamtc.jwd.auth.web.util.ajax.impl;
 
-import by.epamtc.jwd.auth.model.ajax.AjaxCountry;
 import by.epamtc.jwd.auth.model.ajax.AjaxParameter;
+import by.epamtc.jwd.auth.model.ajax.AjaxPerson;
 import by.epamtc.jwd.auth.service.ajax.AjaxFetchService;
 import by.epamtc.jwd.auth.service.ajax.AjaxServiceFactory;
 import by.epamtc.jwd.auth.service.exception.ServiceException;
-import by.epamtc.jwd.auth.web.ajax.AjaxCommand;
+import by.epamtc.jwd.auth.web.util.ajax.AjaxCommand;
 import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,10 +17,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
-public class FetchCountryInChangePatientInfoJspAjaxCommand implements AjaxCommand {
+public class FetchPersonInRegisterVisitAjaxCommand implements AjaxCommand {
     private static final Logger logger = LoggerFactory.getLogger
-            (FetchCountryInChangePatientInfoJspAjaxCommand.class);
-
+            (FetchPersonInRegisterVisitAjaxCommand.class);
     private AjaxServiceFactory ajaxServiceFactory = AjaxServiceFactory.getInstance();
     private AjaxFetchService ajaxFetchService = ajaxServiceFactory
             .getAjaxFetchService();
@@ -28,19 +27,19 @@ public class FetchCountryInChangePatientInfoJspAjaxCommand implements AjaxComman
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse res)
             throws ServletException, IOException {
-        String countryPart = req.getParameter(AjaxParameter.COUNTRY);
-        List<AjaxCountry> countries = null;
+        String personPart = req.getParameter(AjaxParameter.VISIT_PERSON);
+        List<AjaxPerson> persons = null;
+
         try {
-            countries = ajaxFetchService.fetchCountries(countryPart);
+            persons = ajaxFetchService.fetchPersons(personPart);
         } catch (ServiceException e) {
-            logger.error("An error occurred while fetching countries from db \n" +
-                    "with this param \"countryPart: {}\" \n", countryPart, e);
+            logger.error("An error occurred while fetching from db \n" +
+                    "persons with param \"{}\"", personPart, e);
         }
 
         res.setContentType(AjaxParameter.AJAX_CONTENT_TYPE);
         res.setCharacterEncoding(AjaxParameter.AJAX_CHARACTER_ENCODING);
         PrintWriter writer = res.getWriter();
-        writer.write(new Gson().toJson(countries));
-
+        writer.write(new Gson().toJson(persons));
     }
 }
