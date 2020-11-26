@@ -653,3 +653,5 @@ patients.diagnosisWhileVisit=Диагнозы в рамках обращения
 
 patients.medicinePrescriptionsWhileVisit=Завершённые назначения лекарственного средства в рамках обращения
 patients.prescriptionsWhileVisit=Завершённые назначения в рамках обращения
+
+patientSubMenu.refusalReferencesForPatient=Все мои справки
