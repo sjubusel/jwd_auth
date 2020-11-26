@@ -51,21 +51,20 @@ public class GoToPatientsCommand implements Command {
                     .REQUEST_ERROR_VALUE_TECH);
         }
 
-        if (visitInfo == null || diagnoses == null || medPrescriptionss == null
-                || prescriptions == null) {
+        if (visitInfo == null) {
             if (req.getAttribute(AppAttribute.REQUEST_ERROR) == null) {
                 req.setAttribute(AppAttribute.REQUEST_ERROR, AppAttribute
                         .REQUEST_ERROR_VALUE_VAL);
             }
         } else {
-            if (diagnoses.size() > 0) {
+            if ((diagnoses != null) && (diagnoses.size() > 0)) {
                 req.setAttribute(AppAttribute.REQUEST_DIAGNOSES, diagnoses);
             }
-            if (medPrescriptionss.size() > 0) {
+            if ((medPrescriptionss != null) && (medPrescriptionss.size() > 0)) {
                 req.setAttribute(AppAttribute.REQUEST_MEDICINE_PRESCRIPTIONS,
                         medPrescriptionss);
             }
-            if (prescriptions.size() > 0) {
+            if ((prescriptions != null) && prescriptions.size() > 0) {
                 req.setAttribute(AppAttribute.REQUEST_PRESCRIPTIONS, prescriptions);
             }
         }
