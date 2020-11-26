@@ -642,3 +642,6 @@ refusalReferenceInDetail.noAppliedAid=There was no applied aid
 refusalReferenceInDetail.noRecords=There are no medicine recommendations
 
 refusalReferenceInDetail.doctor=Doctor
+
+undefinedError.htmlTitle=Undefined error
+undefinedError.contents=Undefined error has occurred. Please, go to main page ...

@@ -642,3 +642,6 @@ refusalReferenceInDetail.noAppliedAid=Помощь не оказывалась
 refusalReferenceInDetail.noRecords=Рекомендации по лекарственным препаратам отсутствуют
 
 refusalReferenceInDetail.doctor=Врач
+
+undefinedError.htmlTitle=Неизвестная ошибка
+undefinedError.contents=Возникла неизвестная ошибка. Просьба перейти на главную страницу ...
