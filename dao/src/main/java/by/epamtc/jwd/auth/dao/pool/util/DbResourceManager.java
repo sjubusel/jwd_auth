@@ -1,13 +1,15 @@
 package by.epamtc.jwd.auth.dao.pool.util;
 
 import by.epamtc.jwd.auth.dao.pool.ConnectionPool;
+import by.epamtc.jwd.auth.model.constant.AppConstant;
 
 import java.util.ResourceBundle;
 
 public class DbResourceManager {
     private static volatile DbResourceManager instance;
 
-    private ResourceBundle bundle = ResourceBundle.getBundle("db");
+    private ResourceBundle bundle = ResourceBundle.getBundle(AppConstant
+            .DEFAULT_BUNDLE);
 
     public static DbResourceManager getInstance() {
         DbResourceManager localInstance = instance;
