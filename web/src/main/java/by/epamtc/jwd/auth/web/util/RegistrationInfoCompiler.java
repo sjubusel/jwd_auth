@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class RegistrationInfoCompiler {
+public final class RegistrationInfoCompiler {
     private static final Logger logger = LoggerFactory.getLogger(
             RegistrationInfoCompiler.class);
     private static volatile RegistrationInfoCompiler instance;
