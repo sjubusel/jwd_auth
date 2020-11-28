@@ -3,7 +3,7 @@ package by.epamtc.jwd.auth.service.util;
 import by.epamtc.jwd.auth.model.auth_info.AuthUser;
 import by.epamtc.jwd.auth.model.constant.AppConstant;
 
-public class DuplicateAuthUserProvider {
+public final class DuplicateAuthUserProvider {
     private static volatile DuplicateAuthUserProvider instance;
 
     private final AuthUser bothDuplicateAuthUser = new AuthUser(
@@ -16,6 +16,9 @@ public class DuplicateAuthUserProvider {
             AppConstant.AUTH_USER_STANDARD_INT_VALUE,
             AppConstant.DUPLICATE_AUTH_USER_EMAIL_ID);
 
+    private DuplicateAuthUserProvider() {
+    }
+
     public static DuplicateAuthUserProvider getInstance() {
         DuplicateAuthUserProvider localInstance = instance;
         if (localInstance == null) {
@@ -27,9 +30,6 @@ public class DuplicateAuthUserProvider {
             }
         }
         return localInstance;
-    }
-
-    private DuplicateAuthUserProvider() {
     }
 
     public AuthUser receiveAuthUserDuplicate(boolean doesLoginExist,
