@@ -1,8 +1,13 @@
 package by.epamtc.jwd.auth.service;
 
-import by.epamtc.jwd.auth.service.impl.*;
+import by.epamtc.jwd.auth.service.impl.DefaultAuthUserService;
+import by.epamtc.jwd.auth.service.impl.DefaultHospitalReportService;
+import by.epamtc.jwd.auth.service.impl.DefaultPatientService;
+import by.epamtc.jwd.auth.service.impl.DefaultProfileService;
+import by.epamtc.jwd.auth.service.impl.DefaultUploadService;
+import by.epamtc.jwd.auth.service.impl.DefaultVisitService;
 
-public class ServiceFactory {
+public final class ServiceFactory {
     private static volatile ServiceFactory instance;
     private final HospitalReportService hospitalReportService
             = new DefaultHospitalReportService();
