@@ -17,12 +17,28 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
+/**
+ * a class which is created to compile entities which are to be used mostly in
+ * visit to the admitting department subsystem
+ */
 public final class VisitRelatedEntitiesCompiler {
+    /**
+     * a unique and only instance of this class
+     */
     private static volatile VisitRelatedEntitiesCompiler instance;
 
+    /**
+     * a private constructor of a Singleton pattern
+     */
     private VisitRelatedEntitiesCompiler() {
     }
 
+    /**
+     * a method which initialize and provide thread safe instance of a
+     * current type
+     *
+     * @return an unique and only instance of a current class
+     */
     public static VisitRelatedEntitiesCompiler getInstance() {
         VisitRelatedEntitiesCompiler localInstance = instance;
         if (localInstance == null) {
@@ -36,6 +52,23 @@ public final class VisitRelatedEntitiesCompiler {
         return localInstance;
     }
 
+    /**
+     * a method which generates by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit
+     * object using data stored in java.sql.ResultSet. This object contains shortened
+     * information about the visit to the admitting department in compliance with
+     * healthcare legislation of the Republic of Belarus
+     *
+     * @param resultSet  java.sql.ResultSet, which contains data to generate
+     *                   by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit
+     * @param startIndex an int value, which is a number of the first column
+     *                   in the result set
+     * @return a by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit object
+     * information about the visit to the admitting department in compliance with
+     * healthcare legislation of the Republic of Belarus
+     * @throws SQLException throws if some issues with database interaction
+     *                      occur
+     * @see by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit
+     */
     public AdmissionDepartmentVisit compileShortenedVisit(ResultSet resultSet,
             int startIndex)
             throws SQLException {
@@ -57,6 +90,25 @@ public final class VisitRelatedEntitiesCompiler {
         return visit;
     }
 
+    /**
+     * a method which generates by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit
+     * object using data stored in java.sql.ResultSet. This object contains full
+     * information about the visit to the admitting department in compliance with
+     * healthcare legislation of the Republic of Belarus
+     *
+     * @param visit      a source AdmissionDepartmentVisit with shorten information
+     *                   which is not updated to complete state (full)
+     * @param resultSet  java.sql.ResultSet, which contains data to generate
+     *                   by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit
+     * @param startIndex an int value, which is a number of the first column
+     *                   in the result set
+     * @return a by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit object
+     * information about the visit to the admitting department in compliance with
+     * healthcare legislation of the Republic of Belarus
+     * @throws SQLException throws if some issues with database interaction
+     *                      occur
+     * @see by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit
+     */
     public AdmissionDepartmentVisit compileFullVisit(AdmissionDepartmentVisit
             visit, ResultSet resultSet, int startIndex) throws SQLException {
         int personId = resultSet.getInt(startIndex);
@@ -97,6 +149,21 @@ public final class VisitRelatedEntitiesCompiler {
         return visit;
     }
 
+    /**
+     * a method which generates by.epamtc.jwd.auth.model.med_info.Diagnosis
+     * object using data stored in java.sql.ResultSet. This object contains
+     * information about an established diagnosis
+     *
+     * @param resultSet        java.sql.ResultSet, which contains data to generate
+     *                         by.epamtc.jwd.auth.model.med_info.Diagnosis
+     * @param departmentOrigin an object which describes an origin of
+     *                         the department where this diagnosis was established
+     * @return a by.epamtc.jwd.auth.model.med_info.Diagnosis object
+     * information  about an established diagnosis
+     * @throws SQLException throws if some issues with database interaction
+     *                      occur
+     * @see by.epamtc.jwd.auth.model.med_info.Diagnosis
+     */
     public Diagnosis compileDiagnosis(ResultSet resultSet, DepartmentOrigin
             departmentOrigin) throws SQLException {
         Diagnosis diagnosis = new Diagnosis();
@@ -149,6 +216,18 @@ public final class VisitRelatedEntitiesCompiler {
         return diagnosis;
     }
 
+    /**
+     * a method which generates by.epamtc.jwd.auth.model.med_info.MedicinePrescription
+     * that possesses information about a prescription of a medicine
+     *
+     * @param rSet java.sql.ResultSet which is a source for an aforementioned
+     *             by.epamtc.jwd.auth.model.med_info.MedicinePrescription
+     * @return by.epamtc.jwd.auth.model.med_info.MedicinePrescription, which
+     * possesses information about a prescription of a medicine
+     * @throws SQLException throws if some issues with database interaction
+     *                      occur
+     * @see by.epamtc.jwd.auth.model.med_info.MedicinePrescription
+     */
     public MedicinePrescription compileMedicinePrescription(ResultSet rSet)
             throws SQLException {
         MedicinePrescription prescription = new MedicinePrescription();
@@ -236,6 +315,18 @@ public final class VisitRelatedEntitiesCompiler {
         return prescription;
     }
 
+    /**
+     * a method which generates by.epamtc.jwd.auth.model.med_info.MedicinePrescription
+     * that possesses information about a prescription of non-medicine origin
+     *
+     * @param rSet java.sql.ResultSet which is a source for an aforementioned
+     *             by.epamtc.jwd.auth.model.med_info.MedicinePrescription
+     * @return by.epamtc.jwd.auth.model.med_info.MedicinePrescription, which
+     * possesses information about a prescription of of non-medicine origin
+     * @throws SQLException throws if some issues with database interaction
+     *                      occur
+     * @see by.epamtc.jwd.auth.model.med_info.MedicinePrescription
+     */
     public Prescription compileNonMedicinePrescription(ResultSet rSet)
             throws SQLException {
         Prescription prescription = new Prescription();
@@ -311,8 +402,18 @@ public final class VisitRelatedEntitiesCompiler {
         return prescription;
     }
 
+    /**
+     * a method which updates already existing by.epamtc.jwd.auth.model.med_info.MedicinePrescription
+     * with information about a patient
+     *
+     * @param prescription already existing by.epamtc.jwd.auth.model.med_info.MedicinePrescription
+     *                     object which is to be updated
+     * @param resultSet    java.sql.ResultSet which is a source of updating data
+     * @throws SQLException throws if some issues with database interaction
+     *                      occur
+     */
     public void updateMedPrescriptionWithPatientInfo
-            (MedicinePrescription prescription, ResultSet resultSet)
+    (MedicinePrescription prescription, ResultSet resultSet)
             throws SQLException {
         int patientId = resultSet.getInt(25);
         prescription.setPatientId(patientId);
@@ -321,6 +422,16 @@ public final class VisitRelatedEntitiesCompiler {
         prescription.setPatientInfo(patientInfo);
     }
 
+    /**
+     * a method which updates already existing by.epamtc.jwd.auth.model.med_info.Prescription
+     * with information about a patient
+     *
+     * @param prescription already existing by.epamtc.jwd.auth.model.med_info.Prescription
+     *                     object which is to be updated
+     * @param resultSet    java.sql.ResultSet which is a source of updating data
+     * @throws SQLException throws if some issues with database interaction
+     *                      occur
+     */
     public void updateNonMedPrescriptionWithPatientInfo(
             Prescription prescription, ResultSet resultSet) throws SQLException {
         int patientId = resultSet.getInt(22);
@@ -330,14 +441,19 @@ public final class VisitRelatedEntitiesCompiler {
         prescription.setPatientInfo(patientInfo);
     }
 
-    private String compileFullName(String firstName, String middleName,
-            String lastName) {
-        return middleName != null
-               ? lastName + AppConstant.ONE_WHITESPACE + firstName
-                       + AppConstant.ONE_WHITESPACE + middleName
-               : lastName + AppConstant.ONE_WHITESPACE + firstName;
-    }
-
+    /**
+     * a method that generates by.epamtc.jwd.auth.model.visit_info.RefusalMedicineRecommendation
+     * which contains information about a recommendation of a medicine which is
+     * established when a patient gets a refusal to his hospitalization
+     *
+     * @param resultSet java.sql.ResultSet, which is a source for data that make
+     *                  up an aforementioned by.epamtc.jwd.auth.model.visit_info.RefusalMedicineRecommendation
+     * @return by.epamtc.jwd.auth.model.visit_info.RefusalMedicineRecommendation
+     * that contains information about a recommendation of a medicine which is
+     * established when a patient gets a refusal to his hospitalization
+     * @throws SQLException throws if some issues with database interaction
+     *                      occur
+     */
     public RefusalMedicineRecommendation compileRefusalMedicineRecommendation(
             ResultSet resultSet) throws SQLException {
         int recommendationId = resultSet.getInt(1);
@@ -358,6 +474,33 @@ public final class VisitRelatedEntitiesCompiler {
                 intakeInstructions);
     }
 
+    /**
+     * a private method which creates String that contains identification data
+     * about a person. Implementation of this method must be widen in compliance
+     * with future needs
+     *
+     * @param firstName  a String, which represents a person's first name
+     * @param middleName a String, which represents a person's middle name
+     * @param lastName   a String, which represents a person's last name
+     * @return a String that contains identification data about a person
+     */
+    private String compileFullName(String firstName, String middleName,
+            String lastName) {
+        return middleName != null
+               ? lastName + AppConstant.ONE_WHITESPACE + firstName
+                       + AppConstant.ONE_WHITESPACE + middleName
+               : lastName + AppConstant.ONE_WHITESPACE + firstName;
+    }
+
+    /**
+     * a method which finds an equivalent of by.epamtc.jwd.auth.model.med_info.MedicineMeasureUnit
+     * enum by its id
+     *
+     * @param unitId id which by.epamtc.jwd.auth.model.med_info.MedicineMeasureUnit
+     *               is to be found by
+     * @return by.epamtc.jwd.auth.model.med_info.MedicineMeasureUnit, which
+     * corresponds <code>unitId</code>
+     */
     private MedicineMeasureUnit receiveMedicineMeasureUnit(int unitId) {
         for (MedicineMeasureUnit measureUnit : MedicineMeasureUnit.values()) {
             if (unitId == measureUnit.getMeasureUnitId()) {
@@ -367,6 +510,19 @@ public final class VisitRelatedEntitiesCompiler {
         return null;
     }
 
+    /**
+     * a private method which generates a String description of a medicine. It's
+     * a temporary method, if it is needed, it will be refactored into a
+     * separate class
+     *
+     * @param medicineName       a naming of a medicine
+     * @param dosageFormTypeName a naming of a form of a dosage of a medicine
+     * @param dosageMgValue      a dosage of a main component of a medicine in
+     *                           milligram(s)
+     * @param dosageMlValue      a dosage of a medicine in millilitre(s) if this
+     *                           parameter is applicable for this medicine
+     * @return a String which contains a shortened information about a medicine
+     */
     private String compileShortenedMedicineInfo(String medicineName,
             String dosageFormTypeName, double dosageMgValue,
             double dosageMlValue) {
