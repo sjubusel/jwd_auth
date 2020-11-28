@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class AjaxCommandProvider {
+public final class AjaxCommandProvider {
     private static volatile AjaxCommandProvider instance;
 
     private final HashMap<String, AjaxCommand> repository = new HashMap<>();
