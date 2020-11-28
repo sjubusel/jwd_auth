@@ -32,7 +32,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
 
-public class ConnectionPool {
+public final class ConnectionPool {
     private static final Logger logger = LoggerFactory.getLogger(ConnectionPool
             .class);
     private static volatile ConnectionPool instance;
