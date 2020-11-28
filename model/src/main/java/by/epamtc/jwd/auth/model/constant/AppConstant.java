@@ -39,6 +39,7 @@ public final class AppConstant {
     public static final String DEFAULT_PAGE_NUMBER = "1";
     public static final int REFERENCES_PER_PAGE = 10;
     public static final String DEFAULT_BUNDLE = "db";
+    public static final int DEFAULT_POOL_SIZE = 10;
 
 
     private AppConstant() {
