@@ -80,7 +80,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class CommandProvider {
+public final class CommandProvider {
     private static volatile CommandProvider instance;
 
     private final HashMap<String, Command> repository = new HashMap<>();
