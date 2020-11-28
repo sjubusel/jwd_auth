@@ -10,7 +10,7 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Enumeration;
 
-public class FileAccessAssistant {
+public final class FileAccessAssistant {
     private static final Logger logger = LoggerFactory.getLogger
             (FileAccessAssistant.class);
     private static volatile FileAccessAssistant instance;
