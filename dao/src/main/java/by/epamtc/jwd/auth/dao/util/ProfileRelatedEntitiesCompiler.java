@@ -1,7 +1,18 @@
 package by.epamtc.jwd.auth.dao.util;
 
 import by.epamtc.jwd.auth.model.constant.AppConstant;
-import by.epamtc.jwd.auth.model.user_info.*;
+import by.epamtc.jwd.auth.model.user_info.Address;
+import by.epamtc.jwd.auth.model.user_info.BloodType;
+import by.epamtc.jwd.auth.model.user_info.DisabilityDegree;
+import by.epamtc.jwd.auth.model.user_info.ExtremelyHazardousDiseaseCase;
+import by.epamtc.jwd.auth.model.user_info.Gender;
+import by.epamtc.jwd.auth.model.user_info.IdentificationDocumentType;
+import by.epamtc.jwd.auth.model.user_info.IdentityDocument;
+import by.epamtc.jwd.auth.model.user_info.MaritalStatus;
+import by.epamtc.jwd.auth.model.user_info.MedicalHistoryPermission;
+import by.epamtc.jwd.auth.model.user_info.PatientInfo;
+import by.epamtc.jwd.auth.model.user_info.RhBloodGroup;
+import by.epamtc.jwd.auth.model.user_info.TransportationStatus;
 
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -10,12 +21,29 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+/**
+ * a class which is created to compile entities which are to be used mostly in
+ * profile subsystem
+ */
 public final class ProfileRelatedEntitiesCompiler {
+
+    /**
+     * a unique and only instance of this class
+     */
     private static volatile ProfileRelatedEntitiesCompiler instance;
 
+    /**
+     * a private constructor of a Singleton pattern
+     */
     private ProfileRelatedEntitiesCompiler() {
     }
 
+    /**
+     * a method which initialize and provide thread safe instance of a
+     * current type
+     *
+     * @return an unique and only instance of a current class
+     */
     public static ProfileRelatedEntitiesCompiler getInstance() {
         ProfileRelatedEntitiesCompiler localInstance = instance;
         if (localInstance == null) {
@@ -29,6 +57,20 @@ public final class ProfileRelatedEntitiesCompiler {
         return localInstance;
     }
 
+    /**
+     * a method which generates by.epamtc.jwd.auth.model.user_info.PatientInfo
+     * object using data stored in java.sql.ResultSet
+     *
+     * @param rSet       java.sql.ResultSet, which contains data to generate
+     *                   by.epamtc.jwd.auth.model.user_info.PatientInfo
+     * @param startIndex an int value, which is a number of the first column
+     *                   in the result set
+     * @return a by.epamtc.jwd.auth.model.user_info.PatientInfo object
+     * that contains medical information about a patient
+     * @throws SQLException throws if some issues with database interaction
+     *                      occur
+     * @see by.epamtc.jwd.auth.model.user_info.PatientInfo
+     */
     public PatientInfo compilePatientInfo(ResultSet rSet, int startIndex)
             throws SQLException {
         String photoPath = rSet.getString(startIndex);
@@ -96,6 +138,20 @@ public final class ProfileRelatedEntitiesCompiler {
                 hasExtremelyHazardousDiseases);
     }
 
+    /**
+     * a method that generates by.epamtc.jwd.auth.model.user_info.IdentityDocument
+     * which contains information about a document that identifies a person
+     *
+     * @param rSet       java.sql.ResultSet, which contains data to generate
+     *                   by.epamtc.jwd.auth.model.user_info.IdentityDocument
+     * @param startIndex an int value, which is a number of the first column
+     *                   in the result set
+     * @return a by.epamtc.jwd.auth.model.user_info.IdentityDocument object
+     * that contains information about a document that identifies a person
+     * @throws SQLException throws if some issues with database interaction
+     *                      occur
+     * @see by.epamtc.jwd.auth.model.user_info.IdentityDocument
+     */
     public IdentityDocument compileIdentityDocument(ResultSet rSet,
             int startIndex) throws SQLException {
         int identityDocId = rSet.getInt(startIndex);
@@ -134,6 +190,22 @@ public final class ProfileRelatedEntitiesCompiler {
         return null;
     }
 
+    /**
+     * a method that generates by.epamtc.jwd.auth.model.user_info.Address
+     * which contains information about an address beginning from country
+     * ending up to a room
+     *
+     * @param rSet       java.sql.ResultSet, which contains data to generate
+     *                   by.epamtc.jwd.auth.model.user_info.Address
+     * @param startIndex an int value, which is a number of the first column
+     *                   in the result set
+     * @return a by.epamtc.jwd.auth.model.user_info.Address object
+     * that contains information about an address beginning from country
+     * ending up to a room
+     * @throws SQLException throws if some issues with database interaction
+     *                      occur
+     * @see by.epamtc.jwd.auth.model.user_info.Address
+     */
     public Address compileAddress(ResultSet rSet, int startIndex) throws SQLException {
         int addressId = rSet.getInt(startIndex);
         if (addressId > 0) {
@@ -160,6 +232,20 @@ public final class ProfileRelatedEntitiesCompiler {
         return null;
     }
 
+    /**
+     * a method that generates by.epamtc.jwd.auth.model.user_info.MedicalHistoryPermission
+     * which contains information about a case of granting a permission from
+     * a patient to another person
+     *
+     * @param rSet java.sql.ResultSet, which contains data to generate
+     *             by.epamtc.jwd.auth.model.user_info.MedicalHistoryPermission
+     * @return a by.epamtc.jwd.auth.model.user_info.MedicalHistoryPermission
+     * that which contains information about a case of granting a permission from
+     * a patient to another person
+     * @throws SQLException throws if some issues with database interaction
+     *                      occur
+     * @see by.epamtc.jwd.auth.model.user_info.MedicalHistoryPermission
+     */
     public MedicalHistoryPermission compileMedicalHistoryPermission(ResultSet
             rSet) throws SQLException {
         int permissionId = rSet.getInt(1);
@@ -184,8 +270,22 @@ public final class ProfileRelatedEntitiesCompiler {
                 cancellationDescription);
     }
 
+    /**
+     * a method that generates by.epamtc.jwd.auth.model.user_info.ExtremelyHazardousDiseaseCase
+     * which contains information about a case of development of extremely
+     * hazardous disease (HIV, syphilis and etc)
+     *
+     * @param rSet java.sql.ResultSet, which contains data to generate
+     *             by.epamtc.jwd.auth.model.user_info.ExtremelyHazardousDiseaseCase
+     * @return a by.epamtc.jwd.auth.model.user_info.ExtremelyHazardousDiseaseCase
+     * that which contains information about a case of development of extremely
+     * hazardous disease (HIV, syphilis and etc)
+     * @throws SQLException throws if some issues with database interaction
+     *                      occur
+     * @see by.epamtc.jwd.auth.model.user_info.ExtremelyHazardousDiseaseCase
+     */
     public ExtremelyHazardousDiseaseCase compileExtremelyHazardousDiseaseCase
-            (ResultSet rSet) throws SQLException {
+    (ResultSet rSet) throws SQLException {
         int caseId = rSet.getInt(1);
         int diseaseId = rSet.getInt(2);
         String diseaseDescription = rSet.getString(3);
