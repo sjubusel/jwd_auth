@@ -2,7 +2,7 @@ package by.epamtc.jwd.auth.service.ajax_service;
 
 import by.epamtc.jwd.auth.service.ajax_service.impl.DefaultAjaxFetchService;
 
-public class AjaxServiceFactory {
+public final class AjaxServiceFactory {
     private static volatile AjaxServiceFactory instance;
     private final AjaxFetchService ajaxFetchService = new DefaultAjaxFetchService();
 
