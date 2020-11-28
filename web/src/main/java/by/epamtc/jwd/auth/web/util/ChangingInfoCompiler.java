@@ -15,7 +15,7 @@ import by.epamtc.jwd.auth.model.user_info.TransportationStatus;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 
-public class ChangingInfoCompiler {
+public final class ChangingInfoCompiler {
     private static volatile ChangingInfoCompiler instance;
 
     private RegistrationInfoCompiler regInfCompiler = RegistrationInfoCompiler
