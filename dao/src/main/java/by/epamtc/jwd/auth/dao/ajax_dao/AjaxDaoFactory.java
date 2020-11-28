@@ -7,7 +7,7 @@ import by.epamtc.jwd.auth.dao.ajax_dao.impl.DefaultAjaxFetchDao;
  * its nature hides exact implementations of dao interfaces from a client on
  * the service layer. It is of a Singleton pattern.
  */
-public class AjaxDaoFactory {
+public final class AjaxDaoFactory {
     /**
      * a unique and only instance of this class
      */
