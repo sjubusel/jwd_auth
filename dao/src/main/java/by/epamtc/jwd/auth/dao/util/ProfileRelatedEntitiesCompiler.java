@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class ProfileRelatedEntitiesCompiler {
+public final class ProfileRelatedEntitiesCompiler {
     private static volatile ProfileRelatedEntitiesCompiler instance;
 
     private ProfileRelatedEntitiesCompiler() {

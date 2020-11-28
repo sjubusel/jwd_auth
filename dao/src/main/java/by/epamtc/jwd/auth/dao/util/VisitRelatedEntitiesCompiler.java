@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
-public class VisitRelatedEntitiesCompiler {
+public final class VisitRelatedEntitiesCompiler {
     private static volatile VisitRelatedEntitiesCompiler instance;
 
     private VisitRelatedEntitiesCompiler() {
