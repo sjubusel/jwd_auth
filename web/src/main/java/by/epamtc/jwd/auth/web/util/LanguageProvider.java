@@ -5,7 +5,7 @@ import by.epamtc.jwd.auth.service.ServiceFactory;
 
 import java.util.HashMap;
 
-public class LanguageProvider {
+public final class LanguageProvider {
     private static volatile LanguageProvider instance;
 
     private final HashMap<String, String> repository = new HashMap<>();
