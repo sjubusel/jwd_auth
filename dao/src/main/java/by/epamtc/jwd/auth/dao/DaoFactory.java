@@ -12,7 +12,7 @@ import by.epamtc.jwd.auth.dao.impl.DefaultVisitDao;
  * its nature hides exact implementations of dao interfaces from a client on
  * the service layer. It is of a Singleton pattern.
  */
-public class DaoFactory {
+public final class DaoFactory {
     /**
      * a unique and only instance of this class
      */
