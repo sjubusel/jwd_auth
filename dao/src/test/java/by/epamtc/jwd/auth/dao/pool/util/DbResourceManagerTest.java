@@ -5,6 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class DbResourceManagerTest {
+    public static final String TEST_PROPERTY = "jdbc:mysql://localhost:3306/";
+
     private DbResourceManager manager = DbResourceManager.getInstance();
 
     @DisplayName("test whether Singleton is correct")
@@ -19,8 +21,7 @@ class DbResourceManagerTest {
             "a correct properties")
     @Test
     void testGetValue() {
-        String expected = "jdbc:mysql://localhost:3306/";
         String actual = manager.getValue(DbParameter.DB_URL);
-        Assertions.assertEquals(expected, actual);
+        Assertions.assertEquals(TEST_PROPERTY, actual);
     }
 }
