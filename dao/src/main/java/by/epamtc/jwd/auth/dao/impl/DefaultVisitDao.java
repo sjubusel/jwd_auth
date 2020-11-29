@@ -853,7 +853,7 @@ public class DefaultVisitDao implements VisitDao {
     }
 
     @Override
-    public List<AdmissionDepartmentVisit> fetchVisitToRefuse(AuthUser user)
+    public List<AdmissionDepartmentVisit> fetchVisitsToRefuse(AuthUser user)
             throws DaoException {
         Connection conn = null;
         PreparedStatement statement = null;

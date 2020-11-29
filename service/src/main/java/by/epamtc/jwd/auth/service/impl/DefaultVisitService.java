@@ -367,7 +367,7 @@ public class DefaultVisitService implements VisitService {
             throws ServiceException {
         if (validator.isAuthUserHasRightsToTreat(user)) {
             try {
-                return visitDao.fetchVisitToRefuse(user);
+                return visitDao.fetchVisitsToRefuse(user);
             } catch (DaoException e) {
                 throw new ServiceException(e);
             }

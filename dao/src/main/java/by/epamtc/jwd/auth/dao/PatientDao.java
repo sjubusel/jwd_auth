@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  * an interface that established contracts for patient-connected activity
- * performed a user of the current information system entered as a patient
+ * performed by a user of the current information system entered as a patient
  * while receiving medical aid in the hospital
  */
 public interface PatientDao {
