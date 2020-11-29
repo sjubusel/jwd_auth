@@ -172,7 +172,7 @@
                                         </td>
                                         <td class="col d-flex align-items-center">
                                             <c:choose>
-                                                <c:when test="${requestScope.visitInfo.responsibleDoctorId ne null}">
+                                                <c:when test="${requestScope.visitInfo.responsibleDoctorId > 0}">
                                                     <c:out value="${requestScope.visitInfo.responsibleDoctorId}"/>
                                                 </c:when>
                                                 <c:otherwise>
@@ -189,7 +189,7 @@
                                         </td>
                                         <td class="col d-flex align-items-center">
                                             <c:choose>
-                                                <c:when test="${requestScope.visitInfo.responsibleDoctorInfo ne null}">
+                                                <c:when test="${requestScope.visitInfo.responsibleDoctorId > 0}">
                                                     <c:out value="${requestScope.visitInfo.responsibleDoctorInfo}"/>
                                                 </c:when>
                                                 <c:otherwise>

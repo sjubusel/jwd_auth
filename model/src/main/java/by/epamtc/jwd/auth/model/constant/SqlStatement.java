@@ -749,11 +749,11 @@ public final class SqlStatement {
             "       hospDep.name\n" +
             "\n" +
             "FROM hospital.visits_to_admission_department v2ad\n" +
-            "         JOIN hospital.persons p ON v2ad.person_id = p.person_id\n" +
+            "         LEFT OUTER JOIN hospital.persons p ON v2ad.person_id = p.person_id\n" +
             "\n" +
-            "         JOIN hospital.staff d ON v2ad.responsible_doctor_id " +
+            "         LEFT OUTER JOIN hospital.staff d ON v2ad.responsible_doctor_id " +
             "= d.staff_id\n" +
-            "         JOIN hospital.persons dp ON d.person_id = dp.person_id\n" +
+            "         LEFT OUTER JOIN hospital.persons dp ON d.person_id = dp.person_id\n" +
             "\n" +
             "         LEFT OUTER JOIN hospital.staff paraStaff " +
             "ON v2ad.responsible_paramedical_staff_id = paraStaff.staff_id\n" +
