@@ -45,6 +45,9 @@ public final class RegistrationInfoCompiler {
                 .INNER_NUMBER);
         String firstName = req.getParameter(AppParameter.FIRST_NAME);
         String middleName = req.getParameter(AppParameter.MIDDLE_NAME);
+        if (middleName.equals(AppConstant.EMPTY)) {
+            middleName = null;
+        }
         String lastName = req.getParameter(AppParameter.LAST_NAME);
         String birthday = req.getParameter(AppParameter.BIRTHDAY);
         String gender = req.getParameter(AppParameter.GENDER);
