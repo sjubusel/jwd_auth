@@ -10,6 +10,7 @@ import org.apache.ibatis.jdbc.ScriptRunner;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -71,6 +72,7 @@ class DefaultVisitDaoTest {
 
     @DisplayName("test registration of a visit to the admitting department")
     @Test
+    @Disabled
     void testRegisterVisit() throws DaoException, SQLException {
         AdmissionDepartmentVisit expectedVisit = new AdmissionDepartmentVisit();
         expectedVisit.setPatientShortInfo(String.valueOf(10));
