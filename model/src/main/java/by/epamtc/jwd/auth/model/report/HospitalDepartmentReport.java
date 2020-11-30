@@ -52,8 +52,8 @@ public class HospitalDepartmentReport implements java.io.Serializable {
 
         HospitalDepartmentReport hpReport = (HospitalDepartmentReport) o;
         return deptName.equals(hpReport.deptName)
-                && (vacantPlacesNumber != hpReport.vacantPlacesNumber)
-                && (totalPlacesNumber != hpReport.totalPlacesNumber);
+                && (vacantPlacesNumber == hpReport.vacantPlacesNumber)
+                && (totalPlacesNumber == hpReport.totalPlacesNumber);
     }
 
     @Override
