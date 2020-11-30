@@ -5,7 +5,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class DbResourceManagerTest {
-    public static final String TEST_PROPERTY = "jdbc:mysql://localhost:3308/";
+    public static final String TEST_PROPERTY = "jdbc:mysql://localhost:3308/" +
+            "?useUnicode=true&characterEncoding=utf8";
 
     private DbResourceManager manager = DbResourceManager.getInstance();
 
