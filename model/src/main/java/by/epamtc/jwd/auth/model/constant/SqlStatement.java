@@ -1250,6 +1250,12 @@ public final class SqlStatement {
             "         JOIN hospital.visits_to_admission_department v2ad " +
             "ON rr.visit_id = v2ad.visit_id\n" +
             "WHERE rr.refusal_reference_id = ?;";
+    public static final String SELECT_FILLABILITY
+            = "SELECT dep.name, " +
+            "f.vacant_places_quantity, f.total_places_quantity\n" +
+            "FROM hospital.stub_table_fillability f\n" +
+            "JOIN hospital.hospital_departments dep " +
+            "ON f.hospital_department_id = dep.hospital_department_id";
 
     private SqlStatement() {
     }

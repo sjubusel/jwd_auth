@@ -4,6 +4,7 @@ import by.epamtc.jwd.auth.dao.HospitalReportDao;
 import by.epamtc.jwd.auth.dao.exception.DaoException;
 import by.epamtc.jwd.auth.dao.pool.ConnectionPool;
 import by.epamtc.jwd.auth.dao.pool.exception.ConnectionPoolException;
+import by.epamtc.jwd.auth.model.constant.SqlStatement;
 import by.epamtc.jwd.auth.model.report.HospitalDepartmentReport;
 import by.epamtc.jwd.auth.model.report.HospitalReport;
 
@@ -50,11 +51,7 @@ public class DefaultHospitalReportDao implements HospitalReportDao {
 
     private ResultSet extractSourceDataFromDB(Statement statement)
             throws SQLException {
-        return statement.executeQuery("SELECT dep.name, " +
-                "f.vacant_places_quantity, f.total_places_quantity\n" +
-                "FROM hospital.stub_table_fillability f\n" +
-                "JOIN hospital.hospital_departments dep " +
-                "ON f.hospital_department_id = dep.hospital_department_id");
+        return statement.executeQuery(SqlStatement.SELECT_FILLABILITY);
     }
 
     private HospitalReport formReportFromSourceDataIfPossible(ResultSet resSet)
