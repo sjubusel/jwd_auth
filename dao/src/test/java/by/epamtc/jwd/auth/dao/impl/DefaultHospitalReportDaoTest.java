@@ -42,6 +42,7 @@ class DefaultHospitalReportDaoTest {
         connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USER,
                 DATABASE_PASSWORD);
         ScriptRunner scriptRunner = new ScriptRunner(connection);
+        scriptRunner.setLogWriter(null);
         FileReader fileReader = new FileReader(SQL_SCRIPT_CREATION);
         BufferedReader reader = new BufferedReader(fileReader);
         scriptRunner.runScript(reader);
