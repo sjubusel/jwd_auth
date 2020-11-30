@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class DbResourceManagerTest {
-    public static final String TEST_PROPERTY = "jdbc:mysql://localhost:3306/";
+    public static final String TEST_PROPERTY = "jdbc:mysql://localhost:3308/";
 
     private DbResourceManager manager = DbResourceManager.getInstance();
 
