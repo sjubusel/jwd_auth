@@ -70,6 +70,7 @@ class DefaultPatientDaoTest {
                         "VALUES (10, CURRENT_TIMESTAMP, 'independently', " +
                         "'БОЛЬ В ЖИВОТЕ в 13:45 15.10.2020', 1, 'WALKING', 3)");
         statement.executeUpdate();
+        closeStatement(statement);
         AdmissionDepartmentVisit expected = new AdmissionDepartmentVisit(3,
                 null, 10, "Синяк Михаил Олегович", VisitReason.INDEPENDENTLY,
                 "БОЛЬ В ЖИВОТЕ в 13:45 15.10.2020", 1,
