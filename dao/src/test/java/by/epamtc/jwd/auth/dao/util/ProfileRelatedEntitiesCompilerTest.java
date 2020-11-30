@@ -1,32 +1,19 @@
-package by.epamtc.jwd.auth.dao.impl;
+package by.epamtc.jwd.auth.dao.util;
 
-import by.epamtc.jwd.auth.dao.DaoFactory;
-import by.epamtc.jwd.auth.dao.VisitDao;
-import by.epamtc.jwd.auth.dao.exception.DaoException;
-import by.epamtc.jwd.auth.model.user_info.TransportationStatus;
-import by.epamtc.jwd.auth.model.visit_info.AdmissionDepartmentVisit;
-import by.epamtc.jwd.auth.model.visit_info.VisitReason;
+import by.epamtc.jwd.auth.model.constant.SqlStatement;
+import by.epamtc.jwd.auth.model.user_info.*;
 import org.apache.ibatis.jdbc.ScriptRunner;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ResourceBundle;
 
-import static org.junit.jupiter.api.Assertions.fail;
-
-class DefaultVisitDaoTest {
-
+class ProfileRelatedEntitiesCompilerTest {
     private static final ResourceBundle bundle = ResourceBundle.getBundle("db");
     private static final String SQL_SCRIPT_CREATION = bundle.getString("scriptPath");
     private static final String SQL_SCRIPT_FILLING = bundle.getString("scriptPath2");
@@ -36,8 +23,8 @@ class DefaultVisitDaoTest {
     private static final String DATABASE_PASSWORD = bundle.getString("password");
 
     private static Connection connection;
-    private DaoFactory daoFactory = DaoFactory.getInstance();
-    private VisitDao trgDao = daoFactory.getVisitDao();
+    private ProfileRelatedEntitiesCompiler testCompiler
+            = ProfileRelatedEntitiesCompiler.getInstance();
 
     @BeforeAll
     static void beforeAll() throws ClassNotFoundException, SQLException,
@@ -69,45 +56,40 @@ class DefaultVisitDaoTest {
         closeConnection(connection);
     }
 
-    @DisplayName("test registration of a visit to the admitting department")
+    @DisplayName("test generating of information about a patient " +
+            "(by.epamtc.jwd.auth.model.user_info.PatientInfo)")
     @Test
-    void testRegisterVisit() throws DaoException, SQLException {
-        AdmissionDepartmentVisit expectedVisit = new AdmissionDepartmentVisit();
-        expectedVisit.setPatientShortInfo(String.valueOf(10));
-        expectedVisit.setVisitReason(VisitReason.INDEPENDENTLY);
-        expectedVisit.setPatientVisitDescriptionInfo("test description");
-        expectedVisit.setTransportationStatus(TransportationStatus.WALKING);
+    void testCompilePatientInfo() throws SQLException {
+        IdentityDocument expectedIdentityDocument = new IdentityDocument(2,
+                IdentificationDocumentType.PASSPORT, "MP", 2211356, "SINYAK",
+                "MIKHAIL", "Республика Беларусь",
+                LocalDate.of(1963, Month.NOVEMBER, 10),
+                "3101163B01PB7", Gender.MALE, "РОССИЙСКАЯ ФЕДЕРАЦИЯ, " +
+                "Г.САНКТ-ПЕТЕРБУРГ", LocalDate.of(2015, Month.APRIL, 1),
+                LocalDate.of(2015, Month.APRIL, 30), "МВД РБ");
+        Address expectedAddress = new Address(8, "220000", "БЕЛАРУСЬ",
+                "ГОРОД МИНСК", "ГОРОД МИНСК", "ГОРОД МИНСК",
+                "ПРОСПЕКТ ПОБЕДИТЕЛЕЙ", "85", null, null);
+        PatientInfo expected = new PatientInfo(null, "Михаил", "Олегович",
+                "Синяк", LocalDate.of(1963, Month.NOVEMBER, 10), Gender.MALE,
+                "refusalpatient@tut.by", "+375(29) 102-01-02",
+                MaritalStatus.MARRIED, expectedIdentityDocument, expectedAddress,
+                "супруга Кругликова Софья Николаевна", "+375(29) 111-01-02",
+                BloodType.FIRST, RhBloodGroup.NEGATIVE, DisabilityDegree.ZERO,
+                TransportationStatus.WALKING, true, true);
 
-        boolean isRegistered = trgDao.registerVisit(expectedVisit);
-
-        if (!isRegistered) {
-            fail();
-        }
-
-        AdmissionDepartmentVisit actualVisit = new AdmissionDepartmentVisit();
-        PreparedStatement statement = connection.prepareStatement(
-                "SELECT v2ad.person_id, v2ad.visit_reason," +
-                        " v2ad.visit_reason_description," +
-                        " v2ad.transportation_status " +
-                        "FROM hospital.visits_to_admission_department v2ad " +
-                        "WHERE v2ad.visit_id " +
-                        "IN (SELECT MAX(visit_id) " +
-                        "FROM hospital.visits_to_admission_department)"
-        );
+        PreparedStatement statement = connection.prepareStatement(SqlStatement
+                .SELECT_PATIENT_INFO);
+        statement.setInt(1, 10);
         ResultSet resultSet = statement.executeQuery();
-        if (!resultSet.next()) {
-            fail();
+        PatientInfo actual = null;
+        if (resultSet.next()) {
+            actual = testCompiler.compilePatientInfo(resultSet, 1);
         }
-        actualVisit.setPatientShortInfo(String.valueOf(resultSet.getInt(1)));
-        actualVisit.setVisitReason(VisitReason.valueOf(resultSet.getString(2)));
-        actualVisit.setPatientVisitDescriptionInfo(resultSet.getString(3));
-        actualVisit.setTransportationStatus(TransportationStatus.valueOf(
-                resultSet.getString(4)
-        ));
         closeResultSet(resultSet);
         closeStatement(statement);
 
-        Assertions.assertEquals(expectedVisit, actualVisit);
+        Assertions.assertEquals(expected, actual);
     }
 
     private void closeResultSet(ResultSet resultSet) throws SQLException {
