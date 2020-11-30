@@ -760,7 +760,7 @@ public final class SqlStatement {
             "         LEFT OUTER JOIN hospital.persons paraPerson " +
             "ON paraStaff.person_id = paraPerson.person_id\n" +
             "\n" +
-            "         LEFT OUTER JOIN hospital_departments hospDep\n" +
+            "         LEFT OUTER JOIN hospital.hospital_departments hospDep\n" +
             "ON v2ad.hospitalization_department_id = hospDep.hospital_department_id\n" +
             "\n" +
             "\n" +
