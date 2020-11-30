@@ -45,6 +45,7 @@ class DefaultAjaxFetchDaoTest {
         connection = DriverManager.getConnection(DATABASE_URL, DATABASE_USER,
                 DATABASE_PASSWORD);
         ScriptRunner scriptRunner = new ScriptRunner(connection);
+        scriptRunner.setLogWriter(null);
         FileReader fileReader = new FileReader(SQL_SCRIPT_CREATION);
         BufferedReader reader = new BufferedReader(fileReader);
         scriptRunner.runScript(reader);
@@ -75,8 +76,6 @@ class DefaultAjaxFetchDaoTest {
 
         List<AjaxCountry> actual = ajaxFetchDao.fetchCountries("АФГ");
         Assertions.assertEquals(expected, actual);
-
-        System.out.println(actual);
     }
 
     @DisplayName("test whether regions within a country are correctly fetched")
